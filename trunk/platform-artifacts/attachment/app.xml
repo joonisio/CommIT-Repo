@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="attachment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+	<ui id="ui">	    
+		<view id="Platform.AttachmentInfoView" label="Attachment Details" resource="PlatformAttachmentInfoResource">
+		    <requiredResources id="Platform.AttachmentInfoView_requiredResources">
+			    <requiredResource id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource" name="PlatformAttachmentInfoResource" reload="true"/>			    
+			</requiredResources>
+			<container id="Platform.AttachmentInfoView_container_0" resource="PlatformAttachmentInfoResource">
+				<group id="Platform.AttachmentInfoView_group_0">
+			    	<groupitem id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_0">
+						<text editable="true" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_0_name_Name" label="Name" required="true" resourceAttribute="name"/>
+					</groupitem>
+					<groupitem id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_1">
+						<text editable="true" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_1_description_Description" label="Description" placeHolder="Tap to enter" resourceAttribute="description"/>
+					</groupitem>
+					<groupitem id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_2">
+						<text editable="false" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_2_category_Folder" label="Folder" lookup="PlatformAttachmentIn.CategoryLookup" lookupAttribute="folderName" placeHolder="Tap to enter" resourceAttribute="category">
+							<eventHandlers id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_2_category_Folder_eventHandlers">
+								<eventHandler class="platform.handlers.AttachmentHandler" event="render" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_2_category_Folder_eventHandlers_render_renderCategory" method="renderCategory"/>
+							</eventHandlers>
+						</text>
+					</groupitem>
+					<groupitem id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_3">
+						<text editable="false" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_3_fileType_FileType" label="File Type" resourceAttribute="fileType"/>				
+					</groupitem>
+					<groupitem id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_4">
+						<text editable="false" id="Platform.AttachmentInfoView_PlatformAttachmentInfoResource_groupitem_4_fileSize_FileSizeKB" label="File Size (KB)" resourceAttribute="fileSize"/>				
+					</groupitem>
+					
+				</group>
+			</container>
+			<footer id="Platform.AttachmentInfoView_footer">
+				<button id="Platform.AttachmentInfoView_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.AttachmentInfoView_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="Platform.AttachmentInfoView_Cancel_button_eventHandlers_click_handleBackButtonAttachmentDetailsView" method="handleBackButtonAttachmentDetailsView"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.AttachmentInfoView_Save_button" label="Save">
+					<eventHandlers id="Platform.AttachmentInfoView_Save_button_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="Platform.AttachmentInfoView_Save_button_eventHandlers_click_commitAttachmentEntry" method="commitAttachmentEntry"/>
+					</eventHandlers>
+				</button>
+			</footer>			
+			<eventHandlers id="Platform.AttachmentInfoView_eventHandlers">
+			    <eventHandler class="platform.handlers.AttachmentHandler" event="initialize" id="Platform.AttachmentInfoView_eventHandlers_initialize_init" method="init"/>
+				<eventHandler class="platform.handlers.AttachmentHandler" event="cleanup" id="Platform.AttachmentInfoView_eventHandlers_cleanup_handleBackButtonAttachmentDetailsView" method="cancelAttachmentDetailsView"/>
+			</eventHandlers>
+		</view>
+		
+		<lookup id="PlatformAttachmentIn.CategoryLookup" label="Select Folder" resource="PlatformAttachmentCategoryResource">
+			<requiredResources id="PlatformAttachmentIn.CategoryLookup_requiredResources">
+				<requiredResource id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource" name="PlatformAttachmentCategoryResource"/>
+			</requiredResources>
+
+			<list id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_list" resource="PlatformAttachmentCategoryResource">
+				<searchAttributes id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_searchAttributes">
+					<searchAttribute id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_searchAttribute_folderName" name="folderName"/>
+				</searchAttributes>
+				<listItemTemplate id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_listItemTemplate_Item2Desc2" layout="Item2Desc2">
+					<listtext cssClass="bold textappearance-medium" id="PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_Item2Desc2_folderName" layoutInsertAt="item1" resourceAttribute="folderName"/>
+				</listItemTemplate>
+			</list>
+
+			<returnAttributes id="PlatformAttachmentIn.CategoryLookup_returnAttributes">
+				<returnAttribute id="PlatformAttachmentIn.CategoryLookup_folderName_category" sourceAttribute="folderName" targetAttribute="category"/>
+				</returnAttributes>
+		</lookup>
+	</ui>
+	<data id="data">
+	    <resource id="PlatformAttachmentInfoResource" name="PlatformAttachmentInfoResource" singleton="true">
+			<attributes id="PlatformAttachmentInfoResource_attributes">
+			    <localAttribute dataType="string" id="PlatformAttachmentInfoResource_name_string" maxSize="20" name="name"/>
+				<localAttribute dataType="string" id="PlatformAttachmentInfoResource_description_string" maxSize="50" name="description"/>
+				<localAttribute dataType="string" id="PlatformAttachmentInfoResource_category_string" name="category"/>
+				<localAttribute dataType="string" id="PlatformAttachmentInfoResource_fileType_string" name="fileType"/>
+				<localAttribute dataType="integer" id="PlatformAttachmentInfoResource_fileSize_integer" name="fileSize"/>
+				<localAttribute dataType="string" id="PlatformAttachmentInfoResource_localPath_string" name="localPath"/>
+				<localAttribute dataType="dateTime" id="PlatformAttachmentInfoResource_createDate_dateTime" name="createDate"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformAttachmentCategoryResource" name="PlatformAttachmentCategoryResource">
+			<attributes id="PlatformAttachmentCategoryResource_attributes">
+			    <localAttribute dataType="string" id="PlatformAttachmentCategoryResource_folderName_string" maxSize="20" name="folderName"/>
+			</attributes>
+		</resource>
+	</data>
+	<messages id="messages">
+	    <message defaultMessage="Camera has been cancelled." id="cameraCancelled"/>			
+	    <message defaultMessage="Selection has been closed." id="selectionCancelled"/>
+	    <message defaultMessage="Gallery has been closed." id="galleryCancelled"/>
+	    <message defaultMessage="Cannot connect to the server. Try again later." id="attachmentCouldNotConnect"/>
+	    <message defaultMessage="Upload failed - HTTP: {0}. Contact your administrator." id="attachmentUploadError"/>
+	    <message defaultMessage="Download failed - HTTP: {0}. Contact your administrator." id="attachmentDownloadError"/>
+	    <message defaultMessage="Downloaded finished." id="attachmentDownloadCompleted"/>
+	    <message defaultMessage="{0} resource is not configured properly. Contact your administrator." id="attachmentResourceNotFound"/>
+	    <message defaultMessage="{0} resource is not configured properly. Contact your administrator." id="resourceIsNotAttachment"/>
+	    <message defaultMessage="{0} resource is missing the {0} tag. Contact your administrator." id="resourceAttachmentHasNoTitle"/>
+	    <message defaultMessage="The software to view this type of attachment is not on the device." id="previewNotSupported"/>
+	    <message defaultMessage="{0} resource is missing the {0} tag. Contact your administrator." id="resourceAttachmentHasNoFileTyepe"/>
+	    <message defaultMessage="The attachment is too large." id="uploadLimit"/> 	
+	    <message defaultMessage="Name is required" id="requiredFieldName"/>
+	    <message defaultMessage="Cannot test files in the simulator.  Retry this test on a real device" id="cannotTestFilesInSimulator"/>
+	    <message defaultMessage="Your attachment properties are not configured correctly.  Contact your administrator" id="doctypesDefpathNotDefined"/>
+	    <message defaultMessage="Unexpected response while uploading attachment.  Contact your system administrator." id="attachUnexpectedResponse"/>
+	</messages>
+</app>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationPointsAnalog" version="201705101500">
+  <row id="row_0">
+    <column colspan="2" columnid="point" id="point_column"/>
+    <column colspan="9" columnid="description" id="description_column" valign="bottom"/>
+    <column colspan="1" columnid="point_info" id="point_info"/>
+  </row>
+  <row id="row_0_val">
+    <column colspan="2" columnid="point_val" id="point_column"/>
+  </row>
+  <row id="row_1">
+    <column colspan="3" columnid="input" id="input_column"/>
+    <column colspan="3" columnid="inputunit" id="inputunit_column"/>
+    <column colspan="3" columnid="output" id="output_column"/>
+    <column colspan="3" columnid="outputunit" id="outputunit_column"/>
+  </row>
+  <row id="row_1_val">
+    <column colspan="3" columnid="input_val" id="input_column_val"/>
+    <column colspan="3" columnid="inputunit_val" id="inputunit_column_val"/>
+    <column colspan="3" columnid="output_val" id="output_column_val"/>
+    <column colspan="3" columnid="outputunit_val" id="outputunit_column_val"/>
+  </row>
+  <row id="row_2">
+    <column colspan="4" columnid="foundinput" id="foundinput_column"/>
+    <column offset="2" colspan="3" columnid="foundoutput" id="foundoutput_column"/>
+</row>
+  <row id="row_3">
+   	<column colspan="1" columnid="statusBtn" id="statusBtn_column" halign="center"/>
+	<column colspan="1" columnid="status" id="status_column"/>
+    <column colspan="4" columnid="statusdesc" id="statusdesc_column" valign="bottom"/>
+    <column colspan="2" columnid="error" id="error_column"/>
+    <column colspan="3" columnid="assetunit" id="asset_unit"/>
+  </row>
+  <row id="row_3_val">
+   	<column colspan="1" columnid="statusBtn_val" id="statusBtn_column_val" halign="center"/>
+	<column colspan="1" columnid="status_val" id="status_column_val"/>
+    <column colspan="4" columnid="statusdesc_val" id="statusdesc_column_val" valign="bottom"/>
+    <column colspan="2" columnid="error_val" id="error_column_val"/>
+    <column colspan="3" columnid="assetunit_val" id="asset_unit_val"/>
+  </row>
+</layout>

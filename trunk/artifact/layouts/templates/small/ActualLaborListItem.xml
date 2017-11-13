@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ActualLaborListItem" width="100">
+	<row id="row_0">
+		<column columnid="item1" id="item1_column"/>	
+	</row>
+	<row id="row_1">
+		<column colspan="4" columnid="item2" id="item2_column"/>
+		<column colspan="8" columnid="item3" id="item3_column"/>
+	</row>
+	<row id="row_2">
+		<column colspan="4" columnid="item5" id="item5_column"/>
+		<column colspan="2" columnid="item4" id="item4_column"/>
+		<column colspan="3" columnid="item7" halign="right" id="item7_column"/>
+		<column colspan="3" columnid="item6" halign="right" id="item6_column"/>
+	</row>
+
+</layout>

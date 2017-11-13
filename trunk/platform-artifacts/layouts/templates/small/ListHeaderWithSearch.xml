@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ListHeaderWithSearch">
+	<row id="row_0">		
+		<column colspan="5" columnid="searchModifier" halign="left" id="searchModifier_column" valign="middle"/>
+		<column colspan="4" columnid="searchField" halign="right" id="searchField_column" valign="middle"/>
+		<column colspan="1" columnid="searchButton" halign="left" id="searchButton_column" valign="middle"/>
+		<column colspan="2" columnid="count" halign="right" id="count_column" valign="middle"/>
+	</row>	
+</layout>

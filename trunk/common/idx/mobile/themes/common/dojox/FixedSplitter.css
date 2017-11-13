@@ -1,0 +1,26 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* dojox.mobile.FixedSplitter */
+.mblFixedSplitter {
+  width: 100%;
+  height: 100%;
+}
+/* For FixedSplitter's child panes */
+.mblFixedSplitter > * {
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.mblFixedSplitterH > * {
+  height: 100%;
+  top: 0px;
+}
+.mblFixedSplitterV > * {
+  width: 100%;
+  left: 0px;
+}

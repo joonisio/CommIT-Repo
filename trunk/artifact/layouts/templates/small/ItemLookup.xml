@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ItemLookup">
+	<row id="row_0">
+		<column colspan="6" columnid="item1" id="item1_column"/>
+		<column colspan="6" columnid="item2" halign="right" id="item2_column"/>
+	</row>
+	<row id="row_1">
+		<column colspan="12" columnid="desc1" id="desc1_column"/>
+	</row>
+</layout>

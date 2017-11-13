@@ -1,0 +1,53 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import "domButtons/DomButtonWhiteCross.css";
+
+@import url("../../common/dojox/TabBar.css");
+
+.mblHeading .mblTabBarFlatTab {
+	border: none;
+	background: transparent;
+	margin-left: 50px;
+	display: inline-block;
+	height: 48px;
+}
+
+.mblHeading .mblTabBarFlatTab .mblTabBarButton {
+	outline: none;
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0 42px;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0;
+	border: none;
+}
+
+.mblHeading .mblTabBarFlatTab .mblTabBarButton .mblTabBarButtonLabel {
+	color: inherit;
+	font-weight: inherit;
+}
+
+.mblHeading .mblTabBarFlatTab .mblTabBarButtonSelected {
+	color: #fff;
+	font-weight: 900;
+	padding: 0 41px;
+	border-width: 0 1px;
+	background: #454545;
+	background-image: -webkit-linear-gradient(bottom, #1f1f1f, #1f1f1f 2px, #313131 2px, #5c5c5c 47px, #6b6b6b 47px, #6b6b6b 48px);
+	-webkit-border-image: -webkit-linear-gradient(bottom, #0f0f0f, #353535) 1 100%;
+}
+
+.mblHeading .mblTabBarFlatTab .mblTabBarButtonSelected .mblTabBarButtonLabel {
+	color: inherit;
+	font-weight: inherit;
+}
+
+.mblHeading .mblTabBarFlatTab .mblTabBarButton:active {
+	background-image: -webkit-linear-gradient(bottom, #2688ac, #2688ac 2px, #33b5e5 2px, #33b5e5);
+}

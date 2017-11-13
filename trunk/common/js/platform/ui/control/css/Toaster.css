@@ -1,0 +1,36 @@
+.dijitToasterContent 
+{
+	color: #EDEDED;
+	background-color: #555555;
+	background-image: none;
+	border: solid #222222;
+	border-radius: 3px;
+	padding: 5px 10px 10px 10px!important;
+	}
+.dijitToasterMessage{color:#fff;}
+
+.dijitToasterWarning{}
+
+.dijitToasterError,
+.dijitToasterFatal{font-weight:bold; color:#FF0000;}
+
+.dijitToasterWarning 
+.dijitToasterContent{background:#d4d943;}
+ 
+.dijitToasterError 
+.dijitToasterContent{background:#c46600;} 
+
+.dijitToasterClip 
+{
+	position: absolute; 
+	z-index: 5000; 
+	overflow: hidden;
+}
+.dijitToasterContainer 
+{
+	display: block; 
+	position: absolute; 
+	width: 17.5em; 
+	margin: 30%; 
+	font:16px;
+}

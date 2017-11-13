@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="MapEndPoint">
+  <row id="row_0">
+    <column colspan="2" columnid="marker" id="marker_column" valign="middle"/>
+    <column colspan="10" columnid="address" id="address_column" valign="top"/>
+  </row>
+</layout>

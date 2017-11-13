@@ -1,0 +1,203 @@
+.mobile body {
+	font-size: 30px;
+}
+
+.loginForm .loginUsername {
+	height: 70px;
+}
+
+.loginForm .loginPassword {
+	height: 70px;
+}
+
+/* sortby */
+.listHeader {
+   height: 95px;
+}
+
+.sortMenu .dijitMenuItemLabel {
+   padding: 25px 15px;
+   height: 70px;
+}
+
+/* actionbar */
+.mblHeading {
+	height: 90px;
+	background-image: -webkit-linear-gradient(bottom, #0075a3, #0075a3 2px, #008abf 2px, #008abf 6px, #1a96c6 6px, #1a96c6 8px, #000000 8px, #000000 12px, #131313 12px, #444444 102px, #6b6b6b 102px, #6b6b6b 104px);
+}
+
+/* actionbar title */
+.mblHeadingSpanTitle {
+	margin: 15px 5px !important;
+}
+
+/* actionbar title */
+.mblHeadingDivTitle {
+   margin: 15px 5px !important;
+}
+
+/* actionbar icons */
+.mblHeading .mblToolBarButton {
+	width: 64px !important;
+	height: 64px !important;
+}
+
+/* actionbar settings menu item */
+.overflowMenu .dijitMenuItemLabel {
+	padding: 25px 15px;
+}
+
+.mblButton {
+	height: 60px;
+	padding: 4px 52px 4px 52px;
+	margin: 8px;
+}
+
+.editableText {
+	height: 70px;
+}
+
+.lookupIcon {
+	background: url(../images/xhdpi/action_lookup_OFF.png) no-repeat;
+	width: 104px;
+	height: 104px;
+	padding: 20px;
+	padding-left: 0;
+	margin: -20px;
+	margin-left: -25px;
+}
+
+.codeScanIcon {
+	background: url(../images/xhdpi/action_barcode_ON.png) no-repeat;
+	width: 104px;
+	height: 104px;
+	padding: 20px;
+	padding-left: 0;
+	margin: -20px;
+	margin-left: -15px;
+}
+
+.lookupText {
+	background: url(../images/xhdpi/control_spinner_OFF.png) no-repeat bottom right;
+}
+
+.lookupText:focus {
+	background: url(../images/xhdpi/control_spinner_ON.png) no-repeat bottom right;
+}
+
+.imageButton {
+	width: 104px !important;
+	height: 104px !important;
+	padding: 20px !important;
+	margin: -18px !important;
+}
+
+
+
+/* begin date-time picker dialog */
+.dialogDateTimeLookup {
+   width: 450px;
+}
+
+.mblValuePicker {
+   height: 230px;
+   padding-bottom: 0;
+}
+
+/* end date time picker dialog */
+
+
+
+/* begin date picker */
+.datePicker {
+   display: block;
+   width: 450px;
+   margin-left: -20px;
+}
+
+.datePicker .mblValuePickerSlot {
+    width: 120px !important;
+    margin-left: 20px;
+}
+
+.datePicker .mblValuePickerSlotInputArea {
+   height: 70px;
+}
+
+/* end time picker */
+
+
+/* start time picker */
+.timePicker {
+   display: block;
+   width: 450px;
+   margin-left: -10px;
+}
+
+.timePicker .mblValuePickerSlot {
+    width: 120px !important;
+    margin-left: 20px;
+}
+
+.timePicker .mblValuePickerSlotInputArea {
+   height: 70px;
+}
+
+.timePicker .mblToolBarButtonText {
+   padding: 20px;
+}
+/* end time picker */
+
+
+/* begin duration picker */
+.dialogDurationLookup {
+   display: block;
+   width: 315px;
+   margin-left: -20px;
+}
+
+.dialogDurationLookupButtonBar {
+   display: block;
+   margin-left: -20px;
+}
+
+.durationPicker {
+   display: block;
+   width: 315px;
+   margin-left: -10px;
+}
+
+.durationPicker .mblValuePickerSlot {
+    width: 120px !important;
+    margin-left: 20px;
+}
+
+.durationPicker .mblValuePickerSlotInputArea {
+   height: 70px;
+}
+
+
+.durationPicker .mblToolBarButtonText {
+   padding: 20px;
+}
+/* end duration picker */
+
+
+.mblValuePickerSlotButton {
+   height: 70px !important;
+}
+
+.mblDomButtonGrayPlus {
+   width: 64px !important;
+   height: 64px !important;
+   background: url(../images/xhdpi/picker_plus_ON.png) no-repeat center center;
+}
+
+.mblDomButtonGrayMinus {
+	width: 64px !important;
+   height: 64px !important;
+   background: url(../images/xhdpi/picker_minus_ON.png) no-repeat center center;
+}
+.mblTextArea {
+	font-size: 31px !important;
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="DirectionsListItem">
+  <row id="row_0">
+    <column colspan="12" columnid="step" id="step_column" valign="middle"/>
+  </row>
+</layout>
