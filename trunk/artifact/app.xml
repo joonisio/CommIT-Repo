@@ -296,7 +296,7 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_0_wonum_WorkOrder" label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0" transitionTo="WorkExecution.DescriptionView">
-						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="Keterangan" placeHolder="Tap to enter" resourceAttribute="description">
+						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="PEnerangan" placeHolder="Tap to enter" resourceAttribute="description">
 							<eventHandlers id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_asset_Asset_eventHandlers.description">
 								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_asset_Asset_eventHandlers_render_descriptionField.readonly" method="isReadonly"/>
 							</eventHandlers>
