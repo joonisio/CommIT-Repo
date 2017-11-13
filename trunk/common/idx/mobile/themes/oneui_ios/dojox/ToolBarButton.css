@@ -1,0 +1,42 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import url("../../common/dojox/ToolBarButton.css");
+
+/* Tablet (iPad) variations. */
+.dj_tablet .mblToolBarButton {
+	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+}
+
+
+/* Adjustments for ToolBarButtons when used in a Heading. */
+.mblHeading .mblToolBarButton {
+	height: 27px;
+	margin: 8px 0 6px 7px;
+	line-height: 27px;
+	font-family: Helvetica Neue, Helvetica, sans-serif;
+	font-size: 12px;
+	outline: none;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.mblHeading .mblToolBarButtonBody {
+	border-color: #000000;
+	box-shadow: inset 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.33);
+}
+
+.mblHeading .mblToolBarButtonArrow {
+	width: 19px;
+	height: 19px;
+	top: 5px;
+	left: 0;
+	-webkit-transform: scale(0.65, 1.05) rotate(45deg);
+	border-top: none;
+	border-right: none;
+	border-color: #000000;
+	box-shadow: inset 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.33);
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Licensed Materials - Property of IBM
+			 5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.
+			 US Government Users Restricted Rights - Use, duplication or
+             disclosure restricted by GSA ADP Schedule Contract with IBM Corp. --><!-- Attribute "id" must be identical to application folder name --><application xmlns="http://www.worklight.com/application-descriptor" id="WorkExecution" platformVersion="7.1.0.00.20160726-1659">
+    <displayName>Work Execution</displayName>
+    <description>Work Execution</description>
+    <author>
+        <name>application's author</name>
+        <email>application author's e-mail</email>
+        <homepage>http://mycompany.com</homepage>
+        <copyright>Copyright My Company</copyright>
+    </author>
+    <mainFile>index.html</mainFile>
+    <features>
+        <JSONStore/>
+    </features>
+    <thumbnailImage>common/images/thumbnail.png</thumbnailImage>
+    <iphone applicationId="Work Execution" bundleId="com.ibm.maximoanywhere.WorkExecution" version="7.6.2">
+        <worklightSettings include="true"/>
+    </iphone>
+    <android version="7.6.2">
+        <worklightSettings include="true"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey>
+            <packageName>com.WorkExecution</packageName>
+        </security>
+        <compressWebResources enabled="true"/>
+    </android>
+    <windows8 version="7.6.2">
+        <uuid>209ea0f5-86a5-44a1-9d8f-5ed4c6469709</uuid>
+    </windows8>
+<windowsphoneuniversal version="7.6.2">
+        <uuid>59e5cead-8b85-490c-96d4-61697de599af</uuid>
+    </windowsphoneuniversal>
+</application>

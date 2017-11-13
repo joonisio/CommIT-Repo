@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="MapOfflineAreaList" width="100">
+	<row id="row_0">
+		<column colspan="6" columnid="item1" id="item1_column_layernamelabel"/>
+	</row>
+	<row id="row_1">
+		<column colspan="6" columnid="item2" id="item2_column_featureFieldName"/>
+	</row>
+	<row id="row_1">
+		<column colspan="6" columnid="item3" id="item3_column_featureFieldValue"/>
+	</row>
+</layout>

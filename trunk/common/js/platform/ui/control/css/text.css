@@ -1,0 +1,55 @@
+
+.loginForm .textWrapper {
+  margin-top: 18px;
+}
+
+.mblListItem .dijitContentPane.textWrapper {
+	padding-left: 0px;
+	margin-left: 5px;
+}
+
+.textWrapper {
+    position: relative;
+    border-bottom: 2px solid #ddd;
+    padding: 0px !important;
+    display: inline-flex;
+    height: auto !important;
+    margin: 18px 10px 0px 0px;
+}
+
+.textWrapper:before, .textWrapper:after {
+	content: ''; 
+	width: 2px; 
+	height: 20%; 
+	position: absolute; 
+	bottom: -2px; 
+}
+
+.textWrapper[readonly] {
+	border-color: transparent;
+}
+
+.textWrapper[readonly]:before, .textWrapper[readonly]:after {
+    display: none;
+}
+
+.textWrapper:after {
+	right: -1px;
+}
+
+.textWrapper:before {
+	left: 0px;
+}
+
+.textWrapper input { 
+    border: 0px;
+    outline: 0px;
+    margin-top: auto !important;
+    max-height: 20px !important;
+    padding: 0px 6px 3px 6px !important;
+    width: 100%;
+}
+
+.loginForm .textWrapper {
+	max-width: 200px;
+}

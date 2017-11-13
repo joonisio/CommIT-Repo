@@ -1,0 +1,26 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import url("../../common/dojox/common.css");
+
+/* Colors for buttons when used in a Heading. */
+.mblHeading .mblColorDefault {
+	color: #fff;
+	background: transparent;
+}
+
+.mblHeading .mblColorDefault45 {
+	background: transparent; 
+}
+
+.mblHeading .mblColorDefaultSel {
+	background: transparent; 
+}
+
+.mblHeading .mblColorDefaultSel45 {
+	background: transparent; 
+}

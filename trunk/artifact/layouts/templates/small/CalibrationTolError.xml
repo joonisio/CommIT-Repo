@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationTolError" version="201705101500">
+  <row id="row_0">
+    <column colspan="3" columnid="rangeLabel" id="rangeLabel_column"/>
+    <column colspan="3" columnid="from" id="from_column"/>
+    <column colspan="1" columnid="toLabel" id="toLabel_column"/>
+    <column colspan="3" columnid="to" id="to_column"/>
+    <column colspan="2" columnid="errorLabel" id="errorLabel_column"/>
+    <column colspan="3" columnid="error" id="error_column"/>
+  </row>
+</layout>

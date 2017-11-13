@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ListItem5Button1">
+  <row id="row_0">
+    <column colspan="5" columnid="item1" id="item1_column"/>
+    <column colspan="5" columnid="item2" id="item2_column" valign="top"/>
+    <column colspan="2" columnid="button1" halign="right" id="button1_column" rowspan="3"/>
+  </row>
+  <row id="row_1">
+    <column colspan="10" columnid="item3" id="item3_column"/>
+  </row>
+  <row id="row_2">
+    <column colspan="5" columnid="item4" id="item4_column"/>
+    <column colspan="5" columnid="item5" id="item5_column"/>
+  </row>
+</layout>

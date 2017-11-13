@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ActualToolListItem" width="100">
+	<row id="row_0">
+		<column columnid="item1" id="item1_column"/>	
+	</row>
+	<row id="row_1">
+		<column colspan="10" columnid="item2" id="item2_column"/>
+		<column colspan="2" columnid="item3" halign="right" id="item3_column"/>
+	</row>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationPointsAverageDiscrete">
+    <row id="row_0">
+        <column columnid="cpoint_label" id="cpoint_label" colspan="3"/>
+        <column columnid="cpoint" id="cpoint" colspan="2"/>
+		<column columnid="cpoint_desc" id="cpoint_desc" colspan="6"/>
+		<column columnid="cpoint_info" id="cpoint_info" colspan="1"/>
+    </row>
+	<row id="row_1">
+	    <column columnid="setpoint_label" id="setpoint_label" colspan="4"/>
+	    <column columnid="avgsetpoint_label" id="avgsetpoint_label" colspan="4"/>
+		<column columnid="setpointaction_label" id="setpointaction_label" colspan="4"/>
+	</row>
+	<row id="row_2">
+		<column columnid="setpoint" id="setpoint" colspan="4"/>
+		<column columnid="avgsetpoint" id="avgsetpoint" colspan="4"/>
+		<column columnid="setpointaction" id="setpointaction" colspan="4"/>
+	</row>
+	<row id="row_3">
+	    <column columnid="statusbtn" id="statusbtn" colspan="2"/>
+	    <column columnid="status_label" id="status_label" colspan="8"/>
+	    <column columnid="asseterror_label" id="asseterror_label" colspan="2"/>
+	</row>
+	<row id="row_4">
+	    <column columnid="status" id="status" colspan="2"/>
+	    <column columnid="status_desc" id="status_desc" colspan="8"/>
+	    <column columnid="asseterror" id="asseterror" colspan="2"/>
+	</row>
+</layout>

@@ -1,0 +1,60 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* dojox.mobile.ComboBox */
+.dijitPopup {
+	position:absolute;
+	margin:0;
+	padding:0;
+	border:0;
+	border-radius:0;
+	background-color:transparent;
+	-webkit-box-shadow:none;
+}
+
+.mblReset {
+	margin:0;
+	padding:0;
+	border:0;
+	color:inherit;
+	font:inherit;
+	line-height:normal;
+}
+
+.mblComboBoxMenu {
+	position:relative;
+	overflow:hidden;
+	overflow-y:hidden!important;
+	padding:2px;
+	border:1px solid #aaa;
+	border-radius:0;
+	background-color:#fff;
+	color:#222;
+}
+
+.mblComboBoxMenuItem {
+	padding:.6em;
+	border-width:1px 0;
+	border-style:solid;
+	border-color:#fff;
+	border-bottom-color:#ddd;
+	color:inherit;
+	text-align:left;
+	white-space:nowrap;
+	font-size:150%;
+	display: block;
+	width: 200%;
+}
+
+.mblComboBoxMenuItemSelected {
+	background:#cce8f2;
+}
+
+.mblComboBoxMenuPreviousButton,.mblComboBoxMenuNextButton {
+	overflow:hidden;
+	font-style:italic;
+}

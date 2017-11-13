@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-dojo" default="copy-resources" basedir=".">
+	<!--
+		This file does not require editing.  To add dojo resources to applications, add the dojo resources to the dojo root
+		folder and then they will automatically be placed inside of dojo applications.  All files and folders under the dojo 
+		root will be copied in to applications that have been enabled for dojo.
+	-->
+	<description>
+		Build file for handling the Dojo Toolkit during the build.
+	</description>
+
+	<property file="build-dojo.properties"/>
+
+	<target name="-compute-dojo-root" if="dojo.workspaceRoot">
+		<property name="dojo.root" value="../../..${dojo.workspaceRoot}"/>
+	</target>
+
+	<!--
+		All files and folders under the dojo root will be copied in to applications that have been enabled for dojo.
+	-->
+	<target name="copy-resources" depends="-compute-dojo-root">
+	       <copy todir="${build.dir}">
+	          <fileset dir="${dojo.root}" />
+	       </copy>
+	</target>
+	
+</project>

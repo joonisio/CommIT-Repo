@@ -1,0 +1,12 @@
+<layout id="ListItem3Input1">
+	<row id="row_0">
+		<column columnid="item1" colspan="4" id="col0_0" />
+		<column columnid="desc1" colspan="8" id="col1_0" />
+	</row>
+	<row id="row_1">
+	    <column columnid="item2" colspan="10" id="col0_1" />
+	</row>
+	<row id="row_2">
+	    <column columnid="input1" colspan="10" id="col0_2" />
+	</row>
+</layout>

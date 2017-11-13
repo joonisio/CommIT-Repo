@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CenteredBottom2Buttons">
+<row id="row_0">
+  <column colspan="6" columnid="button1" halign="center" id="button1_column"/>
+  <column colspan="6" columnid="button2" halign="center" id="button2_column"/>
+</row>
+</layout>

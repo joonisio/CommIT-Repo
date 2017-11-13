@@ -1,0 +1,21 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* Styles to add loading indicator images to a ProgressIndicator */
+
+.mblProgressIndicator .mblProgContainer {
+  	background-image: url(images/loadingIndicatorWhite.gif);
+  	background-repeat: no-repeat;
+}
+
+.mblProgressIndicator.mblIdxLoadingIndicatorBlack .mblProgContainer {
+  	background-image: url(images/loadingIndicatorBlack.gif);
+}
+
+.mblProgressIndicator .mblProg {
+	display: none;
+}

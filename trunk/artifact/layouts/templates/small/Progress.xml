@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="Progress" width="100">
+	<row id="row_0">
+		<column columnid="item1" id="item1_column"/>
+		<column columnid="button1" halign="right" id="button1_column"/>
+	</row>
+</layout>

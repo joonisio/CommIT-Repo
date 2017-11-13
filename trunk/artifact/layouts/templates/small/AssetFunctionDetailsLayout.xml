@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="AssetFunctionDetailsLayout" version="201705101500">
+  <row id="row_0">
+    <column colspan="2" columnid="label1" id="label1_column"/>
+    <column colspan="5" columnid="value1" id="value1_column" halign="left"/>
+    <column colspan="5" columnid="label2" id="label2_column" halign="left"/>
+  </row>
+</layout>

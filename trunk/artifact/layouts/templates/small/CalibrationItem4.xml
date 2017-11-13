@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationItem4" version="201705101500">
+  <row id="row_0">
+    <column colspan="3" columnid="item1" id="item1_column"/>
+    <column colspan="4" columnid="item2" id="item2_column"/>
+    <column colspan="3" columnid="item3" id="item3_column"/>
+    <column colspan="4" columnid="item4" id="item4_column"/>
+  </row>
+</layout>
