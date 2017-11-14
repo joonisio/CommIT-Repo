@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[대학에~Records with Errors]",
          "Work Orders Created Locally" : "[대학에~Work Orders Created Locally]",
          "Search Results" : "[대학에~Search Results]",
+         "Permit" : "[대학에~Permit]",
+         "Test Form" : "[대학에~Test Form]",
          "Download Work List" : "[대학에~Download Work List]",
          "Synchronize Data" : "[대학에~Synchronize Data]",
          "Scan Bar Code" : "[대학에~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[대학에~Take Photo]",
          "Create Actuals From Plan" : "[대학에~Create Actuals From Plan]",
          "Capture GPS" : "[대학에~Capture GPS]",
-         "Keterangan" : "[대학에~Keterangan]",
+         "PEnerangan" : "[대학에~PEnerangan]",
          "Asset" : "[대학에~Asset]",
          "Tap to enter" : "[대학에~Tap to enter]",
          "Report Downtime" : "[대학에~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[대학에~Tap to enter start date range]",
          "Tap to enter end date range" : "[대학에~Tap to enter end date range]",
          "Clear" : "[대학에~Clear]",
+         "Permit Detail" : "[대학에~Permit Detail]",
          "Report by Crew" : "[대학에~Report by Crew]",
          "Crew Labor Details" : "[대학에~Crew Labor Details]",
          "Crew Tool Details" : "[대학에~Crew Tool Details]",

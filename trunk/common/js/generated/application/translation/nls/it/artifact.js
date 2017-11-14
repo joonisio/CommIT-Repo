@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[quantitó~Records with Errors]",
          "Work Orders Created Locally" : "[quantitó~Work Orders Created Locally]",
          "Search Results" : "[quantitó~Search Results]",
+         "Permit" : "[quantitó~Permit]",
+         "Test Form" : "[quantitó~Test Form]",
          "Download Work List" : "[quantitó~Download Work List]",
          "Synchronize Data" : "[quantitó~Synchronize Data]",
          "Scan Bar Code" : "[quantitó~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[quantitó~Take Photo]",
          "Create Actuals From Plan" : "[quantitó~Create Actuals From Plan]",
          "Capture GPS" : "[quantitó~Capture GPS]",
-         "Keterangan" : "[quantitó~Keterangan]",
+         "PEnerangan" : "[quantitó~PEnerangan]",
          "Asset" : "[quantitó~Asset]",
          "Tap to enter" : "[quantitó~Tap to enter]",
          "Report Downtime" : "[quantitó~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[quantitó~Tap to enter start date range]",
          "Tap to enter end date range" : "[quantitó~Tap to enter end date range]",
          "Clear" : "[quantitó~Clear]",
+         "Permit Detail" : "[quantitó~Permit Detail]",
          "Report by Crew" : "[quantitó~Report by Crew]",
          "Crew Labor Details" : "[quantitó~Crew Labor Details]",
          "Crew Tool Details" : "[quantitó~Crew Tool Details]",

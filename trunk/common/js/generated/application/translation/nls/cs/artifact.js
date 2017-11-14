@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[českém~Records with Errors]",
          "Work Orders Created Locally" : "[českém~Work Orders Created Locally]",
          "Search Results" : "[českém~Search Results]",
+         "Permit" : "[českém~Permit]",
+         "Test Form" : "[českém~Test Form]",
          "Download Work List" : "[českém~Download Work List]",
          "Synchronize Data" : "[českém~Synchronize Data]",
          "Scan Bar Code" : "[českém~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[českém~Take Photo]",
          "Create Actuals From Plan" : "[českém~Create Actuals From Plan]",
          "Capture GPS" : "[českém~Capture GPS]",
-         "Keterangan" : "[českém~Keterangan]",
+         "PEnerangan" : "[českém~PEnerangan]",
          "Asset" : "[českém~Asset]",
          "Tap to enter" : "[českém~Tap to enter]",
          "Report Downtime" : "[českém~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[českém~Tap to enter start date range]",
          "Tap to enter end date range" : "[českém~Tap to enter end date range]",
          "Clear" : "[českém~Clear]",
+         "Permit Detail" : "[českém~Permit Detail]",
          "Report by Crew" : "[českém~Report by Crew]",
          "Crew Labor Details" : "[českém~Crew Labor Details]",
          "Crew Tool Details" : "[českém~Crew Tool Details]",

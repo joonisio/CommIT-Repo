@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:46
+// Build: 2017-11-14 11:40:40
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[中国的~Records with Errors]",
          "Work Orders Created Locally" : "[中国的~Work Orders Created Locally]",
          "Search Results" : "[中国的~Search Results]",
+         "Permit" : "[中国的~Permit]",
+         "Test Form" : "[中国的~Test Form]",
          "Download Work List" : "[中国的~Download Work List]",
          "Synchronize Data" : "[中国的~Synchronize Data]",
          "Scan Bar Code" : "[中国的~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[中国的~Take Photo]",
          "Create Actuals From Plan" : "[中国的~Create Actuals From Plan]",
          "Capture GPS" : "[中国的~Capture GPS]",
-         "Keterangan" : "[中国的~Keterangan]",
+         "PEnerangan" : "[中国的~PEnerangan]",
          "Asset" : "[中国的~Asset]",
          "Tap to enter" : "[中国的~Tap to enter]",
          "Report Downtime" : "[中国的~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[中国的~Tap to enter start date range]",
          "Tap to enter end date range" : "[中国的~Tap to enter end date range]",
          "Clear" : "[中国的~Clear]",
+         "Permit Detail" : "[中国的~Permit Detail]",
          "Report by Crew" : "[中国的~Report by Crew]",
          "Crew Labor Details" : "[中国的~Crew Labor Details]",
          "Crew Tool Details" : "[中国的~Crew Tool Details]",

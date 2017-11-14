@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:48
+// Build: 2017-11-14 11:40:42
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[Okrągłego~Records with Errors]",
          "Work Orders Created Locally" : "[Okrągłego~Work Orders Created Locally]",
          "Search Results" : "[Okrągłego~Search Results]",
+         "Permit" : "[Okrągłego~Permit]",
+         "Test Form" : "[Okrągłego~Test Form]",
          "Download Work List" : "[Okrągłego~Download Work List]",
          "Synchronize Data" : "[Okrągłego~Synchronize Data]",
          "Scan Bar Code" : "[Okrągłego~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[Okrągłego~Take Photo]",
          "Create Actuals From Plan" : "[Okrągłego~Create Actuals From Plan]",
          "Capture GPS" : "[Okrągłego~Capture GPS]",
-         "Keterangan" : "[Okrągłego~Keterangan]",
+         "PEnerangan" : "[Okrągłego~PEnerangan]",
          "Asset" : "[Okrągłego~Asset]",
          "Tap to enter" : "[Okrągłego~Tap to enter]",
          "Report Downtime" : "[Okrągłego~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[Okrągłego~Tap to enter start date range]",
          "Tap to enter end date range" : "[Okrągłego~Tap to enter end date range]",
          "Clear" : "[Okrągłego~Clear]",
+         "Permit Detail" : "[Okrągłego~Permit Detail]",
          "Report by Crew" : "[Okrągłego~Report by Crew]",
          "Crew Labor Details" : "[Okrągłego~Crew Labor Details]",
          "Crew Tool Details" : "[Okrągłego~Crew Tool Details]",
