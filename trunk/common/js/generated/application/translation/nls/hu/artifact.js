@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:48
+// Build: 2017-11-14 11:40:43
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[erÕsíteni~Records with Errors]",
          "Work Orders Created Locally" : "[erÕsíteni~Work Orders Created Locally]",
          "Search Results" : "[erÕsíteni~Search Results]",
+         "Permit" : "[erÕsíteni~Permit]",
+         "Test Form" : "[erÕsíteni~Test Form]",
          "Download Work List" : "[erÕsíteni~Download Work List]",
          "Synchronize Data" : "[erÕsíteni~Synchronize Data]",
          "Scan Bar Code" : "[erÕsíteni~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[erÕsíteni~Take Photo]",
          "Create Actuals From Plan" : "[erÕsíteni~Create Actuals From Plan]",
          "Capture GPS" : "[erÕsíteni~Capture GPS]",
-         "Keterangan" : "[erÕsíteni~Keterangan]",
+         "PEnerangan" : "[erÕsíteni~PEnerangan]",
          "Asset" : "[erÕsíteni~Asset]",
          "Tap to enter" : "[erÕsíteni~Tap to enter]",
          "Report Downtime" : "[erÕsíteni~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[erÕsíteni~Tap to enter start date range]",
          "Tap to enter end date range" : "[erÕsíteni~Tap to enter end date range]",
          "Clear" : "[erÕsíteni~Clear]",
+         "Permit Detail" : "[erÕsíteni~Permit Detail]",
          "Report by Crew" : "[erÕsíteni~Report by Crew]",
          "Crew Labor Details" : "[erÕsíteni~Crew Labor Details]",
          "Crew Tool Details" : "[erÕsíteni~Crew Tool Details]",

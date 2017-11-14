@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:46
+// Build: 2017-11-14 11:40:40
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[中國的~Records with Errors]",
          "Work Orders Created Locally" : "[中國的~Work Orders Created Locally]",
          "Search Results" : "[中國的~Search Results]",
+         "Permit" : "[中國的~Permit]",
+         "Test Form" : "[中國的~Test Form]",
          "Download Work List" : "[中國的~Download Work List]",
          "Synchronize Data" : "[中國的~Synchronize Data]",
          "Scan Bar Code" : "[中國的~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[中國的~Take Photo]",
          "Create Actuals From Plan" : "[中國的~Create Actuals From Plan]",
          "Capture GPS" : "[中國的~Capture GPS]",
-         "Keterangan" : "[中國的~Keterangan]",
+         "PEnerangan" : "[中國的~PEnerangan]",
          "Asset" : "[中國的~Asset]",
          "Tap to enter" : "[中國的~Tap to enter]",
          "Report Downtime" : "[中國的~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[中國的~Tap to enter start date range]",
          "Tap to enter end date range" : "[中國的~Tap to enter end date range]",
          "Clear" : "[中國的~Clear]",
+         "Permit Detail" : "[中國的~Permit Detail]",
          "Report by Crew" : "[中國的~Report by Crew]",
          "Crew Labor Details" : "[中國的~Crew Labor Details]",
          "Crew Tool Details" : "[中國的~Crew Tool Details]",

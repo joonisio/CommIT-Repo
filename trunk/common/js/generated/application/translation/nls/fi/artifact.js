@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:48
+// Build: 2017-11-14 11:40:42
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[pohjoispäässä~Records with Errors]",
          "Work Orders Created Locally" : "[pohjoispäässä~Work Orders Created Locally]",
          "Search Results" : "[pohjoispäässä~Search Results]",
+         "Permit" : "[pohjoispäässä~Permit]",
+         "Test Form" : "[pohjoispäässä~Test Form]",
          "Download Work List" : "[pohjoispäässä~Download Work List]",
          "Synchronize Data" : "[pohjoispäässä~Synchronize Data]",
          "Scan Bar Code" : "[pohjoispäässä~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[pohjoispäässä~Take Photo]",
          "Create Actuals From Plan" : "[pohjoispäässä~Create Actuals From Plan]",
          "Capture GPS" : "[pohjoispäässä~Capture GPS]",
-         "Keterangan" : "[pohjoispäässä~Keterangan]",
+         "PEnerangan" : "[pohjoispäässä~PEnerangan]",
          "Asset" : "[pohjoispäässä~Asset]",
          "Tap to enter" : "[pohjoispäässä~Tap to enter]",
          "Report Downtime" : "[pohjoispäässä~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[pohjoispäässä~Tap to enter start date range]",
          "Tap to enter end date range" : "[pohjoispäässä~Tap to enter end date range]",
          "Clear" : "[pohjoispäässä~Clear]",
+         "Permit Detail" : "[pohjoispäässä~Permit Detail]",
          "Report by Crew" : "[pohjoispäässä~Report by Crew]",
          "Crew Labor Details" : "[pohjoispäässä~Crew Labor Details]",
          "Crew Tool Details" : "[pohjoispäässä~Crew Tool Details]",

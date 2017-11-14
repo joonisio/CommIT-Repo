@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[島の第~Records with Errors]",
          "Work Orders Created Locally" : "[島の第~Work Orders Created Locally]",
          "Search Results" : "[島の第~Search Results]",
+         "Permit" : "[島の第~Permit]",
+         "Test Form" : "[島の第~Test Form]",
          "Download Work List" : "[島の第~Download Work List]",
          "Synchronize Data" : "[島の第~Synchronize Data]",
          "Scan Bar Code" : "[島の第~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[島の第~Take Photo]",
          "Create Actuals From Plan" : "[島の第~Create Actuals From Plan]",
          "Capture GPS" : "[島の第~Capture GPS]",
-         "Keterangan" : "[島の第~Keterangan]",
+         "PEnerangan" : "[島の第~PEnerangan]",
          "Asset" : "[島の第~Asset]",
          "Tap to enter" : "[島の第~Tap to enter]",
          "Report Downtime" : "[島の第~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[島の第~Tap to enter start date range]",
          "Tap to enter end date range" : "[島の第~Tap to enter end date range]",
          "Clear" : "[島の第~Clear]",
+         "Permit Detail" : "[島の第~Permit Detail]",
          "Report by Crew" : "[島の第~Report by Crew]",
          "Crew Labor Details" : "[島の第~Crew Labor Details]",
          "Crew Tool Details" : "[島の第~Crew Tool Details]",

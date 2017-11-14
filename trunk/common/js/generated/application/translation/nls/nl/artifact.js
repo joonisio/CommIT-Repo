@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:48
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[onbepaalde~Records with Errors]",
          "Work Orders Created Locally" : "[onbepaalde~Work Orders Created Locally]",
          "Search Results" : "[onbepaalde~Search Results]",
+         "Permit" : "[onbepaalde~Permit]",
+         "Test Form" : "[onbepaalde~Test Form]",
          "Download Work List" : "[onbepaalde~Download Work List]",
          "Synchronize Data" : "[onbepaalde~Synchronize Data]",
          "Scan Bar Code" : "[onbepaalde~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[onbepaalde~Take Photo]",
          "Create Actuals From Plan" : "[onbepaalde~Create Actuals From Plan]",
          "Capture GPS" : "[onbepaalde~Capture GPS]",
-         "Keterangan" : "[onbepaalde~Keterangan]",
+         "PEnerangan" : "[onbepaalde~PEnerangan]",
          "Asset" : "[onbepaalde~Asset]",
          "Tap to enter" : "[onbepaalde~Tap to enter]",
          "Report Downtime" : "[onbepaalde~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[onbepaalde~Tap to enter start date range]",
          "Tap to enter end date range" : "[onbepaalde~Tap to enter end date range]",
          "Clear" : "[onbepaalde~Clear]",
+         "Permit Detail" : "[onbepaalde~Permit Detail]",
          "Report by Crew" : "[onbepaalde~Report by Crew]",
          "Crew Labor Details" : "[onbepaalde~Crew Labor Details]",
          "Crew Tool Details" : "[onbepaalde~Crew Tool Details]",

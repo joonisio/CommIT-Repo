@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[vagão do metrô~Records with Errors]",
          "Work Orders Created Locally" : "[vagão do metrô~Work Orders Created Locally]",
          "Search Results" : "[vagão do metrô~Search Results]",
+         "Permit" : "[vagão do metrô~Permit]",
+         "Test Form" : "[vagão do metrô~Test Form]",
          "Download Work List" : "[vagão do metrô~Download Work List]",
          "Synchronize Data" : "[vagão do metrô~Synchronize Data]",
          "Scan Bar Code" : "[vagão do metrô~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[vagão do metrô~Take Photo]",
          "Create Actuals From Plan" : "[vagão do metrô~Create Actuals From Plan]",
          "Capture GPS" : "[vagão do metrô~Capture GPS]",
-         "Keterangan" : "[vagão do metrô~Keterangan]",
+         "PEnerangan" : "[vagão do metrô~PEnerangan]",
          "Asset" : "[vagão do metrô~Asset]",
          "Tap to enter" : "[vagão do metrô~Tap to enter]",
          "Report Downtime" : "[vagão do metrô~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[vagão do metrô~Tap to enter start date range]",
          "Tap to enter end date range" : "[vagão do metrô~Tap to enter end date range]",
          "Clear" : "[vagão do metrô~Clear]",
+         "Permit Detail" : "[vagão do metrô~Permit Detail]",
          "Report by Crew" : "[vagão do metrô~Report by Crew]",
          "Crew Labor Details" : "[vagão do metrô~Crew Labor Details]",
          "Crew Tool Details" : "[vagão do metrô~Crew Tool Details]",

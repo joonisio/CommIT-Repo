@@ -60,7 +60,22 @@
 				<requiredResource id="WorkExecution.WorkItemsView_laborcrew" name="laborcrew"/>
 				<requiredResource id="WorkExecution.WorkItemsView_gpslocalstore" name="PlatformGeolocationLocalStore"/>
 			</requiredResources>
+			
 			<actions id="WorkExecution.WorkItemsView_actions">
+			    
+			    <!--Custom permit and test form-->
+			    
+			    <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.SearchPermitDetail">	
+					<eventHandlers id="WorkExecution.WorkItemsView_Permit_action_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_Permit_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
+					</eventHandlers>	
+				</action>
+				
+			     <action id="WorkExecution.WorkItemsView_TestForm_action" label="Test Form" overflow="true" transitionTo="WorkExecution.SearchWorkOrderView">	
+					<eventHandlers id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
+					</eventHandlers>	
+				</action>
 
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
@@ -6714,6 +6729,22 @@
 				<eventHandler class="application.handlers.WODetailHandler" event="hide" id="WorkExecution.SearchWorkOrderView_eventHandlers_hide_hideSearch" method="hideSearch"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="cleanup" id="WorkExecution.SearchWorkOrderView_eventHandlers_cleanup_discardSummaryView" method="discardSummaryView"/>
 			</eventHandlers>
+		</view>
+		
+		<!-- Custom Permit Detail -->
+		<view id="WorkExecution.SearchPermitDetail" label="Permit Detail">
+		    <footer id="WorkExecution.SearchPermitDetail_footer">
+				<button id="WorkExecution.SearchPermitDetail_Clear_button" label="Clear">
+					<eventHandlers id="WorkExecution.SearchPermitDetail_Clear_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.SearchPermitDetail_Clear_button_eventHandlers_click_clearSearchFields" method="clearSearchFields"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.SearchPermitDetail_Search_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.SearchPermitDetail_Search_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.SearchPermitDetail_Search_button_eventHandlers_click_setSearchQuery" method="setSearchQuery"/>
+					</eventHandlers>
+				</button>
+			</footer>
 		</view>
 
 		<!-- Crew Labor list view -->

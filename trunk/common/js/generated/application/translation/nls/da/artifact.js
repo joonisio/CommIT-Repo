@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:47
+// Build: 2017-11-14 11:40:41
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[gæst faldt~Records with Errors]",
          "Work Orders Created Locally" : "[gæst faldt~Work Orders Created Locally]",
          "Search Results" : "[gæst faldt~Search Results]",
+         "Permit" : "[gæst faldt~Permit]",
+         "Test Form" : "[gæst faldt~Test Form]",
          "Download Work List" : "[gæst faldt~Download Work List]",
          "Synchronize Data" : "[gæst faldt~Synchronize Data]",
          "Scan Bar Code" : "[gæst faldt~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[gæst faldt~Take Photo]",
          "Create Actuals From Plan" : "[gæst faldt~Create Actuals From Plan]",
          "Capture GPS" : "[gæst faldt~Capture GPS]",
-         "Keterangan" : "[gæst faldt~Keterangan]",
+         "PEnerangan" : "[gæst faldt~PEnerangan]",
          "Asset" : "[gæst faldt~Asset]",
          "Tap to enter" : "[gæst faldt~Tap to enter]",
          "Report Downtime" : "[gæst faldt~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[gæst faldt~Tap to enter start date range]",
          "Tap to enter end date range" : "[gæst faldt~Tap to enter end date range]",
          "Clear" : "[gæst faldt~Clear]",
+         "Permit Detail" : "[gæst faldt~Permit Detail]",
          "Report by Crew" : "[gæst faldt~Report by Crew]",
          "Crew Labor Details" : "[gæst faldt~Crew Labor Details]",
          "Crew Tool Details" : "[gæst faldt~Crew Tool Details]",

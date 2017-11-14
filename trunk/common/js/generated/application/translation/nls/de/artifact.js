@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:46
+// Build: 2017-11-14 11:40:40
 //----------------------------------------------------------------//
 define({
    
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "[können~Records with Errors]",
          "Work Orders Created Locally" : "[können~Work Orders Created Locally]",
          "Search Results" : "[können~Search Results]",
+         "Permit" : "[können~Permit]",
+         "Test Form" : "[können~Test Form]",
          "Download Work List" : "[können~Download Work List]",
          "Synchronize Data" : "[können~Synchronize Data]",
          "Scan Bar Code" : "[können~Scan Bar Code]",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "[können~Take Photo]",
          "Create Actuals From Plan" : "[können~Create Actuals From Plan]",
          "Capture GPS" : "[können~Capture GPS]",
-         "Keterangan" : "[können~Keterangan]",
+         "PEnerangan" : "[können~PEnerangan]",
          "Asset" : "[können~Asset]",
          "Tap to enter" : "[können~Tap to enter]",
          "Report Downtime" : "[können~Report Downtime]",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "[können~Tap to enter start date range]",
          "Tap to enter end date range" : "[können~Tap to enter end date range]",
          "Clear" : "[können~Clear]",
+         "Permit Detail" : "[können~Permit Detail]",
          "Report by Crew" : "[können~Report by Crew]",
          "Crew Labor Details" : "[können~Crew Labor Details]",
          "Crew Tool Details" : "[können~Crew Tool Details]",

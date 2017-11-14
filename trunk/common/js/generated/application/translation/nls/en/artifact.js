@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-13 09:36:45
+// Build: 2017-11-14 11:40:39
 //----------------------------------------------------------------//
 define({
    root: {
@@ -35,6 +35,8 @@ define({
          "Records with Errors" : "Records with Errors",
          "Work Orders Created Locally" : "Work Orders Created Locally",
          "Search Results" : "Search Results",
+         "Permit" : "Permit",
+         "Test Form" : "Test Form",
          "Download Work List" : "Download Work List",
          "Synchronize Data" : "Synchronize Data",
          "Scan Bar Code" : "Scan Bar Code",
@@ -62,7 +64,7 @@ define({
          "Take Photo" : "Take Photo",
          "Create Actuals From Plan" : "Create Actuals From Plan",
          "Capture GPS" : "Capture GPS",
-         "Keterangan" : "Keterangan",
+         "PEnerangan" : "PEnerangan",
          "Asset" : "Asset",
          "Tap to enter" : "Tap to enter",
          "Report Downtime" : "Report Downtime",
@@ -363,6 +365,7 @@ define({
          "Tap to enter start date range" : "Tap to enter start date range",
          "Tap to enter end date range" : "Tap to enter end date range",
          "Clear" : "Clear",
+         "Permit Detail" : "Permit Detail",
          "Report by Crew" : "Report by Crew",
          "Crew Labor Details" : "Crew Labor Details",
          "Crew Tool Details" : "Crew Tool Details",
@@ -419,7 +422,7 @@ define({
          "List of notifications" : "List of notifications",
          "Change Time or Date" : "Change Time or Date",
          "Version 7.6.2.0" : "Version 7.6.2.0",
-         "Build number @build@" : "Build number 20170510_200614-0500 [201705101500]",
+         "Build number @build@" : "Build number @build@",
          "Licensed Materials - Property of IBM. \u00A9IBM Corp. 2017. IBM, the IBM logo, and ibm.com are trademarks of IBM Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the Web at www.ibm.com\/legal\/copytrade.shtml. This Program is licensed under the terms of the license agreement for the Program. Please read this agreement carefully before using the Program. By using the Program, you agree to these terms." : "Licensed Materials - Property of IBM. ©IBM Corp. 2017. IBM, the IBM logo, and ibm.com are trademarks of IBM Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the Web at www.ibm.com/legal/copytrade.shtml. This Program is licensed under the terms of the license agreement for the Program. Please read this agreement carefully before using the Program. By using the Program, you agree to these terms.",
          "Mapping API provided by Esri ArcGIS Runtime SDK for Android and iOS." : "Mapping API provided by Esri ArcGIS Runtime SDK for Android and iOS.",
          "Screen Information" : "Screen Information",
