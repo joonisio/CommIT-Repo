@@ -53,6 +53,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 /**@memberOf application.handlers.WODetailHandler */
 		initAssetField: function(eventContext){
+			console.log('function: initAssetField called from WODetailHandler');
 			var actualWorkOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var oslcwpeditsetting = CommonHandler._getAdditionalResource(eventContext,"oslcwpeditsetting");
 			var domainAssetstatus = CommonHandler._getAdditionalResource(eventContext,'domainwostatus');
@@ -527,6 +528,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 
 		commitNewWorkOrderView : function(eventContext) {
+			console.log('function: commitNewWorkOrderView called from WODetailHandler');
 			eventContext.application.showBusy();
 			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
 			var currWO = workOrderSet.getCurrentRecord();
@@ -2072,6 +2074,18 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 					delete eventContext.application.resources['workOrder.workOrderSpec'];
 				}
 			}
+		}, 
+		
+	//custom javascript code
+
+		updateAtrributeInTask : function(eventContext){
+			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
+			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			var currWO = workOrderSet.getCurrentRecord();
+			ModelService.save(workOrderSet);
+			console.log('save completed');
+			this.ui.hideCurrentView();
+			
 		}, 
 		
 		hideForNonCalibrationWO: function(eventContext) {

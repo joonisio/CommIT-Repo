@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-14 11:40:40
+// Build: 2017-11-17 09:13:20
 //----------------------------------------------------------------//
 define({
    
@@ -366,6 +366,12 @@ define({
          "Tap to enter end date range" : "[中國的~Tap to enter end date range]",
          "Clear" : "[中國的~Clear]",
          "Permit Detail" : "[中國的~Permit Detail]",
+         "Permit Description" : "[中國的~Permit Description]",
+         "Permit Type" : "[中國的~Permit Type]",
+         "Permit Status" : "[中國的~Permit Status]",
+         "Required Date" : "[中國的~Required Date]",
+         "Issue Date" : "[中國的~Issue Date]",
+         "Cancel Date" : "[中國的~Cancel Date]",
          "Report by Crew" : "[中國的~Report by Crew]",
          "Crew Labor Details" : "[中國的~Crew Labor Details]",
          "Crew Tool Details" : "[中國的~Crew Tool Details]",

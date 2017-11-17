@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-14 11:40:41
+// Build: 2017-11-17 09:13:21
 //----------------------------------------------------------------//
 define({
    
@@ -366,6 +366,12 @@ define({
          "Tap to enter end date range" : "[vagão do metrô~Tap to enter end date range]",
          "Clear" : "[vagão do metrô~Clear]",
          "Permit Detail" : "[vagão do metrô~Permit Detail]",
+         "Permit Description" : "[vagão do metrô~Permit Description]",
+         "Permit Type" : "[vagão do metrô~Permit Type]",
+         "Permit Status" : "[vagão do metrô~Permit Status]",
+         "Required Date" : "[vagão do metrô~Required Date]",
+         "Issue Date" : "[vagão do metrô~Issue Date]",
+         "Cancel Date" : "[vagão do metrô~Cancel Date]",
          "Report by Crew" : "[vagão do metrô~Report by Crew]",
          "Crew Labor Details" : "[vagão do metrô~Crew Labor Details]",
          "Crew Tool Details" : "[vagão do metrô~Crew Tool Details]",

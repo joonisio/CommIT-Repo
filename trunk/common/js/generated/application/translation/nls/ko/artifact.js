@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-14 11:40:41
+// Build: 2017-11-17 09:13:21
 //----------------------------------------------------------------//
 define({
    
@@ -366,6 +366,12 @@ define({
          "Tap to enter end date range" : "[대학에~Tap to enter end date range]",
          "Clear" : "[대학에~Clear]",
          "Permit Detail" : "[대학에~Permit Detail]",
+         "Permit Description" : "[대학에~Permit Description]",
+         "Permit Type" : "[대학에~Permit Type]",
+         "Permit Status" : "[대학에~Permit Status]",
+         "Required Date" : "[대학에~Required Date]",
+         "Issue Date" : "[대학에~Issue Date]",
+         "Cancel Date" : "[대학에~Cancel Date]",
          "Report by Crew" : "[대학에~Report by Crew]",
          "Crew Labor Details" : "[대학에~Crew Labor Details]",
          "Crew Tool Details" : "[대학에~Crew Tool Details]",
