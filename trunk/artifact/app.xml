@@ -3738,6 +3738,7 @@
 		</view>
 		
 		<!-- Define work order tasks for Location Meters list view -->
+		
 		<view id="WorkExecution.TaskLocationMeterViewList" label="Meters for Location">
 			<list id="WorkExecution.TaskLocationMeterViewList_tempListViewLocationMeter_list" resource="tempListViewLocationMeter" showHeader="false">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TaskLocationMeterViewList_tempListViewLocationMeter_listItemTemplate_MeterList" layout="MeterList">	
@@ -6732,19 +6733,32 @@
 		</view>
 		
 		<!-- Custom Permit Detail -->
-		<view id="WorkExecution.SearchPermitDetail" label="Permit Detail">
-		    <footer id="WorkExecution.SearchPermitDetail_footer">
-				<button id="WorkExecution.SearchPermitDetail_Clear_button" label="Clear">
-					<eventHandlers id="WorkExecution.SearchPermitDetail_Clear_button_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.SearchPermitDetail_Clear_button_eventHandlers_click_clearSearchFields" method="clearSearchFields"/>
-					</eventHandlers>
-				</button>
-				<button cssClass="mblPrimaryButton" id="WorkExecution.SearchPermitDetail_Search_button" label="Save" primary="true">
-					<eventHandlers id="WorkExecution.SearchPermitDetail_Search_button_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.SearchPermitDetail_Search_button_eventHandlers_click_setSearchQuery" method="setSearchQuery"/>
-					</eventHandlers>
-				</button>
-			</footer>
+		<view id="WorkExecution.SearchPermitDetail" label="Permit Detail">    
+		    <container id="WorkExecution.permit_container_0" >
+		        <group id="WorkExecution.Work2s">
+		    		<groupitem id="workorder.permit">
+						<text editable="true" id="permit_no" label="Permit" />
+					</groupitem>
+					<groupitem id="workorder.permit_decs">
+						<text editable="true" id="permit_desc" label="Permit Description" />
+					</groupitem>
+					<groupitem id="workorder.permit_type">
+						<text editable="true" id="permit_type" label="Permit Type" />
+					</groupitem>
+					<groupitem id="workorder.permit_status">
+						<text editable="true" id="permit_status" label="Permit Status" />
+					</groupitem>
+					<groupitem id="workorder.permit_requireddate">
+						<text editable="true" id="permit_requireddate" label="Required Date" />
+					</groupitem>
+					<groupitem id="workorder.permit_issuedate">
+						<text editable="true" id="permit_issuedate" label="Issue Date" />
+					</groupitem>
+					<groupitem id="workorder.permit_canceldate">
+						<text editable="true" id="permit_canceldate" label="Cancel Date" />
+					</groupitem>
+				</group>
+			</container>
 		</view>
 
 		<!-- Crew Labor list view -->
