@@ -2077,7 +2077,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		}, 
 		
 	//custom javascript code
-
 		updateAtrributeInTask : function(eventContext){
 			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
 			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
