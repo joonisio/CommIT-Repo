@@ -506,6 +506,11 @@
 					        <eventHandler event="render" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.DataSheetView_0_eventHandlers_setTransition" class="application.handlers.DataSheetHandler" method="setDataSheetTransition"/>
 					    </eventHandlers>
 					</groupitem>
+					<!-- Custom code -->
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
+					</groupitem>
+					<!-- End custom code -->					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.MultipleAssetsLocationsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo" layoutInsertAt="item1" value="Multiple Assets &amp; Locations"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsize" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
@@ -3533,6 +3538,41 @@
 			<eventHandlers id="WorkExecution.MultipleAssetsLocationsView_eventHandlers">
 				<eventHandler class="application.handlers.MultiAssetLocationHandler" event="cleanup" id="WorkExecution.MultipleAssetsLocationsView_eventHandlers_cleanup_handleBackButton" method="handleBackButton"/>
 			</eventHandlers>
+		</view>
+		
+		<!-- Linear Segment Details -->
+		<view id="WorkExecution.LinearSegmentDetailsView" label="Linear Segment Details">
+			<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
+				<requiredResource id="WorkExecution.LinearSegmentDetailsView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.LinearSegmentDetailsView_workOrder_multiassetloclist" name="multiassetloclist"/>
+				</requiredResource>
+			</requiredResources>	
+			<container attribute="multiassetloclist" id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder">
+				<text id="LinearSegmentDetailsView" label="Start"></text>
+				<group id="WorkExecution.LinearSegmentDetailsView_group_0">
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="feature"/>
+					</groupitem>
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_1">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute=""/>
+					</groupitem>
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_2">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" label="Measure" resourceAttribute=""/>
+					</groupitem>
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_3">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute=""/>
+					</groupitem>	
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_4">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute=""/>
+					</groupitem>
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_5">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute=""/>
+					</groupitem>	
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_6">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute=""/>
+					</groupitem>																				
+				</group>
+			</container>											
 		</view>
 
 		<!--Asset or Location Details view-->
@@ -8501,6 +8541,7 @@
 				<attribute describedByProperty="spi:asset{spi:isrunning}" id="multiAssetLocResource_sequence_spi_isrunning" name="assetup"/>
 				<attribute describedByProperty="spi:asset{spi:changedate}" id="multiAssetLocResource_sequence_spi_statusdate" name="updownstatusdate"/>
 				<attribute describedByProperty="spi_wm:sequence" id="multiAssetLocResource_sequence_spi_wmsequence" name="sequence"/>
+				<attribute describedByProperty="spi_wm:isprimary" id="multiAssetLocResource_sequence_spi_wmfeature" name="feature"/>
 				<attribute describedByProperty="spi:asset{oslc:shortTitle}" id="multiAssetLocResource_assetnum_spiassetoslcshortTitle" name="assetnum" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{dcterms:title}" id="multiAssetLocResource_assetdesc_spiassetdctermstitle" name="assetdesc" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:location{oslc:shortTitle}" id="multiAssetLocResource_location_spilocationoslcshortTitle" name="location" referenceResource="additionallocations"/>
