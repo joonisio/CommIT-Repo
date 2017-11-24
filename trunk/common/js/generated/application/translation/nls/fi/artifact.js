@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-17 09:13:22
+// Build: 2017-11-23 18:08:52
 //----------------------------------------------------------------//
 define({
    
@@ -69,6 +69,8 @@ define({
          "Tap to enter" : "[pohjoispäässä~Tap to enter]",
          "Report Downtime" : "[pohjoispäässä~Report Downtime]",
          "Work Order History" : "[pohjoispäässä~Work Order History]",
+         "Feature" : "[pohjoispäässä~Feature]",
+         "Feature Label" : "[pohjoispäässä~Feature Label]",
          "Location" : "[pohjoispäässä~Location]",
          "Physical Location" : "[pohjoispäässä~Physical Location]",
          "Frequency" : "[pohjoispäässä~Frequency]",
@@ -388,6 +390,7 @@ define({
          "Feature Attributes" : "[pohjoispäässä~Feature Attributes]",
          "Update Work Order Asset" : "[pohjoispäässä~Update Work Order Asset]",
          "Attributes" : "[pohjoispäässä~Attributes]",
+         "Select TNBVERTICAL" : "[pohjoispäässä~Select TNBVERTICAL]",
          "Work Order Status" : "[pohjoispäässä~Work Order Status]",
          "Task Status" : "[pohjoispäässä~Task Status]",
          "Select Labor Transaction Type" : "[pohjoispäässä~Select Labor Transaction Type]",

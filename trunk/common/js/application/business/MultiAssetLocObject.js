@@ -17,7 +17,7 @@ define("application/business/MultiAssetLocObject",
 /**@memberOf application.business.MultiAssetLocObject */
 		onInitialize : function(multiassetloc) {
 			fieldUtil.initCompositeField("assetnum", "assetdesc", "assetnumanddescription", multiassetloc);
-			fieldUtil.initCompositeField("location", "locationdesc", "locationanddescription", multiassetloc);		
+			fieldUtil.initCompositeField("location", "locationdesc", "locationanddescription", multiassetloc);	
 		},
 		onAdd: function(multiassetloc) {
 			
