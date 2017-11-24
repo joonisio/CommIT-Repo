@@ -218,6 +218,8 @@
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_invreserveList" name="invreserveList"/>
 					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdsinstr_np.requiredAttribute.details" name="assetfunctionlist_np"/>
                 	<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdspoint_np.requiredAttribute.details" name="calibrationpointlist_np"/>
+                	<!--  <requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdspoint_np.requiredAttribute.details2" name="multiassetloclist"/>
+            -->
 				</requiredResource>
 				<requiredResource id="WorkExecution.WorkDetailView_workOrderTimer" name="workOrderTimer"/>
 				<requiredResource id="WorkExecution.WorkDetailView_oslcmaxvars" name="oslcmaxvars"/>
@@ -357,6 +359,16 @@
 						</text>
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
 					</groupitem>
+					
+					
+					<!-- custom feature -->
+					<groupitem id="workorder.multiloci.feature">
+						<text editable="false" id="multiloc.feature" label="Feature" resourceAttribute="feature"/>
+					</groupitem>
+					<groupitem id="workorder.multiloci.featurelabel">
+						<text editable="false" id="multiloc.featurelabel" label="Feature Label" resourceAttribute="feature"/>
+					</groupitem>
+					
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
 						<text codeScannable="true" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0_location_Location" label="Location" lookup="WorkExecution.LocationLookup" lookupAttribute="location" placeHolder="Tap to enter" resourceAttribute="location">
 							<eventHandlers id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0_location_Location_eventHandlers">
@@ -475,7 +487,7 @@
 						</eventHandlers>	
 					</groupitem>
 					<groupitem id="workorder.vertical">
-						<text editable="false" id="vertical" label="Vertical (New)" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
+						<text editable="false" id="vertical" label="Vertical (New)" lookup="WorkExecution.TnbVertical" lookupAttribute="tnbverticals" placeHolder="Tap to enter"  resourceAttribute="tnbvertical"/>
 					</groupitem>
 					<groupitem id="workorder.subvertical">
 						<text editable="false" id="subvertical" label="Subvertical (New)" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
@@ -7457,6 +7469,24 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- Custom vertical lookup -->
+		<lookup id="WorkExecution.TnbVertical" label="Select TNBVERTICAL"
+			resource="tnbverticalDomain" >
+			<requiredResources id="grrded" >
+				<requiredResource id="grrdeed" name="tnbverticalDomain"/>
+				</requiredResources>
+			<list resource="tnbverticalDomain" id="greqrded">
+				<listItemTemplate id="grrdedrg" layout="Item1Desc1">
+			<listtext id="grrdedeecvgd" resourceAttribute="value" layoutInsertAt="item1"
+			cssClass="bold textappearance-medium"/>
+				<listtext id="grrdedlkl" resourceAttribute="description" layoutInsertAt="desc1"
+				cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+				</list>
+			<returnAttributes id="grrderrrrd">
+			<returnAttribute id="grrderthyd" sourceAttribute="value" targetAttribute="tnbverticals" />
+			</returnAttributes>
+			</lookup>
 
 		<!-- Work Order Status lookup -->
 		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -8262,6 +8292,7 @@
 				<attribute describedByProperty="spi_wm:actualmaterial" describedByResource="actualMaterialResource" id="workOrder_actualmateriallist_spi_wmactualmaterial" name="actualmateriallist"/>
 				<attribute describedByProperty="spi_wm:actualtool" describedByResource="actualToolResource" id="workOrder_actualtoollist_spi_wmactualtool" name="actualtoollist"/>
 				<attribute describedByProperty="spi_wm:worklog" describedByResource="workLogResource" id="workOrder_workloglist_spi_wmworklog" name="workloglist"/>
+				<!-- custom multi -->
 				<attribute describedByProperty="spi_wm:multiassetlocci" describedByResource="multiAssetLocResource" id="workOrder_multiassetloclist_spi_wmmultiassetlocci" name="multiassetloclist"/>
 				<attribute describedByProperty="spi_wm:failurereport" describedByResource="failureReportResource" id="workOrder_failureReportlist_spi_wmfailurereport" name="failureReportlist"/>	
 				<attribute describedByProperty="spi_wm:assetlocmeter" describedByResource="assetLocMeterComplexResource" id="workOrder_assetlocmeterlist_spi_wmassetlocmeter" name="assetlocmeterlist"/>				 						
@@ -8269,7 +8300,7 @@
 				<attribute describedByProperty="spi_wm:workorderspec" describedByResource="workOrderSpecResource" id="workOrder_workOrderSpec_spi_wmworkorderspec" name="workOrderSpec"/>	
 				<attribute describedByProperty="spi_wm:invreserve" describedByResource="invreserveResource" id="workOrder_materiallist_spi_invreserve" name="invreserveList"/>
 				<attribute describedByProperty="spi_wm:assetdowntimereport" describedByResource="downTimeResource" id="workOrder_assetmeterlist_spi_downtime" name="downtimereport"/>
-								
+			
 				<!-- Attributes needed for Maps -->
 				<attribute describedByProperty="spi_wm:calculatedy" id="workOrder_latitudey_spi_wmcalculatedy" name="latitudey"/>
 				<attribute describedByProperty="spi_wm:calculatedx" id="workOrder_longitudex_spi_wmcalculatedx" name="longitudex"/>
@@ -8535,9 +8566,11 @@
 			name="statusdesc" dataType="string" /> <localAttribute name="dontDiscard" 
 			dataType="boolean" /> </attributes> </resource> -->
 
-		<!-- Multi Asset Location resource -->
+		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
 			<attributes id="multiAssetLocResource_attributes">
+				<!-- <attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
+				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/> -->
 				<attribute describedByProperty="spi:asset{spi:isrunning}" id="multiAssetLocResource_sequence_spi_isrunning" name="assetup"/>
 				<attribute describedByProperty="spi:asset{spi:changedate}" id="multiAssetLocResource_sequence_spi_statusdate" name="updownstatusdate"/>
 				<attribute describedByProperty="spi_wm:sequence" id="multiAssetLocResource_sequence_spi_wmsequence" name="sequence"/>
@@ -10586,6 +10619,20 @@
 	 		</queryBases>									
 			<whereClause id="additionalworktype_whereClause"/>
 		</resource>
+		
+		<!-- custom vertical resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure"
+			describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain"
+			name="tnbverticalDomain" pageSize="10" additionalData="true" id="fdfdfd">
+			<attributes id="yhyce">
+				<attribute id="yhyces" name="value" describedByProperty="spi:value" />
+				<attribute id="yhyced" name="description" describedByProperty="spi:description" />
+			</attributes>
+			<queryBases id="yhyce2">
+				<queryBase id="yhycedbhhb" name="getTnbvertical" queryUri="/oslc/os/oslcalndomain" />
+			</queryBases>
+			<whereClause id="yhyceefef" clause="spi:domainid=’TNBVERTICAL’" />
+		</resource>
 
 		<!-- Service Address resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#ServiceAddress" id="additionalserviceaddress" name="additionalserviceaddress" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
@@ -10800,7 +10847,7 @@
 		</resource>
 
 		<!-- Work Order Status domain -->
-		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="domainwostatus" isSystem="true" name="domainwostatus" pageSize="50" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+		<resource describedBy="http://jazz.net/ns/ism/asset/SynonymDomain" id="domainwostatus" isSystem="true" name="domainwostatus" pageSize="50" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
 			<attributes id="domainwostatus_attributes">
 				<attribute describedByProperty="spi:orgid" id="domainwostatus_orgid_spiorgid" name="orgid"/>
 				<attribute describedByProperty="spi:siteid" id="domainwostatus_siteid_spisiteid" name="siteid"/>

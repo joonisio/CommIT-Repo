@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-17 09:13:20
+// Build: 2017-11-23 18:08:51
 //----------------------------------------------------------------//
 define({
    
@@ -69,6 +69,8 @@ define({
          "Tap to enter" : "[中國的~Tap to enter]",
          "Report Downtime" : "[中國的~Report Downtime]",
          "Work Order History" : "[中國的~Work Order History]",
+         "Feature" : "[中國的~Feature]",
+         "Feature Label" : "[中國的~Feature Label]",
          "Location" : "[中國的~Location]",
          "Physical Location" : "[中國的~Physical Location]",
          "Frequency" : "[中國的~Frequency]",
@@ -388,6 +390,7 @@ define({
          "Feature Attributes" : "[中國的~Feature Attributes]",
          "Update Work Order Asset" : "[中國的~Update Work Order Asset]",
          "Attributes" : "[中國的~Attributes]",
+         "Select TNBVERTICAL" : "[中國的~Select TNBVERTICAL]",
          "Work Order Status" : "[中國的~Work Order Status]",
          "Task Status" : "[中國的~Task Status]",
          "Select Labor Transaction Type" : "[中國的~Select Labor Transaction Type]",

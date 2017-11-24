@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-17 09:13:21
+// Build: 2017-11-23 18:08:51
 //----------------------------------------------------------------//
 define({
    
@@ -69,6 +69,8 @@ define({
          "Tap to enter" : "[대학에~Tap to enter]",
          "Report Downtime" : "[대학에~Report Downtime]",
          "Work Order History" : "[대학에~Work Order History]",
+         "Feature" : "[대학에~Feature]",
+         "Feature Label" : "[대학에~Feature Label]",
          "Location" : "[대학에~Location]",
          "Physical Location" : "[대학에~Physical Location]",
          "Frequency" : "[대학에~Frequency]",
@@ -388,6 +390,7 @@ define({
          "Feature Attributes" : "[대학에~Feature Attributes]",
          "Update Work Order Asset" : "[대학에~Update Work Order Asset]",
          "Attributes" : "[대학에~Attributes]",
+         "Select TNBVERTICAL" : "[대학에~Select TNBVERTICAL]",
          "Work Order Status" : "[대학에~Work Order Status]",
          "Task Status" : "[대학에~Task Status]",
          "Select Labor Transaction Type" : "[대학에~Select Labor Transaction Type]",

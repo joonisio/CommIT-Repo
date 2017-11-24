@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-17 09:13:20
+// Build: 2017-11-23 18:08:51
 //----------------------------------------------------------------//
 define({
    
@@ -69,6 +69,8 @@ define({
          "Tap to enter" : "[administración~Tap to enter]",
          "Report Downtime" : "[administración~Report Downtime]",
          "Work Order History" : "[administración~Work Order History]",
+         "Feature" : "[administración~Feature]",
+         "Feature Label" : "[administración~Feature Label]",
          "Location" : "[administración~Location]",
          "Physical Location" : "[administración~Physical Location]",
          "Frequency" : "[administración~Frequency]",
@@ -388,6 +390,7 @@ define({
          "Feature Attributes" : "[administración~Feature Attributes]",
          "Update Work Order Asset" : "[administración~Update Work Order Asset]",
          "Attributes" : "[administración~Attributes]",
+         "Select TNBVERTICAL" : "[administración~Select TNBVERTICAL]",
          "Work Order Status" : "[administración~Work Order Status]",
          "Task Status" : "[administración~Task Status]",
          "Select Labor Transaction Type" : "[administración~Select Labor Transaction Type]",
