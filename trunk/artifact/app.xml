@@ -218,8 +218,7 @@
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_invreserveList" name="invreserveList"/>
 					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdsinstr_np.requiredAttribute.details" name="assetfunctionlist_np"/>
                 	<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdspoint_np.requiredAttribute.details" name="calibrationpointlist_np"/>
-                	<!--  <requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.pluscdspoint_np.requiredAttribute.details2" name="multiassetloclist"/>
-            -->
+                	<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist" name="multiassetloclist"/>
 				</requiredResource>
 				<requiredResource id="WorkExecution.WorkDetailView_workOrderTimer" name="workOrderTimer"/>
 				<requiredResource id="WorkExecution.WorkDetailView_oslcmaxvars" name="oslcmaxvars"/>
@@ -313,7 +312,7 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_0_wonum_WorkOrder" label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0" transitionTo="WorkExecution.DescriptionView">
-						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="PEnerangan" placeHolder="Tap to enter" resourceAttribute="description">
+						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="Description" placeHolder="Tap to enter" resourceAttribute="description">
 							<eventHandlers id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_asset_Asset_eventHandlers.description">
 								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_asset_Asset_eventHandlers_render_descriptionField.readonly" method="isReadonly"/>
 							</eventHandlers>
@@ -358,15 +357,6 @@
 							</button>
 						</text>
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
-					</groupitem>
-					
-					
-					<!-- custom feature -->
-					<groupitem id="workorder.multiloci.feature">
-						<text editable="false" id="multiloc.feature" label="Feature" resourceAttribute="feature"/>
-					</groupitem>
-					<groupitem id="workorder.multiloci.featurelabel">
-						<text editable="false" id="multiloc.featurelabel" label="Feature Label" resourceAttribute="feature"/>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
@@ -487,11 +477,21 @@
 						</eventHandlers>	
 					</groupitem>
 					<groupitem id="workorder.vertical">
-						<text editable="false" id="vertical" label="Vertical (New)" lookup="WorkExecution.TnbVertical" lookupAttribute="tnbverticals" placeHolder="Tap to enter"  resourceAttribute="tnbvertical"/>
+						<text editable="true" id="vertical" label="Vertical (New)" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
 					</groupitem>
 					<groupitem id="workorder.subvertical">
-						<text editable="false" id="subvertical" label="Subvertical (New)" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
-					</groupitem>					
+						<text editable="true" id="subvertical" label="Subvertical (New)" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
+					</groupitem>									
+				</group>
+			</container>
+			<container id="cont0" resource="workOrder" attribute="multiassetloclist">
+				<group id="idvalue0">
+					<groupitem id="workorder.feature">
+						<text editable="true" id="feature" label="Feature" layoutInsertAt="item1" resourceAttribute="feature"/>
+					</groupitem>	
+					<groupitem id="workorder.featurelabel">
+						<text editable="true" id="featurelabel" label="Feature Label" layoutInsertAt="item1" resourceAttribute="featurelabel"/>
+					</groupitem>									
 				</group>
 			</container>
 			<!-- Specification Form BEGIN-->
@@ -519,7 +519,7 @@
 					    </eventHandlers>
 					</groupitem>
 					<!-- Custom code -->
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
 					</groupitem>
 					<!-- End custom code -->					
@@ -3554,38 +3554,58 @@
 		
 		<!-- Linear Segment Details -->
 		<view id="WorkExecution.LinearSegmentDetailsView" label="Linear Segment Details">
-			<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
+		<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
 				<requiredResource id="WorkExecution.LinearSegmentDetailsView_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.LinearSegmentDetailsView_workOrder_multiassetloclist" name="multiassetloclist"/>
 				</requiredResource>
-			</requiredResources>	
-			<container attribute="multiassetloclist" id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder">
+			</requiredResources>
+			<container id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
 				<text id="LinearSegmentDetailsView" label="Start"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_0">
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_test">
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.isprimary" label="Primarry?" resourceAttribute="isprimary"/>
+					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="feature"/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_1">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute=""/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_2">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" label="Measure" resourceAttribute=""/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" label="Measure" resourceAttribute="startmeasure"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_3">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute=""/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute="startyoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_4">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute=""/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute="startyoffsetref"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_5">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute=""/>
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute="startzoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_6">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute=""/>
-					</groupitem>																				
-				</group>
-			</container>											
+						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute="startzoffsetref"/>
+					</groupitem>																		
+				</group>			
+			</container>														
 		</view>
+		
+		<!-- Define Linear list view -->
+		<view id="WorkExecution.LinearView" label="Linear">
+			<requiredResources id="WorkExecution.LinearView_requiredResources">
+				<requiredResource id="WorkExecution.LinearView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.LinearView_workOrder_multiassetloclist" name="multiassetloclist"/>
+				</requiredResource>
+			</requiredResources>
+
+			<list attribute="multiassetloclist" id="WorkExecution.LinearView_workOrder_multiassetloclist_list" label="Linear Assets" resource="workOrder" transitionTo="WorkExecution.LinearSegmentDetailsView">
+
+				<listItemTemplate id="WorkExecution.LinearView_workOrder_multiassetloclist_listItemTemplate">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.LinearView_workOrder_Feature" resourceAttribute="feature"/>
+					<listtext id="WorkExecution.LinearView_workOrder_Feature_Label" resourceAttribute="featurelabel"/>
+				</listItemTemplate>
+			</list>
+		</view>		
 
 		<!--Asset or Location Details view-->
 		<view id="WorkExecution.MultipleAssetsLocationsEntryView" label="Asset or Location Details">
@@ -8569,18 +8589,26 @@
 		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
 			<attributes id="multiAssetLocResource_attributes">
-				<!-- <attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
-				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/> -->
 				<attribute describedByProperty="spi:asset{spi:isrunning}" id="multiAssetLocResource_sequence_spi_isrunning" name="assetup"/>
 				<attribute describedByProperty="spi:asset{spi:changedate}" id="multiAssetLocResource_sequence_spi_statusdate" name="updownstatusdate"/>
 				<attribute describedByProperty="spi_wm:sequence" id="multiAssetLocResource_sequence_spi_wmsequence" name="sequence"/>
-				<attribute describedByProperty="spi_wm:isprimary" id="multiAssetLocResource_sequence_spi_wmfeature" name="feature"/>
 				<attribute describedByProperty="spi:asset{oslc:shortTitle}" id="multiAssetLocResource_assetnum_spiassetoslcshortTitle" name="assetnum" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{dcterms:title}" id="multiAssetLocResource_assetdesc_spiassetdctermstitle" name="assetdesc" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:location{oslc:shortTitle}" id="multiAssetLocResource_location_spilocationoslcshortTitle" name="location" referenceResource="additionallocations"/>
 				<attribute describedByProperty="spi:location{dcterms:title}" id="multiAssetLocResource_locationdesc_spilocationdctermstitle" name="locationdesc" referenceResource="additionallocations"/>
 				<attribute describedByProperty="spi_wm:progress" id="multiAssetLocResource_progress_spi_wmprogress" name="progress"/>
 				<attribute describedByProperty="spi_wm:multiid" id="multiAssetLocResource_multiid_spi_wmmultiid" name="identifier"/>
+				<attribute describedByProperty="spi_wm:isprimary" id="multiAssetLocResource_spi_wmisprimary" name="isprimary"/>
+				<attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
+				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/>
+				<!-- <attribute describedByProperty="spi_wm:startfeaturelabel" id="multiAssetLocResource_startfeaturelabel" name="startfeaturelabel"/>
+				<attribute describedByProperty="spi_wm:endfeaturelabel" id="multiAssetLocResource_endfeaturelabel" name="endfeaturelabel"/>-->				
+				<attribute describedByProperty="spi_wm:startoffset" id="multiAssetLocResource_startoffset" name="startoffset"/>
+				<attribute describedByProperty="spi_wm:startmeasure" id="multiAssetLocResource_startmeasure" name="startmeasure"/>
+				<attribute describedByProperty="spi_wm:startyoffset" id="multiAssetLocResource_startyoffset" name="startyoffset"/>
+				<attribute describedByProperty="spi_wm:startyoffsetref" id="multiAssetLocResource_startyoffsetref" name="startyoffsetref"/>
+				<attribute describedByProperty="spi_wm:startzoffset" id="multiAssetLocResource_startzoffset" name="startzoffset"/>
+				<attribute describedByProperty="spi_wm:startzoffsetref" id="multiAssetLocResource_startzoffsetref" name="startzoffsetref"/>
 				<localAttribute dataType="string" id="multiAssetLocResource_assetnumanddescription_string" name="assetnumanddescription"/>
 				<localAttribute dataType="string" id="multiAssetLocResource_locationanddescription_string" name="locationanddescription"/>
 			</attributes>
@@ -10657,6 +10685,18 @@
 			<whereClause id="additionalserviceaddress_whereClause"/>
 		</resource>
 		
+		<!-- Linear Asset resource -->
+		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#MultiAssetLocCI" id="linearAsset" name="linearasset" pageSize="20" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="linearasset_attributes">
+				<attribute describedByProperty="spi_wm:isprimary" id="linearasset_isprimary" name="isprimary"/>
+				<attribute describedByProperty="spi_wm:feature" id="linearasset_feature" name="feature"/>
+			</attributes>
+			<queryBases id="linearasset_queryBases">
+ 	 			<queryBase id="linearasset_getasset" name="getlinear" queryUri="/oslc/os/oslcmultiassetlocci"/>
+	 		</queryBases>									
+			<whereClause id="linearasset_whereClause"/>
+		</resource>	
+		
 		<!-- Vertical resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#ServiceAddress" id="tnbvertical" name="tnbvertical" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
 			<attributes id="tnbvertical_attributes">
@@ -10669,7 +10709,7 @@
  	 			<queryBase id="tnbvertical_queryBase_getserviceaddress" name="getserviceaddress" queryUri="/oslc/os/oslcserviceaddress"/>
 	 		</queryBases>									
 			<whereClause id="tnbvertical_whereClause"/>
-		</resource>	
+		</resource>			
 
 		<!-- Bin resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#INVBALANCES" id="additionalbin" name="additionalbin" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
