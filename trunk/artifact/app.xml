@@ -6829,6 +6829,44 @@
 					<groupitem id="workorder.permit_canceldate">
 						<text editable="true" id="permit_canceldate" label="Cancel Date" />
 					</groupitem>
+					<groupitem id="workorder.permit_Issue_Comments">
+						<text editable="true" id="permit_Issue_Comment" label="Issue Comment" />
+					</groupitem>
+					<groupitem id="workorder.permit_Acceptance_Comment">
+						<text editable="true" id="permit_Acceptance_Comment" label="Acceptance Comment" />
+					</groupitem>
+
+					<groupitem id="workorder.permit_WorK_Order">
+						<text editable="true" id="permit_WorK_Order" label="WorK Order" />
+					</groupitem>
+
+					<groupitem id="workorder.permit_Asset">
+						<text editable="true" id="permit_Asset" label="Asset" />
+					</groupitem>
+
+					<groupitem id="workorder.permit_Location">
+						<text editable="true" id="permit_Location" label="Location" />
+					</groupitem>
+
+					<groupitem id="workorder.permit_Authorized_Person">
+						<text editable="true" id="permit_Authorized_Person" label="Authorized Person" />
+					</groupitem>
+					<groupitem id="workorder.permit_Competent_Person">
+						<text editable="true" id="permit_Competent_Person" label="Competent Person" />
+					</groupitem>
+					<groupitem id="workorder.permit_Issuing_Authority">
+						<text editable="true" id="permit_Issuing_Authority" label="Issuing Authority" />
+					</groupitem>
+					<groupitem id="workorder.permit_Performing_Authirity">
+						<text editable="true" id="permit_Performing_Authirity" label="Performing Authirity" />
+					</groupitem>
+					<groupitem id="workorder.Ic_Number">
+						<text editable="true" id="permit_Ic_Number" label="Ic Number" />
+					</groupitem>
+
+					<groupitem id="workorder.permit_created_by">
+						<text editable="true" id="permit_created_by" label="Created By" />
+					</groupitem>
 				</group>
 			</container>
 		</view>
@@ -8589,6 +8627,9 @@
 		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
 			<attributes id="multiAssetLocResource_attributes">
+
+				<attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
+				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/> 
 				<attribute describedByProperty="spi:asset{spi:isrunning}" id="multiAssetLocResource_sequence_spi_isrunning" name="assetup"/>
 				<attribute describedByProperty="spi:asset{spi:changedate}" id="multiAssetLocResource_sequence_spi_statusdate" name="updownstatusdate"/>
 				<attribute describedByProperty="spi_wm:sequence" id="multiAssetLocResource_sequence_spi_wmsequence" name="sequence"/>
@@ -8599,8 +8640,6 @@
 				<attribute describedByProperty="spi_wm:progress" id="multiAssetLocResource_progress_spi_wmprogress" name="progress"/>
 				<attribute describedByProperty="spi_wm:multiid" id="multiAssetLocResource_multiid_spi_wmmultiid" name="identifier"/>
 				<attribute describedByProperty="spi_wm:isprimary" id="multiAssetLocResource_spi_wmisprimary" name="isprimary"/>
-				<attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
-				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/>
 				<!-- <attribute describedByProperty="spi_wm:startfeaturelabel" id="multiAssetLocResource_startfeaturelabel" name="startfeaturelabel"/>
 				<attribute describedByProperty="spi_wm:endfeaturelabel" id="multiAssetLocResource_endfeaturelabel" name="endfeaturelabel"/>-->				
 				<attribute describedByProperty="spi_wm:startoffset" id="multiAssetLocResource_startoffset" name="startoffset"/>
@@ -8613,7 +8652,7 @@
 				<localAttribute dataType="string" id="multiAssetLocResource_locationanddescription_string" name="locationanddescription"/>
 			</attributes>
 		</resource>
-
+		
 		<!--  Asset Meters Complex resource -->
 		<resource id="assetLocMeterComplexResource" name="assetLocMeterComplexResource">
 			<attributes id="assetLocMeterComplexResource_attributes">
