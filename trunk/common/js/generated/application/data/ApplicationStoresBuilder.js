@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-23 18:08:45
+// Build: 2017-11-29 14:34:58
 //----------------------------------------------------------------//
 define(   "generated/application/data/ApplicationStoresBuilder", 
       [
@@ -258,7 +258,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                }).
                setLocal( false ).
                setSimpleFieldsSelectExpression('spi_wm:tnbvertical,spi_wm:tnbsubvertical,dcterms:identifier,dcterms:title,dcterms:description,spi_wm:woclass,spi_wm:origrecordid,spi_wm:origrecordclass,spi_wm:hasfollowupwork,oslc:shortTitle,dcterms:created,spi_wm:schedstart,spi_wm:schedfinish,spi_wm:actstart,spi_wm:actfinish,spi:status,spi_wm:worktype,spi_wm:wopriority,spi_wm:classstructureid,spi_wm:siteid,spi_wm:orgid,spi_wm:np_statusmemo,spi_wm:statusdate,spi_wm:istask,spi_wm:pluscphyloc,spi_wm:pluscfrequency,spi_wm:pluscoverduedate,spi_wm:pluscnextdate_np,spi_wm:pluscloop,spi_wm:pluscismobile,spi_wm:pluscfrequnit,spi_wm:pluscjprevnum,spi_wm:calculatedy,spi_wm:calculatedx,spi_wm:locancestor{spi_wm:ancestor},spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:woserviceaddress{spi_wm:description,spi_wm:latitudey,spi_wm:formattedaddress,spi_wm:longitudex,spi_wm:saddresscode},spi_wm:assetancestor{spi_wm:ancestor},spi_wm:failureCode{dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle,spi:isrunning,spi:updownstatus{spi:changedate}}').
-               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
+               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
                addField({
                   'id' : 'aw1b779446',
                   'dataType' : 'string',
@@ -967,7 +967,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'dataType' : 'inline',
                   'index' : false,
                   'name' : 'multiassetloclist',
-                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
+                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
                   'artifactId' : 'workOrder_multiassetloclist_spi_wmmultiassetlocci',
                   'remoteName' : 'spi_wm:multiassetlocci',
                   'local' : false,
@@ -1531,7 +1531,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                }).
                setLocal( false ).
                setSimpleFieldsSelectExpression('dcterms:identifier,dcterms:title,dcterms:description,spi_wm:woclass,spi_wm:origrecordid,spi_wm:origrecordclass,spi_wm:hasfollowupwork,oslc:shortTitle,dcterms:created,spi_wm:schedstart,spi_wm:schedfinish,spi_wm:actstart,spi_wm:actfinish,spi:status,spi_wm:worktype,spi_wm:wopriority,spi_wm:classstructureid,spi_wm:siteid,spi_wm:orgid,spi_wm:np_statusmemo,spi_wm:statusdate,spi_wm:istask,spi_wm:pluscphyloc,spi_wm:pluscfrequency,spi_wm:pluscoverduedate,spi_wm:pluscnextdate_np,spi_wm:pluscloop,spi_wm:pluscismobile,spi_wm:pluscfrequnit,spi_wm:pluscjprevnum,spi_wm:calculatedy,spi_wm:calculatedx,spi_wm:locancestor{spi_wm:ancestor},spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:woserviceaddress{spi_wm:description,spi_wm:formattedaddress,spi_wm:saddresscode},spi_wm:assetancestor{spi_wm:ancestor},spi_wm:failureCode{dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle,spi:isrunning,spi:updownstatus{spi:changedate}}').
-               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
+               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
                addField({
                   'id' : 'awa53ea5c0',
                   'dataType' : 'string',
@@ -2218,7 +2218,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'dataType' : 'inline',
                   'index' : false,
                   'name' : 'multiassetloclist',
-                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
+                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
                   'artifactId' : 'workOrder_multiassetloclist_spi_wmmultiassetloccihist',
                   'remoteName' : 'spi_wm:multiassetlocci',
                   'local' : false,
@@ -2887,8 +2887,31 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'resourceName' : 'multiAssetLocResource',
                }).
                setLocal( false ).
-               setSimpleFieldsSelectExpression('spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}').
+               setSimpleFieldsSelectExpression('spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}').
                setSupportiveFieldsSelectExpression('').
+               addField({
+                  'id' : 'awcd4d2b14',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'feature',
+                  'usage' : 'upper',
+                  'artifactId' : 'multiAssetLocResource_feature',
+                  'remoteName' : 'spi_wm:feature',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 30,
+               }).
+               addField({
+                  'id' : 'aweae2fe05',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'featurelabel',
+                  'artifactId' : 'multiAssetLocResource_featurelabel',
+                  'remoteName' : 'spi_wm:featurelabel',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 100,
+               }).
                addField({
                   'referenceResource' : 'multiAssetLocResource',
                   'id' : 'awa59c57a1',
@@ -2998,6 +3021,82 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : false,
                   'multiplicity' : 'exactly-one',
                   'pkIndex' : 1,
+               }).
+               addField({
+                  'id' : 'aw94755463',
+                  'dataType' : 'boolean',
+                  'index' : false,
+                  'name' : 'isprimary',
+                  'artifactId' : 'multiAssetLocResource_spi_wmisprimary',
+                  'remoteName' : 'spi_wm:isprimary',
+                  'local' : false,
+                  'multiplicity' : 'exactly-one',
+               }).
+               addField({
+                  'id' : 'awe2008678',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'startoffset',
+                  'artifactId' : 'multiAssetLocResource_startoffset',
+                  'remoteName' : 'spi_wm:startoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'aw58b138b3',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'startmeasure',
+                  'artifactId' : 'multiAssetLocResource_startmeasure',
+                  'remoteName' : 'spi_wm:startmeasure',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'awd4e20063',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'startyoffset',
+                  'artifactId' : 'multiAssetLocResource_startyoffset',
+                  'remoteName' : 'spi_wm:startyoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'aw10fac85a',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'startyoffsetref',
+                  'artifactId' : 'multiAssetLocResource_startyoffsetref',
+                  'remoteName' : 'spi_wm:startyoffsetref',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 30,
+               }).
+               addField({
+                  'id' : 'awe50a1afe',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'startzoffset',
+                  'artifactId' : 'multiAssetLocResource_startzoffset',
+                  'remoteName' : 'spi_wm:startzoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'awfbcd7359',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'startzoffsetref',
+                  'artifactId' : 'multiAssetLocResource_startzoffsetref',
+                  'remoteName' : 'spi_wm:startzoffsetref',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 30,
                }).
                addField({
                   'id' : 'awfab4cc2e',
@@ -19682,52 +19781,6 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
 
             var resource069 = new ResourceMetadata({
                   'inMemory' : false,
-                  'pageSize' : 10,
-                  'artifactId' : 'fdfdfd',
-                  'additionalData' : true,
-                  'isSystem' : false,
-                  'id' : 'aw2b363e2a',
-                  'isAttachment' : false,
-                  'adapterName' : 'OSLCGenericAdapter',
-                  'maxFetchDataLimit' : 0,
-                  'urlBase' : 'http:\/\/10.215.72.100:9080\/maximo',
-                  'resourceName' : 'tnbverticalDomain',
-               }).
-               setLocal( false ).
-               setSimpleFieldsSelectExpression('spi:value,spi:description').
-               setSupportiveFieldsSelectExpression('').
-               addField({
-                  'id' : 'awb98de42d',
-                  'dataType' : 'string',
-                  'index' : false,
-                  'name' : 'value',
-                  'artifactId' : 'yhyces',
-                  'remoteName' : 'spi:value',
-                  'local' : false,
-                  'multiplicity' : 'exactly-one',
-                  'pkIndex' : 2,
-                  'maxSize' : 254,
-               }).
-               addField({
-                  'id' : 'aw3a5e61ea',
-                  'dataType' : 'string',
-                  'index' : false,
-                  'name' : 'description',
-                  'artifactId' : 'yhyced',
-                  'remoteName' : 'spi:description',
-                  'local' : false,
-                  'multiplicity' : 'zero-or-one',
-                  'maxSize' : 100,
-               }).
-               setQueryBases([
-                     {name:'getTnbvertical', queryString:'\/oslc\/os\/oslcalndomain', queryLabel:'' }
-               ]).
-               setWhereClause('spi%3Adomainid%3D%92TNBVERTICAL%92');
-            var resourcePromise069 = PersistenceManager.initCollection( resource069 );
-
-
-            var resource070 = new ResourceMetadata({
-                  'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'additionalserviceaddress',
                   'additionalData' : true,
@@ -19792,49 +19845,76 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getserviceaddress', queryString:'\/oslc\/os\/oslcserviceaddress', queryLabel:'' }
                ]);
+            var resourcePromise069 = PersistenceManager.initCollection( resource069 );
+
+
+            var resource070 = new ResourceMetadata({
+                  'inMemory' : false,
+                  'pageSize' : 20,
+                  'artifactId' : 'linearAsset',
+                  'additionalData' : true,
+                  'isSystem' : false,
+                  'id' : 'aw7e76079e',
+                  'isAttachment' : false,
+                  'adapterName' : 'OSLCGenericAdapter',
+                  'maxFetchDataLimit' : 0,
+                  'urlBase' : 'http:\/\/10.215.72.100:9080\/maximo',
+                  'resourceName' : 'linearasset',
+               }).
+               setLocal( false ).
+               setSimpleFieldsSelectExpression('spi_wm:isprimary,spi_wm:feature').
+               setSupportiveFieldsSelectExpression('').
+               addField({
+                  'id' : 'aw160df9ab',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'isprimary',
+                  'artifactId' : 'linearasset_isprimary',
+                  'remoteName' : 'spi_wm:isprimary',
+                  'local' : false,
+               }).
+               addField({
+                  'id' : 'awbcd5f7d1',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'feature',
+                  'artifactId' : 'linearasset_feature',
+                  'remoteName' : 'spi_wm:feature',
+                  'local' : false,
+               }).
+               setQueryBases([
+                     {name:'getlinear', queryString:'\/oslc\/os\/oslcmultiassetlocci', queryLabel:'' }
+               ]);
             var resourcePromise070 = PersistenceManager.initCollection( resource070 );
 
 
             var resource071 = new ResourceMetadata({
                   'inMemory' : false,
-                  'pageSize' : 1000,
-                  'artifactId' : 'tnbvertical',
+                  'pageSize' : 10,
+                  'artifactId' : 'verticaldata',
                   'additionalData' : true,
                   'isSystem' : false,
-                  'id' : 'aw5593a689',
+                  'id' : 'awa8f59859',
                   'isAttachment' : false,
                   'adapterName' : 'OSLCGenericAdapter',
                   'maxFetchDataLimit' : 0,
                   'urlBase' : 'http:\/\/10.215.72.100:9080\/maximo',
-                  'resourceName' : 'tnbvertical',
+                  'resourceName' : 'verticaldata',
                }).
                setLocal( false ).
-               setSimpleFieldsSelectExpression('dcterms:identifier,oslc:shortTitle,dcterms:title,spi:formattedaddress').
+               setSimpleFieldsSelectExpression('spi:value,spi:description').
                setSupportiveFieldsSelectExpression('').
                addField({
                   'id' : 'aw795345ee',
                   'dataType' : 'string',
                   'index' : false,
-                  'name' : 'serviceaddressid',
-                  'usage' : 'bigint',
+                  'name' : 'value',
                   'artifactId' : 'tnbvertical_serviceaddressid_dctermsidentifier',
-                  'remoteName' : 'dcterms:identifier',
+                  'remoteName' : 'spi:value',
                   'local' : false,
-                  'multiplicity' : 'zero-or-one',
-                  'maxSize' : 19,
-               }).
-               addField({
-                  'id' : 'aw26cfb490',
-                  'dataType' : 'string',
-                  'index' : true,
-                  'name' : 'addresscode',
-                  'usage' : 'upper',
-                  'artifactId' : 'tnbvertical_addresscode_oslcshortTitle',
-                  'remoteName' : 'oslc:shortTitle',
-                  'local' : false,
-                  'multiplicity' : 'zero-or-one',
+                  'multiplicity' : 'exactly-one',
                   'pkIndex' : 2,
-                  'maxSize' : 12,
+                  'maxSize' : 254,
                }).
                addField({
                   'id' : 'awe6a5ba57',
@@ -19842,25 +19922,15 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'index' : false,
                   'name' : 'description',
                   'artifactId' : 'tnbvertical_description_dctermstitle',
-                  'remoteName' : 'dcterms:title',
+                  'remoteName' : 'spi:description',
                   'local' : false,
                   'multiplicity' : 'zero-or-one',
-                  'maxSize' : 50,
-               }).
-               addField({
-                  'id' : 'awadee7197',
-                  'dataType' : 'string',
-                  'index' : true,
-                  'name' : 'formattedaddress',
-                  'artifactId' : 'tnbvertical_formattedaddress_spiformattedaddress',
-                  'remoteName' : 'spi:formattedaddress',
-                  'local' : false,
-                  'multiplicity' : 'zero-or-one',
-                  'maxSize' : 150,
+                  'maxSize' : 100,
                }).
                setQueryBases([
-                     {name:'getserviceaddress', queryString:'\/oslc\/os\/oslcserviceaddress', queryLabel:'' }
-               ]);
+                     {name:'getVertical', queryString:'\/oslc\/os\/oslcalndomain', queryLabel:'' }
+               ]).
+               setWhereClause('spi%3Adomainid%3D%22TNBVERTICAL%22');
             var resourcePromise071 = PersistenceManager.initCollection( resource071 );
 
 

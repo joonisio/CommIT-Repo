@@ -477,10 +477,10 @@
 						</eventHandlers>	
 					</groupitem>
 					<groupitem id="workorder.vertical">
-						<text editable="true" id="vertical" label="Vertical (New)" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
+						<text editable="true" id="vertical" label="Vertical" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
 					</groupitem>
 					<groupitem id="workorder.subvertical">
-						<text editable="true" id="subvertical" label="Subvertical (New)" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
+						<text editable="true" id="subvertical" label="Subvertical" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
 					</groupitem>									
 				</group>
 			</container>
@@ -6829,6 +6829,7 @@
 					<groupitem id="workorder.permit_canceldate">
 						<text editable="true" id="permit_canceldate" label="Cancel Date" />
 					</groupitem>
+
 					<groupitem id="workorder.permit_Issue_Comments">
 						<text editable="true" id="permit_Issue_Comment" label="Issue Comment" />
 					</groupitem>
@@ -6869,6 +6870,18 @@
 					</groupitem>
 				</group>
 			</container>
+			<footer id="WorkExecution.PermitView_footer">
+				<button id="WorkExecution.Permit_Cancel_button" label="Cancel">
+					<eventHandlers id="WorkExecution.PermitView_Cancel_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.PermitView_Cancel_button_eventHandlers_click_handleBackButtonClickPermitView" method="handleBackButtonClickEditAssetView"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.PermitView_Save_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.PermitView_Save_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.PermitView_Save_button_eventHandlers_click_commitPermitEntryView" method="commitAssetEntryView"/>
+					</eventHandlers>
+				</button>
+			</footer>
 		</view>
 
 		<!-- Crew Labor list view -->
@@ -7526,25 +7539,7 @@
 				<returnAttribute id="WorkExecution.dataSheetLookup_description_siteid" sourceAttribute="siteid" targetAttribute="datasheet_siteid"/>
 			</returnAttributes>
 		</lookup>
-		
-		<!-- Custom vertical lookup -->
-		<lookup id="WorkExecution.TnbVertical" label="Select TNBVERTICAL"
-			resource="tnbverticalDomain" >
-			<requiredResources id="grrded" >
-				<requiredResource id="grrdeed" name="tnbverticalDomain"/>
-				</requiredResources>
-			<list resource="tnbverticalDomain" id="greqrded">
-				<listItemTemplate id="grrdedrg" layout="Item1Desc1">
-			<listtext id="grrdedeecvgd" resourceAttribute="value" layoutInsertAt="item1"
-			cssClass="bold textappearance-medium"/>
-				<listtext id="grrdedlkl" resourceAttribute="description" layoutInsertAt="desc1"
-				cssClass="bold textappearance-medium"/>
-				</listItemTemplate>
-				</list>
-			<returnAttributes id="grrderrrrd">
-			<returnAttribute id="grrderthyd" sourceAttribute="value" targetAttribute="tnbverticals" />
-			</returnAttributes>
-			</lookup>
+	
 
 		<!-- Work Order Status lookup -->
 		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -7870,29 +7865,21 @@
 
 		</lookup>
 		
-		<!-- Vertical lookup -->
-		<lookup id="WorkExecution.VerticalLookup" label="Select Vertical" resource="tnbvertical">
+		<!-- custom Vertical lookup -->
+		<lookup id="WorkExecution.VerticalLookup" label="Select Vertical" resource="verticaldata">
 			<requiredResources id="WorkExecution.VerticalLookup_requiredResources">
-				<requiredResource id="WorkExecution.VerticalLookup_additionalserviceaddress" name="tnbvertical" reload="true"/>
+				<requiredResource id="WorkExecution.VerticalLookup_additionalserviceaddress" name="verticaldata" reload="true"/>
 			</requiredResources>
-			<list id="WorkExecution.VerticalLookup_additionalserviceaddress_list" resource="additionalserviceaddress">
-				<searchAttributes id="WorkExecution.VerticalLookup_additionalserviceaddress_searchAttributes">
-					<searchAttribute id="WorkExecution.VerticalLookup_additionalserviceaddress_searchAttribute_addresscode" name="addresscode"/>
-					<searchAttribute id="WorkExecution.VerticalLookup_additionalserviceaddress_searchAttribute_formattedaddress" name="formattedaddress"/>
-				</searchAttributes>
+			<list id="WorkExecution.VerticalLookup_additionalserviceaddress_list" resource="verticaldata">
 				<listItemTemplate id="WorkExecution.VerticalLookup_additionalserviceaddress_listItemTemplate_VerticalLookup" layout="VerticalLookup">
-					<listtext cssClass="bold textappearance-medium" id="WorkExecution.VerticalLookup_additionalserviceaddress_VerticalLookup_addresscode" layoutInsertAt="addrcode" resourceAttribute="addresscode"/>
-					<listtext id="WorkExecution.VerticalLookup_additionalserviceaddress_VerticalLookup_description" layoutInsertAt="description" resourceAttribute="description"/>
-					<listtext id="WorkExecution.VerticalLookup_additionalserviceaddress_VerticalLookup_formattedaddress" layoutInsertAt="formattedaddr" resourceAttribute="formattedaddress"/>
+					<listtext id="wut" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla" resourceAttribute="description" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.VerticalLookup_returnAttributes">
-				<returnAttribute id="WorkExecution.VerticalLookup_addresscode_woserviceaddresscode" sourceAttribute="addresscode" targetAttribute="woserviceaddresscode"/>
-				<returnAttribute id="WorkExecution.VerticalLookup_formattedaddress_woserviceaddress" sourceAttribute="formattedaddress" targetAttribute="woserviceaddress"/>
-				<returnAttribute id="WorkExecution.VerticalLookup_description_woserviceaddressdesc" sourceAttribute="description" targetAttribute="woserviceaddressdesc"/>
+				<returnAttribute id="WorkExecution.VerticalLookup_addresscode_woserdresscode" sourceAttribute="value" targetAttribute="tnbvertical"/>
 			</returnAttributes>
-
-		</lookup>		
+		</lookup>
 
 		<!-- Storeroom lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="asyncFilterStoreroomForLookup" id="WorkExecution.StoreroomLookup" label="Select Storeroom" resource="additionalstoreroom">
@@ -10687,20 +10674,6 @@
 			<whereClause id="additionalworktype_whereClause"/>
 		</resource>
 		
-		<!-- custom vertical resource -->
-		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure"
-			describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain"
-			name="tnbverticalDomain" pageSize="10" additionalData="true" id="fdfdfd">
-			<attributes id="yhyce">
-				<attribute id="yhyces" name="value" describedByProperty="spi:value" />
-				<attribute id="yhyced" name="description" describedByProperty="spi:description" />
-			</attributes>
-			<queryBases id="yhyce2">
-				<queryBase id="yhycedbhhb" name="getTnbvertical" queryUri="/oslc/os/oslcalndomain" />
-			</queryBases>
-			<whereClause id="yhyceefef" clause="spi:domainid=’TNBVERTICAL’" />
-		</resource>
-
 		<!-- Service Address resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#ServiceAddress" id="additionalserviceaddress" name="additionalserviceaddress" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
 			<attributes id="additionalserviceaddress_attributes">
@@ -10737,18 +10710,16 @@
 		</resource>	
 		
 		<!-- Vertical resource -->
-		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#ServiceAddress" id="tnbvertical" name="tnbvertical" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
-			<attributes id="tnbvertical_attributes">
-				<attribute describedByProperty="dcterms:identifier" id="tnbvertical_serviceaddressid_dctermsidentifier" name="serviceaddressid"/>
-				<attribute describedByProperty="oslc:shortTitle" id="tnbvertical_addresscode_oslcshortTitle" name="addresscode" index="true"/>
-				<attribute describedByProperty="dcterms:title" id="tnbvertical_description_dctermstitle" name="description"/>
-				<attribute describedByProperty="spi:formattedaddress" id="tnbvertical_formattedaddress_spiformattedaddress" name="formattedaddress"  index="true"/>
-			</attributes>
-			<queryBases id="tnbvertical_queryBases">
- 	 			<queryBase id="tnbvertical_queryBase_getserviceaddress" name="getserviceaddress" queryUri="/oslc/os/oslcserviceaddress"/>
-	 		</queryBases>									
-			<whereClause id="tnbvertical_whereClause"/>
-		</resource>			
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="verticaldata" name="verticaldata" pageSize="10" additionalData="true">
+				<attributes id="tnbvertical_attributes">
+					<attribute name="value" id="tnbvertical_serviceaddressid_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="tnbvertical_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="tnbvertical_queryBases">
+					<queryBase id="tnbvertical_queryBase" name="getVertical" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="tnbvertical_whereClause" clause="spi:domainid='TNBVERTICAL'" />
+		</resource>	
 
 		<!-- Bin resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#INVBALANCES" id="additionalbin" name="additionalbin" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">

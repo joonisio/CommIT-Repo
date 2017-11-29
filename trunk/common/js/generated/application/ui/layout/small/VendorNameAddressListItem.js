@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-23 18:08:49
+// Build: 2017-11-29 14:35:02
 //----------------------------------------------------------------//
 define(   "generated/application/ui/layout/small/VendorNameAddressListItem", 
       [
