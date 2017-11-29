@@ -30,6 +30,7 @@ define("application/business/WorkOrderObject",
 	return {
 /**@memberOf application.business.WorkOrderObject */
 		onInitialize : function(workOrder) {
+			console.log('application.business.WorkOrderObject');
 			workOrder.set("locationdesc", workOrder.get('maxlocationdesc'));
 			
 			
