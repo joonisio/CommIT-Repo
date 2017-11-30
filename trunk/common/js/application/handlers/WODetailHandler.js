@@ -62,6 +62,10 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			if(actualWorkOrder == null){
 				return;
 			}
+			var msg = MessageService.createStaticMessage(actualWorkOrder.get('wonum')).getMessage();
+
+			eventContext.ui.showToastMessage(msg);
+			//eventContext.ui.showMessage(msg);
 			
 			actualWorkOrder.getRuntimeFieldMetadata('asset').set('readonly',!WpEditSettings.shouldEditAsset(oslcwpeditsetting, 
 					SynonymDomain.resolveToInternal(domainAssetstatus,actualWorkOrder.get('status')), actualWorkOrder.get('orgid')));
@@ -2078,12 +2082,18 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 	//custom javascript code
 		updateAtrributeInTask : function(eventContext){
 			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
+			var msg = MessageService.createStaticMessage("save succesful").getMessage();
 			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
 			var currWO = workOrderSet.getCurrentRecord();
-			ModelService.save(workOrderSet);
-			console.log('save completed');
-			this.ui.hideCurrentView();
+			ModelService.save(workOrderSet).then(function() {
+				this.ui.hideCurrentView();
+				eventContext.ui.showToastMessage(msg);
+				console.log('save completed');
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
+			});
 			
+		
 		}, 
 		
 		hideForNonCalibrationWO: function(eventContext) {

@@ -358,7 +358,7 @@
 						</text>
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
 					</groupitem>
-					
+		
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
 						<text codeScannable="true" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0_location_Location" label="Location" lookup="WorkExecution.LocationLookup" lookupAttribute="location" placeHolder="Tap to enter" resourceAttribute="location">
 							<eventHandlers id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0_location_Location_eventHandlers">
@@ -484,16 +484,17 @@
 					</groupitem>									
 				</group>
 			</container>
+			<!--custom label feature and featurelabel -->
 			<container id="cont0" resource="workOrder" attribute="multiassetloclist">
 				<group id="idvalue0">
 					<groupitem id="workorder.feature">
-						<text editable="true" id="feature" label="Feature" layoutInsertAt="item1" resourceAttribute="feature"/>
+						<text editable="false" id="feature" label="Feature" layoutInsertAt="item1" resourceAttribute="feature"/>
 					</groupitem>	
 					<groupitem id="workorder.featurelabel">
-						<text editable="true" id="featurelabel" label="Feature Label" layoutInsertAt="item1" resourceAttribute="featurelabel"/>
+						<text editable="false" id="featurelabel" label="Feature Label" layoutInsertAt="item1" resourceAttribute="featurelabel"/>
 					</groupitem>									
 				</group>
-			</container>
+			</container> 
 			<!-- Specification Form BEGIN-->
 			<list attribute="workOrderSpec" collapsible="true" displayPageSize="25" hideEmpty="true" id="WorkExecution.WorkDetailView_workOrder_workOrderSpec_list" label="Specifications" mixinclass="SpecificationStoreList" resource="workOrder">
 				<listItemTemplate id="WorkExecution.WorkDetailView_workOrder_workOrderSpec_listItemTemplate">
@@ -8614,7 +8615,7 @@
 		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
 			<attributes id="multiAssetLocResource_attributes">
-
+				<!-- linear atribute -->
 				<attribute describedByProperty="spi_wm:feature" id="multiAssetLocResource_feature" name="feature"/>
 				<attribute describedByProperty="spi_wm:featurelabel" id="multiAssetLocResource_featurelabel" name="featurelabel"/> 
 				<attribute describedByProperty="spi:asset{spi:isrunning}" id="multiAssetLocResource_sequence_spi_isrunning" name="assetup"/>
