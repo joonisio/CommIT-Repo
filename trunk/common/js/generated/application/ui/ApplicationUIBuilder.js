@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-29 14:34:57
+// Build: 2017-11-30 17:02:52
 //----------------------------------------------------------------//
 define(   "generated/application/ui/ApplicationUIBuilder", 
       [
@@ -2379,7 +2379,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'feature',
                'label' : MessageService.createStaticMessage('Feature'),
                'resourceAttribute' : 'feature',
-               'editable' : true,
+               'editable' : false,
             });
             groupitem019.addChild( text035 );
 
@@ -2397,7 +2397,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'featurelabel',
                'label' : MessageService.createStaticMessage('Feature Label'),
                'resourceAttribute' : 'featurelabel',
-               'editable' : true,
+               'editable' : false,
             });
             groupitem020.addChild( text036 );
 
