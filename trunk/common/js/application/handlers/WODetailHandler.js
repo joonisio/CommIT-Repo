@@ -2096,6 +2096,23 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 		}, 
 		
+		hideForNonLinearWO: function(eventContext) {
+			console.log("Hide when linear");
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			if (workOrder.multiassetloclist.data.length > 0){
+				var linear = workOrder.multiassetloclist.data[0].isprimary;
+				if(!linear){
+					eventContext.setDisplay(false);
+					console.log("Not Linear/No Display");
+				}
+			}
+			else {
+				eventContext.setDisplay(false);
+				console.log("No multiassetloclist/No Display");
+			}
+		},
+		//end custom javascript code
+		
 		hideForNonCalibrationWO: function(eventContext) {
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			if(!workOrder['wtype']) {
