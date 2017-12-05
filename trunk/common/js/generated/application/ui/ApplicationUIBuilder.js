@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-30 17:02:52
+// Build: 2017-12-05 15:21:12
 //----------------------------------------------------------------//
 define(   "generated/application/ui/ApplicationUIBuilder", 
       [
@@ -653,7 +653,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             var action001 = new Action({
                'id' : 'awcb040546',
                'overflow' : true,
-               'transitionTo' : 'WorkExecution.SearchPermitDetail',
+               'transitionTo' : 'WorkExecution.Permit',
                'artifactId' : 'WorkExecution.WorkItemsView_Permit_action',
                'label' : MessageService.createStaticMessage('Permit'),
             });
@@ -22333,17 +22333,58 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             }
 
             if (trackTimeEnabled) {
-               var trackTimer = new TrackTime('ApplicationUIBuilder', 'build', 'Creating View: ' + 'WorkExecution.ActualCrewEntryView', false);
+               var trackTimer = new TrackTime('ApplicationUIBuilder', 'build', 'Creating View: ' + 'WorkExecution.Permit', false);
                trackTimer.startTracking();
             }
 
             var view066 = new View({
-               'id' : 'WorkExecution.ActualCrewEntryView',
-               'label' : MessageService.createStaticMessage('Crew Details'),
+               'id' : 'WorkExecution.Permit',
+               'label' : MessageService.createStaticMessage('PERMIT'),
             });
             ui001.addChild( view066 );
 
             var requiredResources058 = {
+               'permit' : {
+                  'id' : 'awe7afaadd',
+                  'artifactId' : 'WorkExecution.permit_workOrder',
+                  'related' : {
+                  },
+               },
+            };
+            view066.addRequiredResources( requiredResources058 );
+
+
+            var listItemTemplate043 = new ListItemTemplate({
+               'id' : 'aw708d3f29',
+               'artifactId' : 'WorkExecution.permit_listItemTemplate',
+            });
+
+
+            var list043 = new List({
+               'id' : 'aw11c204fc',
+               'listItemTemplate' : listItemTemplate043,
+               'resource' : 'permit',
+               'artifactId' : 'WorkExecution.LinearView_permit_list',
+               'label' : MessageService.createStaticMessage('Permit'),
+            });
+            view066.addChild( list043 );
+
+            if (trackTimeEnabled) {
+               trackTimer.stopTracking();
+            }
+
+            if (trackTimeEnabled) {
+               var trackTimer = new TrackTime('ApplicationUIBuilder', 'build', 'Creating View: ' + 'WorkExecution.ActualCrewEntryView', false);
+               trackTimer.startTracking();
+            }
+
+            var view067 = new View({
+               'id' : 'WorkExecution.ActualCrewEntryView',
+               'label' : MessageService.createStaticMessage('Crew Details'),
+            });
+            ui001.addChild( view067 );
+
+            var requiredResources059 = {
                'workOrder' : {
                   'id' : 'aw871ab118',
                   'artifactId' : 'WorkExecution.ActualCrewEntryView_workOrder',
@@ -22393,14 +22434,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualCrewEntryView_workOrderTimer',
                },
             };
-            view066.addRequiredResources( requiredResources058 );
+            view067.addRequiredResources( requiredResources059 );
 
             var container061 = new Container({
                'id' : 'awae13549d',
                'resource' : 'laborcrew',
                'artifactId' : 'WorkExecution.ActualCrewEntryView_laborcrew_container_0',
             });
-            view066.addChild( container061 );
+            view067.addChild( container061 );
 
 
             var group080 = new Group({
@@ -22583,7 +22624,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw673ff824',
                'artifactId' : 'WorkExecution.ActualCrewEntryView_footer',
             });
-            view066.addChild( footer025 );
+            view067.addChild( footer025 );
 
 
             var button100 = new Button({
@@ -22639,7 +22680,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'handleBackButtonClick',
                }
             ];
-            view066.eventHandlers = eventHandlers356;
+            view067.eventHandlers = eventHandlers356;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -22649,13 +22690,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view067 = new View({
+            var view068 = new View({
                'id' : 'WorkExecution.ActualMaterialsView',
                'label' : MessageService.createStaticMessage('Actual Materials'),
             });
-            ui001.addChild( view067 );
+            ui001.addChild( view068 );
 
-            var requiredResources059 = {
+            var requiredResources060 = {
                'workOrder' : {
                   'id' : 'awd853277d',
                   'artifactId' : 'WorkExecution.ActualMaterialsView_workOrder',
@@ -22667,13 +22708,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view067.addRequiredResources( requiredResources059 );
+            view068.addRequiredResources( requiredResources060 );
 
             var actions011 = new Actions({
                'id' : 'awbcd17cac',
                'artifactId' : 'WorkExecution.ActualMaterialsView_actions',
             });
-            view067.addChild( actions011 );
+            view068.addChild( actions011 );
 
 
             var action030 = new Action({
@@ -22729,7 +22770,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate043 = new ListItemTemplate({
+            var listItemTemplate044 = new ListItemTemplate({
                'id' : 'aw8de05a86',
                'layout' : 'ActualMaterialListItem',
                'artifactId' : 'WorkExecution.ActualMaterialsView_workOrder_actualmateriallist_listItemTemplate_ActualMaterialListItem',
@@ -22741,7 +22782,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualMaterialsView_workOrder_ActualMaterialListItem_actualstaskid',
                'resourceAttribute' : 'actualstaskid',
             });
-            listItemTemplate043.addChild( listtext224 );
+            listItemTemplate044.addChild( listtext224 );
 
 
             var listtext225 = new ListText({
@@ -22751,7 +22792,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'itemanddescription',
             });
-            listItemTemplate043.addChild( listtext225 );
+            listItemTemplate044.addChild( listtext225 );
 
 
             var listtext226 = new ListText({
@@ -22760,20 +22801,20 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualMaterialsView_workOrder_ActualMaterialListItem_quantity',
                'resourceAttribute' : 'quantity',
             });
-            listItemTemplate043.addChild( listtext226 );
+            listItemTemplate044.addChild( listtext226 );
 
 
 
-            var list043 = new List({
+            var list044 = new List({
                'id' : 'awdcd169bc',
-               'listItemTemplate' : listItemTemplate043,
+               'listItemTemplate' : listItemTemplate044,
                'sortOptions' : sortOptions010,
                'transitionTo' : 'WorkExecution.ActualMaterialsDetailView',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.ActualMaterialsView_workOrder_actualmateriallist_list',
                'attribute' : 'actualmateriallist',
             });
-            view067.addChild( list043 );
+            view068.addChild( list044 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -22784,14 +22825,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view068 = new View({
+            var view069 = new View({
                'id' : 'WorkExecution.ActualMaterialsDetailView',
                'editableView' : 'WorkExecution.ActualMaterialsEntryView',
                'label' : MessageService.createStaticMessage('Material Details'),
             });
-            ui001.addChild( view068 );
+            ui001.addChild( view069 );
 
-            var requiredResources060 = {
+            var requiredResources061 = {
                'workOrder' : {
                   'id' : 'awaff61156',
                   'artifactId' : 'WorkExecution.ActualMaterialsDetailView_workOrder',
@@ -22803,7 +22844,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view068.addRequiredResources( requiredResources060 );
+            view069.addRequiredResources( requiredResources061 );
 
             var container062 = new Container({
                'id' : 'aw9e652659',
@@ -22811,7 +22852,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualMaterialsDetailView_workOrder_container_0',
                'attribute' : 'actualmateriallist',
             });
-            view068.addChild( container062 );
+            view069.addChild( container062 );
 
 
             var group081 = new Group({
@@ -22969,13 +23010,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view069 = new View({
+            var view070 = new View({
                'id' : 'WorkExecution.ActualMaterialsEntryView',
                'label' : MessageService.createStaticMessage('Material Details'),
             });
-            ui001.addChild( view069 );
+            ui001.addChild( view070 );
 
-            var requiredResources061 = {
+            var requiredResources062 = {
                'workOrder' : {
                   'id' : 'awa4ee3ff6',
                   'artifactId' : 'WorkExecution.ActualMaterialsEntryView_workOrder',
@@ -23023,7 +23064,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualMaterialsEntryView_domainAssetstatus',
                },
             };
-            view069.addRequiredResources( requiredResources061 );
+            view070.addRequiredResources( requiredResources062 );
 
             var container063 = new Container({
                'id' : 'aw84556951',
@@ -23031,7 +23072,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualMaterialsEntryView_workOrder_container_0',
                'attribute' : 'actualmateriallist',
             });
-            view069.addChild( container063 );
+            view070.addChild( container063 );
 
 
             var group083 = new Group({
@@ -23242,7 +23283,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awd77338e1',
                'artifactId' : 'WorkExecution.ActualMaterialsEntryView_footer',
             });
-            view069.addChild( footer026 );
+            view070.addChild( footer026 );
 
 
             var button102 = new Button({
@@ -23305,7 +23346,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showFooter',
                }
             ];
-            view069.eventHandlers = eventHandlers365;
+            view070.eventHandlers = eventHandlers365;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -23315,13 +23356,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view070 = new View({
+            var view071 = new View({
                'id' : 'WorkExecution.ActualToolsView',
                'label' : MessageService.createStaticMessage('Actual Tools'),
             });
-            ui001.addChild( view070 );
+            ui001.addChild( view071 );
 
-            var requiredResources062 = {
+            var requiredResources063 = {
                'workOrder' : {
                   'id' : 'aw3e8af88b',
                   'artifactId' : 'WorkExecution.ActualToolsView_workOrder',
@@ -23337,13 +23378,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualToolsView_domainAssetstatus',
                },
             };
-            view070.addRequiredResources( requiredResources062 );
+            view071.addRequiredResources( requiredResources063 );
 
             var actions012 = new Actions({
                'id' : 'awef103658',
                'artifactId' : 'WorkExecution.ActualToolsView_actions',
             });
-            view070.addChild( actions012 );
+            view071.addChild( actions012 );
 
 
             var action031 = new Action({
@@ -23399,7 +23440,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate044 = new ListItemTemplate({
+            var listItemTemplate045 = new ListItemTemplate({
                'id' : 'awd5f05ac5',
                'artifactId' : 'WorkExecution.ActualToolsView_workOrder_actualtoollist_listItemTemplate',
             });
@@ -23409,7 +23450,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualToolsView_workOrder_actualstaskid',
                'resourceAttribute' : 'actualstaskid',
             });
-            listItemTemplate044.addChild( listtext227 );
+            listItemTemplate045.addChild( listtext227 );
 
 
             var listtext228 = new ListText({
@@ -23418,7 +23459,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'tool',
             });
-            listItemTemplate044.addChild( listtext228 );
+            listItemTemplate045.addChild( listtext228 );
 
 
             var listtext229 = new ListText({
@@ -23426,7 +23467,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualToolsView_workOrder_tooldesc',
                'resourceAttribute' : 'tooldesc',
             });
-            listItemTemplate044.addChild( listtext229 );
+            listItemTemplate045.addChild( listtext229 );
 
 
             var listtext230 = new ListText({
@@ -23434,20 +23475,20 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualToolsView_workOrder_toolhrs',
                'resourceAttribute' : 'toolhrs',
             });
-            listItemTemplate044.addChild( listtext230 );
+            listItemTemplate045.addChild( listtext230 );
 
 
 
-            var list044 = new List({
+            var list045 = new List({
                'id' : 'aw418f77e9',
-               'listItemTemplate' : listItemTemplate044,
+               'listItemTemplate' : listItemTemplate045,
                'sortOptions' : sortOptions011,
                'transitionTo' : 'WorkExecution.ActualToolsDetailView',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.ActualToolsView_workOrder_actualtoollist_list',
                'attribute' : 'actualtoollist',
             });
-            view070.addChild( list044 );
+            view071.addChild( list045 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -23458,14 +23499,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view071 = new View({
+            var view072 = new View({
                'id' : 'WorkExecution.ActualToolsDetailView',
                'editableView' : 'WorkExecution.ActualToolsEntryView',
                'label' : MessageService.createStaticMessage('Tool Details'),
             });
-            ui001.addChild( view071 );
+            ui001.addChild( view072 );
 
-            var requiredResources063 = {
+            var requiredResources064 = {
                'workOrder' : {
                   'id' : 'aw91ab59db',
                   'artifactId' : 'WorkExecution.ActualToolsDetailView_workOrder',
@@ -23481,7 +23522,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualToolsDetailView_domainitemtype',
                },
             };
-            view071.addRequiredResources( requiredResources063 );
+            view072.addRequiredResources( requiredResources064 );
 
             var container064 = new Container({
                'id' : 'awa69fa645',
@@ -23489,7 +23530,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualToolsDetailView_workOrder_container_0',
                'attribute' : 'actualtoollist',
             });
-            view071.addChild( container064 );
+            view072.addChild( container064 );
 
 
             var group084 = new Group({
@@ -23720,13 +23761,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view072 = new View({
+            var view073 = new View({
                'id' : 'WorkExecution.ActualToolsEntryView',
                'label' : MessageService.createStaticMessage('Tool Details'),
             });
-            ui001.addChild( view072 );
+            ui001.addChild( view073 );
 
-            var requiredResources064 = {
+            var requiredResources065 = {
                'workOrder' : {
                   'id' : 'aw97d16911',
                   'artifactId' : 'WorkExecution.ActualToolsEntryView_workOrder',
@@ -23766,7 +23807,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualToolsEntryView_domainitemtype',
                },
             };
-            view072.addRequiredResources( requiredResources064 );
+            view073.addRequiredResources( requiredResources065 );
 
             var container065 = new Container({
                'id' : 'awa617b1f3',
@@ -23774,7 +23815,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ActualToolsEntryView_workOrder_container_0',
                'attribute' : 'actualtoollist',
             });
-            view072.addChild( container065 );
+            view073.addChild( container065 );
 
 
             var group087 = new Group({
@@ -24154,7 +24195,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw83f95746',
                'artifactId' : 'WorkExecution.ActualToolsEntryView_footer',
             });
-            view072.addChild( footer027 );
+            view073.addChild( footer027 );
 
 
             var button104 = new Button({
@@ -24217,7 +24258,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showFooter',
                }
             ];
-            view072.eventHandlers = eventHandlers382;
+            view073.eventHandlers = eventHandlers382;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -24227,13 +24268,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view073 = new View({
+            var view074 = new View({
                'id' : 'WorkExecution.WorkLogView',
                'label' : MessageService.createStaticMessage('Work Log'),
             });
-            ui001.addChild( view073 );
+            ui001.addChild( view074 );
 
-            var requiredResources065 = {
+            var requiredResources066 = {
                'workOrder' : {
                   'id' : 'awfcc8a5b5',
                   'artifactId' : 'WorkExecution.WorkLogView_workOrder',
@@ -24246,13 +24287,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view073.addRequiredResources( requiredResources065 );
+            view074.addRequiredResources( requiredResources066 );
 
             var actions013 = new Actions({
                'id' : 'awf2c30890',
                'artifactId' : 'WorkExecution.WorkLogView_actions',
             });
-            view073.addChild( actions013 );
+            view074.addChild( actions013 );
 
 
             var action032 = new Action({
@@ -24316,7 +24357,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate045 = new ListItemTemplate({
+            var listItemTemplate046 = new ListItemTemplate({
                'id' : 'aw7411c6fb',
                'layout' : 'WorkLogListItem',
                'artifactId' : 'WorkExecution.WorkLogView_workOrder_workloglist_listItemTemplate_WorkLogListItem',
@@ -24328,7 +24369,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WorkLogView_workOrder_WorkLogListItem_createdate',
                'resourceAttribute' : 'createdate',
             });
-            listItemTemplate045.addChild( listtext231 );
+            listItemTemplate046.addChild( listtext231 );
 
 
             var listtext232 = new ListText({
@@ -24337,7 +24378,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WorkLogView_workOrder_WorkLogListItem_createby',
                'resourceAttribute' : 'createby',
             });
-            listItemTemplate045.addChild( listtext232 );
+            listItemTemplate046.addChild( listtext232 );
 
 
             var listtext233 = new ListText({
@@ -24347,20 +24388,20 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'summary',
             });
-            listItemTemplate045.addChild( listtext233 );
+            listItemTemplate046.addChild( listtext233 );
 
 
 
-            var list045 = new List({
+            var list046 = new List({
                'id' : 'awe77fc370',
-               'listItemTemplate' : listItemTemplate045,
+               'listItemTemplate' : listItemTemplate046,
                'sortOptions' : sortOptions012,
                'transitionTo' : 'WorkExecution.WorkLogDetailView',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WorkLogView_workOrder_workloglist_list',
                'attribute' : 'workloglist',
             });
-            view073.addChild( list045 );
+            view074.addChild( list046 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -24371,14 +24412,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view074 = new View({
+            var view075 = new View({
                'id' : 'WorkExecution.WorkLogDetailView',
                'editableView' : 'WorkExecution.NewWorkLogView',
                'label' : MessageService.createStaticMessage('Work Log Entry'),
             });
-            ui001.addChild( view074 );
+            ui001.addChild( view075 );
 
-            var requiredResources066 = {
+            var requiredResources067 = {
                'workOrder' : {
                   'id' : 'awcc6ee6e4',
                   'artifactId' : 'WorkExecution.WorkLogDetailView_workOrder',
@@ -24391,7 +24432,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view074.addRequiredResources( requiredResources066 );
+            view075.addRequiredResources( requiredResources067 );
 
             var container066 = new Container({
                'id' : 'aw11dae6b1',
@@ -24399,7 +24440,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WorkLogDetailView_workOrder_container_0',
                'attribute' : 'workloglist',
             });
-            view074.addChild( container066 );
+            view075.addChild( container066 );
 
 
             var group088 = new Group({
@@ -24540,7 +24581,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'initWorkLogDetailView',
                }
             ];
-            view074.eventHandlers = eventHandlers384;
+            view075.eventHandlers = eventHandlers384;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -24550,14 +24591,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view075 = new View({
+            var view076 = new View({
                'id' : 'WorkExecution.NewWorkLogView',
                'showOverflow' : false,
                'label' : MessageService.createStaticMessage('Work Log Entry'),
             });
-            ui001.addChild( view075 );
+            ui001.addChild( view076 );
 
-            var requiredResources067 = {
+            var requiredResources068 = {
                'workOrder' : {
                   'id' : 'awd1ce025a',
                   'artifactId' : 'WorkExecution.NewWorkLogView_workOrder',
@@ -24574,7 +24615,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.NewWorkLogView_domainlogtype',
                },
             };
-            view075.addRequiredResources( requiredResources067 );
+            view076.addRequiredResources( requiredResources068 );
 
             var container067 = new Container({
                'id' : 'awef3e1399',
@@ -24582,7 +24623,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.NewWorkLogView_workOrder_container_0',
                'attribute' : 'workloglist',
             });
-            view075.addChild( container067 );
+            view076.addChild( container067 );
 
 
             var group090 = new Group({
@@ -24713,7 +24754,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw468a3c4a',
                'artifactId' : 'WorkExecution.NewWorkLogView_footer',
             });
-            view075.addChild( footer028 );
+            view076.addChild( footer028 );
 
 
             var button106 = new Button({
@@ -24776,7 +24817,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showFooter',
                }
             ];
-            view075.eventHandlers = eventHandlers388;
+            view076.eventHandlers = eventHandlers388;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -24786,15 +24827,15 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view076 = new View({
+            var view077 = new View({
                'id' : 'WorkExecution.NewWorkOrderView',
                'allowDrillDown' : 'true',
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Work Order Details'),
             });
-            ui001.addChild( view076 );
+            ui001.addChild( view077 );
 
-            var requiredResources068 = {
+            var requiredResources069 = {
                'workOrder' : {
                   'id' : 'aw69fffb92',
                   'artifactId' : 'WorkExecution.NewWorkOrderView_workOrder',
@@ -24885,13 +24926,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view076.addRequiredResources( requiredResources068 );
+            view077.addRequiredResources( requiredResources069 );
 
             var actions014 = new Actions({
                'id' : 'awee3c2648',
                'artifactId' : 'WorkExecution.NewWorkOrderView_actions',
             });
-            view076.addChild( actions014 );
+            view077.addChild( actions014 );
 
 
             var action033 = new Action({
@@ -24925,7 +24966,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw7e5844a8',
                'artifactId' : 'WorkExecution.NewWorkOrderView_container_0',
             });
-            view076.addChild( container068 );
+            view077.addChild( container068 );
 
 
             var group091 = new Group({
@@ -25358,7 +25399,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate046 = new ListItemTemplate({
+            var listItemTemplate047 = new ListItemTemplate({
                'id' : 'aw5b7c2d05',
                'artifactId' : 'WorkExecution.NewWorkOrderView_workOrder_workOrderSpec_listItemTemplate',
             });
@@ -25370,7 +25411,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'specLayoutLeft editableLabel',
                'resourceAttribute' : 'assetattrid',
             });
-            listItemTemplate046.addChild( listtext234 );
+            listItemTemplate047.addChild( listtext234 );
 
 
             var listtext235 = new ListText({
@@ -25379,7 +25420,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'specLayoutRight editableLabel',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate046.addChild( listtext235 );
+            listItemTemplate047.addChild( listtext235 );
 
 
             var listtext236 = new ListText({
@@ -25389,13 +25430,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'measureunitid',
                'hideEmpty' : 'true',
             });
-            listItemTemplate046.addChild( listtext236 );
+            listItemTemplate047.addChild( listtext236 );
 
 
 
-            var list046 = new List({
+            var list047 = new List({
                'id' : 'aw5f0369e3',
-               'listItemTemplate' : listItemTemplate046,
+               'listItemTemplate' : listItemTemplate047,
                'collapsible' : 'true',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.NewWorkOrderView_workOrder_workOrderSpec_list',
@@ -25405,14 +25446,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'mixinclass' : 'SpecificationStoreList',
                'hideEmpty' : 'true',
             });
-            view076.addChild( list046 );
+            view077.addChild( list047 );
 
 
             var container069 = new Container({
                'id' : 'aw95f743e',
                'artifactId' : 'WorkExecution.NewWorkOrderView_container_1',
             });
-            view076.addChild( container069 );
+            view077.addChild( container069 );
 
 
             var group092 = new Group({
@@ -25753,7 +25794,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw98d09d96',
                'artifactId' : 'WorkExecution.NewWorkOrderView_footer',
             });
-            view076.addChild( footer029 );
+            view077.addChild( footer029 );
 
 
             var button116 = new Button({
@@ -25817,7 +25858,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showWOSpecSorted',
                }
             ];
-            view076.eventHandlers = eventHandlers405;
+            view077.eventHandlers = eventHandlers405;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -25827,14 +25868,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view077 = new View({
+            var view078 = new View({
                'id' : 'WorkExecution.NewWODatasheetDetailsView',
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Datasheet Details'),
             });
-            ui001.addChild( view077 );
+            ui001.addChild( view078 );
 
-            var requiredResources069 = {
+            var requiredResources070 = {
                'workOrder' : {
                   'id' : 'aw92fc0380',
                   'artifactId' : 'WorkExecution.NewWODatasheetDetailsView.requiredResource1',
@@ -25892,14 +25933,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.NewWODatasheetDetailsView_additionaldatasheetconfig',
                },
             };
-            view077.addRequiredResources( requiredResources069 );
+            view078.addRequiredResources( requiredResources070 );
 
             var container070 = new Container({
                'id' : 'aw1610a37d',
                'resource' : 'newDataSheetTempResource',
                'artifactId' : 'WorkExecution.NewWODatasheetDetailsView.container_0',
             });
-            view077.addChild( container070 );
+            view078.addChild( container070 );
 
 
             var group097 = new Group({
@@ -25992,7 +26033,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'newDataSheetTempResource',
                'artifactId' : 'WorkExecution.NewWODatasheetDetailsView.dslookup.container',
             });
-            view077.addChild( container071 );
+            view078.addChild( container071 );
 
 
             var group098 = new Group({
@@ -26118,7 +26159,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw577a0096',
                'artifactId' : 'WorkExecution.NewWODatasheetDetailsView_footer',
             });
-            view077.addChild( footer030 );
+            view078.addChild( footer030 );
 
 
             var button118 = new Button({
@@ -26174,7 +26215,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'cancelAddDatasheet',
                }
             ];
-            view077.eventHandlers = eventHandlers413;
+            view078.eventHandlers = eventHandlers413;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -26184,15 +26225,15 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view078 = new View({
+            var view079 = new View({
                'id' : 'WorkExecution.FollowUpWorkOrderView',
                'allowDrillDown' : 'true',
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Work Order Details'),
             });
-            ui001.addChild( view078 );
+            ui001.addChild( view079 );
 
-            var requiredResources070 = {
+            var requiredResources071 = {
                'workOrder' : {
                   'id' : 'aw69258759',
                   'artifactId' : 'WorkExecution.FollowUpWorkOrderView_workOrder',
@@ -26253,13 +26294,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.FollowUpWorkOrderView_domainworktype',
                },
             };
-            view078.addRequiredResources( requiredResources070 );
+            view079.addRequiredResources( requiredResources071 );
 
             var actions015 = new Actions({
                'id' : 'awf24ff623',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_actions',
             });
-            view078.addChild( actions015 );
+            view079.addChild( actions015 );
 
 
             var action034 = new Action({
@@ -26293,7 +26334,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awfe577e0',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_container_0',
             });
-            view078.addChild( container072 );
+            view079.addChild( container072 );
 
 
             var group099 = new Group({
@@ -26804,7 +26845,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             groupitem383.eventHandlers = eventHandlers424;
 
 
-            var listItemTemplate047 = new ListItemTemplate({
+            var listItemTemplate048 = new ListItemTemplate({
                'id' : 'aw1b8b8240',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_workOrder_workOrderSpec_listItemTemplate',
             });
@@ -26816,7 +26857,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'specLayoutLeft editableLabel',
                'resourceAttribute' : 'assetattrid',
             });
-            listItemTemplate047.addChild( listtext237 );
+            listItemTemplate048.addChild( listtext237 );
 
 
             var listtext238 = new ListText({
@@ -26825,7 +26866,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'specLayoutRight editableLabel',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate047.addChild( listtext238 );
+            listItemTemplate048.addChild( listtext238 );
 
 
             var listtext239 = new ListText({
@@ -26835,13 +26876,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'measureunitid',
                'hideEmpty' : 'true',
             });
-            listItemTemplate047.addChild( listtext239 );
+            listItemTemplate048.addChild( listtext239 );
 
 
 
-            var list047 = new List({
+            var list048 = new List({
                'id' : 'aw35cbc3cd',
-               'listItemTemplate' : listItemTemplate047,
+               'listItemTemplate' : listItemTemplate048,
                'collapsible' : 'true',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_workOrder_workOrderSpec_list',
@@ -26851,14 +26892,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'mixinclass' : 'SpecificationStoreList',
                'hideEmpty' : 'true',
             });
-            view078.addChild( list047 );
+            view079.addChild( list048 );
 
 
             var container073 = new Container({
                'id' : 'aw78e24776',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_container_1',
             });
-            view078.addChild( container073 );
+            view079.addChild( container073 );
 
 
             var group100 = new Group({
@@ -27144,7 +27185,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw876194c7',
                'artifactId' : 'WorkExecution.FollowUpWorkOrderView_footer',
             });
-            view078.addChild( footer031 );
+            view079.addChild( footer031 );
 
 
             var button128 = new Button({
@@ -27215,7 +27256,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showWOSpecSorted',
                }
             ];
-            view078.eventHandlers = eventHandlers432;
+            view079.eventHandlers = eventHandlers432;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -27225,14 +27266,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view079 = new View({
+            var view080 = new View({
                'id' : 'WorkExecution.ReportDowntimeView',
                'resource' : 'tempReportDowntimeResource',
                'label' : MessageService.createStaticMessage('Report Asset Downtime'),
             });
-            ui001.addChild( view079 );
+            ui001.addChild( view080 );
 
-            var requiredResources071 = {
+            var requiredResources072 = {
                'workOrder' : {
                   'id' : 'aw7d2890d9',
                   'artifactId' : 'WorkExecution.ReportDowntimeView_workOrder',
@@ -27252,14 +27293,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ReportDowntimeView_oslcmaxvars',
                },
             };
-            view079.addRequiredResources( requiredResources071 );
+            view080.addRequiredResources( requiredResources072 );
 
             var container074 = new Container({
                'id' : 'awf1c31cf8',
                'resource' : 'tempReportDowntimeResource',
                'artifactId' : 'WorkExecution.ReportDowntimeView_assetdowntime_container_1',
             });
-            view079.addChild( container074 );
+            view080.addChild( container074 );
 
 
             var group104 = new Group({
@@ -27409,7 +27450,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw31bc25dd',
                'artifactId' : 'WorkExecution.ReportDowntimeView_footer',
             });
-            view079.addChild( footer032 );
+            view080.addChild( footer032 );
 
 
             var button130 = new Button({
@@ -27465,7 +27506,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'handleBackButtonClick',
                }
             ];
-            view079.eventHandlers = eventHandlers436;
+            view080.eventHandlers = eventHandlers436;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -27475,16 +27516,16 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view080 = new View({
+            var view081 = new View({
                'id' : 'WorkExecution.WOHistoryView',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Previous Work Orders'),
             });
-            ui001.addChild( view080 );
+            ui001.addChild( view081 );
 
 
 
-            var listItemTemplate048 = new ListItemTemplate({
+            var listItemTemplate049 = new ListItemTemplate({
                'id' : 'aw6e529fc2',
                'layout' : 'WorkListItem',
                'artifactId' : 'WorkExecution.WOHistoryView_workOrder_wohistory_listItemTemplate_WorkListItem',
@@ -27497,7 +27538,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wonum',
             });
-            listItemTemplate048.addChild( listtext240 );
+            listItemTemplate049.addChild( listtext240 );
 
 
             var listtext241 = new ListText({
@@ -27507,7 +27548,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate048.addChild( listtext241 );
+            listItemTemplate049.addChild( listtext241 );
 
             var eventHandlers437 = [
                {
@@ -27518,19 +27559,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'showWOHistoryDetails',
                }
             ];
-            listItemTemplate048.eventHandlers = eventHandlers437;
+            listItemTemplate049.eventHandlers = eventHandlers437;
 
 
-            var list048 = new List({
+            var list049 = new List({
                'id' : 'awae10bf7b',
-               'listItemTemplate' : listItemTemplate048,
+               'listItemTemplate' : listItemTemplate049,
                'showHeader' : false,
                'transitionTo' : 'WorkExecution.WOHistoryDetailView',
                'resource' : 'workOrderHistory',
                'artifactId' : 'WorkExecution.WOHistoryView_workOrder_wohistory_list',
                'hideSort' : 'true',
             });
-            view080.addChild( list048 );
+            view081.addChild( list049 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -27541,14 +27582,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view081 = new View({
+            var view082 = new View({
                'id' : 'WorkExecution.WOHistoryDetailView',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Work Order Details'),
             });
-            ui001.addChild( view081 );
+            ui001.addChild( view082 );
 
-            var requiredResources072 = {
+            var requiredResources073 = {
                'dataSheetResource' : {
                   'id' : 'aw1f02ff4f',
                   'artifactId' : 'WorkExecution.DataSheetView_requiredResources_dataSheetdetail',
@@ -27574,14 +27615,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view081.addRequiredResources( requiredResources072 );
+            view082.addRequiredResources( requiredResources073 );
 
             var container075 = new Container({
                'id' : 'awb0ea8f7a',
                'resource' : 'workOrderHistory',
                'artifactId' : 'WorkExecution.WorkHistoryDetailView_container',
             });
-            view081.addChild( container075 );
+            view082.addChild( container075 );
 
 
             var group106 = new Group({
@@ -29156,13 +29197,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view082 = new View({
+            var view083 = new View({
                'id' : 'WorkExecution.MaterialsTools',
                'label' : MessageService.createStaticMessage('Materials & Tools'),
             });
-            ui001.addChild( view082 );
+            ui001.addChild( view083 );
 
-            var requiredResources073 = {
+            var requiredResources074 = {
                'workOrder' : {
                   'id' : 'aw4fd260f7',
                   'artifactId' : 'WorkExecution.MaterialsTools_workOrder',
@@ -29178,10 +29219,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view082.addRequiredResources( requiredResources073 );
+            view083.addRequiredResources( requiredResources074 );
 
 
-            var listItemTemplate049 = new ListItemTemplate({
+            var listItemTemplate050 = new ListItemTemplate({
                'id' : 'aw44f8b6d',
                'layout' : 'MaterialToolList',
                'artifactId' : 'WorkExecution.MaterialsTools_materialSummary_listItemTemplate_MaterialToolList',
@@ -29193,7 +29234,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.MaterialsTools_materialSummary_MaterialToolList_itemdisplay',
                'resourceAttribute' : 'itemdisplay',
             });
-            listItemTemplate049.addChild( listtext242 );
+            listItemTemplate050.addChild( listtext242 );
 
 
             var listtext243 = new ListText({
@@ -29203,7 +29244,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'descdisplay',
             });
-            listItemTemplate049.addChild( listtext243 );
+            listItemTemplate050.addChild( listtext243 );
 
 
             var listtext244 = new ListText({
@@ -29213,7 +29254,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-small',
                'resourceAttribute' : 'storeroomdisplay',
             });
-            listItemTemplate049.addChild( listtext244 );
+            listItemTemplate050.addChild( listtext244 );
 
 
             var listtext245 = new ListText({
@@ -29223,7 +29264,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'quantitydisplay',
             });
-            listItemTemplate049.addChild( listtext245 );
+            listItemTemplate050.addChild( listtext245 );
 
 
             var checkbox034 = new CheckBox({
@@ -29233,22 +29274,22 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'rightCheckBox',
                'resourceAttribute' : 'materialcheckbox',
             });
-            listItemTemplate049.addChild( checkbox034 );
+            listItemTemplate050.addChild( checkbox034 );
 
 
 
-            var list049 = new List({
+            var list050 = new List({
                'id' : 'awcc50bfb8',
-               'listItemTemplate' : listItemTemplate049,
+               'listItemTemplate' : listItemTemplate050,
                'resource' : 'materialSummary',
                'artifactId' : 'WorkExecution.MaterialsTools_materialSummary_list',
                'label' : MessageService.createStaticMessage('Materials'),
             });
-            view082.addChild( list049 );
+            view083.addChild( list050 );
 
 
 
-            var listItemTemplate050 = new ListItemTemplate({
+            var listItemTemplate051 = new ListItemTemplate({
                'id' : 'aw9397976a',
                'layout' : 'MaterialToolList',
                'artifactId' : 'WorkExecution.MaterialsTools_toolSummary_listItemTemplate_MaterialToolList',
@@ -29260,7 +29301,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.MaterialsTools_toolSummary_MaterialToolList_tooldisplay',
                'resourceAttribute' : 'tooldisplay',
             });
-            listItemTemplate050.addChild( listtext246 );
+            listItemTemplate051.addChild( listtext246 );
 
 
             var listtext247 = new ListText({
@@ -29270,7 +29311,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'descdisplay',
             });
-            listItemTemplate050.addChild( listtext247 );
+            listItemTemplate051.addChild( listtext247 );
 
 
             var listtext248 = new ListText({
@@ -29280,7 +29321,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-small',
                'resourceAttribute' : 'storeroomdisplay',
             });
-            listItemTemplate050.addChild( listtext248 );
+            listItemTemplate051.addChild( listtext248 );
 
 
             var listtext249 = new ListText({
@@ -29290,7 +29331,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'quantitydisplay',
             });
-            listItemTemplate050.addChild( listtext249 );
+            listItemTemplate051.addChild( listtext249 );
 
 
             var checkbox035 = new CheckBox({
@@ -29300,18 +29341,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'rightCheckBox',
                'resourceAttribute' : 'toolcheckbox',
             });
-            listItemTemplate050.addChild( checkbox035 );
+            listItemTemplate051.addChild( checkbox035 );
 
 
 
-            var list050 = new List({
+            var list051 = new List({
                'id' : 'aw9c35a64d',
-               'listItemTemplate' : listItemTemplate050,
+               'listItemTemplate' : listItemTemplate051,
                'resource' : 'toolSummary',
                'artifactId' : 'WorkExecution.MaterialsTools_toolSummary_list',
                'label' : MessageService.createStaticMessage('Tools'),
             });
-            view082.addChild( list050 );
+            view083.addChild( list051 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -29322,15 +29363,15 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view083 = new View({
+            var view084 = new View({
                'id' : 'WorkExecution.EditStatusView',
                'showOverflow' : false,
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Change Status'),
             });
-            ui001.addChild( view083 );
+            ui001.addChild( view084 );
 
-            var requiredResources074 = {
+            var requiredResources075 = {
                'workOrder' : {
                   'id' : 'aweb007e3c',
                   'artifactId' : 'WorkExecution.EditStatusView_workOrder',
@@ -29354,14 +29395,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.EditStatusView_domainworktype',
                },
             };
-            view083.addRequiredResources( requiredResources074 );
+            view084.addRequiredResources( requiredResources075 );
 
             var container110 = new Container({
                'id' : 'aw1006e1b',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.EditStatusView_workOrder_container_0',
             });
-            view083.addChild( container110 );
+            view084.addChild( container110 );
 
 
             var group107 = new Group({
@@ -29403,7 +29444,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'statusChangeResource',
                'artifactId' : 'WorkExecution.EditStatusView_statusChangeResource_container_0',
             });
-            view083.addChild( container111 );
+            view084.addChild( container111 );
 
 
             var group108 = new Group({
@@ -29474,7 +29515,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awcc435f8e',
                'artifactId' : 'WorkExecution.EditStatusView_footer',
             });
-            view083.addChild( footer033 );
+            view084.addChild( footer033 );
 
 
             var button168 = new Button({
@@ -29539,7 +29580,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'cleanupEditStatusView',
                }
             ];
-            view083.eventHandlers = eventHandlers487;
+            view084.eventHandlers = eventHandlers487;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -29549,15 +29590,15 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view084 = new View({
+            var view085 = new View({
                'id' : 'WorkExecution.EditTaskStatusView',
                'showOverflow' : false,
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Change Status'),
             });
-            ui001.addChild( view084 );
+            ui001.addChild( view085 );
 
-            var requiredResources075 = {
+            var requiredResources076 = {
                'workOrder' : {
                   'id' : 'awd1c78e4a',
                   'artifactId' : 'WorkExecution.EditTaskStatusView_workOrder',
@@ -29577,7 +29618,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.EditTaskStatusView_workOrderTimer',
                },
             };
-            view084.addRequiredResources( requiredResources075 );
+            view085.addRequiredResources( requiredResources076 );
 
             var container112 = new Container({
                'id' : 'aw62c872f7',
@@ -29585,7 +29626,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.EditTaskStatusView_workOrder_container_0',
                'attribute' : 'tasklist',
             });
-            view084.addChild( container112 );
+            view085.addChild( container112 );
 
 
             var group109 = new Group({
@@ -29637,7 +29678,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'statusChangeResource',
                'artifactId' : 'WorkExecution.EditTaskStatusView_statusChangeResource_container_0',
             });
-            view084.addChild( container113 );
+            view085.addChild( container113 );
 
 
             var group110 = new Group({
@@ -29708,7 +29749,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awaff0fe2b',
                'artifactId' : 'WorkExecution.EditTaskStatusView_footer',
             });
-            view084.addChild( footer034 );
+            view085.addChild( footer034 );
 
 
             var button170 = new Button({
@@ -29773,7 +29814,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'cleanupEditStatusView',
                }
             ];
-            view084.eventHandlers = eventHandlers490;
+            view085.eventHandlers = eventHandlers490;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -29783,13 +29824,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view085 = new View({
+            var view086 = new View({
                'id' : 'WorkExecution.SearchWorkOrderView',
                'label' : MessageService.createStaticMessage('Search Work Orders'),
             });
-            ui001.addChild( view085 );
+            ui001.addChild( view086 );
 
-            var requiredResources076 = {
+            var requiredResources077 = {
                'searchWorkOrder' : {
                   'id' : 'awd1976e',
                   'artifactId' : 'WorkExecution.SearchWorkOrderView_searchWorkOrder',
@@ -29811,14 +29852,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.SearchWorkOrderView_domainwoclass',
                },
             };
-            view085.addRequiredResources( requiredResources076 );
+            view086.addRequiredResources( requiredResources077 );
 
             var container114 = new Container({
                'id' : 'aw8588cceb',
                'resource' : 'searchWorkOrder',
                'artifactId' : 'WorkExecution.SearchWorkOrderView_searchWorkOrder_container_0',
             });
-            view085.addChild( container114 );
+            view086.addChild( container114 );
 
 
             var group111 = new Group({
@@ -29973,7 +30014,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw8252ad3b',
                'artifactId' : 'WorkExecution.SearchWorkOrderView_footer',
             });
-            view085.addChild( footer035 );
+            view086.addChild( footer035 );
 
 
             var button172 = new Button({
@@ -30043,7 +30084,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'discardSummaryView',
                }
             ];
-            view085.eventHandlers = eventHandlers493;
+            view086.eventHandlers = eventHandlers493;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -30053,18 +30094,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view086 = new View({
+            var view087 = new View({
                'id' : 'WorkExecution.SearchPermitDetail',
                'label' : MessageService.createStaticMessage('Permit Detail'),
             });
-            ui001.addChild( view086 );
+            ui001.addChild( view087 );
 
 
             var container115 = new Container({
                'id' : 'aw15d5f850',
                'artifactId' : 'WorkExecution.permit_container_0',
             });
-            view086.addChild( container115 );
+            view087.addChild( container115 );
 
 
             var group112 = new Group({
@@ -30366,7 +30407,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awe528bdc',
                'artifactId' : 'WorkExecution.PermitView_footer',
             });
-            view086.addChild( footer036 );
+            view087.addChild( footer036 );
 
 
             var button174 = new Button({
@@ -30415,13 +30456,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view087 = new View({
+            var view088 = new View({
                'id' : 'WorkExecution.CrewReviewListView',
                'label' : MessageService.createStaticMessage('Report by Crew'),
             });
-            ui001.addChild( view087 );
+            ui001.addChild( view088 );
 
-            var requiredResources077 = {
+            var requiredResources078 = {
                'laborcrew' : {
                   'id' : 'awc372c207',
                   'artifactId' : 'WorkExecution.CrewReviewListView_laborcrew',
@@ -30475,7 +30516,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.CrewReviewListView_mylaborcraftrate',
                },
             };
-            view087.addRequiredResources( requiredResources077 );
+            view088.addRequiredResources( requiredResources078 );
             var eventHandlers496 = [
                {
                      'id' : 'aw83db07e3',
@@ -30485,10 +30526,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'initCrewLaborList',
                }
             ];
-            view087.eventHandlers = eventHandlers496;
+            view088.eventHandlers = eventHandlers496;
 
 
-            var listItemTemplate051 = new ListItemTemplate({
+            var listItemTemplate052 = new ListItemTemplate({
                'id' : 'aw99c7ba6c',
                'layout' : 'CrewLaborList',
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_listItemTemplate_CrewLaborList',
@@ -30501,7 +30542,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'laborcode',
             });
-            listItemTemplate051.addChild( listtext250 );
+            listItemTemplate052.addChild( listtext250 );
 
 
             var listtext251 = new ListText({
@@ -30510,7 +30551,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_CrewLaborList_laborname',
                'resourceAttribute' : 'laborname',
             });
-            listItemTemplate051.addChild( listtext251 );
+            listItemTemplate052.addChild( listtext251 );
 
 
             var listtext252 = new ListText({
@@ -30519,7 +30560,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_CrewLaborList_regularhours',
                'resourceAttribute' : 'regularhours',
             });
-            listItemTemplate051.addChild( listtext252 );
+            listItemTemplate052.addChild( listtext252 );
 
 
             var listtext253 = new ListText({
@@ -30528,7 +30569,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_CrewLaborList_craft',
                'resourceAttribute' : 'craft',
             });
-            listItemTemplate051.addChild( listtext253 );
+            listItemTemplate052.addChild( listtext253 );
 
 
             var listtext254 = new ListText({
@@ -30537,23 +30578,23 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_CrewLaborList_skilllevel',
                'resourceAttribute' : 'skilllevel',
             });
-            listItemTemplate051.addChild( listtext254 );
+            listItemTemplate052.addChild( listtext254 );
 
 
 
-            var list051 = new List({
+            var list052 = new List({
                'id' : 'awa0044ec0',
-               'listItemTemplate' : listItemTemplate051,
+               'listItemTemplate' : listItemTemplate052,
                'transitionTo' : 'WorkExecution.CrewLaborDetailView',
                'resource' : 'crewLaborResource',
                'artifactId' : 'WorkExecution.CrewReviewListView_crewLaborResource_list',
                'label' : MessageService.createStaticMessage('Crew Labor Details'),
             });
-            view087.addChild( list051 );
+            view088.addChild( list052 );
 
 
 
-            var listItemTemplate052 = new ListItemTemplate({
+            var listItemTemplate053 = new ListItemTemplate({
                'id' : 'aw506eedc2',
                'layout' : 'CrewToolList',
                'artifactId' : 'WorkExecution.CrewReviewListView_crewToolResource_listItemTemplate_CrewToolList',
@@ -30566,7 +30607,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'itemnum',
             });
-            listItemTemplate052.addChild( listtext255 );
+            listItemTemplate053.addChild( listtext255 );
 
 
             var listtext256 = new ListText({
@@ -30575,7 +30616,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewToolResource_CrewToolList_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate052.addChild( listtext256 );
+            listItemTemplate053.addChild( listtext256 );
 
 
             var listtext257 = new ListText({
@@ -30584,26 +30625,26 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CrewReviewListView_crewToolResource_CrewToolList_toolhrs',
                'resourceAttribute' : 'toolhrs',
             });
-            listItemTemplate052.addChild( listtext257 );
+            listItemTemplate053.addChild( listtext257 );
 
 
 
-            var list052 = new List({
+            var list053 = new List({
                'id' : 'awfd22abd7',
-               'listItemTemplate' : listItemTemplate052,
+               'listItemTemplate' : listItemTemplate053,
                'transitionTo' : 'WorkExecution.CrewToolDetailView',
                'resource' : 'crewToolResource',
                'artifactId' : 'WorkExecution.CrewReviewListView_crewToolResource_list',
                'label' : MessageService.createStaticMessage('Crew Tool Details'),
             });
-            view087.addChild( list052 );
+            view088.addChild( list053 );
 
 
             var footer037 = new Footer({
                'id' : 'aw779e6639',
                'artifactId' : 'WorkExecution.CrewReviewListView_footer',
             });
-            view087.addChild( footer037 );
+            view088.addChild( footer037 );
 
 
             var button176 = new Button({
@@ -30634,14 +30675,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view088 = new View({
+            var view089 = new View({
                'id' : 'WorkExecution.CrewLaborDetailView',
                'resource' : 'crewLaborResource',
                'label' : MessageService.createStaticMessage('Crew Labor Details'),
             });
-            ui001.addChild( view088 );
+            ui001.addChild( view089 );
 
-            var requiredResources078 = {
+            var requiredResources079 = {
                'crewLaborResource' : {
                   'id' : 'awe91bad9c',
                   'artifactId' : 'WorkExecution.CrewLaborDetailView_crewLaborResource',
@@ -30669,13 +30710,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.CrewLaborDetailView_additionalpremiumpaycraftrate',
                },
             };
-            view088.addRequiredResources( requiredResources078 );
+            view089.addRequiredResources( requiredResources079 );
 
             var container116 = new Container({
                'id' : 'aw75bff09d',
                'artifactId' : 'WorkExecution.CrewLaborDetailView_container_0',
             });
-            view088.addChild( container116 );
+            view089.addChild( container116 );
 
 
             var group113 = new Group({
@@ -30993,7 +31034,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awa1942e3f',
                'artifactId' : 'WorkExecution.CrewLaborDetailView_footer',
             });
-            view088.addChild( footer038 );
+            view089.addChild( footer038 );
 
 
             var button177 = new Button({
@@ -31049,7 +31090,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'initCrewLaborDetail',
                }
             ];
-            view088.eventHandlers = eventHandlers503;
+            view089.eventHandlers = eventHandlers503;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -31059,14 +31100,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view089 = new View({
+            var view090 = new View({
                'id' : 'WorkExecution.CrewToolDetailView',
                'resource' : 'crewToolResource',
                'label' : MessageService.createStaticMessage('Crew Tool Details'),
             });
-            ui001.addChild( view089 );
+            ui001.addChild( view090 );
 
-            var requiredResources079 = {
+            var requiredResources080 = {
                'crewToolResource' : {
                   'id' : 'aw1bb5b397',
                   'artifactId' : 'WorkExecution.CrewToolDetailView_crewToolResource',
@@ -31086,13 +31127,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            view089.addRequiredResources( requiredResources079 );
+            view090.addRequiredResources( requiredResources080 );
 
             var container117 = new Container({
                'id' : 'awd9c50de7',
                'artifactId' : 'WorkExecution.CrewToolDetailView_container_0',
             });
-            view089.addChild( container117 );
+            view090.addChild( container117 );
 
 
             var group114 = new Group({
@@ -31205,7 +31246,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw83f4ce2b',
                'artifactId' : 'WorkExecution.CrewToolDetailView_footer',
             });
-            view089.addChild( footer039 );
+            view090.addChild( footer039 );
 
 
             var button179 = new Button({
@@ -31261,7 +31302,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'discardCrewToolEntryView',
                }
             ];
-            view089.eventHandlers = eventHandlers507;
+            view090.eventHandlers = eventHandlers507;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -31271,26 +31312,26 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view090 = new View({
+            var view091 = new View({
                'id' : 'WorkExecution.ClassifyWorkOrderView',
                'resource' : 'workOrder',
                'label' : MessageService.createStaticMessage('Classify'),
             });
-            ui001.addChild( view090 );
+            ui001.addChild( view091 );
 
-            var requiredResources080 = {
+            var requiredResources081 = {
                'classstructure' : {
                   'id' : 'aw38565254',
                   'artifactId' : 'WorkExecution.ClassifyWorkOrderView_classstructure',
                },
             };
-            view090.addRequiredResources( requiredResources080 );
+            view091.addRequiredResources( requiredResources081 );
 
             var container118 = new Container({
                'id' : 'aw1b366c51',
                'artifactId' : 'WorkExecution.ClassifyWorkOrderView_container_0',
             });
-            view090.addChild( container118 );
+            view091.addChild( container118 );
 
 
             var group115 = new Group({
@@ -31337,7 +31378,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             container118.eventHandlers = eventHandlers508;
 
 
-            var listItemTemplate053 = new ListItemTemplate({
+            var listItemTemplate054 = new ListItemTemplate({
                'id' : 'aw631107f1',
                'layout' : 'FailureReportList',
                'artifactId' : 'WorkExecution.ClassifyWorkOrderView_classstructure_listItemTemplate_FailureReportList',
@@ -31349,7 +31390,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ClassifyWorkOrderView_classstructure_FailureReportList_fulldesc',
                'resourceAttribute' : 'fulldesc',
             });
-            listItemTemplate053.addChild( listtext258 );
+            listItemTemplate054.addChild( listtext258 );
 
             var eventHandlers509 = [
                {
@@ -31360,19 +31401,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'openChildren',
                }
             ];
-            listItemTemplate053.eventHandlers = eventHandlers509;
+            listItemTemplate054.eventHandlers = eventHandlers509;
 
 
-            var list053 = new List({
+            var list054 = new List({
                'id' : 'awcad4c8d8',
-               'listItemTemplate' : listItemTemplate053,
+               'listItemTemplate' : listItemTemplate054,
                'showHeader' : false,
                'resource' : 'classstructure',
                'artifactId' : 'WorkExecution.ClassifyWorkOrderView_classstructure_list',
                'label' : MessageService.createStaticMessage('Classify'),
                'displayPageSize' : '20',
             });
-            view090.addChild( list053 );
+            view091.addChild( list054 );
 
 
             var footer040 = new Footer({
@@ -31380,7 +31421,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ClassifyWorkOrderView_footer',
                'visibleButtonCount' : '2',
             });
-            view090.addChild( footer040 );
+            view091.addChild( footer040 );
 
 
             var button181 = new Button({
@@ -31477,7 +31518,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderTop',
                }
             ];
-            view090.eventHandlers = eventHandlers513;
+            view091.eventHandlers = eventHandlers513;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -31487,13 +31528,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view091 = new View({
+            var view092 = new View({
                'id' : 'WorkExecution.PlannedActualList',
                'label' : MessageService.createStaticMessage('Create Actuals From Plan'),
             });
-            ui001.addChild( view091 );
+            ui001.addChild( view092 );
 
-            var requiredResources081 = {
+            var requiredResources082 = {
                'workOrder' : {
                   'id' : 'aw2086133a',
                   'artifactId' : 'WorkExecution.PlannedActualList_PlanActualRequiredResource',
@@ -31514,10 +31555,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.PlannedActualList_PlanActualRequiredResource_additionalitem',
                },
             };
-            view091.addRequiredResources( requiredResources081 );
+            view092.addRequiredResources( requiredResources082 );
 
 
-            var listItemTemplate054 = new ListItemTemplate({
+            var listItemTemplate055 = new ListItemTemplate({
                'id' : 'awd631e229',
                'layout' : 'CopyPlansListItem',
                'artifactId' : 'WorkExecution.PlannedLaborActualList_listItemTemplate_',
@@ -31530,7 +31571,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'laborCB',
                'editable' : true,
             });
-            listItemTemplate054.addChild( checkbox036 );
+            listItemTemplate055.addChild( checkbox036 );
 
 
             var listtext259 = new ListText({
@@ -31539,7 +31580,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedLaborActualList_taskid',
                'resourceAttribute' : 'taskid',
             });
-            listItemTemplate054.addChild( listtext259 );
+            listItemTemplate055.addChild( listtext259 );
 
 
             var text815 = new Text({
@@ -31551,7 +31592,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'hours',
                'editable' : true,
             });
-            listItemTemplate054.addChild( text815 );
+            listItemTemplate055.addChild( text815 );
 
 
             var listtext260 = new ListText({
@@ -31560,7 +31601,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedLaborActualList_craft',
                'resourceAttribute' : 'craft',
             });
-            listItemTemplate054.addChild( listtext260 );
+            listItemTemplate055.addChild( listtext260 );
 
 
             var listtext261 = new ListText({
@@ -31569,7 +31610,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedLaborActualList_skilllevel',
                'resourceAttribute' : 'skilllevel',
             });
-            listItemTemplate054.addChild( listtext261 );
+            listItemTemplate055.addChild( listtext261 );
 
 
             var listtext262 = new ListText({
@@ -31578,13 +31619,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedLaborActualList_laborcode',
                'resourceAttribute' : 'laborcode',
             });
-            listItemTemplate054.addChild( listtext262 );
+            listItemTemplate055.addChild( listtext262 );
 
 
 
-            var list054 = new List({
+            var list055 = new List({
                'id' : 'awb10ce1f8',
-               'listItemTemplate' : listItemTemplate054,
+               'listItemTemplate' : listItemTemplate055,
                'showHeader' : true,
                'collapsible' : 'true',
                'transitionTo' : 'WorkExecution.CreateActualLaborDetailView',
@@ -31594,11 +31635,11 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'hideSort' : 'true',
                'hideEmpty' : 'true',
             });
-            view091.addChild( list054 );
+            view092.addChild( list055 );
 
 
 
-            var listItemTemplate055 = new ListItemTemplate({
+            var listItemTemplate056 = new ListItemTemplate({
                'id' : 'awcb481718',
                'layout' : 'CopyPlansListItem',
                'artifactId' : 'WorkExecution.PlannedActualList_listItemTemplate_MeterList',
@@ -31611,7 +31652,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'materialCB',
                'editable' : true,
             });
-            listItemTemplate055.addChild( checkbox037 );
+            listItemTemplate056.addChild( checkbox037 );
 
 
             var listtext263 = new ListText({
@@ -31620,7 +31661,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedActualList_taskid',
                'resourceAttribute' : 'taskid',
             });
-            listItemTemplate055.addChild( listtext263 );
+            listItemTemplate056.addChild( listtext263 );
 
 
             var text816 = new Text({
@@ -31631,7 +31672,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'displayqty',
                'editable' : true,
             });
-            listItemTemplate055.addChild( text816 );
+            listItemTemplate056.addChild( text816 );
 
             var eventHandlers514 = [
                {
@@ -31657,7 +31698,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PlannedActualList_item',
                'resourceAttribute' : 'item',
             });
-            listItemTemplate055.addChild( listtext264 );
+            listItemTemplate056.addChild( listtext264 );
 
 
             var listtext265 = new ListText({
@@ -31666,13 +31707,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PlannedActualList_itemdesc',
                'resourceAttribute' : 'itemdesc',
             });
-            listItemTemplate055.addChild( listtext265 );
+            listItemTemplate056.addChild( listtext265 );
 
 
 
-            var list055 = new List({
+            var list056 = new List({
                'id' : 'aw73a0b648',
-               'listItemTemplate' : listItemTemplate055,
+               'listItemTemplate' : listItemTemplate056,
                'showHeader' : true,
                'collapsible' : 'true',
                'transitionTo' : 'WorkExecution.CreateActualMaterialDetailView',
@@ -31683,11 +31724,11 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'hideSort' : 'true',
                'hideEmpty' : 'true',
             });
-            view091.addChild( list055 );
+            view092.addChild( list056 );
 
 
 
-            var listItemTemplate056 = new ListItemTemplate({
+            var listItemTemplate057 = new ListItemTemplate({
                'id' : 'awb34f35b4',
                'layout' : 'CopyPlansListItem',
                'artifactId' : 'WorkExecution.PlannedToolActualList_listItemTemplate_',
@@ -31700,7 +31741,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'toolCB',
                'editable' : true,
             });
-            listItemTemplate056.addChild( checkbox038 );
+            listItemTemplate057.addChild( checkbox038 );
 
 
             var listtext266 = new ListText({
@@ -31709,7 +31750,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'PlannedToolActualList_taskid',
                'resourceAttribute' : 'taskid',
             });
-            listItemTemplate056.addChild( listtext266 );
+            listItemTemplate057.addChild( listtext266 );
 
 
             var listtext267 = new ListText({
@@ -31718,7 +31759,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PlannedToolActualList_MeterList_locationdesc',
                'resourceAttribute' : 'toolanddescription',
             });
-            listItemTemplate056.addChild( listtext267 );
+            listItemTemplate057.addChild( listtext267 );
 
 
             var text817 = new Text({
@@ -31729,13 +31770,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resourceAttribute' : 'hours',
                'editable' : true,
             });
-            listItemTemplate056.addChild( text817 );
+            listItemTemplate057.addChild( text817 );
 
 
 
-            var list056 = new List({
+            var list057 = new List({
                'id' : 'awe9cbd126',
-               'listItemTemplate' : listItemTemplate056,
+               'listItemTemplate' : listItemTemplate057,
                'showHeader' : true,
                'collapsible' : 'true',
                'transitionTo' : 'WorkExecution.CreateActualToolDetailView',
@@ -31745,14 +31786,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'hideSort' : 'true',
                'hideEmpty' : 'true',
             });
-            view091.addChild( list056 );
+            view092.addChild( list057 );
 
 
             var footer041 = new Footer({
                'id' : 'aw630c2109',
                'artifactId' : 'WorkExecution.CreateActual_Cancel',
             });
-            view091.addChild( footer041 );
+            view092.addChild( footer041 );
 
 
             var button184 = new Button({
@@ -31809,7 +31850,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'discardCreateActuals',
                }
             ];
-            view091.eventHandlers = eventHandlers517;
+            view092.eventHandlers = eventHandlers517;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -31819,11 +31860,11 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view092 = new View({
+            var view093 = new View({
                'id' : 'WorkExecution.CreateActualLaborDetailView',
                'label' : MessageService.createStaticMessage('Labor Details'),
             });
-            ui001.addChild( view092 );
+            ui001.addChild( view093 );
 
 
             var container119 = new Container({
@@ -31831,7 +31872,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'plannedLabor',
                'artifactId' : 'WorkExecution.CreateActualLaborDetailView_workOrder_container_0',
             });
-            view092.addChild( container119 );
+            view093.addChild( container119 );
 
 
             var group116 = new Group({
@@ -31943,13 +31984,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view093 = new View({
+            var view094 = new View({
                'id' : 'WorkExecution.CreateActualMaterialDetailView',
                'label' : MessageService.createStaticMessage('Material Details'),
             });
-            ui001.addChild( view093 );
+            ui001.addChild( view094 );
 
-            var requiredResources082 = {
+            var requiredResources083 = {
                'additionalInventory' : {
                   'id' : 'aw39538438',
                   'artifactId' : 'WorkExecution.CreateActualMaterialDetailView_PlanActualRequiredResource_Attribute_1',
@@ -31963,7 +32004,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.CreateActualMaterialDetailView_PlanActualRequiredResource_Attribute_3',
                },
             };
-            view093.addRequiredResources( requiredResources082 );
+            view094.addRequiredResources( requiredResources083 );
 
             var container120 = new Container({
                'id' : 'awe3fdbea5',
@@ -31971,7 +32012,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.CreateActualMaterialDetailView_workOrder_container_0',
                'attribute' : 'invreserveList',
             });
-            view093.addChild( container120 );
+            view094.addChild( container120 );
 
 
             var group117 = new Group({
@@ -32076,13 +32117,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view094 = new View({
+            var view095 = new View({
                'id' : 'WorkExecution.CreateActualToolDetailView',
                'label' : MessageService.createStaticMessage('Tool Details'),
             });
-            ui001.addChild( view094 );
+            ui001.addChild( view095 );
 
-            var requiredResources083 = {
+            var requiredResources084 = {
                'additionalInventory' : {
                   'id' : 'awb87a21e3',
                   'artifactId' : 'WorkExecution.CreateActualToolDetailView_PlanActualRequiredResource_Attribute_1',
@@ -32096,14 +32137,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.CreateActualToolDetailView_PlanActualRequiredResource_Attribute_3',
                },
             };
-            view094.addRequiredResources( requiredResources083 );
+            view095.addRequiredResources( requiredResources084 );
 
             var container121 = new Container({
                'id' : 'aw6fdf014',
                'resource' : 'plannedTool',
                'artifactId' : 'WorkExecution.CreateActualToolDetailView_workOrder_container_0',
             });
-            view094.addChild( container121 );
+            view095.addChild( container121 );
 
 
             var group118 = new Group({
@@ -32198,27 +32239,27 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view095 = new View({
+            var view096 = new View({
                'id' : 'WorkExecution.WOHistoryViewAsset',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Asset'),
             });
-            ui001.addChild( view095 );
+            ui001.addChild( view096 );
 
-            var requiredResources084 = {
+            var requiredResources085 = {
                'workOrder' : {
                   'id' : 'aw8b27ea83',
                   'artifactId' : 'WorkExecution.WOHistoryViewAsset_workOrder',
                },
             };
-            view095.addRequiredResources( requiredResources084 );
+            view096.addRequiredResources( requiredResources085 );
 
             var container122 = new Container({
                'id' : 'aw9f56b355',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewAsset_workOrder_container_0',
             });
-            view095.addChild( container122 );
+            view096.addChild( container122 );
 
 
             var group119 = new Group({
@@ -32254,7 +32295,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate057 = new ListItemTemplate({
+            var listItemTemplate058 = new ListItemTemplate({
                'id' : 'aw3ba3bf11',
                'artifactId' : 'WorkExecution.WOHistoryViewAsset_workOrder_wohistory_listItemTemplate_WorkListItem',
             });
@@ -32265,7 +32306,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wonum',
             });
-            listItemTemplate057.addChild( listtext268 );
+            listItemTemplate058.addChild( listtext268 );
 
 
             var listtext269 = new ListText({
@@ -32274,7 +32315,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate057.addChild( listtext269 );
+            listItemTemplate058.addChild( listtext269 );
 
 
             var image003 = new Image({
@@ -32285,7 +32326,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WOHistoryViewAsset_workOrder_WorkListItem_statusimg',
                'cssClass' : 'statusDesc',
             });
-            listItemTemplate057.addChild( image003 );
+            listItemTemplate058.addChild( image003 );
 
 
             var listtext270 = new ListText({
@@ -32295,13 +32336,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'statusDesc',
                'resourceAttribute' : 'statusdesc',
             });
-            listItemTemplate057.addChild( listtext270 );
+            listItemTemplate058.addChild( listtext270 );
 
 
 
-            var list057 = new List({
+            var list058 = new List({
                'id' : 'awc2f0da7c',
-               'listItemTemplate' : listItemTemplate057,
+               'listItemTemplate' : listItemTemplate058,
                'showHeader' : true,
                'transitionTo' : 'WorkExecution.WOHistoryDetailViewAssetLoc',
                'resource' : 'workOrderHistoryAssetLoc',
@@ -32309,7 +32350,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'label' : MessageService.createStaticMessage('Asset Work Orders '),
                'hideSort' : 'true',
             });
-            view095.addChild( list057 );
+            view096.addChild( list058 );
 
 
             var container123 = new Container({
@@ -32317,7 +32358,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewAsset_workOrder_container_1',
             });
-            view095.addChild( container123 );
+            view096.addChild( container123 );
 
 
             var group120 = new Group({
@@ -32354,27 +32395,27 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view096 = new View({
+            var view097 = new View({
                'id' : 'WorkExecution.WOHistoryViewLocation',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Location'),
             });
-            ui001.addChild( view096 );
+            ui001.addChild( view097 );
 
-            var requiredResources085 = {
+            var requiredResources086 = {
                'workOrder' : {
                   'id' : 'awf64ff36a',
                   'artifactId' : 'WorkExecution.WOHistoryViewLocation_workOrder',
                },
             };
-            view096.addRequiredResources( requiredResources085 );
+            view097.addRequiredResources( requiredResources086 );
 
             var container124 = new Container({
                'id' : 'aw5c0d1064',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewLocation_workOrder_container_0',
             });
-            view096.addChild( container124 );
+            view097.addChild( container124 );
 
 
             var group121 = new Group({
@@ -32410,7 +32451,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate058 = new ListItemTemplate({
+            var listItemTemplate059 = new ListItemTemplate({
                'id' : 'aw6ca1fb78',
                'artifactId' : 'WorkExecution.WOHistoryViewLocation_workOrder_wohistory_listItemTemplate_WorkListItem',
             });
@@ -32421,7 +32462,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wonum',
             });
-            listItemTemplate058.addChild( listtext271 );
+            listItemTemplate059.addChild( listtext271 );
 
 
             var listtext272 = new ListText({
@@ -32430,7 +32471,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate058.addChild( listtext272 );
+            listItemTemplate059.addChild( listtext272 );
 
 
             var image004 = new Image({
@@ -32441,7 +32482,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WOHistoryViewLocation_workOrder_WorkListItem_statusimg',
                'cssClass' : 'statusDesc',
             });
-            listItemTemplate058.addChild( image004 );
+            listItemTemplate059.addChild( image004 );
 
 
             var listtext273 = new ListText({
@@ -32451,13 +32492,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'statusDesc',
                'resourceAttribute' : 'statusdesc',
             });
-            listItemTemplate058.addChild( listtext273 );
+            listItemTemplate059.addChild( listtext273 );
 
 
 
-            var list058 = new List({
+            var list059 = new List({
                'id' : 'aw9eca324e',
-               'listItemTemplate' : listItemTemplate058,
+               'listItemTemplate' : listItemTemplate059,
                'showHeader' : true,
                'transitionTo' : 'WorkExecution.WOHistoryDetailViewAssetLoc',
                'resource' : 'workOrderHistoryAssetLoc',
@@ -32465,7 +32506,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'label' : MessageService.createStaticMessage('Location Work Orders '),
                'hideSort' : 'true',
             });
-            view096.addChild( list058 );
+            view097.addChild( list059 );
 
 
             var container125 = new Container({
@@ -32473,7 +32514,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewLocation_workOrder_container_1',
             });
-            view096.addChild( container125 );
+            view097.addChild( container125 );
 
 
             var group122 = new Group({
@@ -32510,27 +32551,27 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view097 = new View({
+            var view098 = new View({
                'id' : 'WorkExecution.WOHistoryViewMultiAsset',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Asset'),
             });
-            ui001.addChild( view097 );
+            ui001.addChild( view098 );
 
-            var requiredResources086 = {
+            var requiredResources087 = {
                'workOrder' : {
                   'id' : 'aw1ac82c8a',
                   'artifactId' : 'WorkExecution.WOHistoryViewMultiAsset_workOrder',
                },
             };
-            view097.addRequiredResources( requiredResources086 );
+            view098.addRequiredResources( requiredResources087 );
 
             var container126 = new Container({
                'id' : 'aw50e46f76',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiAsset_workOrder_container_0',
             });
-            view097.addChild( container126 );
+            view098.addChild( container126 );
 
 
             var group123 = new Group({
@@ -32566,7 +32607,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate059 = new ListItemTemplate({
+            var listItemTemplate060 = new ListItemTemplate({
                'id' : 'aw58b45b86',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiAsset_workOrder_wohistory_listItemTemplate_WorkListItem',
             });
@@ -32577,7 +32618,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wonum',
             });
-            listItemTemplate059.addChild( listtext274 );
+            listItemTemplate060.addChild( listtext274 );
 
 
             var listtext275 = new ListText({
@@ -32586,7 +32627,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate059.addChild( listtext275 );
+            listItemTemplate060.addChild( listtext275 );
 
 
             var image005 = new Image({
@@ -32597,7 +32638,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WOHistoryViewMultiAsset_workOrder_WorkListItem_statusimg',
                'cssClass' : 'statusDesc',
             });
-            listItemTemplate059.addChild( image005 );
+            listItemTemplate060.addChild( image005 );
 
 
             var listtext276 = new ListText({
@@ -32607,13 +32648,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'statusDesc',
                'resourceAttribute' : 'statusdesc',
             });
-            listItemTemplate059.addChild( listtext276 );
+            listItemTemplate060.addChild( listtext276 );
 
 
 
-            var list059 = new List({
+            var list060 = new List({
                'id' : 'awf0197ab9',
-               'listItemTemplate' : listItemTemplate059,
+               'listItemTemplate' : listItemTemplate060,
                'showHeader' : true,
                'transitionTo' : 'WorkExecution.WOHistoryDetailViewAssetLoc',
                'resource' : 'workOrderHistoryAssetLoc',
@@ -32621,7 +32662,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'label' : MessageService.createStaticMessage('Asset Work Orders '),
                'hideSort' : 'true',
             });
-            view097.addChild( list059 );
+            view098.addChild( list060 );
 
 
             var container127 = new Container({
@@ -32629,7 +32670,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiAsset_workOrder_container_1',
             });
-            view097.addChild( container127 );
+            view098.addChild( container127 );
 
 
             var group124 = new Group({
@@ -32666,27 +32707,27 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view098 = new View({
+            var view099 = new View({
                'id' : 'WorkExecution.WOHistoryViewMultiLocation',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Location'),
             });
-            ui001.addChild( view098 );
+            ui001.addChild( view099 );
 
-            var requiredResources087 = {
+            var requiredResources088 = {
                'workOrder' : {
                   'id' : 'aw548b4755',
                   'artifactId' : 'WorkExecution.WOHistoryViewMultiLocation_workOrder',
                },
             };
-            view098.addRequiredResources( requiredResources087 );
+            view099.addRequiredResources( requiredResources088 );
 
             var container128 = new Container({
                'id' : 'aw6ee4b0a1',
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiLocation_workOrder_container_0',
             });
-            view098.addChild( container128 );
+            view099.addChild( container128 );
 
 
             var group125 = new Group({
@@ -32722,7 +32763,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate060 = new ListItemTemplate({
+            var listItemTemplate061 = new ListItemTemplate({
                'id' : 'aw2d3ce641',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiLocation_workOrder_wohistory_listItemTemplate_WorkListItem',
             });
@@ -32733,7 +32774,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wonum',
             });
-            listItemTemplate060.addChild( listtext277 );
+            listItemTemplate061.addChild( listtext277 );
 
 
             var listtext278 = new ListText({
@@ -32742,7 +32783,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate060.addChild( listtext278 );
+            listItemTemplate061.addChild( listtext278 );
 
 
             var image006 = new Image({
@@ -32753,7 +32794,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.WOHistoryViewMultiLocation_workOrder_WorkListItem_statusimg',
                'cssClass' : 'statusDesc',
             });
-            listItemTemplate060.addChild( image006 );
+            listItemTemplate061.addChild( image006 );
 
 
             var listtext279 = new ListText({
@@ -32763,13 +32804,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'statusDesc',
                'resourceAttribute' : 'statusdesc',
             });
-            listItemTemplate060.addChild( listtext279 );
+            listItemTemplate061.addChild( listtext279 );
 
 
 
-            var list060 = new List({
+            var list061 = new List({
                'id' : 'aw7e7f80e2',
-               'listItemTemplate' : listItemTemplate060,
+               'listItemTemplate' : listItemTemplate061,
                'showHeader' : true,
                'transitionTo' : 'WorkExecution.WOHistoryDetailViewAssetLoc',
                'resource' : 'workOrderHistoryAssetLoc',
@@ -32777,7 +32818,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'label' : MessageService.createStaticMessage('Location Work Orders '),
                'hideSort' : 'true',
             });
-            view098.addChild( list060 );
+            view099.addChild( list061 );
 
 
             var container129 = new Container({
@@ -32785,7 +32826,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.WOHistoryViewMultiLocation_workOrder_container_1',
             });
-            view098.addChild( container129 );
+            view099.addChild( container129 );
 
 
             var group126 = new Group({
@@ -32822,27 +32863,27 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view099 = new View({
+            var view100 = new View({
                'id' : 'WorkExecution.WOHistoryDetailViewAssetLoc',
                'showOverflow' : true,
                'label' : MessageService.createStaticMessage('Work Order Details'),
             });
-            ui001.addChild( view099 );
+            ui001.addChild( view100 );
 
-            var requiredResources088 = {
+            var requiredResources089 = {
                'workOrderHistoryAssetLoc' : {
                   'id' : 'awe5d1ef25',
                   'artifactId' : 'WorkExecution.WOHistoryDetailViewAssetLoc_workOrder',
                },
             };
-            view099.addRequiredResources( requiredResources088 );
+            view100.addRequiredResources( requiredResources089 );
 
             var container130 = new Container({
                'id' : 'aw6e0ea6e5',
                'resource' : 'workOrderHistoryAssetLoc',
                'artifactId' : 'WorkExecution.WorkHistoryDetailViewAssetLoc_container',
             });
-            view099.addChild( container130 );
+            view100.addChild( container130 );
 
 
             var group127 = new Group({
@@ -32958,7 +32999,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'aw5bf044b4',
                'artifactId' : 'WorkExecution.WorkHistoryDetailViewAssetLoc_footer',
             });
-            view099.addChild( footer042 );
+            view100.addChild( footer042 );
 
 
             var button186 = new Button({
@@ -33021,25 +33062,25 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view100 = new View({
+            var view101 = new View({
                'id' : 'MapView.featureAttributes',
                'label' : MessageService.createStaticMessage('Feature Attributes'),
             });
-            ui001.addChild( view100 );
+            ui001.addChild( view101 );
 
-            var requiredResources089 = {
+            var requiredResources090 = {
                'featureAttributes' : {
                   'id' : 'aw811e442b',
                   'artifactId' : 'MapView.featureAttributes_attributes',
                },
             };
-            view100.addRequiredResources( requiredResources089 );
+            view101.addRequiredResources( requiredResources090 );
 
             var actions016 = new Actions({
                'id' : 'awe8d23901',
                'artifactId' : 'MapView.featureAttributes_actions',
             });
-            view100.addChild( actions016 );
+            view101.addChild( actions016 );
 
 
             var action035 = new Action({
@@ -33069,7 +33110,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             action035.eventHandlers = eventHandlers521;
 
 
-            var listItemTemplate061 = new ListItemTemplate({
+            var listItemTemplate062 = new ListItemTemplate({
                'id' : 'aw62e547a4',
                'layout' : 'FeatureAttributesList',
                'artifactId' : 'MapView.featureAttributes_listItemTemplate',
@@ -33083,7 +33124,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'featureAttributeLabel bold textappearance-medium',
                'resourceAttribute' : 'featureAttributeTitle',
             });
-            listItemTemplate061.addChild( listtext280 );
+            listItemTemplate062.addChild( listtext280 );
 
 
             var listtext281 = new ListText({
@@ -33093,19 +33134,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'featureAttributeValue textappearance-medium',
                'resourceAttribute' : 'featureAttributeValue',
             });
-            listItemTemplate061.addChild( listtext281 );
+            listItemTemplate062.addChild( listtext281 );
 
 
 
-            var list061 = new List({
+            var list062 = new List({
                'id' : 'awf5b603fe',
-               'listItemTemplate' : listItemTemplate061,
+               'listItemTemplate' : listItemTemplate062,
                'resource' : 'featureAttributes',
                'artifactId' : 'MapView.featureAttributes_list',
                'label' : MessageService.createStaticMessage('Attributes'),
                'displayPageSize' : '100',
             });
-            view100.addChild( list061 );
+            view101.addChild( list062 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -33120,16 +33161,16 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup001 );
 
-            var requiredResources090 = {
+            var requiredResources091 = {
                'domainwostatus' : {
                   'id' : 'awc0416e9b',
                   'artifactId' : 'WorkExecution.dataSheetLookup_domainwostatus',
                },
             };
-            lookup001.addRequiredResources( requiredResources090 );
+            lookup001.addRequiredResources( requiredResources091 );
 
 
-            var listItemTemplate062 = new ListItemTemplate({
+            var listItemTemplate063 = new ListItemTemplate({
                'id' : 'aw9c3c0fe6',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.dataSheetLookup_listItemTemplate_Item1Desc1',
@@ -33142,7 +33183,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'dsplannum',
             });
-            listItemTemplate062.addChild( listtext282 );
+            listItemTemplate063.addChild( listtext282 );
 
 
             var listtext283 = new ListText({
@@ -33152,17 +33193,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate062.addChild( listtext283 );
+            listItemTemplate063.addChild( listtext283 );
 
 
 
-            var list062 = new List({
+            var list063 = new List({
                'id' : 'aw62d28551',
-               'listItemTemplate' : listItemTemplate062,
+               'listItemTemplate' : listItemTemplate063,
                'resource' : 'additionalDataSheetTemplateResource',
                'artifactId' : 'WorkExecution.dataSheetLookup_list',
             });
-            lookup001.addChild( list062 );
+            lookup001.addChild( list063 );
 
 
             var returnAttributes001 = new ReturnAttributes({
@@ -33226,7 +33267,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup002 );
 
-            var requiredResources091 = {
+            var requiredResources092 = {
                'domainwostatus' : {
                   'id' : 'awc36a3c29',
                   'artifactId' : 'WorkExecution.statusLookup_domainwostatus',
@@ -33242,10 +33283,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            lookup002.addRequiredResources( requiredResources091 );
+            lookup002.addRequiredResources( requiredResources092 );
 
 
-            var listItemTemplate063 = new ListItemTemplate({
+            var listItemTemplate064 = new ListItemTemplate({
                'id' : 'awb92cb1d4',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.statusLookup_domainwostatus_listItemTemplate_Item1Desc1',
@@ -33258,7 +33299,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate063.addChild( listtext284 );
+            listItemTemplate064.addChild( listtext284 );
 
 
             var listtext285 = new ListText({
@@ -33268,17 +33309,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate063.addChild( listtext285 );
+            listItemTemplate064.addChild( listtext285 );
 
 
 
-            var list063 = new List({
+            var list064 = new List({
                'id' : 'awca564814',
-               'listItemTemplate' : listItemTemplate063,
+               'listItemTemplate' : listItemTemplate064,
                'resource' : 'domainwostatus',
                'artifactId' : 'WorkExecution.statusLookup_domainwostatus_list',
             });
-            lookup002.addChild( list063 );
+            lookup002.addChild( list064 );
 
 
             var returnAttributes002 = new ReturnAttributes({
@@ -33315,7 +33356,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup003 );
 
-            var requiredResources092 = {
+            var requiredResources093 = {
                'domainwostatus' : {
                   'id' : 'aw6d2288d4',
                   'artifactId' : 'WorkExecution.taskStatusLookup_domainwostatus',
@@ -33335,10 +33376,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            lookup003.addRequiredResources( requiredResources092 );
+            lookup003.addRequiredResources( requiredResources093 );
 
 
-            var listItemTemplate064 = new ListItemTemplate({
+            var listItemTemplate065 = new ListItemTemplate({
                'id' : 'awff4de7d5',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.taskStatusLookup_domainwostatus_listItemTemplate_Item1Desc1',
@@ -33351,7 +33392,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate064.addChild( listtext286 );
+            listItemTemplate065.addChild( listtext286 );
 
 
             var listtext287 = new ListText({
@@ -33361,17 +33402,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate064.addChild( listtext287 );
+            listItemTemplate065.addChild( listtext287 );
 
 
 
-            var list064 = new List({
+            var list065 = new List({
                'id' : 'awa6ef482a',
-               'listItemTemplate' : listItemTemplate064,
+               'listItemTemplate' : listItemTemplate065,
                'resource' : 'domainwostatus',
                'artifactId' : 'WorkExecution.taskStatusLookup_domainwostatus_list',
             });
-            lookup003.addChild( list064 );
+            lookup003.addChild( list065 );
 
 
             var returnAttributes003 = new ReturnAttributes({
@@ -33405,16 +33446,16 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup004 );
 
-            var requiredResources093 = {
+            var requiredResources094 = {
                'domainlabortransactiontype' : {
                   'id' : 'aw4dbd31e5',
                   'artifactId' : 'WorkExecution.LaborTransactionTypeLookup_domainlabortransactiontype',
                },
             };
-            lookup004.addRequiredResources( requiredResources093 );
+            lookup004.addRequiredResources( requiredResources094 );
 
 
-            var listItemTemplate065 = new ListItemTemplate({
+            var listItemTemplate066 = new ListItemTemplate({
                'id' : 'aw9b2b1511',
                'artifactId' : 'WorkExecution.LaborTransactionTypeLookup_domainlabortransactiontype_listItemTemplate',
             });
@@ -33424,7 +33465,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborTransactionTypeLookup_domainlabortransactiontype_value',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate065.addChild( listtext288 );
+            listItemTemplate066.addChild( listtext288 );
 
 
             var listtext289 = new ListText({
@@ -33432,17 +33473,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborTransactionTypeLookup_domainlabortransactiontype_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate065.addChild( listtext289 );
+            listItemTemplate066.addChild( listtext289 );
 
 
 
-            var list065 = new List({
+            var list066 = new List({
                'id' : 'aw391f0363',
-               'listItemTemplate' : listItemTemplate065,
+               'listItemTemplate' : listItemTemplate066,
                'resource' : 'domainlabortransactiontype',
                'artifactId' : 'WorkExecution.LaborTransactionTypeLookup_domainlabortransactiontype_list',
             });
-            lookup004.addChild( list065 );
+            lookup004.addChild( list066 );
 
 
             var lookup005 = new Lookup({
@@ -33454,7 +33495,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup005 );
 
-            var requiredResources094 = {
+            var requiredResources095 = {
                'additionalasset' : {
                   'id' : 'aw64aa1ffe',
                   'artifactId' : 'WorkExecution.AssetLookup_additionalasset',
@@ -33464,7 +33505,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.AssetLookup_workOrder',
                },
             };
-            lookup005.addRequiredResources( requiredResources094 );
+            lookup005.addRequiredResources( requiredResources095 );
 
 
             var searchAttributes001 = new SearchAttributes({
@@ -33505,7 +33546,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate066 = new ListItemTemplate({
+            var listItemTemplate067 = new ListItemTemplate({
                'id' : 'aw44502e09',
                'layout' : 'Item2Desc2',
                'artifactId' : 'WorkExecution.AssetLookup_additionalasset_listItemTemplate_Item2Desc2',
@@ -33518,7 +33559,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'assetnum',
             });
-            listItemTemplate066.addChild( listtext290 );
+            listItemTemplate067.addChild( listtext290 );
 
 
             var listtext291 = new ListText({
@@ -33528,7 +33569,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate066.addChild( listtext291 );
+            listItemTemplate067.addChild( listtext291 );
 
 
             var listtext292 = new ListText({
@@ -33537,7 +33578,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.AssetLookup_additionalasset_Item2Desc2_location',
                'resourceAttribute' : 'location',
             });
-            listItemTemplate066.addChild( listtext292 );
+            listItemTemplate067.addChild( listtext292 );
 
 
             var listtext293 = new ListText({
@@ -33546,18 +33587,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.AssetLookup_additionalasset_Item2Desc2_locationdesc',
                'resourceAttribute' : 'locationdesc',
             });
-            listItemTemplate066.addChild( listtext293 );
+            listItemTemplate067.addChild( listtext293 );
 
 
 
-            var list066 = new List({
+            var list067 = new List({
                'id' : 'aw33ed57e3',
-               'listItemTemplate' : listItemTemplate066,
+               'listItemTemplate' : listItemTemplate067,
                'resource' : 'additionalasset',
                'artifactId' : 'WorkExecution.AssetLookup_additionalasset_list',
                'searchAttributes' : searchAttributes001,
             });
-            lookup005.addChild( list066 );
+            lookup005.addChild( list067 );
 
 
             var returnAttributes004 = new ReturnAttributes({
@@ -33603,7 +33644,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup006 );
 
-            var requiredResources095 = {
+            var requiredResources096 = {
                'additionalInventory' : {
                   'id' : 'aw3f1492cc',
                   'artifactId' : 'WorkExecution.ItemLookup_additionalInventory',
@@ -33614,7 +33655,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ItemLookup_additionalbin',
                },
             };
-            lookup006.addRequiredResources( requiredResources095 );
+            lookup006.addRequiredResources( requiredResources096 );
 
 
             var searchAttributes002 = new SearchAttributes({
@@ -33647,7 +33688,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate067 = new ListItemTemplate({
+            var listItemTemplate068 = new ListItemTemplate({
                'id' : 'awa030ef75',
                'layout' : 'ItemLookup',
                'artifactId' : 'WorkExecution.ItemLookup_additionalInventory_listItemTemplate_ItemLookup',
@@ -33660,7 +33701,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'itemnum',
             });
-            listItemTemplate067.addChild( listtext294 );
+            listItemTemplate068.addChild( listtext294 );
 
 
             var listtext295 = new ListText({
@@ -33670,7 +33711,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'location',
             });
-            listItemTemplate067.addChild( listtext295 );
+            listItemTemplate068.addChild( listtext295 );
 
 
             var listtext296 = new ListText({
@@ -33679,18 +33720,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ItemLookup_additionalInventory_ItemLookup_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate067.addChild( listtext296 );
+            listItemTemplate068.addChild( listtext296 );
 
 
 
-            var list067 = new List({
+            var list068 = new List({
                'id' : 'aw61b08566',
-               'listItemTemplate' : listItemTemplate067,
+               'listItemTemplate' : listItemTemplate068,
                'resource' : 'additionalInventory',
                'artifactId' : 'WorkExecution.ItemLookup_additionalInventory_list',
                'searchAttributes' : searchAttributes002,
             });
-            lookup006.addChild( list067 );
+            lookup006.addChild( list068 );
 
 
             var returnAttributes005 = new ReturnAttributes({
@@ -33736,13 +33777,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup007 );
 
-            var requiredResources096 = {
+            var requiredResources097 = {
                'additionallaborcraftrate' : {
                   'id' : 'aw647f0e77',
                   'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate',
                },
             };
-            lookup007.addRequiredResources( requiredResources096 );
+            lookup007.addRequiredResources( requiredResources097 );
 
 
             var sortOptions013 = new SortOptions({
@@ -33831,7 +33872,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate068 = new ListItemTemplate({
+            var listItemTemplate069 = new ListItemTemplate({
                'id' : 'aw716cdc5f',
                'layout' : 'LaborCraftRateLookupItem',
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_listItemTemplate_LaborCraftRateLookupItem',
@@ -33843,7 +33884,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_LaborCraftRateLookupItem_craft',
                'resourceAttribute' : 'craft',
             });
-            listItemTemplate068.addChild( listtext297 );
+            listItemTemplate069.addChild( listtext297 );
 
 
             var listtext298 = new ListText({
@@ -33852,7 +33893,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_LaborCraftRateLookupItem_skilllevel',
                'resourceAttribute' : 'skilllevel',
             });
-            listItemTemplate068.addChild( listtext298 );
+            listItemTemplate069.addChild( listtext298 );
 
 
             var listtext299 = new ListText({
@@ -33862,7 +33903,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'laborcode',
             });
-            listItemTemplate068.addChild( listtext299 );
+            listItemTemplate069.addChild( listtext299 );
 
 
             var listtext300 = new ListText({
@@ -33872,7 +33913,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'laborname',
             });
-            listItemTemplate068.addChild( listtext300 );
+            listItemTemplate069.addChild( listtext300 );
 
 
             var listtext301 = new ListText({
@@ -33881,7 +33922,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_LaborCraftRateLookupItem_vendor',
                'resourceAttribute' : 'vendor',
             });
-            listItemTemplate068.addChild( listtext301 );
+            listItemTemplate069.addChild( listtext301 );
 
 
             var listtext302 = new ListText({
@@ -33890,19 +33931,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_LaborCraftRateLookupItem_contractnum',
                'resourceAttribute' : 'contractnum',
             });
-            listItemTemplate068.addChild( listtext302 );
+            listItemTemplate069.addChild( listtext302 );
 
 
 
-            var list068 = new List({
+            var list069 = new List({
                'id' : 'awecfc4221',
-               'listItemTemplate' : listItemTemplate068,
+               'listItemTemplate' : listItemTemplate069,
                'sortOptions' : sortOptions013,
                'resource' : 'additionallaborcraftrate',
                'artifactId' : 'WorkExecution.LaborCraftRateLookup_additionallaborcraftrate_list',
                'searchAttributes' : searchAttributes003,
             });
-            lookup007.addChild( list068 );
+            lookup007.addChild( list069 );
 
 
             var returnAttributes006 = new ReturnAttributes({
@@ -33975,14 +34016,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup008 );
 
-            var requiredResources097 = {
+            var requiredResources098 = {
                'additionallaborcraftrate' : {
                   'id' : 'awb78402c4',
                   'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate',
                   'reload' : true,
                },
             };
-            lookup008.addRequiredResources( requiredResources097 );
+            lookup008.addRequiredResources( requiredResources098 );
 
 
             var sortOptions014 = new SortOptions({
@@ -34071,7 +34112,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate069 = new ListItemTemplate({
+            var listItemTemplate070 = new ListItemTemplate({
                'id' : 'aw8f5c321a',
                'layout' : 'LaborCraftRateLookupItem',
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_listItemTemplate_LaborCraftRateLookupItem',
@@ -34083,7 +34124,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_LaborCraftRateLookupItem_craft',
                'resourceAttribute' : 'craft',
             });
-            listItemTemplate069.addChild( listtext303 );
+            listItemTemplate070.addChild( listtext303 );
 
 
             var listtext304 = new ListText({
@@ -34092,7 +34133,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_LaborCraftRateLookupItem_skilllevel',
                'resourceAttribute' : 'skilllevel',
             });
-            listItemTemplate069.addChild( listtext304 );
+            listItemTemplate070.addChild( listtext304 );
 
 
             var listtext305 = new ListText({
@@ -34102,7 +34143,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'laborcode',
             });
-            listItemTemplate069.addChild( listtext305 );
+            listItemTemplate070.addChild( listtext305 );
 
 
             var listtext306 = new ListText({
@@ -34112,7 +34153,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'laborname',
             });
-            listItemTemplate069.addChild( listtext306 );
+            listItemTemplate070.addChild( listtext306 );
 
 
             var listtext307 = new ListText({
@@ -34121,7 +34162,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_LaborCraftRateLookupItem_vendor',
                'resourceAttribute' : 'vendor',
             });
-            listItemTemplate069.addChild( listtext307 );
+            listItemTemplate070.addChild( listtext307 );
 
 
             var listtext308 = new ListText({
@@ -34130,19 +34171,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_LaborCraftRateLookupItem_contractnum',
                'resourceAttribute' : 'contractnum',
             });
-            listItemTemplate069.addChild( listtext308 );
+            listItemTemplate070.addChild( listtext308 );
 
 
 
-            var list069 = new List({
+            var list070 = new List({
                'id' : 'awe2c985b0',
-               'listItemTemplate' : listItemTemplate069,
+               'listItemTemplate' : listItemTemplate070,
                'sortOptions' : sortOptions014,
                'resource' : 'additionallaborcraftrate',
                'artifactId' : 'WorkExecution.LaborCraftLookup_additionallaborcraftrate_list',
                'searchAttributes' : searchAttributes004,
             });
-            lookup008.addChild( list069 );
+            lookup008.addChild( list070 );
 
 
             var returnAttributes007 = new ReturnAttributes({
@@ -34224,13 +34265,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup009 );
 
-            var requiredResources098 = {
+            var requiredResources099 = {
                'additionaltool' : {
                   'id' : 'awcd8421ea',
                   'artifactId' : 'WorkExecution.ToolLookup_additionaltool',
                },
             };
-            lookup009.addRequiredResources( requiredResources098 );
+            lookup009.addRequiredResources( requiredResources099 );
 
 
             var searchAttributes005 = new SearchAttributes({
@@ -34255,7 +34296,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate070 = new ListItemTemplate({
+            var listItemTemplate071 = new ListItemTemplate({
                'id' : 'awaba56261',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.ToolLookup_additionaltool_listItemTemplate_Item1Desc1',
@@ -34268,7 +34309,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'itemnum',
             });
-            listItemTemplate070.addChild( listtext309 );
+            listItemTemplate071.addChild( listtext309 );
 
 
             var listtext310 = new ListText({
@@ -34278,18 +34319,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate070.addChild( listtext310 );
+            listItemTemplate071.addChild( listtext310 );
 
 
 
-            var list070 = new List({
+            var list071 = new List({
                'id' : 'awfb6f8579',
-               'listItemTemplate' : listItemTemplate070,
+               'listItemTemplate' : listItemTemplate071,
                'resource' : 'additionaltool',
                'artifactId' : 'WorkExecution.ToolLookup_additionaltool_list',
                'searchAttributes' : searchAttributes005,
             });
-            lookup009.addChild( list070 );
+            lookup009.addChild( list071 );
 
 
             var returnAttributes008 = new ReturnAttributes({
@@ -34335,14 +34376,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup010 );
 
-            var requiredResources099 = {
+            var requiredResources100 = {
                'vendor' : {
                   'id' : 'aw5f45bc54',
                   'artifactId' : 'WorkExecution.VendorLookup_vendor',
                   'reload' : true,
                },
             };
-            lookup010.addRequiredResources( requiredResources099 );
+            lookup010.addRequiredResources( requiredResources100 );
 
 
             var searchAttributes006 = new SearchAttributes({
@@ -34359,7 +34400,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate071 = new ListItemTemplate({
+            var listItemTemplate072 = new ListItemTemplate({
                'id' : 'aw4dfc1cb4',
                'layout' : 'VendorNameAddressListItem',
                'artifactId' : 'WorkExecution.VendorLookup_vendor_listItemTemplate_Item1Desc1',
@@ -34372,7 +34413,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'name',
             });
-            listItemTemplate071.addChild( listtext311 );
+            listItemTemplate072.addChild( listtext311 );
 
 
             var listtext312 = new ListText({
@@ -34382,7 +34423,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'address',
             });
-            listItemTemplate071.addChild( listtext312 );
+            listItemTemplate072.addChild( listtext312 );
 
 
             var listtext313 = new ListText({
@@ -34392,7 +34433,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'city',
             });
-            listItemTemplate071.addChild( listtext313 );
+            listItemTemplate072.addChild( listtext313 );
 
 
             var listtext314 = new ListText({
@@ -34402,18 +34443,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'state',
             });
-            listItemTemplate071.addChild( listtext314 );
+            listItemTemplate072.addChild( listtext314 );
 
 
 
-            var list071 = new List({
+            var list072 = new List({
                'id' : 'awc8a81e9a',
-               'listItemTemplate' : listItemTemplate071,
+               'listItemTemplate' : listItemTemplate072,
                'resource' : 'vendor',
                'artifactId' : 'WorkExecution.VendorLookup_vendor_list',
                'searchAttributes' : searchAttributes006,
             });
-            lookup010.addChild( list071 );
+            lookup010.addChild( list072 );
 
 
             var returnAttributes009 = new ReturnAttributes({
@@ -34450,13 +34491,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup011 );
 
-            var requiredResources100 = {
+            var requiredResources101 = {
                'additionallocations' : {
                   'id' : 'aw46126c9c',
                   'artifactId' : 'WorkExecution.LocationLookup_additionallocations',
                },
             };
-            lookup011.addRequiredResources( requiredResources100 );
+            lookup011.addRequiredResources( requiredResources101 );
 
 
             var searchAttributes007 = new SearchAttributes({
@@ -34481,7 +34522,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate072 = new ListItemTemplate({
+            var listItemTemplate073 = new ListItemTemplate({
                'id' : 'awf2ef0e1d',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.LocationLookup_additionallocations_listItemTemplate_Item1Desc1',
@@ -34494,7 +34535,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'location',
             });
-            listItemTemplate072.addChild( listtext315 );
+            listItemTemplate073.addChild( listtext315 );
 
 
             var listtext316 = new ListText({
@@ -34504,18 +34545,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate072.addChild( listtext316 );
+            listItemTemplate073.addChild( listtext316 );
 
 
 
-            var list072 = new List({
+            var list073 = new List({
                'id' : 'awc56a9534',
-               'listItemTemplate' : listItemTemplate072,
+               'listItemTemplate' : listItemTemplate073,
                'resource' : 'additionallocations',
                'artifactId' : 'WorkExecution.LocationLookup_additionallocations_list',
                'searchAttributes' : searchAttributes007,
             });
-            lookup011.addChild( list072 );
+            lookup011.addChild( list073 );
 
 
             var returnAttributes010 = new ReturnAttributes({
@@ -34561,14 +34602,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup012 );
 
-            var requiredResources101 = {
+            var requiredResources102 = {
                'additionalamcrew' : {
                   'id' : 'awfd39aaab',
                   'artifactId' : 'WorkExecution.CrewLookup_additionalamcrew',
                   'reload' : true,
                },
             };
-            lookup012.addRequiredResources( requiredResources101 );
+            lookup012.addRequiredResources( requiredResources102 );
 
 
             var searchAttributes008 = new SearchAttributes({
@@ -34593,7 +34634,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate073 = new ListItemTemplate({
+            var listItemTemplate074 = new ListItemTemplate({
                'id' : 'aw2f942497',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.CrewLookup_additionalamcrew_listItemTemplate_Item1Desc1',
@@ -34606,7 +34647,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'amcrew',
             });
-            listItemTemplate073.addChild( listtext317 );
+            listItemTemplate074.addChild( listtext317 );
 
 
             var listtext318 = new ListText({
@@ -34616,18 +34657,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate073.addChild( listtext318 );
+            listItemTemplate074.addChild( listtext318 );
 
 
 
-            var list073 = new List({
+            var list074 = new List({
                'id' : 'awb6649e0a',
-               'listItemTemplate' : listItemTemplate073,
+               'listItemTemplate' : listItemTemplate074,
                'resource' : 'additionalamcrew',
                'artifactId' : 'WorkExecution.CrewLookup_additionalamcrew_list',
                'searchAttributes' : searchAttributes008,
             });
-            lookup012.addChild( list073 );
+            lookup012.addChild( list074 );
 
 
             var returnAttributes011 = new ReturnAttributes({
@@ -34662,14 +34703,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup013 );
 
-            var requiredResources102 = {
+            var requiredResources103 = {
                'additionalserviceaddress' : {
                   'id' : 'awc03505db',
                   'artifactId' : 'WorkExecution.ServiceAddressLookup_additionalserviceaddress',
                   'reload' : true,
                },
             };
-            lookup013.addRequiredResources( requiredResources102 );
+            lookup013.addRequiredResources( requiredResources103 );
 
 
             var searchAttributes009 = new SearchAttributes({
@@ -34694,7 +34735,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate074 = new ListItemTemplate({
+            var listItemTemplate075 = new ListItemTemplate({
                'id' : 'aw5ce84e67',
                'layout' : 'ServiceAddressLookup',
                'artifactId' : 'WorkExecution.ServiceAddressLookup_additionalserviceaddress_listItemTemplate_ServiceAddressLookup',
@@ -34707,7 +34748,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'addresscode',
             });
-            listItemTemplate074.addChild( listtext319 );
+            listItemTemplate075.addChild( listtext319 );
 
 
             var listtext320 = new ListText({
@@ -34716,7 +34757,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ServiceAddressLookup_additionalserviceaddress_ServiceAddressLookup_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate074.addChild( listtext320 );
+            listItemTemplate075.addChild( listtext320 );
 
 
             var listtext321 = new ListText({
@@ -34725,18 +34766,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.ServiceAddressLookup_additionalserviceaddress_ServiceAddressLookup_formattedaddress',
                'resourceAttribute' : 'formattedaddress',
             });
-            listItemTemplate074.addChild( listtext321 );
+            listItemTemplate075.addChild( listtext321 );
 
 
 
-            var list074 = new List({
+            var list075 = new List({
                'id' : 'aw394cc64c',
-               'listItemTemplate' : listItemTemplate074,
+               'listItemTemplate' : listItemTemplate075,
                'resource' : 'additionalserviceaddress',
                'artifactId' : 'WorkExecution.ServiceAddressLookup_additionalserviceaddress_list',
                'searchAttributes' : searchAttributes009,
             });
-            lookup013.addChild( list074 );
+            lookup013.addChild( list075 );
 
 
             var returnAttributes012 = new ReturnAttributes({
@@ -34780,17 +34821,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup014 );
 
-            var requiredResources103 = {
+            var requiredResources104 = {
                'verticaldata' : {
                   'id' : 'awe80f3f14',
                   'artifactId' : 'WorkExecution.VerticalLookup_additionalserviceaddress',
                   'reload' : true,
                },
             };
-            lookup014.addRequiredResources( requiredResources103 );
+            lookup014.addRequiredResources( requiredResources104 );
 
 
-            var listItemTemplate075 = new ListItemTemplate({
+            var listItemTemplate076 = new ListItemTemplate({
                'id' : 'aw807bccae',
                'layout' : 'VerticalLookup',
                'artifactId' : 'WorkExecution.VerticalLookup_additionalserviceaddress_listItemTemplate_VerticalLookup',
@@ -34803,7 +34844,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate075.addChild( listtext322 );
+            listItemTemplate076.addChild( listtext322 );
 
 
             var listtext323 = new ListText({
@@ -34813,17 +34854,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate075.addChild( listtext323 );
+            listItemTemplate076.addChild( listtext323 );
 
 
 
-            var list075 = new List({
+            var list076 = new List({
                'id' : 'awb93e6f6f',
-               'listItemTemplate' : listItemTemplate075,
+               'listItemTemplate' : listItemTemplate076,
                'resource' : 'verticaldata',
                'artifactId' : 'WorkExecution.VerticalLookup_additionalserviceaddress_list',
             });
-            lookup014.addChild( list075 );
+            lookup014.addChild( list076 );
 
 
             var returnAttributes013 = new ReturnAttributes({
@@ -34851,7 +34892,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup015 );
 
-            var requiredResources104 = {
+            var requiredResources105 = {
                'additionalstoreroom' : {
                   'id' : 'aw23e886d7',
                   'artifactId' : 'WorkExecution.StoreroomLookup_additionalstoreroom',
@@ -34862,7 +34903,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.StoreroomLookup_additionalInventory',
                },
             };
-            lookup015.addRequiredResources( requiredResources104 );
+            lookup015.addRequiredResources( requiredResources105 );
 
 
             var searchAttributes010 = new SearchAttributes({
@@ -34887,7 +34928,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate076 = new ListItemTemplate({
+            var listItemTemplate077 = new ListItemTemplate({
                'id' : 'awa9c9c6a0',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.StoreroomLookup_additionalstoreroom_listItemTemplate_Item1Desc1',
@@ -34900,7 +34941,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'location',
             });
-            listItemTemplate076.addChild( listtext324 );
+            listItemTemplate077.addChild( listtext324 );
 
 
             var listtext325 = new ListText({
@@ -34910,18 +34951,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate076.addChild( listtext325 );
+            listItemTemplate077.addChild( listtext325 );
 
 
 
-            var list076 = new List({
+            var list077 = new List({
                'id' : 'awf35234d4',
-               'listItemTemplate' : listItemTemplate076,
+               'listItemTemplate' : listItemTemplate077,
                'resource' : 'additionalstoreroom',
                'artifactId' : 'WorkExecution.StoreroomLookup_additionalstoreroom_list',
                'searchAttributes' : searchAttributes010,
             });
-            lookup015.addChild( list076 );
+            lookup015.addChild( list077 );
 
 
             var lookup016 = new Lookup({
@@ -34933,7 +34974,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup016 );
 
-            var requiredResources105 = {
+            var requiredResources106 = {
                'additionalbin' : {
                   'id' : 'aw432196c5',
                   'artifactId' : 'WorkExecution.RotatingAssetLookup_additionalbin',
@@ -34956,7 +34997,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.RotatingAssetLookup_additionalitem',
                },
             };
-            lookup016.addRequiredResources( requiredResources105 );
+            lookup016.addRequiredResources( requiredResources106 );
 
 
             var searchAttributes011 = new SearchAttributes({
@@ -34981,7 +35022,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate077 = new ListItemTemplate({
+            var listItemTemplate078 = new ListItemTemplate({
                'id' : 'aw26d96482',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.RotatingAssetLookup_additionalasset_listItemTemplate_Item1Desc1',
@@ -34994,7 +35035,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'assetnum',
             });
-            listItemTemplate077.addChild( listtext326 );
+            listItemTemplate078.addChild( listtext326 );
 
 
             var listtext327 = new ListText({
@@ -35004,18 +35045,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate077.addChild( listtext327 );
+            listItemTemplate078.addChild( listtext327 );
 
 
 
-            var list077 = new List({
+            var list078 = new List({
                'id' : 'aw1ee36ff6',
-               'listItemTemplate' : listItemTemplate077,
+               'listItemTemplate' : listItemTemplate078,
                'resource' : 'additionalasset',
                'artifactId' : 'WorkExecution.RotatingAssetLookup_additionalasset_list',
                'searchAttributes' : searchAttributes011,
             });
-            lookup016.addChild( list077 );
+            lookup016.addChild( list078 );
 
 
             var lookup017 = new Lookup({
@@ -35027,7 +35068,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup017 );
 
-            var requiredResources106 = {
+            var requiredResources107 = {
                'additionalasset' : {
                   'id' : 'aw808fd882',
                   'artifactId' : 'WorkExecution.CopyPlansToActualRotatingAssetLookup_additionalasset',
@@ -35038,7 +35079,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.CopyPlansToActualRotatingAssetLookup_additionalInventory',
                },
             };
-            lookup017.addRequiredResources( requiredResources106 );
+            lookup017.addRequiredResources( requiredResources107 );
 
 
             var searchAttributes012 = new SearchAttributes({
@@ -35063,7 +35104,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate078 = new ListItemTemplate({
+            var listItemTemplate079 = new ListItemTemplate({
                'id' : 'awe1a2b7dc',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.CopyPlansToActualRotatingAssetLookup_additionalasset_listItemTemplate_Item1Desc1',
@@ -35076,7 +35117,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'assetnum',
             });
-            listItemTemplate078.addChild( listtext328 );
+            listItemTemplate079.addChild( listtext328 );
 
 
             var listtext329 = new ListText({
@@ -35086,18 +35127,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate078.addChild( listtext329 );
+            listItemTemplate079.addChild( listtext329 );
 
 
 
-            var list078 = new List({
+            var list079 = new List({
                'id' : 'awe0c13e71',
-               'listItemTemplate' : listItemTemplate078,
+               'listItemTemplate' : listItemTemplate079,
                'resource' : 'additionalasset',
                'artifactId' : 'WorkExecution.CopyPlansToActualRotatingAssetLookup_additionalasset_list',
                'searchAttributes' : searchAttributes012,
             });
-            lookup017.addChild( list078 );
+            lookup017.addChild( list079 );
 
 
             var lookup018 = new Lookup({
@@ -35109,7 +35150,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup018 );
 
-            var requiredResources107 = {
+            var requiredResources108 = {
                'additionalasset' : {
                   'id' : 'aw8f218064',
                   'artifactId' : 'WorkExecution.ITEM_CopyPlansToActualRotatingAssetLookup_additionalasset',
@@ -35120,7 +35161,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ITEM_CopyPlansToActualRotatingAssetLookup_additionalInventory',
                },
             };
-            lookup018.addRequiredResources( requiredResources107 );
+            lookup018.addRequiredResources( requiredResources108 );
 
 
             var searchAttributes013 = new SearchAttributes({
@@ -35145,7 +35186,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate079 = new ListItemTemplate({
+            var listItemTemplate080 = new ListItemTemplate({
                'id' : 'awec9e29c',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.ITEM_CopyPlansToActualRotatingAssetLookup_additionalasset_listItemTemplate_Item1Desc1',
@@ -35158,7 +35199,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'assetnum',
             });
-            listItemTemplate079.addChild( listtext330 );
+            listItemTemplate080.addChild( listtext330 );
 
 
             var listtext331 = new ListText({
@@ -35168,18 +35209,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate079.addChild( listtext331 );
+            listItemTemplate080.addChild( listtext331 );
 
 
 
-            var list079 = new List({
+            var list080 = new List({
                'id' : 'aw1d9247e6',
-               'listItemTemplate' : listItemTemplate079,
+               'listItemTemplate' : listItemTemplate080,
                'resource' : 'additionalasset',
                'artifactId' : 'WorkExecution.ITEM_CopyPlansToActualRotatingAssetLookup_additionalasset_list',
                'searchAttributes' : searchAttributes013,
             });
-            lookup018.addChild( list079 );
+            lookup018.addChild( list080 );
 
 
             var lookup019 = new Lookup({
@@ -35191,7 +35232,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup019 );
 
-            var requiredResources108 = {
+            var requiredResources109 = {
                'additionalbin' : {
                   'id' : 'aw367dad2f',
                   'artifactId' : 'WorkExecution.ActualToolRotatingAssetLookup_additionalbin',
@@ -35214,7 +35255,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.ActualToolRotatingAssetLookup_additionalitem',
                },
             };
-            lookup019.addRequiredResources( requiredResources108 );
+            lookup019.addRequiredResources( requiredResources109 );
 
 
             var searchAttributes014 = new SearchAttributes({
@@ -35239,7 +35280,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate080 = new ListItemTemplate({
+            var listItemTemplate081 = new ListItemTemplate({
                'id' : 'awc7a34d2e',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.ActualToolRotatingAssetLookup_additionalasset_listItemTemplate_Item1Desc1',
@@ -35252,7 +35293,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'assetnum',
             });
-            listItemTemplate080.addChild( listtext332 );
+            listItemTemplate081.addChild( listtext332 );
 
 
             var listtext333 = new ListText({
@@ -35262,18 +35303,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate080.addChild( listtext333 );
+            listItemTemplate081.addChild( listtext333 );
 
 
 
-            var list080 = new List({
+            var list081 = new List({
                'id' : 'aw768c13a5',
-               'listItemTemplate' : listItemTemplate080,
+               'listItemTemplate' : listItemTemplate081,
                'resource' : 'additionalasset',
                'artifactId' : 'WorkExecution.ActualToolRotatingAssetLookup_additionalasset_list',
                'searchAttributes' : searchAttributes014,
             });
-            lookup019.addChild( list080 );
+            lookup019.addChild( list081 );
 
 
             var returnAttributes014 = new ReturnAttributes({
@@ -35327,7 +35368,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup020 );
 
-            var requiredResources109 = {
+            var requiredResources110 = {
                'additionalpremiumpaycode' : {
                   'id' : 'awc7555c4a',
                   'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycode',
@@ -35337,7 +35378,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycraftrate',
                },
             };
-            lookup020.addRequiredResources( requiredResources109 );
+            lookup020.addRequiredResources( requiredResources110 );
 
 
             var searchAttributes015 = new SearchAttributes({
@@ -35362,7 +35403,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate081 = new ListItemTemplate({
+            var listItemTemplate082 = new ListItemTemplate({
                'id' : 'aw6bf95cae',
                'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycode_listItemTemplate',
             });
@@ -35372,7 +35413,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycode_premiumpaycode',
                'resourceAttribute' : 'premiumpaycode',
             });
-            listItemTemplate081.addChild( listtext334 );
+            listItemTemplate082.addChild( listtext334 );
 
 
             var listtext335 = new ListText({
@@ -35380,18 +35421,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycode_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate081.addChild( listtext335 );
+            listItemTemplate082.addChild( listtext335 );
 
 
 
-            var list081 = new List({
+            var list082 = new List({
                'id' : 'aw64b9d523',
-               'listItemTemplate' : listItemTemplate081,
+               'listItemTemplate' : listItemTemplate082,
                'resource' : 'additionalpremiumpaycode',
                'artifactId' : 'WorkExecution.PremiumPayCodeLookup_additionalpremiumpaycode_list',
                'searchAttributes' : searchAttributes015,
             });
-            lookup020.addChild( list081 );
+            lookup020.addChild( list082 );
 
 
             var lookup021 = new Lookup({
@@ -35402,7 +35443,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup021 );
 
-            var requiredResources110 = {
+            var requiredResources111 = {
                'additionalpremiumpaycode' : {
                   'id' : 'aw7aa13498',
                   'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycode',
@@ -35413,7 +35454,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycraftrate',
                },
             };
-            lookup021.addRequiredResources( requiredResources110 );
+            lookup021.addRequiredResources( requiredResources111 );
 
 
             var searchAttributes016 = new SearchAttributes({
@@ -35438,7 +35479,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate082 = new ListItemTemplate({
+            var listItemTemplate083 = new ListItemTemplate({
                'id' : 'aw58f47db9',
                'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycode_listItemTemplate',
             });
@@ -35448,7 +35489,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycode_premiumpaycode',
                'resourceAttribute' : 'premiumpaycode',
             });
-            listItemTemplate082.addChild( listtext336 );
+            listItemTemplate083.addChild( listtext336 );
 
 
             var listtext337 = new ListText({
@@ -35456,18 +35497,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycode_description',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate082.addChild( listtext337 );
+            listItemTemplate083.addChild( listtext337 );
 
 
 
-            var list082 = new List({
+            var list083 = new List({
                'id' : 'aw8ab82d0f',
-               'listItemTemplate' : listItemTemplate082,
+               'listItemTemplate' : listItemTemplate083,
                'resource' : 'additionalpremiumpaycode',
                'artifactId' : 'WorkExecution.PremiumPayCodeCrewLookup_additionalpremiumpaycode_list',
                'searchAttributes' : searchAttributes016,
             });
-            lookup021.addChild( list082 );
+            lookup021.addChild( list083 );
 
 
             var lookup022 = new Lookup({
@@ -35478,7 +35519,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup022 );
 
-            var requiredResources111 = {
+            var requiredResources112 = {
                'workOrder' : {
                   'id' : 'aw53302a81',
                   'artifactId' : 'WorkExecution.TaskLookup_workOrder',
@@ -35491,10 +35532,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   },
                },
             };
-            lookup022.addRequiredResources( requiredResources111 );
+            lookup022.addRequiredResources( requiredResources112 );
 
 
-            var listItemTemplate083 = new ListItemTemplate({
+            var listItemTemplate084 = new ListItemTemplate({
                'id' : 'aw6a038d22',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.TaskLookup_workOrder_tasklist_listItemTemplate_Item1Desc1',
@@ -35507,7 +35548,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'taskid',
             });
-            listItemTemplate083.addChild( listtext338 );
+            listItemTemplate084.addChild( listtext338 );
 
 
             var listtext339 = new ListText({
@@ -35517,18 +35558,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'taskdescription',
             });
-            listItemTemplate083.addChild( listtext339 );
+            listItemTemplate084.addChild( listtext339 );
 
 
 
-            var list083 = new List({
+            var list084 = new List({
                'id' : 'awa27e6695',
-               'listItemTemplate' : listItemTemplate083,
+               'listItemTemplate' : listItemTemplate084,
                'resource' : 'workOrder',
                'artifactId' : 'WorkExecution.TaskLookup_workOrder_tasklist_list',
                'attribute' : 'tasklist',
             });
-            lookup022.addChild( list083 );
+            lookup022.addChild( list084 );
 
 
             var lookup023 = new Lookup({
@@ -35540,7 +35581,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup023 );
 
-            var requiredResources112 = {
+            var requiredResources113 = {
                'additionalbin' : {
                   'id' : 'aw2de9fc3',
                   'artifactId' : 'WorkExecution.BinLookup_additionalbin',
@@ -35551,7 +35592,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.BinLookup_additionalInventory',
                },
             };
-            lookup023.addRequiredResources( requiredResources112 );
+            lookup023.addRequiredResources( requiredResources113 );
 
 
             var searchAttributes017 = new SearchAttributes({
@@ -35568,7 +35609,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate084 = new ListItemTemplate({
+            var listItemTemplate085 = new ListItemTemplate({
                'id' : 'aw49c76d30',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.BinLookup_additionalbin_listItemTemplate_Item1Desc1',
@@ -35581,7 +35622,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'binnum',
             });
-            listItemTemplate084.addChild( listtext340 );
+            listItemTemplate085.addChild( listtext340 );
 
 
             var listtext341 = new ListText({
@@ -35591,18 +35632,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'currentbalance',
             });
-            listItemTemplate084.addChild( listtext341 );
+            listItemTemplate085.addChild( listtext341 );
 
 
 
-            var list084 = new List({
+            var list085 = new List({
                'id' : 'awe75a9142',
-               'listItemTemplate' : listItemTemplate084,
+               'listItemTemplate' : listItemTemplate085,
                'resource' : 'additionalbin',
                'artifactId' : 'WorkExecution.BinLookup_additionalbin_list',
                'searchAttributes' : searchAttributes017,
             });
-            lookup023.addChild( list084 );
+            lookup023.addChild( list085 );
 
 
             var lookup024 = new Lookup({
@@ -35614,7 +35655,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup024 );
 
-            var requiredResources113 = {
+            var requiredResources114 = {
                'additionalworktype' : {
                   'id' : 'awfb08bd56',
                   'artifactId' : 'WorkExecution.WorkTypeLookup_additionalworktype',
@@ -35624,7 +35665,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'artifactId' : 'WorkExecution.WorkTypeLookup_domainwoclass',
                },
             };
-            lookup024.addRequiredResources( requiredResources113 );
+            lookup024.addRequiredResources( requiredResources114 );
 
 
             var searchAttributes018 = new SearchAttributes({
@@ -35649,7 +35690,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate085 = new ListItemTemplate({
+            var listItemTemplate086 = new ListItemTemplate({
                'id' : 'aw9ad8b28d',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.WorkTypeLookup_additionalworktype_listItemTemplate_Item1Desc1',
@@ -35662,7 +35703,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'worktype',
             });
-            listItemTemplate085.addChild( listtext342 );
+            listItemTemplate086.addChild( listtext342 );
 
 
             var listtext343 = new ListText({
@@ -35672,18 +35713,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'wtypedesc',
             });
-            listItemTemplate085.addChild( listtext343 );
+            listItemTemplate086.addChild( listtext343 );
 
 
 
-            var list085 = new List({
+            var list086 = new List({
                'id' : 'awb8fd4de1',
-               'listItemTemplate' : listItemTemplate085,
+               'listItemTemplate' : listItemTemplate086,
                'resource' : 'additionalworktype',
                'artifactId' : 'WorkExecution.WorkTypeLookup_additionalworktype_list',
                'searchAttributes' : searchAttributes018,
             });
-            lookup024.addChild( list085 );
+            lookup024.addChild( list086 );
 
 
             var lookup025 = new Lookup({
@@ -35693,14 +35734,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup025 );
 
-            var requiredResources114 = {
+            var requiredResources115 = {
                'domainlogtype' : {
                   'id' : 'aw8624b89c',
                   'artifactId' : 'WorkExecution.LogTypeLookup_domainlogtype',
                   'reload' : true,
                },
             };
-            lookup025.addRequiredResources( requiredResources114 );
+            lookup025.addRequiredResources( requiredResources115 );
 
 
             var searchAttributes019 = new SearchAttributes({
@@ -35725,7 +35766,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate086 = new ListItemTemplate({
+            var listItemTemplate087 = new ListItemTemplate({
                'id' : 'awfd11a941',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.LogTypeLookup_domainlogtype_listItemTemplate_Item1Desc1',
@@ -35738,7 +35779,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate086.addChild( listtext344 );
+            listItemTemplate087.addChild( listtext344 );
 
 
             var listtext345 = new ListText({
@@ -35748,18 +35789,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate086.addChild( listtext345 );
+            listItemTemplate087.addChild( listtext345 );
 
 
 
-            var list086 = new List({
+            var list087 = new List({
                'id' : 'aw8740f596',
-               'listItemTemplate' : listItemTemplate086,
+               'listItemTemplate' : listItemTemplate087,
                'resource' : 'domainlogtype',
                'artifactId' : 'WorkExecution.LogTypeLookup_domainlogtype_list',
                'searchAttributes' : searchAttributes019,
             });
-            lookup025.addChild( list086 );
+            lookup025.addChild( list087 );
 
 
             var lookup026 = new Lookup({
@@ -35771,17 +35812,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup026 );
 
-            var requiredResources115 = {
+            var requiredResources116 = {
                'meterCharacteristics' : {
                   'id' : 'awaf3717fe',
                   'artifactId' : 'WorkExecution.characteristicsDomainLookup_meterCharacteristics',
                   'reload' : true,
                },
             };
-            lookup026.addRequiredResources( requiredResources115 );
+            lookup026.addRequiredResources( requiredResources116 );
 
 
-            var listItemTemplate087 = new ListItemTemplate({
+            var listItemTemplate088 = new ListItemTemplate({
                'id' : 'awba16a324',
                'artifactId' : 'WorkExecution.characteristicsDomainLookup_meterCharacteristics_listItemTemplate',
             });
@@ -35792,17 +35833,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate087.addChild( listtext346 );
+            listItemTemplate088.addChild( listtext346 );
 
 
 
-            var list087 = new List({
+            var list088 = new List({
                'id' : 'aw2b9c5a2a',
-               'listItemTemplate' : listItemTemplate087,
+               'listItemTemplate' : listItemTemplate088,
                'resource' : 'meterCharacteristics',
                'artifactId' : 'WorkExecution.characteristicsDomainLookup_meterCharacteristics_list',
             });
-            lookup026.addChild( list087 );
+            lookup026.addChild( list088 );
 
 
             var returnAttributes015 = new ReturnAttributes({
@@ -35828,16 +35869,16 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup027 );
 
-            var requiredResources116 = {
+            var requiredResources117 = {
                'appDocType' : {
                   'id' : 'aw8ca30e01',
                   'artifactId' : 'WorkExecution.appDocTypeLookup_appDocType',
                },
             };
-            lookup027.addRequiredResources( requiredResources116 );
+            lookup027.addRequiredResources( requiredResources117 );
 
 
-            var listItemTemplate088 = new ListItemTemplate({
+            var listItemTemplate089 = new ListItemTemplate({
                'id' : 'awa86cf2be',
                'artifactId' : 'WorkExecution.appDocTypeLookup_appDocType_listItemTemplate',
             });
@@ -35848,17 +35889,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'doctype',
             });
-            listItemTemplate088.addChild( listtext347 );
+            listItemTemplate089.addChild( listtext347 );
 
 
 
-            var list088 = new List({
+            var list089 = new List({
                'id' : 'aw885ae2fe',
-               'listItemTemplate' : listItemTemplate088,
+               'listItemTemplate' : listItemTemplate089,
                'resource' : 'appDocType',
                'artifactId' : 'WorkExecution.appDocTypeLookup_appDocType_list',
             });
-            lookup027.addChild( list088 );
+            lookup027.addChild( list089 );
 
 
             var returnAttributes016 = new ReturnAttributes({
@@ -35902,7 +35943,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate089 = new ListItemTemplate({
+            var listItemTemplate090 = new ListItemTemplate({
                'id' : 'awc665d9a2',
                'layout' : 'Item1Desc1',
                'artifactId' : 'Inspection.alnDomainLookup_maxdomain_alndomain_listItemTemplate_Item1Desc1',
@@ -35915,7 +35956,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate089.addChild( listtext348 );
+            listItemTemplate090.addChild( listtext348 );
 
 
             var listtext349 = new ListText({
@@ -35925,19 +35966,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate089.addChild( listtext349 );
+            listItemTemplate090.addChild( listtext349 );
 
 
 
-            var list089 = new List({
+            var list090 = new List({
                'id' : 'awe833663c',
-               'listItemTemplate' : listItemTemplate089,
+               'listItemTemplate' : listItemTemplate090,
                'resource' : 'maxdomain',
                'artifactId' : 'Inspection.alnDomainLookup_maxdomain_alndomain_list',
                'attribute' : 'alndomain',
                'searchAttributes' : searchAttributes020,
             });
-            lookup028.addChild( list089 );
+            lookup028.addChild( list090 );
 
 
             var returnAttributes017 = new ReturnAttributes({
@@ -35981,7 +36022,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate090 = new ListItemTemplate({
+            var listItemTemplate091 = new ListItemTemplate({
                'id' : 'aw8c88751b',
                'layout' : 'Item1Desc1',
                'artifactId' : 'Inspection.NumericLookup_maxdomain_numericdomain_listItemTemplate_Item1Desc1',
@@ -35994,7 +36035,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate090.addChild( listtext350 );
+            listItemTemplate091.addChild( listtext350 );
 
 
             var listtext351 = new ListText({
@@ -36004,19 +36045,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate090.addChild( listtext351 );
+            listItemTemplate091.addChild( listtext351 );
 
 
 
-            var list090 = new List({
+            var list091 = new List({
                'id' : 'aw9e7e7b48',
-               'listItemTemplate' : listItemTemplate090,
+               'listItemTemplate' : listItemTemplate091,
                'resource' : 'maxdomain',
                'artifactId' : 'Inspection.NumericLookup_maxdomain_numericdomain_list',
                'attribute' : 'numericdomain',
                'searchAttributes' : searchAttributes021,
             });
-            lookup029.addChild( list090 );
+            lookup029.addChild( list091 );
 
 
             var returnAttributes018 = new ReturnAttributes({
@@ -36042,16 +36083,16 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup030 );
 
-            var requiredResources117 = {
+            var requiredResources118 = {
                'domainDownCode' : {
                   'id' : 'aw10671c49',
                   'artifactId' : 'WorkExecution.DowntimeCodeLookup_domainLocAssetStatus',
                },
             };
-            lookup030.addRequiredResources( requiredResources117 );
+            lookup030.addRequiredResources( requiredResources118 );
 
 
-            var listItemTemplate091 = new ListItemTemplate({
+            var listItemTemplate092 = new ListItemTemplate({
                'id' : 'awbd58251c',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.DowntimeCodeLookup_domainLocAssetStatus_listItemTemplate_Item1Desc1',
@@ -36064,7 +36105,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate091.addChild( listtext352 );
+            listItemTemplate092.addChild( listtext352 );
 
 
             var listtext353 = new ListText({
@@ -36074,17 +36115,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate091.addChild( listtext353 );
+            listItemTemplate092.addChild( listtext353 );
 
 
 
-            var list091 = new List({
+            var list092 = new List({
                'id' : 'aw519b95e8',
-               'listItemTemplate' : listItemTemplate091,
+               'listItemTemplate' : listItemTemplate092,
                'resource' : 'domainDownCode',
                'artifactId' : 'WorkExecution.DowntimeCodeLookup_domainLocAssetStatus_list',
             });
-            lookup030.addChild( list091 );
+            lookup030.addChild( list092 );
 
 
             var returnAttributes019 = new ReturnAttributes({
@@ -36113,7 +36154,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate092 = new ListItemTemplate({
+            var listItemTemplate093 = new ListItemTemplate({
                'id' : 'awc3de90bb',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.SetPointActionLookup_listItemTemplate_Item1Desc1',
@@ -36126,7 +36167,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate092.addChild( listtext354 );
+            listItemTemplate093.addChild( listtext354 );
 
 
             var listtext355 = new ListText({
@@ -36136,17 +36177,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate092.addChild( listtext355 );
+            listItemTemplate093.addChild( listtext355 );
 
 
 
-            var list092 = new List({
+            var list093 = new List({
                'id' : 'awc1321a3f',
-               'listItemTemplate' : listItemTemplate092,
+               'listItemTemplate' : listItemTemplate093,
                'resource' : 'plusccdssetaction',
                'artifactId' : 'WorkExecution.SetPointActionLookup_list',
             });
-            lookup031.addChild( list092 );
+            lookup031.addChild( list093 );
 
 
             var returnAttributes020 = new ReturnAttributes({
@@ -36197,7 +36238,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate093 = new ListItemTemplate({
+            var listItemTemplate094 = new ListItemTemplate({
                'id' : 'aw445d2c6a',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.DynamicUnitsLookup_listItemTemplate_Item1Desc1',
@@ -36210,7 +36251,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate093.addChild( listtext356 );
+            listItemTemplate094.addChild( listtext356 );
 
 
             var listtext357 = new ListText({
@@ -36220,18 +36261,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate093.addChild( listtext357 );
+            listItemTemplate094.addChild( listtext357 );
 
 
 
-            var list093 = new List({
+            var list094 = new List({
                'id' : 'awb28c6983',
-               'listItemTemplate' : listItemTemplate093,
+               'listItemTemplate' : listItemTemplate094,
                'resource' : 'domainCalDynamcUnit',
                'artifactId' : 'WorkExecution.DynamicUnitsLookup_list',
                'searchAttributes' : searchAttributes022,
             });
-            lookup032.addChild( list093 );
+            lookup032.addChild( list094 );
 
 
             var returnAttributes021 = new ReturnAttributes({
@@ -36281,7 +36322,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate094 = new ListItemTemplate({
+            var listItemTemplate095 = new ListItemTemplate({
                'id' : 'awb9ad3b81',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.DynamicUnitsLookupasleftunit_listItemTemplate_Item1Desc1',
@@ -36294,7 +36335,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate094.addChild( listtext358 );
+            listItemTemplate095.addChild( listtext358 );
 
 
             var listtext359 = new ListText({
@@ -36304,18 +36345,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate094.addChild( listtext359 );
+            listItemTemplate095.addChild( listtext359 );
 
 
 
-            var list094 = new List({
+            var list095 = new List({
                'id' : 'aw65c1bca2',
-               'listItemTemplate' : listItemTemplate094,
+               'listItemTemplate' : listItemTemplate095,
                'resource' : 'domainCalDynamcUnit',
                'artifactId' : 'WorkExecution.DynamicUnitsLookupasleftunit_list',
                'searchAttributes' : searchAttributes023,
             });
-            lookup033.addChild( list094 );
+            lookup033.addChild( list095 );
 
 
             var returnAttributes022 = new ReturnAttributes({
@@ -36346,7 +36387,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate095 = new ListItemTemplate({
+            var listItemTemplate096 = new ListItemTemplate({
                'id' : 'aw1713251f',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.AsFoundStatusLookup_domainlogtype_listItemTemplate_Item1Desc1',
@@ -36359,7 +36400,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate095.addChild( listtext360 );
+            listItemTemplate096.addChild( listtext360 );
 
 
             var listtext361 = new ListText({
@@ -36369,17 +36410,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate095.addChild( listtext361 );
+            listItemTemplate096.addChild( listtext361 );
 
 
 
-            var list095 = new List({
+            var list096 = new List({
                'id' : 'awac791aa1',
-               'listItemTemplate' : listItemTemplate095,
+               'listItemTemplate' : listItemTemplate096,
                'resource' : 'domaincalstatus',
                'artifactId' : 'WorkExecution.AsFoundStatusLookup_domainlogtype_list',
             });
-            lookup034.addChild( list095 );
+            lookup034.addChild( list096 );
 
 
             var returnAttributes023 = new ReturnAttributes({
@@ -36410,7 +36451,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate096 = new ListItemTemplate({
+            var listItemTemplate097 = new ListItemTemplate({
                'id' : 'aw85920587',
                'layout' : 'Item1Desc1',
                'artifactId' : 'WorkExecution.AsLeftStatusLookup_domainlogtype_listItemTemplate_Item1Desc1',
@@ -36423,7 +36464,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'value',
             });
-            listItemTemplate096.addChild( listtext362 );
+            listItemTemplate097.addChild( listtext362 );
 
 
             var listtext363 = new ListText({
@@ -36433,17 +36474,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'description',
             });
-            listItemTemplate096.addChild( listtext363 );
+            listItemTemplate097.addChild( listtext363 );
 
 
 
-            var list096 = new List({
+            var list097 = new List({
                'id' : 'awc2fd8720',
-               'listItemTemplate' : listItemTemplate096,
+               'listItemTemplate' : listItemTemplate097,
                'resource' : 'domaincalstatus',
                'artifactId' : 'WorkExecution.AsLeftStatusLookup_domainlogtype_list',
             });
-            lookup035.addChild( list096 );
+            lookup035.addChild( list097 );
 
 
             var returnAttributes024 = new ReturnAttributes({
@@ -36467,28 +36508,28 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view101 = new View({
+            var view102 = new View({
                'id' : 'Platform.AttachmentInfoView',
                'resource' : 'PlatformAttachmentInfoResource',
                'label' : MessageService.createStaticMessage('Attachment Details'),
             });
-            ui001.addChild( view101 );
+            ui001.addChild( view102 );
 
-            var requiredResources118 = {
+            var requiredResources119 = {
                'PlatformAttachmentInfoResource' : {
                   'id' : 'awedbd920b',
                   'artifactId' : 'Platform.AttachmentInfoView_PlatformAttachmentInfoResource',
                   'reload' : true,
                },
             };
-            view101.addRequiredResources( requiredResources118 );
+            view102.addRequiredResources( requiredResources119 );
 
             var container131 = new Container({
                'id' : 'aw22b80d5f',
                'resource' : 'PlatformAttachmentInfoResource',
                'artifactId' : 'Platform.AttachmentInfoView_container_0',
             });
-            view101.addChild( container131 );
+            view102.addChild( container131 );
 
 
             var group128 = new Group({
@@ -36602,7 +36643,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'id' : 'awad3a6a43',
                'artifactId' : 'Platform.AttachmentInfoView_footer',
             });
-            view101.addChild( footer043 );
+            view102.addChild( footer043 );
 
 
             var button188 = new Button({
@@ -36657,7 +36698,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'cancelAttachmentDetailsView',
                }
             ];
-            view101.eventHandlers = eventHandlers525;
+            view102.eventHandlers = eventHandlers525;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -36669,13 +36710,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( lookup036 );
 
-            var requiredResources119 = {
+            var requiredResources120 = {
                'PlatformAttachmentCategoryResource' : {
                   'id' : 'aw18cc3542',
                   'artifactId' : 'PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource',
                },
             };
-            lookup036.addRequiredResources( requiredResources119 );
+            lookup036.addRequiredResources( requiredResources120 );
 
 
             var searchAttributes024 = new SearchAttributes({
@@ -36692,7 +36733,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate097 = new ListItemTemplate({
+            var listItemTemplate098 = new ListItemTemplate({
                'id' : 'aweb3659e3',
                'layout' : 'Item2Desc2',
                'artifactId' : 'PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_listItemTemplate_Item2Desc2',
@@ -36705,18 +36746,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'cssClass' : 'bold textappearance-medium',
                'resourceAttribute' : 'folderName',
             });
-            listItemTemplate097.addChild( listtext364 );
+            listItemTemplate098.addChild( listtext364 );
 
 
 
-            var list097 = new List({
+            var list098 = new List({
                'id' : 'awe6857cc4',
-               'listItemTemplate' : listItemTemplate097,
+               'listItemTemplate' : listItemTemplate098,
                'resource' : 'PlatformAttachmentCategoryResource',
                'artifactId' : 'PlatformAttachmentIn.CategoryLookup_PlatformAttachmentCategoryResource_list',
                'searchAttributes' : searchAttributes024,
             });
-            lookup036.addChild( list097 );
+            lookup036.addChild( list098 );
 
 
             var returnAttributes025 = new ReturnAttributes({
@@ -36893,12 +36934,12 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view102 = new View({
+            var view103 = new View({
                'id' : 'Platform.emptyview',
                'showFooter' : false,
                'showHeader' : false,
             });
-            ui001.addChild( view102 );
+            ui001.addChild( view103 );
 
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
@@ -36909,13 +36950,13 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view103 = new View({
+            var view104 = new View({
                'id' : 'Platform.Notifications',
                'label' : MessageService.createStaticMessage('My Notifications'),
             });
-            ui001.addChild( view103 );
+            ui001.addChild( view104 );
 
-            var requiredResources120 = {
+            var requiredResources121 = {
                'osusernotification' : {
                   'id' : 'awed6a5e70',
                   'artifactId' : 'Platform.Notifications_osusernotification',
@@ -36927,10 +36968,10 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                   'reload' : true,
                },
             };
-            view103.addRequiredResources( requiredResources120 );
+            view104.addRequiredResources( requiredResources121 );
 
 
-            var listItemTemplate098 = new ListItemTemplate({
+            var listItemTemplate099 = new ListItemTemplate({
                'id' : 'aw718eb447',
                'layout' : 'NotificationList',
                'artifactId' : 'Platform.Notifications_listItemTemplate',
@@ -36942,7 +36983,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.Notifications_uiDate',
                'resourceAttribute' : 'uiDate',
             });
-            listItemTemplate098.addChild( listtext365 );
+            listItemTemplate099.addChild( listtext365 );
 
 
             var listtext366 = new ListText({
@@ -36951,7 +36992,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.Notifications_itemnum',
                'resourceAttribute' : 'itemnum',
             });
-            listItemTemplate098.addChild( listtext366 );
+            listItemTemplate099.addChild( listtext366 );
 
 
             var listtext367 = new ListText({
@@ -36960,7 +37001,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.Notifications_itemDesc',
                'resourceAttribute' : 'itemDesc',
             });
-            listItemTemplate098.addChild( listtext367 );
+            listItemTemplate099.addChild( listtext367 );
 
             var eventHandlers532 = [
                {
@@ -36978,17 +37019,17 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderMsgHistoryItem',
                }
             ];
-            listItemTemplate098.eventHandlers = eventHandlers532;
+            listItemTemplate099.eventHandlers = eventHandlers532;
 
 
-            var list098 = new List({
+            var list099 = new List({
                'id' : 'awb4916253',
-               'listItemTemplate' : listItemTemplate098,
+               'listItemTemplate' : listItemTemplate099,
                'resource' : 'osusernotification',
                'artifactId' : 'Platform.Notifications_list',
                'label' : MessageService.createStaticMessage('List of notifications'),
             });
-            view103.addChild( list098 );
+            view104.addChild( list099 );
 
             var eventHandlers533 = [
                {
@@ -36999,7 +37040,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderMsgHistory',
                }
             ];
-            view103.eventHandlers = eventHandlers533;
+            view104.eventHandlers = eventHandlers533;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -37106,12 +37147,12 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view104 = new View({
+            var view105 = new View({
                'id' : 'Platform.HelpAbout',
                'resource' : 'PlatformLoginResource',
                'label' : MessageService.createStaticMessage('About'),
             });
-            ui001.addChild( view104 );
+            ui001.addChild( view105 );
 
 
             var container134 = new Container({
@@ -37119,7 +37160,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.HelpAbout_container_0',
                'cssClass' : 'platformHelpAboutContainer',
             });
-            view104.addChild( container134 );
+            view105.addChild( container134 );
 
 
             var image007 = new Image({
@@ -37300,26 +37341,26 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view105 = new View({
+            var view106 = new View({
                'id' : 'Platform.Settings',
                'label' : MessageService.createStaticMessage('Settings'),
                'fullScreen' : 'true',
             });
-            ui001.addChild( view105 );
+            ui001.addChild( view106 );
 
-            var requiredResources121 = {
+            var requiredResources122 = {
                'LastADDownload' : {
                   'id' : 'aw879343e2',
                   'artifactId' : 'Platform.Settings_LastADDownload',
                },
             };
-            view105.addRequiredResources( requiredResources121 );
+            view106.addRequiredResources( requiredResources122 );
 
             var actions018 = new Actions({
                'id' : 'awb3f56d3b',
                'artifactId' : 'Platform.Settings_actions',
             });
-            view105.addChild( actions018 );
+            view106.addChild( actions018 );
 
 
             var action044 = new Action({
@@ -37353,7 +37394,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'resource' : 'LastADDownload',
                'artifactId' : 'Platform.Settings_container_0',
             });
-            view105.addChild( container135 );
+            view106.addChild( container135 );
 
 
             var group130 = new Group({
@@ -37557,18 +37598,18 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view106 = new View({
+            var view107 = new View({
                'id' : 'Platform.AdvancedSettings',
                'label' : MessageService.createStaticMessage('Settings'),
             });
-            ui001.addChild( view106 );
+            ui001.addChild( view107 );
 
 
             var container136 = new Container({
                'id' : 'aw5c13274d',
                'artifactId' : 'Platform.AdvancedSettings_container_0',
             });
-            view106.addChild( container136 );
+            view107.addChild( container136 );
 
 
             var group132 = new Group({
@@ -37640,19 +37681,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view107 = new View({
+            var view108 = new View({
                'id' : 'Platform.LoggerReport',
                'scrollDir' : 'vh',
                'label' : MessageService.createStaticMessage('Logging Data'),
             });
-            ui001.addChild( view107 );
+            ui001.addChild( view108 );
 
 
             var actions019 = new Actions({
                'id' : 'aw5b090344',
                'artifactId' : 'Platform.LoggerReport_actions',
             });
-            view107.addChild( actions019 );
+            view108.addChild( actions019 );
 
 
             var action045 = new Action({
@@ -37789,7 +37830,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderLoggerReport',
                }
             ];
-            view107.eventHandlers = eventHandlers549;
+            view108.eventHandlers = eventHandlers549;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -37799,19 +37840,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view108 = new View({
+            var view109 = new View({
                'id' : 'Platform.TransLoggerReport',
                'scrollDir' : 'vh',
                'label' : MessageService.createStaticMessage('Logging Data'),
             });
-            ui001.addChild( view108 );
+            ui001.addChild( view109 );
 
 
             var actions020 = new Actions({
                'id' : 'aw49b00040',
                'artifactId' : 'Platform.TransLoggerReport_actions',
             });
-            view108.addChild( actions020 );
+            view109.addChild( actions020 );
 
 
             var action051 = new Action({
@@ -37860,7 +37901,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderTransLoggerReport',
                }
             ];
-            view108.eventHandlers = eventHandlers552;
+            view109.eventHandlers = eventHandlers552;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -37870,12 +37911,12 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view109 = new View({
+            var view110 = new View({
                'id' : 'Platform.ChangePassword',
                'resource' : 'PlatformChangePasswordForm',
                'label' : MessageService.createStaticMessage('Change Password'),
             });
-            ui001.addChild( view109 );
+            ui001.addChild( view110 );
 
 
             var container137 = new Container({
@@ -37883,7 +37924,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.ChangePassword_container_0',
                'cssClass' : 'changePasswordForm',
             });
-            view109.addChild( container137 );
+            view110.addChild( container137 );
 
 
             var text881 = new Text({
@@ -38004,7 +38045,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'changePasswordBack',
                }
             ];
-            view109.eventHandlers = eventHandlers556;
+            view110.eventHandlers = eventHandlers556;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -38014,14 +38055,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view110 = new View({
+            var view111 = new View({
                'id' : 'Platform.RetrieveOldPassword',
                'showOverflow' : false,
                'showHeader' : false,
                'resource' : 'PlatformChangePasswordForm',
                'label' : MessageService.createStaticMessage('Recover App Data'),
             });
-            ui001.addChild( view110 );
+            ui001.addChild( view111 );
 
 
             var container138 = new Container({
@@ -38029,7 +38070,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.RetrieveOldPassword_container_0',
                'cssClass' : 'changePasswordForm',
             });
-            view110.addChild( container138 );
+            view111.addChild( container138 );
 
 
             var text886 = new Text({
@@ -38107,7 +38148,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'initializeRetrieveOldPasswordView',
                }
             ];
-            view110.eventHandlers = eventHandlers559;
+            view111.eventHandlers = eventHandlers559;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -38187,26 +38228,26 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view111 = new View({
+            var view112 = new View({
                'id' : 'Platform.TimeTrackReport',
                'scrollDir' : 'vh',
                'label' : MessageService.createStaticMessage('Performance Data'),
             });
-            ui001.addChild( view111 );
+            ui001.addChild( view112 );
 
-            var requiredResources122 = {
+            var requiredResources123 = {
                'timeTrack' : {
                   'id' : 'aw8d707cee',
                   'artifactId' : 'Platform.TimeTrackReport_timeTrack',
                },
             };
-            view111.addRequiredResources( requiredResources122 );
+            view112.addRequiredResources( requiredResources123 );
 
             var actions021 = new Actions({
                'id' : 'aw9d9a4864',
                'artifactId' : 'Platform.TimeTrackReport_actions',
             });
-            view111.addChild( actions021 );
+            view112.addChild( actions021 );
 
 
             var action053 = new Action({
@@ -38281,7 +38322,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'renderTT',
                }
             ];
-            view111.eventHandlers = eventHandlers565;
+            view112.eventHandlers = eventHandlers565;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }
@@ -38294,7 +38335,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
 
 
 
-            var listItemTemplate099 = new ListItemTemplate({
+            var listItemTemplate100 = new ListItemTemplate({
                'id' : 'awefd72fd8',
                'artifactId' : 'Platform.ListLongPressDialog_PlatformLongPressResource_listItemTemplate',
                'cssClass' : 'dialogListItem textappearance-medium',
@@ -38305,19 +38346,19 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                'artifactId' : 'Platform.ListLongPressDialog_PlatformLongPressResource_label',
                'resourceAttribute' : 'label',
             });
-            listItemTemplate099.addChild( listtext368 );
+            listItemTemplate100.addChild( listtext368 );
 
 
 
-            var list099 = new List({
+            var list100 = new List({
                'id' : 'aw64ff84d9',
-               'listItemTemplate' : listItemTemplate099,
+               'listItemTemplate' : listItemTemplate100,
                'showHeader' : false,
                'resource' : 'PlatformLongPressResource',
                'artifactId' : 'Platform.ListLongPressDialog_PlatformLongPressResource_list',
                'queryBase' : '',
             });
-            dialog024.addChild( list099 );
+            dialog024.addChild( list100 );
 
 
             var dialog025 = new Dialog({
@@ -39515,14 +39556,14 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
             });
             ui001.addChild( dialog041 );
 
-            var requiredResources123 = {
+            var requiredResources124 = {
                'attemptResultDomain' : {
                   'id' : 'aw3c53638b',
                   'artifactId' : 'Platform.EsigLoginView_attemptResultDomain',
                   'enableFeatureByProperty' : 'esig.enabled',
                },
             };
-            dialog041.addRequiredResources( requiredResources123 );
+            dialog041.addRequiredResources( requiredResources124 );
 
             var container170 = new Container({
                'id' : 'aw44fd9611',
@@ -39648,25 +39689,25 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                trackTimer.startTracking();
             }
 
-            var view112 = new View({
+            var view113 = new View({
                'id' : 'Platform.Signature',
                'label' : MessageService.createStaticMessage('Capture Real Signature'),
             });
-            ui001.addChild( view112 );
+            ui001.addChild( view113 );
 
-            var requiredResources124 = {
+            var requiredResources125 = {
                'PlatformAttachmentInfoResource' : {
                   'id' : 'aw8cc44736',
                   'artifactId' : 'Platform.Signature_PlatformAttachmentInfoResource',
                },
             };
-            view112.addRequiredResources( requiredResources124 );
+            view113.addRequiredResources( requiredResources125 );
 
             var footer044 = new Footer({
                'id' : 'aw16b9ee39',
                'artifactId' : 'Platform.Signature_footer',
             });
-            view112.addChild( footer044 );
+            view113.addChild( footer044 );
 
 
             var button229 = new Button({
@@ -39733,7 +39774,7 @@ function(declare, all, BuilderBase, window, array, ioQuery, AdditionalDataManage
                      'method' : 'initSignature',
                }
             ];
-            view112.eventHandlers = eventHandlers606;
+            view113.eventHandlers = eventHandlers606;
             if (trackTimeEnabled) {
                trackTimer.stopTracking();
             }

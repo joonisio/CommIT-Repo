@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-30 17:03:02
+// Build: 2017-12-05 15:21:21
 //----------------------------------------------------------------//
 define({
    
@@ -309,6 +309,7 @@ define({
          "Premium Pay Code" : "[pohjoispäässä~Premium Pay Code]",
          "Premium Pay Hours" : "[pohjoispäässä~Premium Pay Hours]",
          "Position" : "[pohjoispäässä~Position]",
+         "PERMIT" : "[pohjoispäässä~PERMIT]",
          "Crew Details" : "[pohjoispäässä~Crew Details]",
          "Review" : "[pohjoispäässä~Review]",
          "Bin" : "[pohjoispäässä~Bin]",

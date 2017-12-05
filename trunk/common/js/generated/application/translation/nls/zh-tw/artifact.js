@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-30 17:03:01
+// Build: 2017-12-05 15:21:20
 //----------------------------------------------------------------//
 define({
    
@@ -309,6 +309,7 @@ define({
          "Premium Pay Code" : "[中國的~Premium Pay Code]",
          "Premium Pay Hours" : "[中國的~Premium Pay Hours]",
          "Position" : "[中國的~Position]",
+         "PERMIT" : "[中國的~PERMIT]",
          "Crew Details" : "[中國的~Crew Details]",
          "Review" : "[中國的~Review]",
          "Bin" : "[中國的~Bin]",

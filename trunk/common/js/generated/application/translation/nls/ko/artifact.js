@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-30 17:03:01
+// Build: 2017-12-05 15:21:20
 //----------------------------------------------------------------//
 define({
    
@@ -309,6 +309,7 @@ define({
          "Premium Pay Code" : "[대학에~Premium Pay Code]",
          "Premium Pay Hours" : "[대학에~Premium Pay Hours]",
          "Position" : "[대학에~Position]",
+         "PERMIT" : "[대학에~PERMIT]",
          "Crew Details" : "[대학에~Crew Details]",
          "Review" : "[대학에~Review]",
          "Bin" : "[대학에~Bin]",

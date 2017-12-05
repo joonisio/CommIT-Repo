@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-11-30 17:02:57
+// Build: 2017-12-05 15:21:17
 //----------------------------------------------------------------//
 define(   "generated/application/ui/layout/small/CopyPlansListItem", 
       [

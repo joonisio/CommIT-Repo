@@ -65,7 +65,7 @@
 			    
 			    <!--Custom permit and test form-->
 			    
-			    <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.SearchPermitDetail">	
+			    <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.Permit">	
 					<eventHandlers id="WorkExecution.WorkItemsView_Permit_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_Permit_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
@@ -4710,6 +4710,21 @@
 				<eventHandler class="application.handlers.ActualLaborHandler" event="show" id="WorkExecution.ActualLaborEntryView_eventHandlers_show_showFooter" method="showFooter"/>
 			</eventHandlers>
 		</view>
+		
+		
+		<!--custom Permit view-->	
+		<view id="WorkExecution.Permit" label="PERMIT">
+			<requiredResources id="WorkExecution.Permit_requiredResources">
+				<requiredResource id="WorkExecution.permit_workOrder" name="permit">
+				</requiredResource>
+			</requiredResources>
+			
+			<list id="WorkExecution.LinearView_permit_list" label="Permit" resource="permit" >
+				<listItemTemplate id="WorkExecution.permit_listItemTemplate">
+				<!-- 	<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum" resourceAttribute="permitworknum"/> -->
+				</listItemTemplate>
+			</list>
+		</view>		
 
 		<!--Crew Details view-->
 		<view id="WorkExecution.ActualCrewEntryView" label="Crew Details">
@@ -7799,7 +7814,6 @@
 			<requiredResources id="WorkExecution.LocationLookup_requiredResources">
 				<requiredResource id="WorkExecution.LocationLookup_additionallocations" name="additionallocations"/>
 			</requiredResources>
-
 			<list id="WorkExecution.LocationLookup_additionallocations_list" resource="additionallocations">
 				<searchAttributes id="WorkExecution.LocationLookup_additionallocations_searchAttributes">
 					<searchAttribute id="WorkExecution.LocationLookup_additionallocations_searchAttribute_location" name="location"/>
@@ -7815,9 +7829,7 @@
 				<returnAttribute id="WorkExecution.LocationLookup_location_location_name" sourceAttribute="location" targetAttribute="location_name"/>
 				<returnAttribute id="WorkExecution.LocationLookup_description_locationdesc" sourceAttribute="description" targetAttribute="locationdesc"/>
 			</returnAttributes>
-
 		</lookup>
-
 
 		<!-- Crew lookup -->
 		<lookup filterClass="application.handlers.LaborAssignmentHandler" filterMethod="filterCrew" id="WorkExecution.CrewLookup" label="Select Crew" resource="additionalamcrew">
@@ -7841,7 +7853,6 @@
 			</returnAttributes>
 		</lookup>
 
-
 		<!-- Service Address lookup -->
 		<lookup id="WorkExecution.ServiceAddressLookup" label="Select Service     Address" resource="additionalserviceaddress">
 			<requiredResources id="WorkExecution.ServiceAddressLookup_requiredResources">
@@ -7863,7 +7874,6 @@
 				<returnAttribute id="WorkExecution.ServiceAddressLookup_formattedaddress_woserviceaddress" sourceAttribute="formattedaddress" targetAttribute="woserviceaddress"/>
 				<returnAttribute id="WorkExecution.ServiceAddressLookup_description_woserviceaddressdesc" sourceAttribute="description" targetAttribute="woserviceaddressdesc"/>
 			</returnAttributes>
-
 		</lookup>
 		
 		<!-- custom Vertical lookup -->
@@ -7900,7 +7910,7 @@
 				</listItemTemplate>
 			</list>
 		</lookup>
-
+		
 		<!-- Rotating Asset lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="filterRotatingAssetForLookup" id="WorkExecution.RotatingAssetLookup" label="Select Rotating Asset" resource="additionalasset">
 			<requiredResources id="WorkExecution.RotatingAssetLookup_requiredResources">
@@ -8693,7 +8703,19 @@
 	 		</queryBases>			
 			<whereClause id="assetMeters_whereClause"/>			 
 		</resource>
-
+		
+		<!-- custom Permit resource-->
+		<resource class="application.business.PermitObject"  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#PERMIT" id="permit" name="permit" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="permit_attributes">
+				<attribute describedByProperty="spi_wm:permitworknum" id="permit_wmpermitworknum" index="true" name="permitworknum"/>
+				<attribute describedByProperty="spi_wm:tnbstatus" id="permit_tnbstatus" index="true" name="tnbstatus"/>
+				<attribute describedByProperty="spi_wm:tnbissuedate" id="permit_tnbissuedate" name="tnbissuedate"/>
+			</attributes>
+			<!--  <queryBases id="permit_queryBases">
+	 			<queryBase id="permitsearchAllWorkOrders" name="searchAllpermit" />
+			</queryBases> -->
+		</resource>
+		
 		<!--  Location Meters resource -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#LocationMeter" id="locationMeters" name="locationMeters" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
 			<attributes id="locationMeters_attributes">
