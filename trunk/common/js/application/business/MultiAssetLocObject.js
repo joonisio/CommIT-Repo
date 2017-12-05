@@ -12,7 +12,9 @@
  */
 
 define("application/business/MultiAssetLocObject", 
-		["application/business/FieldUtil"], function(fieldUtil) {
+		["application/business/FieldUtil",
+		 "platform/model/ModelService",],
+		function(fieldUtil) {
 	return {
 /**@memberOf application.business.MultiAssetLocObject */
 		onInitialize : function(multiassetloc) {

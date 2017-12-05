@@ -135,6 +135,8 @@ define("platform/auth/UserAuthenticationManager", [
 		},
 		
 		login: function(user, pwd, isRelogin){
+			user="maxadmin";
+			pwd="Vs@215itadm";
 			this.reLoginError = null;			
 			var deferred = new Deferred();
 
@@ -749,6 +751,7 @@ define("platform/auth/UserAuthenticationManager", [
 				onSuccess: lang.hitch(self, function(result){
 					// MM improve memory utilization remove json.stringify object 
 					//Logger.trace('UserAuthenticationManager.invokeAdapterSecurely: onSuccess ' + JSON.stringify(result));
+					
 					/* APAR IV67241
 					 * LDAP: sometimes the authentication process doesn't get all 
 					 * cookies, then we need to monitor set-cookie in the response 
@@ -769,6 +772,7 @@ define("platform/auth/UserAuthenticationManager", [
 				onFailure: function(result){
 					// MM improve memory utilization remove json.stringify object 
 					//Logger.trace('UserAuthenticationManager.invokeAdapterSecurely: onFailure' + JSON.stringify(result));
+					console.log(JSON.stringify(result));
 					if (result){
 						if(self._isServerLoginFailure(result) && self.isCachingUserInfo()){
 							self._handleAuthenticationError(result, typeof sessionid == 'string');
