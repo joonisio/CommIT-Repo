@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[gæst faldt~New Dynamic Check]",
          "Data Sheet List" : "[gæst faldt~Data Sheet List]",
          "Sequence" : "[gæst faldt~Sequence]",
-         "Primarry?" : "[gæst faldt~Primarry?]",
          "Reference Point" : "[gæst faldt~Reference Point]",
          "Reference Point Offset" : "[gæst faldt~Reference Point Offset]",
          "Measure" : "[gæst faldt~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[gæst faldt~Y Reference]",
          "Z Offset" : "[gæst faldt~Z Offset]",
          "Z Reference" : "[gæst faldt~Z Reference]",
+         "End" : "[gæst faldt~End]",
          "Linear" : "[gæst faldt~Linear]",
          "Linear Assets" : "[gæst faldt~Linear Assets]",
          "Asset or Location Details" : "[gæst faldt~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[gæst faldt~Select Crew]",
          "Select Service     Address" : "[gæst faldt~Select Service     Address]",
          "Select Vertical" : "[gæst faldt~Select Vertical]",
+         "Select Subvertical" : "[gæst faldt~Select Subvertical]",
          "Select Storeroom" : "[gæst faldt~Select Storeroom]",
          "Select Rotating Asset" : "[gæst faldt~Select Rotating Asset]",
          "Select Premium Pay Code" : "[gæst faldt~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[gæst faldt~Processing Time, ]",
          "Start and Stop Times, " : "[gæst faldt~Start and Stop Times, ]",
          "No data to display " : "[gæst faldt~No data to display. ]",
-         "End" : "[gæst faldt~End]",
          "Locale\/Language" : "[gæst faldt~Locale/Language]",
          "Connected" : "[gæst faldt~Connected]",
          "Carrier Name" : "[gæst faldt~Carrier Name]",

@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:13
+// Build: 2017-12-06 10:34:16
 //----------------------------------------------------------------//
 define(   "generated/application/data/ApplicationStoresBuilder", 
       [
@@ -259,7 +259,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                }).
                setLocal( false ).
                setSimpleFieldsSelectExpression('spi_wm:tnbvertical,spi_wm:tnbsubvertical,dcterms:identifier,dcterms:title,dcterms:description,spi_wm:woclass,spi_wm:origrecordid,spi_wm:origrecordclass,spi_wm:hasfollowupwork,oslc:shortTitle,dcterms:created,spi_wm:schedstart,spi_wm:schedfinish,spi_wm:actstart,spi_wm:actfinish,spi:status,spi_wm:worktype,spi_wm:wopriority,spi_wm:classstructureid,spi_wm:siteid,spi_wm:orgid,spi_wm:np_statusmemo,spi_wm:statusdate,spi_wm:istask,spi_wm:pluscphyloc,spi_wm:pluscfrequency,spi_wm:pluscoverduedate,spi_wm:pluscnextdate_np,spi_wm:pluscloop,spi_wm:pluscismobile,spi_wm:pluscfrequnit,spi_wm:pluscjprevnum,spi_wm:calculatedy,spi_wm:calculatedx,spi_wm:locancestor{spi_wm:ancestor},spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:woserviceaddress{spi_wm:description,spi_wm:latitudey,spi_wm:formattedaddress,spi_wm:longitudex,spi_wm:saddresscode},spi_wm:assetancestor{spi_wm:ancestor},spi_wm:failureCode{dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle,spi:isrunning,spi:updownstatus{spi:changedate}}').
-               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
+               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startfeaturelabel,spi_wm:endfeaturelabel,spi_wm:startoffset,spi_wm:startoffsetunitid,spi_wm:startmeasure,spi_wm:startmeasureunitid,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi_wm:endoffset,spi_wm:endoffsetunitid,spi_wm:endmeasure,spi_wm:endmeasureunitid,spi_wm:endyoffset,spi_wm:endyoffsetref,spi_wm:endzoffset,spi_wm:endzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
                addField({
                   'id' : 'aw1b779446',
                   'dataType' : 'string',
@@ -968,7 +968,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'dataType' : 'inline',
                   'index' : false,
                   'name' : 'multiassetloclist',
-                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
+                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startfeaturelabel,spi_wm:endfeaturelabel,spi_wm:startoffset,spi_wm:startoffsetunitid,spi_wm:startmeasure,spi_wm:startmeasureunitid,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi_wm:endoffset,spi_wm:endoffsetunitid,spi_wm:endmeasure,spi_wm:endmeasureunitid,spi_wm:endyoffset,spi_wm:endyoffsetref,spi_wm:endzoffset,spi_wm:endzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
                   'artifactId' : 'workOrder_multiassetloclist_spi_wmmultiassetlocci',
                   'remoteName' : 'spi_wm:multiassetlocci',
                   'local' : false,
@@ -1532,7 +1532,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                }).
                setLocal( false ).
                setSimpleFieldsSelectExpression('dcterms:identifier,dcterms:title,dcterms:description,spi_wm:woclass,spi_wm:origrecordid,spi_wm:origrecordclass,spi_wm:hasfollowupwork,oslc:shortTitle,dcterms:created,spi_wm:schedstart,spi_wm:schedfinish,spi_wm:actstart,spi_wm:actfinish,spi:status,spi_wm:worktype,spi_wm:wopriority,spi_wm:classstructureid,spi_wm:siteid,spi_wm:orgid,spi_wm:np_statusmemo,spi_wm:statusdate,spi_wm:istask,spi_wm:pluscphyloc,spi_wm:pluscfrequency,spi_wm:pluscoverduedate,spi_wm:pluscnextdate_np,spi_wm:pluscloop,spi_wm:pluscismobile,spi_wm:pluscfrequnit,spi_wm:pluscjprevnum,spi_wm:calculatedy,spi_wm:calculatedx,spi_wm:locancestor{spi_wm:ancestor},spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:woserviceaddress{spi_wm:description,spi_wm:formattedaddress,spi_wm:saddresscode},spi_wm:assetancestor{spi_wm:ancestor},spi_wm:failureCode{dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle,spi:isrunning,spi:updownstatus{spi:changedate}}').
-               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
+               setSupportiveFieldsSelectExpression('spi_wm:pluscwodsinstr_np{spi_wm:allowpointinserts,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asfounderror,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:aslefterror,spi_wm:assetfunction,spi_wm:assetnum,spi_wm:caldynamic,spi_wm:calfunction,spi_wm:calpoint,spi_wm:cliplimits,spi_wm:cliplimitsin,spi_wm:description,spi_wm:dsplannum,spi_wm:inputprecision,spi_wm:inputrange,spi_wm:instrcalrangeeu,spi_wm:instrcalrangefrom,spi_wm:instrcalrangeto,spi_wm:instroutrangeeu,spi_wm:instroutrangefrom,spi_wm:instroutrangeto,spi_wm:instrseq,spi_wm:manual,spi_wm:noadjmade,spi_wm:noadjmadechoice1,spi_wm:noadjmadechoice2,spi_wm:noadjmadechoice4,spi_wm:noadjmadechoice3,spi_wm:nonlinear,spi_wm:orgid,spi_wm:outputprecision,spi_wm:outputrange,spi_wm:plantype,spi_wm:processeu,spi_wm:processeufactor,spi_wm:repeatable,spi_wm:revisionnum,spi_wm:ron1lowervalue,spi_wm:ron1type,spi_wm:ron1uppervalue,spi_wm:squared,spi_wm:squareroot,spi_wm:wodsnum,spi_wm:tol1description,spi_wm:tol1lowervalue,spi_wm:tol1noadjlimit,spi_wm:tol1status,spi_wm:tol1sumdirection,spi_wm:tol1sumeu,spi_wm:tol1sumread,spi_wm:tol1sumurv,spi_wm:tol1sumspan,spi_wm:tol1type,spi_wm:gbfrom1,spi_wm:gbto1,spi_wm:gbsumdirection1,spi_wm:tol1uppervalue,spi_wm:tol2description,spi_wm:tol2lowervalue,spi_wm:tol2noadjlimit,spi_wm:tol2status,spi_wm:tol2sumdirection,spi_wm:tol2sumeu,spi_wm:tol2sumread,spi_wm:tol2sumurv,spi_wm:tol2sumspan,spi_wm:tol2type,spi_wm:gbfrom2,spi_wm:gbto2,spi_wm:gbsumdirection2,spi_wm:tol2uppervalue,spi_wm:tol3description,spi_wm:tol3lowervalue,spi_wm:tol3noadjlimit,spi_wm:tol3status,spi_wm:tol3sumdirection,spi_wm:tol3sumeu,spi_wm:tol3sumread,spi_wm:tol3sumurv,spi_wm:tol3sumspan,spi_wm:tol3type,spi_wm:tol3uppervalue,spi_wm:gbfrom3,spi_wm:gbto3,spi_wm:gbsumdirection3,spi_wm:tol4description,spi_wm:tol4lowervalue,spi_wm:tol4noadjlimit,spi_wm:tol4status,spi_wm:tol4sumdirection,spi_wm:tol4sumeu,spi_wm:tol4sumread,spi_wm:tol4sumurv,spi_wm:tol4sumspan,spi_wm:tol4type,spi_wm:tol4uppervalue,spi_wm:gbfrom4,spi_wm:gbto4,spi_wm:gbsumdirection4},spi_wm:pluscwodspoint_np{spi_wm:asfounderror,spi_wm:asfounderror1,spi_wm:asfounderror2,spi_wm:asfounderror3,spi_wm:asfounderror4,spi_wm:asfoundfail,spi_wm:asfoundinput,spi_wm:asfoundouterror,spi_wm:asfoundoutput,spi_wm:asfoundpass,spi_wm:asfoundproerror,spi_wm:asfoundpterror,spi_wm:asfoundsetpoint,spi_wm:asfoundtol1lower,spi_wm:asfoundtol1upper,spi_wm:asfoundtol2lower,spi_wm:asfoundtol2upper,spi_wm:asfoundtol3lower,spi_wm:asfoundtol3upper,spi_wm:asfoundtol4lower,spi_wm:asfoundtol4upper,spi_wm:asfoundtol1lw_orig,spi_wm:asfoundtol1up_orig,spi_wm:asfoundtol2lw_orig,spi_wm:asfoundtol2up_orig,spi_wm:asfoundtol3lw_orig,spi_wm:asfoundtol3up_orig,spi_wm:asfoundtol4lw_orig,spi_wm:asfoundtol4up_orig,spi_wm:asfoundunit,spi_wm:aslefterror,spi_wm:aslefterror1,spi_wm:aslefterror2,spi_wm:aslefterror3,spi_wm:aslefterror4,spi_wm:asleftfail,spi_wm:asleftinput,spi_wm:asleftouterror,spi_wm:asleftoutput,spi_wm:asleftpass,spi_wm:asleftproerror,spi_wm:asleftpterror,spi_wm:asleftsetpoint,spi_wm:aslefttol1lower,spi_wm:aslefttol1upper,spi_wm:aslefttol2lower,spi_wm:aslefttol2upper,spi_wm:aslefttol3lower,spi_wm:aslefttol3upper,spi_wm:aslefttol4lower,spi_wm:aslefttol4upper,spi_wm:aslefttol1lw_orig,spi_wm:aslefttol1up_orig,spi_wm:aslefttol2lw_orig,spi_wm:aslefttol2up_orig,spi_wm:aslefttol3lw_orig,spi_wm:aslefttol3up_orig,spi_wm:aslefttol4lw_orig,spi_wm:aslefttol4up_orig,spi_wm:asleftunit,spi_wm:direction,spi_wm:dsplannum,spi_wm:inputvalue,spi_wm:instrseq,spi_wm:isadded,spi_wm:isaverage,spi_wm:orgid,spi_wm:outputvalue,spi_wm:plantype,spi_wm:point,spi_wm:pointdescription,spi_wm:pvasltinput,spi_wm:pvasltoutput,spi_wm:revisionnum,spi_wm:ron1lower,spi_wm:ron1upper,spi_wm:setpointadj,spi_wm:setpointaction,spi_wm:setpointvalue,spi_wm:siteid,spi_wm:wodsnum,spi_wm:wonum,spi_wm:pluscwodspointid,spi_wm:asfinputstddev,spi_wm:asfoutputstddev,spi_wm:asfsetptstddev,spi_wm:aslinputstddev,spi_wm:asloutputstddev,spi_wm:aslsetptstddev},spi_wm:pluscwods{spi_wm:addingtowo,spi_wm:asfoundcalstatus,spi_wm:asfoundcomments,spi_wm:asleftcalstatus,spi_wm:asleftcomments,spi_wm:assetnum,spi_wm:certificatenum,spi_wm:description,spi_wm:dsplannum,spi_wm:isadded,spi_wm:location,spi_wm:noadjmade,spi_wm:orgid,spi_wm:required,spi_wm:requiredalways,spi_wm:revisionnum,spi_wm:sequence,spi_wm:siteid,spi_wm:taglocation,spi_wm:viewasloop,spi_wm:wodsnum,spi_wm:wonum},spi_wm:task{spi_wm:taskid,dcterms:title,spi_wm:description_longdescription,spi:status,spi_wm:schedstart,spi_wm:parent,spi_wm:istask,spi_wm:statusdate,spi_wm:np_statusmemo,spi_wm:siteid,oslc:shortTitle,spi_wm:parentchgsstatus,spi:location{spi:description_longdescription,dcterms:title,oslc:shortTitle},spi:asset{spi:description_longdescription,dcterms:title,oslc:shortTitle}},spi_wm:assignment{spi_wm:assignmentid,spi_wm:taskid,spi_wm:laborcode,spi_wm:laborname,spi_wm:craft,spi_wm:skilllevel,spi_wm:amcrew,spi_wm:amcrewtype,spi_wm:status,spi_wm:scheduledate,spi_wm:laborhrs,spi_wm:vendor,spi_wm:contractnum},spi_wm:wpmaterial{spi_wm:wpitemid,spi_wm:taskid,spi_wm:itemnum,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:linetype,spi_wm:directreq,spi_wm:itemsetid,spi_wm:storelocsite,spi_wm:requestnum,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:wptool{spi_wm:wpitemid,spi_wm:itemnum,spi_wm:taskid,spi_wm:description,spi_wm:description_longdescription,spi_wm:itemqty,spi_wm:hours,spi_wm:linetype,spi_wm:itemsetid,spi:location{dcterms:title,oslc:shortTitle}},spi_wm:actuallabor{dcterms:identifier,spi_wm:taskid,spi_wm:laborcode,foaf:name,spi_wm:craft,spi_wm:skilllevel,spi_wm:vendor,spi_wm:contractnum,spi_wm:revisionnum,spi_wm:amcrew,spi_wm:position,spi_wm:startdate,spi_wm:starttime,spi_wm:finishdate,spi_wm:finishtime,spi_wm:regularhrs,spi_wm:premiumpayhours,spi_wm:premiumpaycode,spi_wm:transtype,spi_wm:timerstatus,spi_wm:anywhererefid},spi_wm:actualmaterial{dcterms:identifier,spi_wm:itemsetid,spi_wm:taskid,spi_wm:itemnum,dcterms:title,spi_wm:positivequantity,spi_wm:linetype,spi_wm:storeloc,spi_wm:binnum,spi_wm:rotassetnum,spi_wm:tositeid,spi_wm:anywhererefid,spi_wm:requestnum,spi_wm:enteredastask},spi_wm:actualtool{dcterms:identifier,spi_wm:taskid,spi_wm:toolhrs,spi_wm:rotassetnum,spi_wm:amcrew,spi_wm:itemsetid,spi_wm:anywhererefid,spi_wm:plusctechnician,spi_wm:plusccomment,spi_wm:pluscduedate,spi_wm:plusctoolusedate,spi_wm:transdate,spi_wm:pluscexpirydate,spi_wm:plusclotnum,spi_wm:pluscmanufacturer,spi_wm:plusctype,spi_wm:rotassetsite,spi:toolitem{spi:pluscsolution,dcterms:title,spi:itemnum}},spi_wm:worklog{spi_wm:worklogid,spi_wm:createdate,spi_wm:createby,spi_wm:clientviewable,spi_wm:logtype,spi_wm:description,spi_wm:description_longdescription,spi_wm:anywhererefid},spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startfeaturelabel,spi_wm:endfeaturelabel,spi_wm:startoffset,spi_wm:startoffsetunitid,spi_wm:startmeasure,spi_wm:startmeasureunitid,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi_wm:endoffset,spi_wm:endoffsetunitid,spi_wm:endmeasure,spi_wm:endmeasureunitid,spi_wm:endyoffset,spi_wm:endyoffsetref,spi_wm:endzoffset,spi_wm:endzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}},spi_wm:failurereport{dcterms:identifier,spi_wm:type,spi_wm:linenum,spi_wm:anywhererefid,spi:failureCode{oslc:shortTitle,dcterms:title}},spi_wm:assetlocmeter{spi_wm:assetnum,spi_wm:location,spi_wm:dorollover,spi_wm:isdelta,spi_wm:inspector,spi_wm:newreading,spi_wm:newreadingdate,spi_wm:metername,spi_wm:metertype,spi_wm:readingtype,spi_wm:lastreading,spi_wm:lastreadingdate,spi_wm:remarks},spi:attachments{oslc_cm:attachmentSize,dcterms:title,spi:fileName,dcterms:description,dcterms:created,spi:urlType,spi:docType,spi:printthrulink,spi:contentLocation,spi:anywhererefid,spi:createby},spi_wm:workorderspec{spi_wm:workorderspecid,spi_wm:classstructureid,spi_wm:mandatory,spi_wm:refobjectname,spi_wm:orgid,spi_wm:changedate,spi_wm:displaysequence,spi_wm:changeby,spi_wm:refobjectid,spi_wm:numvalue,spi_wm:alnvalue,spi_wm:tablevalue,spi_wm:section,spi_wm:measureunitid,spi_wm:anywhererefid,spi_wm:assetattr{spi_wm:datatype,spi_wm:description,spi_wm:assetattrid},spi_wm:classspec{spi_wm:domainid,spi_wm:classspecid{spi_wm:classspecid}}},spi_wm:invreserve{spi_wm:displaytaskid,spi_wm:requestnum,spi_wm:description,spi_wm:reservedqty,spi_wm:location,spi_wm:itemsetid,spi_wm:storelocsiteid,spi_wm:item{oslc:shortTitle,spi:rotating}},spi_wm:assetdowntimereport{spi_wm:assetnum,spi_wm:statuschangecode,spi_wm:statuschangedate,spi_wm:code,spi_wm:startdate,spi_wm:enddate,spi_wm:isdowntimereport,spi_wm:startdatesource}').
                addField({
                   'id' : 'awa53ea5c0',
                   'dataType' : 'string',
@@ -2219,7 +2219,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'dataType' : 'inline',
                   'index' : false,
                   'name' : 'multiassetloclist',
-                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
+                  'selectExpression' : 'spi_wm:multiassetlocci{spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startfeaturelabel,spi_wm:endfeaturelabel,spi_wm:startoffset,spi_wm:startoffsetunitid,spi_wm:startmeasure,spi_wm:startmeasureunitid,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi_wm:endoffset,spi_wm:endoffsetunitid,spi_wm:endmeasure,spi_wm:endmeasureunitid,spi_wm:endyoffset,spi_wm:endyoffsetref,spi_wm:endzoffset,spi_wm:endzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}}',
                   'artifactId' : 'workOrder_multiassetloclist_spi_wmmultiassetloccihist',
                   'remoteName' : 'spi_wm:multiassetlocci',
                   'local' : false,
@@ -2888,7 +2888,7 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'resourceName' : 'multiAssetLocResource',
                }).
                setLocal( false ).
-               setSimpleFieldsSelectExpression('spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startoffset,spi_wm:startmeasure,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}').
+               setSimpleFieldsSelectExpression('spi_wm:feature,spi_wm:featurelabel,spi_wm:sequence,spi_wm:progress,spi_wm:multiid,spi_wm:isprimary,spi_wm:startfeaturelabel,spi_wm:endfeaturelabel,spi_wm:startoffset,spi_wm:startoffsetunitid,spi_wm:startmeasure,spi_wm:startmeasureunitid,spi_wm:startyoffset,spi_wm:startyoffsetref,spi_wm:startzoffset,spi_wm:startzoffsetref,spi_wm:endoffset,spi_wm:endoffsetunitid,spi_wm:endmeasure,spi_wm:endmeasureunitid,spi_wm:endyoffset,spi_wm:endyoffsetref,spi_wm:endzoffset,spi_wm:endzoffsetref,spi:location{dcterms:title,oslc:shortTitle},spi:asset{dcterms:title,oslc:shortTitle,spi:changedate,spi:isrunning}').
                setSupportiveFieldsSelectExpression('').
                addField({
                   'id' : 'awcd4d2b14',
@@ -3034,6 +3034,28 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'multiplicity' : 'exactly-one',
                }).
                addField({
+                  'id' : 'awcf5278de',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'startfeaturelabel',
+                  'artifactId' : 'multiAssetLocResource_startfeaturelabel',
+                  'remoteName' : 'spi_wm:startfeaturelabel',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 100,
+               }).
+               addField({
+                  'id' : 'aw874ce61a',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'endfeaturelabel',
+                  'artifactId' : 'multiAssetLocResource_endfeaturelabel',
+                  'remoteName' : 'spi_wm:endfeaturelabel',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 100,
+               }).
+               addField({
                   'id' : 'awe2008678',
                   'scale' : 2,
                   'dataType' : 'double',
@@ -3045,6 +3067,18 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'multiplicity' : 'zero-or-one',
                }).
                addField({
+                  'id' : 'aw54a83707',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'startoffsetunitid',
+                  'usage' : 'upper',
+                  'artifactId' : 'multiAssetLocResource_startoffsetunitid',
+                  'remoteName' : 'spi_wm:startoffsetunitid',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 16,
+               }).
+               addField({
                   'id' : 'aw58b138b3',
                   'scale' : 2,
                   'dataType' : 'double',
@@ -3054,6 +3088,18 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'remoteName' : 'spi_wm:startmeasure',
                   'local' : false,
                   'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'awed773d3c',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'startmeasureunitid',
+                  'usage' : 'upper',
+                  'artifactId' : 'multiAssetLocResource_startmeasureunitid',
+                  'remoteName' : 'spi_wm:startmeasureunitid',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 16,
                }).
                addField({
                   'id' : 'awd4e20063',
@@ -3095,6 +3141,96 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'name' : 'startzoffsetref',
                   'artifactId' : 'multiAssetLocResource_startzoffsetref',
                   'remoteName' : 'spi_wm:startzoffsetref',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 30,
+               }).
+               addField({
+                  'id' : 'aw3377d454',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'endoffset',
+                  'artifactId' : 'multiAssetLocResource_endoffset',
+                  'remoteName' : 'spi_wm:endoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'aw1cb6a9c3',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'endoffsetunitid',
+                  'usage' : 'upper',
+                  'artifactId' : 'multiAssetLocResource_endoffsetunitid',
+                  'remoteName' : 'spi_wm:endoffsetunitid',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 16,
+               }).
+               addField({
+                  'id' : 'aw6ab82302',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'endmeasure',
+                  'artifactId' : 'multiAssetLocResource_endmeasure',
+                  'remoteName' : 'spi_wm:endmeasure',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'aw7136250b',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'endmeasureunitid',
+                  'usage' : 'upper',
+                  'artifactId' : 'multiAssetLocResource_endmeasureunitid',
+                  'remoteName' : 'spi_wm:endmeasureunitid',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 16,
+               }).
+               addField({
+                  'id' : 'awe6eb1bd2',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'endyoffset',
+                  'artifactId' : 'multiAssetLocResource_endyoffset',
+                  'remoteName' : 'spi_wm:endyoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'aw48c2f71',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'endyoffsetref',
+                  'artifactId' : 'multiAssetLocResource_endyoffsetref',
+                  'remoteName' : 'spi_wm:endyoffsetref',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 30,
+               }).
+               addField({
+                  'id' : 'awd703014f',
+                  'scale' : 2,
+                  'dataType' : 'double',
+                  'index' : false,
+                  'name' : 'endzoffset',
+                  'artifactId' : 'multiAssetLocResource_endzoffset',
+                  'remoteName' : 'spi_wm:endzoffset',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+               }).
+               addField({
+                  'id' : 'awefbb9472',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'endzoffsetref',
+                  'artifactId' : 'multiAssetLocResource_endzoffsetref',
+                  'remoteName' : 'spi_wm:endzoffsetref',
                   'local' : false,
                   'multiplicity' : 'zero-or-one',
                   'maxSize' : 30,
@@ -19992,6 +20128,52 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
 
             var resource073 = new ResourceMetadata({
                   'inMemory' : false,
+                  'pageSize' : 10,
+                  'artifactId' : 'subverticaldata',
+                  'additionalData' : true,
+                  'isSystem' : false,
+                  'id' : 'aw13b15f39',
+                  'isAttachment' : false,
+                  'adapterName' : 'OSLCGenericAdapter',
+                  'maxFetchDataLimit' : 0,
+                  'urlBase' : 'http:\/\/10.215.72.100:9080\/maximo',
+                  'resourceName' : 'subverticaldata',
+               }).
+               setLocal( false ).
+               setSimpleFieldsSelectExpression('spi:value,spi:description').
+               setSupportiveFieldsSelectExpression('').
+               addField({
+                  'id' : 'awa375c15a',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'value',
+                  'artifactId' : 'tnbsubvertical_serviceaddressid_dctermsidentifier',
+                  'remoteName' : 'spi:value',
+                  'local' : false,
+                  'multiplicity' : 'exactly-one',
+                  'pkIndex' : 2,
+                  'maxSize' : 254,
+               }).
+               addField({
+                  'id' : 'aw4ffd591f',
+                  'dataType' : 'string',
+                  'index' : false,
+                  'name' : 'description',
+                  'artifactId' : 'tnbsubvertical_description_dctermstitle',
+                  'remoteName' : 'spi:description',
+                  'local' : false,
+                  'multiplicity' : 'zero-or-one',
+                  'maxSize' : 100,
+               }).
+               setQueryBases([
+                     {name:'getsubVertical', queryString:'\/oslc\/os\/oslcalndomain', queryLabel:'' }
+               ]).
+               setWhereClause('spi%3Adomainid%3D%22TNBSUBVERTICAL%22');
+            var resourcePromise073 = PersistenceManager.initCollection( resource073 );
+
+
+            var resource074 = new ResourceMetadata({
+                  'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'additionalbin',
                   'additionalData' : true,
@@ -20106,10 +20288,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getinvbalances', queryString:'\/oslc\/os\/oslcinvbalances', queryLabel:'' }
                ]);
-            var resourcePromise073 = PersistenceManager.initCollection( resource073 );
+            var resourcePromise074 = PersistenceManager.initCollection( resource074 );
 
 
-            var resource074 = new ResourceMetadata({
+            var resource075 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'additionalpremiumpaycode',
@@ -20189,10 +20371,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getpremiumpaycode', queryString:'\/oslc\/os\/oslcpremiumpay', queryLabel:'' }
                ]);
-            var resourcePromise074 = PersistenceManager.initCollection( resource074 );
+            var resourcePromise075 = PersistenceManager.initCollection( resource075 );
 
 
-            var resource075 = new ResourceMetadata({
+            var resource076 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'additionalpremiumpaycraftrate',
@@ -20264,10 +20446,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getppcraftrate', queryString:'\/oslc\/os\/oslcppcraftrate', queryLabel:'' }
                ]);
-            var resourcePromise075 = PersistenceManager.initCollection( resource075 );
+            var resourcePromise076 = PersistenceManager.initCollection( resource076 );
 
 
-            var resource076 = new ResourceMetadata({
+            var resource077 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'additionaldatasheetconfig',
@@ -20420,10 +20602,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getdatasheetconfig', queryString:'\/oslc\/os\/oslcpluscdsconfig', queryLabel:'' }
                ]);
-            var resourcePromise076 = PersistenceManager.initCollection( resource076 );
+            var resourcePromise077 = PersistenceManager.initCollection( resource077 );
 
 
-            var resource077 = new ResourceMetadata({
+            var resource078 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'transactiondatasheetconfig',
@@ -20577,10 +20759,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getdatasheetconfig', queryString:'\/oslc\/os\/oslcpluscdsconfig', queryLabel:'' }
                ]);
-            var resourcePromise077 = PersistenceManager.initCollection( resource077 );
+            var resourcePromise078 = PersistenceManager.initCollection( resource078 );
 
 
-            var resource078 = new ResourceMetadata({
+            var resource079 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'assetattrtypes',
@@ -20696,10 +20878,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getassetattrtypes', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22DATATYPE%22');
-            var resourcePromise078 = PersistenceManager.initCollection( resource078 );
+            var resourcePromise079 = PersistenceManager.initCollection( resource079 );
 
 
-            var resource079 = new ResourceMetadata({
+            var resource080 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domaintypes',
@@ -20815,10 +20997,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getdomaintypes', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22DOMTYPE%22');
-            var resourcePromise079 = PersistenceManager.initCollection( resource079 );
+            var resourcePromise080 = PersistenceManager.initCollection( resource080 );
 
 
-            var resource080 = new ResourceMetadata({
+            var resource081 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'metertypes',
@@ -20934,10 +21116,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getmetertypes', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22METERTYPE%22');
-            var resourcePromise080 = PersistenceManager.initCollection( resource080 );
+            var resourcePromise081 = PersistenceManager.initCollection( resource081 );
 
 
-            var resource081 = new ResourceMetadata({
+            var resource082 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'readingtypes',
@@ -21053,10 +21235,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getreadingtypes', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22READINGTYPE%22');
-            var resourcePromise081 = PersistenceManager.initCollection( resource081 );
+            var resourcePromise082 = PersistenceManager.initCollection( resource082 );
 
 
-            var resource082 = new ResourceMetadata({
+            var resource083 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainwostatus',
@@ -21148,10 +21330,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getwostatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22WOSTATUS%22');
-            var resourcePromise082 = PersistenceManager.initCollection( resource082 );
+            var resourcePromise083 = PersistenceManager.initCollection( resource083 );
 
 
-            var resource083 = new ResourceMetadata({
+            var resource084 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'additionalLineType',
@@ -21267,10 +21449,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getlinetype', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LINETYPE%22+and+spi%3Amaxvalue+in+%5B%22ITEM%22%2C%22MATERIAL%22%5D');
-            var resourcePromise083 = PersistenceManager.initCollection( resource083 );
+            var resourcePromise084 = PersistenceManager.initCollection( resource084 );
 
 
-            var resource084 = new ResourceMetadata({
+            var resource085 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'additionalloctype',
@@ -21339,10 +21521,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getloctype', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LOCTYPE%22+and+spi%3Amaxvalue%3D%22STOREROOM%22');
-            var resourcePromise084 = PersistenceManager.initCollection( resource084 );
+            var resourcePromise085 = PersistenceManager.initCollection( resource085 );
 
 
-            var resource085 = new ResourceMetadata({
+            var resource086 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'domainitemstatus',
@@ -21458,10 +21640,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getitemstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22ITEMSTATUS%22+and+spi%3Asiteid%21%3D%22*%22+and+spi%3Aorgid%21%3D%22*%22');
-            var resourcePromise085 = PersistenceManager.initCollection( resource085 );
+            var resourcePromise086 = PersistenceManager.initCollection( resource086 );
 
 
-            var resource086 = new ResourceMetadata({
+            var resource087 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'domainPLUSCDSStatus',
@@ -21577,10 +21759,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getPluscdsstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22PLUSCDSSTATUS%22+and+spi%3Asiteid%21%3D%22*%22+and+spi%3Aorgid%21%3D%22*%22');
-            var resourcePromise086 = PersistenceManager.initCollection( resource086 );
+            var resourcePromise087 = PersistenceManager.initCollection( resource087 );
 
 
-            var resource087 = new ResourceMetadata({
+            var resource088 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'domainAssetstatus',
@@ -21696,10 +21878,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getlocassetstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LOCASSETSTATUS%22+and+spi%3Asiteid%21%3D%22*%22+and+spi%3Aorgid%21%3D%22*%22');
-            var resourcePromise087 = PersistenceManager.initCollection( resource087 );
+            var resourcePromise088 = PersistenceManager.initCollection( resource088 );
 
 
-            var resource088 = new ResourceMetadata({
+            var resource089 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domaintimerstatus',
@@ -21815,10 +21997,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'gettimerstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22TIMERSTATUS%22+and+spi%3Asiteid%21%3D%22*%22+and+spi%3Aorgid%21%3D%22*%22');
-            var resourcePromise088 = PersistenceManager.initCollection( resource088 );
+            var resourcePromise089 = PersistenceManager.initCollection( resource089 );
 
 
-            var resource089 = new ResourceMetadata({
+            var resource090 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainwoclass',
@@ -21934,10 +22116,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getwoclass', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22WOCLASS%22');
-            var resourcePromise089 = PersistenceManager.initCollection( resource089 );
+            var resourcePromise090 = PersistenceManager.initCollection( resource090 );
 
 
-            var resource090 = new ResourceMetadata({
+            var resource091 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainrelatetype',
@@ -22053,10 +22235,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getrelatetype', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22RELATETYPE%22');
-            var resourcePromise090 = PersistenceManager.initCollection( resource090 );
+            var resourcePromise091 = PersistenceManager.initCollection( resource091 );
 
 
-            var resource091 = new ResourceMetadata({
+            var resource092 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 10,
                   'artifactId' : 'domainlogtype',
@@ -22146,10 +22328,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getlogtype', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LOGTYPE%22');
-            var resourcePromise091 = PersistenceManager.initCollection( resource091 );
+            var resourcePromise092 = PersistenceManager.initCollection( resource092 );
 
 
-            var resource092 = new ResourceMetadata({
+            var resource093 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'domainitemtype',
@@ -22265,10 +22447,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getItemType', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22ITEMTYPE%22');
-            var resourcePromise092 = PersistenceManager.initCollection( resource092 );
+            var resourcePromise093 = PersistenceManager.initCollection( resource093 );
 
 
-            var resource093 = new ResourceMetadata({
+            var resource094 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainlabortransactiontype',
@@ -22384,10 +22566,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getlttypework', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LTTYPE%22+and+spi%3Amaxvalue%3D%22WORK%22');
-            var resourcePromise093 = PersistenceManager.initCollection( resource093 );
+            var resourcePromise094 = PersistenceManager.initCollection( resource094 );
 
 
-            var resource094 = new ResourceMetadata({
+            var resource095 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainlocationstatustype',
@@ -22503,10 +22685,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getlocstat', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22LOCSTAT%22');
-            var resourcePromise094 = PersistenceManager.initCollection( resource094 );
+            var resourcePromise095 = PersistenceManager.initCollection( resource095 );
 
 
-            var resource095 = new ResourceMetadata({
+            var resource096 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domaincrewstatustype',
@@ -22622,10 +22804,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getcrewstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22CREWSTATUS%22');
-            var resourcePromise095 = PersistenceManager.initCollection( resource095 );
+            var resourcePromise096 = PersistenceManager.initCollection( resource096 );
 
 
-            var resource096 = new ResourceMetadata({
+            var resource097 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domainworktype',
@@ -22741,10 +22923,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getworktype', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22WORKTYPE%22');
-            var resourcePromise096 = PersistenceManager.initCollection( resource096 );
+            var resourcePromise097 = PersistenceManager.initCollection( resource097 );
 
 
-            var resource097 = new ResourceMetadata({
+            var resource098 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'domaincalstatus',
@@ -22860,10 +23042,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getcalstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22PLUSCCALSTATUS%22');
-            var resourcePromise097 = PersistenceManager.initCollection( resource097 );
+            var resourcePromise098 = PersistenceManager.initCollection( resource098 );
 
 
-            var resource098 = new ResourceMetadata({
+            var resource099 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'plusccdsetaction',
@@ -22979,10 +23161,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getcalstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22PLUSCDSSETACTION%22');
-            var resourcePromise098 = PersistenceManager.initCollection( resource098 );
+            var resourcePromise099 = PersistenceManager.initCollection( resource099 );
 
 
-            var resource099 = new ResourceMetadata({
+            var resource100 = new ResourceMetadata({
                   'id' : 'awdb0cb18a',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -23118,10 +23300,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'workOrderTimer_paused_boolean',
                   'local' : true,
                });
-            var resourcePromise099 = PersistenceManager.initCollection( resource099 );
+            var resourcePromise100 = PersistenceManager.initCollection( resource100 );
 
 
-            var resource100 = new ResourceMetadata({
+            var resource101 = new ResourceMetadata({
                   'id' : 'aw4e8b936d',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -23154,10 +23336,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'mapCache_data_string',
                   'local' : true,
                });
-            var resourcePromise100 = PersistenceManager.initCollection( resource100 );
+            var resourcePromise101 = PersistenceManager.initCollection( resource101 );
 
 
-            var resource101 = new ResourceMetadata({
+            var resource102 = new ResourceMetadata({
                   'id' : 'aw8e54bcf7',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -23209,10 +23391,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'maxSize' : 50,
                });
-            var resourcePromise101 = PersistenceManager.initCollection( resource101 );
+            var resourcePromise102 = PersistenceManager.initCollection( resource102 );
 
 
-            var resource102 = new ResourceMetadata({
+            var resource103 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'oslcmaxvars',
@@ -23281,10 +23463,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getmaxvarsinprglabtrans', queryString:'\/oslc\/os\/oslcmaxvars', queryLabel:'' }
                ]).
                setWhereClause('spi%3Avarname+in+%5B%22STARTTIMERINPRG%22%2C%22LABTRANSTOLERANCE%22%2C%22DOWNTIMEDFLTS%22%2C%22PLUSCMOBREADONLY%22%2C%22PLUSCAUTOSTATUS%22%2C%22PLUSCROTASSET%22%2C%22PLUSCPASTDUEVAL%22%2C%22PLUSCQUALTECH%22%2C%22PLUSCVALTOOL%22%5D');
-            var resourcePromise102 = PersistenceManager.initCollection( resource102 );
+            var resourcePromise103 = PersistenceManager.initCollection( resource103 );
 
 
-            var resource103 = new ResourceMetadata({
+            var resource104 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'domainDownCode',
@@ -23351,10 +23533,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getdowncode', queryString:'\/oslc\/os\/oslcalndomain', queryLabel:'' }
                ]).
                setWhereClause('spi%3Adomainid%3D%22DOWNCODE%22');
-            var resourcePromise103 = PersistenceManager.initCollection( resource103 );
+            var resourcePromise104 = PersistenceManager.initCollection( resource104 );
 
 
-            var resource104 = new ResourceMetadata({
+            var resource105 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'additionalInventory',
@@ -23551,10 +23733,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getinventory', queryString:'\/oslc\/os\/oslcinventory', queryLabel:'' }
                ]);
-            var resourcePromise104 = PersistenceManager.initCollection( resource104 );
+            var resourcePromise105 = PersistenceManager.initCollection( resource105 );
 
 
-            var resource105 = new ResourceMetadata({
+            var resource106 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'wostatusResource',
@@ -23680,10 +23862,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getwostatus', queryString:'\/oslc\/os\/oslcwostatus', queryLabel:'' }
                ]);
-            var resourcePromise105 = PersistenceManager.initCollection( resource105 );
+            var resourcePromise106 = PersistenceManager.initCollection( resource106 );
 
 
-            var resource106 = new ResourceMetadata({
+            var resource107 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 20,
                   'artifactId' : 'oslcwpeditsetting',
@@ -23841,10 +24023,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getwpeditsetting', queryString:'\/oslc\/os\/oslcwpeditsetting', queryLabel:'' }
                ]);
-            var resourcePromise106 = PersistenceManager.initCollection( resource106 );
+            var resourcePromise107 = PersistenceManager.initCollection( resource107 );
 
 
-            var resource107 = new ResourceMetadata({
+            var resource108 = new ResourceMetadata({
                   'id' : 'aw69943347',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -23906,10 +24088,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'materialSummary_materialcheckbox_boolean',
                   'local' : true,
                });
-            var resourcePromise107 = PersistenceManager.initCollection( resource107 );
+            var resourcePromise108 = PersistenceManager.initCollection( resource108 );
 
 
-            var resource108 = new ResourceMetadata({
+            var resource109 = new ResourceMetadata({
                   'id' : 'aw9df7b460',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -23971,10 +24153,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'toolSummary_toolcheckbox_boolean',
                   'local' : true,
                });
-            var resourcePromise108 = PersistenceManager.initCollection( resource108 );
+            var resourcePromise109 = PersistenceManager.initCollection( resource109 );
 
 
-            var resource109 = new ResourceMetadata({
+            var resource110 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 20,
                   'artifactId' : 'domaincrewstatus',
@@ -24090,10 +24272,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getcrewstatus', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22CREWSTATUS%22+and+spi%3Asiteid%21%3D%22*%22+and+spi%3Aorgid%21%3D%22*%22');
-            var resourcePromise109 = PersistenceManager.initCollection( resource109 );
+            var resourcePromise110 = PersistenceManager.initCollection( resource110 );
 
 
-            var resource110 = new ResourceMetadata({
+            var resource111 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 10,
                   'artifactId' : 'laborcrew',
@@ -24335,10 +24517,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getamcrew', queryString:'\/oslc\/os\/oslcamcrew', queryLabel:'' }
                ]).
                setWhereClause('spi%3Aamcrewamcrewlabor%7Bspi%3Alaborcode%3D%24%7Bmylabor.laborcode%7D%7D+and+spi%3Aorgid%3D%24%7Bmylabor.orgid%7D+and+spi%3Astatus+in+%5B%24%7Bdomaincrewstatus%5Bmaxvalue%3DACTIVE%5D.value%7D%5D');
-            var resourcePromise110 = PersistenceManager.initCollection( resource110 );
+            var resourcePromise111 = PersistenceManager.initCollection( resource111 );
 
 
-            var resource111 = new ResourceMetadata({
+            var resource112 = new ResourceMetadata({
                   'id' : 'aw2c6811c9',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -24424,10 +24606,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'searchWorkOrder_enddate_date',
                   'local' : true,
                });
-            var resourcePromise111 = PersistenceManager.initCollection( resource111 );
+            var resourcePromise112 = PersistenceManager.initCollection( resource112 );
 
 
-            var resource112 = new ResourceMetadata({
+            var resource113 = new ResourceMetadata({
                   'id' : 'awdb3ee56c',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -24524,10 +24706,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'crewToolResource_actualstaskid_integer',
                   'local' : true,
                });
-            var resourcePromise112 = PersistenceManager.initCollection( resource112 );
+            var resourcePromise113 = PersistenceManager.initCollection( resource113 );
 
 
-            var resource113 = new ResourceMetadata({
+            var resource114 = new ResourceMetadata({
                   'id' : 'awd4953e9',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -24727,10 +24909,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'crewLaborResource_timerStatus_string',
                   'local' : true,
                });
-            var resourcePromise113 = PersistenceManager.initCollection( resource113 );
+            var resourcePromise114 = PersistenceManager.initCollection( resource114 );
 
 
-            var resource114 = new ResourceMetadata({
+            var resource115 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'laborCrewList',
@@ -24852,10 +25034,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'pkIndex' : 4,
                   'key' : '2',
                });
-            var resourcePromise114 = PersistenceManager.initCollection( resource114 );
+            var resourcePromise115 = PersistenceManager.initCollection( resource115 );
 
 
-            var resource115 = new ResourceMetadata({
+            var resource116 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'toolCrewList',
@@ -24941,10 +25123,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'pkIndex' : 4,
                   'key' : '2',
                });
-            var resourcePromise115 = PersistenceManager.initCollection( resource115 );
+            var resourcePromise116 = PersistenceManager.initCollection( resource116 );
 
 
-            var resource116 = new ResourceMetadata({
+            var resource117 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'userInfo',
@@ -25159,10 +25341,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'currentUser', queryString:'\/oslc\/os\/oslcmaxuser?savedQuery=currentUser', queryLabel:'' }
                ]);
-            var resourcePromise116 = PersistenceManager.initCollection( resource116 );
+            var resourcePromise117 = PersistenceManager.initCollection( resource117 );
 
 
-            var resource117 = new ResourceMetadata({
+            var resource118 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'classstructure',
@@ -25286,10 +25468,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getclassstructure', queryString:'\/oslc\/os\/oslcclassstructure?savedQuery=ANYWHEREALL', queryLabel:'' }
                ]);
-            var resourcePromise117 = PersistenceManager.initCollection( resource117 );
+            var resourcePromise118 = PersistenceManager.initCollection( resource118 );
 
 
-            var resource118 = new ResourceMetadata({
+            var resource119 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'classSpec',
@@ -25488,10 +25670,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getclasssspec', queryString:'\/oslc\/os\/oslcclassspec', queryLabel:'' }
                ]).
                setWhereClause('spi_wm%3Aclassspecusewith%7Bspi_wm%3Aobjectname%3D%22WORKORDER%22%7D');
-            var resourcePromise118 = PersistenceManager.initCollection( resource118 );
+            var resourcePromise119 = PersistenceManager.initCollection( resource119 );
 
 
-            var resource119 = new ResourceMetadata({
+            var resource120 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'userRoles',
@@ -25518,10 +25700,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'pkIndex' : 2,
                   'maxSize' : 30,
                });
-            var resourcePromise119 = PersistenceManager.initCollection( resource119 );
+            var resourcePromise120 = PersistenceManager.initCollection( resource120 );
 
 
-            var resource120 = new ResourceMetadata({
+            var resource121 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'failureListResource',
@@ -25628,10 +25810,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getfailureList', queryString:'\/oslc\/os\/oslcfailurelist', queryLabel:'' }
                ]).
                setWhereClause('spi%3Aorgid%3D%24%7Bmylabor.orgid%7D');
-            var resourcePromise120 = PersistenceManager.initCollection( resource120 );
+            var resourcePromise121 = PersistenceManager.initCollection( resource121 );
 
 
-            var resource121 = new ResourceMetadata({
+            var resource122 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'failureReportResource',
@@ -25720,10 +25902,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : false,
                   'multiplicity' : 'zero-or-one',
                });
-            var resourcePromise121 = PersistenceManager.initCollection( resource121 );
+            var resourcePromise122 = PersistenceManager.initCollection( resource122 );
 
 
-            var resource122 = new ResourceMetadata({
+            var resource123 = new ResourceMetadata({
                   'id' : 'awaae2fa03',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -25756,10 +25938,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'failureClassResource_failureCodeDesc_string',
                   'local' : true,
                });
-            var resourcePromise122 = PersistenceManager.initCollection( resource122 );
+            var resourcePromise123 = PersistenceManager.initCollection( resource123 );
 
 
-            var resource123 = new ResourceMetadata({
+            var resource124 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 2000,
                   'artifactId' : 'meterCharacteristics',
@@ -25815,10 +25997,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getCharacteristics', queryString:'\/oslc\/os\/oslcalndomain', queryLabel:'' }
                ]);
-            var resourcePromise123 = PersistenceManager.initCollection( resource123 );
+            var resourcePromise124 = PersistenceManager.initCollection( resource124 );
 
 
-            var resource124 = new ResourceMetadata({
+            var resource125 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'appDocType',
@@ -25873,10 +26055,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getWODocTypes', queryString:'\/oslc\/os\/oslcappdoctype?oslc.where=spi:app=%22WOTRACK%22', queryLabel:'' }
                ]);
-            var resourcePromise124 = PersistenceManager.initCollection( resource124 );
+            var resourcePromise125 = PersistenceManager.initCollection( resource125 );
 
 
-            var resource125 = new ResourceMetadata({
+            var resource126 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'site',
@@ -25921,10 +26103,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getSite', queryString:'\/oslc\/os\/oslcsite', queryLabel:'' }
                ]);
-            var resourcePromise125 = PersistenceManager.initCollection( resource125 );
+            var resourcePromise126 = PersistenceManager.initCollection( resource126 );
 
 
-            var resource126 = new ResourceMetadata({
+            var resource127 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'maxdomain',
@@ -26034,10 +26216,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getmaxdomain', queryString:'\/oslc\/os\/oslcmaxdomain?savedQuery=getWorkOrderSpecificationDomains', queryLabel:'' }
                ]).
                setWhereClause('spi_wm%3Adomaintype+in+%5B%22NUMERIC%22%2C%22ALN%22%2C%22TABLE%22%5D');
-            var resourcePromise126 = PersistenceManager.initCollection( resource126 );
+            var resourcePromise127 = PersistenceManager.initCollection( resource127 );
 
 
-            var resource127 = new ResourceMetadata({
+            var resource128 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'numericDomainResource',
@@ -26110,10 +26292,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'formula' : '(${serverDescription} || ${value})',
                });
-            var resourcePromise127 = PersistenceManager.initCollection( resource127 );
+            var resourcePromise128 = PersistenceManager.initCollection( resource128 );
 
 
-            var resource128 = new ResourceMetadata({
+            var resource129 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'alnDomainResource',
@@ -26186,10 +26368,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'formula' : '(${serverDescription} || ${value})',
                });
-            var resourcePromise128 = PersistenceManager.initCollection( resource128 );
+            var resourcePromise129 = PersistenceManager.initCollection( resource129 );
 
 
-            var resource129 = new ResourceMetadata({
+            var resource130 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'workOrderSpecResource',
@@ -26443,10 +26625,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : false,
                   'multiplicity' : 'zero-or-one',
                });
-            var resourcePromise129 = PersistenceManager.initCollection( resource129 );
+            var resourcePromise130 = PersistenceManager.initCollection( resource130 );
 
 
-            var resource130 = new ResourceMetadata({
+            var resource131 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 50,
                   'artifactId' : 'workOrderHistoryAssetLoc',
@@ -26526,10 +26708,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'searchAllWorkOrdersAsset', queryString:'\/oslc\/os\/oslcwodetail?savedQuery=getWithComplexQuery', defaultForSearch: true, queryLabel:'' }
                ]);
-            var resourcePromise130 = PersistenceManager.initCollection( resource130 );
+            var resourcePromise131 = PersistenceManager.initCollection( resource131 );
 
 
-            var resource131 = new ResourceMetadata({
+            var resource132 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 20,
                   'artifactId' : 'woHistory',
@@ -26823,10 +27005,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'searchAllWorkOrders', queryString:'\/oslc\/os\/oslcwodetail?savedQuery=getWithComplexQuery', defaultForSearch: true, queryLabel:'' }
                ]);
-            var resourcePromise131 = PersistenceManager.initCollection( resource131 );
+            var resourcePromise132 = PersistenceManager.initCollection( resource132 );
 
 
-            var resource132 = new ResourceMetadata({
+            var resource133 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'asset',
@@ -26943,10 +27125,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'assetResourceQB', queryString:'\/oslc\/os\/oslcasset', queryLabel:'' }
                ]);
-            var resourcePromise132 = PersistenceManager.initCollection( resource132 );
+            var resourcePromise133 = PersistenceManager.initCollection( resource133 );
 
 
-            var resource133 = new ResourceMetadata({
+            var resource134 = new ResourceMetadata({
                   'id' : 'aw7270235',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -27027,10 +27209,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'key' : '6',
                });
-            var resourcePromise133 = PersistenceManager.initCollection( resource133 );
+            var resourcePromise134 = PersistenceManager.initCollection( resource134 );
 
 
-            var resource134 = new ResourceMetadata({
+            var resource135 = new ResourceMetadata({
                   'id' : 'awfeb0b2e5',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -27114,10 +27296,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'key' : '6',
                });
-            var resourcePromise134 = PersistenceManager.initCollection( resource134 );
+            var resourcePromise135 = PersistenceManager.initCollection( resource135 );
 
 
-            var resource135 = new ResourceMetadata({
+            var resource136 = new ResourceMetadata({
                   'id' : 'awa2955562',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -27161,10 +27343,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'key' : '3',
                });
-            var resourcePromise135 = PersistenceManager.initCollection( resource135 );
+            var resourcePromise136 = PersistenceManager.initCollection( resource136 );
 
 
-            var resource136 = new ResourceMetadata({
+            var resource137 = new ResourceMetadata({
                   'id' : 'aw8545fc2f',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -27198,10 +27380,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'key' : '2',
                });
-            var resourcePromise136 = PersistenceManager.initCollection( resource136 );
+            var resourcePromise137 = PersistenceManager.initCollection( resource137 );
 
 
-            var resource137 = new ResourceMetadata({
+            var resource138 = new ResourceMetadata({
                   'id' : 'awdb366a89',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -27281,10 +27463,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformAttachmentInfoResource_createDate_dateTime',
                   'local' : true,
                });
-            var resourcePromise137 = PersistenceManager.initCollection( resource137 );
+            var resourcePromise138 = PersistenceManager.initCollection( resource138 );
 
 
-            var resource138 = new ResourceMetadata({
+            var resource139 = new ResourceMetadata({
                   'id' : 'aw4ffdce67',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -27308,10 +27490,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'maxSize' : 20,
                });
-            var resourcePromise138 = PersistenceManager.initCollection( resource138 );
+            var resourcePromise139 = PersistenceManager.initCollection( resource139 );
 
 
-            var resource139 = new ResourceMetadata({
+            var resource140 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'anywherePropValRes',
@@ -27393,10 +27575,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'anywherepropvalQB', queryString:'\/oslc\/os\/oslcanywherepropval', defaultForSearch: true, queryLabel:'' }
                ]);
-            var resourcePromise139 = PersistenceManager.initCollection( resource139 );
+            var resourcePromise140 = PersistenceManager.initCollection( resource140 );
 
 
-            var resource140 = new ResourceMetadata({
+            var resource141 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'anywhereResourceSrcRes',
@@ -27478,10 +27660,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'anywhereResourceQB', queryString:'\/oslc\/os\/oslcanywhereresrc', defaultForSearch: true, queryLabel:'' }
                ]);
-            var resourcePromise140 = PersistenceManager.initCollection( resource140 );
+            var resourcePromise141 = PersistenceManager.initCollection( resource141 );
 
 
-            var resource141 = new ResourceMetadata({
+            var resource142 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 200,
                   'artifactId' : 'AnywhereResValRes',
@@ -27604,10 +27786,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'AnywhereResValQB', queryString:'\/oslc\/os\/oslcanywhereresrval', defaultForSearch: true, queryLabel:'' }
                ]);
-            var resourcePromise141 = PersistenceManager.initCollection( resource141 );
+            var resourcePromise142 = PersistenceManager.initCollection( resource142 );
 
 
-            var resource142 = new ResourceMetadata({
+            var resource143 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 5,
                   'artifactId' : 'osusernotification',
@@ -27727,10 +27909,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'oslcosusernotificatiQB', queryString:'\/oslc\/os\/oslcosusernotificati', defaultForSearch: true, queryLabel:'' }
                ]).
                setWhereClause('spi%3Aeventforuser%3D%24%7Bpersonid%7D');
-            var resourcePromise142 = PersistenceManager.initCollection( resource142 );
+            var resourcePromise143 = PersistenceManager.initCollection( resource143 );
 
 
-            var resource143 = new ResourceMetadata({
+            var resource144 = new ResourceMetadata({
                   'id' : 'awb1ffcb05',
                   'platform' : 'true',
                   'inMemory' : true,
@@ -27764,10 +27946,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'local' : true,
                   'key' : '1',
                });
-            var resourcePromise143 = PersistenceManager.initCollection( resource143 );
+            var resourcePromise144 = PersistenceManager.initCollection( resource144 );
 
 
-            var resource144 = new ResourceMetadata({
+            var resource145 = new ResourceMetadata({
                   'id' : 'awacb7affd',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -27808,10 +27990,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformViewQueryResource_queryid_string',
                   'local' : true,
                });
-            var resourcePromise144 = PersistenceManager.initCollection( resource144 );
+            var resourcePromise145 = PersistenceManager.initCollection( resource145 );
 
 
-            var resource145 = new ResourceMetadata({
+            var resource146 = new ResourceMetadata({
                   'id' : 'aw1a0eea87',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -27843,10 +28025,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformListSortResource_index_integer',
                   'local' : true,
                });
-            var resourcePromise145 = PersistenceManager.initCollection( resource145 );
+            var resourcePromise146 = PersistenceManager.initCollection( resource146 );
 
 
-            var resource146 = new ResourceMetadata({
+            var resource147 = new ResourceMetadata({
                   'id' : 'aw6a400d8e',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -27905,10 +28087,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformListSearchResource_exact_boolean',
                   'local' : true,
                });
-            var resourcePromise146 = PersistenceManager.initCollection( resource146 );
+            var resourcePromise147 = PersistenceManager.initCollection( resource147 );
 
 
-            var resource147 = new ResourceMetadata({
+            var resource148 = new ResourceMetadata({
                   'id' : 'aw589b431',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -28075,10 +28257,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformResourceMetricsResource_maxrowstamp_string',
                   'local' : true,
                });
-            var resourcePromise147 = PersistenceManager.initCollection( resource147 );
+            var resourcePromise148 = PersistenceManager.initCollection( resource148 );
 
 
-            var resource148 = new ResourceMetadata({
+            var resource149 = new ResourceMetadata({
                   'id' : 'aw9df5e2ad',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -28200,10 +28382,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'DataSyncTracking_attempt_string',
                   'local' : true,
                });
-            var resourcePromise148 = PersistenceManager.initCollection( resource148 );
+            var resourcePromise149 = PersistenceManager.initCollection( resource149 );
 
 
-            var resource149 = new ResourceMetadata({
+            var resource150 = new ResourceMetadata({
                   'id' : 'aw903a86e4',
                   'platform' : 'true',
                   'inMemory' : true,
@@ -28237,10 +28419,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformDateLookupResource_duration_string',
                   'local' : true,
                });
-            var resourcePromise149 = PersistenceManager.initCollection( resource149 );
+            var resourcePromise150 = PersistenceManager.initCollection( resource150 );
 
 
-            var resource150 = new ResourceMetadata({
+            var resource151 = new ResourceMetadata({
                   'id' : 'aw62f56f6f',
                   'platform' : 'true',
                   'inMemory' : true,
@@ -28301,10 +28483,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'LastADDownload_numberOfDaysToSync_string',
                   'local' : true,
                });
-            var resourcePromise150 = PersistenceManager.initCollection( resource150 );
+            var resourcePromise151 = PersistenceManager.initCollection( resource151 );
 
 
-            var resource151 = new ResourceMetadata({
+            var resource152 = new ResourceMetadata({
                   'id' : 'aw6e8f90d1',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -28337,10 +28519,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformProgressResource_started_boolean',
                   'local' : true,
                });
-            var resourcePromise151 = PersistenceManager.initCollection( resource151 );
+            var resourcePromise152 = PersistenceManager.initCollection( resource152 );
 
 
-            var resource152 = new ResourceMetadata({
+            var resource153 = new ResourceMetadata({
                   'id' : 'awe7baae94',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -28372,10 +28554,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'timeTrack_content_string',
                   'local' : true,
                });
-            var resourcePromise152 = PersistenceManager.initCollection( resource152 );
+            var resourcePromise153 = PersistenceManager.initCollection( resource153 );
 
 
-            var resource153 = new ResourceMetadata({
+            var resource154 = new ResourceMetadata({
                   'id' : 'aw58a2c8cd',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -28462,10 +28644,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformChangePasswordForm_oslcMaxUserURL_string',
                   'local' : true,
                });
-            var resourcePromise153 = PersistenceManager.initCollection( resource153 );
+            var resourcePromise154 = PersistenceManager.initCollection( resource154 );
 
 
-            var resource154 = new ResourceMetadata({
+            var resource155 = new ResourceMetadata({
                   'id' : 'aw539422b',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -28552,10 +28734,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'tempPushNotification_msgProp3_string',
                   'local' : true,
                });
-            var resourcePromise154 = PersistenceManager.initCollection( resource154 );
+            var resourcePromise155 = PersistenceManager.initCollection( resource155 );
 
 
-            var resource155 = new ResourceMetadata({
+            var resource156 = new ResourceMetadata({
                   'id' : 'aw8a065cd1',
                   'inMemory' : true,
                   'pageSize' : 1000,
@@ -28607,10 +28789,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'PlatformEsigResource_success_boolean',
                   'local' : true,
                });
-            var resourcePromise155 = PersistenceManager.initCollection( resource155 );
+            var resourcePromise156 = PersistenceManager.initCollection( resource156 );
 
 
-            var resource156 = new ResourceMetadata({
+            var resource157 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'PlatformEsigAttributeResource',
@@ -28649,10 +28831,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'PlatformEsigAttributeResource_query', queryString:'\/oslc\/os\/oslcesigattribute', queryLabel:'' }
                ]).
                setWhereClause('spi%3Aesigenabled%3D1');
-            var resourcePromise156 = PersistenceManager.initCollection( resource156 );
+            var resourcePromise157 = PersistenceManager.initCollection( resource157 );
 
 
-            var resource157 = new ResourceMetadata({
+            var resource158 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 1000,
                   'artifactId' : 'PlatformLoginTrackingResource',
@@ -28776,10 +28958,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'PlatformLoginTrackingResource_query', queryString:'\/oslc\/os\/oslclogintracking', queryLabel:'' }
                ]).
                setWhereClause('spi%3Aattemptdate%21%3D%22*%22');
-            var resourcePromise157 = PersistenceManager.initCollection( resource157 );
+            var resourcePromise158 = PersistenceManager.initCollection( resource158 );
 
 
-            var resource158 = new ResourceMetadata({
+            var resource159 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'attemptResultDomain',
@@ -28896,10 +29078,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                      {name:'getAttemptResultDomain', queryString:'\/oslc\/os\/oslcsynonymdomain', queryLabel:'' }
                ]).
                setWhereClause('oslc%3AshortTitle%3D%22ATTEMPTRESULT%22');
-            var resourcePromise158 = PersistenceManager.initCollection( resource158 );
+            var resourcePromise159 = PersistenceManager.initCollection( resource159 );
 
 
-            var resource159 = new ResourceMetadata({
+            var resource160 = new ResourceMetadata({
                   'inMemory' : false,
                   'pageSize' : 100,
                   'artifactId' : 'lbslocation',
@@ -29080,10 +29262,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                setQueryBases([
                      {name:'getLbslocation', queryString:'\/oslc\/os\/oslclbslocation', queryLabel:'' }
                ]);
-            var resourcePromise159 = PersistenceManager.initCollection( resource159 );
+            var resourcePromise160 = PersistenceManager.initCollection( resource160 );
 
 
-            var resource160 = new ResourceMetadata({
+            var resource161 = new ResourceMetadata({
                   'id' : 'awd5b5d51a',
                   'inMemory' : false,
                   'pageSize' : 1000,
@@ -29188,10 +29370,10 @@ function(declare, all, StoresBuilderBase, ResourceMetadata, PersistenceManager, 
                   'artifactId' : 'tempPlatformGeolocationLocalStore_timerstamp_string',
                   'local' : true,
                });
-            var resourcePromise160 = PersistenceManager.initCollection( resource160 );
+            var resourcePromise161 = PersistenceManager.initCollection( resource161 );
 
 
-            all([resourcePromise001, resourcePromise002, resourcePromise003, resourcePromise004, resourcePromise005, resourcePromise006, resourcePromise007, resourcePromise008, resourcePromise009, resourcePromise010, resourcePromise011, resourcePromise012, resourcePromise013, resourcePromise014, resourcePromise015, resourcePromise016, resourcePromise017, resourcePromise018, resourcePromise019, resourcePromise020, resourcePromise021, resourcePromise022, resourcePromise023, resourcePromise024, resourcePromise025, resourcePromise026, resourcePromise027, resourcePromise028, resourcePromise029, resourcePromise030, resourcePromise031, resourcePromise032, resourcePromise033, resourcePromise034, resourcePromise035, resourcePromise036, resourcePromise037, resourcePromise038, resourcePromise039, resourcePromise040, resourcePromise041, resourcePromise042, resourcePromise043, resourcePromise044, resourcePromise045, resourcePromise046, resourcePromise047, resourcePromise048, resourcePromise049, resourcePromise050, resourcePromise051, resourcePromise052, resourcePromise053, resourcePromise054, resourcePromise055, resourcePromise056, resourcePromise057, resourcePromise058, resourcePromise059, resourcePromise060, resourcePromise061, resourcePromise062, resourcePromise063, resourcePromise064, resourcePromise065, resourcePromise066, resourcePromise067, resourcePromise068, resourcePromise069, resourcePromise070, resourcePromise071, resourcePromise072, resourcePromise073, resourcePromise074, resourcePromise075, resourcePromise076, resourcePromise077, resourcePromise078, resourcePromise079, resourcePromise080, resourcePromise081, resourcePromise082, resourcePromise083, resourcePromise084, resourcePromise085, resourcePromise086, resourcePromise087, resourcePromise088, resourcePromise089, resourcePromise090, resourcePromise091, resourcePromise092, resourcePromise093, resourcePromise094, resourcePromise095, resourcePromise096, resourcePromise097, resourcePromise098, resourcePromise099, resourcePromise100, resourcePromise101, resourcePromise102, resourcePromise103, resourcePromise104, resourcePromise105, resourcePromise106, resourcePromise107, resourcePromise108, resourcePromise109, resourcePromise110, resourcePromise111, resourcePromise112, resourcePromise113, resourcePromise114, resourcePromise115, resourcePromise116, resourcePromise117, resourcePromise118, resourcePromise119, resourcePromise120, resourcePromise121, resourcePromise122, resourcePromise123, resourcePromise124, resourcePromise125, resourcePromise126, resourcePromise127, resourcePromise128, resourcePromise129, resourcePromise130, resourcePromise131, resourcePromise132, resourcePromise133, resourcePromise134, resourcePromise135, resourcePromise136, resourcePromise137, resourcePromise138, resourcePromise139, resourcePromise140, resourcePromise141, resourcePromise142, resourcePromise143, resourcePromise144, resourcePromise145, resourcePromise146, resourcePromise147, resourcePromise148, resourcePromise149, resourcePromise150, resourcePromise151, resourcePromise152, resourcePromise153, resourcePromise154, resourcePromise155, resourcePromise156, resourcePromise157, resourcePromise158, resourcePromise159, resourcePromise160]).then(function(results) {
+            all([resourcePromise001, resourcePromise002, resourcePromise003, resourcePromise004, resourcePromise005, resourcePromise006, resourcePromise007, resourcePromise008, resourcePromise009, resourcePromise010, resourcePromise011, resourcePromise012, resourcePromise013, resourcePromise014, resourcePromise015, resourcePromise016, resourcePromise017, resourcePromise018, resourcePromise019, resourcePromise020, resourcePromise021, resourcePromise022, resourcePromise023, resourcePromise024, resourcePromise025, resourcePromise026, resourcePromise027, resourcePromise028, resourcePromise029, resourcePromise030, resourcePromise031, resourcePromise032, resourcePromise033, resourcePromise034, resourcePromise035, resourcePromise036, resourcePromise037, resourcePromise038, resourcePromise039, resourcePromise040, resourcePromise041, resourcePromise042, resourcePromise043, resourcePromise044, resourcePromise045, resourcePromise046, resourcePromise047, resourcePromise048, resourcePromise049, resourcePromise050, resourcePromise051, resourcePromise052, resourcePromise053, resourcePromise054, resourcePromise055, resourcePromise056, resourcePromise057, resourcePromise058, resourcePromise059, resourcePromise060, resourcePromise061, resourcePromise062, resourcePromise063, resourcePromise064, resourcePromise065, resourcePromise066, resourcePromise067, resourcePromise068, resourcePromise069, resourcePromise070, resourcePromise071, resourcePromise072, resourcePromise073, resourcePromise074, resourcePromise075, resourcePromise076, resourcePromise077, resourcePromise078, resourcePromise079, resourcePromise080, resourcePromise081, resourcePromise082, resourcePromise083, resourcePromise084, resourcePromise085, resourcePromise086, resourcePromise087, resourcePromise088, resourcePromise089, resourcePromise090, resourcePromise091, resourcePromise092, resourcePromise093, resourcePromise094, resourcePromise095, resourcePromise096, resourcePromise097, resourcePromise098, resourcePromise099, resourcePromise100, resourcePromise101, resourcePromise102, resourcePromise103, resourcePromise104, resourcePromise105, resourcePromise106, resourcePromise107, resourcePromise108, resourcePromise109, resourcePromise110, resourcePromise111, resourcePromise112, resourcePromise113, resourcePromise114, resourcePromise115, resourcePromise116, resourcePromise117, resourcePromise118, resourcePromise119, resourcePromise120, resourcePromise121, resourcePromise122, resourcePromise123, resourcePromise124, resourcePromise125, resourcePromise126, resourcePromise127, resourcePromise128, resourcePromise129, resourcePromise130, resourcePromise131, resourcePromise132, resourcePromise133, resourcePromise134, resourcePromise135, resourcePromise136, resourcePromise137, resourcePromise138, resourcePromise139, resourcePromise140, resourcePromise141, resourcePromise142, resourcePromise143, resourcePromise144, resourcePromise145, resourcePromise146, resourcePromise147, resourcePromise148, resourcePromise149, resourcePromise150, resourcePromise151, resourcePromise152, resourcePromise153, resourcePromise154, resourcePromise155, resourcePromise156, resourcePromise157, resourcePromise158, resourcePromise159, resourcePromise160, resourcePromise161]).then(function(results) {
                  promise.resolve();
             }).
             otherwise(function(error) {

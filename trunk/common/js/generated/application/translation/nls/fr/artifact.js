@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:22
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[françaisé~New Dynamic Check]",
          "Data Sheet List" : "[françaisé~Data Sheet List]",
          "Sequence" : "[françaisé~Sequence]",
-         "Primarry?" : "[françaisé~Primarry?]",
          "Reference Point" : "[françaisé~Reference Point]",
          "Reference Point Offset" : "[françaisé~Reference Point Offset]",
          "Measure" : "[françaisé~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[françaisé~Y Reference]",
          "Z Offset" : "[françaisé~Z Offset]",
          "Z Reference" : "[françaisé~Z Reference]",
+         "End" : "[françaisé~End]",
          "Linear" : "[françaisé~Linear]",
          "Linear Assets" : "[françaisé~Linear Assets]",
          "Asset or Location Details" : "[françaisé~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[françaisé~Select Crew]",
          "Select Service     Address" : "[françaisé~Select Service     Address]",
          "Select Vertical" : "[françaisé~Select Vertical]",
+         "Select Subvertical" : "[françaisé~Select Subvertical]",
          "Select Storeroom" : "[françaisé~Select Storeroom]",
          "Select Rotating Asset" : "[françaisé~Select Rotating Asset]",
          "Select Premium Pay Code" : "[françaisé~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[françaisé~Processing Time, ]",
          "Start and Stop Times, " : "[françaisé~Start and Stop Times, ]",
          "No data to display " : "[françaisé~No data to display. ]",
-         "End" : "[françaisé~End]",
          "Locale\/Language" : "[françaisé~Locale/Language]",
          "Connected" : "[françaisé~Connected]",
          "Carrier Name" : "[françaisé~Carrier Name]",

@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[administración~New Dynamic Check]",
          "Data Sheet List" : "[administración~Data Sheet List]",
          "Sequence" : "[administración~Sequence]",
-         "Primarry?" : "[administración~Primarry?]",
          "Reference Point" : "[administración~Reference Point]",
          "Reference Point Offset" : "[administración~Reference Point Offset]",
          "Measure" : "[administración~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[administración~Y Reference]",
          "Z Offset" : "[administración~Z Offset]",
          "Z Reference" : "[administración~Z Reference]",
+         "End" : "[administración~End]",
          "Linear" : "[administración~Linear]",
          "Linear Assets" : "[administración~Linear Assets]",
          "Asset or Location Details" : "[administración~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[administración~Select Crew]",
          "Select Service     Address" : "[administración~Select Service     Address]",
          "Select Vertical" : "[administración~Select Vertical]",
+         "Select Subvertical" : "[administración~Select Subvertical]",
          "Select Storeroom" : "[administración~Select Storeroom]",
          "Select Rotating Asset" : "[administración~Select Rotating Asset]",
          "Select Premium Pay Code" : "[administración~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[administración~Processing Time, ]",
          "Start and Stop Times, " : "[administración~Start and Stop Times, ]",
          "No data to display " : "[administración~No data to display. ]",
-         "End" : "[administración~End]",
          "Locale\/Language" : "[administración~Locale/Language]",
          "Connected" : "[administración~Connected]",
          "Carrier Name" : "[administración~Carrier Name]",

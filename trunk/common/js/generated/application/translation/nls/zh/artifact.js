@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:19
+// Build: 2017-12-06 10:34:22
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[中国的~New Dynamic Check]",
          "Data Sheet List" : "[中国的~Data Sheet List]",
          "Sequence" : "[中国的~Sequence]",
-         "Primarry?" : "[中国的~Primarry?]",
          "Reference Point" : "[中国的~Reference Point]",
          "Reference Point Offset" : "[中国的~Reference Point Offset]",
          "Measure" : "[中国的~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[中国的~Y Reference]",
          "Z Offset" : "[中国的~Z Offset]",
          "Z Reference" : "[中国的~Z Reference]",
+         "End" : "[中国的~End]",
          "Linear" : "[中国的~Linear]",
          "Linear Assets" : "[中国的~Linear Assets]",
          "Asset or Location Details" : "[中国的~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[中国的~Select Crew]",
          "Select Service     Address" : "[中国的~Select Service     Address]",
          "Select Vertical" : "[中国的~Select Vertical]",
+         "Select Subvertical" : "[中国的~Select Subvertical]",
          "Select Storeroom" : "[中国的~Select Storeroom]",
          "Select Rotating Asset" : "[中国的~Select Rotating Asset]",
          "Select Premium Pay Code" : "[中国的~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[中国的~Processing Time, ]",
          "Start and Stop Times, " : "[中国的~Start and Stop Times, ]",
          "No data to display " : "[中国的~No data to display. ]",
-         "End" : "[中国的~End]",
          "Locale\/Language" : "[中国的~Locale/Language]",
          "Connected" : "[中国的~Connected]",
          "Carrier Name" : "[中国的~Carrier Name]",

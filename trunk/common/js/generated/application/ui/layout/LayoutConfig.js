@@ -14,14 +14,14 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:14
+// Build: 2017-12-06 10:34:17
 //----------------------------------------------------------------//
 define("generated/application/ui/layout/LayoutConfig",
    [],
 function() {
 
          //
-         // AUTO-GENERATED FILE CREATED ON: 2017-12-05 15:21:14
+         // AUTO-GENERATED FILE CREATED ON: 2017-12-06 10:34:17
          //
    // private constants
    var FLD_LAYOUT_SIZE = 'layout_size';

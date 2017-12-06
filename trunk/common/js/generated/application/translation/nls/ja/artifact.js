@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[島の第~New Dynamic Check]",
          "Data Sheet List" : "[島の第~Data Sheet List]",
          "Sequence" : "[島の第~Sequence]",
-         "Primarry?" : "[島の第~Primarry?]",
          "Reference Point" : "[島の第~Reference Point]",
          "Reference Point Offset" : "[島の第~Reference Point Offset]",
          "Measure" : "[島の第~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[島の第~Y Reference]",
          "Z Offset" : "[島の第~Z Offset]",
          "Z Reference" : "[島の第~Z Reference]",
+         "End" : "[島の第~End]",
          "Linear" : "[島の第~Linear]",
          "Linear Assets" : "[島の第~Linear Assets]",
          "Asset or Location Details" : "[島の第~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[島の第~Select Crew]",
          "Select Service     Address" : "[島の第~Select Service     Address]",
          "Select Vertical" : "[島の第~Select Vertical]",
+         "Select Subvertical" : "[島の第~Select Subvertical]",
          "Select Storeroom" : "[島の第~Select Storeroom]",
          "Select Rotating Asset" : "[島の第~Select Rotating Asset]",
          "Select Premium Pay Code" : "[島の第~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[島の第~Processing Time, ]",
          "Start and Stop Times, " : "[島の第~Start and Stop Times, ]",
          "No data to display " : "[島の第~No data to display. ]",
-         "End" : "[島の第~End]",
          "Locale\/Language" : "[島の第~Locale/Language]",
          "Connected" : "[島の第~Connected]",
          "Carrier Name" : "[島の第~Carrier Name]",

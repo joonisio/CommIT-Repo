@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[quantitó~New Dynamic Check]",
          "Data Sheet List" : "[quantitó~Data Sheet List]",
          "Sequence" : "[quantitó~Sequence]",
-         "Primarry?" : "[quantitó~Primarry?]",
          "Reference Point" : "[quantitó~Reference Point]",
          "Reference Point Offset" : "[quantitó~Reference Point Offset]",
          "Measure" : "[quantitó~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[quantitó~Y Reference]",
          "Z Offset" : "[quantitó~Z Offset]",
          "Z Reference" : "[quantitó~Z Reference]",
+         "End" : "[quantitó~End]",
          "Linear" : "[quantitó~Linear]",
          "Linear Assets" : "[quantitó~Linear Assets]",
          "Asset or Location Details" : "[quantitó~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[quantitó~Select Crew]",
          "Select Service     Address" : "[quantitó~Select Service     Address]",
          "Select Vertical" : "[quantitó~Select Vertical]",
+         "Select Subvertical" : "[quantitó~Select Subvertical]",
          "Select Storeroom" : "[quantitó~Select Storeroom]",
          "Select Rotating Asset" : "[quantitó~Select Rotating Asset]",
          "Select Premium Pay Code" : "[quantitó~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[quantitó~Processing Time, ]",
          "Start and Stop Times, " : "[quantitó~Start and Stop Times, ]",
          "No data to display " : "[quantitó~No data to display. ]",
-         "End" : "[quantitó~End]",
          "Locale\/Language" : "[quantitó~Locale/Language]",
          "Connected" : "[quantitó~Connected]",
          "Carrier Name" : "[quantitó~Carrier Name]",

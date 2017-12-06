@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[ясяс~New Dynamic Check]",
          "Data Sheet List" : "[ясяс~Data Sheet List]",
          "Sequence" : "[ясяс~Sequence]",
-         "Primarry?" : "[ясяс~Primarry?]",
          "Reference Point" : "[ясяс~Reference Point]",
          "Reference Point Offset" : "[ясяс~Reference Point Offset]",
          "Measure" : "[ясяс~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[ясяс~Y Reference]",
          "Z Offset" : "[ясяс~Z Offset]",
          "Z Reference" : "[ясяс~Z Reference]",
+         "End" : "[ясяс~End]",
          "Linear" : "[ясяс~Linear]",
          "Linear Assets" : "[ясяс~Linear Assets]",
          "Asset or Location Details" : "[ясяс~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[ясяс~Select Crew]",
          "Select Service     Address" : "[ясяс~Select Service     Address]",
          "Select Vertical" : "[ясяс~Select Vertical]",
+         "Select Subvertical" : "[ясяс~Select Subvertical]",
          "Select Storeroom" : "[ясяс~Select Storeroom]",
          "Select Rotating Asset" : "[ясяс~Select Rotating Asset]",
          "Select Premium Pay Code" : "[ясяс~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[ясяс~Processing Time, ]",
          "Start and Stop Times, " : "[ясяс~Start and Stop Times, ]",
          "No data to display " : "[ясяс~No data to display. ]",
-         "End" : "[ясяс~End]",
          "Locale\/Language" : "[ясяс~Locale/Language]",
          "Connected" : "[ясяс~Connected]",
          "Carrier Name" : "[ясяс~Carrier Name]",

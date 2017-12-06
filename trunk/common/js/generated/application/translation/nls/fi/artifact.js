@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[pohjoispäässä~New Dynamic Check]",
          "Data Sheet List" : "[pohjoispäässä~Data Sheet List]",
          "Sequence" : "[pohjoispäässä~Sequence]",
-         "Primarry?" : "[pohjoispäässä~Primarry?]",
          "Reference Point" : "[pohjoispäässä~Reference Point]",
          "Reference Point Offset" : "[pohjoispäässä~Reference Point Offset]",
          "Measure" : "[pohjoispäässä~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[pohjoispäässä~Y Reference]",
          "Z Offset" : "[pohjoispäässä~Z Offset]",
          "Z Reference" : "[pohjoispäässä~Z Reference]",
+         "End" : "[pohjoispäässä~End]",
          "Linear" : "[pohjoispäässä~Linear]",
          "Linear Assets" : "[pohjoispäässä~Linear Assets]",
          "Asset or Location Details" : "[pohjoispäässä~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[pohjoispäässä~Select Crew]",
          "Select Service     Address" : "[pohjoispäässä~Select Service     Address]",
          "Select Vertical" : "[pohjoispäässä~Select Vertical]",
+         "Select Subvertical" : "[pohjoispäässä~Select Subvertical]",
          "Select Storeroom" : "[pohjoispäässä~Select Storeroom]",
          "Select Rotating Asset" : "[pohjoispäässä~Select Rotating Asset]",
          "Select Premium Pay Code" : "[pohjoispäässä~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[pohjoispäässä~Processing Time, ]",
          "Start and Stop Times, " : "[pohjoispäässä~Start and Stop Times, ]",
          "No data to display " : "[pohjoispäässä~No data to display. ]",
-         "End" : "[pohjoispäässä~End]",
          "Locale\/Language" : "[pohjoispäässä~Locale/Language]",
          "Connected" : "[pohjoispäässä~Connected]",
          "Carrier Name" : "[pohjoispäässä~Carrier Name]",
