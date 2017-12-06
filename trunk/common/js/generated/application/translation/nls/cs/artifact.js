@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[českém~New Dynamic Check]",
          "Data Sheet List" : "[českém~Data Sheet List]",
          "Sequence" : "[českém~Sequence]",
-         "Primarry?" : "[českém~Primarry?]",
          "Reference Point" : "[českém~Reference Point]",
          "Reference Point Offset" : "[českém~Reference Point Offset]",
          "Measure" : "[českém~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[českém~Y Reference]",
          "Z Offset" : "[českém~Z Offset]",
          "Z Reference" : "[českém~Z Reference]",
+         "End" : "[českém~End]",
          "Linear" : "[českém~Linear]",
          "Linear Assets" : "[českém~Linear Assets]",
          "Asset or Location Details" : "[českém~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[českém~Select Crew]",
          "Select Service     Address" : "[českém~Select Service     Address]",
          "Select Vertical" : "[českém~Select Vertical]",
+         "Select Subvertical" : "[českém~Select Subvertical]",
          "Select Storeroom" : "[českém~Select Storeroom]",
          "Select Rotating Asset" : "[českém~Select Rotating Asset]",
          "Select Premium Pay Code" : "[českém~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[českém~Processing Time, ]",
          "Start and Stop Times, " : "[českém~Start and Stop Times, ]",
          "No data to display " : "[českém~No data to display. ]",
-         "End" : "[českém~End]",
          "Locale\/Language" : "[českém~Locale/Language]",
          "Connected" : "[českém~Connected]",
          "Carrier Name" : "[českém~Carrier Name]",

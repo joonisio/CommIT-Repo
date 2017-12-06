@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[også populært~New Dynamic Check]",
          "Data Sheet List" : "[også populært~Data Sheet List]",
          "Sequence" : "[også populært~Sequence]",
-         "Primarry?" : "[også populært~Primarry?]",
          "Reference Point" : "[også populært~Reference Point]",
          "Reference Point Offset" : "[også populært~Reference Point Offset]",
          "Measure" : "[også populært~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[også populært~Y Reference]",
          "Z Offset" : "[også populært~Z Offset]",
          "Z Reference" : "[også populært~Z Reference]",
+         "End" : "[også populært~End]",
          "Linear" : "[også populært~Linear]",
          "Linear Assets" : "[også populært~Linear Assets]",
          "Asset or Location Details" : "[også populært~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[også populært~Select Crew]",
          "Select Service     Address" : "[også populært~Select Service     Address]",
          "Select Vertical" : "[også populært~Select Vertical]",
+         "Select Subvertical" : "[også populært~Select Subvertical]",
          "Select Storeroom" : "[også populært~Select Storeroom]",
          "Select Rotating Asset" : "[også populært~Select Rotating Asset]",
          "Select Premium Pay Code" : "[også populært~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[også populært~Processing Time, ]",
          "Start and Stop Times, " : "[også populært~Start and Stop Times, ]",
          "No data to display " : "[også populært~No data to display. ]",
-         "End" : "[også populært~End]",
          "Locale\/Language" : "[også populært~Locale/Language]",
          "Connected" : "[også populært~Connected]",
          "Carrier Name" : "[også populært~Carrier Name]",

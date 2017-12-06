@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:19
+// Build: 2017-12-06 10:34:22
 //----------------------------------------------------------------//
 define({
    root: {
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "New Dynamic Check",
          "Data Sheet List" : "Data Sheet List",
          "Sequence" : "Sequence",
-         "Primarry?" : "Primarry?",
          "Reference Point" : "Reference Point",
          "Reference Point Offset" : "Reference Point Offset",
          "Measure" : "Measure",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "Y Reference",
          "Z Offset" : "Z Offset",
          "Z Reference" : "Z Reference",
+         "End" : "End",
          "Linear" : "Linear",
          "Linear Assets" : "Linear Assets",
          "Asset or Location Details" : "Asset or Location Details",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "Select Crew",
          "Select Service     Address" : "Select Service     Address",
          "Select Vertical" : "Select Vertical",
+         "Select Subvertical" : "Select Subvertical",
          "Select Storeroom" : "Select Storeroom",
          "Select Rotating Asset" : "Select Rotating Asset",
          "Select Premium Pay Code" : "Select Premium Pay Code",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "Processing Time, ",
          "Start and Stop Times, " : "Start and Stop Times, ",
          "No data to display " : "No data to display. ",
-         "End" : "End",
          "Locale\/Language" : "Locale/Language",
          "Connected" : "Connected",
          "Carrier Name" : "Carrier Name",

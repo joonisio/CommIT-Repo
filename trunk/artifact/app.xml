@@ -480,7 +480,7 @@
 						<text editable="true" id="vertical" label="Vertical" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
 					</groupitem>
 					<groupitem id="workorder.subvertical">
-						<text editable="true" id="subvertical" label="Subvertical" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
+						<text editable="true" id="subvertical" label="Subvertical" lookup="WorkExecution.SubVerticalLookup" placeHolder="Select from list" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
 					</groupitem>									
 				</group>
 			</container>
@@ -5390,6 +5390,12 @@
 						</text>
 						<text editable="false" id="WorkExecution.NewWorkOrderView_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
 					</groupitem>
+					<groupitem id="workorder.vertical_create">
+						<text editable="true" id="vertical_create" label="Vertical" lookup="WorkExecution.VerticalLookup" placeHolder="Select from list" resourceAttribute="tnbvertical"/>
+					</groupitem>
+					<groupitem id="workorder.subvertical_create">
+						<text editable="true" id="subvertical_create" label="Subvertical" lookup="WorkExecution.SubVerticalLookup" placeHolder="Select from list" resourceAttribute="tnbsubvertical"/>
+					</groupitem>	
 					<groupitem id="WorkExecution.NewWorkOrderView_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
 						<text codeScannable="true" editable="true" id="WorkExecution.NewWorkOrderView_groupitem_WorkExecution.EditLocationView_0_location_Location" label="Location" lookup="WorkExecution.LocationLookup" lookupAttribute="location" placeHolder="Tap to enter" resourceAttribute="location">
 							<eventHandlers id="WorkExecution.NewWorkOrderView_groupitem_WorkExecution.EditLocationView_0_location_Location_eventHandlers">
@@ -7925,6 +7931,23 @@
 				<returnAttribute id="WorkExecution.VerticalLookup_addresscode_woserdresscode" sourceAttribute="value" targetAttribute="tnbvertical"/>
 			</returnAttributes>
 		</lookup>
+		
+		<!-- custom Vertical lookup -->
+		<lookup id="WorkExecution.SubVerticalLookup" label="Select Subvertical" resource="subverticaldata">
+			<requiredResources id="WorkExecution.SubVerticalLookup_requiredResources">
+				<requiredResource id="WorkExecution.SubVerticalLookup_additionalserviceaddress" name="subverticaldata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalserviceaddress_list" resource="subverticaldata">
+				<listItemTemplate id="WorkExecution.SubVerticalLookup_additionalserviceaddress_listItemTemplate_SubVerticalLookup" layout="SubVerticalLookup">
+					<listtext id="wut2" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2" resourceAttribute="description" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.SubVerticalLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.SubVerticalLookup_addresscode_woserdresscode" sourceAttribute="value" targetAttribute="tnbsubvertical"/>
+			</returnAttributes>
+		</lookup>
+		
 
 		<!-- Storeroom lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="asyncFilterStoreroomForLookup" id="WorkExecution.StoreroomLookup" label="Select Storeroom" resource="additionalstoreroom">
@@ -8747,7 +8770,7 @@
 	 		</queryBases>			
 			<whereClause id="assetMeters_whereClause"/>			 
 		</resource>
-		
+	
 		<!-- custom Permit resource-->
 		<resource class="application.business.PermitObject"  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#PERMIT" id="permit" name="permit" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="permit_attributes">
@@ -10786,6 +10809,18 @@
 					<queryBase id="tnbvertical_queryBase" name="getVertical" queryUri="/oslc/os/oslcalndomain" />
 				</queryBases >
 				<whereClause id="tnbvertical_whereClause" clause="spi:domainid='TNBVERTICAL'" />
+		</resource>	
+		
+				<!-- subVertical resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="subverticaldata" name="subverticaldata" pageSize="10" additionalData="true">
+				<attributes id="tnbsubvertical_attributes">
+					<attribute name="value" id="tnbsubvertical_serviceaddressid_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="tnbsubvertical_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="tnbsubvertical_queryBases">
+					<queryBase id="tnbsubvertical_queryBase" name="getsubVertical" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="tnbsubvertical_whereClause" clause="spi:domainid='TNBSUBVERTICAL'" />
 		</resource>	
 
 		<!-- Bin resource -->

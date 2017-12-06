@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:19
+// Build: 2017-12-06 10:34:22
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[engbNew Dynamic Check]",
          "Data Sheet List" : "[engbData Sheet List]",
          "Sequence" : "[engbSequence]",
-         "Primarry?" : "[engbPrimarry?]",
          "Reference Point" : "[engbReference Point]",
          "Reference Point Offset" : "[engbReference Point Offset]",
          "Measure" : "[engbMeasure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[engbY Reference]",
          "Z Offset" : "[engbZ Offset]",
          "Z Reference" : "[engbZ Reference]",
+         "End" : "[engbEnd]",
          "Linear" : "[engbLinear]",
          "Linear Assets" : "[engbLinear Assets]",
          "Asset or Location Details" : "[engbAsset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[engbSelect Crew]",
          "Select Service     Address" : "[engbSelect Service     Address]",
          "Select Vertical" : "[engbSelect Vertical]",
+         "Select Subvertical" : "[engbSelect Subvertical]",
          "Select Storeroom" : "[engbSelect Storeroom]",
          "Select Rotating Asset" : "[engbSelect Rotating Asset]",
          "Select Premium Pay Code" : "[engbSelect Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[engbProcessing Time, ]",
          "Start and Stop Times, " : "[engbStart and Stop Times, ]",
          "No data to display " : "[engbNo data to display. ]",
-         "End" : "[engbEnd]",
          "Locale\/Language" : "[engbLocale/Language]",
          "Connected" : "[engbConnected]",
          "Carrier Name" : "[engbCarrier Name]",

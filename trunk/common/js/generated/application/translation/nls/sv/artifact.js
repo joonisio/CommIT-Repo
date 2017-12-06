@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:22
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[trettioåriga~New Dynamic Check]",
          "Data Sheet List" : "[trettioåriga~Data Sheet List]",
          "Sequence" : "[trettioåriga~Sequence]",
-         "Primarry?" : "[trettioåriga~Primarry?]",
          "Reference Point" : "[trettioåriga~Reference Point]",
          "Reference Point Offset" : "[trettioåriga~Reference Point Offset]",
          "Measure" : "[trettioåriga~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[trettioåriga~Y Reference]",
          "Z Offset" : "[trettioåriga~Z Offset]",
          "Z Reference" : "[trettioåriga~Z Reference]",
+         "End" : "[trettioåriga~End]",
          "Linear" : "[trettioåriga~Linear]",
          "Linear Assets" : "[trettioåriga~Linear Assets]",
          "Asset or Location Details" : "[trettioåriga~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[trettioåriga~Select Crew]",
          "Select Service     Address" : "[trettioåriga~Select Service     Address]",
          "Select Vertical" : "[trettioåriga~Select Vertical]",
+         "Select Subvertical" : "[trettioåriga~Select Subvertical]",
          "Select Storeroom" : "[trettioåriga~Select Storeroom]",
          "Select Rotating Asset" : "[trettioåriga~Select Rotating Asset]",
          "Select Premium Pay Code" : "[trettioåriga~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[trettioåriga~Processing Time, ]",
          "Start and Stop Times, " : "[trettioåriga~Start and Stop Times, ]",
          "No data to display " : "[trettioåriga~No data to display. ]",
-         "End" : "[trettioåriga~End]",
          "Locale\/Language" : "[trettioåriga~Locale/Language]",
          "Connected" : "[trettioåriga~Connected]",
          "Carrier Name" : "[trettioåriga~Carrier Name]",

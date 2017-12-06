@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[vagão do metrô~New Dynamic Check]",
          "Data Sheet List" : "[vagão do metrô~Data Sheet List]",
          "Sequence" : "[vagão do metrô~Sequence]",
-         "Primarry?" : "[vagão do metrô~Primarry?]",
          "Reference Point" : "[vagão do metrô~Reference Point]",
          "Reference Point Offset" : "[vagão do metrô~Reference Point Offset]",
          "Measure" : "[vagão do metrô~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[vagão do metrô~Y Reference]",
          "Z Offset" : "[vagão do metrô~Z Offset]",
          "Z Reference" : "[vagão do metrô~Z Reference]",
+         "End" : "[vagão do metrô~End]",
          "Linear" : "[vagão do metrô~Linear]",
          "Linear Assets" : "[vagão do metrô~Linear Assets]",
          "Asset or Location Details" : "[vagão do metrô~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[vagão do metrô~Select Crew]",
          "Select Service     Address" : "[vagão do metrô~Select Service     Address]",
          "Select Vertical" : "[vagão do metrô~Select Vertical]",
+         "Select Subvertical" : "[vagão do metrô~Select Subvertical]",
          "Select Storeroom" : "[vagão do metrô~Select Storeroom]",
          "Select Rotating Asset" : "[vagão do metrô~Select Rotating Asset]",
          "Select Premium Pay Code" : "[vagão do metrô~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[vagão do metrô~Processing Time, ]",
          "Start and Stop Times, " : "[vagão do metrô~Start and Stop Times, ]",
          "No data to display " : "[vagão do metrô~No data to display. ]",
-         "End" : "[vagão do metrô~End]",
          "Locale\/Language" : "[vagão do metrô~Locale/Language]",
          "Connected" : "[vagão do metrô~Connected]",
          "Carrier Name" : "[vagão do metrô~Carrier Name]",

@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:17
+// Build: 2017-12-06 10:34:20
 //----------------------------------------------------------------//
 define(   "generated/application/ui/layout/small/DataSheetList", 
       [

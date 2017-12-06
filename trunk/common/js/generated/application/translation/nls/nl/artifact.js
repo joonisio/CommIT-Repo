@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[onbepaalde~New Dynamic Check]",
          "Data Sheet List" : "[onbepaalde~Data Sheet List]",
          "Sequence" : "[onbepaalde~Sequence]",
-         "Primarry?" : "[onbepaalde~Primarry?]",
          "Reference Point" : "[onbepaalde~Reference Point]",
          "Reference Point Offset" : "[onbepaalde~Reference Point Offset]",
          "Measure" : "[onbepaalde~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[onbepaalde~Y Reference]",
          "Z Offset" : "[onbepaalde~Z Offset]",
          "Z Reference" : "[onbepaalde~Z Reference]",
+         "End" : "[onbepaalde~End]",
          "Linear" : "[onbepaalde~Linear]",
          "Linear Assets" : "[onbepaalde~Linear Assets]",
          "Asset or Location Details" : "[onbepaalde~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[onbepaalde~Select Crew]",
          "Select Service     Address" : "[onbepaalde~Select Service     Address]",
          "Select Vertical" : "[onbepaalde~Select Vertical]",
+         "Select Subvertical" : "[onbepaalde~Select Subvertical]",
          "Select Storeroom" : "[onbepaalde~Select Storeroom]",
          "Select Rotating Asset" : "[onbepaalde~Select Rotating Asset]",
          "Select Premium Pay Code" : "[onbepaalde~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[onbepaalde~Processing Time, ]",
          "Start and Stop Times, " : "[onbepaalde~Start and Stop Times, ]",
          "No data to display " : "[onbepaalde~No data to display. ]",
-         "End" : "[onbepaalde~End]",
          "Locale\/Language" : "[onbepaalde~Locale/Language]",
          "Connected" : "[onbepaalde~Connected]",
          "Carrier Name" : "[onbepaalde~Carrier Name]",

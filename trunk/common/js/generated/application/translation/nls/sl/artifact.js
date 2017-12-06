@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:22
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[razložiti~New Dynamic Check]",
          "Data Sheet List" : "[razložiti~Data Sheet List]",
          "Sequence" : "[razložiti~Sequence]",
-         "Primarry?" : "[razložiti~Primarry?]",
          "Reference Point" : "[razložiti~Reference Point]",
          "Reference Point Offset" : "[razložiti~Reference Point Offset]",
          "Measure" : "[razložiti~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[razložiti~Y Reference]",
          "Z Offset" : "[razložiti~Z Offset]",
          "Z Reference" : "[razložiti~Z Reference]",
+         "End" : "[razložiti~End]",
          "Linear" : "[razložiti~Linear]",
          "Linear Assets" : "[razložiti~Linear Assets]",
          "Asset or Location Details" : "[razložiti~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[razložiti~Select Crew]",
          "Select Service     Address" : "[razložiti~Select Service     Address]",
          "Select Vertical" : "[razložiti~Select Vertical]",
+         "Select Subvertical" : "[razložiti~Select Subvertical]",
          "Select Storeroom" : "[razložiti~Select Storeroom]",
          "Select Rotating Asset" : "[razložiti~Select Rotating Asset]",
          "Select Premium Pay Code" : "[razložiti~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[razložiti~Processing Time, ]",
          "Start and Stop Times, " : "[razložiti~Start and Stop Times, ]",
          "No data to display " : "[razložiti~No data to display. ]",
-         "End" : "[razložiti~End]",
          "Locale\/Language" : "[razložiti~Locale/Language]",
          "Connected" : "[razložiti~Connected]",
          "Carrier Name" : "[razložiti~Carrier Name]",

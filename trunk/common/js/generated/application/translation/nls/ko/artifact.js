@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:20
+// Build: 2017-12-06 10:34:23
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[대학에~New Dynamic Check]",
          "Data Sheet List" : "[대학에~Data Sheet List]",
          "Sequence" : "[대학에~Sequence]",
-         "Primarry?" : "[대학에~Primarry?]",
          "Reference Point" : "[대학에~Reference Point]",
          "Reference Point Offset" : "[대학에~Reference Point Offset]",
          "Measure" : "[대학에~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[대학에~Y Reference]",
          "Z Offset" : "[대학에~Z Offset]",
          "Z Reference" : "[대학에~Z Reference]",
+         "End" : "[대학에~End]",
          "Linear" : "[대학에~Linear]",
          "Linear Assets" : "[대학에~Linear Assets]",
          "Asset or Location Details" : "[대학에~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[대학에~Select Crew]",
          "Select Service     Address" : "[대학에~Select Service     Address]",
          "Select Vertical" : "[대학에~Select Vertical]",
+         "Select Subvertical" : "[대학에~Select Subvertical]",
          "Select Storeroom" : "[대학에~Select Storeroom]",
          "Select Rotating Asset" : "[대학에~Select Rotating Asset]",
          "Select Premium Pay Code" : "[대학에~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[대학에~Processing Time, ]",
          "Start and Stop Times, " : "[대학에~Start and Stop Times, ]",
          "No data to display " : "[대학에~No data to display. ]",
-         "End" : "[대학에~End]",
          "Locale\/Language" : "[대학에~Locale/Language]",
          "Connected" : "[대학에~Connected]",
          "Carrier Name" : "[대학에~Carrier Name]",

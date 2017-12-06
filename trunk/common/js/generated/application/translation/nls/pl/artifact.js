@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:21
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[Okrągłego~New Dynamic Check]",
          "Data Sheet List" : "[Okrągłego~Data Sheet List]",
          "Sequence" : "[Okrągłego~Sequence]",
-         "Primarry?" : "[Okrągłego~Primarry?]",
          "Reference Point" : "[Okrągłego~Reference Point]",
          "Reference Point Offset" : "[Okrągłego~Reference Point Offset]",
          "Measure" : "[Okrągłego~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[Okrągłego~Y Reference]",
          "Z Offset" : "[Okrągłego~Z Offset]",
          "Z Reference" : "[Okrągłego~Z Reference]",
+         "End" : "[Okrągłego~End]",
          "Linear" : "[Okrągłego~Linear]",
          "Linear Assets" : "[Okrągłego~Linear Assets]",
          "Asset or Location Details" : "[Okrągłego~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[Okrągłego~Select Crew]",
          "Select Service     Address" : "[Okrągłego~Select Service     Address]",
          "Select Vertical" : "[Okrągłego~Select Vertical]",
+         "Select Subvertical" : "[Okrągłego~Select Subvertical]",
          "Select Storeroom" : "[Okrągłego~Select Storeroom]",
          "Select Rotating Asset" : "[Okrągłego~Select Rotating Asset]",
          "Select Premium Pay Code" : "[Okrągłego~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[Okrągłego~Processing Time, ]",
          "Start and Stop Times, " : "[Okrągłego~Start and Stop Times, ]",
          "No data to display " : "[Okrągłego~No data to display. ]",
-         "End" : "[Okrągłego~End]",
          "Locale\/Language" : "[Okrągłego~Locale/Language]",
          "Connected" : "[Okrągłego~Connected]",
          "Carrier Name" : "[Okrągłego~Carrier Name]",

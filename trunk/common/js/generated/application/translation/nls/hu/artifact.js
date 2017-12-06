@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:22
+// Build: 2017-12-06 10:34:25
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[erÕsíteni~New Dynamic Check]",
          "Data Sheet List" : "[erÕsíteni~Data Sheet List]",
          "Sequence" : "[erÕsíteni~Sequence]",
-         "Primarry?" : "[erÕsíteni~Primarry?]",
          "Reference Point" : "[erÕsíteni~Reference Point]",
          "Reference Point Offset" : "[erÕsíteni~Reference Point Offset]",
          "Measure" : "[erÕsíteni~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[erÕsíteni~Y Reference]",
          "Z Offset" : "[erÕsíteni~Z Offset]",
          "Z Reference" : "[erÕsíteni~Z Reference]",
+         "End" : "[erÕsíteni~End]",
          "Linear" : "[erÕsíteni~Linear]",
          "Linear Assets" : "[erÕsíteni~Linear Assets]",
          "Asset or Location Details" : "[erÕsíteni~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[erÕsíteni~Select Crew]",
          "Select Service     Address" : "[erÕsíteni~Select Service     Address]",
          "Select Vertical" : "[erÕsíteni~Select Vertical]",
+         "Select Subvertical" : "[erÕsíteni~Select Subvertical]",
          "Select Storeroom" : "[erÕsíteni~Select Storeroom]",
          "Select Rotating Asset" : "[erÕsíteni~Select Rotating Asset]",
          "Select Premium Pay Code" : "[erÕsíteni~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[erÕsíteni~Processing Time, ]",
          "Start and Stop Times, " : "[erÕsíteni~Start and Stop Times, ]",
          "No data to display " : "[erÕsíteni~No data to display. ]",
-         "End" : "[erÕsíteni~End]",
          "Locale\/Language" : "[erÕsíteni~Locale/Language]",
          "Connected" : "[erÕsíteni~Connected]",
          "Carrier Name" : "[erÕsíteni~Carrier Name]",

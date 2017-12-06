@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-05 15:21:22
+// Build: 2017-12-06 10:34:24
 //----------------------------------------------------------------//
 define({
    
@@ -249,7 +249,6 @@ define({
          "New Dynamic Check" : "[spôsobených~New Dynamic Check]",
          "Data Sheet List" : "[spôsobených~Data Sheet List]",
          "Sequence" : "[spôsobených~Sequence]",
-         "Primarry?" : "[spôsobených~Primarry?]",
          "Reference Point" : "[spôsobených~Reference Point]",
          "Reference Point Offset" : "[spôsobených~Reference Point Offset]",
          "Measure" : "[spôsobených~Measure]",
@@ -257,6 +256,7 @@ define({
          "Y Reference" : "[spôsobených~Y Reference]",
          "Z Offset" : "[spôsobených~Z Offset]",
          "Z Reference" : "[spôsobených~Z Reference]",
+         "End" : "[spôsobených~End]",
          "Linear" : "[spôsobených~Linear]",
          "Linear Assets" : "[spôsobených~Linear Assets]",
          "Asset or Location Details" : "[spôsobených~Asset or Location Details]",
@@ -422,6 +422,7 @@ define({
          "Select Crew" : "[spôsobených~Select Crew]",
          "Select Service     Address" : "[spôsobených~Select Service     Address]",
          "Select Vertical" : "[spôsobených~Select Vertical]",
+         "Select Subvertical" : "[spôsobených~Select Subvertical]",
          "Select Storeroom" : "[spôsobených~Select Storeroom]",
          "Select Rotating Asset" : "[spôsobených~Select Rotating Asset]",
          "Select Premium Pay Code" : "[spôsobených~Select Premium Pay Code]",
@@ -749,7 +750,6 @@ define({
          "Processing Time, " : "[spôsobených~Processing Time, ]",
          "Start and Stop Times, " : "[spôsobených~Start and Stop Times, ]",
          "No data to display " : "[spôsobených~No data to display. ]",
-         "End" : "[spôsobených~End]",
          "Locale\/Language" : "[spôsobených~Locale/Language]",
          "Connected" : "[spôsobených~Connected]",
          "Carrier Name" : "[spôsobených~Carrier Name]",
