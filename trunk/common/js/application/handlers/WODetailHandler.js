@@ -2097,7 +2097,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		}, 
 		
 		hideForNonLinearWO: function(eventContext) {
-			console.log("Hide when linear");
+			console.log("Hide when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			if (workOrder.multiassetloclist.data.length > 0){
 				var linear = workOrder.multiassetloclist.data[0].isprimary;
@@ -2110,6 +2110,43 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				eventContext.setDisplay(false);
 				console.log("No multiassetloclist/No Display");
 			}
+		},
+		
+		readOnlyForNonLinearWO: function(eventContext) {
+			console.log("Readonly when non-linear");
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			console.log(workOrder.multiassetloclist);
+			var linear = workOrder.multiassetloclist.data[0];
+			linear.getRuntimeFieldMetadata('feature').set('readonly', false);
+			linear.getRuntimeFieldMetadata('featurelabel').set('readonly', false);
+		},
+		
+		showFooterView: function(eventContext) {
+			// we do not show the footer until a newreading is set
+			this.displayFooter(eventContext, true);		
+		},
+		
+		displayFooter: function(eventContext, display) {
+			var LinearDetailView = eventContext.ui.getViewFromId(eventContext.ui.transitionInfo.id);
+			LinearDetailView.setFooterDisplay(display);
+		},	
+		
+		cancelEntry: function(eventContext) {
+			Logger.trace('Linear Segment Details - Cancel Clicked');
+			eventContext.ui.hideCurrentView(PlatformConstants.CLEANUP);
+		},		
+		
+		commitEntry: function(eventContext) {			
+			console.log('Linear Segment Details - Save Clicked');
+			var msg = MessageService.createStaticMessage("save succesful").getMessage();
+			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			ModelService.save(workOrderSet).then(function() {
+				eventContext.ui.hideCurrentView();
+				eventContext.ui.showToastMessage(msg);
+				console.log('save completed');
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
+			});			
 		},
 		//end custom javascript code
 		
