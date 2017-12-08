@@ -290,6 +290,7 @@
 				<eventHandler class="application.handlers.MetersListHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_initializeMeters" method="initializeMeters"/>
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
+				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>			
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -490,11 +491,11 @@
 					<eventHandler id="workorder.feature_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
 				</eventHandlers>			
 				<group id="idvalue0">
-					<groupitem id="workorder.feature">
-						<text editable="false" id="feature" label="Feature" layoutInsertAt="item1" resourceAttribute="feature"/>
+					<groupitem id="workorder.feature">					
+						<text id="feature" editable="false" label="Feature" resourceAttribute="feature"/>											
 					</groupitem>	
 					<groupitem id="workorder.featurelabel">
-						<text editable="false" id="featurelabel" label="Feature Label" layoutInsertAt="item1" resourceAttribute="featurelabel"/>
+						<text id="featurelabel" editable="false" label="Feature Label" resourceAttribute="featurelabel"/>
 					</groupitem>									
 				</group>
 			</container> 
@@ -3563,66 +3564,81 @@
 		
 		<!-- Linear Segment Details -->
 		<view id="WorkExecution.LinearSegmentDetailsView" label="Linear Segment Details">
-		<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
+			<eventHandlers id="WorkExecution.LinearSegmentDetailsView_eventHandlers">
+			    <eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.LinearSegmentDetailsView_eventHandlers_initialize_showView" method="showFooterView"/>
+			</eventHandlers>		
+			<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
 				<requiredResource id="WorkExecution.LinearSegmentDetailsView_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.LinearSegmentDetailsView_workOrder_multiassetloclist" name="multiassetloclist"/>
 				</requiredResource>
 			</requiredResources>
 			<container id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
-				<text id="LinearSegmentDetailsView" label="Start" labelCss="editableLabel"></text>
+				<text id="LinearSegmentDetailsView" label="Start"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_0">	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
-						<text editable="false" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
 						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="startoffsetunitid"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_2" layout="Item1Count1Button1">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" layoutInsertAt="item1" label="Measure" resourceAttribute="startmeasure"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" layoutInsertAt="item1" label="Measure" resourceAttribute="startmeasure"/>
 						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_startmeasureunitid" layoutInsertAt="count1" resourceAttribute="startmeasureunitid"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_3">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute="startyoffset"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute="startyoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_4">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute="startyoffsetref"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute="startyoffsetref"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_5">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute="startzoffset"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute="startzoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_6">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute="startzoffsetref"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute="startzoffsetref"/>
 					</groupitem>																		
 				</group>	
 			<!-- End -->	
-				<text id="LinearSegmentDetailsViewEnd" label="End" labelCss="editableLabel"></text>
+				<text id="LinearSegmentDetailsViewEnd" label="End"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_End">	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_7">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
-						<text editable="false" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
 						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.EndReferencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="endoffsetunitid"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_9" layout="Item1Count1Button1">
-						<text editable="false" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_measure" label="Measure" resourceAttribute="endmeasure"/>
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_measure" label="Measure" resourceAttribute="endmeasure"/>
 						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Endmeasureunitid" layoutInsertAt="count1" resourceAttribute="endmeasureunitid"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_10">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Offset" label="Y Offset" resourceAttribute="endyoffset"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Offset" label="Y Offset" resourceAttribute="endyoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_11">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Reference" label="Y Reference" resourceAttribute="endyoffsetref"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Reference" label="Y Reference" resourceAttribute="endyoffsetref"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_12">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Offset" label="Z Offset" resourceAttribute="endzoffset"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Offset" label="Z Offset" resourceAttribute="endzoffset"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_13">
-						<text editable="false" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Reference" label="Z Reference" resourceAttribute="endzoffsetref"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Reference" label="Z Reference" resourceAttribute="endzoffsetref"/>
 					</groupitem>																		
 				</group>					
-			</container>														
+			</container>
+			<footer id="WorkExecution.LinearSegmentDetailsView_footer">
+				<button id="WorkExecution.LinearSegmentDetailsView_Cancel_button" label="Cancel">
+					<eventHandlers id="WorkExecution.LinearSegmentDetailsView_Cancel_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.LinearSegmentDetailsView_Cancel_button_eventHandlers_click_cancelEntry" method="cancelEntry"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.LinearSegmentDetailsView_Save_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.LinearSegmentDetailsView_Save_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.LinearSegmentDetailsView_Save_button_eventHandlers_click_commitEntry" method="commitEntry"/>
+					</eventHandlers>
+				</button>
+			</footer>																	
 		</view>
 		
 		<!-- Define Linear list view -->
