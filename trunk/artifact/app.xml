@@ -4753,9 +4753,13 @@
 				</requiredResource>
 			</requiredResources>
 			
-			<list id="WorkExecution.LinearView_permit_list" label="Permit" resource="permit" >
+			<list id="WorkExecution.LinearView_permit_list" label="Permit" resource="permit" transitionTo="WorkExecution.PermitViewDetails">
 				<listItemTemplate id="WorkExecution.permit_listItemTemplate">
-				<!-- 	<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum" resourceAttribute="permitworknum"/> -->
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum"  layoutInsertAt="item1" resourceAttribute="permitworknum"/> 
+					<listtext id="WorkExecution.tnbstatus" layoutInsertAt="item3" resourceAttribute="tnbstatus"/>
+					<!--<listtext id="WorkExecution.description" layoutInsertAt="item2" resourceAttribute="description"/> -->
+					<listtext id="WorkExecution.tnbissuedate" layoutInsertAt="item3" resourceAttribute="tnbissuedate"/>  
+					<listtext id="WorkExecution.wonum" layoutInsertAt="item3" resourceAttribute="wonum"/>
 				</listItemTemplate>
 			</list>
 		</view>		
@@ -4831,6 +4835,53 @@
 				<eventHandler class="application.handlers.ReportByCrewHandler" event="initialize" id="WorkExecution.ActualCrewEntryView_eventHandlers_initialize_initActualCrewEntryView" method="initActualCrewEntryView"/>
 				<eventHandler class="application.handlers.ReportByCrewHandler" event="cleanup" id="WorkExecution.ActualCrewEntryView_eventHandlers_cleanup_handleBackButtonClick" method="handleBackButtonClick"/>
 			</eventHandlers>
+		</view>
+		
+		<!-- Custom permit detail view-->
+		<view id="WorkExecution.PermitViewDetails" label="Permit Details">
+			<requiredResources id="WorkExecution.PermitViewDetails_requiredResources">
+				<requiredResource id="WorkExecution.PermitViewDetails_requiredresource" name="permit">
+				</requiredResource>
+			</requiredResources>
+			
+					
+			<container id="WorkExecution.permit_container_0" resource="permit" >
+				<group id="WorkExecution.PermitView_group_0">	
+					<groupitem id="WorkExecution.PermitView_groupitem_0">
+						<text editable="false" layoutInsertAt="item1" id="WorkExecution.PermitView_groupitem_11" label="Permit" resourceAttribute="permitworknum"/>
+					</groupitem>
+					<!--  <groupitem id="WorkExecution.PermitView_groupitem_0.5">
+						<text editable="false" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
+					</groupitem> -->
+					<groupitem id="WorkExecution.PermitView_groupitem_1" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_status" label="Status" resourceAttribute="tnbstatus"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.PermitView_groupitem_2" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbissuedate" label="Issue Date" resourceAttribute="tnbissuedate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_3" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate" label="Required Date" resourceAttribute="requireddate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_4" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbap" label="Authorized Person" resourceAttribute="tnbap"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_5" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbcp" label="Competent Person" resourceAttribute="tnbcp"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_6" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbia" label="Issuing Authority" resourceAttribute="tnbia"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_7" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpa" label="Performing Authority" resourceAttribute="tnbpa"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_8" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpassportno" label="IC Number" resourceAttribute="tnbpassportno"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_9" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_requestor" label="Created by" resourceAttribute="requestor"/>
+					</groupitem>																	
+				</group>			
+			</container>														
 		</view>
 
 		<!-- Define Actual Material list view -->
@@ -6862,7 +6913,7 @@
 		
 		<!-- Custom Permit Detail -->
 		<view id="WorkExecution.SearchPermitDetail" label="Permit Detail">    
-		    <container id="WorkExecution.permit_container_0" >
+		    <container id="WorkExecution.permit2_container_0" >
 		        <group id="WorkExecution.Work2s">
 		    		<groupitem id="workorder.permit">
 						<text editable="true" id="permit_no" label="Permit" />
@@ -8331,7 +8382,8 @@
 		
 				
 	</ui>
-
+	
+	
 	<!--DATA DEFINITION SECTION-->
 	<data id="data">	
     
@@ -8590,13 +8642,6 @@
 			</queryBases>
 		</resource>
 		
-
-
-
-
-
-
-
 		<resource id="downTimeResource" name="downTimeResource">
 		    <attributes id="downTimeResource_attributes">
 		     	<attribute describedByProperty="spi_wm:assetnum" id="downTimeResource_assetnum" name="assetnum"/>
@@ -8772,15 +8817,25 @@
 		</resource>
 	
 		<!-- custom Permit resource-->
-		<resource class="application.business.PermitObject"  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#PERMIT" id="permit" name="permit" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource class="custom.PermitObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#permit" defaultOrderBy="permitworknum asc" id="permit" name="permit" pageSize="10" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="permit_attributes">
 				<attribute describedByProperty="spi_wm:permitworknum" id="permit_wmpermitworknum" index="true" name="permitworknum"/>
 				<attribute describedByProperty="spi_wm:tnbstatus" id="permit_tnbstatus" index="true" name="tnbstatus"/>
+				<!--  <attribute describedByProperty="dcterms:title" id="permit_description" index="true" name="description"/> -->
 				<attribute describedByProperty="spi_wm:tnbissuedate" id="permit_tnbissuedate" name="tnbissuedate"/>
+				<attribute describedByProperty="spi_wm:requireddate" id="permit_requireddatee" name="requireddate"/>
+				<attribute describedByProperty="spi_wm:tnbap" id="permit_tnbap" name="tnbap"/>
+				<attribute describedByProperty="spi_wm:tnbcp" id="permit_tnbcp" name="tnbcp"/>
+				<attribute describedByProperty="spi_wm:tnbia" id="permit_tnbia" name="tnbia"/>
+				<attribute describedByProperty="spi_wm:tnbpa" id="permit_tnbpa" name="tnbpa"/>
+				<attribute describedByProperty="spi_wm:tnbpassportno" id="permit_tnbpatnbpassportno" name="tnbpassportno"/>
+				<attribute describedByProperty="spi_wm:requestor" id="permit_requestor" name="requestor"/>
+				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum" name="wonum"/>
+
 			</attributes>
-			<!--  <queryBases id="permit_queryBases">
-	 			<queryBase id="permitsearchAllWorkOrders" name="searchAllpermit" />
-			</queryBases> -->
+			<queryBases id="permit_queryBases">
+	 			<queryBase defaultForSearch="true" id="permitsearchAllWorkOrders" name="searchAllpermit" queryUri="/oslc/os/oslcpermit" />
+			</queryBases> 
 		</resource>
 		
 		<!--  Location Meters resource -->
