@@ -14,7 +14,7 @@
 //----------------------------------------------------------------//
 // This is auto generated code. Do not modify it manually.
 // Product and Version: IBM Maximo Anywhere Version 7.5
-// Build: 2017-12-06 10:34:22
+// Build: 2017-12-08 15:21:46
 //----------------------------------------------------------------//
 define({
    root: {
@@ -312,6 +312,15 @@ define({
          "PERMIT" : "PERMIT",
          "Crew Details" : "Crew Details",
          "Review" : "Review",
+         "Permit Details" : "Permit Details",
+         "Issue Date" : "Issue Date",
+         "Required Date" : "Required Date",
+         "Authorized Person" : "Authorized Person",
+         "Competent Person" : "Competent Person",
+         "Issuing Authority" : "Issuing Authority",
+         "Performing Authority" : "Performing Authority",
+         "IC Number" : "IC Number",
+         "Created by" : "Created by",
          "Bin" : "Bin",
          "Rotating Asset" : "Rotating Asset",
          "Solution Type" : "Solution Type",
@@ -382,15 +391,10 @@ define({
          "Permit Description" : "Permit Description",
          "Permit Type" : "Permit Type",
          "Permit Status" : "Permit Status",
-         "Required Date" : "Required Date",
-         "Issue Date" : "Issue Date",
          "Cancel Date" : "Cancel Date",
          "Issue Comment" : "Issue Comment",
          "Acceptance Comment" : "Acceptance Comment",
          "WorK Order" : "WorK Order",
-         "Authorized Person" : "Authorized Person",
-         "Competent Person" : "Competent Person",
-         "Issuing Authority" : "Issuing Authority",
          "Performing Authirity" : "Performing Authirity",
          "Ic Number" : "Ic Number",
          "Report by Crew" : "Report by Crew",
