@@ -18,6 +18,7 @@ define("application/handlers/WODetailHandler",
 	     "platform/handlers/_ApplicationHandlerBase",
 	     "platform/comm/CommunicationManager",
 	     "application/business/WorkOrderObject",
+	     "custom/PermitObject", 
 	     "platform/translation/SynonymDomain",
 	     "platform/model/ModelService",
 	     "platform/translation/MessageService",
@@ -34,7 +35,7 @@ define("application/handlers/WODetailHandler",
 	     "platform/store/PersistenceManager",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties"],
-function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager, Workorder, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
+function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
 	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize'];
 	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments"];
 	var loadingLists = false;

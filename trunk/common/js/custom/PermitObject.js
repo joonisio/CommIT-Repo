@@ -6,7 +6,7 @@ define("custom/PermitObject",
 		 function(fieldUtil, ModelService) {	
 			return {
 		onInitialize : function(permit) {
-			console.log('application.business.PermitObject');
+			console.log('custom.PermitObject');
 		},
 		onAdd: function(permit) {		
 		},

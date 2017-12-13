@@ -40,7 +40,6 @@
 					</eventHandlers>
 				</query>
 			</queries>
-
 			<requiredResources id="WorkExecution.WorkItemsView_requiredResources">
 				<requiredResource id="WorkExecution.WorkItemsView_workOrder" name="workOrder">
 				    <requiredAttribute id="WorkExecution.WorkItemsView_attribute1" name="tasklist"/>
@@ -60,23 +59,26 @@
 				<requiredResource id="WorkExecution.WorkItemsView_laborcrew" name="laborcrew"/>
 				<requiredResource id="WorkExecution.WorkItemsView_gpslocalstore" name="PlatformGeolocationLocalStore"/>
 			</requiredResources>
-			
-			<actions id="WorkExecution.WorkItemsView_actions">
-			    
-			    <!--Custom permit and test form-->
-			    
+				
+			<actions id="WorkExecution.WorkItemsView_actions">			    
+			    <!--Custom permit and test form-->		    
 			    <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.Permit">	
 					<eventHandlers id="WorkExecution.WorkItemsView_Permit_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_Permit_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
 				</action>
-				
+			
 			     <action id="WorkExecution.WorkItemsView_TestForm_action" label="Test Form" overflow="true" transitionTo="WorkExecution.SearchWorkOrderView">	
 					<eventHandlers id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
 				</action>
-
+				
+			      <action id="WorkExecution.WorkItemsView_sqa_action" label="Safety Quality Audit" overflow="true" transitionTo="WorkExecution.SearchWorkOrderView">	
+					<eventHandlers id="WorkExecution.WorkItemsView_sqa_action_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_sqa_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
+					</eventHandlers>	
+				</action>
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
 						<eventHandler class="application.handlers.WOExtDownloadHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline" method="workoffline"/>
@@ -4767,8 +4769,7 @@
 			<requiredResources id="WorkExecution.Permit_requiredResources">
 				<requiredResource id="WorkExecution.permit_workOrder" name="permit">
 				</requiredResource>
-			</requiredResources>
-			
+			</requiredResources>		
 			<list id="WorkExecution.LinearView_permit_list" label="Permit" resource="permit" transitionTo="WorkExecution.PermitViewDetails">
 				<listItemTemplate id="WorkExecution.permit_listItemTemplate">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum"  layoutInsertAt="item1" resourceAttribute="permitworknum"/> 
@@ -4860,7 +4861,10 @@
 				</requiredResource>
 			</requiredResources>
 			
-					
+			<eventHandlers id="WorkExecution.PermitDetailView_eventHandlers">
+				<eventHandler class="custom.PermitDetailHandler" event="render" id="WorkExecution.PermitDetailView_eventHandlers_render_PermitHandler" method="initPermit"/>
+			</eventHandlers>
+							
 			<container id="WorkExecution.permit_container_0" resource="permit" >
 				<group id="WorkExecution.PermitView_group_0">	
 					<groupitem id="WorkExecution.PermitView_groupitem_0">
@@ -4879,27 +4883,35 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate" label="Required Date" resourceAttribute="requireddate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_4" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbap" label="Authorized Person" resourceAttribute="tnbap"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbap" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_5" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbcp" label="Competent Person" resourceAttribute="tnbcp"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbcp" label="Competent Person" lookup="WorkExecution.PersonLookup3" resourceAttribute="tnbcp"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_6" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbia" label="Issuing Authority" resourceAttribute="tnbia"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbia" label="Issuing Authority"  lookup="WorkExecution.PersonLookup4" resourceAttribute="tnbia"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_7" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpa" label="Performing Authority" resourceAttribute="tnbpa"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpa" label="Performing Authority" resourceAttribute="tnbpa"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_8" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpassportno" label="IC Number" resourceAttribute="tnbpassportno"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_9" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_requestor" label="Created by" resourceAttribute="requestor"/>
-					</groupitem>																	
+						<text editable="true" id="WorkExecution.PermitView_groupitem_requestor" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.PermitView_groupitem_10" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_wonum" label="Work Order" resourceAttribute="wonum"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.PermitView_groupitem_13" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_assetnum" label="Asset" resourceAttribute="assetnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_12" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_location" label="Location" resourceAttribute="location"/>
+					</groupitem>														
 				</group>			
 			</container>														
 		</view>
-
 		<!-- Define Actual Material list view -->
 		<view id="WorkExecution.ActualMaterialsView" label="Actual Materials">
 			<requiredResources id="WorkExecution.ActualMaterialsView_requiredResources">
@@ -7648,7 +7660,7 @@
 				<requiredResource id="WorkExecution.dataSheetLookup_domainwostatus" name="domainwostatus"/>
 			</requiredResources>
 
-			<list id="WorkExecution.dataSheetLookup_list" resource="additionalDataSheetTemplateResource">
+			<list id="WorkExecution.dataSheetLookup_list" resource="additionalDataSheetTemplrateResource">
 				<listItemTemplate id="WorkExecution.dataSheetLookup_listItemTemplate_Item1Desc1" layout="Item1Desc1">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.dataSheetLookup_Item1Desc1_value" layoutInsertAt="item1" resourceAttribute="dsplannum"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.dataSheetLookup_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
@@ -7662,7 +7674,87 @@
 				<returnAttribute id="WorkExecution.dataSheetLookup_description_siteid" sourceAttribute="siteid" targetAttribute="datasheet_siteid"/>
 			</returnAttributes>
 		</lookup>
+		
+		
+<!-- custom Person lookup 1 -->
+		<lookup id="WorkExecution.PersonLookup" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources">
+				<requiredResource id="WorkExecution.Lookup_additionalperson" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate" layout="PersonLookup">
+					<listtext id="wut21" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla22" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.PersonLookup_addresscode_woserdresscode" sourceAttribute="personid" targetAttribute="requestor"/>
+			</returnAttributes>
+		</lookup>
 	
+		<!-- custom Person lookup 2 -->
+		<lookup id="WorkExecution.PersonLookup2" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources2">
+				<requiredResource id="WorkExecution.Lookup_additionalperson2" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list2" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes2">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid2" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname2" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate2" layout="PersonLookup">
+					<listtext id="wut212" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla222" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes2">
+				<returnAttribute id="WorkExecution.PersonLookup_tnbap" sourceAttribute="personid" targetAttribute="tnbap"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Person lookup 3 -->
+		<lookup id="WorkExecution.PersonLookup3" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources3">
+				<requiredResource id="WorkExecution.Lookup_additionalperson3" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list3" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes3">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid3" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname3" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate3" layout="PersonLookup">
+					<listtext id="wut213" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla223" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes3">
+				<returnAttribute id="WorkExecution.PersonLookup_tnbcp" sourceAttribute="personid" targetAttribute="tnbcp"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Person lookup 4 -->
+		<lookup id="WorkExecution.PersonLookup4" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources4">
+				<requiredResource id="WorkExecution.Lookup_additionalperson4" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list4" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes4">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid4" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname4" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate4" layout="PersonLookup">
+					<listtext id="wut214" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla224" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes4">
+				<returnAttribute id="WorkExecution.PersonLookup_tnbia" sourceAttribute="personid" targetAttribute="tnbia"/>
+			</returnAttributes>
+		</lookup>
 
 		<!-- Work Order Status lookup -->
 		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -8847,6 +8939,8 @@
 				<attribute describedByProperty="spi_wm:tnbpassportno" id="permit_tnbpatnbpassportno" name="tnbpassportno"/>
 				<attribute describedByProperty="spi_wm:requestor" id="permit_requestor" name="requestor"/>
 				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum" name="wonum"/>
+				<attribute describedByProperty="spi_wm:assetnum" id="permit_assetnum" name="assetnum"/>
+				<attribute describedByProperty="spi_wm:location" id="permit_location" name="location"/>
 
 			</attributes>
 			<queryBases id="permit_queryBases">
@@ -10598,13 +10692,18 @@
 		</resource>
 
 		<!-- Person resource -->
-		<!-- <resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" 
-			name="additionalperson" pageSize="500" additionalData="true"> <attributes> 
-			<attribute name="personuid" describedByProperty="dcterms:identifier" /> <attribute 
-			name="displayname" describedByProperty="foaf:name" /> <attribute name="firstname" 
-			describedByProperty="foaf:givenName" /> <attribute name="lastname" describedByProperty="foaf:familyName" 
-			/> <attribute name="personid" describedByProperty="oslc:shortTitle" /> </attributes> 
-			<whereClause /> </resource> -->
+		<resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" name="additionalperson" id="additionalperson" pageSize="500" additionalData="true"> 
+			<attributes id="person_attributes" > 
+				<attribute id="person_attributes1" name="personuid" describedByProperty="dcterms:identifier" /> 
+				<attribute id="person_attributes2" name="displayname" describedByProperty="foaf:name" /> 
+				<attribute id="person_attributes3" name="firstname" describedByProperty="foaf:givenName" /> 
+				<attribute id="person_attributes4" name="lastname" describedByProperty="foaf:familyName" /> 
+				<attribute id="person_attributes5" name="personid" describedByProperty="oslc:shortTitle" /> 
+				</attributes> 
+			<queryBases id="additionalamcrew_queryBases2">
+ 	 			<queryBase id="additionalamcrew_person" name="getPerson" queryUri="/oslc/os/oslcperson"/>
+	 		</queryBases>	
+		</resource> 
 
 		<!-- Crew resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Amcrew" id="additionalamcrew" name="additionalamcrew" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
