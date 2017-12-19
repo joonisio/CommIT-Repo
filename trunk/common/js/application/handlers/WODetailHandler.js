@@ -64,10 +64,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			if(actualWorkOrder == null){
 				return;
 			}
-			var msg = MessageService.createStaticMessage(actualWorkOrder.get('wonum')).getMessage();
-
-			eventContext.ui.showToastMessage(msg);
-			//eventContext.ui.showMessage(msg);
 			
 			actualWorkOrder.getRuntimeFieldMetadata('asset').set('readonly',!WpEditSettings.shouldEditAsset(oslcwpeditsetting, 
 					SynonymDomain.resolveToInternal(domainAssetstatus,actualWorkOrder.get('status')), actualWorkOrder.get('orgid')));
@@ -2102,8 +2098,10 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log("Hide when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			if (workOrder.multiassetloclist.data.length > 0){
-				var linear = workOrder.multiassetloclist.data[0].isprimary;
-				if(!linear){
+				//var feature = workOrder.multiassetloclist.data[0].feature;
+				//var featurelabel = workOrder.multiassetloclist.data[0].featurelabel;
+				var startmeasureunitid = workOrder.multiassetloclist.data[0].startmeasureunitid;
+				if(!startmeasureunitid){
 					eventContext.setDisplay(false);
 					console.log("Not Linear/No Display");
 				}
@@ -2114,13 +2112,24 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}
 		},
 		
+		hideText: function(eventContext) {
+			eventContext.setDisplay(false);
+		},
+		
 		readOnlyForNonLinearWO: function(eventContext) {
 			console.log("Readonly when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			console.log(workOrder.multiassetloclist);
-			var linear = workOrder.multiassetloclist.data[0];
-			linear.getRuntimeFieldMetadata('feature').set('readonly', false);
-			linear.getRuntimeFieldMetadata('featurelabel').set('readonly', false);
+			if (workOrder.multiassetloclist.data.length > 0){
+				var linear = workOrder.multiassetloclist.data[0];
+				if(linear){
+					/*linear.getRuntimeFieldMetadata('feature').set('readonly', false);
+					linear.getRuntimeFieldMetadata('featurelabel').set('readonly', false);	*/
+				    var element = document.getElementById("aw1fd77566_Text_output");
+				    element.classList.remove("invalidBinding");					
+					console.log("Linear/Editable - Remove .invalidBinding class");
+				}
+			}
 		},
 		
 		showFooterView: function(eventContext) {
