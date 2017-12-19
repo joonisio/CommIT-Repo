@@ -55,6 +55,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 /**@memberOf application.handlers.WODetailHandler */
 		initAssetField: function(eventContext){
 			var actualWorkOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			console.log(actualWorkOrder);
 			var oslcwpeditsetting = CommonHandler._getAdditionalResource(eventContext,"oslcwpeditsetting");
 			var domainAssetstatus = CommonHandler._getAdditionalResource(eventContext,'domainwostatus');
 			

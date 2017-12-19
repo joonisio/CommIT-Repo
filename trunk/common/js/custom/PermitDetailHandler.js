@@ -8,7 +8,7 @@ define("custom/PermitDetailHandler",
 		  "dojo/_base/lang",
 	     "platform/handlers/_ApplicationHandlerBase",
 	     "platform/comm/CommunicationManager",
-	     "custom/PermitObject", 
+	     "custom/PermitObject",
 	     "platform/translation/SynonymDomain",
 	     "platform/model/ModelService",
 	     "platform/translation/MessageService",
@@ -30,9 +30,47 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
 		initPermit: function(eventContext){
 			console.log('custom/PermitDetailHandler');
-			var actualPermit = CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord();
-			var msg = MessageService.createStaticMessage(actualPermit.get('permitworknum')).getMessage();
-			eventContext.ui.showToastMessage(msg);
+			console.log(CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord());
+		},
+		
+		
+		initSearchData: function(eventContext){
+			console.log('setSearchQuery');
+			var searchData = eventContext.application.getResource("searchPermit");
+			if(searchData == null || searchData.getCurrentRecord() == null){
+				searchData.createNewRecord();
+			}
+			eventContext.application.ui.savedQueryIndex = eventContext.application.ui.getViewFromId('WorkExecution.Permit').queryBaseIndex;
+		},
+		
+		setSearchQuery: function(eventContext){
+			console.log('setSearchQuery');
+			eventContext.application.showBusy();
+			var search = eventContext.application.getResource("searchPermit").getCurrentRecord();
+			var filteredItems = 0;			
+			var filter = {};
+			
+			if (search.permitworknum){
+			    filter.permitworknum = '%'+search.permitworknum+'%';
+			    filteredItems++;
+			}
+			
+			if(filteredItems == 0){
+				eventContext.ui.show('WorkExecution.RequiredSearchFieldMissing');
+				return;
+			}
+			var self = this;
+			eventContext.application.ui.performSearch = true;
+			ModelService.clearSearchResult(eventContext.application.getResource('permit')).then(function(){
+				 ModelService.empty('permit').then(function(){
+					 eventContext.ui.getViewFromId('WorkExecution.Permit').setQueryBaseIndexByQuery(PlatformConstants.SEARCH_RESULT_QUERYBASE).then(function(){
+						// eventContext.ui.show('WorkExecution.Permit');
+						 eventContext.application.showBusy();
+						 PersistenceManager.removeQuerybase('permit', PlatformConstants.SEARCH_RESULT_QUERYBASE);
+						 //self.populateSearch(eventContext);
+					 });
+				 });
+			});
 		},
 		
 		savePermit : function(eventContext){
@@ -45,7 +83,13 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}).otherwise(function(error) {
 			  self.ui.showMessage(error.message);
 			});
+		},
+		
+		clearSearchFields: function(eventContext){
+			console.log('clear Search Field');
+			eventContext.application.getResource("searchPermit").createNewRecord();
 		}
+		
 	});
 		
 });
