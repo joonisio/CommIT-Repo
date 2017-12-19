@@ -494,10 +494,10 @@
 				</eventHandlers>			
 				<group id="idvalue0">
 					<groupitem id="workorder.feature">					
-						<text id="feature" editable="false" label="Feature" resourceAttribute="feature"/>											
+						<text id="feature" editable="true" label="Feature" resourceAttribute="feature"/>											
 					</groupitem>	
 					<groupitem id="workorder.featurelabel">
-						<text id="featurelabel" editable="false" label="Feature Label" resourceAttribute="featurelabel"/>
+						<text id="featurelabel" editable="true" label="Feature Label" resourceAttribute="featurelabel"/>
 					</groupitem>									
 				</group>
 			</container> 
@@ -4859,8 +4859,8 @@
 			<requiredResources id="WorkExecution.PermitViewDetails_requiredResources">
 				<requiredResource id="WorkExecution.PermitViewDetails_requiredresource" name="permit">
 				</requiredResource>
-			</requiredResources>
-			
+			</requiredResources>			
+
 			<actions id="WorkExecution.PermitDetailView_actions">
 				<action enableFeatureByProperty="attachments.enabled" id="WorkExecution.PermitDetailView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
 					<eventHandlers id="WorkExecution.PermitDetailView_TakePhoto_action_eventHandlers">
@@ -4872,7 +4872,14 @@
 			<eventHandlers id="WorkExecution.PermitDetailView_eventHandlers">
 				<eventHandler class="custom.PermitDetailHandler" event="render" id="WorkExecution.PermitDetailView_eventHandlers_render_PermitHandler" method="initPermit"/>
 			</eventHandlers>
-							
+			<actions id="WorkExecution.PermitDetailView_actions">
+				<action enableFeatureByProperty="attachments.enabled" id="WorkExecution.PermitDetailView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
+					<eventHandlers id="WorkExecution.PermitDetailView_TakePhoto_action_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.WPermitDetailView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="takePhoto"/>
+						<eventHandler class="application.handlers.WOAttachmentHandler" event="render" id="WorkExecution.PermitDetailView_TakePhoto_action_eventHandlers_render_initCategory" method="initCategory"/>
+					</eventHandlers>
+				</action>
+			</actions>								
 			<container id="WorkExecution.permit_container_0" resource="permit" >
 				<group id="WorkExecution.PermitView_group_0">	
 					<groupitem id="WorkExecution.PermitView_groupitem_0">

@@ -2124,9 +2124,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				var linear = workOrder.multiassetloclist.data[0];
 				if(linear){
 					/*linear.getRuntimeFieldMetadata('feature').set('readonly', false);
-					linear.getRuntimeFieldMetadata('featurelabel').set('readonly', false);	*/
-				    var element = document.getElementById("aw1fd77566_Text_output");
-				    element.classList.remove("invalidBinding");					
+					linear.getRuntimeFieldMetadata('featurelabel').set('readonly', false);	*/			
 					console.log("Linear/Editable - Remove .invalidBinding class");
 				}
 			}
