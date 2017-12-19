@@ -765,9 +765,9 @@ body, form {
 }
 
 .invalidBinding {
-	background: rgba(255, 0, 0, 0.51) !important;
+	/*background: rgba(255, 0, 0, 0.51) !important;
 	color: #fff;
-	font-style: italic;
+	font-style: italic;*/
 }
 
 .lookupIcon {

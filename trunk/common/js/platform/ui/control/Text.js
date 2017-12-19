@@ -350,7 +350,9 @@ function (declare, ContainerControlBase, StatefulControlMixin, BoundControlMixin
 					this._setReadOnly(!this.editable); //if this was intentionally set in xml, use it
 				}
 				else{
-					this._setReadOnly(this.getCurrentRecord().getRuntimeFieldMetadata(this.resourceAttribute).readonly);
+                    //Custom - add condition to prevent error for non-existing attribute
+                    if (this.getCurrentRecord()) 
+					    this._setReadOnly(this.getCurrentRecord().getRuntimeFieldMetadata(this.resourceAttribute).readonly);
 				}
             }
 
