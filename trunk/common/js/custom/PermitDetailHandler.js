@@ -33,7 +33,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log(CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord());
 		},
 		
-		
 		initSearchData: function(eventContext){
 			console.log('setSearchQuery');
 			var searchData = eventContext.application.getResource("searchPermit");

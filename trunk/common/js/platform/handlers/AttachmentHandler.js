@@ -28,11 +28,12 @@ define("platform/handlers/AttachmentHandler",
 	     "platform/util/PlatformConstants",
 	     "platform/store/SystemProperties", 
 	     "platform/comm/HTTPHelper",
-	     "platform/logging/Logger",
+		 "platform/logging/Logger",
+		 "application/handlers/CommonHandler",
 	     "dojo/Deferred",
 	     "dojo/dom-construct",
 	     "platform/exception/PlatformRuntimeException"],
-function(declare, numberUtil, ApplicationHandlerBase, MediaService, ModelService, UserAuthenticationManager, PlatformRuntimeWarning, AttachmentService, FileService, PlatformConstants, SystemProperties,HTTPHelper, Logger, Deferred, domConstruct, PlatformRuntimeException) {
+function(declare, numberUtil, ApplicationHandlerBase, MediaService, ModelService, UserAuthenticationManager, PlatformRuntimeWarning, AttachmentService, FileService, PlatformConstants, SystemProperties,HTTPHelper, Logger, CommonHandler, Deferred, domConstruct, PlatformRuntimeException) {
 	
 	var popUpExtensions = ["png", "jpg", "jpeg", "mp4", "m4a", "mp3", "wav", "txt", "pdf", "doc", "docx"];
 	var attachmentDefaultName = '';
@@ -80,6 +81,37 @@ function(declare, numberUtil, ApplicationHandlerBase, MediaService, ModelService
 		},
 		_getRecordOwner: function(){
 			return this._recordOwner;
+		},
+
+		takePhoto: function(eventContext){
+			if (!this.ui.getCurrentViewControl().validate())
+				return;
+			if(SystemProperties.getProperty('si.attach.doclink.doctypes.defpath') == null){
+				throw new PlatformRuntimeException('doctypesDefpathNotDefined');
+				return;
+			}
+			
+			var self = this;
+			var createDate = eventContext.application.getCurrentDateTime();	
+			
+			//CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			//CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord();
+
+			var permit = CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord();
+			console.log(permit);
+			this._setRecordOwner(permit);
+			
+			MediaService.capturePictureAsPromise().then(function(result){
+				if(result.fullPath == null){
+					//throw new PlatformRuntimeWarning("cameraCancelled");
+				}else{
+					result.createDate =createDate;
+					self._updateAttachmentResourceWithMediaInfo(result);
+				}
+			}).otherwise(function(error){
+				Logger.log("Camera launch error Attachment Handler [INF181051 ER2000]: " + JSON.stringify(error));
+				//self.ui.showMessage(error.message);
+			});			
 		},
 		
 		launchCameraForPhoto: function(eventContext){
