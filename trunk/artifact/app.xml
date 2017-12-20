@@ -550,6 +550,9 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0_meterslistsize" layoutInsertAt="count1" resourceAttribute="meterslistsize">
 						</text> 
 					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="WO Meters"/>
+					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
@@ -3770,6 +3773,32 @@
 				</eventHandlers>						
 			</list>			
 		</view>
+		
+		
+		<!--Custom Work Order Meter list view -->
+		<view id="WorkExecution.TnbWOMeterList" label="Meters">
+		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
+				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
+				</requiredResource>
+			</requiredResources>
+			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>																	
+				</listItemTemplate>				
+			</list>	
+			<list id="WorkExecution.TNBWOMETERS_totalTnbWOAssetMeters_list" label="Meter Specific to Meter Group" resource="workOrder" showHeader="true">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWOMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
+					<listtext id="WorkExecution.TNBWOMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>																	
+				</listItemTemplate>				
+			</list>	
+			<list id="WorkExecution.TNBWODIRECTMETERS_totalTnbWOAssetMeters_list" label="Direct Meters" resource="workOrder" attribute="tnbwodirectmeterslist" showHeader="true">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWODIRECTMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
+					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>																	
+				</listItemTemplate>				
+			</list>	
+		</view>
+		
 
 		<!--Meter view for multiple assets and locations-->
 		<view id="WorkExecution.MultiAssetLocCIMeterList" label="Meters for Multiple Assets &amp; Locations">  
@@ -4776,7 +4805,7 @@
 				</requiredResource>
 			</requiredResources>	
 			
-		<!--	<actions id="WorkExecution.WorkDetailView_actions2">
+		<!-- <actions id="WorkExecution.WorkDetailView_actions2">
 			    <action id="WorkExecution.WorkDetailView_take_signature_action2" label="Capture Signature" image="/images/ic_search_white_24dp.png" transitionTo="WorkExecution.SearchPemitView">
 			        <eventHandlers id="WorkExecution.WorkItemssView_Search_eaction_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsVirew_Search_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
@@ -5003,12 +5032,21 @@
 					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>
+			
+			<eventHandlers id="WorkExecution.SqaDetailHandler">
+				<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailHandler_action_eventHandlers_render_echeckboxHanlder" method="checkboxInit"/>
+			</eventHandlers>
+						
 			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_description" layoutInsertAt="item2" resourceAttribute="description"/>
 					<listtext id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_question_longdescription" layoutInsertAt="item3" resourceAttribute="question_longdescription"/>
-					<checkbox cssClass="rightCheckBox" label="Yes" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes"/>
+					<checkbox cssClass="rightCheckBox" label="Yes" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes">
+					  	<eventHandlers id="WorkExecution.SqaLine_checkboxHandler">
+							<eventHandler id="WorkExecution.SqaLineView_3" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
 					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no"/>
 					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox" layoutInsertAt="checkbox1" resourceAttribute="notapplicable"/>
 				</listItemTemplate>
@@ -8664,7 +8702,14 @@
 				<attribute describedByProperty="spi_wm:actualmaterial" describedByResource="actualMaterialResource" id="workOrder_actualmateriallist_spi_wmactualmaterial" name="actualmateriallist"/>
 				<attribute describedByProperty="spi_wm:actualtool" describedByResource="actualToolResource" id="workOrder_actualtoollist_spi_wmactualtool" name="actualtoollist"/>
 				<attribute describedByProperty="spi_wm:worklog" describedByResource="workLogResource" id="workOrder_workloglist_spi_wmworklog" name="workloglist"/>
-				<!-- custom multi -->
+				
+				<!-- custom tnb meter -->
+				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="workOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
+				<attribute describedByProperty="spi_wm:tnbwodirectmeters" describedByResource="tnbwodirectmetersResource" id="workOrder_tnbwometergrouplist_spi_tnbwodirectmeters" name="tnbwodirectmeterslist"/>
+				
+				<!-- END -->
+						
+				
 				<attribute describedByProperty="spi_wm:multiassetlocci" describedByResource="multiAssetLocResource" id="workOrder_multiassetloclist_spi_wmmultiassetlocci" name="multiassetloclist"/>
 				<attribute describedByProperty="spi_wm:failurereport" describedByResource="failureReportResource" id="workOrder_failureReportlist_spi_wmfailurereport" name="failureReportlist"/>	
 				<attribute describedByProperty="spi_wm:assetlocmeter" describedByResource="assetLocMeterComplexResource" id="workOrder_assetlocmeterlist_spi_wmassetlocmeter" name="assetlocmeterlist"/>				 						
@@ -8964,6 +9009,20 @@
 			name="glaccount" describedByProperty="spi_wm:glaccount" /> <localAttribute 
 			name="statusdesc" dataType="string" /> <localAttribute name="dontDiscard" 
 			dataType="boolean" /> </attributes> </resource> -->
+			
+		<!--  Asset Tnb Wo Meters Complex resource -->
+		<resource id="tnbwometergroupResource" name="tnbwometergroupResource">
+			<attributes id="tnbwometergroupResource_attributes">
+   			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" index="true" name="tnbmetergroup"/>    
+			</attributes>		 
+		</resource>
+		
+		<resource id="tnbwodirectmetersResource" name="tnbwodirectmetersResource">
+			<attributes id="tnbwodirectmetersResource_attributes">
+   			    <attribute describedByProperty="spi_wm:tnbmetername" id="tnbwodirectmetersResource_tnbmetername" index="true" name="tnbmetername"/>    
+			</attributes>		 
+		</resource>
+	
 
 		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
@@ -10825,7 +10884,7 @@
 		</resource>
 
 		<!-- Person resource -->
-		<resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" name="additionalperson" id="additionalperson" pageSize="500" additionalData="true"> 
+		<resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" name="additionalperson" id="additionalperson" pageSize="100" additionalData="true"> 
 			<attributes id="person_attributes" > 
 				<attribute id="person_attributes1" name="personuid" describedByProperty="dcterms:identifier" /> 
 				<attribute id="person_attributes2" name="displayname" describedByProperty="foaf:name" /> 
