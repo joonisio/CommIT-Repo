@@ -1,4 +1,3 @@
-
 define("custom/SqaDetailHandler", 
 	   [ "dojo/_base/declare",
 	     "dojo/_base/array",
@@ -33,21 +32,14 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log(actualSqa);
 			var sqlLineCount = actualSqa.plusgaudlinelistsize;
 			console.log(sqlLineCount);
-			
+		
 			if(sqlLineCount==null){
 				actualSqa.set(listSizeArray[0],0);
 			}else{
 				actualSqa.set(listSizeArray[0],sqlLineCount);
 			}
 			
-		
 			
-			for(var i=0;i<actualSqa.plusgaudlinelist.data.length;i++){
-				var sqlLine = actualSqa.plusgaudlinelist.data[i];
-				console.log(sqlLine);
-				
-			}
-	
 		},
 		
 		saveSqa : function(eventContext){
@@ -61,7 +53,45 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			  self.ui.showMessage(error.message);
 			});
 		},
-	
+		
+		checkboxInit : function(eventContext){
+			console.log('checkboxHanlder');
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+			for(var i=0;i<sqa.plusgaudlinelist.data.length;i++){
+				var sqaLine = sqa.plusgaudlinelist.data[i];		
+				if(sqaLine.no == true || sqaLine.yes == true || sqaLine.notapplicable == true){
+					console.log("condition");	
+//					sqaLine.getRuntimeFieldMetadata('no').set('readonly', true);
+//					sqaLine.getRuntimeFieldMetadata('yes').set('readonly', true);
+//					sqaLine.getRuntimeFieldMetadata('notapplicable').set('readonly', true);
+				}
+			}
+		},
+		
+		checkboxHandler: function(eventContext){
+			console.log('checkboxHanlder');
+//			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+//			console.log(sqa);
+//			var sqaLine = sqa.plusgaudlinelist.data;
+//			console.log(sqa);
+//			if(sqlLine == true){
+//				console.log('no');
+//				sqaLine.set("yes",false);
+//				sqaLine.set("notapplicable",false);
+//				
+//			}else if(sqaLine == true){
+//				console.log('yes');
+//				sqaLine.set("no",false);
+//				sqaLine.set("notapplicable",false);
+//				
+//			}else{
+//				sqaLine.set("no",false);
+//				sqaLine.set("yes",false);			
+//			}
+			
+		},
+		
+		
 		
 		refreshAllListSizes: function(eventContext){	
 			if(!loadingLists){
