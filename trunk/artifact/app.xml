@@ -68,13 +68,13 @@
 					</eventHandlers>	
 				</action>
 			
-			     <action id="WorkExecution.WorkItemsView_TestForm_action" label="Test Form" overflow="true" transitionTo="WorkExecution.SearchWorkOrderView">	
+			     <action id="WorkExecution.WorkItemsView_TestForm_action" label="Test Form" overflow="true" transitionTo="WorkExecution.SearchPemitView2">	
 					<eventHandlers id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_TestForm_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
 				</action>
 				
-			      <action id="WorkExecution.WorkItemsView_sqa_action" label="Safety Quality Audit" overflow="true" transitionTo="WorkExecution.SearchWorkOrderView">	
+			      <action id="WorkExecution.WorkItemsView_sqa_action" label="Safety Quality Audit" overflow="true" transitionTo="WorkExecution.sqa">	
 					<eventHandlers id="WorkExecution.WorkItemsView_sqa_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_sqa_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
@@ -4766,10 +4766,23 @@
 		
 		<!--custom Permit view-->	
 		<view id="WorkExecution.Permit" label="PERMIT">
+		    
+		    <queries id="WorkExecution.WorkItemsView_pemit_queries" resource="permit">
+			    <query id="WorkExecution.WorkItemsView_getAllPermit" label="All Permit" queryBase="searchAllpermit"/>
+			</queries>
+			
 			<requiredResources id="WorkExecution.Permit_requiredResources">
 				<requiredResource id="WorkExecution.permit_workOrder" name="permit">
 				</requiredResource>
-			</requiredResources>		
+			</requiredResources>	
+			
+		<!--	<actions id="WorkExecution.WorkDetailView_actions2">
+			    <action id="WorkExecution.WorkDetailView_take_signature_action2" label="Capture Signature" image="/images/ic_search_white_24dp.png" transitionTo="WorkExecution.SearchPemitView">
+			        <eventHandlers id="WorkExecution.WorkItemssView_Search_eaction_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsVirew_Search_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
+					</eventHandlers>	
+				</action>
+			</actions> 	  -->
 			<list id="WorkExecution.LinearView_permit_list" label="Permit" resource="permit" transitionTo="WorkExecution.PermitViewDetails">
 				<listItemTemplate id="WorkExecution.permit_listItemTemplate">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum"  layoutInsertAt="item1" resourceAttribute="permitworknum"/> 
@@ -4779,8 +4792,24 @@
 					<listtext id="WorkExecution.wonum" layoutInsertAt="item3" resourceAttribute="wonum"/>
 				</listItemTemplate>
 			</list>
-		</view>		
-
+		</view>	
+		
+		<!-- custom SQA Checklist view-->
+		<view id="WorkExecution.sqa" label="SQA Checklist">
+			<requiredResources id="WorkExecution.sqa_requiredResources">
+				<requiredResource id="WorkExecution.sqa_workOrder" name="sqa">
+				</requiredResource>
+			</requiredResources>		
+			<list id="WorkExecution.sqaView_sqa_list" label="SQA Checklist" resource="sqa" transitionTo="WorkExecution.SQADetails" >
+				<listItemTemplate id="WorkExecution.sqa_listItemTemplate">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.sqa2_auditnum"  layoutInsertAt="item1" resourceAttribute="auditnum"/> 
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.sqa2_description"  layoutInsertAt="item2" resourceAttribute="description"/>
+					<listtext id="WorkExecution.sqa2_plusgplandate"  layoutInsertAt="item3" resourceAttribute="plusgplandate"/>
+					<listtext id="WorkExecution.status" layoutInsertAt="item4" resourceAttribute="status"/>
+				</listItemTemplate>
+			</list>
+		</view>			
+		
 		<!--Crew Details view-->
 		<view id="WorkExecution.ActualCrewEntryView" label="Crew Details">
 			<requiredResources id="WorkExecution.ActualCrewEntryView_requiredResources">
@@ -4861,14 +4890,6 @@
 				</requiredResource>
 			</requiredResources>			
 
-			<actions id="WorkExecution.PermitDetailView_actions">
-				<action enableFeatureByProperty="attachments.enabled" id="WorkExecution.PermitDetailView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
-					<eventHandlers id="WorkExecution.PermitDetailView_TakePhoto_action_eventHandlers">
-						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.WPermitDetailView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="takePhoto"/>
-						<eventHandler class="application.handlers.WOAttachmentHandler" event="render" id="WorkExecution.PermitDetailView_TakePhoto_action_eventHandlers_render_initCategory" method="initCategory"/>
-					</eventHandlers>
-				</action>
-			</actions>						
 			<eventHandlers id="WorkExecution.PermitDetailView_eventHandlers">
 				<eventHandler class="custom.PermitDetailHandler" event="render" id="WorkExecution.PermitDetailView_eventHandlers_render_PermitHandler" method="initPermit"/>
 			</eventHandlers>
@@ -4927,6 +4948,80 @@
 				</group>			
 			</container>														
 		</view>
+		
+		<!-- Custom SQA Checklist Detail View -->
+		<view id="WorkExecution.SQADetails" label="SQA Checklist">
+			<requiredResources id="WorkExecution.sqaDetails_requiredResources">
+				<requiredResource id="WorkExecution.sqaDetails_requiredresource" name="sqa">
+				</requiredResource>
+			</requiredResources>
+					
+			<eventHandlers id="WorkExecution.SqaDetailView_eventHandlers">
+				<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_PermitHandler" method="initSqa"/>
+				
+			</eventHandlers>
+						
+			<container id="WorkExecution.sqa_container_0" resource="sqa" >
+				<group id="WorkExecution.sqaView_group_0">	
+					<groupitem id="WorkExecution.sqaView_groupitem_0">
+						<text editable="false" layoutInsertAt="item1" id="WorkExecution.sqaView_groupitem_11" label="Audit and Survey" resourceAttribute="auditnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_1" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_Description" label="Description" resourceAttribute="description"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.sqaView_groupitem_7" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" resourceAttribute="status"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_2" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbwonum" label="Work Order" resourceAttribute="tnbwonum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_3" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_location" label="Location" resourceAttribute="location"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_4" >
+						<text editable="true" id="WorkExecution.sqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookup" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_5" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="tnbpercentage"/>
+					</groupitem>
+					<groupitem id="WorkExecution.sqaView_groupitem_6" >
+						<text editable="false" id="WorkExecution.sqaView_groupitem_totalscore" label="Total Score" resourceAttribute="totalscore"/>
+					</groupitem>			
+					
+					<groupitem id="WorkExecution.QView_groupitem_WorkExecution.QDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.SqaLineView">				
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.SQAView_groupitem_WorkExecution.QDetails" layoutInsertAt="item1" value="Question"></text>
+						<text editable="false" id="WorkExecution.SQAView_groupitem_WorkExecutionSQAlineView" layoutInsertAt="count1" resourceAttribute="plusgaudlinelistsize"></text>
+					</groupitem>													
+				</group>			
+			</container>														
+		</view>
+		
+		<!-- Custom Sqa Line View -->
+		<view id="WorkExecution.SqaLineView" label="Question">
+			<requiredResources id="WorkExecution.Question.View_requiredResources">
+				<requiredResource id="WorkExecution.QuestionView_sqa" name="sqa">
+					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
+				</requiredResource>
+			</requiredResources>
+			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
+				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
+					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_description" layoutInsertAt="item2" resourceAttribute="description"/>
+					<listtext id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_question_longdescription" layoutInsertAt="item3" resourceAttribute="question_longdescription"/>
+					<checkbox cssClass="rightCheckBox" label="Yes" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes"/>
+					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no"/>
+					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox" layoutInsertAt="checkbox1" resourceAttribute="notapplicable"/>
+				</listItemTemplate>
+			</list>
+			<footer id="sqaSaveFooter">
+			    <button cssClass="mblPrimaryButton" id="WorkExecution.saveSqaView_Save_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.SqaLine_Save_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.SqaLineView_Save_button_eventHandlers_click_save" method="saveSqa"/>
+					</eventHandlers>
+				</button>
+			</footer>
+		</view>
+		
 		<!-- Define Actual Material list view -->
 		<view id="WorkExecution.ActualMaterialsView" label="Actual Materials">
 			<requiredResources id="WorkExecution.ActualMaterialsView_requiredResources">
@@ -6954,86 +7049,75 @@
 			</eventHandlers>
 		</view>
 		
-		<!-- Custom Permit Detail -->
-		<view id="WorkExecution.SearchPermitDetail" label="Permit Detail">    
-		    <container id="WorkExecution.permit2_container_0" >
-		        <group id="WorkExecution.Work2s">
-		    		<groupitem id="workorder.permit">
-						<text editable="true" id="permit_no" label="Permit" />
-					</groupitem>
-					<groupitem id="workorder.permit_decs">
-						<text editable="true" id="permit_desc" label="Permit Description" />
-					</groupitem>
-					<groupitem id="workorder.permit_type">
-						<text editable="true" id="permit_type" label="Permit Type" />
-					</groupitem>
-					<groupitem id="workorder.permit_status">
-						<text editable="true" id="permit_status" label="Permit Status" />
-					</groupitem>
-					<groupitem id="workorder.permit_requireddate">
-						<text editable="true" id="permit_requireddate" label="Required Date" />
-					</groupitem>
-					<groupitem id="workorder.permit_issuedate">
-						<text editable="true" id="permit_issuedate" label="Issue Date" />
-					</groupitem>
-					<groupitem id="workorder.permit_canceldate">
-						<text editable="true" id="permit_canceldate" label="Cancel Date" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_Issue_Comments">
-						<text editable="true" id="permit_Issue_Comment" label="Issue Comment" />
-					</groupitem>
-					<groupitem id="workorder.permit_Acceptance_Comment">
-						<text editable="true" id="permit_Acceptance_Comment" label="Acceptance Comment" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_WorK_Order">
-						<text editable="true" id="permit_WorK_Order" label="WorK Order" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_Asset">
-						<text editable="true" id="permit_Asset" label="Asset" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_Location">
-						<text editable="true" id="permit_Location" label="Location" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_Authorized_Person">
-						<text editable="true" id="permit_Authorized_Person" label="Authorized Person" />
-					</groupitem>
-					<groupitem id="workorder.permit_Competent_Person">
-						<text editable="true" id="permit_Competent_Person" label="Competent Person" />
-					</groupitem>
-					<groupitem id="workorder.permit_Issuing_Authority">
-						<text editable="true" id="permit_Issuing_Authority" label="Issuing Authority" />
-					</groupitem>
-					<groupitem id="workorder.permit_Performing_Authirity">
-						<text editable="true" id="permit_Performing_Authirity" label="Performing Authirity" />
-					</groupitem>
-					<groupitem id="workorder.Ic_Number">
-						<text editable="true" id="permit_Ic_Number" label="Ic Number" />
-					</groupitem>
-
-					<groupitem id="workorder.permit_created_by">
-						<text editable="true" id="permit_created_by" label="Created By" />
-					</groupitem>
-				</group>
+		<view id="WorkExecution.SearchPemitView2" label="Search Permit"> 	
+			<container id="WorkExecution.SearchPemitView_container_02"  >
 			</container>
-			<footer id="WorkExecution.PermitView_footer">
-				<button id="WorkExecution.Permit_Cancel_button" label="Cancel">
-					<eventHandlers id="WorkExecution.PermitView_Cancel_button_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.PermitView_Cancel_button_eventHandlers_click_handleBackButtonClickPermitView" method="handleBackButtonClickEditAssetView"/>
+		    
+		</view>
+		
+		<!-- Custom Search Permit view -->
+		<view id="WorkExecution.SearchPemitView" label="Search Permit">
+			<requiredResources id="WorkExecution.SearchPemitView_requiredResources">
+				<requiredResource id="WorkExecution.SearchPemitView_searchpermit" name="searchPermit"/> 
+				<!--  <requiredResource id="WorkExecution.SearchPemitView_permit" name="permit"/>  -->
+			</requiredResources>  
+			<container id="WorkExecution.SearchPemitView_container_0" resource="searchPermit" >
+				<group id="WorkExecution.SearchPemitView_group_0">	
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_0">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.SearchPemitView_groupitem_11" label="Permit" resourceAttribute="permitworknum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_1" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_status" label="Status" resourceAttribute="tnbstatus"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_2" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbissuedate" label="Issue Date" resourceAttribute="tnbissuedate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_3" >
+						<text editable="false" id="WorkExecution.SearchPemitView_groupitem_requireddate" label="Required Date" resourceAttribute="requireddate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_4" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbap" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_5" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbcp" label="Competent Person" lookup="WorkExecution.PersonLookup3" resourceAttribute="tnbcp"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_6" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbia" label="Issuing Authority"  lookup="WorkExecution.PersonLookup4" resourceAttribute="tnbia"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_7" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbpa" label="Performing Authority" resourceAttribute="tnbpa"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_8" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_tnbpassportno" label="IC Number" resourceAttribute="tnbpassportno"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_9" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_requestor" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_10" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_wonum" label="Work Order" resourceAttribute="wonum"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_13" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_assetnum" label="Asset" resourceAttribute="assetnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.SearchPemitView_groupitem_12" >
+						<text editable="true" id="WorkExecution.SearchPemitView_groupitem_location" label="Location" resourceAttribute="location"/>
+					</groupitem>														
+				</group>			
+			</container>
+			<footer id="WorkExecution.SearchPemitView_footer">
+				<button id="WorkExecution.SearchPemitView_Clear_button" label="Clear">
+					<eventHandlers id="WorkExecution.SearchPemitView_Clear_button_eventHandlers">
+						<eventHandler class="custom.PermitDetailHandler" event="click" id="WorkExecution.SearchPemitView_Clear_button_eventHandlers_click_clearSearchFields" method="clearSearchFields"/>
 					</eventHandlers>
 				</button>
-				<button cssClass="mblPrimaryButton" id="WorkExecution.PermitView_Save_button" label="Save" primary="true">
-					<eventHandlers id="WorkExecution.PermitView_Save_button_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.PermitView_Save_button_eventHandlers_click_commitPermitEntryView" method="commitAssetEntryView"/>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.SearchPemitView_Search_button" label="Search" primary="true">
+					<eventHandlers id="WorkExecution.SearchPemitView_Search_button_eventHandlers">
+						<eventHandler class="custom.PermitDetailHandler" event="click" id="WorkExecution.SearchPemitView_Search_button_eventHandlers_click_setSearchQuery" method="setSearchQuery"/>
 					</eventHandlers>
 				</button>
 			</footer>
 		</view>
-
+	
 		<!-- Crew Labor list view -->
 		<view id="WorkExecution.CrewReviewListView" label="Report by Crew">
 			<requiredResources id="WorkExecution.CrewReviewListView_requiredResources">
@@ -8649,6 +8733,7 @@
 				<localAttribute dataType="string" id="workOrder_asleftstatus_string" name="asleftstatus"/>
 				<localAttribute dataType="string" id="workOrder_wohistorylistsize_string" name="wohistorylistsize"/>
 				
+				
 			</attributes>
 	        <creationFactories id="workOrder_creationFactories">
 		        <creationFactory creationUri="/oslc/os/oslcwodetail" id="workOrder_creationFactory_createMyAssignedWork" name="createMyAssignedWork"/>
@@ -8818,6 +8903,39 @@
 				<localAttribute dataType="string" id="attachments_displayFileType_string" name="displayFileType"/>
 			</attributes>
 		</resource>
+		
+		<!-- custom sqa resource -->
+		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="sqa_attributes">
+				<attribute describedByProperty="spi_wm:auditnum" id="sqa_wmauditnum" index="true" name="auditnum"/>
+				<attribute describedByProperty="spi_wm:description" id="sqa_tnbstatus" index="true" name="description"/>
+				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus" index="true" name="status"/>
+				<attribute describedByProperty="spi_wm:tnbwonum" id="sqa_tnbwonum" index="true" name="tnbwonum"/>
+				<attribute describedByProperty="spi_wm:location" id="sqa_wmlocation" index="true" name="location"/>
+				<attribute describedByProperty="spi_wm:assetnum" id="sqa_assetnum" index="true" name="assetnum"/>
+				<attribute describedByProperty="spi_wm:tnbpercentage" id="sqa_wmtnbpercentage" index="true" name="tnbpercentage"/>
+				<attribute describedByProperty="spi_wm:totalscore" id="sqa_vmtotalscore" index="true" name="totalscore"/>
+				<attribute describedByProperty="spi_wm:plusgplandate" id="sqa_vmplusgplandate" name="plusgplandate"/>
+				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/> 
+				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
+			</attributes>
+			<queryBases id="sqa_queryBases">
+	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
+			</queryBases> 
+		</resource>
+		
+		<!-- custom sqa line resource -->
+		<resource  id="plusgaudlineResource" name="plusgaudlineResource">
+			<attributes id="plusgaudlineResource_attributes">
+				<!-- linear atribute -->
+				<attribute describedByProperty="spi_wm:linenum" id="plusgaudlineResource_feature"  index="true" name="linenum"/>
+				<attribute describedByProperty="spi_wm:description" id="plusgaudlineResource_description"  index="true" name="description"/> 
+				<attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  index="true" name="question_longdescription"/> 
+				<attribute describedByProperty="spi_wm:yes" id="plusgaudlineResource_yes"  index="true"  name="yes"/> 
+				<attribute describedByProperty="spi_wm:no" id="plusgaudlineResource_no"  index="true"  name="no"/> 
+				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/> 
+			</attributes>
+		</resource>
 
 
 
@@ -8956,12 +9074,10 @@
 				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum" name="wonum"/>
 				<attribute describedByProperty="spi_wm:assetnum" id="permit_assetnum" name="assetnum"/>
 				<attribute describedByProperty="spi_wm:location" id="permit_location" name="location"/>
-			<!-- Complex attributes for supporting data -->
-				<attribute describedByProperty="spi_wm:doclinks" id="permit_attachments" name="attachments"/>
 
 			</attributes>
 			<queryBases id="permit_queryBases">
-	 			<queryBase defaultForSearch="true" id="permitsearchAllWorkOrders" name="searchAllpermit" queryUri="/oslc/os/oslcpermit" />
+	 			<queryBase defaultForSearch="true" id="permitsearchAllWorkOrders" name="searchAllpermit" queryUri="/oslc/os/oslcpermit?savedQuery=PLUSGPTW%3ASERACHALLPERMIT" />
 			</queryBases> 
 		</resource>
 		
@@ -11732,6 +11848,26 @@
 				<localAttribute dataType="date" id="searchWorkOrder_enddate_date" name="enddate"/>
 			</attributes>
 			<whereClause id="searchWorkOrder_whereClause"/>
+		</resource>
+		
+		<!-- custom search Permit attributes-->
+		<resource id="searchPermit" name="searchPermit">
+			<attributes id="searchPermit_attributes">
+				<localAttribute dataType="string" id="searchPermit_permitworknum_string" index="true" name="permitworknum"/>
+				<!-- <localAttribute dataType="string" id="searchPermit_tnbstatus_string" name="tnbstatus"/>
+				<localAttribute dataType="string" id="searchPermit_tnbap_string" name="tnbap"/>
+				<localAttribute dataType="string" id="searchPermit_tnbcp_string" name="tnbcp"/>
+				<localAttribute dataType="string" id="searchPermit_tnbia_string" name="tnbia"/>
+				<localAttribute dataType="string" id="searchPermit_tnbpa_string" name="tnbpa"/>
+				<localAttribute dataType="string" id="searchPermit_tnbpassportno_string" name="tnbpassportno"/>
+				<localAttribute dataType="string" id="searchPermit_requestor_string" name="requestor"/>
+				<localAttribute dataType="string" id="searchPermit_wonum_string" name="wonum"/>
+				<localAttribute dataType="string" id="searchPermit_assetnum_string" name="assetnum"/>
+				<localAttribute dataType="string" id="searchPermit_location_string" name="location"/>
+				<localAttribute dataType="date" id="searchPermit_tnbissuedate_date" name="tnbissuedate"/>
+				<localAttribute dataType="date" id="searchPermit_requireddate_date" name="requireddate"/>  -->
+			</attributes>
+			<whereClause id="searchPermit_whereClause"/>
 		</resource>
 
 		<!-- CrewTool Local resource used for the Detail Tool review panel -->
