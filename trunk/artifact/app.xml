@@ -3780,21 +3780,37 @@
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
+					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwodirectmeterslist" name="tnbwodirectmeterslist"/>
 				</requiredResource>
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true">
+			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" transitionTo="WorkExecution.TnbWOMeterList2">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>																	
 				</listItemTemplate>				
 			</list>	
-			<list id="WorkExecution.TNBWOMETERS_totalTnbWOAssetMeters_list" label="Meter Specific to Meter Group" resource="workOrder" showHeader="true">
+			<!--  <list id="WorkExecution.TNBWOMETERS_totalTnbWOAssetMeters_list" label="Meter Specific to Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWOMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.TNBWOMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>																	
 				</listItemTemplate>				
-			</list>	
+			</list>	 -->
 			<list id="WorkExecution.TNBWODIRECTMETERS_totalTnbWOAssetMeters_list" label="Direct Meters" resource="workOrder" attribute="tnbwodirectmeterslist" showHeader="true">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWODIRECTMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
-					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>																	
+					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>															
+				</listItemTemplate>				
+			</list>	
+		</view>
+		
+			
+		<!--Custom Work Order Meter list view -->
+		<view id="WorkExecution.TnbWOMeterList2" label="Meters 2">
+		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
+				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="workOrder">
+					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist2" name="tnbwometerslist"/>
+				</requiredResource>
+			</requiredResources>
+			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="MeterList">	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item1" resourceAttribute="metername"/>																	
 				</listItemTemplate>				
 			</list>	
 		</view>
@@ -9014,6 +9030,7 @@
 		<resource id="tnbwometergroupResource" name="tnbwometergroupResource">
 			<attributes id="tnbwometergroupResource_attributes">
    			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" index="true" name="tnbmetergroup"/>    
+   			   	<attribute describedByProperty="spi_wm:tnbmeter" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" referenceResource="tnbwometers" name="tnbwometerslist" /> 
 			</attributes>		 
 		</resource>
 		
@@ -9021,6 +9038,17 @@
 			<attributes id="tnbwodirectmetersResource_attributes">
    			    <attribute describedByProperty="spi_wm:tnbmetername" id="tnbwodirectmetersResource_tnbmetername" index="true" name="tnbmetername"/>    
 			</attributes>		 
+		</resource>
+		
+		<!-- custom tnbwometers resource-->
+		<resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwonum asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="tnbwometers_attributes">
+				<attribute describedByProperty="spi_wm:tnbmetername" id="tnbwometers_tnbmetername" name="tnbmetername"/>
+				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometers_tnbsequence" name="tnbsequence"/>
+			</attributes>
+			<queryBases id="tnbwometers_queryBases">
+	 			<queryBase defaultForSearch="true" id="tnbwometerssearchAll" name="searchAllpermit" queryUri="/oslc/os/oslctnbwometers" />
+			</queryBases> 
 		</resource>
 	
 
@@ -9115,6 +9143,7 @@
 	 		</queryBases>			
 			<whereClause id="assetMeters_whereClause"/>			 
 		</resource>
+		
 	
 		<!-- custom Permit resource-->
 		<resource class="custom.PermitObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#permit" defaultOrderBy="permitworknum asc" id="permit" name="permit" pageSize="10" providedBy="/oslc/sp/WorkManagement">
