@@ -2092,7 +2092,22 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			});
 			
 		
-		}, 
+		},
+		
+		NewLinearWO: function(eventContext) {
+			console.log("New Work Order Feature");
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			console.log(workOrder);
+		},
+		
+		initNewLinearEntry: function(eventContext) {
+			console.log("New Work Order Feature Entry");
+			var LinearDetailSet = null;
+			LinearDetailSet = CommonHandler._getAdditionalResource(this,"workOrder.multiassetloclist");
+			console.log(LinearDetailSet);
+			var newLinearDetail = LinearDetailSet.createNewRecord();
+			//eventContext.setMyResourceObject(LinearDetailSet);
+		},
 		
 		hideForNonLinearWO: function(eventContext) {
 			console.log("Hide when non-linear");
