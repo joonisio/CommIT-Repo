@@ -494,7 +494,7 @@
 				</eventHandlers>			
 				<group id="idvalue0">
 					<groupitem id="workorder.feature">					
-						<text id="feature" editable="true" label="Feature" resourceAttribute="feature"/>											
+						<text id="feature" editable="true" label="Feature" lookup="WorkExecution.FeatureLookup" resourceAttribute="feature"/>											
 					</groupitem>	
 					<groupitem id="workorder.featurelabel">
 						<text id="featurelabel" editable="true" label="Feature Label" resourceAttribute="featurelabel"/>
@@ -5581,6 +5581,7 @@
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.pluscwods.requiredAttribute" name="pluscwods"/>
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.pluscdsinstr_np.requiredAttribute" name="assetfunctionlist_np"/>
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.pluscdspoint_np.requiredAttribute" name="calibrationpointlist_np"/>
+                	<requiredAttribute id="WorkExecution.NewWorkOrderView.multiassetloclist" name="multiassetloclist"/>
 			    </requiredResource>
 				<requiredResource id="WorkExecution.NewWorkOrderView_additionalworktype" name="additionalworktype"/>
 				<requiredResource id="WorkExecution.NewWorkOrderView_domainwoclass" name="domainwoclass"/>
@@ -5712,6 +5713,20 @@
 					</groupitem>										
 				</group>	
 				</container>
+			<!--custom label feature and featurelabel for new Work Order -->
+				<container id="NewWorkOrderView_container_01" resource="workOrder" attribute="multiassetloclist">
+					<eventHandlers id="Newworkorder.feature_eventhandlers">
+						<eventHandler id="Newworkorder.feature_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="NewLinearWO"/>
+					</eventHandlers>	
+					<group id="newworkorderidgroup_0">
+						<groupitem id="NewWorkorder.feature">					
+							<text id="NewWorkorder.feature_text" editable="true" label="Feature" lookup="WorkExecution.FeatureLookup" resourceAttribute="feature"/>											
+						</groupitem>	
+						<groupitem id="NewWorkorder.featurelabel">
+							<text id="NewWorkorder.featurelabel_text" editable="true" label="Feature Label" resourceAttribute="featurelabel"/>
+						</groupitem>									
+					</group>
+				</container>				
 					<!-- Specification Form BEGIN-->
 					<list attribute="workOrderSpec" collapsible="true" displayPageSize="25" hideEmpty="true" id="WorkExecution.NewWorkOrderView_workOrder_workOrderSpec_list" label="Specifications" mixinclass="SpecificationStoreList" resource="workOrder">
 						<listItemTemplate id="WorkExecution.NewWorkOrderView_workOrder_workOrderSpec_listItemTemplate">
@@ -5742,6 +5757,16 @@
                             <eventHandler event="render" id="WorkExecution.NewWorkOrderView.DataSheetView_0_eventHandlers_render" class="application.handlers.WODetailHandler" method="createWO_hideForNonCalibrationWO"/>
                         </eventHandlers>-->
                     </groupitem>
+					<!-- Custom code -->
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_01" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
+						<!-- <eventHandlers id="workorder.LinearSegmentDetails_eventhandlers">
+							<eventHandler id="workorder.LinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
+						</eventHandlers>-->					
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution_new.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution_new.MultipleAssetsLocationsView_0_multiassetloclistsizelinear" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
+						</text>
+					</groupitem>
+					<!-- End custom code -->                    
                 </group>                            
 				<group id="WorkExecution.NewWorkOrderView_group_1">
 					<groupitem id="WorkExecution.NewWorkOrderView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" transitionTo="WorkExecution.MultipleAssetsLocationsView">
@@ -5814,6 +5839,7 @@
 				<eventHandler class="application.handlers.MetersListHandler" event="initialize" id="WorkExecution.NewWorkOrderView_eventHandlers_initialize_initializeMeters" method="initializeMeters"/>				
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="initialize" id="WorkExecution.NewWorkOrderView_eventHandlers_initialize_initializeWOSpec" method="initializeWOSpec"/>
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.NewWorkOrderView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
+				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.NewWorkLogView_eventHandlers_initialize_initNewLinearEntry" method="initNewLinearEntry"/>
 			</eventHandlers>
 		</view>
 		
@@ -7908,6 +7934,26 @@
 				<returnAttribute id="WorkExecution.PersonLookup_tnbia" sourceAttribute="personid" targetAttribute="tnbia"/>
 			</returnAttributes>
 		</lookup>
+		
+		<!-- custom Asset Feature lookup -->
+		<lookup id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
+			<requiredResources id="WorkExecution.FeatureLookup_requiredResources">
+				<requiredResource id="WorkExecution.FeatureLookup_requiredResource0" name="assetfeature" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.FeatureLookup_list" resource="assetfeature">
+			    <searchAttributes id="WorkExecution.FeatureLookup_assetfeature_searchAttributes">
+					<searchAttribute id="WorkExecution.FeatureLookup_assetfeature_searchAttribute_feature" name="feature"/>
+					<searchAttribute id="WorkExecution.FeatureLookup_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.FeatureLookup_assetfeature_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.FeatureLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.FeatureLookup_feature" sourceAttribute="feature" targetAttribute="feature"/>
+			</returnAttributes>
+		</lookup>		
 
 		<!-- Work Order Status lookup -->
 		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -11178,18 +11224,6 @@
 			<whereClause id="additionalserviceaddress_whereClause"/>
 		</resource>
 		
-		<!-- Linear Asset resource -->
-		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#MultiAssetLocCI" id="linearAsset" name="linearasset" pageSize="20" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
-			<attributes id="linearasset_attributes">
-				<attribute describedByProperty="spi_wm:isprimary" id="linearasset_isprimary" name="isprimary"/>
-				<attribute describedByProperty="spi_wm:feature" id="linearasset_feature" name="feature"/>
-			</attributes>
-			<queryBases id="linearasset_queryBases">
- 	 			<queryBase id="linearasset_getasset" name="getlinear" queryUri="/oslc/os/oslcmultiassetlocci"/>
-	 		</queryBases>									
-			<whereClause id="linearasset_whereClause"/>
-		</resource>	
-		
 		<!-- Vertical resource -->
 		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="verticaldata" name="verticaldata" pageSize="10" additionalData="true">
 				<attributes id="tnbvertical_attributes">
@@ -11213,6 +11247,17 @@
 				</queryBases >
 				<whereClause id="tnbsubvertical_whereClause" clause="spi:domainid='TNBSUBVERTICAL'" />
 		</resource>	
+		
+		<!-- Feature resource -->
+		<resource providedBy="/oslc/sp/WorkManagement" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#assetfeature" name="assetfeature" id="assetfeature" pageSize="500" additionalData="true"> 
+			<attributes id="assetfeature_attributes" > 
+				<attribute id="assetfeature_attributes0" name="feature" describedByProperty="spi_wm:feature" /> 
+				<attribute id="assetfeature_attributes1" name="featurelabel" describedByProperty="spi_wm:label" /> 
+				</attributes> 
+			<queryBases id="assetfeature_queryBases">
+ 	 			<queryBase id="assetfeature_queryBase0" name="getFeature" queryUri="/oslc/os/oslcassetfeature"/>
+	 		</queryBases>	
+		</resource> 		
 
 		<!-- Bin resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#INVBALANCES" id="additionalbin" name="additionalbin" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
