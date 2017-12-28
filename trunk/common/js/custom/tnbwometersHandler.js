@@ -33,6 +33,7 @@
 				},
 	
 				filterMeter: function(eventContext){
+					console.log('filter meter');
 					var currentRecord = eventContext.getCurrentRecord();
 					var meter = currentRecord.get("tnbwometerslist");
 					console.log(meter);
@@ -40,13 +41,18 @@
 					var meter_filter = {};
 					meterId = meter;
 					if(meterId != ""? meter_filter["tnbwometersid"] = meterId:false) {
-						ModelService.filtered('tnbwometers', null, meter_filter, 1000, null, null, null).then(function(locset){console.log(locset);
+						ModelService.filtered('tnbwometers', null, meter_filter, 1000, null, null, null).then(function(locset){
+						console.log(locset);
 						eventContext.application.addResource(locset);
 						eventContext.ui.show('WorkExecution.TnbWOMeterList2');
 						});
-					}
-				
+					}	
 					
+				},
+				
+				readingMeter: function(eventContext){
+				console.log('meter reading');
+				eventContext.ui.show('WorkExecution.AssetWOMeterDetailView');					
 				},
 						
 				
