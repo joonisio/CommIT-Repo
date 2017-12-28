@@ -551,7 +551,7 @@
 						</text> 
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="WO Meters"/>
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Work Order Meters"/>
 					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
@@ -559,8 +559,7 @@
 						</text>
 						
 					</groupitem>
-				</group>
-											
+				</group>								
 				<group id="WorkExecution.WorkDetailView_group_2">
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LaborAssignmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_LaborAssignments" layoutInsertAt="item1" value="Labor Assignments"/>
@@ -3786,7 +3785,7 @@
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>
-					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometerslist" layoutInsertAt="item2" resourceAttribute="tnbwometerslist"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers">
 						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="filterMeter"/>
 					</eventHandlers>																		
@@ -3799,14 +3798,18 @@
 			</list>	 -->
 			<list id="WorkExecution.TNBWODIRECTMETERS_totalTnbWOAssetMeters_list" label="Direct Meters" resource="workOrder" attribute="tnbwodirectmeterslist" showHeader="true">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWODIRECTMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
-					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>															
+					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>	
+					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>	
+					<eventHandlers id="WorkExecution.TnbWOMeterGroupList2_listItemTemplate_MeterList_eventHandlers">
+						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterGroupList2_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="readingMeter"/>
+					</eventHandlers>															
 				</listItemTemplate>				
 			</list>	
 		</view>
 		
 			
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList2" label="Meters 2">
+		<view id="WorkExecution.TnbWOMeterList2" label="Meters">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
@@ -3814,7 +3817,11 @@
 			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="MeterList">																	
 					<!--  <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>	-->
-					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
+					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>
+					 <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>
+					 <eventHandlers id="WorkExecution.TnbWOMeterGroupList_listItemTemplate_MeterList_eventHandlers">
+						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterGroupList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="readingMeter"/>
+					</eventHandlers>
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->														
 				</listItemTemplate>				
 			</list>
@@ -3823,7 +3830,6 @@
 
 		<!--Meter view for multiple assets and locations-->
 		<view id="WorkExecution.MultiAssetLocCIMeterList" label="Meters for Multiple Assets &amp; Locations">  
-
 			<list id="WorkExecution.MultiAssetLocCIMeterList_tempListViewAssetMeter_list" label="Meters for Assets" resource="tempListViewAssetMeter" showHeader="true">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.MultiAssetLocCIMeterList_tempListViewAssetMeter_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.MultiAssetLocCIMeterList_tempListViewAssetMeter_MeterList_assetnum" layoutInsertAt="item1" resourceAttribute="assetnum"/>
@@ -3913,7 +3919,6 @@
 		</view>
 		
 		<!-- Define work order tasks for Location Meters list view -->
-		
 		<view id="WorkExecution.TaskLocationMeterViewList" label="Meters for Location">
 			<list id="WorkExecution.TaskLocationMeterViewList_tempListViewLocationMeter_list" resource="tempListViewLocationMeter" showHeader="false">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TaskLocationMeterViewList_tempListViewLocationMeter_listItemTemplate_MeterList" layout="MeterList">	
@@ -4128,7 +4133,106 @@
 				</button>
 			</footer>	
 		</view>
-
+		
+		<!--  custom wo Asset Meter Details view -->
+		<view id="WorkExecution.AssetWOMeterDetailView" label="Meter Details" resource="tempAssetMeter">
+			<container id="WorkExecution.AssetWOMeterDetailView_container_0">
+				<group id="WorkExecution.AssetWOMeterDetailView_group_0">			    
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_0">
+						<text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_0_assetnum_Asset" label="Asset" resourceAttribute="assetnum"/>
+						<text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_0_assetnumdesc" resourceAttribute="assetnumdesc"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_1">
+						<text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_1_metername_Meter" label="Meter" resourceAttribute="metername"/>
+						<text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_1_meterdesc" resourceAttribute="meterdesc"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_2">
+						<text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterType" label="Meter Type" resourceAttribute="metertype"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_3">
+					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_3_newreading_NewReading" label="New Reading" placeHolder="Tap to enter" resourceAttribute="newreading">
+					    </text>
+					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_3_newreadinglookup_NewReading" label="New Reading" lookup="WorkExecution.characteristicsDomainLookup" lookupAttribute="value" placeHolder="Select from list" resourceAttribute="newreadinglookup">
+					    </text> 
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_4">
+					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_4_newreadingdate_NewReadingDate" label="New Reading Date" placeHolder="Select" resourceAttribute="newreadingdate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_5">
+					    <checkbox editable="true" id="WorkExecution.AssetWOMeterDetailView_dorollover_checkbox" label="Rollover" resourceAttribute="dorollover"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_6">					
+					    <checkbox editable="true" id="WorkExecution.AssetWOMeterDetailView_isdelta_checkbox" label="Delta" resourceAttribute="isdelta"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_7">
+					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_7_remarks_Notes" label="Notes" resourceAttribute="remarks"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_8">
+					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_8_lastreading_LastReading" label="Last Reading" resourceAttribute="lastreading"/>
+					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_8_lastreadingdate_LastReadingDate" label="Last Reading Date" resourceAttribute="lastreadingdate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_9">
+					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_9_inspector_RecordedBy" label="Recorded By" resourceAttribute="inspector"/>
+					</groupitem>
+				</group>
+			</container>  
+			<container id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
+				<text id="AssetWoMeterLinearSegmentDetailsView" label="Start"></text>
+				<group id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_group_0">	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_0">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
+						<text editable="false" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="startoffsetunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_2" layout="Item1Count1Button1">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" layoutInsertAt="item1" label="Measure" resourceAttribute="startmeasure"/>
+						<text editable="false" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_startmeasureunitid" layoutInsertAt="count1" resourceAttribute="startmeasureunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_3">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute="startyoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_4">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute="startyoffsetref"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_5">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute="startzoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_6">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute="startzoffsetref"/>
+					</groupitem>																		
+				</group>	
+			<!-- End -->	
+				<text id="AssetWoMeterLinearSegmentDetailsViewEnd" label="End"></text>
+				<group id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_group_End">	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_7">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
+						<text editable="false" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.EndReferencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="endoffsetunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_9" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_measure" label="Measure" resourceAttribute="endmeasure"/>
+						<text editable="false" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Endmeasureunitid" layoutInsertAt="count1" resourceAttribute="endmeasureunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_10">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Offset" label="Y Offset" resourceAttribute="endyoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_11">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Reference" label="Y Reference" resourceAttribute="endyoffsetref"/>
+					</groupitem>
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_12">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Offset" label="Z Offset" resourceAttribute="endzoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_13">
+						<text editable="true" id="WorkExecution.AssetWoMeterLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Reference" label="Z Reference" resourceAttribute="endzoffsetref"/>
+					</groupitem>																		
+				</group>					
+			</container>
+		</view>
+		
 		<!-- Define Task Details view -->
 		<view id="WorkExecution.TaskDetailView" label="Task Details">
 			<requiredResources id="WorkExecution.TaskDetailView_requiredResources">
@@ -9096,8 +9200,6 @@
 			</attributes>
 		</resource>
 
-
-
 		<!-- Ancestor resource -->
 		<resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#LocationAncestor" id="locancestorResource" name="locancestorResource" providedBy="/oslc/sp/WorkManagement">			
 		    <attributes id="locancestorResource_attributes">
@@ -9124,24 +9226,28 @@
 			name="statusdesc" dataType="string" /> <localAttribute name="dontDiscard" 
 			dataType="boolean" /> </attributes> </resource> -->
 			
-		<!--  Asset Tnb Wo Meters Complex resource -->
+		<!-- custom Asset Tnb Wo Meters Complex resource -->
 		<resource id="tnbwometergroupResource" name="tnbwometergroupResource">
 			<attributes id="tnbwometergroupResource_attributes">
-   			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" index="true" name="tnbmetergroup"/>    
+   			    <attribute describedByProperty="spi_wm:metergroup{spi_wm:groupname}" id="tnbwometergroupResourcespi_tnbmetergroup" index="true" name="tnbmetergroup"/> 
+   			    <attribute describedByProperty="spi_wm:metergroup{spi_wm:description}" id="tnbwometergroupResourcespi_description" index="true" name="description"/>       
    			   	<attribute describedByProperty="spi_wm:tnbmeter{spi_wm:tnbwometergroupid}" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
 			</attributes>		 
 		</resource>
 		
+		<!-- custom direct meter resource -->
 		<resource id="tnbwodirectmetersResource" name="tnbwodirectmetersResource">
 			<attributes id="tnbwodirectmetersResource_attributes">
-   			    <attribute describedByProperty="spi_wm:tnbmetername" id="tnbwodirectmetersResource_tnbmetername" index="true" name="tnbmetername"/>    
+   			    <attribute describedByProperty="spi_wm:directmetertometer{oslc:shortTitle}" id="tnbwodirectmetersResource_tnbmetername" index="true" name="tnbmetername"/>   
+   			    <attribute describedByProperty="spi_wm:directmetertometer{dcterms:title}" id="tnbwodirectmeters_description" name="description"/> 
 			</attributes>		 
 		</resource>
 		
 		<!-- custom tnbwometers resource-->
 		<resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
-				<attribute describedByProperty="spi_wm:tnbmetername" id="tnbwometers_tnbmetername" name="tnbmetername"/>
+				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
+				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
 				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometers_tnbsequence" name="tnbsequence"/>
 				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid" name="tnbwometersid"/>
 			</attributes>
@@ -9151,6 +9257,17 @@
 				<!--  <whereClause clause="spi_wm:tnbwometersid in [${tnbwometergroupResource.tnbwometerslist}]" id="itemorgfinfo_whereClause"/> -->
 		</resource>
 	
+		<!-- custom metergroup resource -->
+		<resource defaultOrderBy="metergroupid asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#metergroup" id="metergroup" name="metergroup" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="metergroup_attributes">
+				<attribute describedByProperty="spi_wm:metergroupid" id="meterGroupResource_metergroupid"  index="true" name="metergroupid"/>
+				<attribute describedByProperty="spi_wm:groupname" id="meterGroupResource_groupname"  index="true" name="groupname"/> 
+				<attribute describedByProperty="spi_wm:description" id="meterGroupResource_description"  index="true" name="description"/> 
+			</attributes>
+			<queryBases id="metergroup_queryBases">
+	 			<queryBase defaultForSearch="true" id="metergroupAll" name="searchMeterGroup" queryUri="/oslc/os/oslcmetergroup" />
+			</queryBases> 
+		</resource>
 
 		<!-- custom Multi Asset Location resource -->
 		<resource class="application.business.MultiAssetLocObject" id="multiAssetLocResource" name="multiAssetLocResource">
