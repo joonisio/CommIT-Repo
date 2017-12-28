@@ -3581,7 +3581,7 @@
 				<text id="LinearSegmentDetailsView" label="Start"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_0">	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
@@ -3608,7 +3608,7 @@
 				<text id="LinearSegmentDetailsViewEnd" label="End"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_End">	
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_7">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
@@ -3812,12 +3812,12 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true">
-				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="MeterList">	
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="MeterList">																	
 					<!--  <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>	-->
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->														
 				</listItemTemplate>				
-			</list>	
+			</list>
 		</view>
 		
 
@@ -7952,13 +7952,60 @@
 				</searchAttributes>
 				<listItemTemplate id="WorkExecution.FeatureLookup_assetfeature_listItemTemplate" layout="Item1Desc1">
 					<listtext id="WorkExecution.FeatureLookup_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="WorkExecution.FeatureLookup_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
+					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_feature" sourceAttribute="feature" targetAttribute="feature"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_featurelabel" sourceAttribute="featurelabel" targetAttribute="featurelabel"/>			
+			</returnAttributes>
+		</lookup>	
+		
+		<!-- custom Asset Feature lookup for start reference point-->
+		<lookup id="WorkExecution.FeatureLookup1" label="Select Feature" resource="assetfeature">
+			<requiredResources id="WorkExecution.FeatureLookup1_requiredResources">
+				<requiredResource id="WorkExecution.FeatureLookup1_requiredResource0" name="assetfeature" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.FeatureLookup1_list" resource="assetfeature">
+			    <searchAttributes id="WorkExecution.FeatureLookup1_assetfeature_searchAttributes">
+					<searchAttribute id="WorkExecution.FeatureLookup1_assetfeature_searchAttribute_feature" name="feature"/>
+					<searchAttribute id="WorkExecution.FeatureLookup1_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.FeatureLookup1_assetfeature_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
+					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.FeatureLookup1_returnAttributes">
+				<returnAttribute id="WorkExecution.FeatureLookup_startfeaturelabel" sourceAttribute="featurelabel" targetAttribute="startfeaturelabel"/>
 			</returnAttributes>
 		</lookup>		
+		
+		<!-- custom Asset Feature lookup for end reference point-->
+		<lookup id="WorkExecution.FeatureLookup2" label="Select Feature" resource="assetfeature">
+			<requiredResources id="WorkExecution.FeatureLookup2_requiredResources">
+				<requiredResource id="WorkExecution.FeatureLookup2_requiredResource0" name="assetfeature" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.FeatureLookup2_list" resource="assetfeature">
+			    <searchAttributes id="WorkExecution.FeatureLookup2_assetfeature_searchAttributes">
+					<searchAttribute id="WorkExecution.FeatureLookup2_assetfeature_searchAttribute_feature" name="feature"/>
+					<searchAttribute id="WorkExecution.FeatureLookup2_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.FeatureLookup2_assetfeature_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
+					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.FeatureLookup2_returnAttributes">
+				<returnAttribute id="WorkExecution.FeatureLookup_endfeaturelabel" sourceAttribute="featurelabel" targetAttribute="endfeaturelabel"/>
+			</returnAttributes>
+		</lookup>			
 
 		<!-- Work Order Status lookup -->
 		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -11259,11 +11306,14 @@
 		<resource providedBy="/oslc/sp/WorkManagement" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#assetfeature" name="assetfeature" id="assetfeature" pageSize="500" additionalData="true"> 
 			<attributes id="assetfeature_attributes" > 
 				<attribute id="assetfeature_attributes0" name="feature" describedByProperty="spi_wm:feature" /> 
-				<attribute id="assetfeature_attributes1" name="featurelabel" describedByProperty="spi_wm:label" /> 
+				<attribute id="assetfeature_attributes1" name="featurelabel" describedByProperty="spi_wm:label" />
+				<attribute id="assetfeature_attributes2" name="startmeasure" describedByProperty="spi_wm:startmeasure" /> 
+				<attribute id="assetfeature_attributes3" name="endmeasure" describedByProperty="spi_wm:endmeasure" />				
 				</attributes> 
 			<queryBases id="assetfeature_queryBases">
  	 			<queryBase id="assetfeature_queryBase0" name="getFeature" queryUri="/oslc/os/oslcassetfeature"/>
 	 		</queryBases>	
+	 		<!-- <whereClause id="assetfeature_whereClause" clause="spi_wm:assetnum=${workOrder.asset}"/>--> 
 		</resource> 		
 
 		<!-- Bin resource -->
