@@ -26,8 +26,8 @@
 			<!--Each query that you define must correspond to and have the same name as the public query in Maximo.-->
 			<!--You must also add the "Assigned Work Orders" query to the list of query bases in this file.-->
 			<queries id="WorkExecution.WorkItemsView_workOrder_queries" resource="workOrder">
-			    <query id="WorkExecution.WorkItemsView_getMyAssignedWork" label="My Assigned Work" queryBase="getMyAssignedWork"/>
-				<!--Do not change the "Records with Errors" query.-->
+			    <query id="WorkExecution.WorkItemsView_getMyAssignedWork" queryBase="getMyAssignedWork" label="My Assigned Work" />
+			    <!--Do not change the "Records with Errors" query.-->
 				<query id="WorkExecution.WorkItemsView___errored__" label="Records with Errors" queryBase="__errored__" system="true">
 					<eventHandlers id="WorkExecution.WorkItemsView___errored___eventHandlers">
 						<eventHandler class="application.handlers.WOListHandler" event="render" id="WorkExecution.WorkItemsView___errored___eventHandlers_render_hideShowErrorMenu" method="hideShowErrorMenu"/>
@@ -3631,7 +3631,7 @@
 					</groupitem>																		
 				</group>					
 			</container>
-			<footer id="WorkExecution.LinearSegmentDetailsView_footer">
+			<!-- <footer id="WorkExecution.LinearSegmentDetailsView_footer">
 				<button id="WorkExecution.LinearSegmentDetailsView_Cancel_button" label="Cancel">
 					<eventHandlers id="WorkExecution.LinearSegmentDetailsView_Cancel_button_eventHandlers">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.LinearSegmentDetailsView_Cancel_button_eventHandlers_click_cancelEntry" method="cancelEntry"/>
@@ -3642,7 +3642,7 @@
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.LinearSegmentDetailsView_Save_button_eventHandlers_click_commitEntry" method="commitEntry"/>
 					</eventHandlers>
 				</button>
-			</footer>																	
+			</footer>-->																	
 		</view>
 		
 		<!-- Define Linear list view -->
@@ -5868,9 +5868,9 @@
                     </groupitem>
 					<!-- Custom code -->
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_01" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
-						<!-- <eventHandlers id="workorder.LinearSegmentDetails_eventhandlers">
-							<eventHandler id="workorder.LinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
-						</eventHandlers>-->					
+						<eventHandlers id="workorder.NewLinearSegmentDetails_eventhandlers">
+							<eventHandler id="workorder.NewLinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="NewLinearWO"/>
+						</eventHandlers>				
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution_new.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution_new.MultipleAssetsLocationsView_0_multiassetloclistsizelinear" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
 						</text>
@@ -8080,12 +8080,13 @@
 				<listItemTemplate id="WorkExecution.FeatureLookup1_assetfeature_listItemTemplate" layout="Item1Desc1">
 					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
-					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
-					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
+					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup1_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_startfeaturelabel" sourceAttribute="featurelabel" targetAttribute="startfeaturelabel"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_startmeasure" sourceAttribute="startmeasure" targetAttribute="startmeasure"/>
 			</returnAttributes>
 		</lookup>		
 		
@@ -8102,12 +8103,12 @@
 				<listItemTemplate id="WorkExecution.FeatureLookup2_assetfeature_listItemTemplate" layout="Item1Desc1">
 					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
-					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
-					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list2" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup2_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_endfeaturelabel" sourceAttribute="featurelabel" targetAttribute="endfeaturelabel"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_endmeasure" sourceAttribute="endmeasure" targetAttribute="endmeasure"/>
 			</returnAttributes>
 		</lookup>			
 
@@ -8869,6 +8870,7 @@
 				<attribute describedByProperty="spi:asset{oslc:shortTitle}" id="workOrder_asset_spiassetoslcshortTitle" index="true" method="assetChanged" name="asset" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{dcterms:title}" id="workOrder_maxassetdesc_spiassetdctermstitle" name="maxassetdesc" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{spi:description_longdescription}" id="workOrder_assetld_spiassetspidescription_longdescription" name="assetld" referenceResource="additionalasset"/>
+				<attribute describedByProperty="spi:asset{spi:islinear}" id="workOrder_islinear_spiassetspiislinear_spiislinear" name="islinear" referenceResource="additionalasset"/>
 				<!-- name and describeByProperty attributes will change to <attribute 
 					name="woAsset" describedByProperty="woAsset" displayValue="shortTitle"/> -->
 				<attribute describedByProperty="spi:asset{spi:updownstatus{spi:changedate}}" id="workOrder_assetstatusdate_spiassetspistatusdate" name="updownstatusdate" referenceResource="additionalasset"/>
@@ -11008,6 +11010,7 @@
 
 		<resource additionalData="true" describedBy="http://open-services.net/ns/asset#Asset" id="additionalasset"  name="additionalasset" pageSize="100" providedBy="/oslc/sp/AssetManagement">
 			<attributes id="additionalasset_attributes">
+				<attribute describedByProperty="spi:islinear" id="additionalasset_assetislinear_islinear" name="islinear"/>
 				<attribute describedByProperty="dcterms:identifier" id="additionalasset_assetuid_dctermsidentifier" name="assetuid"/>
 				<attribute describedByProperty="spi:assetid" id="additionalasset_assetid_spiassetid" name="assetid"/>
 				<attribute describedByProperty="spi:orgid" id="additionalasset_orgid_spiorgid" index="true" name="orgid"/>

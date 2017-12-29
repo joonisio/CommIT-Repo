@@ -2098,6 +2098,15 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log("New Work Order Feature");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			console.log(workOrder);
+			var asset = CommonHandler._getAdditionalResource(eventContext,"additionalasset").getCurrentRecord();
+			console.log(asset);
+			
+			if (!asset.islinear)
+				eventContext.setDisplay(false);
+			else if (!workOrder.asset)
+				eventContext.setDisplay(false);
+			else
+				eventContext.setDisplay(true);
 		},
 		
 		initNewLinearEntry: function(eventContext) {
@@ -2112,19 +2121,11 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		hideForNonLinearWO: function(eventContext) {
 			console.log("Hide when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			if (workOrder.multiassetloclist.data.length > 0){
-				//var feature = workOrder.multiassetloclist.data[0].feature;
-				//var featurelabel = workOrder.multiassetloclist.data[0].featurelabel;
-				var startmeasureunitid = workOrder.multiassetloclist.data[0].startmeasureunitid;
-				if(!startmeasureunitid){
-					eventContext.setDisplay(false);
-					console.log("Not Linear/No Display");
-				}
-			}
-			else {
+			console.log(workOrder);
+			if (!workOrder.islinear)
 				eventContext.setDisplay(false);
-				console.log("No multiassetloclist/No Display");
-			}
+			else
+				eventContext.setDisplay(true);
 		},
 		
 		hideText: function(eventContext) {
