@@ -135,8 +135,6 @@ define("platform/auth/UserAuthenticationManager", [
 		},
 		
 		login: function(user, pwd, isRelogin){
-			user="maxadmin";
-			pwd="Vs@215itadm";
 			this.reLoginError = null;			
 			var deferred = new Deferred();
 
