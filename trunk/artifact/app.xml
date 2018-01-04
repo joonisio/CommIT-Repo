@@ -286,7 +286,8 @@
 				<eventHandler class="application.handlers.MetersListHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_initializeMeters" method="initializeMeters"/>
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
-				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>			
+				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>	
+				<eventHandler id="WorkExecution.FeatureLookup_eventHandler" event="initialize" class="application.handlers.WODetailHandler" method="filterFeature"/>		
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -525,13 +526,11 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
 						</text>
 					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearView">
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
 						<eventHandlers id="workorder.LinearSegmentDetails_eventhandlers">
 							<eventHandler id="workorder.LinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
 						</eventHandlers>					
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsizelinear" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
-						</text>
 					</groupitem>
 					<!-- End custom code -->					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.MultipleAssetsLocationsView">
@@ -3642,24 +3641,7 @@
 					</eventHandlers>
 				</button>
 			</footer>-->																	
-		</view>
-		
-		<!-- Define Linear list view -->
-		<view id="WorkExecution.LinearView" label="Linear">
-			<requiredResources id="WorkExecution.LinearView_requiredResources">
-				<requiredResource id="WorkExecution.LinearView_workOrder" name="workOrder">
-					<requiredAttribute id="WorkExecution.LinearView_workOrder_multiassetloclist" name="multiassetloclist"/>
-				</requiredResource>
-			</requiredResources>
-
-			<list attribute="multiassetloclist" id="WorkExecution.LinearView_workOrder_multiassetloclist_list" label="Linear Assets" resource="workOrder" transitionTo="WorkExecution.LinearSegmentDetailsView">
-
-				<listItemTemplate id="WorkExecution.LinearView_workOrder_multiassetloclist_listItemTemplate">
-					<listtext cssClass="bold textappearance-medium" id="WorkExecution.LinearView_workOrder_Feature" resourceAttribute="feature"/>
-					<listtext id="WorkExecution.LinearView_workOrder_Feature_Label" resourceAttribute="featurelabel"/>
-				</listItemTemplate>
-			</list>
-		</view>		
+		</view>	
 
 		<!--Asset or Location Details view-->
 		<view id="WorkExecution.MultipleAssetsLocationsEntryView" label="Asset or Location Details">
@@ -11521,12 +11503,13 @@
 				<attribute id="assetfeature_attributes0" name="feature" describedByProperty="spi_wm:feature" /> 
 				<attribute id="assetfeature_attributes1" name="featurelabel" describedByProperty="spi_wm:label" />
 				<attribute id="assetfeature_attributes2" name="startmeasure" describedByProperty="spi_wm:startmeasure" /> 
-				<attribute id="assetfeature_attributes3" name="endmeasure" describedByProperty="spi_wm:endmeasure" />				
-				</attributes> 
+				<attribute id="assetfeature_attributes3" name="endmeasure" describedByProperty="spi_wm:endmeasure" />
+				<attribute id="assetfeature_attributes4" name="assetnum" describedByProperty="spi_wm:assetnum" />				
+			</attributes> 
 			<queryBases id="assetfeature_queryBases">
  	 			<queryBase id="assetfeature_queryBase0" name="getFeature" queryUri="/oslc/os/oslcassetfeature"/>
 	 		</queryBases>	
-	 		<!-- <whereClause id="assetfeature_whereClause" clause="spi_wm:assetnum=${workOrder.asset}"/>--> 
+	 		<!-- <whereClause id="assetfeature_whereClause" clause="spi_wm:assetnum='TESTSIT'"/>-->
 		</resource> 		
 
 		<!-- Bin resource -->
