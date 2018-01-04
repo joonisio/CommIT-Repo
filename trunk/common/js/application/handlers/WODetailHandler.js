@@ -2156,6 +2156,23 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}
 		},
 		
+		filterFeature: function(eventContext) {
+			console.log("filter lookup feature");
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			
+			console.log(workOrder.asset);
+			
+			ModelService.filtered('assetfeature', null, [{featurelabel:"Feeder Line"}], null, false, true).then(function(resourceSet){
+				console.log(resourceSet);
+				eventContext.application.addResource(resourceSet);
+				var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
+				console.log(assetfeature);				
+				
+			});
+			//var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
+			//console.log(assetfeature);
+		},
+		
 		showFooterView: function(eventContext) {
 			// we do not show the footer until a newreading is set
 			this.displayFooter(eventContext, true);		
@@ -2175,6 +2192,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log('Linear Segment Details - Save Clicked');
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
 			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			console.log(workOrderSet);
 			ModelService.save(workOrderSet).then(function() {
 				eventContext.ui.hideCurrentView();
 				eventContext.ui.showToastMessage(msg);
