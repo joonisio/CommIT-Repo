@@ -62,7 +62,7 @@
 				
 			<actions id="WorkExecution.WorkItemsView_actions">			    
 			    <!--Custom permit and test form-->		    
-			    <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.Permit">	
+			   <action id="WorkExecution.WorkItemsView_Permit_action" label="Permit" overflow="true" transitionTo="WorkExecution.Permit">	
 					<eventHandlers id="WorkExecution.WorkItemsView_Permit_action_eventHandlers">
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_Permit_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
 					</eventHandlers>	
@@ -279,6 +279,7 @@
 											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
+			<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -519,6 +520,11 @@
 					    </eventHandlers>
 					</groupitem>
 					<!-- Custom code -->
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitView" layoutInsertAt="item1" value="Permit"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
+						</text>
+					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearView">
 						<eventHandlers id="workorder.LinearSegmentDetails_eventhandlers">
 							<eventHandler id="workorder.LinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
@@ -3694,8 +3700,6 @@
 			</eventHandlers>
 		</view>
 
-
-
 		<!-- Define Task list view -->
 		<view id="WorkExecution.TasksView" label="Tasks">
 			<requiredResources id="WorkExecution.TasksView_requiredResources">
@@ -3703,14 +3707,12 @@
 					<requiredAttribute id="WorkExecution.TasksView_workOrder_tasklist" name="tasklist"/>
 				</requiredResource>
 			</requiredResources>
-
 			<list attribute="tasklist" id="WorkExecution.TasksView_workOrder_tasklist_list" resource="workOrder" transitionTo="WorkExecution.TaskDetailView">
 				<sortOptions id="WorkExecution.TasksView_workOrder_tasklist_list_sortOptions">
 					<sortOption id="WorkExecution.TasksView_sortOption_Task" label="Task">
 						<sortAttribute direction="asc" id="WorkExecution.TasksView_Task_sortAttribute_taskid" name="taskid"/>
 					</sortOption>
 				</sortOptions>
-
 
 				<listItemTemplate id="WorkExecution.TasksView_workOrder_tasklist_listItemTemplate">
 					<listtext id="WorkExecution.TasksView_workOrder_taskid" resourceAttribute="taskid"/>
@@ -3766,9 +3768,8 @@
 			</list>			
 		</view>
 		
-		
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList" label="Meters">
+		<view id="WorkExecution.TnbWOMeterList" label="Meters"  saveonshow="true" >
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
@@ -3778,7 +3779,7 @@
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>
-					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>	
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers">
 						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="filterMeter"/>
 					</eventHandlers>																		
@@ -4886,7 +4887,7 @@
 		</view>
 		
 		
-		<!-- Permit view-->	
+		<!-- custom Permit view-->	
 		<view id="WorkExecution.Permit" label="PERMIT">
 		    
 		    <queries id="WorkExecution.WorkItemsView_pemit_queries" resource="permit">
@@ -4912,6 +4913,24 @@
 					<!--<listtext id="WorkExecution.description" layoutInsertAt="item2" resourceAttribute="description"/> -->
 					<listtext id="WorkExecution.tnbissuedate" layoutInsertAt="item3" resourceAttribute="tnbissuedate"/>  
 					<listtext id="WorkExecution.wonum" layoutInsertAt="item3" resourceAttribute="wonum"/>
+				</listItemTemplate>
+			</list>
+		</view>	
+		
+		<!-- custom Permit view-->	
+		<view id="WorkExecution.Permit2" label="PERMIT">
+			<requiredResources id="WorkExecution.Permit_requiredResources2">
+				<requiredResource id="WorkExecution.permit_workOrder2" name="workOrder">
+				<requiredAttribute id="WorkExecution.ActualCrewEntryView_workOrder_permitlist" name="permitlist"/>
+				</requiredResource>
+			</requiredResources>	
+			<list id="WorkExecution.LinearView_permit_list2" label="Permit" resource="workOrder" attribute="permitlist" transitionTo="WorkExecution.PermitViewDetails2">
+				<listItemTemplate id="WorkExecution.permit_listItemTemplate2">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum2"  layoutInsertAt="item1" resourceAttribute="permitworknum"/> 
+					<listtext id="WorkExecution.tnbstatus2" layoutInsertAt="item3" resourceAttribute="tnbstatus"/>
+					<!--<listtext id="WorkExecution.description" layoutInsertAt="item2" resourceAttribute="description"/> -->
+					<listtext id="WorkExecution.tnbissuedate2" layoutInsertAt="item3" resourceAttribute="tnbissuedate"/>  
+					<listtext id="WorkExecution.wonum2" layoutInsertAt="item3" resourceAttribute="wonum"/>
 				</listItemTemplate>
 			</list>
 		</view>	
@@ -5071,6 +5090,62 @@
 			</container>														
 		</view>
 		
+		<!-- Custom permit detail view-->
+		<view id="WorkExecution.PermitViewDetails2" label="Permit Details">
+			<requiredResources id="WorkExecution.Permit_requiredResources23">
+				<requiredResource id="WorkExecution.permit_workOrder23" name="workOrder">
+				<requiredAttribute id="WorkExecution.ActualCrewEntryView_workOrder_permitlist2" name="permitlist"/>
+				</requiredResource>
+			</requiredResources>			
+					
+			<container id="WorkExecution.permit_container_03"  resource="workOrder"  attribute="permitlist" >
+				<group id="WorkExecution.PermitView_group_03">	
+					<groupitem id="WorkExecution.PermitView_groupitem_03">
+						<text editable="false" layoutInsertAt="item1" id="WorkExecution.PermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
+					</groupitem>
+					<!--  <groupitem id="WorkExecution.PermitView_groupitem_0.5">
+						<text editable="false" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
+					</groupitem> -->
+					<groupitem id="WorkExecution.PermitView_groupitem_132" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_status3" label="Status" resourceAttribute="tnbstatus"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.PermitView_groupitem_23" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_32" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate3" label="Required Date" resourceAttribute="requireddate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_41" >
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_53" >
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbcp2" label="Competent Person" lookup="WorkExecution.PersonLookup3" resourceAttribute="tnbcp"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_62" >
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbia2" label="Issuing Authority"  lookup="WorkExecution.PersonLookup4" resourceAttribute="tnbia"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_72" >
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpa2" label="Performing Authority" resourceAttribute="tnbpa"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_82" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpassportno2" label="IC Number" resourceAttribute="tnbpassportno"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_93" >
+						<text editable="true" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.PermitView_groupitem_102" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_assetnum6" label="Asset" resourceAttribute="assetnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.PermitView_groupitem_121" >
+						<text editable="false" id="WorkExecution.PermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
+					</groupitem>														
+				</group>			
+			</container>														
+		</view>
+		
 		<!-- Custom SQA Checklist Detail View -->
 		<view id="WorkExecution.SQADetails" label="SQA Checklist">
 			<requiredResources id="WorkExecution.sqaDetails_requiredResources">
@@ -5125,11 +5200,9 @@
 					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>
-			
 			<eventHandlers id="WorkExecution.SqaDetailHandler">
 				<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailHandler_action_eventHandlers_render_echeckboxHanlder" method="checkboxInit"/>
-			</eventHandlers>
-						
+			</eventHandlers>				
 			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
@@ -5140,8 +5213,16 @@
 							<eventHandler id="WorkExecution.SqaLineView_3" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
 						</eventHandlers> 
 					</checkbox>
-					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no"/>
-					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox" layoutInsertAt="checkbox1" resourceAttribute="notapplicable"/>
+					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no">
+						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler2">
+							<eventHandler id="WorkExecution.SqaLineView_32" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
+					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox" layoutInsertAt="checkbox1" resourceAttribute="notapplicable">
+					<eventHandlers id="WorkExecution.SqaLine_checkboxHandler3">
+							<eventHandler id="WorkExecution.SqaLineView_33" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
 				</listItemTemplate>
 			</list>
 			<footer id="sqaSaveFooter">
@@ -5659,6 +5740,7 @@
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.pluscdsinstr_np.requiredAttribute" name="assetfunctionlist_np"/>
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.pluscdspoint_np.requiredAttribute" name="calibrationpointlist_np"/>
                 	<requiredAttribute id="WorkExecution.NewWorkOrderView.multiassetloclist" name="multiassetloclist"/>
+                	<requiredAttribute id="WorkExecution.NewWorkOrderView.permitlist" name="permitlist"/>
 			    </requiredResource>
 				<requiredResource id="WorkExecution.NewWorkOrderView_additionalworktype" name="additionalworktype"/>
 				<requiredResource id="WorkExecution.NewWorkOrderView_domainwoclass" name="domainwoclass"/>
@@ -8823,6 +8905,7 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:plusgauditid" id="workOrder_tnbvertical_spi_plusgauditid" index="true" name="plusgauditid"/>
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
 				<attribute describedByProperty="spi_wm:tnbsubvertical" id="workOrder_tnbsubvertical_spi_wmtnbsubvertical" index="true" name="tnbsubvertical"/>
 				<attribute describedByProperty="dcterms:identifier" id="workOrder_identifier_dctermsidentifier" index="true" name="identifier"/>
@@ -8894,6 +8977,7 @@
 				<!-- custom tnb meter -->
 				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="workOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
 				<attribute describedByProperty="spi_wm:tnbwodirectmeters" describedByResource="tnbwodirectmetersResource" id="workOrder_tnbwometergrouplist_spi_tnbwodirectmeters" name="tnbwodirectmeterslist"/>
+				<attribute describedByProperty="spi_wm:plusgpermitwork" describedByResource="permitResource" id="workOrder_tnbwometergrouplist_spi_plusgpermitwork" name="permitlist"/>
 				
 				<!-- END -->
 						
@@ -8944,6 +9028,7 @@
 				<localAttribute dataType="integer" id="workOrder_totalWOHistory_string" name="totalWOHistory" />
 
 				<!-- Complex Attribute sizes -->
+				<localAttribute dataType="string" id="workOrder_permitlistsize_string" name="permitlistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_tasklistsize_string" name="tasklistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_assignmentlistsize_string" name="assignmentlistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_materiallistsize_string" name="materiallistsize" persistent="false"/>
@@ -9225,12 +9310,12 @@
 		
 		
 		<!-- custom tnbwometers resource-->
-		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="200000" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
 				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometers_tnbsequence" name="tnbsequence"/>
-				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid" name="tnbwometersid"/>
+				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid"  name="tnbwometersid"/>
 				<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometers_tnbassetnum" name="tnbassetnum"/>
 				<attribute describedByProperty="spi_wm:tnbnewreading" id="tnbwometers_tnbnewreading" name="tnbnewreading"/>
 				<attribute describedByProperty="spi_wm:tnblastreading" id="tnbwometers_tnblastreading" name="tnblastreading"/>
@@ -9373,6 +9458,27 @@
 			<queryBases id="permit_queryBases">
 	 			<queryBase defaultForSearch="true" id="permitsearchAllWorkOrders" name="searchAllpermit" queryUri="/oslc/os/oslcpermit?savedQuery=PLUSGPTW%3ASERACHALLPERMIT" />
 			</queryBases> 
+		</resource>
+		
+		<!-- custom Permit resource-->
+		
+		<resource id="permitResource" name="permitResource">
+			<attributes id="permitResource_attributes">			
+				<attribute describedByProperty="spi_wm:permitworknum" id="permit_wmpermitworknum2" index="true" name="permitworknum"/>
+				<attribute describedByProperty="spi_wm:tnbstatus" id="permit_tnbstatus2" index="true" name="tnbstatus"/>
+				<!--  <attribute describedByProperty="dcterms:title" id="permit_description" index="true" name="description"/> -->
+				<attribute describedByProperty="spi_wm:tnbissuedate" id="permit_tnbissuedate2" name="tnbissuedate"/>
+				<attribute describedByProperty="spi_wm:requireddate" id="permit_requireddatee2" name="requireddate"/>
+				<attribute describedByProperty="spi_wm:tnbap" id="permit_tnbap2" name="tnbap"/>
+				<attribute describedByProperty="spi_wm:tnbcp" id="permit_tnbcp2" name="tnbcp"/>
+				<attribute describedByProperty="spi_wm:tnbia" id="permit_tnbia2" name="tnbia"/>
+				<attribute describedByProperty="spi_wm:tnbpa" id="permit_tnbpa2" name="tnbpa"/>
+				<attribute describedByProperty="spi_wm:tnbpassportno" id="permit_tnbpatnbpassportno2" name="tnbpassportno"/>
+				<attribute describedByProperty="spi_wm:requestor" id="permit_requestor2" name="requestor"/>
+				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum2" name="wonum"/>
+				<attribute describedByProperty="spi_wm:assetnum" id="permit_assetnum2" name="assetnum"/>
+				<attribute describedByProperty="spi_wm:location" id="permit_location2" name="location"/>
+			</attributes>
 		</resource>
 		
 		<!--  Location Meters resource -->

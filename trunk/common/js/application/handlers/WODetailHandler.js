@@ -36,8 +36,8 @@ define("application/handlers/WODetailHandler",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties"],
 function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
-	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize'];
-	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments"];
+	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize','permitlistsize'];
+	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist"];
 	var loadingLists = false;
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
@@ -2078,6 +2078,16 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		}, 
 		
 	//custom javascript code
+		
+		filterSqa: function(eventContext){
+			var currentRecord = eventContext.getCurrentRecord();
+			var plusgauditid = currentRecord.get("plusgauditid");
+			console.log(plusgauditid);
+			
+		},
+		
+		
+		
 		updateAtrributeInTask : function(eventContext){
 			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
