@@ -59,12 +59,14 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
 			for(var i=0;i<sqa.plusgaudlinelist.data.length;i++){
 				var sqaLine = sqa.plusgaudlinelist.data[i];		
-				if(sqaLine.no == true || sqaLine.yes == true || sqaLine.notapplicable == true){
-					console.log("condition");	
+//				if(sqaLine.no == true && sqaLine.yes == true || sqaLine.no == true && sqaLine.notapplicable == true ||
+//						sqaLine.yes == true && sqaLine.no == true || sqaLine.yes == true && sqaLine.notapplicable == true ||
+//						sqaLine.notapplicable == true && sqaLine.no == true || sqaLine.notapplicable == true && sqaLine.yes == true ){
+//					console.log("condition");	
 //					sqaLine.getRuntimeFieldMetadata('no').set('readonly', true);
 //					sqaLine.getRuntimeFieldMetadata('yes').set('readonly', true);
 //					sqaLine.getRuntimeFieldMetadata('notapplicable').set('readonly', true);
-				}
+//				}
 			}
 		},
 		
