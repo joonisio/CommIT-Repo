@@ -28,9 +28,8 @@ define("custom/PermitDetailHandler",
 function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
 {
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
-		initPermit: function(eventContext){
-			console.log('custom/PermitDetailHandler');
-			console.log(CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord());
+		initAddPermitView: function(eventContext){
+				
 		},
 		
 		initSearchData: function(eventContext){
