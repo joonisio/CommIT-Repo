@@ -1429,7 +1429,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		filterAssetForLookup: function(eventContext){
-			
+			console.log("filterAssetForLookup")
 			var additionalasset = CommonHandler._getAdditionalResource(eventContext,'additionalasset');
 			additionalasset._lookupFilter = null;
 
@@ -2174,15 +2174,30 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			console.log("filter lookup feature");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			
-			console.log(workOrder.asset);
+			//console.log(workOrder.asset);
+			var asset2=workOrder.get("asset");	
+			console.log("----------"+asset2);
+			var assetfeature = CommonHandler._getAdditionalResource(eventContext,'assetfeature');
+			//CommonHandler._clearFilterForResource(eventContext,assetfeature);
+			//assetfeature._lookupFilter = null;
+			var filter = [];
+			filter.push({assetnum: asset2});
+			assetfeature.lookupFilter = filter; 
+			console.log("assetfeature = " + assetfeature);
+			return assetfeature;
+//			
+//			var addlLabor = UI.application.getResource("assetfeature");
+//			addlLabor.clearFilterAndSort();	
+//			addlLabor.filter("assetnum==$1",asset2);
+
 			
-			ModelService.filtered('assetfeature', null, [{featurelabel:"Feeder Line"}], null, false, true).then(function(resourceSet){
-				console.log(resourceSet);
-				eventContext.application.addResource(resourceSet);
-				var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
-				console.log(assetfeature);				
-				
-			});
+//			ModelService.filtered('assetfeature', null, [{featurelabel:"Feeder Line"}], null, false, true).then(function(resourceSet){
+//				console.log(resourceSet);
+//				eventContext.application.addResource(resourceSet);
+//				var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
+//				console.log(assetfeature);				
+//				
+//			});
 			//var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
 			//console.log(assetfeature);
 		},
