@@ -201,6 +201,7 @@
 		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true">
 			<requiredResources id="WorkExecution.WorkDetailView_requiredResources">
 				<requiredResource id="WorkExecution.WorkDetailView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_permitlist" name="permitlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_failureReportlist" name="failureReportlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_attachments" name="attachments"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_workOrderSpec" name="workOrderSpec"/>
@@ -281,7 +282,7 @@
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
 				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>	
-				<eventHandler id="WorkExecution.FeatureLookup_eventHandler" event="initialize" class="application.handlers.WODetailHandler" method="filterFeature"/>		
+				<!--<eventHandler id="WorkExecution.FeatureLookup_eventHandler" event="initialize" class="application.handlers.WODetailHandler" method="filterFeature"/>   -->		
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -8018,7 +8019,7 @@
 		</lookup>
 		
 		<!-- custom Asset Feature lookup -->
-		<lookup id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources">
 				<requiredResource id="WorkExecution.FeatureLookup_requiredResource0" name="assetfeature" reload="true"/>
 			</requiredResources>
@@ -8041,7 +8042,7 @@
 		</lookup>	
 		
 		<!-- custom Asset Feature lookup for start reference point-->
-		<lookup id="WorkExecution.FeatureLookup1" label="Select Feature" resource="assetfeature">
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup1" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup1_requiredResources">
 				<requiredResource id="WorkExecution.FeatureLookup1_requiredResource0" name="assetfeature" reload="true"/>
 			</requiredResources>
