@@ -557,22 +557,22 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_01" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
-						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Material" layoutInsertAt="button1" transitionTo="WorkExecution.ActualMaterialsEntryView">
+						<!--<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Material" layoutInsertAt="button1" transitionTo="WorkExecution.ActualMaterialsEntryView">
 							<eventHandlers id="WorkExecution.WorkDetailView_AddPermit_action_addNew_OFF.png_button_eventHandlers">
 								<eventHandler class="application.handlers.ActualMaterialHandler" event="datachange" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton2" method="enableAddMaterialButton"/>
-							</eventHandlers>
-						</button>
+							</eventHandlers>   
+						</button>-->
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitView" layoutInsertAt="item1" value="Permit"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
 						</text>
-						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Add Material" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView">
-							<!-- <eventHandlers id="WorkExecution.WorkDetailView_AddPermit_action_addNew_OFF.png_button_eventHandlers2">
+						<!-- <button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Add Material" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView">
+							<eventHandlers id="WorkExecution.WorkDetailView_AddPermit_action_addNew_OFF.png_button_eventHandlers2">
 								<eventHandler class="application.handlers.ActualMaterialHandler" event="datachange" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton23" method="enableAddMaterialButton"/>
-							</eventHandlers>  -->
-						</button>
+							</eventHandlers>  
+						</button>  -->
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedMaterialView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0_PlannedMaterials" layoutInsertAt="item1" value="Planned Materials"/>
