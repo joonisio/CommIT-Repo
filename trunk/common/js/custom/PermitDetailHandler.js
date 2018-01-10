@@ -1,5 +1,5 @@
 /**
- * 
+ In Development
  */
 
 define("custom/PermitDetailHandler", 
@@ -28,65 +28,49 @@ define("custom/PermitDetailHandler",
 function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
 {
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
+		
 		initAddPermitView: function(eventContext){
+			var view = eventContext.viewControl;
+			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
+			if(!view.isOverrideEditMode()){
 				
-		},
-		
-		initSearchData: function(eventContext){
-			console.log('setSearchQuery');
-			var searchData = eventContext.application.getResource("searchPermit");
-			if(searchData == null || searchData.getCurrentRecord() == null){
-				searchData.createNewRecord();
+				var workOrder = this.application.getResource("workOrder").getCurrentRecord(); 
+				console.log(workOrder.get('wonum'));
+				workOrder.openPriorityChangeTransaction();
+				
+				var newPermit= actualPermitSet.createNewRecord();
+				newPermit.set('wonum',workOrder.get('wonum'));
+				//var additionalLineType = CommonHandler._getAdditionalResource(eventContext,'additionalLineType');
+				//ActualMaterialObject.setDefaultValues(newPermit, additionalLineType);
 			}
-			eventContext.application.ui.savedQueryIndex = eventContext.application.ui.getViewFromId('WorkExecution.Permit').queryBaseIndex;
+			eventContext.setMyResourceObject(actualPermitSet);
 		},
 		
-		setSearchQuery: function(eventContext){
-			console.log('setSearchQuery');
+		commitNewMaterialEntryView: function(eventContext){
+			console.log("create permit");
 			eventContext.application.showBusy();
-			var search = eventContext.application.getResource("searchPermit").getCurrentRecord();
-			var filteredItems = 0;			
-			var filter = {};
 			
-			if (search.permitworknum){
-			    filter.permitworknum = '%'+search.permitworknum+'%';
-			    filteredItems++;
+			try{
+				var permitMaterial = eventContext.getCurrentRecord();
+				var workOrderSet =	permitMaterial.getParent().getOwner();
+				if(workOrderSet.getCurrentRecord().get('wonum') != '') {
+					console.log("wonum not null");
+					var workOrder = workOrderSet.getCurrentRecord();
+	     			workOrder.closePriorityChangeTransaction();
+					ModelService.save(workOrderSet).always(function(){
+					eventContext.ui.hideCurrentView();
+					});
+					
+				}else{
+					eventContext.ui.hideCurrentView();						
+				}
+				
+			}catch(e){
+				console.log(e);
+				throw e;
 			}
-			
-			if(filteredItems == 0){
-				eventContext.ui.show('WorkExecution.RequiredSearchFieldMissing');
-				return;
-			}
-			var self = this;
-			eventContext.application.ui.performSearch = true;
-			ModelService.clearSearchResult(eventContext.application.getResource('permit')).then(function(){
-				 ModelService.empty('permit').then(function(){
-					 eventContext.ui.getViewFromId('WorkExecution.Permit').setQueryBaseIndexByQuery(PlatformConstants.SEARCH_RESULT_QUERYBASE).then(function(){
-						// eventContext.ui.show('WorkExecution.Permit');
-						 eventContext.application.showBusy();
-						 PersistenceManager.removeQuerybase('permit', PlatformConstants.SEARCH_RESULT_QUERYBASE);
-						 //self.populateSearch(eventContext);
-					 });
-				 });
-			});
 		},
 		
-		savePermit : function(eventContext){
-			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
-			var msg = MessageService.createStaticMessage("save succesful").getMessage();
-			var permitSet = CommonHandler._getAdditionalResource(eventContext,"permit").getCurrentRecord();
-			ModelService.save(permitSet).then(function(){
-				eventContext.ui.showToastMessage(msg);
-				console.log('save completed');
-			}).otherwise(function(error) {
-			  self.ui.showMessage(error.message);
-			});
-		},
-		
-		clearSearchFields: function(eventContext){
-			console.log('clear Search Field');
-			eventContext.application.getResource("searchPermit").createNewRecord();
-		}
 		
 	});
 		
