@@ -2172,34 +2172,22 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 		filterFeature: function(eventContext) {
 			console.log("filter lookup feature");
-			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			Logger.trace('filter lookup feature processing');
 			
+			eventContext.application.showBusy();
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			//console.log(workOrder.asset);
 			var asset2=workOrder.get("asset");	
-			console.log("----------"+asset2);
+			console.log(asset2);
 			var assetfeature = CommonHandler._getAdditionalResource(eventContext,'assetfeature');
+			assetfeature.clearFilterAndSort();
 			//CommonHandler._clearFilterForResource(eventContext,assetfeature);
 			//assetfeature._lookupFilter = null;
 			var filter = [];
-			filter.push({assetnum: asset2});
+			filter.push({assetnumSearch: asset2});
+			//assetfeature.filter('assetnum == $1', asset2);
 			assetfeature.lookupFilter = filter; 
-			console.log("assetfeature = " + assetfeature);
-			return assetfeature;
-//			
-//			var addlLabor = UI.application.getResource("assetfeature");
-//			addlLabor.clearFilterAndSort();	
-//			addlLabor.filter("assetnum==$1",asset2);
-
-			
-//			ModelService.filtered('assetfeature', null, [{featurelabel:"Feeder Line"}], null, false, true).then(function(resourceSet){
-//				console.log(resourceSet);
-//				eventContext.application.addResource(resourceSet);
-//				var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
-//				console.log(assetfeature);				
-//				
-//			});
-			//var assetfeature = CommonHandler._getAdditionalResource(eventContext,"assetfeature");
-			//console.log(assetfeature);
+			//return assetfeature;
 		},
 		
 		showFooterView: function(eventContext) {
@@ -2231,6 +2219,15 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			});			
 		},
 		//end custom javascript code
+		
+		setWonumForPermit: function(eventContext){
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			wonum = workOrder.get('wonum');
+			console.log(wonum);
+			var tempPermit = CommonHandler._getAdditionalResource("tempPermitResource").getCurrentRecord();
+		
+			eventContext.ui.show("WorkExecution.createPermitView");
+		},
 		
 		hideForNonCalibrationWO: function(eventContext) {
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();

@@ -12,6 +12,7 @@ define("custom/PermitObject",
 		},
 		beforeSave : function(permit) {
 			
-		}
+		},
+		
 	}
 });
