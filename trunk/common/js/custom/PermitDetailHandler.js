@@ -29,6 +29,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 {
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
 		
+		//initiated permit
 		initAddPermitView: function(eventContext){
 			var view = eventContext.viewControl;
 			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
@@ -38,6 +39,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				console.log(workOrder.get('wonum'));
 				workOrder.openPriorityChangeTransaction();
 				
+				//create new record 
 				var newPermit= actualPermitSet.createNewRecord();
 				newPermit.set('wonum',workOrder.get('wonum'));
 				//var additionalLineType = CommonHandler._getAdditionalResource(eventContext,'additionalLineType');
@@ -46,6 +48,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			eventContext.setMyResourceObject(actualPermitSet);
 		},
 		
+		//save permit
 		commitNewMaterialEntryView: function(eventContext){
 			console.log("create permit");
 			eventContext.application.showBusy();

@@ -61,11 +61,6 @@
 			</requiredResources>
 				
 			<actions id="WorkExecution.WorkItemsView_actions">			    
-			      <action id="WorkExecution.WorkItemsView_sqa_action" label="SQA Checklist" overflow="true" transitionTo="WorkExecution.sqa">	
-					<eventHandlers id="WorkExecution.WorkItemsView_sqa_action_eventHandlers">
-						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_sqa_action_eventHandlers_render_enableDisableBasedOnConnection" method="enableDisableBasedOnConnection"/>
-					</eventHandlers>	
-				</action>
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
 						<eventHandler class="application.handlers.WOExtDownloadHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline" method="workoffline"/>
@@ -5019,7 +5014,7 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_assetnum6" label="Asset" resourceAttribute="assetnum"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_121" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
@@ -5076,7 +5071,7 @@
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_102" >
-						<text editable="false" id="WorkExecution.createPermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
+						<text editable="true" id="WorkExecution.createPermitView_groupitem_wonum5" lookup="WorkExecution.WorkOrderLookup"  label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.createPermitView_groupitem_1312" >
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_assetnum6" label="Asset" resourceAttribute="assetnum"/>
@@ -7918,6 +7913,22 @@
 		<!-- *********************** -->
 		<!-- LOOKUP SECTION -->
 		<!-- *********************** -->
+		
+		<!-- custom work order lookup 1 -->
+		<lookup id="WorkExecution.WorkOrderLookup" label="Select Work Order" resource="workOrder">
+			<requiredResources id="WorkExecution.WorkOrderLookup_requiredResources">
+				<requiredResource id="WorkExecution.wonumLookup_additionalperson" name="workOrder" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.WorkOrderLookup_WorkOrderPerson_list" resource="workOrder">
+				<listItemTemplate id="WorkExecution.wonumLookup_additionalperson_listItemTemplate" layout="WorkOrderLookup">
+					<listtext id="wuWorkOrder" resourceAttribute="wonum" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olWorkOrder22" resourceAttribute="description" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.WorkOrderLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.WorkOrderLookup_addresscode_woserdresscode" sourceAttribute="wonum" targetAttribute="wonum"/>
+			</returnAttributes>
+		</lookup>
 
 		<!-- Data Sheet lookup -->
 		<lookup filterClass="application.handlers.DataSheetHandler" filterMethod="filterDataSheet" id="WorkExecution.dataSheetLookup" label="Datasheet" resource="additionalDataSheetTemplateResource">
@@ -8024,7 +8035,10 @@
 		<!-- custom Asset Feature lookup -->
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources">
-				<requiredResource id="WorkExecution.FeatureLookup_requiredResource0" name="assetfeature" reload="true"/>
+				<requiredResource id="WorkExecution.FeatureLookup_requiredResource0" name="assetfeature" />
+				<requiredResource id="WorkExecution.AssetFeatureLookup_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist2" name="multiassetloclist"/>
+				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.FeatureLookup_list" resource="assetfeature">
 			    <searchAttributes id="WorkExecution.FeatureLookup_assetfeature_searchAttributes">
@@ -8068,9 +8082,12 @@
 		</lookup>		
 		
 		<!-- custom Asset Feature lookup for end reference point-->
-		<lookup id="WorkExecution.FeatureLookup2" label="Select Feature" resource="assetfeature">
-			<requiredResources id="WorkExecution.FeatureLookup2_requiredResources">
-				<requiredResource id="WorkExecution.FeatureLookup2_requiredResource0" name="assetfeature" reload="true"/>
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup2" label="Select Feature" resource="assetfeature">
+			<requiredResources id="WorkExecution.FeatureLookup_requiredResources2">
+				<requiredResource id="WorkExecution.FeatureLookup_requiredResource2" name="assetfeature" />
+				<requiredResource id="WorkExecution.AssetFeatureLookup_workOrder2" name="workOrder">
+					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist23" name="multiassetloclist"/>
+				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.FeatureLookup2_list" resource="assetfeature">
 			    <searchAttributes id="WorkExecution.FeatureLookup2_assetfeature_searchAttributes">
@@ -8182,6 +8199,34 @@
 				<returnAttribute id="WorkExecution.AssetLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="asset"/>
 				<returnAttribute id="WorkExecution.AssetLookup_assetnum_asset_number" sourceAttribute="assetnum" targetAttribute="asset_number"/>
 				<returnAttribute id="WorkExecution.AssetLookup_description_assetdesc" sourceAttribute="description" targetAttribute="assetdesc"/>
+			</returnAttributes>
+
+		</lookup>
+		
+		<!-- custom Asset lookup for permit -->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterAssetForLookup" id="WorkExecution.AssetLookupForPermit" label="Select Asset" resource="additionalasset">
+			<requiredResources id="WorkExecution.AssetPermitLookup_requiredResources">
+				<requiredResource id="WorkExecution.AssetPermitLookup_additionalasset" name="additionalasset"/>
+				<requiredResource id="WorkExecution.AssetPermitLookup_workOrder" name="workOrder"/>
+			</requiredResources>
+
+			<list id="WorkExecution.AssetPermitLookup_additionalasset_list" resource="additionalasset">
+				<searchAttributes id="WorkExecution.AssetPermitLookup_additionalasset_searchAttributes">
+					<searchAttribute id="WorkExecution.AssetPermitLookup_additionalasset_searchAttribute_assetnum" name="assetnum"/>
+					<searchAttribute id="WorkExecution.AssetPermitLookup_additionalasset_searchAttribute_description" name="description"/>
+					<searchAttribute id="WorkExecution.AssetPermitLookup_additionalasset_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.AssetPermitLookup_additionalasset_searchAttribute_locationdesc" name="locationdesc"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.AssetPermitLookup_additionalasset_listItemTemplate_Item2Desc2" layout="Item2Desc2">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetPermitLookup_additionalasset_Item2Desc2_assetnum" layoutInsertAt="item1" resourceAttribute="assetnum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetPermitLookup_additionalasset_Item2Desc2_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+					<listtext id="WorkExecution.AssetPermitLookup_additionalasset_Item2Desc2_location" layoutInsertAt="item2" resourceAttribute="location"/>
+					<listtext id="WorkExecution.AssetPermitLookup_additionalasset_Item2Desc2_locationdesc" layoutInsertAt="desc2" resourceAttribute="locationdesc"/>
+				</listItemTemplate>
+			</list>
+
+			<returnAttributes id="WorkExecution.AssetPermitLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.AssetPermitLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="assetnum"/>
 			</returnAttributes>
 
 		</lookup>
@@ -9241,7 +9286,7 @@
 		
 		
 		<!-- custom tnbwometers resource-->
-		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="200000" providedBy="/oslc/sp/WorkManagement">
+		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
@@ -9255,7 +9300,7 @@
 				<attribute describedByProperty="spi_wm:tnblastreadingdate" id="tnbwometers_tnblastreadingdate" name="tnblastreadingdate"/>
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
-				<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>
+				<!--<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<queryBases id="tnbwometers_queryBases">
 	 			<queryBase defaultForSearch="true" id="tnbwometerssearchAll" name="searchAllTnbWometer" queryUri="/oslc/os/oslctnbwometers" />
