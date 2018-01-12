@@ -2178,16 +2178,12 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			//console.log(workOrder.asset);
 			var asset2=workOrder.get("asset");	
-			console.log(asset2);
+			console.log("asset = "+asset2);
 			var assetfeature = CommonHandler._getAdditionalResource(eventContext,'assetfeature');
-			assetfeature.clearFilterAndSort();
-			//CommonHandler._clearFilterForResource(eventContext,assetfeature);
-			//assetfeature._lookupFilter = null;
+			assetfeature._lookupFilter = null;
 			var filter = [];
 			filter.push({assetnumSearch: asset2});
-			//assetfeature.filter('assetnum == $1', asset2);
 			assetfeature.lookupFilter = filter; 
-			//return assetfeature;
 		},
 		
 		showFooterView: function(eventContext) {
@@ -2225,7 +2221,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			wonum = workOrder.get('wonum');
 			console.log(wonum);
 			var tempPermit = CommonHandler._getAdditionalResource("tempPermitResource").getCurrentRecord();
-		
 			eventContext.ui.show("WorkExecution.createPermitView");
 		},
 		

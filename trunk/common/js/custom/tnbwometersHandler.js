@@ -25,10 +25,12 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var currentRecord = eventContext.getCurrentRecord();
 			var meter = currentRecord.get("tnbwometerslist");
 			Logger.trace(meter);
+			console.log(meter);
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			if (meter != null) {
 				Logger.trace("meter has value");
-					ModelService.filtered('tnbwometers', null,[{tnbwometersidSearch: meter}], 1000, null,null,null,null).then(function(locset){
+				console.log("meter has value");
+					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
 						if (locset.fetchedFromServer){
 							console.log("fetched from server");
 						}
