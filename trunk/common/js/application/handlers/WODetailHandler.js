@@ -2145,7 +2145,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		hideForNonLinearWO: function(eventContext) {
 			console.log("Hide when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			console.log(workOrder);
 			if (!workOrder.islinear)
 				eventContext.setDisplay(false);
 			else
@@ -2188,7 +2187,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 		showFooterView: function(eventContext) {
 			// we do not show the footer until a newreading is set
-			this.displayFooter(eventContext, true);		
+			this.displayFooter(eventContext, true);
 		},
 		
 		displayFooter: function(eventContext, display) {
