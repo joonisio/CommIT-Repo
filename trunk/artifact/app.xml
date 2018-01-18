@@ -3577,11 +3577,14 @@
 			<requiredResources id="WorkExecution.LinearSegmentDetailsView_requiredResources">
 				<requiredResource id="WorkExecution.LinearSegmentDetailsView_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.LinearSegmentDetailsView_workOrder_multiassetloclist" name="multiassetloclist"/>
-				</requiredResource>
+				</requiredResource>					
 			</requiredResources>
 			<container id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
 				<text id="LinearSegmentDetailsView" label="Start"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_0">	
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_assetfeatureid">
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.assetfeatureid" label="Asset Feature ID" resourceAttribute="assetfeatureid"/>
+					</groupitem>				
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
 						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
@@ -3609,6 +3612,9 @@
 			<!-- End -->	
 				<text id="LinearSegmentDetailsViewEnd" label="End"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_End">	
+					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_endassetfeatureid">
+						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.endassetfeatureid" label="Asset Feature ID" resourceAttribute="assetfeatureid"/>
+					</groupitem>				
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_7">
 						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
@@ -3793,10 +3799,13 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">
-				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="MeterList">																	
-					<!--  <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>	-->
-					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>
-					 <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
+					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
+					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
+					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
+					 <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading"/>
+					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_measureunit" layoutInsertAt="item4" value="UNIT"/>
+					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbresult" layoutInsertAt="item5" resourceAttribute="tnbresult"/>
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->														
 				</listItemTemplate>				
 			</list>
@@ -4995,14 +5004,14 @@
 					<groupitem id="WorkExecution.PermitView_groupitem_03">
 						<text editable="false" layoutInsertAt="item1" id="WorkExecution.PermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
 					</groupitem>
-					<!--  <groupitem id="WorkExecution.PermitView_groupitem_0.5">
-						<text editable="false" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
-					</groupitem> -->
+					<groupitem id="WorkExecution.PermitView_groupitem_0.5">
+						<text editable="true" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
+					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_1323" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpermittype" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_132" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_status3" label="Status" resourceAttribute="tnbstatus"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_status3" label="Status" resourceAttribute="tnbstatus"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.PermitView_groupitem_32" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate3" label="Required Date" resourceAttribute="requireddate"/>
@@ -5011,13 +5020,13 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_102" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_121" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
 					</groupitem>			
 					<groupitem id="WorkExecution.PermitView_groupitem_41" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
@@ -5032,7 +5041,7 @@
 						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpa2" label="Performing Authority" resourceAttribute="tnbpa"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_82" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpassportno2" label="IC Number" resourceAttribute="tnbpassportno"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpassportno2" label="IC Number" resourceAttribute="tnbpassportno"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_93" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
@@ -8036,9 +8045,9 @@
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources">
 				<requiredResource id="WorkExecution.FeatureLookup_requiredResource0" name="assetfeature" />
-				<requiredResource id="WorkExecution.AssetFeatureLookup_workOrder" name="workOrder">
+				<!-- <requiredResource id="WorkExecution.AssetFeatureLookup_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist2" name="multiassetloclist"/>
-				</requiredResource>
+				</requiredResource>-->
 			</requiredResources>
 			<list id="WorkExecution.FeatureLookup_list" resource="assetfeature">
 			    <searchAttributes id="WorkExecution.FeatureLookup_assetfeature_searchAttributes">
@@ -8054,7 +8063,8 @@
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_feature" sourceAttribute="feature" targetAttribute="feature"/>
-				<returnAttribute id="WorkExecution.FeatureLookup_featurelabel" sourceAttribute="featurelabel" targetAttribute="featurelabel"/>			
+				<returnAttribute id="WorkExecution.FeatureLookup_featurelabel" sourceAttribute="featurelabel" targetAttribute="featurelabel"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_assetfeatureid	" sourceAttribute="assetfeatureid" targetAttribute="assetfeatureid"/>		
 			</returnAttributes>
 		</lookup>	
 		
@@ -8078,6 +8088,7 @@
 			<returnAttributes id="WorkExecution.FeatureLookup1_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_startfeaturelabel" sourceAttribute="featurelabel" targetAttribute="startfeaturelabel"/>
 				<returnAttribute id="WorkExecution.FeatureLookup_startmeasure" sourceAttribute="startmeasure" targetAttribute="startmeasure"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_startassetfeatureid" sourceAttribute="assetfeatureid" targetAttribute="startassetfeatureid"/>
 			</returnAttributes>
 		</lookup>		
 		
@@ -8085,9 +8096,9 @@
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup2" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources2">
 				<requiredResource id="WorkExecution.FeatureLookup_requiredResource2" name="assetfeature" />
-				<requiredResource id="WorkExecution.AssetFeatureLookup_workOrder2" name="workOrder">
+				<!-- <requiredResource id="WorkExecution.AssetFeatureLookup_workOrder2" name="workOrder">
 					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist23" name="multiassetloclist"/>
-				</requiredResource>
+				</requiredResource>-->
 			</requiredResources>
 			<list id="WorkExecution.FeatureLookup2_list" resource="assetfeature">
 			    <searchAttributes id="WorkExecution.FeatureLookup2_assetfeature_searchAttributes">
@@ -8103,6 +8114,7 @@
 			<returnAttributes id="WorkExecution.FeatureLookup2_returnAttributes">
 				<returnAttribute id="WorkExecution.FeatureLookup_endfeaturelabel" sourceAttribute="featurelabel" targetAttribute="endfeaturelabel"/>
 				<returnAttribute id="WorkExecution.FeatureLookup_endmeasure" sourceAttribute="endmeasure" targetAttribute="endmeasure"/>
+				<returnAttribute id="WorkExecution.FeatureLookup_endassetfeatureid" sourceAttribute="assetfeatureid" targetAttribute="endassetfeatureid"/>
 			</returnAttributes>
 		</lookup>			
 
@@ -9291,7 +9303,7 @@
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
 				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometers_tnbsequence" name="tnbsequence"/>
-				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid"  name="tnbwometersid"/>
+				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid"  name="tnbwometersid" index="true"/>
 				<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometers_tnbassetnum" name="tnbassetnum"/>
 				<attribute describedByProperty="spi_wm:tnbnewreading" id="tnbwometers_tnbnewreading" name="tnbnewreading"/>
 				<attribute describedByProperty="spi_wm:tnblastreading" id="tnbwometers_tnblastreading" name="tnblastreading"/>
@@ -9337,7 +9349,10 @@
 				<attribute describedByProperty="spi_wm:multiid" id="multiAssetLocResource_multiid_spi_wmmultiid" name="identifier"/>
 				<attribute describedByProperty="spi_wm:isprimary" id="multiAssetLocResource_spi_wmisprimary" name="isprimary"/>
 				<attribute describedByProperty="spi_wm:startfeaturelabel" id="multiAssetLocResource_startfeaturelabel" name="startfeaturelabel"/>
-				<attribute describedByProperty="spi_wm:endfeaturelabel" id="multiAssetLocResource_endfeaturelabel" name="endfeaturelabel"/>			
+				<attribute describedByProperty="spi_wm:startassetfeatureid" id="multiAssetLocResource_startassetfeatureid" name="startassetfeatureid"/>
+				<attribute describedByProperty="spi_wm:assetfeatureid" id="multiAssetLocResource_assetfeatureid" name="assetfeatureid"/>
+				<attribute describedByProperty="spi_wm:endfeaturelabel" id="multiAssetLocResource_endfeaturelabel" name="endfeaturelabel"/>
+				<attribute describedByProperty="spi_wm:endassetfeatureid" id="multiAssetLocResource_endassetfeatureid" name="endassetfeatureid"/>			
 				<attribute describedByProperty="spi_wm:startoffset" id="multiAssetLocResource_startoffset" name="startoffset"/>
 				<attribute describedByProperty="spi_wm:startoffsetunitid" id="multiAssetLocResource_startoffsetunitid" name="startoffsetunitid"/>
 				<attribute describedByProperty="spi_wm:startmeasure" id="multiAssetLocResource_startmeasure" name="startmeasure"/>
@@ -11494,6 +11509,7 @@
 		<!-- Feature resource -->
 		<resource providedBy="/oslc/sp/WorkManagement" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#assetfeature" name="assetfeature" id="assetfeature" pageSize="500" additionalData="true"> 
 			<attributes id="assetfeature_attributes" > 
+				<attribute id="assetfeature_attributes_assetfeatureid" name="assetfeatureid" describedByProperty="spi_wm:assetfeatureid" />
 				<attribute id="assetfeature_attributes0" name="feature" describedByProperty="spi_wm:feature" /> 
 				<attribute id="assetfeature_attributes1" name="featurelabel" describedByProperty="spi_wm:label" />
 				<attribute id="assetfeature_attributes2" name="startmeasure" describedByProperty="spi_wm:startmeasure" /> 
@@ -11504,7 +11520,6 @@
 			<queryBases id="assetfeature_queryBases">
  	 			<queryBase id="assetfeature_queryBase0" name="getFeature" queryUri="/oslc/os/oslcassetfeature"/>
 	 		</queryBases>	
-	 		<!-- <whereClause id="assetfeature_whereClause" clause="spi_wm:assetnum='TESTSIT'"/>-->
 		</resource> 		
 
 		<!-- Bin resource -->
