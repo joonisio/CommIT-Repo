@@ -3558,6 +3558,12 @@
 							<eventHandler class="application.handlers.WorkOrderHistoryHandler" event="click" id="WorkExecution.MultipleAssetsLocationsView_workOrder_imagesaction_wohistory.png_button_eventHandlers_click_showMultiAssetLocMeters" method="showWOHistoryListMultiAsset"/>
 						</eventHandlers>
 					</button>
+					<button id="WorkExecution.MultipleAssetsLocationsView_linear_details_button" image="/images/tower_linear.png" label="Linear Details" layoutInsertAt="button4" >
+					    <eventHandlers id="WorkExecution.MultipleAssetsLocationsView_workOrder_linear_details_button_eventHandlers">
+							<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.MultipleAssetsLocationsView_workOrder_linear_details_button_eventHandlers_click_showMultiAssetLocMeters" method="showLinearSegmentDetailsMultiAsset"/>
+							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.MultipleAssetsLocationsView_workOrder_linear_details_button_eventHandlers_render_hideForNonLinearWOButton" method="hideForNonLinearAsset"/>
+						</eventHandlers>
+					</button>					
 					<checkbox cssClass="rightCheckBox" id="WorkExecution.MultipleAssetsLocationsView_progress_checkbox" layoutInsertAt="checkbox1" resourceAttribute="progress"/>
 					<!-- eventHandlers> <eventHandler event="click" method="handleProgressCheckbox"
 						class="application.handlers.MultiAssetLocationHandler" /> </eventHandlers> 
@@ -3581,10 +3587,7 @@
 			</requiredResources>
 			<container id="WorkExecution.LinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
 				<text id="LinearSegmentDetailsView" label="Start"></text>
-				<group id="WorkExecution.LinearSegmentDetailsView_group_0">	
-					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_assetfeatureid">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.assetfeatureid" label="Asset Feature ID" resourceAttribute="assetfeatureid"/>
-					</groupitem>				
+				<group id="WorkExecution.LinearSegmentDetailsView_group_0">				
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
 						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
@@ -3611,10 +3614,7 @@
 				</group>	
 			<!-- End -->	
 				<text id="LinearSegmentDetailsViewEnd" label="End"></text>
-				<group id="WorkExecution.LinearSegmentDetailsView_group_End">	
-					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_endassetfeatureid">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.endassetfeatureid" label="Asset Feature ID" resourceAttribute="assetfeatureid"/>
-					</groupitem>				
+				<group id="WorkExecution.LinearSegmentDetailsView_group_End">					
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_7">
 						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
@@ -3653,6 +3653,78 @@
 				</button>
 			</footer>-->																	
 		</view>	
+		
+		<!-- Linear Segment Details for MultiAsset -->
+		<view id="WorkExecution.MultiAssetLinearSegmentDetailsView" label="Linear Segment Details">	
+			<requiredResources id="WorkExecution.MultiAssetLinearSegmentDetailsView_requiredResources">
+				<requiredResource id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_multiassetloclist" name="multiassetloclist"/>
+				</requiredResource>					
+			</requiredResources>
+			<container id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_container_0" resource="workOrder" attribute="multiassetloclist">
+				<group id="WorkExecution.MultiAssetLinearSegmentDetailsView_group_feature">
+					<groupitem id="MultiAssetLinearSegmentDetailsView_group.feature">					
+						<text id="MultiAssetLinearSegmentDetailsView_feature" editable="true" label="Feature" lookup="WorkExecution.FeatureLookup" resourceAttribute="feature"/>											
+					</groupitem>	
+					<groupitem id="MultiAssetLinearSegmentDetailsView_group.featurelabel">
+						<text id="MultiAssetLinearSegmentDetailsView_featurelabel" editable="true" label="Feature Label" resourceAttribute="featurelabel"/>
+					</groupitem>									
+				</group>			
+				<text id="MultiAssetLinearSegmentDetailsViewStart" label="Start"></text>
+				<group id="WorkExecution.MultiAssetLinearSegmentDetailsView_group_0">				
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_0">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
+						<text editable="false" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="startoffsetunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_2" layout="Item1Count1Button1">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_measure" layoutInsertAt="item1" label="Measure" resourceAttribute="startmeasure"/>
+						<text editable="false" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_startmeasureunitid" layoutInsertAt="count1" resourceAttribute="startmeasureunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_3">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Offset" label="Y Offset" resourceAttribute="startyoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_4">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Y_Reference" label="Y Reference" resourceAttribute="startyoffsetref"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_5">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Offset" label="Z Offset" resourceAttribute="startzoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_6">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Z_Reference" label="Z Reference" resourceAttribute="startzoffsetref"/>
+					</groupitem>																		
+				</group>	
+			<!-- End -->	
+				<text id="MultiAssetLinearSegmentDetailsViewEnd" label="End"></text>
+				<group id="WorkExecution.MultiAssetLinearSegmentDetailsView_group_End">					
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_7">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
+						<text editable="false" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.EndReferencce_point_offsetunitid" layoutInsertAt="count1" resourceAttribute="endoffsetunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_9" layout="Item1Count1Button1">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_measure" label="Measure" resourceAttribute="endmeasure"/>
+						<text editable="false" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_Endmeasureunitid" layoutInsertAt="count1" resourceAttribute="endmeasureunitid"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_10">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Offset" label="Y Offset" resourceAttribute="endyoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_11">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Y_Reference" label="Y Reference" resourceAttribute="endyoffsetref"/>
+					</groupitem>
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_12">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Offset" label="Z Offset" resourceAttribute="endzoffset"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_13">
+						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_Z_Reference" label="Z Reference" resourceAttribute="endzoffsetref"/>
+					</groupitem>																		
+				</group>					
+			</container>																	
+		</view>			
 
 		<!--Asset or Location Details view-->
 		<view id="WorkExecution.MultipleAssetsLocationsEntryView" label="Asset or Location Details">
@@ -3798,7 +3870,7 @@
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">
+			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
@@ -9298,7 +9370,7 @@
 		
 		
 		<!-- custom tnbwometers resource-->
-		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbwometersid asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbsequence asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
@@ -9343,6 +9415,7 @@
 				<attribute describedByProperty="spi_wm:sequence" id="multiAssetLocResource_sequence_spi_wmsequence" name="sequence"/>
 				<attribute describedByProperty="spi:asset{oslc:shortTitle}" id="multiAssetLocResource_assetnum_spiassetoslcshortTitle" name="assetnum" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{dcterms:title}" id="multiAssetLocResource_assetdesc_spiassetdctermstitle" name="assetdesc" referenceResource="additionalasset"/>
+				<attribute describedByProperty="spi:asset{spi:islinear}" id="multiAssetLocResource_islinear_spiassetspiislinear_spiislinear" name="islinear" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:location{oslc:shortTitle}" id="multiAssetLocResource_location_spilocationoslcshortTitle" name="location" referenceResource="additionallocations"/>
 				<attribute describedByProperty="spi:location{dcterms:title}" id="multiAssetLocResource_locationdesc_spilocationdctermstitle" name="locationdesc" referenceResource="additionallocations"/>
 				<attribute describedByProperty="spi_wm:progress" id="multiAssetLocResource_progress_spi_wmprogress" name="progress"/>

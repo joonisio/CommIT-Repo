@@ -2151,6 +2151,16 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				eventContext.setDisplay(true);
 		},
 		
+		hideForNonLinearAsset: function(eventContext) {
+			console.log("Hide when non-linear Asset");
+			var multiasset = CommonHandler._getAdditionalResource(eventContext,"multiAssetLocResource").getCurrentRecord();
+			console.log(multiasset);
+			if (!multiasset.islinear)
+				eventContext.setDisplay(false);
+			else
+				eventContext.setDisplay(true);			
+		},
+		
 		hideText: function(eventContext) {
 			eventContext.setDisplay(false);
 		},
@@ -2174,9 +2184,11 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			Logger.trace('filter lookup feature processing');
 			
 			eventContext.application.showBusy();
-			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			//console.log(workOrder.asset);
-			var asset2=workOrder.get("asset");	
+			//var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var multiasset = CommonHandler._getAdditionalResource(eventContext,"multiAssetLocResource").getCurrentRecord();//workOrder.multiassetloclist
+			console.log(multiasset);
+			//var asset2=workOrder.get("asset");
+			var asset2=multiasset.get("assetnum");
 			console.log("asset = "+asset2);
 			var assetfeature = CommonHandler._getAdditionalResource(eventContext,'assetfeature');
 			assetfeature._lookupFilter = null;
@@ -2212,6 +2224,10 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}).otherwise(function(error) {
 			  self.ui.showMessage(error.message);
 			});			
+		},
+		
+		showLinearSegmentDetailsMultiAsset: function(evenContext) {
+			evenContext.ui.show('WorkExecution.MultiAssetLinearSegmentDetailsView');
 		},
 		//end custom javascript code
 		
