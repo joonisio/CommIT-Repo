@@ -78,6 +78,10 @@ body {
 	resize: none !important;
 }
 
+.shortText {
+	width: 50% !important;
+}
+
 .list.failureClass .mblListItem {
     background-color: #FDFEFF !important;
 }
