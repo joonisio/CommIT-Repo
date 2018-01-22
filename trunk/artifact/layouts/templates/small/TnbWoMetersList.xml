@@ -2,8 +2,8 @@
 <layout id="MeterList" width="100">
    <row id="row_0">
       <column colspan="1" columnid="item1" id="item1_column"/>
-	  <column colspan="5" columnid="item2" id="item2_column"/>
-	  <column colspan="2" columnid="item3" id="item3_column"/>
+	  <column colspan="4" columnid="item2" id="item2_column"/>
+	  <column colspan="3" columnid="item3" id="item3_column"/>
 	  <column colspan="2" columnid="item4" id="item4_column"/>
 	  <column colspan="2" columnid="item5" id="item5_column"/>
       <!-- <column colspan="1" columnid="button1" halign="right" id="button1_column" rowspan="2"/>-->

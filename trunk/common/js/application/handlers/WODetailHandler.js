@@ -2197,6 +2197,18 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			assetfeature.lookupFilter = filter; 
 		},
 		
+		filterDomain: function(eventContext) {
+			console.log("filter domain");
+			var tnbwometers = CommonHandler._getAdditionalResource(eventContext,"tnbwometers").getCurrentRecord();
+			var domainId = tnbwometers.get('domainid');
+			var alnmeters = CommonHandler._getAdditionalResource(eventContext,'alnmeters');
+			console.log(alnmeters)
+			alnmeters._lookupFilter = null;
+			var filter = [];
+			filter.push({domainid: domainId});
+			alnmeters.lookupFilter = filter; 			
+		},
+		
 		showFooterView: function(eventContext) {
 			// we do not show the footer until a newreading is set
 			this.displayFooter(eventContext, true);
