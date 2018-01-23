@@ -2243,14 +2243,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		//end custom javascript code
 		
-		setWonumForPermit: function(eventContext){
-			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			wonum = workOrder.get('wonum');
-			console.log(wonum);
-			var tempPermit = CommonHandler._getAdditionalResource("tempPermitResource").getCurrentRecord();
-			eventContext.ui.show("WorkExecution.createPermitView");
-		},
-		
 		hideForNonCalibrationWO: function(eventContext) {
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			if(!workOrder['wtype']) {

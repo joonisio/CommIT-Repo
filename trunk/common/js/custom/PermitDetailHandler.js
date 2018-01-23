@@ -34,14 +34,16 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			var view = eventContext.viewControl;
 			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
 			if(!view.isOverrideEditMode()){
-				
+				console.log('Im Here');
 				var workOrder = this.application.getResource("workOrder").getCurrentRecord(); 
 				console.log(workOrder.get('wonum'));
 				workOrder.openPriorityChangeTransaction();
 				
 				//create new record 
 				var newPermit= actualPermitSet.createNewRecord();
-				newPermit.set('wonum',workOrder.get('wonum'));
+				newPermit.set('tnbwonum',workOrder.get('wonum'));
+				newPermit.set('permitworknum','1100');
+				newPermit.set('tnbstatus','ISSUE');
 				//var additionalLineType = CommonHandler._getAdditionalResource(eventContext,'additionalLineType');
 				//ActualMaterialObject.setDefaultValues(newPermit, additionalLineType);
 			}
@@ -49,7 +51,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		//save permit
-		commitNewMaterialEntryView: function(eventContext){
+		commitNewPermitEntry: function(eventContext){
 			console.log("create permit");
 			eventContext.application.showBusy();
 			
