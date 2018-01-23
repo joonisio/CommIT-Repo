@@ -564,9 +564,6 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
 						</text>
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
-							<!-- <eventHandlers id="WorkExecution.WorkDetailView_AddPermit_action_addNew_OFF.png_button_eventHandlers2">
-								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton23" method="setWonumForPermit"/>
-							</eventHandlers>  -->
 						</button>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedMaterialView">
@@ -3589,7 +3586,7 @@
 				<text id="LinearSegmentDetailsView" label="Start"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_0">				
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_0">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+						<text editable="true" cssClass="referencePoint" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
@@ -3616,7 +3613,7 @@
 				<text id="LinearSegmentDetailsViewEnd" label="End"></text>
 				<group id="WorkExecution.LinearSegmentDetailsView_group_End">					
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_7">
-						<text editable="true" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+						<text editable="true" cssClass="referencePoint" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.LinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
@@ -3673,7 +3670,7 @@
 				<text id="MultiAssetLinearSegmentDetailsViewStart" label="Start"></text>
 				<group id="WorkExecution.MultiAssetLinearSegmentDetailsView_group_0">				
 					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_0">
-						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
+						<text editable="true" cssClass="referencePoint" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point" lookup="WorkExecution.FeatureLookup1" label="Reference Point" resourceAttribute="startfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_1" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.Referencce_point_offset" label="Reference Point Offset" resourceAttribute="startoffset"/>
@@ -3700,7 +3697,7 @@
 				<text id="MultiAssetLinearSegmentDetailsViewEnd" label="End"></text>
 				<group id="WorkExecution.MultiAssetLinearSegmentDetailsView_group_End">					
 					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_7">
-						<text editable="true" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
+						<text editable="true" cssClass="referencePoint" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point" lookup="WorkExecution.FeatureLookup2" label="Reference Point" resourceAttribute="endfeaturelabel"/>
 					</groupitem>
 					<groupitem id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_8" layout="Item1Count1Button1">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.MultiAssetLinearSegmentDetailsView_workOrder_groupitem_WorkExecution.End_Referencce_point_offset" label="Reference Point Offset" resourceAttribute="endoffset"/>
@@ -4206,7 +4203,7 @@
 					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_4_newreadingdate_NewReadingDate" label="Location" resourceAttribute="tnblocation"/>
 					</groupitem>
 					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_2">
-						<text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterType" label="New Reading" resourceAttribute="tnbnewreading"/>
+						<text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterType" label="New Reading" lookup="WorkExecution.MeterReadingLookup" resourceAttribute="tnbnewreading"/>
 					</groupitem>
 					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_3">
 					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_3_newreading_NewReading" label="Last Reading"  resourceAttribute="tnblastreading"/>	   
@@ -5084,7 +5081,7 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpermittype" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_132" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_status3" label="Status" resourceAttribute="tnbstatus"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_status3" lookup="WorkExecution.PermitStatusLookup" label="Status" resourceAttribute="tnbstatus"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.PermitView_groupitem_32" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate3" label="Required Date" resourceAttribute="requireddate"/>
@@ -5093,7 +5090,7 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_102" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="wonum"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset" resourceAttribute="assetnum"/>
@@ -5137,14 +5134,14 @@
 					<groupitem id="WorkExecution.createView_groupitem_03">
 						<text editable="true" layoutInsertAt="item1" id="WorkExecution.createPermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
 					</groupitem>
-					<!--  <groupitem id="WorkExecution.PermitView_groupitem_0.5">
-						<text editable="false" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
-					</groupitem> -->
+					<groupitem id="WorkExecution.createPermitView_groupitem_0.5">
+						<text editable="true" id="WorkExecution.createPermitView_groupitem_description" label="Description" resourceAttribute="description"/>
+					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_1323" >
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_tnbpermittype" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_132" >
-						<text editable="false" id="WorkExecution.createPermitView_groupitem_status3" label="Status" resourceAttribute="tnbstatus"/>
+						<text editable="true" id="WorkExecution.createPermitView_groupitem_status3" label="Status" lookup="WorkExecution.PermitStatusLookup" resourceAttribute="tnbstatus"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.createPermitView_groupitem_32" >
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_requireddate3" label="Required Date" resourceAttribute="requireddate"/>
@@ -5152,9 +5149,9 @@
 					<groupitem id="WorkExecution.createPermitView_groupitem_23" >
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
 					</groupitem>
-					<!-- <groupitem id="WorkExecution.createPermitView_groupitem_102" >
-						<text editable="true" id="WorkExecution.createPermitView_groupitem_wonum5" lookup="WorkExecution.WorkOrderLookup"  label="Work Order" resourceAttribute="wonum"/>
-					</groupitem>	-->	
+					<groupitem id="WorkExecution.createPermitView_groupitem_102" >
+						<text editable="true" id="WorkExecution.createPermitView_groupitem_wonum5" lookup="WorkExecution.WorkOrderLookup" label="Work Order" resourceAttribute="tnbwonum"/>
+					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_1312" >
 						<text editable="false" id="WorkExecution.createPermitView_groupitem_assetnum6" label="Asset" resourceAttribute="assetnum"/>
 					</groupitem>
@@ -5189,7 +5186,7 @@
 				</button>
 				<button cssClass="mblPrimaryButton" id="WorkExecution.createPermitView_Create_button" label="Create" primary="true">
 					<eventHandlers id="WorkExecution.createPermitView_Create_button_eventHandlers">
-						<eventHandler class="custom.PermitDetailHandler" event="click" id="WorkExecution.createPermitView_Create_button_eventHandlers_click_commitNewMaterialEntryView" method="commitNewMaterialEntryView"/>
+						<eventHandler class="custom.PermitDetailHandler" event="click" id="WorkExecution.createPermitView_Create_button_eventHandlers_click_commitNewMaterialEntryView" method="commitNewPermitEntry"/>
 					</eventHandlers>
 				</button>
 			</footer>	
@@ -8008,7 +8005,7 @@
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.WorkOrderLookup_returnAttributes">
-				<returnAttribute id="WorkExecution.WorkOrderLookup_addresscode_woserdresscode" sourceAttribute="wonum" targetAttribute="wonum"/>
+				<returnAttribute id="WorkExecution.WorkOrderLookup_addresscode_woserdresscode" sourceAttribute="wonum" targetAttribute="tnbwonum"/>
 			</returnAttributes>
 		</lookup>
 
@@ -8554,7 +8551,7 @@
 			</returnAttributes>
 		</lookup>
 		
-		<!-- custom Vertical lookup -->
+		<!-- custom SubVertical lookup -->
 		<lookup id="WorkExecution.SubVerticalLookup" label="Select Subvertical" resource="subverticaldata">
 			<requiredResources id="WorkExecution.SubVerticalLookup_requiredResources">
 				<requiredResource id="WorkExecution.SubVerticalLookup_additionalserviceaddress" name="subverticaldata" reload="true"/>
@@ -8570,6 +8567,21 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- custom Permit Status lookup -->
+		<lookup id="WorkExecution.PermitStatusLookup" label="Select Value" resource="domainpermitstatus">
+			<requiredResources id="WorkExecution.PermitStatusLookup_requiredResources">
+				<requiredResource id="WorkExecution.PermitStatusLookup_requiredResource" name="domainpermitstatus" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.PermitStatusLookup_status_list" resource="domainpermitstatus">
+				<listItemTemplate id="WorkExecution.PermitStatusLookup_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.PermitStatusLookup_list_value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.PermitStatusLookup_list_desc" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PermitStatusLookup_list_returnAttributes">
+				<returnAttribute id="WorkExecution.PermitStatusLookup_returnattribute_tnbstatus" sourceAttribute="value" targetAttribute="tnbstatus"/>
+			</returnAttributes>
+		</lookup>		
 
 		<!-- Storeroom lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="asyncFilterStoreroomForLookup" id="WorkExecution.StoreroomLookup" label="Select Storeroom" resource="additionalstoreroom">
@@ -9535,10 +9547,13 @@
 				<attribute describedByProperty="spi_wm:tnbpa" id="permit_tnbpa2" name="tnbpa"/>
 				<attribute describedByProperty="spi_wm:tnbpassportno" id="permit_tnbpatnbpassportno2" name="tnbpassportno"/>
 				<attribute describedByProperty="spi_wm:requestor" id="permit_requestor2" name="requestor"/>
-				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum2" name="wonum"/>
+				<attribute describedByProperty="spi_wm:tnbwonum" id="permit_wonum2" name="tnbwonum"/>
 				<attribute describedByProperty="spi_wm:assetnum" id="permit_assetnum2" name="assetnum"/>
 				<attribute describedByProperty="spi_wm:location" id="permit_location2" name="location"/>
-				
+				<attribute describedByProperty="spi_wm:ptwclass" id="permit_ptwclass" name="ptwclass"/>
+				<attribute describedByProperty="spi_wm:plusgpermitworkid" id="permit_plusgpermitworkid" name="plusgpermitworkid"/>
+				<attribute describedByProperty="spi_wm:orgid" id="permit_orgid" name="orgid"/>
+				<attribute describedByProperty="spi_wm:status" id="permit_status" name="status"/>
 			</attributes>
 		</resource>
 		
@@ -11614,7 +11629,7 @@
 	 		</queryBases>	
 		</resource> 
 		
-		<!-- Custom aln for Meter resource -->
+		<!-- Custom aln for Meter reading domain resource -->
 		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="alnmeters" name="alnmeters" pageSize="3000" additionalData="true">
 				<attributes id="alnmeters_attributes">
 					<attribute name="domainid" id="alnmeters_domainid" index="true" describedByProperty="spi:domainid" />
@@ -11625,6 +11640,19 @@
 					<queryBase id="alnmeters_queryBase" name="getMeter" queryUri="/oslc/os/oslcalndomain" />
 				</queryBases >
 				<!-- <whereClause id="alnmeters_whereClause" clause="spi:domainid='RESULT'" />-->
+		</resource>		
+		
+		<!-- Custom Permit Status domain -->
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="domainpermitstatus" isSystem="true" name="domainpermitstatus" pageSize="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="domainpermitstatus_attributes">
+				<attribute describedByProperty="spi:value" id="domainpermitstatus_value_spivalue" name="value"/>
+				<attribute describedByProperty="dcterms:title" id="domainpermitstatus_description_dctermstitle" name="description"/>		
+				<attribute describedByProperty="oslc:shortTitle" id="domainpermitstatus_domainid_oslcshortTitle" name="domainid"/>
+			</attributes>
+			<queryBases id="domainpermitstatus_queryBases">
+ 	 			<queryBase id="domainpermitstatus_queryBase_getPermitStatus" name="getPermitStatus" queryUri="/oslc/os/oslcsynonymdomain"/>
+	 		</queryBases>			
+ 			<whereClause clause="oslc:shortTitle='PLUSGPERWORKSTATUS' and spi:value in ['ISSUE','ISSUED','DRAFT','CANCELLED']" id="domainpermitstatus_whereClause"/>
 		</resource>					
 
 		<!-- Bin resource -->

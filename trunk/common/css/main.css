@@ -82,6 +82,10 @@ body {
 	width: 50% !important;
 }
 
+.referencePoint {
+	width: 85% !important;
+}
+
 .list.failureClass .mblListItem {
     background-color: #FDFEFF !important;
 }
