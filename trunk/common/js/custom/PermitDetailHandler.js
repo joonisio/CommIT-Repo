@@ -64,6 +64,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 	     			workOrder.closePriorityChangeTransaction();
 					ModelService.save(workOrderSet).always(function(){
 					eventContext.ui.hideCurrentView();
+					//workOrder.deleteLocal();
 					});
 					
 				}else{
@@ -76,6 +77,14 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}
 		},
 		
+		handleBackButtonClick: function(eventContext){
+			console.log('Clear data when go back');
+			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
+			actualPermitSet.data = [];
+			actualPermitSet._changedRecords = [];
+			actualPermitSet._recordsToCreate = [];			
+			eventContext.ui.hideCurrentView(PlatformConstants.CLEANUP);
+		},
 		
 	});
 		

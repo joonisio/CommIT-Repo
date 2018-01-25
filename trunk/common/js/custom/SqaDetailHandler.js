@@ -124,6 +124,29 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				});
 
 			}			
+		},
+		
+		clickAddSQAButton: function(eventContext) {
+			var sqaSet= CommonHandler._getAdditionalResource(eventContext,"sqa");
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrenRecord;
+			var workOrder = this.application.getResource("workOrder").getCurrentRecord(); 
+			var wonum = workOrder.get('wonum');
+			var newSQA= sqaSet.createNewRecord();
+			newSQA.set('tnbwonum',wonum);
+			newSQA.set('auditnum','5555');
+			newSQA.set('description','SQA for Work order ' + wonum);
+			newSQA.set('status',"DRAFT");
+			
+			console.log(sqa);
+			
+			ModelService.save(sqaSet).then(function() {
+				console.log(sqaSet);
+				eventContext.ui.showMessage("SQA Number AnywhereID received.");
+			}).
+			otherwise(function(err){
+				eventContext.application.hideBusy();
+				eventContext.ui.showMessage(err);						
+			});			
 		}
 		
 		

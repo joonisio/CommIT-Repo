@@ -550,13 +550,13 @@
 						</text>
 					</groupitem>
 					
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_01" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
-						<!--<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Material" layoutInsertAt="button1" transitionTo="WorkExecution.ActualMaterialsEntryView">
-							<eventHandlers id="WorkExecution.WorkDetailView_AddPermit_action_addNew_OFF.png_button_eventHandlers">
-								<eventHandler class="application.handlers.ActualMaterialHandler" event="datachange" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton2" method="enableAddMaterialButton"/>
-							</eventHandlers>   
-						</button>-->
+						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1">
+							<eventHandlers id="WorkExecution.WorkDetailView_SQA_imagesaction_addSQA_OFF.png_button_eventHandlers">
+								<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.WorkDetailView_EnterSQA_imagesaction_addSQA_OFF.png_button_eventHandlers_click_clickAddSQAButton" method="clickAddSQAButton"/>
+							</eventHandlers>					  
+						</button>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
@@ -5191,7 +5191,8 @@
 				</button>
 			</footer>	
 			<eventHandlers id="WorkExecution.ActualPermitEntryView_eventHandlers">
-				<eventHandler class="custom.PermitDetailHandler" event="initialize" id="WorkExecution.ActualMaterialsEntryView_eventHandlers_initialize_initAddPermitView" method="initAddPermitView"/>
+				<eventHandler class="custom.PermitDetailHandler" event="initialize" id="WorkExecution.ActualPermitEntryView_eventHandlers_initialize_initAddPermitView" method="initAddPermitView"/>
+				<eventHandler class="custom.PermitDetailHandler" event="cleanup" id="WorkExecution.ActualPermitEntryView_eventHandlers_cleanup_handleBackButtonClick" method="handleBackButtonClick"/>
 			</eventHandlers>									
 		</view>
 		
@@ -9309,6 +9310,8 @@
 		<!-- custom sqa resource -->
 		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="sqa_attributes">
+				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_wmplusgauditid" name="plusgauditid"/>
+				<!-- <attribute describedByProperty="spi_wm:anywhererefid" id="sqa_anywhererefid" name="anywhereRefId"/>-->
 				<attribute describedByProperty="spi_wm:auditnum" id="sqa_wmauditnum" index="true" name="auditnum"/>
 				<attribute describedByProperty="spi_wm:description" id="sqa_tnbstatus" index="true" name="description"/>
 				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus" index="true" name="status"/>
@@ -9337,7 +9340,7 @@
 				<attribute describedByProperty="spi_wm:linenum" id="plusgaudlineResource_feature"  index="true" name="linenum"/>
 				<attribute describedByProperty="spi_wm:linescore" id="plusgaudlineResource_linescore"  name="linescore"/>
 				<attribute describedByProperty="spi_wm:description" id="plusgaudlineResource_description"  index="true" name="description"/> 
-				<attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  index="true" name="question_longdescription"/> 
+				<!-- <attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  index="true" name="question_longdescription"/> -->
 				<attribute describedByProperty="spi_wm:yes" id="plusgaudlineResource_yes"  index="true"  name="yes"/> 
 				<attribute describedByProperty="spi_wm:no" id="plusgaudlineResource_no"  index="true"  name="no"/> 
 				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/> 
@@ -9373,9 +9376,9 @@
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
 		<resource id="tnbwometergroupResource" name="tnbwometergroupResource">
 			<attributes id="tnbwometergroupResource_attributes">
-   			    <attribute describedByProperty="spi_wm:metergroup{spi_wm:groupname}" id="tnbwometergroupResourcespi_tnbmetergroup" index="true" name="tnbmetergroup"/> 
-   			    <attribute describedByProperty="spi_wm:metergroup{spi_wm:description}" id="tnbwometergroupResourcespi_description" index="true" name="description"/>       
-   			   	<attribute describedByProperty="spi_wm:tnbmeter{spi_wm:tnbwometergroupid}" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
+   			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" name="tnbmetergroup"/> 
+   			    <attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description" name="description"/>       
+   			   	<attribute describedByProperty="spi_wm:tnbwometergroupid" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
 			</attributes>		 
 		</resource>
 		
