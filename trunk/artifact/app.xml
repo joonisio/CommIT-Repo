@@ -196,6 +196,7 @@
 		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true">
 			<requiredResources id="WorkExecution.WorkDetailView_requiredResources">
 				<requiredResource id="WorkExecution.WorkDetailView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_sqalist" name="sqalist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_permitlist" name="permitlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_failureReportlist" name="failureReportlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_attachments" name="attachments"/>
@@ -552,10 +553,12 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
-						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1">
+						<!-- <button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1">
 							<eventHandlers id="WorkExecution.WorkDetailView_SQA_imagesaction_addSQA_OFF.png_button_eventHandlers">
 								<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.WorkDetailView_EnterSQA_imagesaction_addSQA_OFF.png_button_eventHandlers_click_clickAddSQAButton" method="clickAddSQAButton"/>
 							</eventHandlers>					  
+						</button>  -->
+						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" transitionTo="WorkExecution.CreateSQADetails" >		  
 						</button>
 					</groupitem>
 					
@@ -4975,6 +4978,7 @@
 		<view id="WorkExecution.sqa" label="SQA/SQE Checklist">
 			<requiredResources id="WorkExecution.sqa_requiredResources">
 				<requiredResource id="WorkExecution.sqa_workOrder" name="sqa">
+				<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist2" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>		
 			<list id="WorkExecution.sqaView_sqa_list" resource="sqa" transitionTo="WorkExecution.SQADetails" >
@@ -5257,6 +5261,72 @@
 			</container>														
 		</view>
 		
+		<!-- Custom Create SQA Checklist Detail View -->
+		<view id="WorkExecution.CreateSQADetails" label="Create SQA/SQE Checklist">
+			<requiredResources id="WorkExecution.CreatesqaDetails_requiredResources">
+				<requiredResource id="WorkExecution.workOrderDetails_requiredresource" name="workOrder">
+					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_sqalist22" name="sqalist"/>
+				</requiredResource>
+			</requiredResources>		
+			<container id="WorkExecution.Createsqa_container_0"  resource="workOrder" attribute="sqalist" >
+				<group id="WorkExecution..CreatesqaView_group_0">	
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_0">
+						<text editable="true" layoutInsertAt="item1" id="WorkExecution..CreatesqaView_groupitem_11" label="Audit" resourceAttribute="auditnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution..CreatesqaView_groupitem_1" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_Description" label="Description" resourceAttribute="description"/>
+					</groupitem>
+					<groupitem id="WorkExecution..CreatesqaView_groupitem_12" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_type" label="Audit Type" resourceAttribute="type"/>
+					</groupitem>		
+					<groupitem id="WorkExecution..CreatesqaView_groupitem_7" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_status" label="Status" resourceAttribute="status"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_17" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_plusgplandate" label="Required Date" resourceAttribute="plusgplandate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_16" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_completedbydate" label="Performed Date" resourceAttribute="completedbydate"/>
+					</groupitem> 
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_2" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_tnbwonum" label="Work Order" resourceAttribute="tnbwonum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_3" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_location" label="Location" resourceAttribute="location"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_4" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookup" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_5" >
+						<text editable="false" id="WorkExecution.CreatesqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="tnbpercentage"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_6" >
+						<text editable="false" id="WorkExecution.CreatesqaView_groupitem_totalscore" label="Total Score" resourceAttribute="totalscore"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_62" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_createdby" label="Created By" resourceAttribute="createdby"/>
+					</groupitem> 
+					<groupitem id="WorkExecution.CreatesqaView_groupitem_64" >
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_completedby" label="Performed By" resourceAttribute="completedby"/>
+					</groupitem>													
+				</group>			
+			</container>	
+			<eventHandlers id="WorkExecution.CreateSqaEntryView_eventHandlers">
+				<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.ActualMaterialsEntryView_eventHandlers_initialize_initAddSqaView" method="initAddSqaView"/>
+				<eventHandler class="custom.SqaDetailHandler" event="cleanup" id="WorkExecution.ActualMaterialsEntryView_eventHandlers_cleanup_handleBsackButtonClick" method="handleBackButtonClick"/>
+			</eventHandlers>
+			<footer id="WorkExecution.CreateSQAEntryView_footer">
+				<button id="WorkExecution.ActualMaterialsEntryView_Cancel_button2" label="Cancel">
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.ActualMaterialsEntryView_Create_button2" label="Create" primary="true">
+					<eventHandlers id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers_click_commitActualMaterialEntryView2" method="saveCreateSqa"/>
+					</eventHandlers>
+				</button>
+			</footer>
+																
+		</view>
+		
 		<!-- Custom Sqa Line View -->
 		<view id="WorkExecution.SqaLineView" label="Question">
 			<requiredResources id="WorkExecution.Question.View_requiredResources">
@@ -5447,7 +5517,7 @@
 					</eventHandlers>
 				</button>
 				<button cssClass="mblPrimaryButton" id="WorkExecution.ActualMaterialsEntryView_Create_button" label="Create" primary="true">
-					<eventHandlers id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers">
+					<eventHandlers id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers45">
 						<eventHandler class="application.handlers.ActualMaterialHandler" event="click" id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers_click_commitActualMaterialEntryView" method="commitActualMaterialEntryView"/>
 					</eventHandlers>
 				</button>
@@ -9064,6 +9134,9 @@
 				<attribute describedByProperty="spi_wm:tnbwodirectmeters" describedByResource="tnbwodirectmetersResource" id="workOrder_tnbwometergrouplist_spi_tnbwodirectmeters" name="tnbwodirectmeterslist"/>
 				<attribute describedByProperty="spi_wm:plusgpermitwork" describedByResource="permitResource" id="workOrder_tnbwometergrouplist_spi_plusgpermitwork" name="permitlist"/>
 				
+				
+				<attribute describedByProperty="spi_wm:plusgaudit" describedByResource="sqaResource" id="workOrder_sqaResource" name="sqalist"/>
+				
 				<!-- END -->
 						
 				
@@ -9307,7 +9380,7 @@
 			</attributes>
 		</resource>
 		
-		<!-- custom sqa resource -->
+		<!-- custom sqa resource (standalone)-->
 		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="sqa_attributes">
 				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_wmplusgauditid" name="plusgauditid"/>
@@ -9325,12 +9398,34 @@
 				<attribute describedByProperty="spi_wm:tnbpercentage" id="sqa_wmtnbpercentage" index="true" name="tnbpercentage"/>
 				<attribute describedByProperty="spi_wm:totalscore" id="sqa_vmtotalscore" index="true" name="totalscore"/>
 				<attribute describedByProperty="spi_wm:plusgplandate" id="sqa_vmplusgplandate" name="plusgplandate"/>
+				<attribute describedByProperty="spi_wm:template" id="sqa_template" name="template"/>
 				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/> 
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
 			</attributes>
 			<queryBases id="sqa_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
 			</queryBases> 
+		</resource>
+		
+		<!-- custom sqa resource child of work order-->
+		<resource  id="sqaResource" name="sqaResource">
+			<attributes id="sqaResource_attributes">
+				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_wmplusgauditid2" name="plusgauditid"/>
+				<!-- <attribute describedByProperty="spi_wm:anywhererefid" id="sqa_anywhererefid" name="anywhereRefId"/>-->
+				<attribute describedByProperty="spi_wm:auditnum" id="sqa_wmauditnum2" index="true" name="auditnum"/>
+				<attribute describedByProperty="spi_wm:description" id="sqa_tnbstatus2" index="true" name="description"/>
+				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus2" index="true" name="status"/>
+				<attribute describedByProperty="spi_wm:type" id="sqa_type2" name="type"/>   
+				<attribute describedByProperty="spi_wm:completedbydate" id="sqa_completedbydate2"  name="completedbydate"/>
+				<attribute describedByProperty="spi_wm:createdby" id="sqa_createdby2"  name="createdby"/>  
+				<attribute describedByProperty="spi_wm:completedby" id="sqa_completedby2" name="completedby"/>
+				<attribute describedByProperty="spi_wm:tnbwonum" id="sqa_tnbwonum2" index="true" name="tnbwonum"/>
+				<attribute describedByProperty="spi_wm:location" id="sqa_wmlocation2" index="true" name="location"/>
+				<attribute describedByProperty="spi_wm:assetnum" id="sqa_assetnum2" index="true" name="assetnum"/>
+				<attribute describedByProperty="spi_wm:tnbpercentage" id="sqa_wmtnbpercentage2" index="true" name="tnbpercentage"/>
+				<attribute describedByProperty="spi_wm:totalscore" id="sqa_vmtotalscore2" index="true" name="totalscore"/>
+				<attribute describedByProperty="spi_wm:plusgplandate" id="sqa_vmplusgplandate2" name="plusgplandate"/>
+			</attributes>
 		</resource>
 		
 		<!-- custom sqa line resource -->
@@ -9346,6 +9441,19 @@
 				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/> 
 			</attributes>
 		</resource>
+		
+		
+		<!-- custom sqa line resource (standalone) 
+		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklistQuestion" id="plusgaudline" name="plusgaudline" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="sqaline_attributes">
+				<attribute describedByProperty="spi_wm:question" id="sqa_question" name="question"/>
+				<attribute describedByProperty="spi_wm:plusgaudlineid" id="sqa_plusgaudlineid" name="plusgaudlineid"/>
+			</attributes>
+			<queryBases id="sqaline_queryBases">
+	 			<queryBase defaultForSearch="true" id="sqaLinesearchAll" name="searchAllsqaline" queryUri="/oslc/os/oslcsqaquestion" />
+			</queryBases> 
+			<whereClause clause="spi:plusgaudlineid=" id="additionalDataSheetTemplateResource_whereClause"/>
+		</resource> -->
 
 		<!-- Ancestor resource -->
 		<resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#LocationAncestor" id="locancestorResource" name="locancestorResource" providedBy="/oslc/sp/WorkManagement">			
