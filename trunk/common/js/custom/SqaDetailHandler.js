@@ -2,6 +2,7 @@ define("custom/SqaDetailHandler",
 	   [ "dojo/_base/declare",
 	     "dojo/_base/array",
 		  "dojo/_base/lang",
+		  "custom/SqaObject",
 	     "platform/handlers/_ApplicationHandlerBase",
 	     "platform/comm/CommunicationManager",
 	     "custom/SqaObject", 
@@ -21,14 +22,16 @@ define("custom/SqaDetailHandler",
 	     "platform/store/PersistenceManager",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties"],
-function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,sqa, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
+function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, CommunicationManager,sqa, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
 {
 	var listSizeArray = ['plusgaudlinelistsize'];
 	var loadingLists = false;
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
+		
 		initSqa : function(eventContext){
 			console.log('custom.SqaDetailHandler');
 			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+			
 			console.log(actualSqa);
 			var sqlLineCount = actualSqa.plusgaudlinelistsize;
 			console.log(sqlLineCount);
@@ -39,6 +42,25 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				actualSqa.set(listSizeArray[0],sqlLineCount);
 			}
 			
+			//check number of question.if question empty it will automatically populate the question from audit template
+//			var noOfQuestion= actualSqa.plusgaudlinelist.data.length;
+//			var questions = [];
+//			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
+//			
+//			if(noOfQuestion==0){
+//				console.log("question is empty");
+//				
+//				var newSQA= sqlineaSet.createNewRecord();
+//				newSQA.set('description',"hai");
+//				//eventContext.setMyResourceObject(sqlineaSet);
+//				ModelService.save(actualSqa).always(function(){
+//					console.log("saved");
+//					//workOrder.deleteLocal();
+//					});			
+//			
+//			}
+//			
+//			console.log(actualSqa.get('plusgauditid'));
 			
 		},
 		
@@ -126,27 +148,68 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}			
 		},
 		
-		clickAddSQAButton: function(eventContext) {
-			var sqaSet= CommonHandler._getAdditionalResource(eventContext,"sqa");
-			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrenRecord;
+		
+		
+		initAddSqaView: function(eventContext) {
+			var view = eventContext.viewControl;
+			var sqaSet=null;
 			var workOrder = this.application.getResource("workOrder").getCurrentRecord(); 
 			var wonum = workOrder.get('wonum');
-			var newSQA= sqaSet.createNewRecord();
-			newSQA.set('tnbwonum',wonum);
-			newSQA.set('auditnum','5555');
-			newSQA.set('description','SQA for Work order ' + wonum);
-			newSQA.set('status',"DRAFT");
 			
-			console.log(sqa);
+			if(!view.isOverrideEditMode()){
+				sqaSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.sqalist");
+				var newSQA= sqaSet.createNewRecord();
+				SqaObject.setDefaultValues(newSQA, wonum)
+//				newSQA.set('tnbwonum',wonum);
+//				//newSQA.set('auditnum','6002');
+//				newSQA.set('description','SQA for Work order ' + wonum);
+//				newSQA.set('status',"ENTRY");
+			}
+			if(sqaSet){
+				eventContext.setMyResourceObject(sqaSet);		
+			}
+		
+				
+		},
+		
+		saveCreateSqa:function(eventContext){	
+			console.log("create sqa");
 			
-			ModelService.save(sqaSet).then(function() {
-				console.log(sqaSet);
-				eventContext.ui.showMessage("SQA Number AnywhereID received.");
-			}).
-			otherwise(function(err){
-				eventContext.application.hideBusy();
-				eventContext.ui.showMessage(err);						
-			});			
+			if(!eventContext.viewControl.validate()){
+				return;
+			}
+			this.saveTransaction();
+	
+
+		},
+		
+		saveTransaction:function(eventContext){	
+			console.log("___create sqa");
+			
+			try{
+     			var workOrderSet = CommonHandler._getAdditionalResource(this,"workOrder");
+     			var sqa = workOrderSet.getCurrentRecord();
+				if (!sqa.isNew()) {
+					console.log("is new");
+					ModelService.save(workOrderSet);
+				}			
+				this.ui.hideCurrentView();
+			}catch(e){
+				throw e;
+			}
+			
+
+		},
+		
+		handleBackButtonClick: function(eventContext){
+			console.log("handleBackButtonClick");
+			var view = eventContext.viewControl;
+			if(!view.isOverrideEditMode()){
+				var sqa=eventContext.getCurrentRecord();
+				sqa.deleteLocal();
+				return;
+			}
+			this.saveCreateSqa(eventContext);
 		}
 		
 		

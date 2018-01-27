@@ -31,7 +31,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 		//initiated permit
 		initAddPermitView: function(eventContext){
-			var view = eventContext.viewControl;
+			var view = eventContext.viewControl;z
 			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
 			if(!view.isOverrideEditMode()){
 				console.log('Im Here');
