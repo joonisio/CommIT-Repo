@@ -25,6 +25,25 @@ define("custom/SqaDetailHandler",
 function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, CommunicationManager,sqa, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
 {
 	var listSizeArray = ['plusgaudlinelistsize'];
+	var questionArray =['Peralatan Perlindungan Diri (PPD) - Topi Keselamatan',
+	                    '\'Vest\' Keselamatan',
+	                    'Kasut Keselamatan',
+	                    'Sarung tangan',
+	                    'Pakaian Kalis Arka (AFS/FRS)',
+	                    'Tool & Equipment',
+	                    'Instrument',
+	                    'Kenderaan',
+	                    'Peralatan lalulintas',
+	                    'Komposisi Pasukan (AP/ST/CP)',
+	                    'NIOSH TNB Safety Passport - NTSP',
+	                    'Test B4 Touch - TBT (AP & Pekerja)',
+	                    'NSL, Notis AWAS, Notis BAHAYA, Notis PENGUJIAN & Penghadang (Warning Tape)',
+	                    'Tool Box Talk',
+	                    'Permit to Work - PTW',
+	                    'HIRADC',
+	                    'Ruang Terkurung',
+	                    'Prosidur Kerja',
+	                    'Pengurusan Bahan Buangan Terjadual (jika Berkaitan)'];
 	var loadingLists = false;
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],{	
 		
@@ -33,35 +52,42 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
 			
 			console.log(actualSqa);
-			var sqlLineCount = actualSqa.plusgaudlinelistsize;
-			console.log(sqlLineCount);
 		
-			if(sqlLineCount==null){
-				actualSqa.set(listSizeArray[0],0);
-			}else{
-				actualSqa.set(listSizeArray[0],sqlLineCount);
-			}
 			
 			//check number of question.if question empty it will automatically populate the question from audit template
-//			var noOfQuestion= actualSqa.plusgaudlinelist.data.length;
-//			var questions = [];
-//			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
-//			
-//			if(noOfQuestion==0){
-//				console.log("question is empty");
-//				
-//				var newSQA= sqlineaSet.createNewRecord();
-//				newSQA.set('description',"hai");
-//				//eventContext.setMyResourceObject(sqlineaSet);
-//				ModelService.save(actualSqa).always(function(){
-//					console.log("saved");
-//					//workOrder.deleteLocal();
-//					});			
-//			
-//			}
-//			
-//			console.log(actualSqa.get('plusgauditid'));
+			var noOfQuestion= actualSqa.plusgaudlinelist.data.length;
+			var questions = [];
+			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
 			
+			
+			if(noOfQuestion==0){
+				console.log("question is empty");
+				var j =0;
+				var newSQA= null;
+				for(var i=0;i<questionArray.length;i++){
+				newSQA= sqlineaSet.createNewRecord();
+				j =i+1;
+				newSQA.set('description',questionArray[i]);
+				newSQA.set('question_longdescription',j.toString());
+				newSQA.set('linenum',j);
+				}
+				
+				var sqaSet =sqlineaSet.getParent().getOwner();
+				ModelService.save(sqaSet).always(function(){
+					console.log("saved");
+					});	
+				var currSqa = sqlineaSet.getCurrentRecord();
+				currSqa.deleteLocal();
+			}
+			
+			//console.log(actualSqa.get('plusgauditid'));
+			
+		},
+		
+		initSqaLine:function(eventContext){
+			console.log('initSqaLine');
+			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
+			console.log(sqlineaSet);
 		},
 		
 		saveSqa : function(eventContext){
