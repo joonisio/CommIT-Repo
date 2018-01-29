@@ -5204,12 +5204,12 @@
 		<view id="WorkExecution.SQADetails" label="SQA/SQE Checklist">
 			<requiredResources id="WorkExecution.sqaDetails_requiredResources">
 				<requiredResource id="WorkExecution.sqaDetails_requiredresource" name="sqa">
+					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist26" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>
-					
-			<eventHandlers id="WorkExecution.SqaDetailView_eventHandlers">
-				<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_PermitHandler" method="initSqa"/>		
-			</eventHandlers>
+					<eventHandlers id="WorkExecution.SqaDetailView_eventHandtgtlers">
+						<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_Permi5ytHandler" method="initSqa"/>		
+					</eventHandlers>
 						
 			<container id="WorkExecution.sqa_container_0" resource="sqa" >
 				<group id="WorkExecution.sqaView_group_0">	
@@ -5235,10 +5235,10 @@
 						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbwonum" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_3" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_location" label="Location" resourceAttribute="location"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_location" label="Location" lookup="WorkExecution.Location4SqaLookup" lookupAttribute="location" resourceAttribute="location"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_4" >
-						<text editable="true" id="WorkExecution.sqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookup" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+						<text editable="true" id="WorkExecution.sqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookupForSqa" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_5" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="tnbpercentage"/>
@@ -5247,10 +5247,10 @@
 						<text editable="false" id="WorkExecution.sqaView_groupitem_totalscore" label="Total Score" resourceAttribute="totalscore"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.sqaView_groupitem_62" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_createdby" label="Created By" resourceAttribute="createdby"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_createdby" label="Created By" lookup="WorkExecution.PersonLookup6" lookupAttribute="createdby" resourceAttribute="createdby"/>
 					</groupitem> 
 					<groupitem id="WorkExecution.sqaView_groupitem_64" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_completedby" label="Performed By" resourceAttribute="completedby"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_completedby" label="Performed By" lookup="WorkExecution.PersonLookup7" lookupAttribute="completedby" resourceAttribute="completedby"/>
 					</groupitem>	
 					
 					<groupitem id="WorkExecution.QView_groupitem_WorkExecution.QDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.SqaLineView">				
@@ -5277,7 +5277,7 @@
 						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_Description" label="Description" resourceAttribute="description"/>
 					</groupitem>
 					<groupitem id="WorkExecution..CreatesqaView_groupitem_12" >
-						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_type" label="Audit Type" resourceAttribute="type"/>
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_type" label="Audit Type" lookup="WorkExecution.plusgaudittypeLookup" resourceAttribute="type"/>
 					</groupitem>		
 					<groupitem id="WorkExecution..CreatesqaView_groupitem_7" >
 						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_status" label="Status" resourceAttribute="status"/>
@@ -5292,10 +5292,10 @@
 						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_tnbwonum" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_3" >
-						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_location" label="Location" resourceAttribute="location"/>
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_location" label="Location" lookup="WorkExecution.Location4SqaLookup" lookupAttribute="location" placeHolder="Tap to enter" resourceAttribute="location"/>
 					</groupitem>
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_4" >
-						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookup" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookupForSqa" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_5" >
 						<text editable="false" id="WorkExecution.CreatesqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="tnbpercentage"/>
@@ -5304,10 +5304,10 @@
 						<text editable="false" id="WorkExecution.CreatesqaView_groupitem_totalscore" label="Total Score" resourceAttribute="totalscore"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_62" >
-						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_createdby" label="Created By" resourceAttribute="createdby"/>
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_createdby" label="Created By" lookup="WorkExecution.PersonLookup6" lookupAttribute="createdby"  resourceAttribute="createdby"/>
 					</groupitem> 
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_64" >
-						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_completedby" label="Performed By" resourceAttribute="completedby"/>
+						<text editable="true" id="WorkExecution.CreatesqaView_groupitem_completedby" label="Performed By" lookup="WorkExecution.PersonLookup7" lookupAttribute="completedby" resourceAttribute="completedby"/>
 					</groupitem>													
 				</group>			
 			</container>	
@@ -5334,9 +5334,9 @@
 					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>
-			<eventHandlers id="WorkExecution.SqaDetailHandler">
-				<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailHandler_action_eventHandlers_render_echeckboxHanlder" method="checkboxInit"/>
-			</eventHandlers>				
+					<eventHandlers id="WorkExecution.SqaDetailView_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.SqaDetailView_eventHandlers_render_PermitHandler" method="initSqaLine"/>		
+					</eventHandlers>				
 			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
@@ -8182,6 +8182,46 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- custom Person lookup 5 -->
+		<lookup id="WorkExecution.PersonLookup6" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources6">
+				<requiredResource id="WorkExecution.Lookup_additionalperson6" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list6" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes6">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid6" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname6" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate6" layout="PersonLookup">
+					<listtext id="wut2146" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2246" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes6">
+				<returnAttribute id="WorkExecution.PersonLookup_createdby" sourceAttribute="personid" targetAttribute="createdby"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Person lookup 6 -->
+		<lookup id="WorkExecution.PersonLookup7" label="Select Person" resource="additionalperson">
+			<requiredResources id="WorkExecution.PersonLookup_requiredResources7">
+				<requiredResource id="WorkExecution.Lookup_additionalperson7" name="additionalperson" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.SubVerticalLookup_additionalperson_list7" resource="additionalperson">
+			    <searchAttributes id="WorkExecution.PersonLookup_additionalperson_searchAttributes7">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid7" name="personid"/>
+					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname7" name="displayname"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate7" layout="PersonLookup">
+					<listtext id="wut2147" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2247" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes7">
+				<returnAttribute id="WorkExecution.PersonLookup_completedby" sourceAttribute="personid" targetAttribute="completedby"/>
+			</returnAttributes>
+		</lookup>
+		
 		<!-- custom Asset Feature lookup -->
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources">
@@ -8277,6 +8317,24 @@
 			<returnAttributes id="WorkExecution.statusLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.statusLookup_value_status" sourceAttribute="value" targetAttribute="status"/>
 				<returnAttribute id="WorkExecution.statusLookup_description_statusdesc" sourceAttribute="description" targetAttribute="statusdesc"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom sqa type lookup -->
+		<lookup  id="WorkExecution.plusgaudittypeLookup" label="Select Value" >
+			<requiredResources id="WorkExecution.splusgaudittypeLookup_requiredResources">
+				<requiredResource id="WorkExecution.plusgaudittypeLookup_domainwostatus" name="plusgaudittype"/>
+				
+			</requiredResources>
+
+			<list id="WorkExecution.plusgaudittype_domainwostatus_list" resource="plusgaudittype">
+				<listItemTemplate id="WorkExecution.plusgaudittype_domainwostatus_listItemTemplate_Item1Desc1" layout="Item1Desc1">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgaudittypeLookup_domainwostatus_Item1Desc1_value" layoutInsertAt="item1" resourceAttribute="value"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgaudittypeLookup_domainwostatus_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.plusgaudittypeLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.plusgaudittypeLookup_value_status" sourceAttribute="value" targetAttribute="type"/>
 			</returnAttributes>
 		</lookup>
 
@@ -8380,6 +8438,34 @@
 
 			<returnAttributes id="WorkExecution.AssetPermitLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.AssetPermitLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="assetnum"/>
+			</returnAttributes>
+
+		</lookup>
+		
+				<!-- custom Asset lookup for sqa -->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterAssetForLookup" id="WorkExecution.AssetLookupForSqa" label="Select Asset" resource="additionalasset">
+			<requiredResources id="WorkExecution.AssetSqatLookup_requiredResources">
+				<requiredResource id="WorkExecution.AssetSqaLookup_additionalasset" name="additionalasset"/>
+				<requiredResource id="WorkExecution.AssetSqaLookup_workOrder" name="workOrder"/>
+			</requiredResources>
+
+			<list id="WorkExecution.AssetSqaLookup_additionalasset_list" resource="additionalasset">
+				<searchAttributes id="WorkExecution.AssetSqaLookup_additionalasset_searchAttributes">
+					<searchAttribute id="WorkExecution.AssetSqaLookup_additionalasset_searchAttribute_assetnum" name="assetnum"/>
+					<searchAttribute id="WorkExecution.AssetSqaLookup_additionalasset_searchAttribute_description" name="description"/>
+					<searchAttribute id="WorkExecution.AssetSqaLookup_additionalasset_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.AssetSqaLookup_additionalasset_searchAttribute_locationdesc" name="locationdesc"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.AssetSqaLookup_additionalasset_listItemTemplate_Item2Desc2" layout="Item2Desc2">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetSqaLookup_additionalasset_Item2Desc2_assetnum" layoutInsertAt="item1" resourceAttribute="assetnum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetSqaLookup_additionalasset_Item2Desc2_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+					<listtext id="WorkExecution.AssetSqaLookup_additionalasset_Item2Desc2_location" layoutInsertAt="item2" resourceAttribute="location"/>
+					<listtext id="WorkExecution.AssetSqaLookup_additionalasset_Item2Desc2_locationdesc" layoutInsertAt="desc2" resourceAttribute="locationdesc"/>
+				</listItemTemplate>
+			</list>
+
+			<returnAttributes id="WorkExecution.AssetSqaLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.AssetSqaLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="assetnum"/>
 			</returnAttributes>
 
 		</lookup>
@@ -8558,6 +8644,26 @@
 				<returnAttribute id="WorkExecution.LocationLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
 				<returnAttribute id="WorkExecution.LocationLookup_location_location_name" sourceAttribute="location" targetAttribute="location_name"/>
 				<returnAttribute id="WorkExecution.LocationLookup_description_locationdesc" sourceAttribute="description" targetAttribute="locationdesc"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Location for sqa lookup -->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterLocationForLookup" id="WorkExecution.Location4SqaLookup" label="Select Location" resource="additionallocations">
+			<requiredResources id="WorkExecution.Location4SqaLookup_requiredResources">
+				<requiredResource id="WorkExecution.Location4SqaLookup_additionallocations" name="additionallocations"/>
+			</requiredResources>
+			<list id="WorkExecution.Location4SqaLookup_additionallocations_list" resource="additionallocations">
+				<searchAttributes id="WorkExecution.Location4SqaLookup_additionallocations_searchAttributes">
+					<searchAttribute id="WorkExecution.Location4SqaLookup_additionallocations_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.Location4SqaLookup_additionallocations_searchAttribute_description" name="description"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Location4SqaLookup_additionallocations_listItemTemplate_Item1Desc1" layout="Item1Desc1">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.Location4SqaLookup_additionallocations_Item1Desc1_location" layoutInsertAt="item1" resourceAttribute="location"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.Location4SqaLookup_additionallocations_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.Location4SqaLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.Location4SqaLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
 			</returnAttributes>
 		</lookup>
 
@@ -9435,7 +9541,7 @@
 				<attribute describedByProperty="spi_wm:linenum" id="plusgaudlineResource_feature"  index="true" name="linenum"/>
 				<attribute describedByProperty="spi_wm:linescore" id="plusgaudlineResource_linescore"  name="linescore"/>
 				<attribute describedByProperty="spi_wm:description" id="plusgaudlineResource_description"  index="true" name="description"/> 
-				<!-- <attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  index="true" name="question_longdescription"/> -->
+				<attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  name="question_longdescription"/>
 				<attribute describedByProperty="spi_wm:yes" id="plusgaudlineResource_yes"  index="true"  name="yes"/> 
 				<attribute describedByProperty="spi_wm:no" id="plusgaudlineResource_no"  index="true"  name="no"/> 
 				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/> 
@@ -9443,17 +9549,17 @@
 		</resource>
 		
 		
-		<!-- custom sqa line resource (standalone) 
+		<!-- custom sqa line resource (standalone) -->
 		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklistQuestion" id="plusgaudline" name="plusgaudline" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="sqaline_attributes">
-				<attribute describedByProperty="spi_wm:question" id="sqa_question" name="question"/>
-				<attribute describedByProperty="spi_wm:plusgaudlineid" id="sqa_plusgaudlineid" name="plusgaudlineid"/>
+				<attribute describedByProperty="spi_wm:description" id="sqa_questiondescription" name="description"/>
+				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_plusgaudlineid" name="plusgauditid"/>
 			</attributes>
 			<queryBases id="sqaline_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqaLinesearchAll" name="searchAllsqaline" queryUri="/oslc/os/oslcsqaquestion" />
 			</queryBases> 
-			<whereClause clause="spi:plusgaudlineid=" id="additionalDataSheetTemplateResource_whereClause"/>
-		</resource> -->
+			<!-- <whereClause clause="spi_wm:plusgauditid=10" id="additionalData7SheetTemplateResource_whereClause"/>  -->
+		</resource>
 
 		<!-- Ancestor resource -->
 		<resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#LocationAncestor" id="locancestorResource" name="locancestorResource" providedBy="/oslc/sp/WorkManagement">			
@@ -11288,6 +11394,20 @@
 	 		</queryBases>			
 			<whereClause clause="spi:domainid='PLUSCDSENGUNIT'" id="domaingetcaldynamicunit_whereClause"/>
 		</resource>
+		
+		<!-- custom plusgaudittype -->
+		<resource  describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="plusgaudittype" name="plusgaudittype" pageSize="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="plusgaudittype_attributes">
+				<attribute describedByProperty="spi:value" id="plusgaudittype_value_spivalue" name="value" index="true"/>
+				<attribute describedByProperty="spi:description" id="plusgaudittype_description_dctermstitle" name="description" index="true"/>
+				<attribute describedByProperty="spi:domainid" id="plusgaudittype_domainid_oslcshortTitle" name="domainid"/>
+			</attributes>
+			<queryBases id="plusgaudittype_queryBases">
+ 	 			<queryBase id="plusgaudittype_queryBase_getdynamicunit" name="getdowncode" queryUri="/oslc/os/oslcalndomain"/>
+	 		</queryBases>			
+			<whereClause clause="spi:domainid='plusgaudittype'" id="plusgaudittype_whereClause"/>
+		</resource>
+
 
 		<!-- Plan Type domain -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="domainplantype" isSystem="true" name="domainplantype" pageSize="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
