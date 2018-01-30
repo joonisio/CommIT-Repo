@@ -53,7 +53,6 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			
 			console.log(actualSqa);
 		
-			
 			//check number of question.if question empty it will automatically populate the question from audit template
 			var noOfQuestion= actualSqa.plusgaudlinelist.data.length;
 			var questions = [];
@@ -84,11 +83,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			
 		},
 		
-		initSqaLine:function(eventContext){
-			console.log('initSqaLine');
-			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
-			console.log(sqlineaSet);
-		},
+
 		
 		saveSqa : function(eventContext){
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();

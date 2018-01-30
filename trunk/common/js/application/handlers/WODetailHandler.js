@@ -2080,6 +2080,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 	//custom javascript code
 		
 		filterSqa: function(eventContext){
+			console.log("sqa filter");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonum = currentRecord.get("wonum");
 			console.log(wonum);
@@ -2089,11 +2090,32 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 						console.log(locset);
 						Logger.trace(locset);
 						eventContext.application.addResource(locset);
+						eventContext.application.showBusy();
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});
 			} else {
 				Logger.trace("meter is null");
+				eventContext.application.addResource(null);
+			}
+
+			
+		},
+		
+		filterPermit: function(eventContext){
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var wonum = currentRecord.get("wonum");
+			console.log(wonum);
+			
+			if (wonum != null) {
+					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+						console.log(locset);
+						eventContext.application.addResource(locset);
+					}).otherwise(function(error) {
+						Logger.error(JSON.stringify(error));
+					});
+			} else {
+				Logger.trace("permit is null");
 				eventContext.application.addResource(null);
 			}
 
