@@ -42,7 +42,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				//create new record 
 				var newPermit= actualPermitSet.createNewRecord();
 				newPermit.set('tnbwonum',workOrder.get('wonum'));
-				newPermit.set('permitworknum','1100');
 				newPermit.set('tnbstatus','ISSUE');
 				//var additionalLineType = CommonHandler._getAdditionalResource(eventContext,'additionalLineType');
 				//ActualMaterialObject.setDefaultValues(newPermit, additionalLineType);

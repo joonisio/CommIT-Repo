@@ -231,6 +231,15 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				return;
 			}
 			this.saveCreateSqa(eventContext);
+		},
+		
+		initSQALine: function(eventContext){
+			var sqaline = CommonHandler._getAdditionalResource(this,"sqa.plusgaudlinelist");
+			console.log(sqaline);
+			console.log("Init SQAline");
+			if (sqaline.data.length > 19)
+				sqaline.data.splice(0, 19);
+
 		}
 		
 		

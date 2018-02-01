@@ -2090,7 +2090,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 						console.log(locset);
 						Logger.trace(locset);
 						eventContext.application.addResource(locset);
-						eventContext.application.showBusy();
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});
