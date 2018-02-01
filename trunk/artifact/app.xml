@@ -5136,7 +5136,7 @@
 			<container id="WorkExecution.createpermit_container_03"  resource="workOrder"  attribute="permitlist" >
 				<group id="WorkExecution.createView_group_03">	
 					<groupitem id="WorkExecution.createView_groupitem_03">
-						<text editable="true" layoutInsertAt="item1" id="WorkExecution.createPermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
+						<text editable="false" layoutInsertAt="item1" id="WorkExecution.createPermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_0.5">
 						<text editable="true" id="WorkExecution.createPermitView_groupitem_description" label="Description" resourceAttribute="description"/>
@@ -5333,7 +5333,10 @@
 				<requiredResource id="WorkExecution.QuestionView_sqa" name="sqa">
 					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
 				</requiredResource>
-			</requiredResources>			
+			</requiredResources>
+			<eventHandlers id="WorkExecution.SqaLine_eventHandlers">
+				<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.SqaLineView_initlist" method="initSQALine"/>
+			</eventHandlers>						
 			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
