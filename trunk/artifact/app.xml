@@ -519,7 +519,19 @@
 						</eventHandlers>					
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
 					</groupitem>
-					<!-- End custom code -->					
+					<!-- End custom code -->	
+					
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_40" layout="Item1Count1Button1" transitionTo="WorkExecution.ParentWO">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo2" layoutInsertAt="item1" value="Parent Work Order"/>
+					</groupitem>	
+					
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
+							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
+								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
+							</eventHandlers>
+					</groupitem>		
+							
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.MultipleAssetsLocationsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo" layoutInsertAt="item1" value="Multiple Assets &amp; Locations"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsize" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
@@ -536,7 +548,7 @@
 						</text> 
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Work Order Meters"/>
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
@@ -650,7 +662,40 @@
 				</group>
 			</container>
 		</view>
-
+		
+		<!-- custom parent wo -->
+			<view id="WorkExecution.ParentWO" label="Parent Work Order">
+			<requiredResources id="WorkExecution.CreatesqaDetails_requiredResources2">
+				<requiredResource id="WorkExecution.workOrderDetails_requiredresource2" name="workOrder">
+				</requiredResource>
+			</requiredResources>		
+			<container id="WorkExecution.Createsqa_container_0"  resource="workOrder" >
+				<group id="WorkExecution..CreatesqaView_group_0">	
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_403" layout="Item1Count1Button1" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo24" layoutInsertAt="item1" value="Parent Work Order"/>
+ 							<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers3">
+							<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline4" method="parentWO"/>
+							</eventHandlers>
+					</groupitem>									
+				</group>			
+			</container>														
+		</view>
+		
+		<!--Custom children Work Order -->
+		<view id="WorkExecution.ChildrenWO" label="Children of Work Order"  >
+		    <requiredResources id="WorkExecution.ChildrenWO_requiredResources">
+				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="workOrder">
+				</requiredResource>
+			</requiredResources>
+			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="workOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="MeterList">	
+					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="wonum"/>		
+					<listtext id="WorkExecution.AttachmentsView_workOrder_descrip" layoutInsertAt="item2" resourceAttribute="description"/>															
+				</listItemTemplate>				
+			</list>	
+		</view>
+		
+		
 		<!-- Define Attachments List view -->
 		<view id="WorkExecution.AttachmentsView" label="Attachments" showOverflow="true">
 			<requiredResources id="WorkExecution.AttachmentsView_requiredResources">
@@ -5131,8 +5176,7 @@
 				<requiredResource id="WorkExecution.createpermit_workOrder23" name="workOrder">
 				<requiredAttribute id="WorkExecution.createPermitViewDetails_workOrder_permitlist2" name="permitlist"/>
 				</requiredResource>
-			</requiredResources>			
-					
+			</requiredResources>					
 			<container id="WorkExecution.createpermit_container_03"  resource="workOrder"  attribute="permitlist" >
 				<group id="WorkExecution.createView_group_03">	
 					<groupitem id="WorkExecution.createView_groupitem_03">
@@ -5209,21 +5253,20 @@
 			</requiredResources>
 					<eventHandlers id="WorkExecution.SqaDetailView_eventHandtgtlers">
 						<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_Permi5ytHandler" method="initSqa"/>		
-					</eventHandlers>
-						
+					</eventHandlers>				
 			<container id="WorkExecution.sqa_container_0" resource="sqa" >
 				<group id="WorkExecution.sqaView_group_0">	
 					<groupitem id="WorkExecution.sqaView_groupitem_0">
 						<text editable="false" layoutInsertAt="item1" id="WorkExecution.sqaView_groupitem_11" label="Audit" resourceAttribute="auditnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_1" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_Description" label="Description" resourceAttribute="description"/>
+						<text editable="true" id="WorkExecution.sqaView_groupitem_Description" label="Description" resourceAttribute="description"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_12" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_type" label="Audit Type" resourceAttribute="type"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_type" label="Audit Type" lookup="WorkExecution.plusgaudittypeLookup" placeHolder="Tap to enter" resourceAttribute="type"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.sqaView_groupitem_7" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" resourceAttribute="status"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" lookup="WorkExecution.plusgauditstatusLookup"  lookupAttribute="status" placeHolder="Tap to enter" resourceAttribute="status"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_17" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_plusgplandate" label="Required Date" resourceAttribute="plusgplandate"/>
@@ -5256,7 +5299,15 @@
 					<groupitem id="WorkExecution.QView_groupitem_WorkExecution.QDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.SqaLineView">				
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.SQAView_groupitem_WorkExecution.QDetails" layoutInsertAt="item1" value="Question"></text>
 						<text editable="false" id="WorkExecution.SQAView_groupitem_WorkExecutionSQAlineView" layoutInsertAt="count1" resourceAttribute="plusgaudlinelistsize"></text>
-					</groupitem>													
+					</groupitem>   
+					<!--<groupitem id="WorkExecution.QView_groupitem_WorkExecution.QDetails_0" layout="Item1Count1Button1" >				
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.SQAView_groupitem_WorkExecution.QDetails" layoutInsertAt="item1" value="Question"></text>
+						<text editable="false" id="WorkExecution.SQAView_groupitem_WorkExecutionSQAlineView" layoutInsertAt="count1" resourceAttribute="plusgaudlinelistsize"></text>
+						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler32">
+							<eventHandler id="WorkExecution.SqaLineView_332" class="custom.SqaDetailHandler" event="click" method="filterSqaQuestion"/>
+						</eventHandlers> 
+					</groupitem>   -->
+																		
 				</group>			
 			</container>														
 		</view>
@@ -5268,8 +5319,8 @@
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_sqalist22" name="sqalist"/>
 				</requiredResource>
 			</requiredResources>		
-			<container id="WorkExecution.Createsqa_container_0"  resource="workOrder" attribute="sqalist" >
-				<group id="WorkExecution..CreatesqaView_group_0">	
+			<container id="WorkExecution.Createsqa_container_03"  resource="workOrder" attribute="sqalist" >
+				<group id="WorkExecution..CreatesqaView_group_03">	
 					<groupitem id="WorkExecution.CreatesqaView_groupitem_0">
 						<text editable="false" layoutInsertAt="item1" id="WorkExecution..CreatesqaView_groupitem_11" label="Audit" resourceAttribute="auditnum"/>
 					</groupitem>
@@ -5331,12 +5382,13 @@
 		<view id="WorkExecution.SqaLineView" label="Question">
 			<requiredResources id="WorkExecution.Question.View_requiredResources">
 				<requiredResource id="WorkExecution.QuestionView_sqa" name="sqa">
-					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist"/>
+					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist" name="plusgaudlinelist" />
 				</requiredResource>
 			</requiredResources>
 			<eventHandlers id="WorkExecution.SqaLine_eventHandlers">
 				<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.SqaLineView_initlist" method="initSQALine"/>
 			</eventHandlers>						
+
 			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
@@ -5369,6 +5421,44 @@
 			</footer>
 		</view>
 		
+		<!-- Custom Sqa Line View -->
+		<view id="WorkExecution.SqaLineView2" label="Question">
+			<requiredResources id="WorkExecution.Question.View_requiredResources2">
+				<requiredResource id="WorkExecution.QuestionView_plusgaudline" name="audlineResource">
+				</requiredResource>
+			</requiredResources>	
+			<list  id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list2" resource="audlineResource">
+				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem22" layout="QuestionListItem">
+					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum2" layoutInsertAt="item1" resourceAttribute="linenum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_description2" layoutInsertAt="item2" resourceAttribute="description"/>
+					<listtext id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_question_longdescription2" layoutInsertAt="item3" resourceAttribute="question_longdescription"/>
+					<checkbox cssClass="rightCheckBox" label="Yes" id="WorkExecution.SqaView_yes_checkbox2" layoutInsertAt="checkbox1" resourceAttribute="yes">
+					  	<eventHandlers id="WorkExecution.SqaLine_checkboxHandler22">
+							<eventHandler id="WorkExecution.SqaLineView_322" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
+					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox2" layoutInsertAt="checkbox1" resourceAttribute="no">
+						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler223">
+							<eventHandler id="WorkExecution.SqaLineView_3223" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
+					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox2" layoutInsertAt="checkbox1" resourceAttribute="notapplicable">
+					<eventHandlers id="WorkExecution.SqaLine_checkboxHandler325">
+							<eventHandler id="WorkExecution.SqaLineView_3325" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+						</eventHandlers> 
+					</checkbox>
+					<text editable="true" id="linescore_text3" layoutInsertAt="item4" resourceAttribute="linescore"></text>
+				</listItemTemplate>
+			</list>
+			<footer id="sqaSaveFooter2">
+			    <button cssClass="mblPrimaryButton" id="WorkExecution.saveSqaView_Save_button2" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.SqaLine_Save_button_eventHandlers2">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.SqaLineView_Save_button_eventHandlers_click_save2" method="saveSqa"/>
+					</eventHandlers>
+				</button>
+			</footer>
+		</view>
+		
 		<!-- Define Actual Material list view -->
 		<view id="WorkExecution.ActualMaterialsView" label="Actual Materials">
 			<requiredResources id="WorkExecution.ActualMaterialsView_requiredResources">
@@ -5385,14 +5475,12 @@
 			</actions>
 
 			<list attribute="actualmateriallist" id="WorkExecution.ActualMaterialsView_workOrder_actualmateriallist_list" resource="workOrder" transitionTo="WorkExecution.ActualMaterialsDetailView">
-
 				<sortOptions id="WorkExecution.ActualMaterialsView_workOrder_actualmateriallist_list_sortOptions">
 					<sortOption id="WorkExecution.ActualMaterialsView_sortOption_TaskIDItem" label="Task ID, Item">
 						<sortAttribute direction="asc" id="WorkExecution.ActualMaterialsView_TaskIDItem_sortAttribute_actualstaskid" name="actualstaskid"/>
 						<sortAttribute direction="asc" id="WorkExecution.ActualMaterialsView_TaskIDItem_sortAttribute_itemanddescription" name="itemanddescription"/>
 					</sortOption>
 				</sortOptions>
-
 				<listItemTemplate id="WorkExecution.ActualMaterialsView_workOrder_actualmateriallist_listItemTemplate_ActualMaterialListItem" layout="ActualMaterialListItem">
 					<listtext id="WorkExecution.ActualMaterialsView_workOrder_ActualMaterialListItem_actualstaskid" layoutInsertAt="item1" resourceAttribute="actualstaskid"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ActualMaterialsView_workOrder_ActualMaterialListItem_itemanddescription" layoutInsertAt="item2" resourceAttribute="itemanddescription"/>
@@ -9179,6 +9267,7 @@
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
+				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear"  name="parentWonum" />
 				<attribute describedByProperty="spi_wm:tnbsubvertical" id="workOrder_tnbsubvertical_spi_wmtnbsubvertical" index="true" name="tnbsubvertical"/>
 				<attribute describedByProperty="dcterms:identifier" id="workOrder_identifier_dctermsidentifier" index="true" name="identifier"/>
 				<attribute describedByProperty="dcterms:title" id="workOrder_description_dctermstitle" index="true" method="descriptionChanged" name="description"/>
@@ -9561,15 +9650,20 @@
 		
 		
 		<!-- custom sqa line resource (standalone) -->
-		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklistQuestion" id="plusgaudline" name="plusgaudline" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklistQuestion" defaultOrderBy="plusgauditid asc" id="audlineResource" name="audlineResource" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="sqaline_attributes">
-				<attribute describedByProperty="spi_wm:description" id="sqa_questiondescription" name="description"/>
-				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_plusgaudlineid" name="plusgauditid"/>
+				<attribute describedByProperty="spi_wm:linenum" id="plusgaudlineResource_feature2"  index="true" name="linenum"/>
+				<attribute describedByProperty="spi_wm:linescore" id="plusgaudlineResource_linescore2"  name="linescore"/>
+				<attribute describedByProperty="spi_wm:description" id="plusgaudlineResource_description2"  index="true" name="description"/> 
+				<attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription2"  name="question_longdescription"/>
+				<attribute describedByProperty="spi_wm:yes" id="plusgaudlineResource_yes2"  index="true"  name="yes"/> 
+				<attribute describedByProperty="spi_wm:no" id="plusgaudlineResource_no2"  index="true"  name="no"/> 
+				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable2"  index="true" name="notapplicable"/> 
+				<attribute describedByProperty="spi_wm:plusgauditid" id="sqa_plusgauditid2" name="plusgauditid" index="true"/>
 			</attributes>
 			<queryBases id="sqaline_queryBases">
-	 			<queryBase defaultForSearch="true" id="sqaLinesearchAll" name="searchAllsqaline" queryUri="/oslc/os/oslcsqaquestion" />
+	 			<queryBase id="sqaLinesearchAll" name="searchAllsqaline" queryUri="/oslc/os/oslcsqaquestion" />
 			</queryBases> 
-			<!-- <whereClause clause="spi_wm:plusgauditid=10" id="additionalData7SheetTemplateResource_whereClause"/>  -->
 		</resource>
 
 		<!-- Ancestor resource -->
@@ -9643,6 +9737,7 @@
 				<attribute describedByProperty="spi_wm:tnblastreadingdate" id="tnbwometers_tnblastreadingdate" name="tnblastreadingdate"/>
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
+				<localAttribute name="meterdesc" id="tnbwometers_description23" dataType="string"/>
 				<!--<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<queryBases id="tnbwometers_queryBases">

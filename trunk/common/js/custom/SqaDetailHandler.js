@@ -63,6 +63,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				console.log("question is empty");
 				var j =0;
 				var newSQA= null;
+
 				for(var i=0;i<questionArray.length;i++){
 				newSQA= sqlineaSet.createNewRecord();
 				j =i+1;
@@ -72,14 +73,46 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				}
 				
 				var sqaSet =sqlineaSet.getParent().getOwner();
-				ModelService.save(sqaSet).always(function(){
+				ModelService.save(sqaSet).then(function(){
 					console.log("saved");
+//					var currSqa = sqlineaSet.getCurrentRecord();
+//					currSqa.deleteLocal();
 					});	
-				var currSqa = sqlineaSet.getCurrentRecord();
-				currSqa.deleteLocal();
+				console.log(actualSqa);
 			}
 			
+			
 			//console.log(actualSqa.get('plusgauditid'));
+			
+		},
+		
+		initSqaLine:function(eventContext){
+			console.log('initSqaLine');
+			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
+			actualSqa.deleteLocal();
+		},
+		
+		filterSqaQuestion:function(eventContext){
+			console.log('filterSqaQuestion');
+			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+			var id = actualSqa.get('plusgauditid');
+			console.log(id);
+			
+			if (id != null) {
+				console.log('plusgauditid is not null');
+				ModelService.filtered('audlineResource', null,[{plusgauditid: id}], 1000, null,null,null,null).then(function(locset){
+					console.log(locset);
+					eventContext.application.addResource(locset);
+					eventContext.ui.show('WorkExecution.SqaLineView2');
+				}).otherwise(function(error) {
+					console.log('error');
+					console.log(JSON.stringify(error));
+				});
+		} else {
+			Logger.trace("plusgauditid is null");
+			eventContext.application.addResource(null);
+			//eventContext.ui.show('WorkExecution.SqaLineView');
+		}
 			
 		},
 		
@@ -88,6 +121,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		saveSqa : function(eventContext){
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
 			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa");
+			//var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"plusgaudline");
 			ModelService.save(actualSqa2).then(function(){
 				eventContext.ui.showToastMessage(msg);
 				console.log('save completed');
@@ -206,7 +240,6 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		
 		saveTransaction:function(eventContext){	
 			console.log("___create sqa");
-			
 			try{
      			var workOrderSet = CommonHandler._getAdditionalResource(this,"workOrder");
      			var sqa = workOrderSet.getCurrentRecord();

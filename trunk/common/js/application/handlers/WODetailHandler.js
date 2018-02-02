@@ -2088,7 +2088,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			if (wonum != null) {
 					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
 						console.log(locset);
-						Logger.trace(locset);
 						eventContext.application.addResource(locset);
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
@@ -2097,7 +2096,44 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				Logger.trace("meter is null");
 				eventContext.application.addResource(null);
 			}
+		},
+		
+		parentWO:function(eventContext){
+			console.log("parentWO");
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWonum = currentRecord.get("parentWonum");
+			console.log(parentWonum);
+			
+			if (parentWonum != null) {
+				console.log("parentWonum not null");
+				ModelService.filtered('workOrder', null,[{wonum: parentWonum}], 1000, null,null,null,null).then(function(locset){
+					console.log(locset);
+					eventContext.application.addResource(locset);
+					eventContext.ui.show('WorkExecution.WorkDetailView');
+				}).otherwise(function(error) {
+					Logger.error(JSON.stringify(error));
+				});
+		} 
 
+		},
+		
+		filterChild:function(eventContext){
+			console.log("parentWO");
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var wonums = currentRecord.get("wonum");
+			var siteids = currentRecord.get("siteid");
+			console.log(wonums + " "+siteids);
+			
+			if (wonums != null) {
+				console.log("wonums not null");
+				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
+					console.log(locset);
+					eventContext.application.addResource(locset);
+					eventContext.ui.show('WorkExecution.ChildrenWO');
+				}).otherwise(function(error) {
+					Logger.error(JSON.stringify(error));
+				});
+		} 
 			
 		},
 		
@@ -2117,12 +2153,9 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				Logger.trace("permit is null");
 				eventContext.application.addResource(null);
 			}
-
 			
 		},
-		
-		
-		
+	
 		updateAtrributeInTask : function(eventContext){
 			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
@@ -2136,7 +2169,6 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			  self.ui.showMessage(error.message);
 			});
 			
-		
 		},
 		
 		NewLinearWO: function(eventContext) {

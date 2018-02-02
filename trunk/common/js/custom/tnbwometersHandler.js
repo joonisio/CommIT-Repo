@@ -24,8 +24,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		filterMeter : function(eventContext) {
 			var currentRecord = eventContext.getCurrentRecord();
 			var meter = currentRecord.get("tnbwometerslist");
-			Logger.trace(meter);
-			console.log(meter);
+			console.log("filterMeter "+currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			if (meter != null) {
 				Logger.trace("meter has value");
