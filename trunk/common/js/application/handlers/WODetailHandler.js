@@ -2113,7 +2113,9 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				}).otherwise(function(error) {
 					Logger.error(JSON.stringify(error));
 				});
-		} 
+		} else{
+			eventContext.ui.showMessage('this work order has no parent');
+		}
 
 		},
 		
@@ -2142,6 +2144,17 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 					Logger.error(JSON.stringify(error));
 				});
 		} 
+			
+		},
+		
+		parentLabel:function(eventContext){
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWonum = currentRecord.get("parentWonum");
+			if(parentWonum != null){
+				return ['Parent Work Order - '+parentWonum];
+			}else{
+				return ['No Parent'];
+			}
 			
 		},
 		
