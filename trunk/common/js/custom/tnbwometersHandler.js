@@ -22,22 +22,25 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		},
 
 		filterMeter : function(eventContext) {
+			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
 			var currentRecord = eventContext.getCurrentRecord();
 			var meter = currentRecord.get("tnbwometerslist");
-			console.log("filterMeter "+currentRecord.get("description"));
+			workOrder.set('tempMeterName',currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			if (meter != null) {
-				Logger.trace("meter has value");
 				console.log("meter has value");
 					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
+						
 						if (locset.fetchedFromServer){
 							console.log("fetched from server");
 						}
+						
 						locset.resourceID = 'tnbwometers';
 						console.log(locset);
 						Logger.trace(locset);
 						eventContext.application.addResource(locset);
 						eventContext.ui.show(redirect);
+						
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});
@@ -46,7 +49,13 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 				eventContext.application.addResource(null);
 				eventContext.ui.show(redirect);
 			}
-
+		
+		},
+		
+		meterLabel:function(eventContext){
+			console.log('meterLabel');
+			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
+			return [workOrder.get('tempMeterName')];
 		},
 
 	});

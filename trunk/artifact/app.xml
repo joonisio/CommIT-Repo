@@ -3917,8 +3917,9 @@
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
+				<requiredResource id="WorkExecution.workt_workOrder2" name="workOrder"/>
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="Meter Specific to Meter Group" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
+			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="{0}" resolverClass="custom.tnbwometersHandler" resolverFunction="meterLabel" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
@@ -9415,6 +9416,8 @@
 				<localAttribute dataType="string" id="workOrder_asleftstatus_string" name="asleftstatus"/>
 				<localAttribute dataType="string" id="workOrder_wohistorylistsize_string" name="wohistorylistsize"/>
 				
+				<localAttribute dataType="string" id="workOrder_tempMeterName_string" name="tempMeterName"/>
+				
 				
 			</attributes>
 	        <creationFactories id="workOrder_creationFactories">
@@ -9737,7 +9740,6 @@
 				<attribute describedByProperty="spi_wm:tnblastreadingdate" id="tnbwometers_tnblastreadingdate" name="tnblastreadingdate"/>
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
-				<localAttribute name="meterdesc" id="tnbwometers_description23" dataType="string"/>
 				<!--<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<queryBases id="tnbwometers_queryBases">
