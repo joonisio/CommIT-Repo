@@ -5128,7 +5128,7 @@
 						<text editable="true" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_1323" >
-						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpermittype" label="Permit Type" resourceAttribute="tnbpermittype"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpermittype" lookup="WorkExecution.PermitTypeLookup" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_132" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_status3" lookup="WorkExecution.PermitStatusLookup" label="Status" resourceAttribute="tnbstatus"/>
@@ -5187,7 +5187,7 @@
 						<text editable="true" id="WorkExecution.createPermitView_groupitem_description" label="Description" resourceAttribute="description"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_1323" >
-						<text editable="false" id="WorkExecution.createPermitView_groupitem_tnbpermittype" label="Permit Type" resourceAttribute="tnbpermittype"/>
+						<text editable="true" id="WorkExecution.createPermitView_groupitem_tnbpermittype" lookup="WorkExecution.PermitTypeLookup" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_132" >
 						<text editable="true" id="WorkExecution.createPermitView_groupitem_status3" label="Status" lookup="WorkExecution.PermitStatusLookup" resourceAttribute="tnbstatus"/>
@@ -8866,6 +8866,22 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- custom Permit Type lookup -->
+		<lookup id="WorkExecution.PermitTypeLookup" label="Select Permit Type" resource="permittypedata">
+			<requiredResources id="WorkExecution.PermitTypeLookup_requiredResources">
+				<requiredResource id="WorkExecution.PermitTypeLookup_additionalserviceaddress" name="permittypedata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.PermitTypeLookup_additionalserviceaddress_list" resource="permittypedata">
+				<listItemTemplate id="WorkExecution.PermitTypeLookup_additionalserviceaddress_listItemTemplate_PermitTypeLookup" layout="Item1Desc1">
+					<listtext id="permittypedata_value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="permittypedata_desc" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.PermitTypeLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.PermitTypeLookup_addresscode_woserdresscode" sourceAttribute="value" targetAttribute="tnbpermittype"/>
+			</returnAttributes>
+		</lookup>		
+		
 		<!-- custom Permit Status lookup -->
 		<lookup id="WorkExecution.PermitStatusLookup" label="Select Value" resource="domainpermitstatus">
 			<requiredResources id="WorkExecution.PermitStatusLookup_requiredResources">
@@ -12024,6 +12040,18 @@
 				</queryBases >
 				<!-- <whereClause id="alnmeters_whereClause" clause="spi:domainid='RESULT'" />-->
 		</resource>		
+		
+		<!-- Permit Type resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="permittypedata" name="permittypedata" pageSize="10" additionalData="true">
+				<attributes id="tnbpermittypes_attributes">
+					<attribute name="value" id="tnbpermittypes_serviceaddressid_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="tnbpermittypes_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="tnbpermittypes_queryBases">
+					<queryBase id="tnbpermittypes_queryBase" name="getTNBPermitType" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="tnbpermittypes_whereClause" clause="spi:domainid='TNBPERMITTYPE'" />
+		</resource>			
 		
 		<!-- Custom Permit Status domain -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="domainpermitstatus" isSystem="true" name="domainpermitstatus" pageSize="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
