@@ -273,7 +273,10 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			if (sqaline.data.length > 19)
 				sqaline.data.splice(0, 19);
 
-		}
+		},
+		discardSqa: function(eventContext){
+			 this.ui.hideCurrentView(PlatformConstants.CLEANUP);
+		},
 		
 		
 	});

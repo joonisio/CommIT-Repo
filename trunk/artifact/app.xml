@@ -672,7 +672,7 @@
 			<container id="WorkExecution.Createsqa_container_0"  resource="workOrder" >
 				<group id="WorkExecution..CreatesqaView_group_0">	
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_403" layout="Item1Count1Button1" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo24" layoutInsertAt="item1" value="Parent Work Order"/>
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo24" layoutInsertAt="item1" value="{0}" resolverClass="application.handlers.WODetailHandler" resolverFunction="parentLabel" />
  							<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers3">
 							<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline4" method="parentWO"/>
 							</eventHandlers>
@@ -5267,7 +5267,7 @@
 						<text editable="false" id="WorkExecution.sqaView_groupitem_type" label="Audit Type" lookup="WorkExecution.plusgaudittypeLookup" placeHolder="Tap to enter" resourceAttribute="type"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.sqaView_groupitem_7" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" lookup="WorkExecution.plusgauditstatusLookup"  lookupAttribute="status" placeHolder="Tap to enter" resourceAttribute="status"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" lookup="WorkExecution.plusgauditstatusLookup"  placeHolder="Tap to enter" resourceAttribute="status"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_17" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_plusgplandate" label="Required Date" resourceAttribute="plusgplandate"/>
@@ -5368,7 +5368,10 @@
 				<eventHandler class="custom.SqaDetailHandler" event="cleanup" id="WorkExecution.ActualMaterialsEntryView_eventHandlers_cleanup_handleBsackButtonClick" method="handleBackButtonClick"/>
 			</eventHandlers>
 			<footer id="WorkExecution.CreateSQAEntryView_footer">
-				<button id="WorkExecution.ActualMaterialsEntryView_Cancel_button2" label="Cancel">
+				<button id="WorkExecution.CreateSQAEntryViewCancel_button2" label="Cancel">
+				<eventHandlers id="WorkExecution.CreateSQAEntryView_Create_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.CreateSQAEntryView_Create_button_eventHandlers_click_commitActualMaterialEntryView2" method="discardSqa"/>
+					</eventHandlers>
 				</button>
 				<button cssClass="mblPrimaryButton" id="WorkExecution.ActualMaterialsEntryView_Create_button2" label="Create" primary="true">
 					<eventHandlers id="WorkExecution.ActualMaterialsEntryView_Create_button_eventHandlers">
@@ -5395,12 +5398,12 @@
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_description" layoutInsertAt="item2" resourceAttribute="description"/>
 					<listtext id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_question_longdescription" layoutInsertAt="item3" resourceAttribute="question_longdescription"/>
-					<checkbox cssClass="rightCheckBox" label="Yes" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes">
+					<checkbox cssClass="rightCheckBox" label="SB?" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes">
 					  	<eventHandlers id="WorkExecution.SqaLine_checkboxHandler">
 							<eventHandler id="WorkExecution.SqaLineView_3" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
 						</eventHandlers> 
 					</checkbox>
-					<checkbox cssClass="rightCheckBox" label="No" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no">
+					<checkbox cssClass="rightCheckBox" label="USB?" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no">
 						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler2">
 							<eventHandler id="WorkExecution.SqaLineView_32" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
 						</eventHandlers> 
