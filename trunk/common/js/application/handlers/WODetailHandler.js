@@ -2135,9 +2135,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 						eventContext.application.addResource(locset);
 						eventContext.ui.show('WorkExecution.ChildrenWO');
 					}else{
-						console.log('no child');
-						eventContext.ui.showMessage(msg);
-						
+						eventContext.ui.showMessage(msg);		
 					}
 				
 				}).otherwise(function(error) {
@@ -2154,8 +2152,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				return ['Parent Work Order - '+parentWonum];
 			}else{
 				return ['No Parent'];
-			}
-			
+			}	
 		},
 		
 		filterPermit: function(eventContext){

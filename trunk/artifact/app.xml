@@ -5111,7 +5111,7 @@
 			</eventHandlers>
 		</view>
 
-		
+	
 		<!-- Custom permit detail view-->
 		<view id="WorkExecution.PermitViewDetails2" label="Permit Details">
 			<requiredResources id="WorkExecution.Permit_requiredResources23">
@@ -5143,10 +5143,10 @@
 						<text editable="true" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset" resourceAttribute="assetnum"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset"  placeHolder="Tap to enter" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_121" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
+						<text editable="true" id="WorkExecution.PermitView_groupitem_location2" lookup="WorkExecution.Location4PermitLookup" label="Location"  placeHolder="Tap to enter"  resourceAttribute="location"/>
 					</groupitem>			
 					<groupitem id="WorkExecution.PermitView_groupitem_41" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
@@ -5202,10 +5202,10 @@
 						<text editable="true" id="WorkExecution.createPermitView_groupitem_wonum5" lookup="WorkExecution.WorkOrderLookup" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.createPermitView_groupitem_1312" >
-						<text editable="false" id="WorkExecution.createPermitView_groupitem_assetnum6" label="Asset" resourceAttribute="assetnum"/>
+						<text editable="false" id="WorkExecution.createPermitView_groupitem_assetnum6" label="Asset"  lookup="WorkExecution.AssetLookupForPermit" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PcreateermitView_groupitem_121" >
-						<text editable="false" id="WorkExecution.createPermitView_groupitem_location2" label="Location" resourceAttribute="location"/>
+						<text editable="false" id="WorkExecution.createPermitView_groupitem_location2" label="Location"  lookup="WorkExecution.Location4PermitLookup" resourceAttribute="location"/>
 					</groupitem>			
 					<groupitem id="WorkExecution.createPermitView_groupitem_41" >
 						<text editable="true" id="WorkExecution.createPermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
@@ -8538,6 +8538,7 @@
 			</list>
 
 			<returnAttributes id="WorkExecution.AssetPermitLookup_returnAttributes">
+			<returnAttribute id="WorkExecution.AssetPermitLookup_location" sourceAttribute="location" targetAttribute="location"/>
 				<returnAttribute id="WorkExecution.AssetPermitLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="assetnum"/>
 			</returnAttributes>
 
@@ -8765,6 +8766,26 @@
 			</list>
 			<returnAttributes id="WorkExecution.Location4SqaLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.Location4SqaLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Location for sqa lookup -->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterLocationForLookup" id="WorkExecution.Location4PermitLookup" label="Select Location" resource="additionallocations">
+			<requiredResources id="WorkExecution.Location4PermitLookup_requiredResources">
+				<requiredResource id="WorkExecution.Location4PermitLookup_additionallocations" name="additionallocations"/>
+			</requiredResources>
+			<list id="WorkExecution.Location4PermitLookup_additionallocations_list" resource="additionallocations">
+				<searchAttributes id="WorkExecution.Location4PermitLookup_additionallocations_searchAttributes">
+					<searchAttribute id="WorkExecution.Location4PermitLookup_additionallocations_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.Location4PermitLookup_additionallocations_searchAttribute_description" name="description"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.Location4PermitLookup_additionallocations_listItemTemplate_Item1Desc1" layout="Item1Desc1">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.Location4PermitLookup_additionallocations_Item1Desc1_location" layoutInsertAt="item1" resourceAttribute="location"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.Location4PermitLookup_additionallocations_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.Location4PermitLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.Location4PermitLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
 			</returnAttributes>
 		</lookup>
 
