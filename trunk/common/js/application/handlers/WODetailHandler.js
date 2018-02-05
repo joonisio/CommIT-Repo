@@ -2123,13 +2123,21 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			var wonums = currentRecord.get("wonum");
 			var siteids = currentRecord.get("siteid");
 			console.log(wonums + " "+siteids);
+			var msg = MessageService.createStaticMessage("This work order has no child").getMessage();
 			
 			if (wonums != null) {
 				console.log("wonums not null");
 				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
 					console.log(locset);
-					eventContext.application.addResource(locset);
-					eventContext.ui.show('WorkExecution.ChildrenWO');
+					if(locset.data.length > 0){
+						eventContext.application.addResource(locset);
+						eventContext.ui.show('WorkExecution.ChildrenWO');
+					}else{
+						console.log('no child');
+						eventContext.ui.showMessage(msg);
+						
+					}
+				
 				}).otherwise(function(error) {
 					Logger.error(JSON.stringify(error));
 				});
