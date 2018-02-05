@@ -577,8 +577,8 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitView" layoutInsertAt="item1" value="Permit"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
-						</text>
+						<!-- <text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
+						</text>-->
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
 						</button>
 					</groupitem>
@@ -8201,9 +8201,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate" layout="Item1Desc1">
 					<listtext id="wut21" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla22" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla22" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes">
@@ -8221,9 +8221,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid2" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname2" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate2" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate2" layout="Item1Desc1">
 					<listtext id="wut212" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla222" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla222" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes2">
@@ -8241,9 +8241,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid3" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname3" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate3" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate3" layout="Item1Desc1">
 					<listtext id="wut213" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla223" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla223" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes3">
@@ -8261,9 +8261,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid4" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname4" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate4" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate4" layout="Item1Desc1">
 					<listtext id="wut214" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla224" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla224" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes4">
@@ -8281,9 +8281,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid6" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname6" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate6" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate6" layout="Item1Desc1">
 					<listtext id="wut2146" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla2246" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2246" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes6">
@@ -8301,9 +8301,9 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_personid7" name="personid"/>
 					<searchAttribute id="WorkExecution.PersonLookup_additionalperson_searchAttribute_displayname7" name="displayname"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate7" layout="PersonLookup">
+				<listItemTemplate id="WorkExecution.Lookup_additionalperson_listItemTemplate7" layout="Item1Desc1">
 					<listtext id="wut2147" resourceAttribute="personid" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla2247" resourceAttribute="displayname" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2247" resourceAttribute="displayname" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.PersonLookup_returnAttributes7">
@@ -8324,11 +8324,11 @@
 					<searchAttribute id="WorkExecution.FeatureLookup_assetfeature_searchAttribute_feature" name="feature"/>
 					<searchAttribute id="WorkExecution.FeatureLookup_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.FeatureLookup_assetfeature_listItemTemplate" layout="Item1Desc1">
+				<listItemTemplate id="WorkExecution.FeatureLookup_assetfeature_listItemTemplate" layout="AssetFeature">
 					<listtext id="WorkExecution.FeatureLookup_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="WorkExecution.FeatureLookup_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
-					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
-					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="measure1"/>
+					<listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="measure2"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup_returnAttributes">
@@ -8348,11 +8348,11 @@
 					<searchAttribute id="WorkExecution.FeatureLookup1_assetfeature_searchAttribute_feature" name="feature"/>
 					<searchAttribute id="WorkExecution.FeatureLookup1_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.FeatureLookup1_assetfeature_listItemTemplate" layout="Item1Desc1">
+				<listItemTemplate id="WorkExecution.FeatureLookup1_assetfeature_listItemTemplate" layout="AssetFeature">
 					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
-					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="desc1"/>
-					<!-- <listtext id="WorkExecution.FeatureLookup_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>-->
+					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="measure1"/>
+					<listtext id="WorkExecution.FeatureLookup1_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="measure2"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup1_returnAttributes">
@@ -8366,19 +8366,17 @@
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterFeature" id="WorkExecution.FeatureLookup2" label="Select Feature" resource="assetfeature">
 			<requiredResources id="WorkExecution.FeatureLookup_requiredResources2">
 				<requiredResource id="WorkExecution.FeatureLookup_requiredResource2" name="assetfeature" />
-				<!-- <requiredResource id="WorkExecution.AssetFeatureLookup_workOrder2" name="workOrder">
-					<requiredAttribute id="WorkExecution.NewWODatasheetDetailsView.multiassetloclist23" name="multiassetloclist"/>
-				</requiredResource>-->
 			</requiredResources>
 			<list id="WorkExecution.FeatureLookup2_list" resource="assetfeature">
 			    <searchAttributes id="WorkExecution.FeatureLookup2_assetfeature_searchAttributes">
 					<searchAttribute id="WorkExecution.FeatureLookup2_assetfeature_searchAttribute_feature" name="feature"/>
 					<searchAttribute id="WorkExecution.FeatureLookup2_assetfeature_searchAttribute_featurelabel" name="featurelabel"/>
 				</searchAttributes>
-				<listItemTemplate id="WorkExecution.FeatureLookup2_assetfeature_listItemTemplate" layout="Item1Desc1">
+				<listItemTemplate id="WorkExecution.FeatureLookup2_assetfeature_listItemTemplate" layout="AssetFeature">
 					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list0" resourceAttribute="feature" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list1" resourceAttribute="featurelabel" layoutInsertAt="desc1"/>
-					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list2" resourceAttribute="endmeasure" layoutInsertAt="desc1"/>
+					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list2" resourceAttribute="startmeasure" layoutInsertAt="measure1"/>
+					<listtext id="WorkExecution.FeatureLookup2_assetfeature_list3" resourceAttribute="endmeasure" layoutInsertAt="measure2"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.FeatureLookup2_returnAttributes">
@@ -8433,7 +8431,7 @@
 			<list id="WorkExecution.plusgauditstatus_domainwostatus_list" resource="plusgauditstatus">
 				<listItemTemplate id="WorkExecution.plusgauditstatus_domainwostatus_listItemTemplate_Item1Desc1" layout="Item1Desc1">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgauditstatusLookup_domainwostatus_Item1Desc1_value" layoutInsertAt="item1" resourceAttribute="value"/>
-					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgauditstatusLookup_domainwostatus_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+					<listtext id="WorkExecution.plusgauditstatusLookup_domainwostatus_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.plusgauditstatusLookup_returnAttributes">
@@ -8818,9 +8816,9 @@
 				<requiredResource id="WorkExecution.VerticalLookup_additionalserviceaddress" name="verticaldata" reload="true"/>
 			</requiredResources>
 			<list id="WorkExecution.VerticalLookup_additionalserviceaddress_list" resource="verticaldata">
-				<listItemTemplate id="WorkExecution.VerticalLookup_additionalserviceaddress_listItemTemplate_VerticalLookup" layout="VerticalLookup">
+				<listItemTemplate id="WorkExecution.VerticalLookup_additionalserviceaddress_listItemTemplate_VerticalLookup" layout="Item1Desc1">
 					<listtext id="wut" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla" resourceAttribute="description" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla" resourceAttribute="description" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.VerticalLookup_returnAttributes">
@@ -8834,9 +8832,9 @@
 				<requiredResource id="WorkExecution.SubVerticalLookup_additionalserviceaddress" name="subverticaldata" reload="true"/>
 			</requiredResources>
 			<list id="WorkExecution.SubVerticalLookup_additionalserviceaddress_list" resource="subverticaldata">
-				<listItemTemplate id="WorkExecution.SubVerticalLookup_additionalserviceaddress_listItemTemplate_SubVerticalLookup" layout="SubVerticalLookup">
+				<listItemTemplate id="WorkExecution.SubVerticalLookup_additionalserviceaddress_listItemTemplate_SubVerticalLookup" layout="Item1Desc1">
 					<listtext id="wut2" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
-					<listtext id="olla2" resourceAttribute="description" layoutInsertAt="desc1" cssClass="bold textappearance-medium"/>
+					<listtext id="olla2" resourceAttribute="description" layoutInsertAt="desc1"/>
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.SubVerticalLookup_returnAttributes">
