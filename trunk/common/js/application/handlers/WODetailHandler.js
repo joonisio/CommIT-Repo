@@ -39,6 +39,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize','permitlistsize'];
 	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist"];
 	var loadingLists = false;
+	var previousWO=null;
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
 		//this attribute was inserted to set the location back when canceling 
@@ -2124,14 +2125,14 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonums = currentRecord.get("wonum");
 			var siteids = currentRecord.get("siteid");
-			console.log(wonums + " "+siteids);
 			var msg = MessageService.createStaticMessage("This work order has no child").getMessage();
-			
+		
 			if (wonums != null) {
 				console.log("wonums not null");
 				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
 					console.log(locset);
 					if(locset.data.length > 0){
+						previousWO = wonums;
 						eventContext.application.addResource(locset);
 						eventContext.ui.show('WorkExecution.ChildrenWO');
 					}else{
@@ -2145,6 +2146,20 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			
 		},
 		
+		childBackButton:function(eventContext){
+			console.log('childBackButton');
+			console.log(previousWO);
+			
+			if(previousWO != null){
+				ModelService.filtered('workOrder', null,[{wonum:previousWO}], 1000, null,null,null,null).then(function(locset){
+				eventContext.application.addResource(locset);
+				eventContext.ui.show('WorkExecution.WorkDetailView');
+				}).otherwise(function(error) {
+					Logger.error(JSON.stringify(error));
+				});
+			}
+		},
+		
 		parentLabel:function(eventContext){
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var parentWonum = currentRecord.get("parentWonum");
@@ -2153,6 +2168,23 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}else{
 				return ['No Parent'];
 			}	
+		},
+		
+		hideSectionforChild:function(eventContext){
+			console.log('hide child');
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWo = workOrder.get('parentWonum');
+			console.log(parentWo);
+			if (parentWo){
+				console.log('hiding....');
+				eventContext.setDisplay(false);
+			}
+				
+			else{
+				
+				eventContext.setDisplay(true);
+				}
+				
 		},
 		
 		filterPermit: function(eventContext){
