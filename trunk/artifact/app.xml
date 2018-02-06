@@ -5453,7 +5453,8 @@
 							<eventHandler id="WorkExecution.SqaLineView_33" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
 						</eventHandlers> 
 					</checkbox>
-					<text editable="true" id="linescore_text" layoutInsertAt="item4" resourceAttribute="linescore"></text>
+					<text editable="true" id="linescore_text" label="Line Score" layoutInsertAt="item4" resourceAttribute="linescore"></text>
+					<text editable="true" id="sqaline_tnbsqaremarks" label="Remarks" layoutInsertAt="item4" resourceAttribute="tnbsqaremarks"></text>
 				</listItemTemplate>
 			</list>
 			<footer id="sqaSaveFooter">
@@ -9733,7 +9734,8 @@
 				<attribute describedByProperty="spi_wm:question_longdescription" id="plusgaudlineResource_question_longdescription"  name="question_longdescription"/>
 				<attribute describedByProperty="spi_wm:yes" id="plusgaudlineResource_yes"  index="true"  name="yes"/> 
 				<attribute describedByProperty="spi_wm:no" id="plusgaudlineResource_no"  index="true"  name="no"/> 
-				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/> 
+				<attribute describedByProperty="spi_wm:notapplicable" id="plusgaudlineResource_notapplicable"  index="true" name="notapplicable"/>
+				<attribute describedByProperty="spi_wm:tnbsqaremarks" id="plusgaudlineResource_tnbsqaremarks" name="tnbsqaremarks"/> 
 			</attributes>
 		</resource>
 		
