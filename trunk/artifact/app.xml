@@ -516,6 +516,7 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LinearSegmentDetailsView">
 						<eventHandlers id="workorder.LinearSegmentDetails_eventhandlers">
 							<eventHandler id="workorder.LinearSegmentDetails_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideForNonLinearWO"/>
+							<eventHandler id="workorder.hide_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
 						</eventHandlers>					
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LinearSegmentDetails" layoutInsertAt="item1" value="Linear Segment Details"></text>
 					</groupitem>
@@ -536,24 +537,39 @@
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo" layoutInsertAt="item1" value="Multiple Assets &amp; Locations"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsize" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers">
+							<eventHandler id="workorder.hide_eventhandler" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.TasksView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_Tasks" layoutInsertAt="item1" value="Tasks"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_tasklistsize" layoutInsertAt="count1" resourceAttribute="tasklistsize"> 
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers2">
+							<eventHandler id="workorder.hide_eventhandler2" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem> 
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0" layout="Item1Count1Button1" transitionTo="WorkExecution.WOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0_Meters" layoutInsertAt="item1" value="Meters"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0_meterslistsize" layoutInsertAt="count1" resourceAttribute="meterslistsize">
 						</text> 
+						<eventHandlers id="workorder.hide_eventhandlers3">
+							<eventHandler id="workorder.hide_eventhandler3" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
+						<eventHandlers id="workorder.hide_eventhandlers4">
+							<eventHandler id="workorder.hide_eventhandler4" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers8">
+							<eventHandler id="workorder.hide_eventhandler8" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 						
 					</groupitem>
 				</group>								
@@ -562,6 +578,9 @@
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_LaborAssignments" layoutInsertAt="item1" value="Labor Assignments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_assignmentlistsize" layoutInsertAt="count1" resourceAttribute="assignmentlistsize">
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers5">
+							<eventHandler id="workorder.hide_eventhandler5" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
@@ -587,11 +606,17 @@
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0_PlannedMaterials" layoutInsertAt="item1" value="Planned Materials"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0_materiallistsize" layoutInsertAt="count1" resourceAttribute="materiallistsize">
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers6">
+							<eventHandler id="workorder.hide_eventhandler6" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedToolsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0_PlannedTools" layoutInsertAt="item1" value="Planned Tools"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0_toollistsize" layoutInsertAt="count1" resourceAttribute="toollistsize">
 						</text>
+						<eventHandlers id="workorder.hide_eventhandlers7">
+							<eventHandler id="workorder.hide_eventhandler7" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 				</group>
 				<group id="WorkExecution.WorkDetailView_group_3">
@@ -610,7 +635,11 @@
 								<eventHandler class="application.handlers.ActualLaborHandler" event="datachange" id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers_datachange_enableReportLaborButton" method="enableReportLaborButton"/>
 							</eventHandlers>
 						</button>
+						<eventHandlers id="workorder.hide_eventhandlers9">
+							<eventHandler id="workorder.hide_eventhandler9" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
+					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualMaterialsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.ActualMaterialsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualMaterialsView_0_ActualMaterials" layoutInsertAt="item1" value="Actual Materials"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualMaterialsView_0_actualmateriallistsize" layoutInsertAt="count1" resourceAttribute="actualmateriallistsize">
@@ -620,7 +649,11 @@
 								<eventHandler class="application.handlers.ActualMaterialHandler" event="datachange" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton" method="enableAddMaterialButton"/>
 							</eventHandlers>
 						</button>
+						<eventHandlers id="workorder.hide_eventhandlers10">
+							<eventHandler id="workorder.hide_eventhandler10" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
+					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualToolsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.ActualToolsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualToolsView_0_ActualTools" layoutInsertAt="item1" value="Actual Tools"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualToolsView_0_actualtoollistsize" layoutInsertAt="count1" resourceAttribute="actualtoollistsize">
@@ -630,6 +663,9 @@
 								<eventHandler class="application.handlers.ActualToolHandler" event="datachange" id="WorkExecution.WorkDetailView_AddTool_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddToolButton" method="enableAddToolButton"/>
 							</eventHandlers>
 						</button>
+						<eventHandlers id="workorder.hide_eventhandler11s">
+							<eventHandler id="workorder.hide_eventhandler11" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 				</group>
 				<!--
@@ -653,6 +689,9 @@
 								<eventHandler class="application.handlers.WorkLogHandler" event="datachange" id="WorkExecution.WorkDetailView_CreateWorkLogEntry_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddWorkLogButton" method="enableAddWorkLogButton"/>
 							</eventHandlers>
 						</button> 
+						<eventHandlers id="workorder.hide_eventhandlers12">
+							<eventHandler id="workorder.hide_eventhandler12" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 				</group>				
 				<group id="WorkExecution.WorkDetailView_group_5">
@@ -682,7 +721,7 @@
 		</view>
 		
 		<!--Custom children Work Order -->
-		<view id="WorkExecution.ChildrenWO" label="Children of Work Order"  >
+		<view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="false"  >
 		    <requiredResources id="WorkExecution.ChildrenWO_requiredResources">
 				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="workOrder">
 				</requiredResource>
@@ -690,9 +729,15 @@
 			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="workOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="wonum"/>		
-					<listtext id="WorkExecution.AttachmentsView_workOrder_descrip" layoutInsertAt="item2" resourceAttribute="description"/>															
+					<listtext id="WorkExecution.AttachmentsView_workOrder_descrip" layoutInsertAt="item2" resourceAttribute="description"/>	
+					<listtext id="WorkExecution.AttachmentsView_workOrder_location" layoutInsertAt="item5" resourceAttribute="location"/>															
 				</listItemTemplate>				
 			</list>	
+			<button id="back_button" label="Go back">
+				<eventHandlers id="WorkExecution.ChildrenWO_eventHandlers">
+				<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_eventHandlers_cleanup_handleBackButtonClick" method="childBackButton"/>
+			</eventHandlers>
+			</button>
 		</view>
 		
 		
@@ -3889,9 +3934,11 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
-				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
-					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>
-					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>	
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="CustomMeterList">
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbtasknum" layoutInsertAt="item1" resourceAttribute="tnbtasknum"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item2" resourceAttribute="tnbmetergroup"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item5" resourceAttribute="description"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbper" layoutInsertAt="item3" resourceAttribute="tnbper"/>
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers">
 						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="filterMeter"/>
 					</eventHandlers>																		
@@ -5301,13 +5348,6 @@
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.SQAView_groupitem_WorkExecution.QDetails" layoutInsertAt="item1" value="Question"></text>
 						<text editable="false" id="WorkExecution.SQAView_groupitem_WorkExecutionSQAlineView" layoutInsertAt="count1" resourceAttribute="plusgaudlinelistsize"></text>
 					</groupitem>   
-					<!--<groupitem id="WorkExecution.QView_groupitem_WorkExecution.QDetails_0" layout="Item1Count1Button1" >				
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.SQAView_groupitem_WorkExecution.QDetails" layoutInsertAt="item1" value="Question"></text>
-						<text editable="false" id="WorkExecution.SQAView_groupitem_WorkExecutionSQAlineView" layoutInsertAt="count1" resourceAttribute="plusgaudlinelistsize"></text>
-						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler32">
-							<eventHandler id="WorkExecution.SqaLineView_332" class="custom.SqaDetailHandler" event="click" method="filterSqaQuestion"/>
-						</eventHandlers> 
-					</groupitem>   -->
 																		
 				</group>			
 			</container>														
@@ -5417,6 +5457,11 @@
 				</listItemTemplate>
 			</list>
 			<footer id="sqaSaveFooter">
+				<button id="WorkExecution.saveSqaView_Cancel_button" label="Cancel">
+					<eventHandlers id="WorkExecution.saveSqaView_Cancel_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.saveSqaView_Cancel_button_eventHandlers_click_handleBackButtonClickEditAssetView" method="discardSqa"/>
+					</eventHandlers>
+				</button>
 			    <button cssClass="mblPrimaryButton" id="WorkExecution.saveSqaView_Save_button" label="Save" primary="true">
 					<eventHandlers id="WorkExecution.SqaLine_Save_button_eventHandlers">
 						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.SqaLineView_Save_button_eventHandlers_click_save" method="saveSqa"/>
@@ -9306,7 +9351,7 @@
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
-				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear"  name="parentWonum" />
+				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear" index="true" name="parentWonum" />
 				<attribute describedByProperty="spi_wm:tnbsubvertical" id="workOrder_tnbsubvertical_spi_wmtnbsubvertical" index="true" name="tnbsubvertical"/>
 				<attribute describedByProperty="dcterms:identifier" id="workOrder_identifier_dctermsidentifier" index="true" name="identifier"/>
 				<attribute describedByProperty="dcterms:title" id="workOrder_description_dctermstitle" index="true" method="descriptionChanged" name="description"/>
@@ -9341,8 +9386,8 @@
 				<attribute describedByProperty="spi:woserviceaddress{spi_wm:formattedaddress}" id="workOrder_woserviceaddress_spiwoserviceaddressspi_wmformattedaddress" name="woserviceaddress"/>
 				<attribute describedByProperty="spi:woserviceaddress{spi_wm:saddresscode}" id="workOrder_woserviceaddresscode_spiwoserviceaddressspi_wmsaddresscode" name="woserviceaddresscode"/>
 				<attribute describedByProperty="spi:woserviceaddress{spi_wm:description}" id="workOrder_woserviceaddressdesc_spiwoserviceaddressspi_wmdescription" name="woserviceaddressdesc"/> 
-				<attribute describedByProperty="spi_wm:siteid" id="workOrder_siteid_spi_wmsiteid" name="siteid"/>
-				<attribute describedByProperty="spi_wm:orgid" id="workOrder_orgid_spi_wmorgid" name="orgid"/>
+				<attribute describedByProperty="spi_wm:siteid" id="workOrder_siteid_spi_wmsiteid" index="true" name="siteid"/>
+				<attribute describedByProperty="spi_wm:orgid" id="workOrder_orgid_spi_wmorgid"  name="orgid"/>
 				<attribute describedByProperty="spi_wm:np_statusmemo" id="workOrder_memo_spi_wmnp_statusmemo" name="memo"/>
 				<attribute describedByProperty="spi_wm:statusdate" id="workOrder_changestatusdate_spi_wmstatusdate" name="changestatusdate"/>
 				<attribute describedByProperty="spi_wm:istask" id="workOrder_istask_spi_wmistask" index="true" name="istask"/>
@@ -9378,6 +9423,7 @@
 				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="workOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
 				<attribute describedByProperty="spi_wm:tnbwodirectmeters" describedByResource="tnbwodirectmetersResource" id="workOrder_tnbwometergrouplist_spi_tnbwodirectmeters" name="tnbwodirectmeterslist"/>
 				<attribute describedByProperty="spi_wm:plusgpermitwork" describedByResource="permitResource" id="workOrder_tnbwometergrouplist_spi_plusgpermitwork" name="permitlist"/>
+
 				
 				
 				<attribute describedByProperty="spi_wm:plusgaudit" describedByResource="sqaResource" id="workOrder_sqaResource" name="sqalist"/>
@@ -9454,7 +9500,9 @@
 				<localAttribute dataType="string" id="workOrder_asleftstatus_string" name="asleftstatus"/>
 				<localAttribute dataType="string" id="workOrder_wohistorylistsize_string" name="wohistorylistsize"/>
 				
+				<!-- custom local resource -->
 				<localAttribute dataType="string" id="workOrder_tempMeterName_string" name="tempMeterName"/>
+
 				
 				
 			</attributes>
@@ -9739,6 +9787,8 @@
    			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" name="tnbmetergroup"/> 
    			    <attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description" name="description"/>       
    			   	<attribute describedByProperty="spi_wm:tnbwometergroupid" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
+   			   	<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum" name="tnbtasknum"/>   
+   			   	<attribute describedByProperty="spi_wm:tnbper" id="tnbwometergroupResourcespi_tnbper" name="tnbper"/>  
 			</attributes>		 
 		</resource>
 		
@@ -10121,6 +10171,7 @@
 				<localAttribute dataType="string" id="woLocationMeters_inspector_string" maxSize="30" name="inspector"/>	
 			</attributes>
 		</resource>
+		
 		
 		<!-- Total WO Asset Meters Local resource -->
 		<resource id="totalWOAssetMeters" inMemory="true" name="totalWOAssetMeters">

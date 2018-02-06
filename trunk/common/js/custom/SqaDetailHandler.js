@@ -119,11 +119,10 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 
 		
 		saveSqa : function(eventContext){
-			var msg = MessageService.createStaticMessage("save succesful").getMessage();
 			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa");
-			//var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"plusgaudline");
+			var actualSqaline = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudline");
+			console.log(actualSqaline);
 			ModelService.save(actualSqa2).then(function(){
-				eventContext.ui.showToastMessage(msg);
 				console.log('save completed');
 				
 			}).otherwise(function(error) {
