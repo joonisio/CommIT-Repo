@@ -716,10 +716,11 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="workOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
-				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="MeterList">	
-					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="wonum"/>		
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="WorkOrderChildrenList">	
+					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item3" resourceAttribute="wonum"/>		
 					<listtext id="WorkExecution.AttachmentsView_workOrder_descrip" layoutInsertAt="item2" resourceAttribute="description"/>	
-					<listtext id="WorkExecution.AttachmentsView_workOrder_location" layoutInsertAt="item5" resourceAttribute="location"/>															
+					<listtext id="WorkExecution.AttachmentsView_workOrder_location" layoutInsertAt="item4" resourceAttribute="location"/>		
+					<listtext id="WorkExecution.AttachmentsView_workOrder_assetnumanddescription" layoutInsertAt="item6" resourceAttribute="assetnumanddescription"/>													
 				</listItemTemplate>				
 			</list>	
 			<button id="back_button" label="Go back to Parent">

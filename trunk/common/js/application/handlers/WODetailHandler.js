@@ -2275,7 +2275,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		hideForNonLinearWO: function(eventContext) {
 			console.log("Hide when non-linear");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			if (!workOrder.islinear)
+			if (!workOrder.islinear || workOrder.multiassetloclist.data.length == 0)
 				eventContext.setDisplay(false);
 			else
 				eventContext.setDisplay(true);
