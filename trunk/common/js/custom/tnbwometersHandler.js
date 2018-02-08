@@ -1,5 +1,5 @@
 define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
-		"platform/model/ModelService", "dojo/_base/array",
+		"platform/model/ModelService", "dojo/_base/array","platform/comm/CommunicationManager",
 		"custom/TnbWoMeterObject", "platform/handlers/_ApplicationHandlerBase",
 		"application/business/WorkOrderObject",
 		"platform/exception/PlatformRuntimeException",
@@ -9,7 +9,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		"platform/logging/Logger", "dojo/Deferred", "dojo/promise/all",
 		"platform/store/SystemProperties",
 		"platform/store/_ResourceMetadataContext" ], function(declare, lang,
-		ModelService, array, tnbwometer, ApplicationHandlerBase,
+		ModelService, array,CommunicationManager, tnbwometer, ApplicationHandlerBase,
 		WorkOrderObject, PlatformRuntimeException, PlatformRuntimeWarning,
 		CommonHandler, PlatformConstants, FormatterService, Logger, Deferred,
 		all, SystemProperties, ResourceMetadataContext) {
@@ -20,6 +20,69 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			eventContext.application.addResource(locset);
 		});
 		},
+		
+		
+//		initializeMetertoLocal:function(eventContext){
+//			console.log("init meter to local")
+//			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+//			console.log(workOrder);
+//			for(var i =0;i<workOrder.data.length;i++){
+//				if(workOrder.data[i].tnbwometergrouplist !=null){
+//					console.log(workOrder.data[i].wonum);
+//					var tnbwometer = workOrder.data[i].tnbwometergrouplist;
+//					for(var j =0;j< tnbwometer.length;j++){
+//						console.log("loop 2");
+//						var meter = tnbwometer[j].tnbwometerslist;
+//						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){		
+//							if (locset.fetchedFromServer){
+//								console.log("fetched from server");
+//							}else{
+//								console.log("fetched from local");
+//							}
+//							
+//							eventContext.application.addResource(locset);
+//			
+//						});
+//					}
+////					
+//				}
+//			}
+//		},
+		
+		filterMeter1 : function(eventContext) {
+	   
+        CommunicationManager.checkConnectivityAvailable().
+		then(function(hasConnectivity){
+			console.log("function : filterMeter1");
+			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
+			//console.log(workOrder);	
+			//console.log(workOrder.tnbwometergrouplist.data.length);
+				
+				for(var i =0;i<workOrder.tnbwometergrouplist.data.length;i++){
+					console.log("loop");	
+					var meter = workOrder.tnbwometergrouplist.data[i].tnbwometerslist;
+					console.log(meter);
+					if (meter != null) {
+							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
+								//console.log(locset);
+								if (locset.fetchedFromServer){
+									console.log("fetched from server");
+								}else{
+									console.log("fetched from local");
+								}
+								
+								eventContext.application.addResource(locset);
+							
+								
+							}).otherwise(function(error) {
+								Logger.error(JSON.stringify(error));
+							});
+					} 
+				}
+	
+			
+		});
+		},
 
 		filterMeter : function(eventContext) {
 			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
@@ -28,11 +91,12 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			workOrder.set('tempMeterName',currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			if (meter != null) {
-				console.log("meter has value");
 					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
 						
 						if (locset.fetchedFromServer){
 							console.log("fetched from server");
+						}else{
+							console.log("fetched from local");
 						}
 						
 						locset.resourceID = 'tnbwometers';
@@ -45,7 +109,6 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 						Logger.error(JSON.stringify(error));
 					});
 			} else {
-				Logger.trace("meter is null");
 				eventContext.application.addResource(null);
 				eventContext.ui.show(redirect);
 			}

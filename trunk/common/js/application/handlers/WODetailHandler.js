@@ -2079,12 +2079,60 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		}, 
 		
 	//custom javascript code
-		
-		filterSqa: function(eventContext){
-			console.log("sqa filter");
+//		
+//		filterPermitToLocal: function(eventContext){
+//			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+//			console.log(wo);
+//			for(var i=0; i<wo.data.length; i++){
+//				console.log(wo.data[i].wonum);
+////				if(wo.data[i].wonum != null){
+////					var wonum = wo.data[i].wonum;
+////					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
+////						console.log(wonum);
+////						if (locset.fetchedFromServer){
+////							console.log("fetched from server");
+////						}else{
+////							console.log("fetched from local");
+////						}
+////						console.log(locset);
+////						eventContext.application.addResource(locset);
+////		
+////					});
+////				}
+//			}
+//			
+//			var wo2 = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+//			console.log(wo2);
+//
+//		},
+//		
+		filterPermit: function(eventContext){
+			console.log("function: filterPermit");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonum = currentRecord.get("wonum");
-			console.log(wonum);
+			
+			if (wonum != null) {
+					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+						if (locset.fetchedFromServer){
+							console.log("fetched from server");
+						}else{
+							console.log("fetched from local");
+						}
+						eventContext.application.addResource(locset);
+					}).otherwise(function(error) {
+						Logger.error(JSON.stringify(error));
+					});
+			} else {
+				Logger.trace("permit is null");
+				eventContext.application.addResource(null);
+			}
+			
+		},
+		
+		filterSqa: function(eventContext){
+			console.log("function: sqa filter");
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var wonum = currentRecord.get("wonum");
 			
 			if (wonum != null) {
 					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
@@ -2094,19 +2142,17 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 						Logger.error(JSON.stringify(error));
 					});
 			} else {
-				Logger.trace("meter is null");
 				eventContext.application.addResource(null);
 			}
 		},
 		
 		parentWO:function(eventContext){
-			console.log("parentWO");
+			console.log("function: parentWO");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var parentWonum = currentRecord.get("parentWonum");
 			console.log(parentWonum);
 			
 			if (parentWonum != null) {
-				console.log("parentWonum not null");
 				ModelService.filtered('workOrder', null,[{wonum: parentWonum}], 1000, null,null,null,null).then(function(locset){
 					console.log(locset);
 					eventContext.application.addResource(locset);
@@ -2121,14 +2167,13 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		filterChild:function(eventContext){
-			console.log("parentWO");
+			console.log("function: filterChild");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonums = currentRecord.get("wonum");
 			var siteids = currentRecord.get("siteid");
 			var msg = MessageService.createStaticMessage("This work order has no child").getMessage();
 		
 			if (wonums != null) {
-				console.log("wonums not null");
 				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
 					console.log(locset);
 					if(locset.data.length > 0){
@@ -2147,7 +2192,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		childBackButton:function(eventContext){
-			console.log('childBackButton');
+			console.log('function: childBackButton');
 			console.log(previousWO);
 			
 			if(previousWO != null){
@@ -2161,6 +2206,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		parentLabel:function(eventContext){
+			console.log('function: parentLabel');
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var parentWonum = currentRecord.get("parentWonum");
 			if(parentWonum != null){
@@ -2171,12 +2217,10 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		hideSectionforChild:function(eventContext){
-			console.log('hide child');
+			console.log('function: hideSectionforChild');
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var parentWo = workOrder.get('parentWonum');
-			console.log(parentWo);
 			if (parentWo){
-				console.log('hiding....');
 				eventContext.setDisplay(false);
 			}
 				
@@ -2187,24 +2231,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				
 		},
 		
-		filterPermit: function(eventContext){
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var wonum = currentRecord.get("wonum");
-			console.log(wonum);
-			
-			if (wonum != null) {
-					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
-						console.log(locset);
-						eventContext.application.addResource(locset);
-					}).otherwise(function(error) {
-						Logger.error(JSON.stringify(error));
-					});
-			} else {
-				Logger.trace("permit is null");
-				eventContext.application.addResource(null);
-			}
-			
-		},
+		
 	
 		updateAtrributeInTask : function(eventContext){
 			console.log('custom function: updateAtrributeInTask called from WODetailHandler');

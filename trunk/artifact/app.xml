@@ -43,6 +43,7 @@
 			<requiredResources id="WorkExecution.WorkItemsView_requiredResources">
 				<requiredResource id="WorkExecution.WorkItemsView_workOrder" name="workOrder">
 				    <requiredAttribute id="WorkExecution.WorkItemsView_attribute1" name="tasklist"/>
+				    <requiredAttribute id="WorkExecution.WorkItemsView_tnbwometergrouplist" name="tnbwometergrouplist"/>	
 				</requiredResource>
 				<requiredResource id="WorkExecution.WorkItemsView_workOrderTimer" name="workOrderTimer"/>
 				<requiredResource id="WorkExecution.WorkItemsView_oslcmaxvars" name="oslcmaxvars"/>
@@ -188,7 +189,7 @@
 			<eventHandlers id="WorkExecution.WorkItemsView_eventHandlers">
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
-				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>				
+				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>	
 			</eventHandlers>
 		</view>
 		
@@ -196,6 +197,7 @@
 		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true">
 			<requiredResources id="WorkExecution.WorkDetailView_requiredResources">
 				<requiredResource id="WorkExecution.WorkDetailView_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwodirectmeterslist2" name="tnbwometergrouplist"/> 
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_sqalist" name="sqalist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_permitlist" name="permitlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_failureReportlist" name="failureReportlist"/>
@@ -270,6 +272,7 @@
 											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
+				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
@@ -5044,7 +5047,7 @@
 				</requiredResource>
 			</requiredResources>	
 			<list id="WorkExecution.LinearView_permit_list2" label="Permit" resource="permit" transitionTo="WorkExecution.PermitViewDetails2">
-				<sortOptions id="WorkExecution.permit_workOrder_tasklist_list_sortOptions">
+				<!-- <sortOptions id="WorkExecution.permit_workOrder_tasklist_list_sortOptions">
 					<sortOption id="WorkExecution.permit_sortOption_Task" label="Permit No.">
 						<sortAttribute direction="asc" id="WorkExecution.permit_Task_sortAttribute_taskid" name="permitworknum"/>
 					</sortOption>
@@ -5054,7 +5057,7 @@
 					<sortOption id="WorkExecution.permit_sortOption_tnbissuedate" label="Issue Date">
 						<sortAttribute direction="asc" id="WorkExecution.permit_Task_sortAttribute_tnbissuedate" name="tnbissuedate"/>
 					</sortOption>
-				</sortOptions>
+				</sortOptions>  -->
 				<listItemTemplate id="WorkExecution.permit_listItemTemplate2">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.permit_permitworknum2"  resourceAttribute="permitworknum"/>
 					<listtext id="WorkExecution.description"  resourceAttribute="description"/>  
@@ -5073,14 +5076,14 @@
 				</requiredResource>
 			</requiredResources>		
 			<list id="WorkExecution.sqaView_sqa_list" resource="sqa" transitionTo="WorkExecution.SQADetails" >
-				<sortOptions id="WorkExecution.sqa_workOrder_tasklist_list_sortOptions">
+				<!-- <sortOptions id="WorkExecution.sqa_workOrder_tasklist_list_sortOptions">
 					<sortOption id="WorkExecution.sqa_sortOption_Task" label="Audit and Survey No.">
 						<sortAttribute direction="asc" id="WorkExecution.permit_Task_sortAttribute_auditnum" name="auditnum"/>
 					</sortOption>
 					<sortOption id="WorkExecution.sqa_sortOption_tnbstatus" label="Status">
 						<sortAttribute direction="asc" id="WorkExecution.sqa_Task_sortAttribute_status" name="status"/>
 					</sortOption>
-				</sortOptions>
+				</sortOptions>  -->
 				<listItemTemplate id="WorkExecution.sqa_listItemTemplate">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.sqa2_auditnum"  layoutInsertAt="item1" resourceAttribute="auditnum"/> 
 					<listtext id="WorkExecution.sqa2_description"  layoutInsertAt="item2" resourceAttribute="description"/>
@@ -9353,7 +9356,7 @@
 	<data id="data">	
     
 	<!--Work Order resource-->
-		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="50" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
