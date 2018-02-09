@@ -50,7 +50,6 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 //		},
 		
 		filterMeter1 : function(eventContext) {
-	   
         CommunicationManager.checkConnectivityAvailable().
 		then(function(hasConnectivity){
 			console.log("function : filterMeter1");
@@ -112,6 +111,8 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 				eventContext.application.addResource(null);
 				eventContext.ui.show(redirect);
 			}
+			
+			
 		
 		},
 		
