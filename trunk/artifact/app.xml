@@ -189,7 +189,7 @@
 			<eventHandlers id="WorkExecution.WorkItemsView_eventHandlers">
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
-				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>	
+				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
 			</eventHandlers>
 		</view>
 		
@@ -716,6 +716,12 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="workOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
+			 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_wonum" name="wonum"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_assetnumanddescription" name="assetnumanddescription"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description" name="description"/>
+				</searchAttributes>
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="WorkOrderChildrenList">	
 					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item3" resourceAttribute="wonum"/>		
 					<listtext id="WorkExecution.AttachmentsView_workOrder_descrip" layoutInsertAt="item2" resourceAttribute="description"/>	
@@ -723,11 +729,18 @@
 					<listtext id="WorkExecution.AttachmentsView_workOrder_assetnumanddescription" layoutInsertAt="item6" resourceAttribute="assetnumanddescription"/>													
 				</listItemTemplate>				
 			</list>	
-			<button id="back_button" label="Go back to Parent">
-				<eventHandlers id="WorkExecution.ChildrenWO_eventHandlers">
-				<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_eventHandlers_cleanup_handleBackButtonClick" method="childBackButton"/>
-			</eventHandlers>
-			</button>
+			<footer id="footerrr">
+				<button id="back_button" label="Return to Parent">
+					<eventHandlers id="WorkExecution.ChildrenWO_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_eventHandlers_cleanup_handleBackButtonClick" method="childBackButton"/>
+					</eventHandlers>
+				</button>
+				<button id="backtolist_button" label="Return to List">
+					<eventHandlers id="WorkExecution.backtolist_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_backtolist_button_cleanup_handleBackButtonClick" method="childBackButton2"/>
+					</eventHandlers>
+				</button>
+			</footer>
 		</view>
 		
 		
@@ -4296,6 +4309,9 @@
 					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_3">
 					    <text editable="false" id="WorkExecution.AssetWOMeterDetailView_groupitem_3_newreading_NewReading" label="Last Reading"  resourceAttribute="tnblastreading"/>	   
 					</groupitem>
+					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_3.5">
+					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_3_newreading_tnbremarks" label="Remarks"  resourceAttribute="tnbremarks"/>	   
+					</groupitem>
 					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_7">
 					    <text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_7_remarks_Notes" label="New Reading Date" resourceAttribute="tnbnewreadingdate"/>
 					</groupitem>
@@ -5322,8 +5338,8 @@
 					<groupitem id="WorkExecution.sqaView_groupitem_12" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_type" label="Audit Type" lookup="WorkExecution.plusgaudittypeLookup" placeHolder="Tap to enter" resourceAttribute="type"/>
 					</groupitem>		
-					<groupitem id="WorkExecution.sqaView_groupitem_7" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" lookup="WorkExecution.plusgauditstatusLookup"  placeHolder="Tap to enter" resourceAttribute="status"/>
+					<groupitem id="WorkExecution.sqaView_groupitem_7" transitionTo="WorkExecution.EditStatusViewSqa">
+						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status"  resourceAttribute="status"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_17" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_plusgplandate" label="Required Date" resourceAttribute="plusgplandate"/>
@@ -5449,18 +5465,18 @@
 					<listtext id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_question_longdescription" layoutInsertAt="item3" resourceAttribute="question_longdescription"/>
 					<checkbox cssClass="rightCheckBox" label="SB?" id="WorkExecution.SqaView_yes_checkbox" layoutInsertAt="checkbox1" resourceAttribute="yes">
 					  	<eventHandlers id="WorkExecution.SqaLine_checkboxHandler">
-							<eventHandler id="WorkExecution.SqaLineView_3" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+							<eventHandler id="WorkExecution.SqaLineView_3" class="custom.SqaDetailHandler" event="click" method="SBCheckboxHandler"/>
 						</eventHandlers> 
 					</checkbox>
 					<checkbox cssClass="rightCheckBox" label="USB?" id="WorkExecution.SqaView_no_checkbox" layoutInsertAt="checkbox1" resourceAttribute="no">
 						<eventHandlers id="WorkExecution.SqaLine_checkboxHandler2">
-							<eventHandler id="WorkExecution.SqaLineView_32" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
+							<eventHandler id="WorkExecution.SqaLineView_32" class="custom.SqaDetailHandler" event="click" method="USBHandler"/>
 						</eventHandlers> 
 					</checkbox>
 					<checkbox cssClass="rightCheckBox" label="Not Applicable" id="WorkExecution.SqaView_notapplicable_checkbox" layoutInsertAt="checkbox1" resourceAttribute="notapplicable">
 					<eventHandlers id="WorkExecution.SqaLine_checkboxHandler3">
-							<eventHandler id="WorkExecution.SqaLineView_33" class="custom.SqaDetailHandler" event="click" method="checkboxHandler"/>
-						</eventHandlers> 
+							<eventHandler id="WorkExecution.SqaLineView_33" class="custom.SqaDetailHandler" event="click" method="NotApplicableHandler"/>
+						</eventHandlers>  
 					</checkbox>
 					<text editable="true" id="linescore_text" label="Line Score" layoutInsertAt="item4" resourceAttribute="linescore"></text>
 					<text editable="true" id="sqaline_tnbsqaremarks" label="Remarks" layoutInsertAt="item4" resourceAttribute="tnbsqaremarks"></text>
@@ -7320,6 +7336,58 @@
 				<eventHandler class="application.handlers.StatusChangeHandler" event="cleanup" id="WorkExecution.EditStatusView_eventHandlers_cleanup_cleanupEditStatusView" method="cleanupEditStatusView"/>
 			</eventHandlers>
 		</view>
+		
+		
+		<!-- custom Change Status view for  -->
+		<view id="WorkExecution.EditStatusViewSqa" label="Change Status" resource="sqa" showOverflow="false">
+			<requiredResources id="WorkExecution.EditStatusViewSqa_requiredResources">
+				<requiredResource id="WorkExecution.EditStatusViewSqa_workOrder" name="sqa">
+					<requiredAttribute id="WorkExecution.EditStatusViewSqa_workOrder_plusgauditchstatuslist" name="plusgauditchstatusList"/>  
+				</requiredResource>
+			<!--  <requiredResource id="WorkExecution.EditStatusViewSqa_statusChangeResource" name="statusChangeResource"/>
+				<requiredResource id="WorkExecution.EditStatusViewSqa_workOrderTimer" name="workOrderTimer"/>
+				<requiredResource id="WorkExecution.EditStatusViewSqa_domainworktype" name="domainworktype"/> -->	
+			</requiredResources>
+
+			<container id="WorkExecution.EditStatusViewSqa_workOrder_container_0" resource="sqa">
+				<group id="WorkExecution.EditStatusViewSqa_group_0">
+					<groupitem id="WorkExecution.EditStatusViewSqa_workOrder_groupitem_0">
+						<text editable="false" id="WorkExecution.EditStatusViewSqa_workOrder_groupitem_0_wonum_WorkOrder" label="Audit" resourceAttribute="auditnum"/>
+						<text editable="false" id="WorkExecution.EditStatusViewSqa_workOrder_groupitem_0_statusdesc_Status" label="Status" resourceAttribute="status"/>
+					</groupitem>
+				</group>
+			</container>
+			<container id="WorkExecution.EditStatusViewSqa_statusChangeResource_container_0" resource="statusChangeResource">
+				<group id="WorkExecution.EditStatusViewSqa_group_1">
+					<groupitem id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_0">
+						<text editable="true" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_0_changedate_StatusDate" label="Status Date" placeHolder="Select" required="true" resourceAttribute="changedate"/>
+					</groupitem>
+					<groupitem id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_1">
+						<text editable="false" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_1_statusdesc_NewStatus" label="New Status" lookup="WorkExecution.plusgauditstatusLookup" placeHolder="Select from list" required="true" resourceAttribute="statusdesc"/>
+					</groupitem>
+					<groupitem id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_2">
+						<text editable="true" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_2_memo_Memo" label="Memo" placeHolder="Tap to enter" resourceAttribute="memo"/>
+					</groupitem>
+				</group>
+			</container>
+
+			<footer id="WorkExecution.EditStatusViewSqa_footer">
+				<button id="WorkExecution.EditStatusViewSqa_Cancel_button" label="Cancel" resource="sqa">
+					<eventHandlers id="WorkExecution.EditStatusViewSqa_Cancel_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.EditStatusViewSqa_Cancel_button_eventHandlers_click_discardStatusChange" method="discardStatusChange"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.EditStatusViewSqa_Save_button" label="Save" primary="true" resource="sqa">
+					<eventHandlers id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers">
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers_click_commitWOStatusChange" method="saveSqa2"/>
+					</eventHandlers>
+				</button>
+			</footer>
+
+			<eventHandlers id="WorkExecution.EditStatusViewSqa_eventHandlers">
+				<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.EditStatusViewSqa_eventHandlers_initialize_initEditStatusView" method="initEditStatusView"/>
+			</eventHandlers>
+		</view>
 
 		<!-- Change Task Status view -->
 		<view id="WorkExecution.EditTaskStatusView" label="Change Status" resource="workOrder" showOverflow="false">
@@ -8493,7 +8561,7 @@
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.plusgauditstatusLookup_returnAttributes">
-				<returnAttribute id="WorkExecution.plusgauditstatusLookup_value_status" sourceAttribute="value" targetAttribute="status"/>
+				<returnAttribute id="WorkExecution.plusgauditstatusLookup_value_status" sourceAttribute="value" targetAttribute="statusdesc"/>
 			</returnAttributes>
 		</lookup>
 
@@ -8760,7 +8828,7 @@
 		</lookup>
 
 		<!-- Vendor lookup -->
-		<lookup filterClass="application.handlers.ActualToolHandler" filterMethod="filterVendorForLookup" id="WorkExecution.VendorLookup" label="Select Vendor" resource="vendor">
+		<!-- <lookup filterClass="application.handlers.ActualToolHandler" filterMethod="filterVendorForLookup" id="WorkExecution.VendorLookup" label="Select Vendor" resource="vendor">
 			<requiredResources id="WorkExecution.VendorLookup_requiredResources">
 				<requiredResource id="WorkExecution.VendorLookup_vendor" name="vendor" reload="true"/>
 			</requiredResources>
@@ -8780,7 +8848,7 @@
 				<returnAttribute id="WorkExecution.VendorLookup_company" sourceAttribute="name" targetAttribute="company"/>
 				<returnAttribute id="WorkExecution.VendorLookup_name" sourceAttribute="company" targetAttribute="manufacturer"/>
 			</returnAttributes>
-		</lookup>
+		</lookup>  -->
 
 		<!-- Location lookup -->
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterLocationForLookup" id="WorkExecution.LocationLookup" label="Select Location" resource="additionallocations">
@@ -9704,12 +9772,22 @@
 				<attribute describedByProperty="spi_wm:totalscore" id="sqa_vmtotalscore" index="true" name="totalscore"/>
 				<attribute describedByProperty="spi_wm:plusgplandate" id="sqa_vmplusgplandate" name="plusgplandate"/>
 				<attribute describedByProperty="spi_wm:template" id="sqa_template" name="template"/>
-				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/> 
+				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/>
+				<attribute describedByProperty="spi_wm:plusgauditchstatus" describedByResource="plusgauditchstatusResource" id="workOrder_plusgaudlineResource_spi_plusgauditchstatus" name="plusgauditchstatusList"/> 
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
 			</attributes>
 			<queryBases id="sqa_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
 			</queryBases> 
+		</resource>
+		
+		<!-- custom sqa resource status-->
+		<resource  id="plusgauditchstatusResource" name="plusgauditchstatusResource">
+			<attributes id="plusgauditchstatusResource_attributes">
+				<attribute describedByProperty="spi_wm:status" id="sqa_wmplusgauditid2_" name="statusdesc"/>
+				<attribute describedByProperty="spi_wm:memo" id="sqa_wmauditnum2_" name="memo"/>
+				<attribute describedByProperty="spi_wm:asofdate" id="sqa_tnbstatus2I"  name="changedate"/>
+			</attributes>
 		</resource>
 		
 		<!-- custom sqa resource child of work order-->
@@ -9823,7 +9901,7 @@
 		
 		
 		<!-- custom tnbwometers resource-->
-		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbsequence asc" id="tnbwometers" name="tnbwometers" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbsequence asc" id="tnbwometers" name="tnbwometers" pageSize="100" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
@@ -9839,6 +9917,7 @@
 				<attribute describedByProperty="spi_wm:tnblastreadingdate" id="tnbwometers_tnblastreadingdate" name="tnblastreadingdate"/>
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
+				<attribute describedByProperty="spi_wm:tnbremarks" id="tnbwometers_tnbremarks" name="tnbremarks"/>
 				<!--<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<queryBases id="tnbwometers_queryBases">
@@ -11905,7 +11984,7 @@
 		</resource>
 
 		<!-- Vendor resource -->
-		<resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="1000" additionalData="true"> 
+		<!-- <resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="1000" additionalData="true"> 
 		    <attributes id="vendor_attributes">
 		        <attribute name="orgid" describedByProperty="spi:orgid" id="vendor_orgid" />
 		        <attribute name="address" describedByProperty="spi:address1" id="vendor_address"/>
@@ -11922,7 +12001,7 @@
  	 			<queryBase id="vendor_queryBase_getvendors" name="getvendorcode" queryUri="/oslc/os/oslcvendor"/>
 	 		</queryBases>			
 			<whereClause clause="spi:orgid=${deforg}" id="vendor_whereClause"/>
-		</resource>
+		</resource>  -->
 
 		<!-- Contract resource -->
 		<!-- <resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Contract" 

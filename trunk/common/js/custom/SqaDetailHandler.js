@@ -130,6 +130,25 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			});
 		},
 		
+		saveSqa2 : function(eventContext){
+			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa");
+			var status = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList").getCurrentRecord();
+			var statusChangeResource =  CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
+			console.log(statusChangeResource.get("changedate"),statusChangeResource.get("statusdesc"),statusChangeResource.get("memo"));
+			
+			status.set("changedate",statusChangeResource.get("changedate"));
+			status.set("statusdesc",statusChangeResource.get("statusdesc"));
+			status.set("memo",statusChangeResource.get("memo"));
+			
+			
+			ModelService.save(actualSqa2).then(function(){
+				console.log('save completed');
+				
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
+			});
+		},
+		
 		checkboxInit : function(eventContext){
 			console.log('checkboxHanlder');
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
@@ -146,26 +165,41 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			}
 		},
 		
-		checkboxHandler: function(eventContext){
-			console.log('checkboxHanlder');
-//			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+		SBCheckboxHandler: function(eventContext){
+			var newValue = !eventContext.checkBoxWidget.get('value');
+			console.log(newValue);
+//			console.log('checkboxHanlder');
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
 //			console.log(sqa);
-//			var sqaLine = sqa.plusgaudlinelist.data;
-//			console.log(sqa);
-//			if(sqlLine == true){
-//				console.log('no');
-//				sqaLine.set("yes",false);
-//				sqaLine.set("notapplicable",false);
-//				
-//			}else if(sqaLine == true){
-//				console.log('yes');
-//				sqaLine.set("no",false);
-//				sqaLine.set("notapplicable",false);
-//				
-//			}else{
-//				sqaLine.set("no",false);
-//				sqaLine.set("yes",false);			
-//			}
+			
+			if(newValue){
+				sqa.set('linescore',1);
+			}else{
+				sqa.set('linescore',null);
+			}
+//			
+			
+		},
+		
+		NotApplicableHandler: function(eventContext){
+			var newValue = !eventContext.checkBoxWidget.get('value');
+			console.log(newValue);
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
+			if(newValue){
+				sqa.set('linescore',0);
+			}else{
+				sqa.set('linescore',null);
+			}	
+			
+		},
+		
+		USBHandler: function(eventContext){
+			var newValue = !eventContext.checkBoxWidget.get('value');
+			console.log(newValue);
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
+			if(newValue){
+				sqa.set('linescore',null);
+			}	
 			
 		},
 		
@@ -275,6 +309,21 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		},
 		discardSqa: function(eventContext){
 			 this.ui.hideCurrentView(PlatformConstants.CLEANUP);
+		},
+		
+		initEditStatusView : function(eventContext) {
+			console.log('function: initEditStatusView');
+			var workOrder = eventContext.getCurrentRecord();
+			var statusChange = CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
+			statusChange.setDateValue("changedate", this.application.getCurrentDateTime());
+			statusChange.setNullValue("status");
+			statusChange.setNullValue("statusdesc");
+			statusChange.setNullValue("memo");
+			eventContext.ui.application.toolWarningShown = false;
+				
+		},
+		discardStatusChange: function(eventContext){	
+			this.ui.hideCurrentView(PlatformConstants.CLEANUP);		
 		},
 		
 		

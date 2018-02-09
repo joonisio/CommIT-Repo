@@ -2083,27 +2083,32 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 //		filterPermitToLocal: function(eventContext){
 //			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
 //			console.log(wo);
-//			for(var i=0; i<wo.data.length; i++){
-//				console.log(wo.data[i].wonum);
-////				if(wo.data[i].wonum != null){
-////					var wonum = wo.data[i].wonum;
-////					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
-////						console.log(wonum);
-////						if (locset.fetchedFromServer){
-////							console.log("fetched from server");
-////						}else{
-////							console.log("fetched from local");
-////						}
-////						console.log(locset);
-////						eventContext.application.addResource(locset);
-////		
-////					});
-////				}
-//			}
 //			
+//			if(wo.data.length == 0){
+//				wo = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+//				console.log(wo);
+//			}
+//			for(var i=0; i<wo.data.length; i++){
+				//console.log(wo.data[i].wonum);
+//				if(wo.data[i].wonum != null){
+//					var wonum = wo.data[i].wonum;
+//					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
+//						console.log(wonum);
+//						if (locset.fetchedFromServer){
+//							console.log("fetched from server");
+//						}else{
+//							console.log("fetched from local");
+//						}
+//						console.log(locset);
+//						eventContext.application.addResource(locset);
+//		
+//					});
+//				}
+//			}
+			
 //			var wo2 = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 //			console.log(wo2);
-//
+
 //		},
 //		
 		filterPermit: function(eventContext){
@@ -2136,7 +2141,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			
 			if (wonum != null) {
 					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
-						console.log(locset);
+						//console.log(locset);
 						eventContext.application.addResource(locset);
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
@@ -2154,7 +2159,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			
 			if (parentWonum != null) {
 				ModelService.filtered('workOrder', null,[{wonum: parentWonum}], 1000, null,null,null,null).then(function(locset){
-					console.log(locset);
+					//console.log(locset);
 					eventContext.application.addResource(locset);
 					eventContext.ui.show('WorkExecution.WorkDetailView');
 				}).otherwise(function(error) {
@@ -2175,7 +2180,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 			if (wonums != null) {
 				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
-					console.log(locset);
+					//console.log(locset);
 					if(locset.data.length > 0){
 						previousWO = wonums;
 						eventContext.application.addResource(locset);
@@ -2193,7 +2198,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 		childBackButton:function(eventContext){
 			console.log('function: childBackButton');
-			console.log(previousWO);
+			console.log("previous wonum :"+previousWO);
 			
 			if(previousWO != null){
 				ModelService.filtered('workOrder', null,[{wonum:previousWO}], 1000, null,null,null,null).then(function(locset){
@@ -2204,6 +2209,14 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				});
 			}
 		},
+		
+		childBackButton2:function(eventContext){
+			console.log('function: childBackButton 2');
+			console.log("previous wonum :"+previousWO);
+			eventContext.ui.show('WorkExecution.WorkItemsView');
+		
+		},
+		
 		
 		parentLabel:function(eventContext){
 			console.log('function: parentLabel');
@@ -2234,7 +2247,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		
 	
 		updateAtrributeInTask : function(eventContext){
-			console.log('custom function: updateAtrributeInTask called from WODetailHandler');
+			console.log('function: updateAtrributeInTask called from WODetailHandler');
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
 			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
 			var currWO = workOrderSet.getCurrentRecord();
@@ -2249,7 +2262,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		NewLinearWO: function(eventContext) {
-			console.log("New Work Order Feature");
+			console.log("function: New Work Order Feature");
 			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			console.log(workOrder);
 			var asset = CommonHandler._getAdditionalResource(eventContext,"additionalasset").getCurrentRecord();
@@ -2264,7 +2277,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 		initNewLinearEntry: function(eventContext) {
-			console.log("New Work Order Feature Entry");
+			console.log("function: New Work Order Feature Entry");
 			var LinearDetailSet = null;
 			LinearDetailSet = CommonHandler._getAdditionalResource(this,"workOrder.multiassetloclist");
 			console.log(LinearDetailSet);
