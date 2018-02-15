@@ -15,6 +15,7 @@ define("application/handlers/WODetailHandler",
 	   [ "dojo/_base/declare",
 	     "dojo/_base/array",
 		  "dojo/_base/lang",
+		  "custom/tnbwometersHandler",
 	     "platform/handlers/_ApplicationHandlerBase",
 	     "platform/comm/CommunicationManager",
 	     "application/business/WorkOrderObject",
@@ -35,11 +36,13 @@ define("application/handlers/WODetailHandler",
 	     "platform/store/PersistenceManager",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties"],
-function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
+function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
 	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize','permitlistsize'];
-	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist"];
+	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist","tnbwometergrouplist"];
 	var loadingLists = false;
 	var previousWO=null;
+	var previousSiteid=null;
+	
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
 		//this attribute was inserted to set the location back when canceling 
@@ -342,7 +345,8 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			//Set only for presentation
 			currWO.set('localLocationLd', validLocation.get('locationld'));
 			//Set calibration loop based on Location
-			currWO.set('pluscloop', validLocation.get('pluscloop'));
+			currWO.set('pluscloop', validLocation.get('pluscloop'));erc
+			
 			
 			var asset = currWO.getPendingOrOriginalValue('asset');
 			if(asset){			
@@ -2079,38 +2083,33 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		}, 
 		
 	//custom javascript code
-//		
-//		filterPermitToLocal: function(eventContext){
-//			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-//			console.log(wo);
-//			
-//			if(wo.data.length == 0){
-//				wo = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-//				console.log(wo);
-//			}
-//			for(var i=0; i<wo.data.length; i++){
-				//console.log(wo.data[i].wonum);
-//				if(wo.data[i].wonum != null){
-//					var wonum = wo.data[i].wonum;
-//					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
-//						console.log(wonum);
-//						if (locset.fetchedFromServer){
-//							console.log("fetched from server");
-//						}else{
-//							console.log("fetched from local");
-//						}
-//						console.log(locset);
-//						eventContext.application.addResource(locset);
-//		
-//					});
-//				}
-//			}
+		
+		offlineDownload:function(eventContext){
+			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var wonum = wo.get('wonum');
+			console.log(wo);
+//			wo.set("alreadyDownload",true);
+			this.filterPermit(eventContext);
+			this.filterSqa(eventContext);
+//			this.downloadMeterResource(eventContext, wonum);
 			
-//			var wo2 = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-//			console.log(wo2);
+			
+		},
+		
+		downloadMeterResource:function(eventContext,wonum){
+			ModelService.filtered('tnbwometergroupResource', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
+				//console.log(wonum);
+				if (locset.fetchedFromServer){
+					console.log("fetched from server");
+				}else{
+					console.log("fetched from local");
+				}
+				console.log(locset);
+				eventContext.application.addResource(locset);
 
-//		},
-//		
+			});
+		},
+
 		filterPermit: function(eventContext){
 			console.log("function: filterPermit");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
@@ -2137,6 +2136,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		filterSqa: function(eventContext){
 			console.log("function: sqa filter");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			console.log(currentRecord);
 			var wonum = currentRecord.get("wonum");
 			
 			if (wonum != null) {
@@ -2183,6 +2183,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 					//console.log(locset);
 					if(locset.data.length > 0){
 						previousWO = wonums;
+						previousSiteid=siteids;
 						eventContext.application.addResource(locset);
 						eventContext.ui.show('WorkExecution.ChildrenWO');
 					}else{
@@ -2196,7 +2197,8 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			
 		},
 		
-		childBackButton:function(eventContext){
+		
+		backToParent:function(eventContext){
 			console.log('function: childBackButton');
 			console.log("previous wonum :"+previousWO);
 			
@@ -2210,9 +2212,30 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}
 		},
 		
-		childBackButton2:function(eventContext){
+		returnToChildList:function(eventContext){
+			console.log('function: returnToChildList');
+			console.log("previous wonum :"+previousWO);
+			
+				ModelService.filtered('workOrder', null,[{parentWonum:previousWO,siteid:previousSiteid,istask:false}], 1000, null,null,null,null).then(function(locset){
+					//console.log(locset);
+					if(locset.data.length > 0){
+						eventContext.application.addResource(locset);
+						eventContext.ui.show('WorkExecution.ChildrenWO');
+					}else{
+						eventContext.ui.showMessage(msg);		
+					}
+				
+				}).otherwise(function(error) {
+					Logger.error(JSON.stringify(error));
+				});
+		
+		},
+		
+		backToList:function(eventContext){
 			console.log('function: childBackButton 2');
 			console.log("previous wonum :"+previousWO);
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			currentRecord.clearFilterAndSort();
 			eventContext.ui.show('WorkExecution.WorkItemsView');
 		
 		},
@@ -2242,6 +2265,21 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 				eventContext.setDisplay(true);
 				}
 				
+		},
+		
+		hideFooterforParent:function(eventContext){
+			console.log("function: hideFooterforParent");
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWo = workOrder.get('parentWonum');
+			if (parentWo == null){
+				console.log('hide footer for parent');
+				this.displayFooter(eventContext, false);
+			}
+				
+			else{
+				console.log('show footer for parent');
+				this.displayFooter(eventContext, true);
+			}
 		},
 		
 		

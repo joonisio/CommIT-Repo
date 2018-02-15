@@ -11,5 +11,6 @@
 	<row id="row_2">
 		<column colspan="5" columnid="item4" id="item4_column"/>
 		<column colspan="5" columnid="item5" id="item5_column"/>
+		<column colspan="2" columnid="item6" id="item6_column"/>
 	</row>
 </layout>
