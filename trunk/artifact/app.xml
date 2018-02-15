@@ -43,7 +43,7 @@
 			<requiredResources id="WorkExecution.WorkItemsView_requiredResources">
 				<requiredResource id="WorkExecution.WorkItemsView_workOrder" name="workOrder">
 				    <requiredAttribute id="WorkExecution.WorkItemsView_attribute1" name="tasklist"/>
-				    <requiredAttribute id="WorkExecution.WorkItemsView_tnbwometergrouplist" name="tnbwometergrouplist"/>	
+				  <requiredAttribute id="WorkExecution.WorkItemsView_tnbwometergrouplist" name="tnbwometergrouplist"/>	
 				</requiredResource>
 				<requiredResource id="WorkExecution.WorkItemsView_workOrderTimer" name="workOrderTimer"/>
 				<requiredResource id="WorkExecution.WorkItemsView_oslcmaxvars" name="oslcmaxvars"/>
@@ -128,7 +128,11 @@
 					<listtext id="WorkExecution.WorkItemsView_workOrder_WorkListItem_statusdesc" layoutInsertAt="item4" cssClass="statusDesc" resourceAttribute="statusdesc" cssAttributes="status"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.WorkItemsView_workOrder_WorkListItem_description" layoutInsertAt="item3" resourceAttribute="description"/>
 					<listtext id="WorkExecution.WorkItemsView_workOrder_WorkListItem_assetnumanddescription" layoutInsertAt="item5" resourceAttribute="assetnumanddescription"/>
-
+					<!-- <button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Download Data For Offline Mode" layoutInsertAt="button1" >		
+					<eventHandlers id="WorkExecution.WorkItemsView_workOrder_started_button_eventHandlers">
+							<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_workOrder_started_button_eventHandlers_click_offlineDownload" method="offlineDownload"/>
+						</eventHandlers>
+					</button>  -->
 					<button border="false" id="WorkExecution.WorkItemsView_workOrder_started_button" layoutInsertAt="button1" resourceAttribute="started">
 						<states id="WorkExecution.WorkItemsView_started_states">
 							<state default="true" id="WorkExecution.WorkItemsView_states_false_Start" image="/images/action_timer_OFF.png" label="Start" value="false"/>
@@ -137,8 +141,8 @@
 						<eventHandlers id="WorkExecution.WorkItemsView_workOrder_started_button_eventHandlers">
 							<eventHandler class="application.handlers.WOListHandler" event="click" id="WorkExecution.WorkItemsView_workOrder_started_button_eventHandlers_click_startStopTimerClickHandler" method="startStopTimerClickHandler"/>
 							<eventHandler class="application.handlers.WOListHandler" event="datachange" id="WorkExecution.WorkItemsView_workOrder_started_button_eventHandlers_datachange_enableTimerButton" method="enableTimerButton"/>
-							<!-- <eventHandler event="render" method="keepWorkListResource" class="platform.handlers.WorkOfflineHandler" 
-								/> -->
+						<!--  <eventHandler event="render" method="keepWorkListResource" class="platform.handlers.WorkOfflineHandler" 
+								/> -->	
 						</eventHandlers>
 					</button>
 					<actions id="WorkExecution.WorkItemsView_workOrder_listItemTemplate_WorkListItem_workOrder_actions">
@@ -197,7 +201,7 @@
 		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true">
 			<requiredResources id="WorkExecution.WorkDetailView_requiredResources">
 				<requiredResource id="WorkExecution.WorkDetailView_workOrder" name="workOrder">
-					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwodirectmeterslist2" name="tnbwometergrouplist"/> 
+					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwometergrouplist222" name="tnbwometergrouplist"/> 
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_sqalist" name="sqalist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_permitlist" name="permitlist"/>
 					<requiredAttribute id="WorkExecution.WorkDetailView_workOrder_failureReportlist" name="failureReportlist"/>
@@ -272,6 +276,7 @@
 											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
+				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
 				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
@@ -524,9 +529,9 @@
 					</groupitem>
 					<!-- End custom code -->	
 					
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_40" layout="Item1Count1Button1" transitionTo="WorkExecution.ParentWO">
+					<!--<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_40" layout="Item1Count1Button1" transitionTo="WorkExecution.ParentWO">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo2" layoutInsertAt="item1" value="Parent Work Order"/>
-					</groupitem>	
+					</groupitem>	  -->
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
@@ -581,14 +586,20 @@
 						</button>  -->
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" transitionTo="WorkExecution.CreateSQADetails" >		  
 						</button>
+						<eventHandlers id="workorder.hide_eventhandlers00">
+							<eventHandler id="workorder.hide_eventhandler00" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitView" layoutInsertAt="item1" value="Permit"/>
 						<!-- <text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
 						</text>-->
-						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button2" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
+						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button3" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
 						</button>
+						<eventHandlers id="workorder.hide_eventhandlers58">
+							<eventHandler id="workorder.hide_eventhandler58" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+						</eventHandlers>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedMaterialView">
@@ -689,6 +700,15 @@
 					</groupitem>
 				</group>
 			</container>
+			<footer id="footerrr4">
+				<button id="back_button2" label="Return to Parent" transitionTo="WorkExecution.ParentWO">
+				</button>
+				<button id="backtolist_button4" label="Return to Children List">
+					<eventHandlers id="WorkExecution.backtolist_button_eventHandlers2">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_backtolist_button_cleanup_handleBackBhuttonClick" method="returnToChildList"/>
+					</eventHandlers>
+				</button>
+			</footer>
 		</view>
 		
 		<!-- custom parent wo -->
@@ -720,7 +740,7 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_wonum" name="wonum"/>
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_assetnumanddescription" name="assetnumanddescription"/>
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_location" name="location"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description" name="description"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description " name="description"/>
 				</searchAttributes>
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="WorkOrderChildrenList">	
 					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item3" resourceAttribute="wonum"/>		
@@ -732,12 +752,12 @@
 			<footer id="footerrr">
 				<button id="back_button" label="Return to Parent">
 					<eventHandlers id="WorkExecution.ChildrenWO_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_eventHandlers_cleanup_handleBackButtonClick" method="childBackButton"/>
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_eventHandlers_cleanup_handleBackButtonClick" method="backToParent"/>
 					</eventHandlers>
 				</button>
 				<button id="backtolist_button" label="Return to List">
 					<eventHandlers id="WorkExecution.backtolist_button_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_backtolist_button_cleanup_handleBackButtonClick" method="childBackButton2"/>
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_backtolist_button_cleanup_handleBackButtonClick" method="backToList"/>
 					</eventHandlers>
 				</button>
 			</footer>
@@ -3929,7 +3949,7 @@
 		</view>
 		
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList" label="Meters"  saveonshow="true" >
+		<view id="WorkExecution.TnbWOMeterList" label="Meters"  saveonshow="true" resource="workOrder">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
@@ -4463,6 +4483,10 @@
 			</requiredResources>
 		 
 			<list id="WorkExecution.FailureView_failureClassResource_list" resource="failureClassResource" showHeader="false">
+				<searchAttributes id="WorkExecution.PersonLookup_additionalperson_failureClassResource">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureClass" name="failureClass"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureCodeDesc" name="failureCodeDesc"/>
+				</searchAttributes>
 				<listItemTemplate id="WorkExecution.FailureView_failureClassResource_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.FailureView_failureClassResource_FailureReportList" layoutInsertAt="item1" value="CLASS"/>
 					<listtext id="WorkExecution.FailureView_failureClassResource_FailureReportList_failureClass" layoutInsertAt="item2" resourceAttribute="failureClass"/>
@@ -9425,9 +9449,10 @@
 	<data id="data">	
     
 	<!--Work Order resource-->
-		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="50" providedBy="/oslc/sp/WorkManagement">
+		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:tnbspecialptw" id="workOrder_tnbvertical_spi_tnbspecialptw" index="true" name="tnbspecialptw"/>
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
 				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear" index="true" name="parentWonum" />
 				<attribute describedByProperty="spi_wm:tnbsubvertical" id="workOrder_tnbsubvertical_spi_wmtnbsubvertical" index="true" name="tnbsubvertical"/>
@@ -9538,8 +9563,8 @@
 				<localAttribute dataType="boolean" id="workOrder_descriptionModified_boolean" name="descriptionModified"/>
 				<localAttribute dataType="string" id="workOrder_locationdesc_string" name="locationdesc"/>
 				<localAttribute dataType="string" id="workOrder_assetdesc_string" name="assetdesc"/>
-				<localAttribute dataType="string" id="workOrder_failureClass_string" name="failureClass"/>
-				<localAttribute dataType="string" id="workOrder_failuredesc_string" name="failuredesc"/>
+				<localAttribute dataType="string" id="workOrder_failureClass_string" index="true" name="failureClass"/>
+				<localAttribute dataType="string" id="workOrder_failuredesc_string" index="true" name="failuredesc"/>
 				<localAttribute dataType="string" formula="${starttime}" id="workOrder_starttimeISO_string" index="true" name="starttimeISO" remoteName="spi_wm:schedstart"/>
 				<localAttribute dataType="string" formula="${assetld}" id="workOrder_localAssetLd_string" name="localAssetLd"/>
 				<localAttribute dataType="string" formula="${locationld}" id="workOrder_localLocationLd_string" name="localLocationLd"/>
@@ -9761,6 +9786,7 @@
 				<attribute describedByProperty="spi_wm:auditnum" id="sqa_wmauditnum" index="true" name="auditnum"/>
 				<attribute describedByProperty="spi_wm:description" id="sqa_tnbstatus" index="true" name="description"/>
 				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus" index="true" name="status"/>
+				<attribute describedByProperty="spi_wm:statusdate" id="sqa_statusdate" name="statusdate"/>
 				<attribute describedByProperty="spi_wm:type" id="sqa_type" name="type"/>   
 				<attribute describedByProperty="spi_wm:completedbydate" id="sqa_completedbydate"  name="completedbydate"/>
 				<attribute describedByProperty="spi_wm:createdby" id="sqa_createdby"  name="createdby"/>  
@@ -9871,13 +9897,14 @@
 			dataType="boolean" /> </attributes> </resource> -->
 			
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
-		<resource id="tnbwometergroupResource" name="tnbwometergroupResource">
+		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource">
 			<attributes id="tnbwometergroupResource_attributes">
    			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" name="tnbmetergroup"/> 
    			    <attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description" name="description"/>       
    			   	<attribute describedByProperty="spi_wm:tnbwometergroupid" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
    			   	<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum" name="tnbtasknum"/>   
    			   	<attribute describedByProperty="spi_wm:tnbper" id="tnbwometergroupResourcespi_tnbper" name="tnbper"/>  
+   			   	<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwometergroupResourcespi_tnbwonum" index="true" name="tnbwonum"/>  
 			</attributes>		 
 		</resource>
 		

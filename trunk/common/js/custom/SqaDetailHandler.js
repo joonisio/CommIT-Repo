@@ -131,39 +131,27 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		},
 		
 		saveSqa2 : function(eventContext){
-			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa");
+			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa");
+			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
 			var status = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList").getCurrentRecord();
+			
 			var statusChangeResource =  CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
 			console.log(statusChangeResource.get("changedate"),statusChangeResource.get("statusdesc"),statusChangeResource.get("memo"));
-			
+			console.log(actualSqa2);
+		
+			//actualSqa2.openPriorityChangeTransaction();
 			status.set("changedate",statusChangeResource.get("changedate"));
 			status.set("statusdesc",statusChangeResource.get("statusdesc"));
-			status.set("memo",statusChangeResource.get("memo"));
-			
-			
-			ModelService.save(actualSqa2).then(function(){
-				console.log('save completed');
-				
-			}).otherwise(function(error) {
-			  self.ui.showMessage(error.message);
+//			status.set("memo",statusChangeResource.get("memo"));
+			actualSqa2.set("status",statusChangeResource.get("statusdesc"));
+			actualSqa2.set("statusdate",statusChangeResource.get("changedate"));
+			console.log(status);
+			console.log("saving..");
+			ModelService.save(actualSqa).then(function(){
+				console.log(actualSqa);	
 			});
 		},
-		
-		checkboxInit : function(eventContext){
-			console.log('checkboxHanlder');
-			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
-			for(var i=0;i<sqa.plusgaudlinelist.data.length;i++){
-				var sqaLine = sqa.plusgaudlinelist.data[i];		
-//				if(sqaLine.no == true && sqaLine.yes == true || sqaLine.no == true && sqaLine.notapplicable == true ||
-//						sqaLine.yes == true && sqaLine.no == true || sqaLine.yes == true && sqaLine.notapplicable == true ||
-//						sqaLine.notapplicable == true && sqaLine.no == true || sqaLine.notapplicable == true && sqaLine.yes == true ){
-//					console.log("condition");	
-//					sqaLine.getRuntimeFieldMetadata('no').set('readonly', true);
-//					sqaLine.getRuntimeFieldMetadata('yes').set('readonly', true);
-//					sqaLine.getRuntimeFieldMetadata('notapplicable').set('readonly', true);
-//				}
-			}
-		},
+
 		
 		SBCheckboxHandler: function(eventContext){
 			var newValue = !eventContext.checkBoxWidget.get('value');
@@ -247,7 +235,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			if(!view.isOverrideEditMode()){
 				sqaSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.sqalist");
 				var newSQA= sqaSet.createNewRecord();
-				SqaObject.setDefaultValues(newSQA, wonum)
+				SqaObject.setDefaultValues(newSQA, wonum);
 //				newSQA.set('tnbwonum',wonum);
 //				//newSQA.set('auditnum','6002');
 //				newSQA.set('description','SQA for Work order ' + wonum);
