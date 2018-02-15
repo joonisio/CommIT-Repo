@@ -7367,10 +7367,7 @@
 			<requiredResources id="WorkExecution.EditStatusViewSqa_requiredResources">
 				<requiredResource id="WorkExecution.EditStatusViewSqa_workOrder" name="sqa">
 					<requiredAttribute id="WorkExecution.EditStatusViewSqa_workOrder_plusgauditchstatuslist" name="plusgauditchstatusList"/>  
-				</requiredResource>
-			<!--  <requiredResource id="WorkExecution.EditStatusViewSqa_statusChangeResource" name="statusChangeResource"/>
-				<requiredResource id="WorkExecution.EditStatusViewSqa_workOrderTimer" name="workOrderTimer"/>
-				<requiredResource id="WorkExecution.EditStatusViewSqa_domainworktype" name="domainworktype"/> -->	
+				</requiredResource>					
 			</requiredResources>
 
 			<container id="WorkExecution.EditStatusViewSqa_workOrder_container_0" resource="sqa">
@@ -7403,7 +7400,7 @@
 				</button>
 				<button cssClass="mblPrimaryButton" id="WorkExecution.EditStatusViewSqa_Save_button" label="Save" primary="true" resource="sqa">
 					<eventHandlers id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers">
-						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers_click_commitWOStatusChange" method="saveSqa2"/>
+						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers_click_commitWOStatusChange" method="saveSqaStatus"/>
 					</eventHandlers>
 				</button>
 			</footer>
@@ -9799,7 +9796,7 @@
 				<attribute describedByProperty="spi_wm:plusgplandate" id="sqa_vmplusgplandate" name="plusgplandate"/>
 				<attribute describedByProperty="spi_wm:template" id="sqa_template" name="template"/>
 				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/>
-				<attribute describedByProperty="spi_wm:plusgauditchstatus" describedByResource="plusgauditchstatusResource" id="workOrder_plusgaudlineResource_spi_plusgauditchstatus" name="plusgauditchstatusList"/> 
+				<attribute describedByProperty="spi_wm:plusgauditstatus" describedByResource="plusgauditchstatusResource" id="workOrder_plusgaudlineResource_spi_plusgauditchstatus" name="plusgauditchstatusList"/> 
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
 			</attributes>
 			<queryBases id="sqa_queryBases">
@@ -9807,12 +9804,26 @@
 			</queryBases> 
 		</resource>
 		
+	<!-- custom sqa status resource (standalone)-->
+		<resource class="custom.SqaStatusObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAStatus" id="sqastatus" name="sqastatus" pageSize="50" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="sqastatus_attributes">
+				<attribute describedByProperty="spi_wm:plusgauditid" id="sqastatus_wmplusgauditid" name="plusgauditid"/>
+				<attribute describedByProperty="spi_wm:memo" id="sqastatus_wmauditnum" name="memo"/>
+				<attribute describedByProperty="spi_wm:changeby" id="sqastatus_changeby" name="changeby"/>
+				<attribute describedByProperty="spi_wm:status" id="sqastatus_wmstatus" name="status"/> 
+			</attributes>
+			<queryBases id="sqastatus_queryBases">
+	 			<queryBase defaultForSearch="true" id="sqastatussearchAll" name="searchAllsqastatus" queryUri="/oslc/os/oslcsqastatus" />
+			</queryBases> 
+		</resource>
+				
+		
 		<!-- custom sqa resource status-->
 		<resource  id="plusgauditchstatusResource" name="plusgauditchstatusResource">
 			<attributes id="plusgauditchstatusResource_attributes">
 				<attribute describedByProperty="spi_wm:status" id="sqa_wmplusgauditid2_" name="statusdesc"/>
 				<attribute describedByProperty="spi_wm:memo" id="sqa_wmauditnum2_" name="memo"/>
-				<attribute describedByProperty="spi_wm:asofdate" id="sqa_tnbstatus2I"  name="changedate"/>
+				<attribute describedByProperty="spi_wm:changedate" id="sqa_tnbstatus2I"  name="changedate"/>
 			</attributes>
 		</resource>
 		
