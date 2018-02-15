@@ -130,25 +130,23 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			});
 		},
 		
-		saveSqa2 : function(eventContext){
-			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa");
-			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
-			var status = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList").getCurrentRecord();
+		saveSqaStatus : function(eventContext){			
+			var sqaStatusSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList");
+			newSqaStatus = sqaStatusSet.createNewRecord();
+
+			var statusChangeResource = CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
 			
-			var statusChangeResource =  CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
-			console.log(statusChangeResource.get("changedate"),statusChangeResource.get("statusdesc"),statusChangeResource.get("memo"));
-			console.log(actualSqa2);
-		
-			//actualSqa2.openPriorityChangeTransaction();
-			status.set("changedate",statusChangeResource.get("changedate"));
-			status.set("statusdesc",statusChangeResource.get("statusdesc"));
-//			status.set("memo",statusChangeResource.get("memo"));
-			actualSqa2.set("status",statusChangeResource.get("statusdesc"));
-			actualSqa2.set("statusdate",statusChangeResource.get("changedate"));
-			console.log(status);
-			console.log("saving..");
-			ModelService.save(actualSqa).then(function(){
-				console.log(actualSqa);	
+			newSqaStatus.set("changedate",statusChangeResource.get("changedate"));
+			newSqaStatus.set("statusdesc",statusChangeResource.get("statusdesc"));
+			newSqaStatus.set("memo",statusChangeResource.get("memo"));
+			
+			var sqaSet =sqaStatusSet.getParent().getOwner();
+			
+			ModelService.save(sqaSet).then(function(){
+				console.log('save completed');
+				
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
 			});
 		},
 
