@@ -2123,6 +2123,14 @@ function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, Co
 							console.log("fetched from local");
 						}
 						eventContext.application.addResource(locset);
+						var size = locset.data.length;
+						console.log("no of permit = "+ size);
+						if(size != null){
+							currentRecord.set("permitlistsize", locset.data.length);
+						}else{
+							currentRecord.set("permitlistsize", 0);
+						}
+						
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});
@@ -2136,13 +2144,20 @@ function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, Co
 		filterSqa: function(eventContext){
 			console.log("function: sqa filter");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			console.log(currentRecord);
+			//console.log(currentRecord);
 			var wonum = currentRecord.get("wonum");
 			
 			if (wonum != null) {
 					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
 						//console.log(locset);
 						eventContext.application.addResource(locset);
+						var size = locset.data.length;
+						console.log("no of sqa = "+ size);
+						if(size != null){
+							currentRecord.set("sqalistsize", size);
+						}else{
+							currentRecord.set("sqalistsize", 0);
+						}
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});

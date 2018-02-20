@@ -272,7 +272,10 @@
 					<eventHandlers id="WorkExecution.WorkDetailView_CaptureGPS_action_action_eventHandlers">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_CaptureGPS_action_eventHandlers_click" method="updateCurrentGPSPosition"/>
 					</eventHandlers>
-				</action>				
+				</action>	
+				<action id="WorkExecution.WorkDetailView_Cd_action" label="Search Work Order" transitionTo="WorkExecution.SearchWorkOrderView">
+				</action>	
+						
 											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
@@ -579,12 +582,21 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_sqalistsize" layoutInsertAt="count1" resourceAttribute="sqalistsize"/>
 						<!-- <button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1">
 							<eventHandlers id="WorkExecution.WorkDetailView_SQA_imagesaction_addSQA_OFF.png_button_eventHandlers">
 								<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.WorkDetailView_EnterSQA_imagesaction_addSQA_OFF.png_button_eventHandlers_click_clickAddSQAButton" method="clickAddSQAButton"/>
 							</eventHandlers>					  
 						</button>  -->
-						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" transitionTo="WorkExecution.CreateSQADetails" >		  
+						<!--<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" transitionTo="WorkExecution.CreateSQADetails" >		
+						<eventHandlers id="workorder.createSqa">
+							<eventHandler class="custom.SqaDetailHandler" event="click" id="workorder.createSqa21" method="initAddSqaView"/> 
+						</eventHandlers>  
+						</button>  -->
+						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" >		
+						<eventHandlers id="workorder.createSqa">
+							<eventHandler class="custom.SqaDetailHandler" event="click" id="workorder.createSqa21" method="initAddSqaView"/> 
+						</eventHandlers>  
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers00">
 							<eventHandler id="workorder.hide_eventhandler00" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
@@ -593,8 +605,8 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.permitView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.Permit2">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitView" layoutInsertAt="item1" value="Permit"/>
-						<!-- <text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
-						</text>-->
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_permitlistsize" layoutInsertAt="count1" resourceAttribute="permitlistsize">
+						</text>
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button3" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers58">
@@ -4482,7 +4494,7 @@
 				<requiredResource id="WorkExecution.FailureView_failureClassResource" name="failureClassResource"/>	 
 			</requiredResources>
 		 
-			<list id="WorkExecution.FailureView_failureClassResource_list" resource="failureClassResource" showHeader="false">
+			<list id="WorkExecution.FailureView_failureClassResource_list" resource="failureClassResource" showHeader="true">
 				<searchAttributes id="WorkExecution.PersonLookup_additionalperson_failureClassResource">
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureClass" name="failureClass"/>
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureCodeDesc" name="failureCodeDesc"/>
@@ -9578,6 +9590,7 @@
 
 				<!-- Complex Attribute sizes -->
 				<localAttribute dataType="string" id="workOrder_permitlistsize_string" name="permitlistsize" persistent="false"/>
+				<localAttribute dataType="string" id="workOrder_sqalistsize_string" name="sqalistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_tasklistsize_string" name="tasklistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_assignmentlistsize_string" name="assignmentlistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_materiallistsize_string" name="materiallistsize" persistent="false"/>
@@ -9803,20 +9816,6 @@
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
 			</queryBases> 
 		</resource>
-		
-	<!-- custom sqa status resource (standalone)-->
-		<resource class="custom.SqaStatusObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAStatus" id="sqastatus" name="sqastatus" pageSize="50" providedBy="/oslc/sp/WorkManagement">
-			<attributes id="sqastatus_attributes">
-				<attribute describedByProperty="spi_wm:plusgauditid" id="sqastatus_wmplusgauditid" name="plusgauditid"/>
-				<attribute describedByProperty="spi_wm:memo" id="sqastatus_wmauditnum" name="memo"/>
-				<attribute describedByProperty="spi_wm:changeby" id="sqastatus_changeby" name="changeby"/>
-				<attribute describedByProperty="spi_wm:status" id="sqastatus_wmstatus" name="status"/> 
-			</attributes>
-			<queryBases id="sqastatus_queryBases">
-	 			<queryBase defaultForSearch="true" id="sqastatussearchAll" name="searchAllsqastatus" queryUri="/oslc/os/oslcsqastatus" />
-			</queryBases> 
-		</resource>
-				
 		
 		<!-- custom sqa resource status-->
 		<resource  id="plusgauditchstatusResource" name="plusgauditchstatusResource">
@@ -13173,8 +13172,8 @@
 		<!-- Failure Class resource -->
 		<resource id="failureClassResource" name="failureClassResource" singleton="true" inMemory="true">
 	        <attributes id="failureClassResource_attributes">
-	        	<localAttribute dataType="string" id="failureClassResource_failureClass_string" name="failureClass"/>
-	        	<localAttribute dataType="string" id="failureClassResource_failureCodeDesc_string" name="failureCodeDesc"/> 
+	        	<localAttribute dataType="string" id="failureClassResource_failureClass_string" index="true" name="failureClass"/>
+	        	<localAttribute dataType="string" id="failureClassResource_failureCodeDesc_string" index="true" name="failureCodeDesc"/> 
 	        </attributes> 
 	    </resource>		
 	    
