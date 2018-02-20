@@ -238,6 +238,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 //				//newSQA.set('auditnum','6002');
 //				newSQA.set('description','SQA for Work order ' + wonum);
 //				newSQA.set('status',"ENTRY");
+				this.saveCreateSqa(eventContext);
 			}
 			if(sqaSet){
 				eventContext.setMyResourceObject(sqaSet);		
@@ -252,21 +253,23 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			if(!eventContext.viewControl.validate()){
 				return;
 			}
-			this.saveTransaction();
+			this.saveTransaction(eventContext);
 	
 
 		},
 		
 		saveTransaction:function(eventContext){	
 			console.log("___create sqa");
+			var msg = MessageService.createStaticMessage("New SQA was created").getMessage();
 			try{
      			var workOrderSet = CommonHandler._getAdditionalResource(this,"workOrder");
      			var sqa = workOrderSet.getCurrentRecord();
 				if (!sqa.isNew()) {
 					console.log("is new");
 					ModelService.save(workOrderSet);
+					eventContext.ui.showToastMessage(msg);
 				}			
-				this.ui.hideCurrentView();
+				//this.ui.hideCurrentView();
 			}catch(e){
 				throw e;
 			}
