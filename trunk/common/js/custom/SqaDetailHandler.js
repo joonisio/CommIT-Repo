@@ -130,24 +130,41 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			});
 		},
 		
-		saveSqaStatus : function(eventContext){			
-			var sqaStatusSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList");
-			newSqaStatus = sqaStatusSet.createNewRecord();
-
+		saveSqaStatus : function(eventContext){		
+			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa");
+			
 			var statusChangeResource = CommonHandler._getAdditionalResource(eventContext,"statusChangeResource").getCurrentRecord();
+		
+			/*var sqaStatusSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList");
+			newSqaStatus = sqaStatusSet.createNewRecord();
 			
 			newSqaStatus.set("changedate",statusChangeResource.get("changedate"));
 			newSqaStatus.set("statusdesc",statusChangeResource.get("statusdesc"));
 			newSqaStatus.set("memo",statusChangeResource.get("memo"));
+			*/
+			currSQA = sqa.getCurrentRecord();
+			currSQA.set("status", statusChangeResource.get("status"));
+			currSQA.set("statusdesc", statusChangeResource.get("statusdesc"));
+			currSQA.set("statusdate", statusChangeResource.get("changedate"));
 			
-			var sqaSet =sqaStatusSet.getParent().getOwner();
+			/*var sqaSet =sqaStatusSet.getParent().getOwner();
 			
 			ModelService.save(sqaSet).then(function(){
-				console.log('save completed');
+				console.log('save sqa status completed');
+				
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
+			});*/
+			
+			ModelService.save(sqa).then(function(){
+				console.log('save sqa completed');
+				console.log(sqa);
 				
 			}).otherwise(function(error) {
 			  self.ui.showMessage(error.message);
 			});
+			
+			this.ui.hideCurrentView();
 		},
 
 		

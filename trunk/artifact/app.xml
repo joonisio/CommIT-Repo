@@ -5442,7 +5442,7 @@
 						<text editable="false" id="WorkExecution.sqaView_groupitem_type" label="Audit Type" lookup="WorkExecution.plusgaudittypeLookup" placeHolder="Tap to enter" resourceAttribute="type"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.sqaView_groupitem_7" transitionTo="WorkExecution.EditStatusViewSqa">
-						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status"  resourceAttribute="status"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_status" label="Status" resourceAttribute="status"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_17" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_plusgplandate" label="Required Date" resourceAttribute="plusgplandate"/>
@@ -7446,7 +7446,8 @@
 			<requiredResources id="WorkExecution.EditStatusViewSqa_requiredResources">
 				<requiredResource id="WorkExecution.EditStatusViewSqa_workOrder" name="sqa">
 					<requiredAttribute id="WorkExecution.EditStatusViewSqa_workOrder_plusgauditchstatuslist" name="plusgauditchstatusList"/>  
-				</requiredResource>					
+				</requiredResource>		
+				<requiredResource id="WorkExecution.EditStatusViewSqa_statusChangeResource" name="statusChangeResource"/>			
 			</requiredResources>
 
 			<container id="WorkExecution.EditStatusViewSqa_workOrder_container_0" resource="sqa">
@@ -7463,7 +7464,7 @@
 						<text editable="true" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_0_changedate_StatusDate" label="Status Date" placeHolder="Select" required="true" resourceAttribute="changedate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_1">
-						<text editable="false" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_1_statusdesc_NewStatus" label="New Status" lookup="WorkExecution.plusgauditstatusLookup" placeHolder="Select from list" required="true" resourceAttribute="statusdesc"/>
+						<text editable="true" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_1_statusdesc_NewStatus" label="New Status" lookup="WorkExecution.plusgauditstatusLookup" placeHolder="Select from list" required="true" resourceAttribute="statusdesc"/>
 					</groupitem>
 					<groupitem id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_2">
 						<text editable="true" id="WorkExecution.EditStatusViewSqa_statusChangeResource_groupitem_2_memo_Memo" label="Memo" placeHolder="Tap to enter" resourceAttribute="memo"/>
@@ -8661,7 +8662,8 @@
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.plusgauditstatusLookup_returnAttributes">
-				<returnAttribute id="WorkExecution.plusgauditstatusLookup_value_status" sourceAttribute="value" targetAttribute="statusdesc"/>
+				<returnAttribute id="WorkExecution.plusgauditstatusLookup_value_status" sourceAttribute="value" targetAttribute="status"/>
+				<returnAttribute id="WorkExecution.plusgauditstatusLookup_description_statusdesc" sourceAttribute="description" targetAttribute="statusdesc"/>
 			</returnAttributes>
 		</lookup>
 
@@ -12318,7 +12320,7 @@
 				<queryBases id="tnbpermittypes_queryBases">
 					<queryBase id="tnbpermittypes_queryBase" name="getTNBPermitType" queryUri="/oslc/os/oslcalndomain" />
 				</queryBases >
-				<whereClause id="tnbpermittypes_whereClause" clause="spi:domainid='TNBPERMITTYPE'" />
+				<whereClause id="tnbpermittypes_whereClause" clause="spi:domainid='TNBPERMITTYPE' AND spi:value!='PERMIT-KHAS'" />
 		</resource>			
 		
 		<!-- Custom Permit Status domain -->
