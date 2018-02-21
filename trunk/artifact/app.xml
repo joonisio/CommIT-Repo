@@ -600,6 +600,7 @@
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers00">
 							<eventHandler id="workorder.hide_eventhandler00" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+							<!--<eventHandler id="workorder.hide_eveenthandler00" event="click" class="application.handlers.WODetailHandler" method="filterSqa2"/>   -->
 						</eventHandlers>
 					</groupitem>
 					
@@ -12533,7 +12534,7 @@
 			<queryBases id="domainwostatus_queryBases">
  	 			<queryBase id="domainwostatus_queryBase_getwostatus" name="getwostatus" queryUri="/oslc/os/oslcsynonymdomain"/>
 	 		</queryBases>			
-			<whereClause clause="oslc:shortTitle='WOSTATUS'" id="domainwostatus_whereClause"/>
+			<whereClause clause="oslc:shortTitle='WOSTATUS' and spi:value in ['COMP','INPRG','ASGN','RTECO','HOLD','WASAUPD']" id="domainwostatus_whereClause"/>
 		</resource>
 
 		<!-- Line Type domain -->
