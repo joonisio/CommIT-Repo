@@ -5237,10 +5237,10 @@
 						<text editable="true" id="WorkExecution.PermitView_groupitem_description" label="Description" resourceAttribute="description"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_1323" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpermittype" lookup="WorkExecution.PermitTypeLookup" label="Permit Type" resourceAttribute="tnbpermittype"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbpermittype" lookup="WorkExecution.PermitTypeLookup" placeHolder="Tap to enter" label="Permit Type" resourceAttribute="tnbpermittype"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_132" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_status3" lookup="WorkExecution.PermitStatusLookup" label="Status" resourceAttribute="tnbstatus"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_status3" lookup="WorkExecution.PermitStatusLookup" placeHolder="Tap to enter" label="Status" resourceAttribute="tnbstatus"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.PermitView_groupitem_32" >
 						<text editable="false" id="WorkExecution.PermitView_groupitem_requireddate3" label="Required Date" resourceAttribute="requireddate"/>
@@ -5249,22 +5249,24 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbissuedate3" label="Issue Date" resourceAttribute="tnbissuedate"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_102" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="tnbwonum"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_wonum5" label="Work Order" resourceAttribute="tnbwonum"/>
 					</groupitem>		
 					<groupitem id="WorkExecution.PermitView_groupitem_1312" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset"  placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_assetnum6" lookup="WorkExecution.AssetLookupForPermit" label="Asset"  placeHolder="Tap to enter" resourceAttribute="assetnum"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExedcution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_121" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_location2" lookup="WorkExecution.Location4PermitLookup" label="Location"  placeHolder="Tap to enter"  resourceAttribute="location"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_location2" lookup="WorkExecution.Location4PermitLookup" label="Location"  placeHolder="Tap to enter"  resourceAttribute="location"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExeycution.EditLocationView_0_locationdesc" resourceAttribute="locationdesc"/>
 					</groupitem>			
 					<groupitem id="WorkExecution.PermitView_groupitem_41" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbap2" label="Authorized Person" lookup="WorkExecution.PersonLookup2" resourceAttribute="tnbap" placeHolder="Tap to enter"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_53" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbcp2" label="Competent Person" lookup="WorkExecution.PersonLookup3" resourceAttribute="tnbcp"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbcp2" label="Competent Person" lookup="WorkExecution.PersonLookup3" resourceAttribute="tnbcp" placeHolder="Tap to enter"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_62" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbia2" label="Issuing Authority"  lookup="WorkExecution.PersonLookup4" resourceAttribute="tnbia"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_tnbia2" label="Issuing Authority"  lookup="WorkExecution.PersonLookup4" resourceAttribute="tnbia" placeHolder="Tap to enter"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_72" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpa2" label="Performing Authority" resourceAttribute="tnbpa"/>
@@ -5273,7 +5275,7 @@
 						<text editable="true" id="WorkExecution.PermitView_groupitem_tnbpassportno2" label="IC Number" resourceAttribute="tnbpassportno"/>
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_93" >
-						<text editable="true" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
+						<text editable="false" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor" placeHolder="Tap to enter"/>
 					</groupitem>																
 				</group>		
 				<group id="WorkExecution.NewWorkOrderView_group_22">
@@ -8763,8 +8765,10 @@
 			</list>
 
 			<returnAttributes id="WorkExecution.AssetPermitLookup_returnAttributes">
-			<returnAttribute id="WorkExecution.AssetPermitLookup_location" sourceAttribute="location" targetAttribute="location"/>
+				<returnAttribute id="WorkExecution.AssetPermitLookup_location" sourceAttribute="location" targetAttribute="location"/>
 				<returnAttribute id="WorkExecution.AssetPermitLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="assetnum"/>
+				<returnAttribute id="WorkExecution.AssetPermitLookup_assassetdesc" sourceAttribute="description" targetAttribute="assetdesc"/>
+				<returnAttribute id="WorkExecution.AssetPermitLookup_assetnlocationdesc" sourceAttribute="locationdesc" targetAttribute="locationdesc"/>
 			</returnAttributes>
 
 		</lookup>
@@ -9011,6 +9015,7 @@
 			</list>
 			<returnAttributes id="WorkExecution.Location4PermitLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.Location4PermitLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
+				<returnAttribute id="WorkExecution.Location4PermitLookup_locationdesc" sourceAttribute="description" targetAttribute="locationdesc"/>
 			</returnAttributes>
 		</lookup>
 
@@ -10188,6 +10193,8 @@
 				<attribute describedByProperty="spi_wm:orgid" id="permit_orgid2" name="orgid"/>
 				<attribute describedByProperty="spi_wm:status" id="permit_status2" name="status"/>
 				<attribute describedByProperty="spi_wm:doclinks" describedByResource="permitAttachments" id="permit_attachments_spiattachments" name="attachments"/>
+				<localAttribute dataType="string" id="permit_locationdesc_string" name="locationdesc"/>
+				<localAttribute dataType="string" id="workOrder_assetdesc_stridng" name="assetdesc"/>
 			</attributes>
 			<queryBases id="permit_queryBases">
 	 			<queryBase defaultForSearch="true" id="permitsearchAll" name="searchAllPemir" queryUri="/oslc/os/oslcpermit" />
