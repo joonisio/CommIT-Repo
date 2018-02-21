@@ -4494,11 +4494,7 @@
 				<requiredResource id="WorkExecution.FailureView_failureClassResource" name="failureClassResource"/>	 
 			</requiredResources>
 		 
-			<list id="WorkExecution.FailureView_failureClassResource_list" resource="failureClassResource" showHeader="true">
-				<searchAttributes id="WorkExecution.PersonLookup_additionalperson_failureClassResource">
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureClass" name="failureClass"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureCodeDesc" name="failureCodeDesc"/>
-				</searchAttributes>
+			<list id="WorkExecution.FailureView_failureClassResource_list" resource="failureClassResource" showHeader="false">
 				<listItemTemplate id="WorkExecution.FailureView_failureClassResource_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.FailureView_failureClassResource_FailureReportList" layoutInsertAt="item1" value="CLASS"/>
 					<listtext id="WorkExecution.FailureView_failureClassResource_FailureReportList_failureClass" layoutInsertAt="item2" resourceAttribute="failureClass"/>
@@ -4515,7 +4511,12 @@
 				</eventHandlers>				
 			</list>			 
 			 
-			<list attribute="failureReportlist" id="WorkExecution.FailureView_workOrder_failureReportlist_list" resource="workOrder" showHeader="false">
+			<list attribute="failureReportlist" id="WorkExecution.FailureView_workOrder_failureReportlist_list" resource="workOrder" showHeader="true">
+				<searchAttributes id="WorkExecution.PersonLookup_additionalperson_failureClassResource" >
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_type" name="type"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureClass" name="failurecode"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureCodeDesc" name="failureDesc"/>
+				</searchAttributes>
 				<listItemTemplate id="WorkExecution.FailureView_workOrder_failureReportlist_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.FailureView_workOrder_FailureReportList_type" layoutInsertAt="item1" resourceAttribute="type"/>
 					<listtext id="WorkExecution.FailureView_workOrder_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
@@ -5221,7 +5222,7 @@
 
 	
 		<!-- Custom permit detail view-->
-		<view id="WorkExecution.PermitViewDetails2" label="Permit Details">
+		<view id="WorkExecution.PermitViewDetails2" label="Permit Details" saveonshow="true">
 			<requiredResources id="WorkExecution.Permit_requiredResources23">
 				<requiredResource id="WorkExecution.permit_workOrder23" name="permit">
 				</requiredResource>
@@ -5273,11 +5274,77 @@
 					</groupitem>
 					<groupitem id="WorkExecution.PermitView_groupitem_93" >
 						<text editable="true" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor"/>
-					</groupitem>		
-																
-				</group>			
+					</groupitem>																
+				</group>		
+				<group id="WorkExecution.NewWorkOrderView_group_22">
+					<groupitem  id="WorkExecution.NewWorkOrderView_groupitem_WorkE3xecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.PermitAttachmentsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.NewWorkOr3derView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>					
+					</groupitem>
+				</group>	
 			</container>														
 		</view>
+		
+		
+		<!-- custom Attachments permit List view -->
+		<!-- custom Attachments permit List view -->
+		<view id="WorkExecution.PermitAttachmentsView" label="Attachments" showOverflow="true" saveonshow="true">
+			<requiredResources id="WorkExecution.PermitAttachmentsView_requiredResources">
+				<requiredResource id="WorkExecution.PermitAttachmentsView_permit" name="permit">
+					<requiredAttribute id="WorkExecution.PermitAttachmentsView_permit_attachments" name="attachments" reload="true"/>
+				</requiredResource>
+			</requiredResources>
+			
+			<!-- <actions id="WorkExecution.PermitAttachmentsView_actions">
+				<action id="WorkExecution.PermitAttachmentsView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
+					<eventHandlers id="WorkExecution.PermitAttachmentsView_TakePhoto_action_eventHandlers">
+								<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="launchCameraForPhoto"/>
+								<eventHandler class="application.handlers.WOAttachmentHandler" event="render" id="WorkExecution.PermitAttachmentsView_TakePhoto_action_eventHandlers_render_initCategory" method="initCategory"/>
+							</eventHandlers>
+				</action>
+				<action id="WorkExecution.PermitAttachmentsView_PickfromGallery_action" image="header_add_OFF.png" label="Pick from Gallery">
+					<eventHandlers id="WorkExecution.PermitAttachmentsView_PickfromGallery_action_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_PickfromGallery_action_eventHandlers_click_launchGallery" method="launchGallery"/>
+					</eventHandlers>
+				</action>
+			</actions>  -->
+			
+			<list attribute="attachments" id="WorkExecution.PermitAttachmentsView_permit_attachments_list" resource="permit">
+
+				<sortOptions id="WorkExecution.PermitAttachmentsView_permit_attachments_list_sortOptions">
+					<sortOption id="WorkExecution.PermitAttachmentsView_permit_sortOption_CreatedDate" label="Created Date">
+						<sortAttribute direction="asc" id="WorkExecution.PermitAttachmentsView_permit_CreatedDate_sortAttribute_displayCreationDate" name="displayCreationDateISO"/>
+					</sortOption>
+					<sortOption id="WorkExecution.PermitAttachmentsView_permit_sortOption_FileName" label="File Name">
+						<sortAttribute direction="asc" id="WorkExecution.PermitAttachmentsView_permit_FileName_sortAttribute_displayFileName" name="displayFileName"/>
+					</sortOption>
+					<sortOption id="WorkExecution.PermitAttachmentsView_permit_sortOption_Description" label="Description">
+						<sortAttribute direction="asc" id="WorkExecution.PermitAttachmentsView_permit_Description_sortAttribute_displayDescription" name="displayDescription"/>
+					</sortOption>
+				</sortOptions>
+
+				<listItemTemplate id="WorkExecution.PermitAttachmentsView_permit_attachments_listItemTemplate_AttachmentsListItem" layout="AttachmentsListItem">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_displayFileName" layoutInsertAt="item1" resourceAttribute="displayFileName"/>
+					<listtext id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_displayDescription" layoutInsertAt="item2" resourceAttribute="displayDescription"/>
+					<listtext id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_displayFileType" layoutInsertAt="item3" resourceAttribute="displayFileType"/>
+					<button border="false" cssClass="attachmentIcon" id="WorkExecution.PermitAttachmentsView_permit_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button" image="/images/msg_downloadComplete_small.png" layoutInsertAt="icon" resourceAttribute="anywhereAttachDownloaded">					    					    
+						<eventHandlers id="WorkExecution.PermitAttachmentsView_permit_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers">
+							<eventHandler class="application.handlers.WOAttachmentHandler" event="datachange" id="WorkExecution.PermitAttachmentsView_permit_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers_datachange_displayLocal" method="displayLocal"/>
+							<eventHandler class="application.handlers.WOAttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_permit_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers_click_handleThumbnailClick" method="handleThumbnailClick"/>
+						</eventHandlers>
+					</button>					
+					<listtext id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_displaySize" layoutInsertAt="item4" resourceAttribute="displaySize"/>
+					
+					<listtext id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_createby" layoutInsertAt="item5" resourceAttribute="createby"/>			
+					<listtext id="WorkExecution.PermitAttachmentsView_permit_AttachmentsListItem_displayCreationDate" layoutInsertAt="item6" resourceAttribute="displayCreationDate"/>										 
+					<eventHandlers id="WorkExecution.PermitAttachmentsView_permit_attachments_listItemTemplate_AttachmentsListItem_eventHandlers">
+						<eventHandler class="application.handlers.WOAttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_permit_attachments_listItemTemplate_AttachmentsListItem_eventHandlers_click_handleThumbnailClick" method="handleThumbnailClick"/>						
+					</eventHandlers>
+				</listItemTemplate>
+			</list>
+
+		</view>
+		
+		
 		
 		<!-- Custom create permit detail view-->
 		<view id="WorkExecution.createPermitView" label="Permit Details">
@@ -10118,13 +10185,36 @@
 				<attribute describedByProperty="spi_wm:plusgpermitworkid" id="permit_plusgpermitworkid2" name="plusgpermitworkid"/>
 				<attribute describedByProperty="spi_wm:orgid" id="permit_orgid2" name="orgid"/>
 				<attribute describedByProperty="spi_wm:status" id="permit_status2" name="status"/>
+				<attribute describedByProperty="spi_wm:doclinks" describedByResource="permitAttachments" id="permit_attachments_spiattachments" name="attachments"/>
 			</attributes>
 			<queryBases id="permit_queryBases">
 	 			<queryBase defaultForSearch="true" id="permitsearchAll" name="searchAllPemir" queryUri="/oslc/os/oslcpermit" />
 			</queryBases> 
 		</resource>
 		
-		
+		<!-- custom permit Attachments resource-->
+		<resource id="permitAttachments" isAttachment="true" name="permitAttachments">
+			<attributes id="attachments_attributes2">		
+				<attribute describedByProperty="oslc_cm:attachmentSize" id="attachments_fileSize_oslc_cmattachmentSize2" name="fileSize"/> 
+				<attribute describedByProperty="dcterms:title" id="attachments_fileName_dctermstitle2" key="1" name="fileName"/>
+				<attribute describedByProperty="spi:fileName" id="attachments_fullFileName_spifileName2" key="2" name="fullFileName"/> 
+				<attribute describedByProperty="dcterms:description" id="attachments_description_dctermsdescription2" name="description"/>
+				<attribute describedByProperty="dcterms:created" id="attachments_creationDate_dctermscreated2" key="3" name="creationDate"/>
+				<attribute describedByProperty="spi:urlType" id="attachments_urlType_spiurlType2" name="urlType"/>
+				<attribute describedByProperty="spi:docType" id="attachments_docType_spidocType2" name="docType"/>
+				<attribute describedByProperty="spi:printthrulink" id="attachments_bulkDownload_spiprintthrulink2" name="bulkDownload"/>
+				<attribute describedByProperty="spi:contentLocation" id="attachments_contentLocation_spicontentLocation2" name="contentLocation"/>
+				<attribute describedByProperty="spi:anywhererefid" id="attachments_anywhereRefId_spianywhererefid2" name="anywhereRefId"/>
+				<attribute describedByProperty="spi:createby" id="attachments_createby_spicreateby2" name="createby"/> 
+				<localAttribute dataType="string" id="attachments_displaySize_string2" name="displaySize"/>
+				<localAttribute dataType="string" formula="(${fileName} || ${anywhereAttachName})" id="attachments_displayFileName_string2" name="displayFileName"/>
+				<localAttribute dataType="string" formula="(${description} || ${anywhereAttachDescription})" id="attachments_displayDescription_string2" name="displayDescription"/>
+				<localAttribute dataType="string" formula="(${docType} || ${anywhereAttachCategory})" id="attachments_displayCategory_string2" name="displayCategory"/>
+				<localAttribute dataType="dateTime" formula="(${creationDate} || ${anywhereCreationDate})" id="attachments_displayCreationDate_dateTime2" name="displayCreationDate"/>
+				<localAttribute dataType="string" formula="${displayCreationDate}" id="attachments_displayCreationDate_dateTime_ISO2" name="displayCreationDateISO" index="true"/>
+				<localAttribute dataType="string" id="attachments_displayFileType_string2" name="displayFileType"/>
+			</attributes>
+		</resource>
 		
 		<!--  Location Meters resource -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#LocationMeter" id="locationMeters" name="locationMeters" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
@@ -13172,8 +13262,8 @@
 		<!-- Failure Class resource -->
 		<resource id="failureClassResource" name="failureClassResource" singleton="true" inMemory="true">
 	        <attributes id="failureClassResource_attributes">
-	        	<localAttribute dataType="string" id="failureClassResource_failureClass_string" index="true" name="failureClass"/>
-	        	<localAttribute dataType="string" id="failureClassResource_failureCodeDesc_string" index="true" name="failureCodeDesc"/> 
+	        	<localAttribute dataType="string" id="failureClassResource_failureClass_string"  name="failureClass"/>
+	        	<localAttribute dataType="string" id="failureClassResource_failureCodeDesc_string"  name="failureCodeDesc"/> 
 	        </attributes> 
 	    </resource>		
 	    
