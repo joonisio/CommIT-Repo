@@ -16,6 +16,7 @@ define("application/handlers/WODetailHandler",
 	     "dojo/_base/array",
 		  "dojo/_base/lang",
 		  "custom/tnbwometersHandler",
+		  "platform/handlers/WorkOfflineHandler",
 	     "platform/handlers/_ApplicationHandlerBase",
 	     "platform/comm/CommunicationManager",
 	     "application/business/WorkOrderObject",
@@ -36,12 +37,13 @@ define("application/handlers/WODetailHandler",
 	     "platform/store/PersistenceManager",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties"],
-function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
+function(declare, arrayUtil, lang,tnbwometersHandler,WorkOfflineHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) {
 	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize','permitlistsize'];
 	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist","tnbwometergrouplist"];
 	var loadingLists = false;
 	var previousWO=null;
 	var previousSiteid=null;
+	var alreadyDownloaded=[];
 	
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
@@ -2082,19 +2084,81 @@ function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, Co
 			}
 		}, 
 		
-	//custom javascript code
 		
+	//custom javascript code
+//		downloadMeter:function(eventContext){
+//			var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
+//			workofflinehandler.startDownload("tnbwometers", "searchAllTnbWometer");
+//		
+//		},
+//		
 		offlineDownload:function(eventContext){
-			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var wonum = wo.get('wonum');
-			console.log(wo);
-//			wo.set("alreadyDownload",true);
-			this.filterPermit(eventContext);
-			this.filterSqa(eventContext);
-//			this.downloadMeterResource(eventContext, wonum);
-			
-			
+			console.log('download for offline mode');
+			var wonum = null;
+			var isInArray ;
+			var resource = ["permit","sqa"];
+			console.log(alreadyDownloaded.toString());
+			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			//console.log(wo);
+			arrayUtil.forEach(wo.data, function(wo){
+				wonum = wo.get("wonum");
+				
+				//check weather wonum already in array
+				isInArray = alreadyDownloaded.includes(wonum);
+				//wonum not in array
+				if(!isInArray){
+					
+					for(var i =0;i<resource.length;i++){
+						console.log(resource[i]);
+						ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+							
+							eventContext.application.addResource(locset);
+							//console.log(locset);
+							
+						});
+						
+						
+				}
+					alreadyDownloaded.push(wonum);
+				
+				}else{
+					console.log("already download");
+				}
+				
+			});
 		},
+//		
+//		downloadAllChild:function(eventContext){
+//			console.log("download child");
+//			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+//			var childofchild = [];
+//			var wonums=null;
+//			var siteids=null;
+//			//console.log(wo);
+//			arrayUtil.forEach(wo.data,function(wo){
+//				wonums = wo.get("wonum");
+//				siteids =wo.get("siteid");
+//				console.log(wonums + " "+ siteids);
+//				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(child1){
+//				eventContext.application.addResource(child1);
+//				console.log(child1);
+////					arrayUtil.forEach(child1.data,function(wo){
+////						childofchild.push(wo.get("wonum"));
+////					});
+//				});
+//			});
+//			
+////			
+////			console.log(childofchild.toString());
+////			
+////			if(childofchild !=null){
+////				arrayUtil.forEach(childofchild, function(wo){
+////					console.log(wo);
+////				});
+////			}
+//			
+//			
+//		},
 		
 		downloadMeterResource:function(eventContext,wonum){
 			ModelService.filtered('tnbwometergroupResource', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){	
@@ -2116,7 +2180,7 @@ function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, Co
 			var wonum = currentRecord.get("wonum");
 			
 			if (wonum != null) {
-					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+					ModelService.filtered('permit', null,[{tnbwonum: wonum}], 1000, null,null,null,true,null).then(function(locset){
 						if (locset.fetchedFromServer){
 							console.log("fetched from server");
 						}else{
@@ -2148,7 +2212,7 @@ function(declare, arrayUtil, lang,tnbwometersHandler, ApplicationHandlerBase, Co
 			var wonum = currentRecord.get("wonum");
 			
 			if (wonum != null) {
-					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+					ModelService.filtered('sqa', null,[{tnbwonum: wonum}], 1000, null,null,null,true,null).then(function(locset){
 						//console.log(locset);
 						eventContext.application.addResource(locset);
 						var size = locset.data.length;

@@ -90,7 +90,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			workOrder.set('tempMeterName',currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			if (meter != null) {
-					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
+					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
 						
 						if (locset.fetchedFromServer){
 							console.log("fetched from server");
