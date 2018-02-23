@@ -61,7 +61,13 @@
 				<requiredResource id="WorkExecution.WorkItemsView_gpslocalstore" name="PlatformGeolocationLocalStore"/>
 			</requiredResources>
 				
-			<actions id="WorkExecution.WorkItemsView_actions">			    
+			<actions id="WorkExecution.WorkItemsView_actions">		
+			<!--  	<action id="WorkExecution.WorkItemsView_DownloadtestformList_action" label="Download Test Form" overflow="true">
+					<eventHandlers id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_click_workoffline" method="downloadMeter"/>
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_render_enableDisableMenu" method="enableDisableMenu"/>
+					</eventHandlers>
+				</action>	-->    
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
 						<eventHandler class="application.handlers.WOExtDownloadHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline" method="workoffline"/>
@@ -194,6 +200,7 @@
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
 				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
+				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>
 			</eventHandlers>
 		</view>
 		
@@ -3970,10 +3977,18 @@
 				</requiredResource>
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
+				 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes2">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbmetergroup" name="tnbmetergroup"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description2" name="description"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnblocation" name="tnblocation"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbassetnum" name="tnbassetnum"/>
+				</searchAttributes>
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="CustomMeterList">
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbtasknum" layoutInsertAt="item1" resourceAttribute="tnbtasknum"/>	
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item2" resourceAttribute="tnbmetergroup"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item5" resourceAttribute="description"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnblocation" layoutInsertAt="item8" resourceAttribute="tnblocation"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbassetnum" layoutInsertAt="item11" resourceAttribute="tnbassetnum"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbper" layoutInsertAt="item3" resourceAttribute="tnbper"/>
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers">
 						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="filterMeter"/>
@@ -9990,6 +10005,8 @@
    			   	<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum" name="tnbtasknum"/>   
    			   	<attribute describedByProperty="spi_wm:tnbper" id="tnbwometergroupResourcespi_tnbper" name="tnbper"/>  
    			   	<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwometergroupResourcespi_tnbwonum" index="true" name="tnbwonum"/>  
+   			   	<attribute describedByProperty="spi_wm:tnblocation" id="tnbwometergroupResourcespi_tnblocation"  name="tnblocation"/>
+   			   	<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometergroupResourcespi_tnbassetnum"  name="tnbassetnum"/>
 			</attributes>		 
 		</resource>
 		

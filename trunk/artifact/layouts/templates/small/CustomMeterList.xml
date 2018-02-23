@@ -10,4 +10,14 @@
 	    <column colspan="9" columnid="item5" id="item5_column"/>
         <column colspan="2" columnid="item6" halign="right" id="item6_column"/>
 	</row>
+	<row id="row_2">
+	    <column colspan="1" columnid="item7" id="item4we_column"/>
+	    <column colspan="9" columnid="item8" id="item5we_column"/>
+        <column colspan="2" columnid="item9" halign="right" id="item6we_column"/>
+	</row>
+	<row id="row_3">
+	    <column colspan="1" columnid="item10" id="item4w_column"/>
+	    <column colspan="9" columnid="item11" id="item5w_column"/>
+        <column colspan="2" columnid="item12" halign="right" id="item6_wcolumn"/>
+	</row>
 </layout>
