@@ -43,7 +43,7 @@
 			<requiredResources id="WorkExecution.WorkItemsView_requiredResources">
 				<requiredResource id="WorkExecution.WorkItemsView_workOrder" name="workOrder">
 				    <requiredAttribute id="WorkExecution.WorkItemsView_attribute1" name="tasklist"/>
-				  <requiredAttribute id="WorkExecution.WorkItemsView_tnbwometergrouplist" name="tnbwometergrouplist"/>	
+				  <requiredAttribute id="WorkExecution.WorkItemsView_tnbwometergrouplist" name="tnbwometergrouplist" reload="true"/>	
 				</requiredResource>
 				<requiredResource id="WorkExecution.WorkItemsView_workOrderTimer" name="workOrderTimer"/>
 				<requiredResource id="WorkExecution.WorkItemsView_oslcmaxvars" name="oslcmaxvars"/>
@@ -62,12 +62,12 @@
 			</requiredResources>
 				
 			<actions id="WorkExecution.WorkItemsView_actions">		
-			<!--  	<action id="WorkExecution.WorkItemsView_DownloadtestformList_action" label="Download Test Form" overflow="true">
+			 	<action id="WorkExecution.WorkItemsView_DownloadtestformList_action" label="Download Test Form" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_click_workoffline" method="downloadMeter"/>
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_click_workoffline" method="downloadMeterForParentAndChild"/>
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_render_enableDisableMenu" method="enableDisableMenu"/>
 					</eventHandlers>
-				</action>	-->    
+				</action>	    
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
 						<eventHandler class="application.handlers.WOExtDownloadHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline" method="workoffline"/>
@@ -105,8 +105,8 @@
 			</actions>
 
 			<progressIndicator id="WorkExecution.WorkItemsView_0"/>
-
-			<list displayPageSize="20" id="WorkExecution.WorkItemsView_workOrder_list" queryBase="getMyAssignedWork" recordLabel="Work Order {0}" resolverClass="application.handlers.WOListHandler" resolverFunction="resolveWonumLabel" resource="workOrder" transitionTo="WorkExecution.WorkDetailView"> <!-- primary="true" -->
+			
+			<list displayPageSize="20" id="WorkExecution.WorkItemsView_workOrder_list" queryBase="getMyAssignedWork" recordLabel="Work Order {0}" resolverClass="application.handlers.WOListHandler" resolverFunction="resolveWonumLabel" resource="workOrder"  transitionTo="WorkExecution.WorkDetailView"> <!-- primary="true" -->
 
 				<findByScan enableFeatureByProperty="barcode.enabled" headerLabel="Work Orders for asset {0}" id="WorkExecution.WorkItemsView_asset" resourceAttribute="asset"/>
 
@@ -126,7 +126,7 @@
 						<sortAttribute direction="asc" id="WorkExecution.WorkItemsView_WorkOrder_sortAttribute_wonum" name="wonum"/>
 					</sortOption>
 				</sortOptions>
-
+			
 				<listItemTemplate id="WorkExecution.WorkItemsView_workOrder_listItemTemplate_WorkListItem" layout="WorkListItem">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.WorkItemsView_workOrder_WorkListItem_wonum" layoutInsertAt="item1" resourceAttribute="wonum"/>
 					<listtext id="WorkExecution.WorkItemsView_workOrder_WorkListItem_starttime" layoutInsertAt="item2" resourceAttribute="starttime"/>
@@ -4000,13 +4000,13 @@
 					<listtext id="WorkExecution.TNBWOMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetergroup"/>																	
 				</listItemTemplate>				
 			</list>	 -->
-			<list id="WorkExecution.TNBWODIRECTMETERS_totalTnbWOAssetMeters_list" label="Direct Meters" resource="workOrder" attribute="tnbwodirectmeterslist" showHeader="true" transitionTo="WorkExecution.DirectWOMeterDetailView">
+			<!-- <list id="WorkExecution.TNBWODIRECTMETERS_totalTnbWOAssetMeters_list" label="Direct Meters" resource="workOrder" attribute="tnbwodirectmeterslist" showHeader="true" transitionTo="WorkExecution.DirectWOMeterDetailView">
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.TNBWODIRECTMETERS_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="MeterList">	
 					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="tnbmetername"/>	
 					<listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>
 					<text cssClass="shortText" editable="true" id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_newreading" layoutInsertAt="item3" resourceAttribute="tnbnewreading"/>														
 				</listItemTemplate>				
-			</list>	
+			</list>	 -->
 		</view>
 		
 			
@@ -9995,6 +9995,19 @@
 			name="glaccount" describedByProperty="spi_wm:glaccount" /> <localAttribute 
 			name="statusdesc" dataType="string" /> <localAttribute name="dontDiscard" 
 			dataType="boolean" /> </attributes> </resource> -->
+			
+			
+			<!-- custom tnbwomtergroup resource -->
+		<resource  defaultOrderBy="tnbwonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwomtergroup" id="tnbwomtergroup" name="tnbwomtergroup" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="tnbwomtergroup_attributes">
+				<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwomtergroup_tnbwonum"  index="true" name="tnbwonum"/> 
+				<attribute describedByProperty="spi_wm:tnbparentwonum" id="tnbwomtergroup_tnbparentwonum"  index="true" name="tnbparentwonum"/> 
+				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwomtergroup_tnbwometergroupid"  index="true" name="tnbwometergroupid"/> 
+			</attributes>
+			<queryBases id="tnbwomtergroup_queryBases">
+	 			<queryBase id="tnbwomtergroupAll" name="searchtnbwomtergroup" queryUri="/oslc/os/oslctnbwometergroup" />
+			</queryBases> 
+		</resource>
 			
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
 		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource">
