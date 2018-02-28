@@ -287,7 +287,7 @@
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
-				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
+				<!-- <eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>  -->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
@@ -297,7 +297,7 @@
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
 				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>	
-				<!--<eventHandler id="WorkExecution.FeatureLookup_eventHandler" event="initialize" class="application.handlers.WODetailHandler" method="filterFeature"/>   -->		
+				<!--  <eventHandler id="WorkExecution.FeatureLookup_eventHandler2" event="render" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>  -->
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -570,6 +570,12 @@
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
+					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (ALPHA)"/>
+						<eventHandlers id="workorder.hide_eventhanedlers3">
+							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
+						</eventHandlers>
 					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
@@ -4009,6 +4015,33 @@
 			</list>	 -->
 		</view>
 		
+		<!--Custom Work Order Meter list view2 -->
+		<view id="WorkExecution.TnbWOMeterList3" label="Meters"  saveonshow="true" resource="tnbwomtergroup">
+		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources3">
+				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder3" name="tnbwomtergroup">
+				</requiredResource>
+			</requiredResources>
+			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list3" label="Work Order Meter Group" resource="tnbwomtergroup" showHeader="true">
+				 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes22">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbmetergroup3" name="tnbmetergroup"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description22" name="description"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnblocation2" name="tnblocation"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbassetnum2" name="tnbassetnum"/>
+				</searchAttributes>  
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList3" layout="CustomMeterList">
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbtasknum2" layoutInsertAt="item1" resourceAttribute="tnbtasknum"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup2" layoutInsertAt="item2" resourceAttribute="tnbmetergroup"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description2" layoutInsertAt="item5" resourceAttribute="description"/>	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnblocation2" layoutInsertAt="item8" resourceAttribute="tnblocation"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbassetnum2" layoutInsertAt="item11" resourceAttribute="tnbassetnum"/>
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbper2" layoutInsertAt="item3" resourceAttribute="tnbper"/>  
+					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers2">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource2" method="filterTnbMeterGroup"/>
+					</eventHandlers>																		
+				</listItemTemplate>				
+			</list>	
+		</view>
+		
 			
 		<!--Custom Work Order Meter list view -->
 		<view id="WorkExecution.TnbWOMeterList2" label="Meters">
@@ -4017,7 +4050,7 @@
 				</requiredResource>
 				<requiredResource id="WorkExecution.workt_workOrder2" name="workOrder"/>
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="{0}" resolverClass="custom.tnbwometersHandler" resolverFunction="meterLabel" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
+			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="{0}" resolverClass="application.handlers.WODetailHandler" resolverFunction="meterLabel" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
@@ -10003,6 +10036,12 @@
 				<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwomtergroup_tnbwonum"  index="true" name="tnbwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbparentwonum" id="tnbwomtergroup_tnbparentwonum"  index="true" name="tnbparentwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwomtergroup_tnbwometergroupid"  index="true" name="tnbwometergroupid"/> 
+				<attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwomtergroup_tnbmetergroup" name="tnbmetergroup"/> 
+				<attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description2" name="description"/> 
+				<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum2" name="tnbtasknum"/>   
+   			   	<attribute describedByProperty="spi_wm:tnbper" id="tnbwometergroupResourcespi_tnbper2" name="tnbper"/>  
+   			   	<attribute describedByProperty="spi_wm:tnblocation" id="tnbwometergroupResourcespi_tnblocation2"  name="tnblocation"/>
+   			   	<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometergroupResourcespi_tnbassetnum2"  name="tnbassetnum"/>
 			</attributes>
 			<queryBases id="tnbwomtergroup_queryBases">
 	 			<queryBase id="tnbwomtergroupAll" name="searchtnbwomtergroup" queryUri="/oslc/os/oslctnbwometergroup" />
@@ -10060,7 +10099,7 @@
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
 				<attribute describedByProperty="spi_wm:tnbremarks" id="tnbwometers_tnbremarks" name="tnbremarks"/>
-				<!--<localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
+				<!-- <localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<queryBases id="tnbwometers_queryBases">
 	 			<queryBase defaultForSearch="true" id="tnbwometerssearchAll" name="searchAllTnbWometer" queryUri="/oslc/os/oslctnbwometers" />
