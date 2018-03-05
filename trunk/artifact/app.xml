@@ -3989,8 +3989,14 @@
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnblocation" name="tnblocation"/>
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbassetnum" name="tnbassetnum"/>
 				</searchAttributes>
+				<sortOptions id="WorkExecution.WOMeterList_sortOptions">
+					<sortOption id="WorkExecution.WOMeterList_sortOption_Sequence" label="Sequence">
+						<sortAttribute direction="asc" id="WorkExecution.WOMeterList_Sequence_sortAttribute_tnbsequence" name="tnbsequence"/>
+					</sortOption>
+				</sortOptions>				
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="CustomMeterList">
-					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbtasknum" layoutInsertAt="item1" resourceAttribute="tnbtasknum"/>	
+					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbtasknum" layoutInsertAt="item1" resourceAttribute="tnbtasknum"/>-->	
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterGroupList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item2" resourceAttribute="tnbmetergroup"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item5" resourceAttribute="description"/>	
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnblocation" layoutInsertAt="item8" resourceAttribute="tnblocation"/>
@@ -4561,11 +4567,6 @@
 			</list>			 
 			 
 			<list attribute="failureReportlist" id="WorkExecution.FailureView_workOrder_failureReportlist_list" resource="workOrder" showHeader="true">
-				<searchAttributes id="WorkExecution.PersonLookup_additionalperson_failureClassResource" >
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_type" name="type"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureClass" name="failurecode"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_failureCodeDesc" name="failureDesc"/>
-				</searchAttributes>
 				<listItemTemplate id="WorkExecution.FailureView_workOrder_failureReportlist_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.FailureView_workOrder_FailureReportList_type" layoutInsertAt="item1" resourceAttribute="type"/>
 					<listtext id="WorkExecution.FailureView_workOrder_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
@@ -4599,12 +4600,16 @@
 				<requiredResource id="WorkExecution.FailureListLookupView_failureListResource" name="failureListResource"/>
 			</requiredResources>
 		    
-			<list id="WorkExecution.FailureListLookupView_failureListResource_list" resource="failureListResource" showHeader="false">
+			<list id="WorkExecution.FailureListLookupView_failureListResource_list" resource="failureListResource" showHeader="true">
+				<searchAttributes id="WorkExecution.FailureListLookupView_failureClassResource" >
+					<searchAttribute id="WorkExecution.FailureListLookupView_searchAttribute_failureClass" name="failurecode"/>
+					<searchAttribute id="WorkExecution.FailureListLookupView_searchAttribute_failureCodeDesc" name="description"/>
+				</searchAttributes>			    
 				<listItemTemplate id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext id="WorkExecution.FailureListLookupView_failureListResource_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
 					<listtext id="WorkExecution.FailureListLookupView_failureListResource_FailureReportList_description" layoutInsertAt="item3" resourceAttribute="description"/>		
-								<eventHandlers id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers">
-				<eventHandler class="application.handlers.FailureCodeHandler" event="click" id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers_click_failureLookup" method="failureLookup"/>
+				<eventHandlers id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers">
+					<eventHandler class="application.handlers.FailureCodeHandler" event="click" id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers_click_failureLookup" method="failureLookup"/>
 				</eventHandlers>	
 				</listItemTemplate>					
 			</list>	
@@ -5477,6 +5482,7 @@
 				<requiredResource id="WorkExecution.sqaDetails_requiredresource" name="sqa">
 					<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist26" name="plusgaudlinelist"/>
 				</requiredResource>
+				<requiredResource id="WorkExecution.sqaDetails_plusgauditstatus" name="plusgauditstatus"/>
 			</requiredResources>
 					<eventHandlers id="WorkExecution.SqaDetailView_eventHandtgtlers">
 						<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_Permi5ytHandler" method="initSqa"/>		
@@ -7531,7 +7537,7 @@
 				</button>
 				<button cssClass="mblPrimaryButton" id="WorkExecution.EditStatusViewSqa_Save_button" label="Save" primary="true" resource="sqa">
 					<eventHandlers id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers">
-						<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers_click_commitWOStatusChange" method="saveSqaStatus"/>
+						<eventHandler class="application.handlers.StatusChangeHandler" event="click" id="WorkExecution.EditStatusViewSqa_Save_button_eventHandlers_click_commitSQAStatusChange" method="commitSQAStatusChange"/>
 					</eventHandlers>
 				</button>
 			</footer>
@@ -9918,8 +9924,8 @@
 				<!-- <attribute describedByProperty="spi_wm:anywhererefid" id="sqa_anywhererefid" name="anywhereRefId"/>-->
 				<attribute describedByProperty="spi_wm:auditnum" id="sqa_wmauditnum" index="true" name="auditnum"/>
 				<attribute describedByProperty="spi_wm:description" id="sqa_tnbstatus" index="true" name="description"/>
-				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus" index="true" name="status"/>
-				<attribute describedByProperty="spi_wm:statusdate" id="sqa_statusdate" name="statusdate"/>
+				<attribute describedByProperty="spi_wm:status" id="sqa_wmstatus" index="true"  method="statusChanged" name="status"/>
+				<attribute describedByProperty="spi_wm:statusdate" id="sqa_statusdate" name="changestatusdate"/>
 				<attribute describedByProperty="spi_wm:type" id="sqa_type" name="type"/>   
 				<attribute describedByProperty="spi_wm:completedbydate" id="sqa_completedbydate"  name="completedbydate"/>
 				<attribute describedByProperty="spi_wm:createdby" id="sqa_createdby"  name="createdby"/>  
@@ -9934,6 +9940,7 @@
 				<attribute describedByProperty="spi_wm:plusgaudline" describedByResource="plusgaudlineResource" id="workOrder_plusgaudlineResource_spi_wmmultiassetlocci" name="plusgaudlinelist"/>
 				<attribute describedByProperty="spi_wm:plusgauditstatus" describedByResource="plusgauditchstatusResource" id="workOrder_plusgaudlineResource_spi_plusgauditchstatus" name="plusgauditchstatusList"/> 
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
+				<localAttribute dataType="string" id="sqa_internalStatus_string" name="internalStatus"/>
 			</attributes>
 			<queryBases id="sqa_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
@@ -10051,10 +10058,11 @@
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
 		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource">
 			<attributes id="tnbwometergroupResource_attributes">
+			    <attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometergroupResourcespi_tnbsequence" name="tnbsequence"/>
    			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" name="tnbmetergroup"/> 
    			    <attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description" name="description"/>       
    			   	<attribute describedByProperty="spi_wm:tnbwometergroupid" id="multiAssetLocResource_tnbmetername_spiassetoslcshortTitle" name="tnbwometerslist" /> 
-   			   	<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum" name="tnbtasknum"/>   
+   			   	<!-- <attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum" name="tnbtasknum"/> -->  
    			   	<attribute describedByProperty="spi_wm:tnbper" id="tnbwometergroupResourcespi_tnbper" name="tnbper"/>  
    			   	<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwometergroupResourcespi_tnbwonum" index="true" name="tnbwonum"/>  
    			   	<attribute describedByProperty="spi_wm:tnblocation" id="tnbwometergroupResourcespi_tnblocation"  name="tnblocation"/>
@@ -11931,14 +11939,20 @@
 		
 		<!-- custom sqa status domain -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="plusgauditstatus" isSystem="true" name="plusgauditstatus" pageSize="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
-			<attributes id="PLUSGAUDITSTATUS_attributes">
-				<attribute describedByProperty="spi:value" id="PLUSGAUDITSTATUS_value_spivalue" name="value"/>
-				<attribute describedByProperty="dcterms:title" id="PLUSGAUDITSTATUS_description_dctermstitle" name="description"/>
+			<attributes id="plusgauditstatus_attributes">
+				<attribute describedByProperty="spi:orgid" id="plusgauditstatus_orgid_spiorgid" name="orgid"/>
+				<attribute describedByProperty="spi:siteid" id="dplusgauditstatus_siteid_spisiteid" name="siteid"/>
+				<attribute describedByProperty="spi:maxvalue" id="plusgauditstatus_maxvalue_spimaxvalue" name="maxvalue"/>			    
+				<attribute describedByProperty="spi:value" id="plusgauditstatus_value_spivalue" name="value"/>
+				<attribute describedByProperty="dcterms:title" id="plusgauditstatus_description_dctermstitle" name="description"/>
+				<attribute describedByProperty="spi:defaults" id="plusgauditstatus_defaults_spidefaults" name="defaults"/>
+				<attribute describedByProperty="oslc:shortTitle" id="plusgauditstatus_domainid_oslcshortTitle" name="domainid"/>
+				<attribute describedByProperty="dcterms:identifier" id="plusgauditstatus_synonymdomainid_dctermsidentifier" name="synonymdomainid"/>				
 			</attributes>
-			<queryBases id="PLUSGAUDITSTATUS_queryBases">
- 	 			<queryBase id="PLUSGAUDITSTATUS_queryBase_getPlantype" name="getSqaStatus" queryUri="/oslc/os/oslcsynonymdomain"/>
+			<queryBases id="plusgauditstatus_queryBases">
+ 	 			<queryBase id="plusgauditstatus_queryBase_getPlantype" name="getSqaStatus" queryUri="/oslc/os/oslcsynonymdomain"/>
 	 		</queryBases>			
- 			<whereClause clause="oslc:shortTitle='PLUSGAUDITSTATUS'" id="PLUSGAUDITSTATUS_whereClause"/>
+ 			<whereClause clause="oslc:shortTitle='PLUSGAUDITSTATUS'" id="plusgauditstatus_whereClause"/>
 		</resource>
 		
 		

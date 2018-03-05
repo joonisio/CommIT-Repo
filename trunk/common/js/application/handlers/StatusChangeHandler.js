@@ -19,6 +19,7 @@ define("application/handlers/StatusChangeHandler",
 	     "application/business/WorkOrderObject",
 	     "application/business/WorkOrderTimer",
 	     "application/business/WorkOrderStatusHandler",
+	     "application/business/SqaStatusHandler",
 	     "platform/exception/PlatformRuntimeException",
 	     "platform/warning/PlatformRuntimeWarning",
 	     "application/handlers/CommonHandler",
@@ -31,7 +32,7 @@ define("application/handlers/StatusChangeHandler",
 	     "application/business/DataSheetObject",
 	     "dojo/_base/lang"
 	     ],
-function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, WorkOrderTimer, WorkOrderStatusHandler, PlatformRuntimeException, PlatformRuntimeWarning, CommonHandler, PlatformConstants, FormatterService,SynonymDomain, Logger, MaxVars, MessageService, DataSheetObject,lang) {
+function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, WorkOrderTimer, WorkOrderStatusHandler, SqaStatusHandler, PlatformRuntimeException, PlatformRuntimeWarning, CommonHandler, PlatformConstants, FormatterService,SynonymDomain, Logger, MaxVars, MessageService, DataSheetObject,lang) {
 	return declare( ApplicationHandlerBase, {
 		
 /**@memberOf application.handlers.StatusChangeHandler */
@@ -179,6 +180,46 @@ function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, 
 				dsnum = DataSheetObject.getIncompleteRequiredDatasheet(dsSet, domainCalStatus);
 			}
 			return dsnum;
+		},
+		
+		/**
+		 * Custom Codes
+		 * Commit changes to SQA Status (handle OK button clicked)
+		 * @function
+		 * @param {string} eventContext - javascript variables context.
+		 */		
+		
+		commitSQAStatusChange: function(eventContext){
+			console.log("SAVE SQA STATUS HERE");
+			
+			var sqa = eventContext.application.getResource('sqa');
+			
+			var statusChangeResource = eventContext.application.getResource('statusChangeResource').getCurrentRecord();
+		
+			var currSQA = sqa.getCurrentRecord();
+			console.log(currSQA);
+			console.log(statusChangeResource);
+			
+			var currentStatus = currSQA.get('status');
+			var newStatus=statusChangeResource.get("status");
+			var newInternalStatus = SqaStatusHandler.getInstance().toInternalState(newStatus);
+			currSQA.openPriorityChangeTransaction();		
+			
+			currSQA.set("status", statusChangeResource.get("status"));
+			currSQA.set("statusdesc", statusChangeResource.get("status"));
+			currSQA.set("memo",statusChangeResource.get("memo"));
+			currSQA.setDateValue("statusdate",statusChangeResource.getAsDateOrNull("changedate"));	
+			currSQA.setDateValue("changestatusdate",statusChangeResource.getAsDateOrNull("changedate"));
+			
+			ModelService.save(sqa).then(function(){
+				console.log('save SQA completed');
+				console.log(sqa);
+				
+			}).otherwise(function(error) {
+			  self.ui.showMessage(error.message);
+			});
+			
+			this.ui.hideCurrentView();			
 		},
 		
 		commitTaskStatusChange: function(eventContext){

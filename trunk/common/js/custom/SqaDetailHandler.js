@@ -143,9 +143,15 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			newSqaStatus.set("memo",statusChangeResource.get("memo"));
 			*/
 			currSQA = sqa.getCurrentRecord();
+			
+			currSQA.openPriorityChangeTransaction();
+			
 			currSQA.set("status", statusChangeResource.get("status"));
-			currSQA.set("statusdesc", statusChangeResource.get("statusdesc"));
-			currSQA.set("statusdate", statusChangeResource.get("changedate"));
+			currSQA.set("statusdesc", statusChangeResource.get("status"));
+			currSQA.set("memo",statusChangeResource.get("memo"));
+			//currSQA.set("statusdate", statusChangeResource.get("changedate"));
+			currSQA.setDateValue("statusdate",statusChangeResource.getAsDateOrNull("changedate"));	
+			currSQA.setDateValue("changestatusdate",statusChangeResource.getAsDateOrNull("changedate"));
 			
 			/*var sqaSet =sqaStatusSet.getParent().getOwner();
 			
@@ -251,10 +257,6 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				sqaSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.sqalist");
 				var newSQA= sqaSet.createNewRecord();
 				SqaObject.setDefaultValues(newSQA, wonum);
-//				newSQA.set('tnbwonum',wonum);
-//				//newSQA.set('auditnum','6002');
-//				newSQA.set('description','SQA for Work order ' + wonum);
-//				newSQA.set('status',"ENTRY");
 				this.saveCreateSqa(eventContext);
 			}
 			if(sqaSet){
