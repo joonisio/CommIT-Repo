@@ -40,13 +40,13 @@ define("application/handlers/WODetailHandler",
 	     "platform/map/MapProperties",
 	     "platform/store/_ResourceMetadataContext"],
 function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties,ResourceMetaData) {
-	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize','permitlistsize'];
+	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize'];
 	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist","tnbwometergrouplist"];
 	var loadingLists = false;
 	var previousWO=null;
 	var previousSiteid=null;
-	var alreadyDownloaded=[];
-	var tnbwometergroup=[];
+	var wonumArray=[];
+	var wonumArray2=[];
 	
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
@@ -2107,33 +2107,35 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		
 		offlineDownload:function(eventContext){
 			console.log('download for offline mode');
-			var wonum = null;
-			var isInArray ;
-			var resource = ["permit","sqa"];
-			console.log(alreadyDownloaded.toString());
-			var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-			console.log(wo);
+				var wonum = null;
+				var isInArray ;
+				var resource = ["permit","sqa"];
+				console.log(wonumArray.toString());
+				var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+				console.log(wo);
+				
+				arrayUtil.forEach(wo.data, function(wo){
+					wonum = wo.get("wonum");
+					tnbwometerslist = wo.get("tnbwometerslist");			
+					//check weather wonum already in array
+					isInArray = wonumArray.includes(wonum);
+					
+						for(var i =0;i<resource.length;i++){
+							console.log(resource[i]);
+							ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+								//eventContext.application.addResource(locset);
+								console.log(locset);
+								
+							});						
+					}
+					if(!isInArray){
+						wonumArray.push(wonum);
+					}
+					
+				});
+				this.downloadAllChild(eventContext);
 			
-			arrayUtil.forEach(wo.data, function(wo){
-				wonum = wo.get("wonum");
-				tnbwometerslist = wo.get("tnbwometerslist");			
-				//check weather wonum already in array
-				isInArray = alreadyDownloaded.includes(wonum);
-				
-					for(var i =0;i<resource.length;i++){
-						console.log(resource[i]);
-						ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
-							//eventContext.application.addResource(locset);
-							console.log(locset);
-							
-						});						
-				}
-				if(!isInArray){
-					alreadyDownloaded.push(wonum);
-				}
-				
-			});
-			this.downloadAllChild(eventContext);
+			
 		},
 		
 		downloadAllChild:function(eventContext){
@@ -2153,17 +2155,33 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 				ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(child1){
 					arrayUtil.forEach(child1.data,function(wo1){
 						wonums=wo1.get("wonum");
-						isInArray = alreadyDownloaded.includes(wonums);
+						tnbchildwometer = wo1.get("tnbchildwometer");
+						//console.log(tnbchildwometer);
+						isInArray = wonumArray.includes(wonums);
+						
 						if(!isInArray){
-							alreadyDownloaded.push(wonums);
+							if(tnbchildwometer){
+								wonumArray2.push(wonums);
+							}else{
+								wonumArray.push(wonums);
+							}
+							
 						}
 						console.log("child " +wo1.get("wonum") + " parent "+ wo1.get("parentWonum"));
 						
 						ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(child2){
 							arrayUtil.forEach(child2.data,function(wo2){
-								isInArray = alreadyDownloaded.includes(wo2.get("wonum"));
+								wonums=wo2.get("wonum")
+								tnbchildwometer = wo2.get("tnbchildwometer");
+								isInArray = wonumArray.includes(wo2.get("wonum"));
+								
 								if(!isInArray){
-									alreadyDownloaded.push(wo2.get("wonum"));
+									if(tnbchildwometer){
+										wonumArray2.push(wonums);
+									}else{
+										wonumArray.push(wonums);
+									}
+									
 								}
 								console.log('grandchild ' + wo2.get("wonum")+" parent "+ wo2.get("parentWonum"));
 								
@@ -2174,38 +2192,50 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					
 				});
 			});
+			eventContext.ui.showToastMessage("download child wo");
 			
 		},
 		
 		downloadMeterForParentAndChild:function(eventContext){
-			console.log(alreadyDownloaded.toString());
-			arrayUtil.forEach(alreadyDownloaded,function(wonum){
+			console.log(wonumArray.toString());
+			console.log(wonumArray2.toString());
+			
+			arrayUtil.forEach(wonumArray,function(wonum){
 				console.log(wonum);
-
 				ModelService.filtered('tnbwomtergroup', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
-					//eventContext.application.addResource(dataset);
+					//eventContext.applidatacation.addResource(dataset);
 					if(dataset.data.length>0){
 						arrayUtil.forEach(dataset.data,function(data2){
 							meter = data2.tnbwometergroupid;
 							console.log(wonum + " "+meter);
-							
-							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
-								//eventContext.application.addResource(locset);
-								if(locset.data.length>0){
-									console.log(locset);
-								}
-								
-							}).otherwise(function(error) {
-								Logger.error(JSON.stringify(error));
-							});
-							
-							
-						});
-						
-					}
-					
+							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null);
+						});	
+					}	
 				});
+				eventContext.ui.showToastMessage("download meter");	
 			});
+			
+//			if(wonumArray2 !=null)
+//			{
+//				arrayUtil.forEach(wonumArray2,function(wonum){
+//				console.log(wonum);
+//					ModelService.filtered('tnbwomtergroup', null,[{tnbparentwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
+//					//eventContext.applidatacation.addResource(dataset);
+//						if(dataset.data.length>0){
+//							arrayUtil.forEach(dataset.data,function(data2){
+//								meter = data2.tnbwometergroupid;
+//								console.log(wonum + " "+meter);
+//							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(dataset){
+//								console.log(dataset);
+//								});		
+//							});	
+//						}
+//					});
+//						eventContext.ui.showToastMessage("download meter 2");
+//				});
+//			}
+			
+			
 			
 		},
 		
@@ -2214,26 +2244,46 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log("filterTnbWoMeterGroup");
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonum= currentRecord.get("wonum");
-			console.log(wonum);
-			ModelService._getLocalFilteredRecords('tnbwomtergroup', 1000,[{tnbwonum: wonum}],null).then(function(dataset){
-				console.log("download tnb wo meter group");
-				eventContext.application.addResource(dataset);
-				console.log(dataset);
-				eventContext.ui.show("WorkExecution.TnbWOMeterList3");
+			var tnbchild= currentRecord.get("tnbchildwometer");
+			var filter =null;
+			console.log(tnbchild);
+			var self=this;
+			if(tnbchild){
+				filter =[{tnbparentwonum: wonum}];
+				
+			}else{
+				
+				filter =[{tnbwonum: wonum}];
+			}
+			
+			ModelService._getLocalFilteredRecords('tnbwomtergroup', 1000,filter,null).then(function(dataset){
+				if(dataset.data.length>0){
+					console.log(" tnbwomtergroup from local");
+					eventContext.application.addResource(dataset);
+					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
+				}else{
+					self.filterFromServer(eventContext,'tnbwomtergroup',filter,"WorkExecution.TnbWOMeterList3",null);
+					
+				}
+				
 				
 			});
 		},
 		
 		filterTnbMeterGroup: function(eventContext){
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"tnbwomtergroup").getCurrentRecord();
-			var wonum= currentRecord.get("description");
-			console.log(wonum);
+			//console.log(wonum);
 			var currentRecord = eventContext.getCurrentRecord();
 			var meter = currentRecord.get("tnbwometergroupid");
-			console.log(meter);
+			var self=this;
 			ModelService._getLocalFilteredRecords('tnbwometers',1000,[{tnbwometersid: meter}],null).then(function(locset){
-				eventContext.application.addResource(locset);	
-				eventContext.ui.show("WorkExecution.TnbWOMeterList2");		
+				if(locset.data.length>0){
+					console.log("tnbwometergroupid from local");
+					eventContext.application.addResource(locset);	
+					eventContext.ui.show("WorkExecution.TnbWOMeterList2");		
+				}else{
+					self.filterFromServer(eventContext,'tnbwometers',[{tnbwometersid: meter}],"WorkExecution.TnbWOMeterList2",null);
+				}
+				
 				});
 		},
 		
@@ -2269,6 +2319,20 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			
 		},
 		
+		countChild:function(eventContext){
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var wonums = currentRecord.get("wonum");
+			var siteids = currentRecord.get("siteid");
+			
+			ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
+				currentRecord.set("childsize",locset.data.length);
+						
+			}).otherwise(function(error) {
+				Logger.error(JSON.stringify(error));
+			});
+			
+		},
+		
 		//filter from server
 		filterFromServer: function(eventContext,resourceName,filter,directPage,msg){
 			console.log(resourceName + 'filter from SERVER');
@@ -2293,12 +2357,12 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
 						eventContext.application.addResource(locset);
 						var size = locset.data.length;
-						console.log(locset);
+						console.log("permit size "+size);
 						if(size > 0){
 							console.log("permit fecth from LOCAL");
-							currentRecord.set("permitlistsize", locset.data.length);
+							currentRecord.set("permitlistsize", size);
 						}else{
-							currentRecord.set("permitlistsize", 0);
+							currentRecord.set("permitlistsize", size);
 							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
 						}
 						
@@ -2401,7 +2465,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log('function: childBackButton 2');
 			console.log("previous wonum :"+previousWO);
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-			currentRecord.clearFilterAndSort();
+			CommonHandler._clearFilterForResource(eventContext,currentRecord);
 			eventContext.ui.show('WorkExecution.WorkItemsView');
 		
 		},
