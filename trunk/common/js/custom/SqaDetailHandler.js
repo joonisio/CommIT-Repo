@@ -177,16 +177,16 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		SBCheckboxHandler: function(eventContext){
 			var newValue = !eventContext.checkBoxWidget.get('value');
 			console.log(newValue);
-//			console.log('checkboxHanlder');
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
-//			console.log(sqa);
+			
 			
 			if(newValue){
 				sqa.set('linescore',1);
+				sqa.set('no',false);
+				sqa.set('notapplicable',false);
 			}else{
 				sqa.set('linescore',null);
-			}
-//			
+			}		
 			
 		},
 		
@@ -196,6 +196,8 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
 			if(newValue){
 				sqa.set('linescore',0);
+				sqa.set('no',false);
+				sqa.set('yes',false);
 			}else{
 				sqa.set('linescore',null);
 			}	
@@ -208,6 +210,8 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
 			if(newValue){
 				sqa.set('linescore',null);
+				sqa.set('yes',false);
+				sqa.set('notapplicable',false);
 			}	
 			
 		},

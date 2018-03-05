@@ -288,8 +288,6 @@
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
 				<!-- <eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>  -->
-				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
-				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -545,8 +543,10 @@
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
+								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
 							</eventHandlers>
 					</groupitem>		
 							
@@ -560,14 +560,6 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_tasklistsize" layoutInsertAt="count1" resourceAttribute="tasklistsize"> 
 						</text>
 					</groupitem> 
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0" layout="Item1Count1Button1" transitionTo="WorkExecution.WOMeterList">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0_Meters" layoutInsertAt="item1" value="Meters"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.WOMeterList_0_meterslistsize" layoutInsertAt="count1" resourceAttribute="meterslistsize">
-						</text> 
-						<eventHandlers id="workorder.hide_eventhandlers3">
-							<eventHandler id="workorder.hide_eventhandler3" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
-					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
@@ -613,6 +605,7 @@
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers00">
 							<eventHandler id="workorder.hide_eventhandler00" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 							<!--<eventHandler id="workorder.hide_eveenthandler00" event="click" class="application.handlers.WODetailHandler" method="filterSqa2"/>   -->
 						</eventHandlers>
 					</groupitem>
@@ -625,6 +618,7 @@
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers58">
 							<eventHandler id="workorder.hide_eventhandler58" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
+							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
 						</eventHandlers>
 					</groupitem>
 					
@@ -4050,7 +4044,7 @@
 		
 			
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList2" label="Meters">
+		<view id="WorkExecution.TnbWOMeterList2"  saveonshow="true" label="Meters">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
@@ -4605,6 +4599,7 @@
 					<searchAttribute id="WorkExecution.FailureListLookupView_searchAttribute_failureClass" name="failurecode"/>
 					<searchAttribute id="WorkExecution.FailureListLookupView_searchAttribute_failureCodeDesc" name="description"/>
 				</searchAttributes>			    
+
 				<listItemTemplate id="WorkExecution.FailureListLookupView_failureListResource_listItemTemplate_FailureReportList" layout="FailureReportList">
 					<listtext id="WorkExecution.FailureListLookupView_failureListResource_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
 					<listtext id="WorkExecution.FailureListLookupView_failureListResource_FailureReportList_description" layoutInsertAt="item3" resourceAttribute="description"/>		
@@ -9590,6 +9585,7 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
 				<attribute describedByProperty="spi_wm:tnbspecialptw" id="workOrder_tnbvertical_spi_tnbspecialptw" index="true" name="tnbspecialptw"/>
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
 				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear" index="true" name="parentWonum" />
@@ -9718,6 +9714,7 @@
 				<localAttribute dataType="integer" id="workOrder_totalWOHistory_string" name="totalWOHistory" />
 
 				<!-- Complex Attribute sizes -->
+				<localAttribute dataType="string" id="workOrder_childsize_string" name="childsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_permitlistsize_string" name="permitlistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_sqalistsize_string" name="sqalistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_tasklistsize_string" name="tasklistsize" persistent="false"/>
@@ -9729,7 +9726,6 @@
 				<localAttribute dataType="string" id="workOrder_actualtoollistsize_string" name="actualtoollistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_workloglistsize_string" name="workloglistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_multiassetloclistsize_string" name="multiassetloclistsize" persistent="false"/>
-				<localAttribute dataType="string" id="workOrder_meterslistsize_string" name="meterslistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_attachmentssize_string" name="attachmentssize" persistent="false"/>	
 				<localAttribute dataType="string" id="workOrder_datasheetlistsize_string" name="datasheetlistsize" persistent="false"/>
 				<localAttribute dataType="string" id="workOrder_classification_string" name="classification"/>
@@ -10038,7 +10034,7 @@
 			
 			
 			<!-- custom tnbwomtergroup resource -->
-		<resource  defaultOrderBy="tnbwonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwomtergroup" id="tnbwomtergroup" name="tnbwomtergroup" pageSize="20" providedBy="/oslc/sp/WorkManagement">
+		<resource  defaultOrderBy="tnbwonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwomtergroup" id="tnbwomtergroup" name="tnbwomtergroup" pageSize="1000000000" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwomtergroup_attributes">
 				<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwomtergroup_tnbwonum"  index="true" name="tnbwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbparentwonum" id="tnbwomtergroup_tnbparentwonum"  index="true" name="tnbparentwonum"/> 
@@ -10096,6 +10092,7 @@
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{spi:measureunitid}" id="tnbwometers_measureunitid" name="measureunitid"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{spi:domainid}" id="tnbwometers_domainid" name="domainid"/>
+				<attribute describedByProperty="spi_wm:tnbwometertometer{spi:metertype}" id="tnbwometers_metertype" name="metertype"/>
 				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometers_tnbsequence" name="tnbsequence" index="true"/>
 				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwometers_tnbwometersid" name="tnbwometersid" index="true"/>
 				<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometers_tnbassetnum" name="tnbassetnum"/>
