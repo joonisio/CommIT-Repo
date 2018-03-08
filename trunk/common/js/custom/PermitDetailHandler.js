@@ -76,6 +76,10 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 			}
 		},
 		
+		savePermit: function(eventContext){
+			eventContext.ui.hideCurrentView();
+		},
+		
 		handleBackButtonClick: function(eventContext){
 			console.log('Clear data when go back');
 			var actualPermitSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.permitlist");
@@ -86,5 +90,7 @@ function(declare, arrayUtil, lang, ApplicationHandlerBase, CommunicationManager,
 		},
 		
 	});
+	
+	
 		
 });
