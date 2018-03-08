@@ -17,13 +17,12 @@ define("application/business/SqaStatusHandler",
 			settings.resourceName = "sqa";
 			settings.stateToAlias = {};
 			settings.configuration = {
-				"DRAFT": ["DRAFT", "INPRG", "ENTRY", "INACTIVE"],	
-				"INPRG": ["INPRG", "COMP", "INACTIVE"],
-				"ENTRY": ["ENTRY", "SUBMITTED"],
-				"SUBMITTED": ["SUBMITTED", "INPRG"],
-				"COMP":  ["COMP", "INACTIVE"],
-				"INACTIVE":  ["INACTIVE", "DRAFT"],	
-				"CAN":   ["CAN"]
+				"DRAFT": ["DRAFT"],	
+				"INPRG": ["INPRG"],
+				"ENTRY": ["ENTRY"],
+				"SUBMITTED": ["SUBMITTED", "CAN"],
+				"COMP":  ["COMP"],
+				"INACTIVE":  ["INACTIVE"]
 			};
 			settings.labelStateConfiguration = MultiLabelStateMachineSupport.fromModelDataSetToLabelStateConfiguration(
 					modelDataSet, "value", "maxvalue", "description");

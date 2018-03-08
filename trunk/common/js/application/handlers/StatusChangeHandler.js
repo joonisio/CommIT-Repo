@@ -195,6 +195,13 @@ function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, 
 			var sqa = eventContext.application.getResource('sqa');
 			
 			var statusChangeResource = eventContext.application.getResource('statusChangeResource').getCurrentRecord();
+			
+			var sqaStatusSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgauditchstatusList");
+			newSqaStatus = sqaStatusSet.createNewRecord();
+			
+			newSqaStatus.set("changedate",statusChangeResource.get("changedate"));
+			newSqaStatus.set("status",statusChangeResource.get("status"));
+			newSqaStatus.set("memo",statusChangeResource.get("memo"));			
 		
 			var currSQA = sqa.getCurrentRecord();
 			console.log(currSQA);
