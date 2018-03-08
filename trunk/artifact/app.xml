@@ -287,7 +287,7 @@
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
-				<!-- <eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>  -->
+				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -4040,7 +4040,7 @@
 				</requiredResource>
 				<requiredResource id="WorkExecution.workt_workOrder2" name="workOrder"/>
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="{0}" resolverClass="application.handlers.WODetailHandler" resolverFunction="meterLabel" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
+			<list id="WorkExecution.WOMeterList_tnbmetername_list" label="{0}" resolverClass="custom.tnbwometersHandler" resolverFunction="meterLabel" resource="tnbwometers" showHeader="true" transitionTo="WorkExecution.AssetWOMeterDetailView">		
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
@@ -7466,6 +7466,9 @@
 					<groupitem id="WorkExecution.EditStatusView_statusChangeResource_groupitem_1">
 						<text editable="false" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_1_statusdesc_NewStatus" label="New Status" lookup="WorkExecution.statusLookup" placeHolder="Select from list" required="true" resourceAttribute="statusdesc"/>
 					</groupitem>
+					<groupitem id="WorkExecution.EditStatusView_statusChangeResource_groupitem_3">
+						<text editable="true" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_3_tnbreasonforhold_ReasonHold" label="Reason for hold" lookup="WorkExecution.TnbReasonForHoldLookup" placeHolder="Select from list" resourceAttribute="tnbreason"/>
+					</groupitem>					
 					<groupitem id="WorkExecution.EditStatusView_statusChangeResource_groupitem_2">
 						<text editable="true" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_2_memo_Memo" label="Memo" placeHolder="Tap to enter" resourceAttribute="memo"/>
 					</groupitem>
@@ -8666,7 +8669,7 @@
 		</lookup>			
 
 		<!-- Work Order Status lookup -->
-		<lookup filterClass="application.handlers.StatusChangeHandler" filterMethod="filterWOStatus" id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
+		<lookup id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
 			<requiredResources id="WorkExecution.statusLookup_requiredResources">
 				<requiredResource id="WorkExecution.statusLookup_domainwostatus" name="domainwostatus"/>
 				<requiredResource id="WorkExecution.statusLookup_workOrder" name="workOrder">
@@ -9146,6 +9149,22 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- custom Reason For Hold lookup -->
+		<lookup id="WorkExecution.TnbReasonForHoldLookup" label="Select Reason" resource="reasonforholddata">
+			<requiredResources id="WorkExecution.TnbReasonForHoldLookup_requiredResources">
+				<requiredResource id="WorkExecution.TnbReasonForHoldLookup_reasonforholddata" name="reasonforholddata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.TnbReasonForHoldLookup_reasonforhold_list" resource="reasonforholddata">
+				<listItemTemplate id="WorkExecution.TnbReasonForHoldLookup_reasonforholddata_listItemTemplate_TnbReasonForHoldLookup" layout="Item1Desc1">
+					<listtext id="reasonforholddata_value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="reasonforholddata_desc" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.TnbReasonForHoldLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.TnbReasonForHoldLookup_tnbreason" sourceAttribute="value" targetAttribute="tnbreason"/>
+			</returnAttributes>
+		</lookup>		
+		
 		<!-- custom Permit Type lookup -->
 		<lookup id="WorkExecution.PermitTypeLookup" label="Select Permit Type" resource="permittypedata">
 			<requiredResources id="WorkExecution.PermitTypeLookup_requiredResources">
@@ -9588,6 +9607,7 @@
 				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
 				<attribute describedByProperty="spi_wm:tnbspecialptw" id="workOrder_tnbvertical_spi_tnbspecialptw" index="true" name="tnbspecialptw"/>
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
+				<attribute describedByProperty="spi_wm:tnbreason" id="workOrder_tnbreason_spi_wmtnbreason" name="tnbreason"/>
 				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="workOrder_islinear_spiassedtspiislinear_spiislinear" index="true" name="parentWonum" />
 				<attribute describedByProperty="spi_wm:tnbsubvertical" id="workOrder_tnbsubvertical_spi_wmtnbsubvertical" index="true" name="tnbsubvertical"/>
 				<attribute describedByProperty="dcterms:identifier" id="workOrder_identifier_dctermsidentifier" index="true" name="identifier"/>
@@ -12409,6 +12429,18 @@
 				<!-- <whereClause id="alnmeters_whereClause" clause="spi:domainid='RESULT'" />-->
 		</resource>		
 		
+		<!-- Reason for Hold resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="reasonforholddata" name="reasonforholddata" pageSize="50" additionalData="true">
+				<attributes id="reasonforholddata_attributes">
+					<attribute name="value" id="reasonforholddata_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="reasonforholddata_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="reasonforholddata_queryBases">
+					<queryBase id="reasonforholddata_queryBase" name="getReasonforHoldData" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="reasonforholddata_whereClause" clause="spi:domainid='TNBREASONFORHOLD'" />
+		</resource>			
+		
 		<!-- Permit Type resource -->
 		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="permittypedata" name="permittypedata" pageSize="10" additionalData="true">
 				<attributes id="tnbpermittypes_attributes">
@@ -12971,6 +13003,7 @@
 				<localAttribute dataType="string" id="statusChangeResource_statusdesc_string" name="statusdesc"/>
 				<localAttribute dataType="dateTime" id="statusChangeResource_changedate_dateTime" name="changedate"/>
 				<localAttribute dataType="string" id="statusChangeResource_memo_string" maxSize="50" name="memo"/>
+				<localAttribute dataType="string" id="statusChangeResource_holdreason_string" maxSize="50" name="tnbreason"/>
 			</attributes>
 		</resource>
  
