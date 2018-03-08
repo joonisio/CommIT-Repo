@@ -563,10 +563,10 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" transitionTo="WorkExecution.TnbWOMeterList3" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (ALPHA)"/>
 						<eventHandlers id="workorder.hide_eventhanedlers3">
-							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
+							<eventHandler id="workorder.hidee_eventhandler3" event="render" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
 						</eventHandlers>
 					</groupitem>
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
@@ -588,16 +588,6 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_sqalistsize" layoutInsertAt="count1" resourceAttribute="sqalistsize"/>
-						<!-- <button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1">
-							<eventHandlers id="WorkExecution.WorkDetailView_SQA_imagesaction_addSQA_OFF.png_button_eventHandlers">
-								<eventHandler class="custom.SqaDetailHandler" event="click" id="WorkExecution.WorkDetailView_EnterSQA_imagesaction_addSQA_OFF.png_button_eventHandlers_click_clickAddSQAButton" method="clickAddSQAButton"/>
-							</eventHandlers>					  
-						</button>  -->
-						<!--<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" transitionTo="WorkExecution.CreateSQADetails" >		
-						<eventHandlers id="workorder.createSqa">
-							<eventHandler class="custom.SqaDetailHandler" event="click" id="workorder.createSqa21" method="initAddSqaView"/> 
-						</eventHandlers>  
-						</button>  -->
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add SQA" layoutInsertAt="button1" >		
 						<eventHandlers id="workorder.createSqa">
 							<eventHandler class="custom.SqaDetailHandler" event="click" id="workorder.createSqa21" method="initAddSqaView"/> 
@@ -4055,10 +4045,19 @@
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
-					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" lookup="WorkExecution.MeterReadingLookup"/>
+					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" lookup="WorkExecution.MeterReadingLookup">
+					 	<eventHandlers id="WorkExecution.kdkwe">
+							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutieee" method="hideLookupTestForm2"/>
+						</eventHandlers>	
+					 </text>
+					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList2" layoutInsertAt="item3" resourceAttribute="tnbnewreading" >
+					 	 <eventHandlers id="WorkExecution.kdekwe">
+							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutietee" method="hideLookupTestForm"/>
+						</eventHandlers>	
+					 </text>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_measureunit" layoutInsertAt="item4" resourceAttribute="measureunitid"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbresult" layoutInsertAt="item5" resourceAttribute="tnbresult"/>
-					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->														
+					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->													
 				</listItemTemplate>				
 			</list>
 		</view>
@@ -5174,19 +5173,11 @@
 		<!-- custom SQA Checklist view-->
 		<view id="WorkExecution.sqa" label="SQA/SQE Checklist"  saveonshow="true">
 			<requiredResources id="WorkExecution.sqa_requiredResources">
-				<requiredResource id="WorkExecution.sqa_workOrder" name="sqa">
+				<requiredResource id="WorkExecution.sqa_workOrder" name="sqa" >
 				<requiredAttribute id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_Questionlist2" name="plusgaudlinelist"/>
 				</requiredResource>
 			</requiredResources>		
 			<list id="WorkExecution.sqaView_sqa_list" resource="sqa" transitionTo="WorkExecution.SQADetails" >
-				<!-- <sortOptions id="WorkExecution.sqa_workOrder_tasklist_list_sortOptions">
-					<sortOption id="WorkExecution.sqa_sortOption_Task" label="Audit and Survey No.">
-						<sortAttribute direction="asc" id="WorkExecution.permit_Task_sortAttribute_auditnum" name="auditnum"/>
-					</sortOption>
-					<sortOption id="WorkExecution.sqa_sortOption_tnbstatus" label="Status">
-						<sortAttribute direction="asc" id="WorkExecution.sqa_Task_sortAttribute_status" name="status"/>
-					</sortOption>
-				</sortOptions>  -->
 				<listItemTemplate id="WorkExecution.sqa_listItemTemplate">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.sqa2_auditnum"  layoutInsertAt="item1" resourceAttribute="auditnum"/> 
 					<listtext id="WorkExecution.sqa2_description"  layoutInsertAt="item2" resourceAttribute="description"/>
@@ -5278,6 +5269,7 @@
 			</requiredResources>			
 					
 			<container id="WorkExecution.permit_container_03"  resource="permit"  >
+			<errorIndicator id="WorkExecution.Permit_container_errorIndicator" />
 				<group id="WorkExecution.PermitView_group_03">	
 					<groupitem id="WorkExecution.PermitView_groupitem_03">
 						<text editable="false" layoutInsertAt="item1" id="WorkExecution.PermitView_groupitem_113" label="Permit" resourceAttribute="permitworknum"/>
@@ -5327,12 +5319,19 @@
 						<text editable="false" id="WorkExecution.PermitView_groupitem_requestor4" label="Created by"  lookup="WorkExecution.PersonLookup" resourceAttribute="requestor" placeHolder="Tap to enter"/>
 					</groupitem>																
 				</group>		
-				<group id="WorkExecution.NewWorkOrderView_group_22">
+				<!--  <group id="WorkExecution.NewWorkOrderView_group_22">
 					<groupitem  id="WorkExecution.NewWorkOrderView_groupitem_WorkE3xecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.PermitAttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.NewWorkOr3derView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>					
 					</groupitem>
-				</group>	
-			</container>														
+				</group>	-->
+			</container>		
+			<footer id="WorkExecution.PermitView2_footer">
+				<button cssClass="mblPrimaryButton" id="WorkExecuti2on.PermitView_Create_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.PermitView_C2reate_button_eventHandlers">
+						<eventHandler class="custom.PermitDetailHandler" event="click" id="WorkExeecution.PermitView_Create_button_eventHandlers_click_commitNewMaterialEntryView" method="savePermit"/>
+					</eventHandlers>
+				</button>
+			</footer>													
 		</view>
 		
 		
@@ -5483,6 +5482,7 @@
 						<eventHandler class="custom.SqaDetailHandler" event="render" id="WorkExecution.SqaDetailView_eventHandlers_render_Permi5ytHandler" method="initSqa"/>		
 					</eventHandlers>				
 			<container id="WorkExecution.sqa_container_0" resource="sqa" >
+			<errorIndicator id="WorkExecution.sqa_container_errorIndicator" />
 				<group id="WorkExecution.sqaView_group_0">	
 					<groupitem id="WorkExecution.sqaView_groupitem_0">
 						<text editable="false" layoutInsertAt="item1" id="WorkExecution.sqaView_groupitem_11" label="Audit" resourceAttribute="auditnum"/>
@@ -5512,10 +5512,10 @@
 						<text editable="true" id="WorkExecution.sqaView_groupitem_assetnum" label="Asset" lookup="WorkExecution.AssetLookupForSqa" lookupAttribute="assetnum" placeHolder="Tap to enter" resourceAttribute="assetnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_5" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="tnbpercentage"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_tnbpercentage" label="Percentage" resourceAttribute="percentage"/>
 					</groupitem>
 					<groupitem id="WorkExecution.sqaView_groupitem_6" >
-						<text editable="false" id="WorkExecution.sqaView_groupitem_totalscore" label="Total Score" resourceAttribute="totalscore"/>
+						<text editable="false" id="WorkExecution.sqaView_groupitem_totalscore" label="Total Score" resourceAttribute="score"/>
 					</groupitem>	
 					<groupitem id="WorkExecution.sqaView_groupitem_62" >
 						<text editable="false" id="WorkExecution.sqaView_groupitem_createdby" label="Created By" lookup="WorkExecution.PersonLookup6" lookupAttribute="createdby" placeHolder="Tap to enter" resourceAttribute="createdby"/>
@@ -9937,6 +9937,9 @@
 				<attribute describedByProperty="spi_wm:plusgauditstatus" describedByResource="plusgauditchstatusResource" id="workOrder_plusgaudlineResource_spi_plusgauditchstatus" name="plusgauditchstatusList"/> 
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
 				<localAttribute dataType="string" id="sqa_internalStatus_string" name="internalStatus"/>
+				<localAttribute dataType="string" id="assetfeature_percent" name="percentage"/>
+				<localAttribute dataType="string" id="assetfeature_score" name="score"/>
+				
 			</attributes>
 			<queryBases id="sqa_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
@@ -10034,7 +10037,7 @@
 			
 			
 			<!-- custom tnbwomtergroup resource -->
-		<resource  defaultOrderBy="tnbwonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwomtergroup" id="tnbwomtergroup" name="tnbwomtergroup" pageSize="1000000000" providedBy="/oslc/sp/WorkManagement">
+		<resource  defaultOrderBy="tnbwonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwomtergroup" id="tnbwomtergroup" name="tnbwomtergroup" pageSize="1000" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwomtergroup_attributes">
 				<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwomtergroup_tnbwonum"  index="true" name="tnbwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbparentwonum" id="tnbwomtergroup_tnbparentwonum"  index="true" name="tnbparentwonum"/> 
@@ -10046,9 +10049,13 @@
    			   	<attribute describedByProperty="spi_wm:tnblocation" id="tnbwometergroupResourcespi_tnblocation2"  name="tnblocation"/>
    			   	<attribute describedByProperty="spi_wm:tnbassetnum" id="tnbwometergroupResourcespi_tnbassetnum2"  name="tnbassetnum"/>
 			</attributes>
+			<creationFactories id="locationMeters_creationFactorifde3s">
+		        <creationFactory creationUri="/oslc/os/oslctnbwometergroup" id="locationMeters_creationFactory_locdationMeterResourceeCF" name="tnbwometergrouplist"/>
+	        </creationFactories>
 			<queryBases id="tnbwomtergroup_queryBases">
 	 			<queryBase id="tnbwomtergroupAll" name="searchtnbwomtergroup" queryUri="/oslc/os/oslctnbwometergroup" />
 			</queryBases> 
+			<whereClause id="itedmorgfinfo_whereClause"/>
 		</resource>
 			
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
@@ -10106,10 +10113,13 @@
 				<attribute describedByProperty="spi_wm:tnbremarks" id="tnbwometers_tnbremarks" name="tnbremarks"/>
 				<!-- <localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
+			<creationFactories id="locationMeters_creationFactorie3s">
+		        <creationFactory creationUri="/oslc/os/oslctnbwometers" id="locationMeters_creationFactory_locationMeterResourceeCF" name="tnbwometerlist"/>
+	        </creationFactories>	
 			<queryBases id="tnbwometers_queryBases">
 	 			<queryBase defaultForSearch="true" id="tnbwometerssearchAll" name="searchAllTnbWometer" queryUri="/oslc/os/oslctnbwometers" />
 			</queryBases> 
-				<!--  <whereClause clause="spi_wm:tnbwometersid in [${tnbwometergroupResource.tnbwometerslist}]" id="itemorgfinfo_whereClause"/> -->
+			<whereClause id="itemorgfinfo_whereClause"/>
 		</resource>
 	
 		<!-- custom metergroup resource -->

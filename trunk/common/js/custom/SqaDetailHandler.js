@@ -51,13 +51,13 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			console.log('custom.SqaDetailHandler');
 			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
 			
-			console.log(actualSqa);
+			//console.log(actualSqa);
 		
 			//check number of question.if question empty it will automatically populate the question from audit template
 			var noOfQuestion= actualSqa.plusgaudlinelist.data.length;
 			var questions = [];
 			var sqlineaSet= CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
-			
+			console.log(sqlineaSet);
 			
 			if(noOfQuestion==0){
 				console.log("question is empty");
@@ -79,8 +79,26 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 //					currSqa.deleteLocal();
 					});	
 				console.log(actualSqa);
+			}	else{	
+				
+				var total = 0;
+				var totalYes=0;
+				var percentage =0;
+				
+				arrayUtil.forEach(sqlineaSet.data, function(sqline){
+					if(sqline.linescore!= null){
+						total = total +sqline.linescore;
+					}
+					if(sqline.yes!==false){
+						totalYes = totalYes +sqline.linescore;
+					}
+					
+				});
+				percentage = Math.floor(totalYes/total*100);
+
+				actualSqa.set("percentage",percentage);
+				actualSqa.set("score",total);
 			}
-			
 			
 			//console.log(actualSqa.get('plusgauditid'));
 			
@@ -120,14 +138,13 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		
 		saveSqa : function(eventContext){
 			var actualSqa2 = CommonHandler._getAdditionalResource(eventContext,"sqa");
-			var actualSqaline = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudline");
-			console.log(actualSqaline);
+//			var actualSqaline = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudline");
+//			console.log(actualSqaline);
+			var self = this;
 			ModelService.save(actualSqa2).then(function(){
-				console.log('save completed');
-				
-			}).otherwise(function(error) {
-			  self.ui.showMessage(error.message);
+					self.ui.hideCurrentView(PlatformConstants.CLEANUP);	
 			});
+			
 		},
 		
 		saveSqaStatus : function(eventContext){		

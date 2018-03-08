@@ -111,9 +111,27 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 				eventContext.application.addResource(null);
 				eventContext.ui.show(redirect);
 			}
-			
-			
 		
+		},
+		hideLookupTestForm:function(eventContext){
+			var currentRecord = eventContext.getCurrentRecord();
+			var meterType = currentRecord.get("metertype");
+			console.log(meterType);
+			if(meterType==="CHARACTERISTIC"){
+				eventContext.setDisplay(false);
+			}else{
+				eventContext.setDisplay(true);
+			}
+		},
+		hideLookupTestForm2:function(eventContext){
+			var currentRecord = eventContext.getCurrentRecord();
+			var meterType = currentRecord.get("metertype");
+			console.log(meterType);
+			if(meterType==="CHARACTERISTIC"){
+				eventContext.setDisplay(true);
+			}else{
+				eventContext.setDisplay(false);
+			}
 		},
 		
 		meterLabel:function(eventContext){

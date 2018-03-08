@@ -2197,23 +2197,75 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		},
 		
 		downloadMeterForParentAndChild:function(eventContext){
-			console.log(wonumArray.toString());
-			console.log(wonumArray2.toString());
 			
-			arrayUtil.forEach(wonumArray,function(wonum){
-				console.log(wonum);
-				ModelService.filtered('tnbwomtergroup', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
-					//eventContext.applidatacation.addResource(dataset);
-					if(dataset.data.length>0){
-						arrayUtil.forEach(dataset.data,function(data2){
-							meter = data2.tnbwometergroupid;
-							console.log(wonum + " "+meter);
-							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null);
-						});	
-					}	
+			var loadTestForm = function(options){
+				var wonumlist=null;
+				var tnbwometeridlist=null;
+				var firstTime = true;
+				var firstTime2 = true;
+				
+				arrayUtil.forEach(wonumArray,function(wonum){
+						if (firstTime){
+							wonumlist='%22'+wonum+'%22';	
+							firstTime = false;
+						} else {
+							wonumlist+=',%22'+wonum+'%22';		
+						}
 				});
-				eventContext.ui.showToastMessage("download meter");	
-			});
+				
+				console.log(wonumlist);
+				
+				var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
+				var originalLocWhereClause = tnbwomterMeta.whereClause;
+				console.log(originalLocWhereClause);
+				tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
+				var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
+				tnbwomterPromise.then(function(dataSet){
+					console.log(dataSet);
+					arrayUtil.forEach(dataSet.data,function(data2){
+						
+						console.log(data2.tnbwometergroupid);
+						
+						var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
+						tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid ="+data2.tnbwometergroupid);
+						var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
+						tnbMeterMetaPromise.then(function(data){
+							console.log(data);
+							tnbMeterMeta.setWhereClause(null);
+						}).otherwise(function(error){
+							console.log(error);
+						});
+						
+						tnbwomterMeta.setWhereClause(null);
+									
+				});
+				}).otherwise(function(error){
+					console.log(error);
+				});
+			};
+			
+			
+			
+			//console.log(tnbwometeridlist);
+			
+		
+//			console.log(wonumArray.toString());
+//			console.log(wonumArray2.toString());
+//			
+//			arrayUtil.forEach(wonumArray,function(wonum){
+//				console.log(wonum);
+//				ModelService.filtered('tnbwomtergroup', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
+//					//eventContext.applidatacation.addResource(dataset);
+//					if(dataset.data.length>0){
+//						arrayUtil.forEach(dataset.data,function(data2){
+//							meter = data2.tnbwometergroupid;
+//							console.log(wonum + " "+meter);
+//							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null);
+//						});	
+//					}	
+//				});
+//				eventContext.ui.showToastMessage("download meter");	
+//			});
 			
 //			if(wonumArray2 !=null)
 //			{
@@ -2262,7 +2314,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					eventContext.application.addResource(dataset);
 					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
 				}else{
-					self.filterFromServer(eventContext,'tnbwomtergroup',filter,"WorkExecution.TnbWOMeterList3",null);
+					self.filterFromServer(eventContext,'tnbwomtergroup',filter,null,null);
 					
 				}
 				
@@ -2354,24 +2406,25 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
-					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-						eventContext.application.addResource(locset);
-						var size = locset.data.length;
-						console.log("permit size "+size);
-						if(size > 0){
-							console.log("permit fecth from LOCAL");
-							currentRecord.set("permitlistsize", size);
-						}else{
-							currentRecord.set("permitlistsize", size);
-							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
-						}
-						
-					}).otherwise(function(error) {
-						Logger.error(JSON.stringify(error));
-					});
-			} else {
-				Logger.trace("permit is null");
-				eventContext.application.addResource(null);
+				self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
+//					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
+//						eventContext.application.addResource(locset);
+//						var size = locset.data.length;
+//						console.log("permit size "+size);
+//						if(size > 0){
+//							console.log("permit fecth from LOCAL");
+//							currentRecord.set("permitlistsize", size);
+//						}else{
+//							currentRecord.set("permitlistsize", size);
+//							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
+//						}
+//						
+//					}).otherwise(function(error) {
+//						Logger.error(JSON.stringify(error));
+//					});
+//			} else {
+//				Logger.trace("permit is null");
+//				eventContext.application.addResource(null);
 			}
 			
 		},
@@ -2382,21 +2435,22 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
-					ModelService._getLocalFilteredRecords('sqa', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-						eventContext.application.addResource(locset);
-						console.log(locset);
-						var size = locset.data.length;
-						console.log("sqa size "+size);
-						if(size >0){
-							console.log("sqa fecth from LOCAL");
-							currentRecord.set("sqalistsize", size);
-						}else{
-							currentRecord.set("sqalistsize", 0);
-							self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
-						}
-					}).otherwise(function(error) {
-						Logger.error(JSON.stringify(error));
-					});
+				self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
+//					ModelService._getLocalFilteredRecords('sqa', 1000,[{tnbwonum: wonum}],null).then(function(locset){
+//						eventContext.application.addResource(locset);
+//						console.log(locset);
+//						var size = locset.data.length;
+//						console.log("sqa size "+size);
+//						if(size >0){
+//							console.log("sqa fecth from LOCAL");
+//							currentRecord.set("sqalistsize", size);
+//						}else{
+//							currentRecord.set("sqalistsize", 0);
+//							self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
+//						}
+//					}).otherwise(function(error) {
+//						Logger.error(JSON.stringify(error));
+//					});
 			} else {
 				eventContext.application.addResource(null);
 			}
