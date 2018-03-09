@@ -2247,38 +2247,40 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					}
 					
 				});	
-				
-//				tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
-//				var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
-				
-				
+						
 				
 			}).otherwise(function(error){
 				console.log(error);
 			}).always(function(){
+				tnbwomterMeta.setWhereClause(null);
 				self.downloadMeter(eventContext);
 			});
 			
-			
+			eventContext.ui.showToastMessage("Downloading....");
 		
 		},
 		
 		downloadMeter:function(eventContext){
 			console.log(tnbwometeridlist);
-			
-			var progressMsg = MessageService.createResolvedMessage('downloadingAdditionalResourceProgress', [MessageService.createStaticMessage('datasheets').getMessage(), 0]);
+				
 			
 				var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
 				tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid in ["+tnbwometeridlist+"]");
 				//console.log(tnbMeterMeta.whereClause);
-				var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
-				tnbMeterMetaPromise.then(function(data3){
-					console.log(data3);
-				}).otherwise(function(error){
-					console.log(error);
-				}).always(function(){
-					eventContext.ui.showToastMessage("DOWNLOAD FINISHED");
-				});
+//				var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
+//				tnbMeterMetaPromise.then(function(data3){
+//					console.log(data3);
+//				}).otherwise(function(error){
+//					console.log(error);
+//				}).always(function(){
+//					eventContext.ui.showToastMessage("DOWNLOAD FINISHED");
+//				});
+				
+				var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
+				var promise =workofflinehandler.startDownload("tnbwometers", "searchAllTnbWometer");
+				promise.then(function(){
+					tnbMeterMeta.setWhereClause(null);
+				});	
 		},
 		
 		

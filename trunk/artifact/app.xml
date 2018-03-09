@@ -563,12 +563,12 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
+					<!--  <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
 						<eventHandlers id="workorder.hide_eventhanedlers3">
 							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
 						</eventHandlers>
-					</groupitem>
+					</groupitem> -->
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
@@ -10088,7 +10088,7 @@
 		</resource>
 			
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
-		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource">
+		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource" >
 			<attributes id="tnbwometergroupResource_attributes">
 			    <attribute describedByProperty="spi_wm:tnbsequence" id="tnbwometergroupResourcespi_tnbsequence" name="tnbsequence"/>
    			    <attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwometergroupResourcespi_tnbmetergroup" name="tnbmetergroup"/> 
