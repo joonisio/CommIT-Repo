@@ -38,8 +38,9 @@ define("application/handlers/WODetailHandler",
 	     "platform/store/PersistenceManager",
 	     "platform/geolocation/GeoLocationTrackingService",
 	     "platform/map/MapProperties",
-	     "platform/store/_ResourceMetadataContext"],
-function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties,ResourceMetaData) {
+	     "platform/store/_ResourceMetadataContext",
+	     "platform/store/SystemProperties"],
+function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler, ApplicationHandlerBase, CommunicationManager, Workorder,permit, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties,ResourceMetaData,SystemProperties) {
 	var listSizeArray = ['tasklistsize', 'assignmentlistsize', 'materiallistsize', 'toollistsize', 'actuallaborlistsize', 'actualmateriallistsize', 'actualtoollistsize', 'workloglistsize', 'multiassetloclistsize', 'attachmentssize'];
 	var attributes =    ["tasklist", "assignmentlist", "materiallist", "toollist", "actuallaborlist", "actualmateriallist", "actualtoollist", "workloglist", "multiassetloclist", "attachments","permitlist","tnbwometergrouplist"];
 	var loadingLists = false;
@@ -47,6 +48,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 	var previousSiteid=null;
 	var wonumArray=[];
 	var wonumArray2=[];
+	var tnbwometeridlist=null;
 	
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
@@ -2169,6 +2171,8 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 						}
 						console.log("child " +wo1.get("wonum") + " parent "+ wo1.get("parentWonum"));
 						
+						//relation between wo and tnbwometergroup = tnbwonum = :wonum or (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
+						//thats why wonum is separate into two array
 						ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(child2){
 							arrayUtil.forEach(child2.data,function(wo2){
 								wonums=wo2.get("wonum")
@@ -2192,112 +2196,101 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					
 				});
 			});
-			eventContext.ui.showToastMessage("download child wo");
+			//eventContext.ui.showToastMessage("download child wo");
 			
 		},
 		
 		downloadMeterForParentAndChild:function(eventContext){
+			//relation between wo and tnbwometergroup = tnbwonum = :wonum or (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
+			var wonumlist=null;
+			var wonumlist2=null;
+			var firstTime = true;
+			var firstTime2 = true;
+			var firstTime3 = true;
+			var self =this;
 			
-			var loadTestForm = function(options){
-				var wonumlist=null;
-				var tnbwometeridlist=null;
-				var firstTime = true;
-				var firstTime2 = true;
+			
+			arrayUtil.forEach(wonumArray,function(wonum){
+					if (firstTime){
+						wonumlist='%22'+wonum+'%22';	
+						firstTime = false;
+					} else {
+						wonumlist+=',%22'+wonum+'%22';		
+					}
+			});
+			
+			arrayUtil.forEach(wonumArray2,function(wonum){
+				if (firstTime3){
+					wonumlist2='%22'+wonum+'%22';	
+					firstTime3 = false;
+				} else {
+					wonumlist2+=',%22'+wonum+'%22';		
+				}
+			});
+			
+			
+			console.log(wonumlist);
+			
+			var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
+			var originalLocWhereClause = tnbwomterMeta.whereClause;
+			console.log(originalLocWhereClause); //%7C spi_wm:tnbparentwonum in ["+wonumlist2+"]"
+			tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
+			var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
+			tnbwomterPromise.then(function(dataSet){
+				//console.log(dataSet);
+				arrayUtil.forEach(dataSet.data,function(id){
+					var ids=id.tnbwometergroupid;
+					console.log(id.tnbwometergroupid);
+					if (firstTime2){
+						tnbwometeridlist=ids;	
+						firstTime2 = false;
+					} else {
+						tnbwometeridlist+=','+ids;		
+					}
+					
+				});	
 				
-				arrayUtil.forEach(wonumArray,function(wonum){
-						if (firstTime){
-							wonumlist='%22'+wonum+'%22';	
-							firstTime = false;
-						} else {
-							wonumlist+=',%22'+wonum+'%22';		
-						}
-				});
+//				tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
+//				var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
 				
-				console.log(wonumlist);
 				
-				var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
-				var originalLocWhereClause = tnbwomterMeta.whereClause;
-				console.log(originalLocWhereClause);
-				tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
-				var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
-				tnbwomterPromise.then(function(dataSet){
-					console.log(dataSet);
-					arrayUtil.forEach(dataSet.data,function(data2){
-						
-						console.log(data2.tnbwometergroupid);
-						
-						var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
-						tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid ="+data2.tnbwometergroupid);
-						var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
-						tnbMeterMetaPromise.then(function(data){
-							console.log(data);
-							tnbMeterMeta.setWhereClause(null);
-						}).otherwise(function(error){
-							console.log(error);
-						});
-						
-						tnbwomterMeta.setWhereClause(null);
-									
-				});
-				}).otherwise(function(error){
-					console.log(error);
-				});
-			};
+				
+			}).otherwise(function(error){
+				console.log(error);
+			}).always(function(){
+				self.downloadMeter(eventContext);
+			});
 			
-			
-			
-			//console.log(tnbwometeridlist);
 			
 		
-//			console.log(wonumArray.toString());
-//			console.log(wonumArray2.toString());
-//			
-//			arrayUtil.forEach(wonumArray,function(wonum){
-//				console.log(wonum);
-//				ModelService.filtered('tnbwomtergroup', null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
-//					//eventContext.applidatacation.addResource(dataset);
-//					if(dataset.data.length>0){
-//						arrayUtil.forEach(dataset.data,function(data2){
-//							meter = data2.tnbwometergroupid;
-//							console.log(wonum + " "+meter);
-//							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null);
-//						});	
-//					}	
-//				});
-//				eventContext.ui.showToastMessage("download meter");	
-//			});
+		},
+		
+		downloadMeter:function(eventContext){
+			console.log(tnbwometeridlist);
 			
-//			if(wonumArray2 !=null)
-//			{
-//				arrayUtil.forEach(wonumArray2,function(wonum){
-//				console.log(wonum);
-//					ModelService.filtered('tnbwomtergroup', null,[{tnbparentwonum: wonum}], 1000, null,null,null,null).then(function(dataset){
-//					//eventContext.applidatacation.addResource(dataset);
-//						if(dataset.data.length>0){
-//							arrayUtil.forEach(dataset.data,function(data2){
-//								meter = data2.tnbwometergroupid;
-//								console.log(wonum + " "+meter);
-//							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(dataset){
-//								console.log(dataset);
-//								});		
-//							});	
-//						}
-//					});
-//						eventContext.ui.showToastMessage("download meter 2");
-//				});
-//			}
+			var progressMsg = MessageService.createResolvedMessage('downloadingAdditionalResourceProgress', [MessageService.createStaticMessage('datasheets').getMessage(), 0]);
 			
-			
-			
+				var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
+				tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid in ["+tnbwometeridlist+"]");
+				//console.log(tnbMeterMeta.whereClause);
+				var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
+				tnbMeterMetaPromise.then(function(data3){
+					console.log(data3);
+				}).otherwise(function(error){
+					console.log(error);
+				}).always(function(){
+					eventContext.ui.showToastMessage("DOWNLOAD FINISHED");
+				});
 		},
 		
 		
 		filterTnbWoMeterGroup: function(eventContext){
+			//relation between wo and tnbwometergroup = tnbwonum = :wonum or (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
 			console.log("filterTnbWoMeterGroup");
+			
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
 			var wonum= currentRecord.get("wonum");
 			var tnbchild= currentRecord.get("tnbchildwometer");
-			var filter =null;
 			console.log(tnbchild);
 			var self=this;
 			if(tnbchild){
@@ -2324,11 +2317,13 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		
 		filterTnbMeterGroup: function(eventContext){
 			//console.log(wonum);
-			var currentRecord = eventContext.getCurrentRecord();
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"tnbwomtergroup").getCurrentRecord();
 			var meter = currentRecord.get("tnbwometergroupid");
+			console.log(meter);
 			var self=this;
 			ModelService._getLocalFilteredRecords('tnbwometers',1000,[{tnbwometersid: meter}],null).then(function(locset){
 				if(locset.data.length>0){
+				console.log(locset);
 					console.log("tnbwometergroupid from local");
 					eventContext.application.addResource(locset);	
 					eventContext.ui.show("WorkExecution.TnbWOMeterList2");		
@@ -2390,6 +2385,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log(resourceName + 'filter from SERVER');
 			ModelService.filtered(resourceName, null,filter, 1000, null,null,null,null).then(function(locset){
 				eventContext.application.addResource(locset);
+				console.log(locset);
 				if(directPage != null){
 					eventContext.ui.show(directPage);
 				}
@@ -2399,6 +2395,17 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 				Logger.error(JSON.stringify(error));
 			});
 		},
+		
+		getDataFromServer:function(eventContext,resourceName,filter){
+			console.log(resourceName + ' fetch from SERVER');
+			var deferred = new Deferred();
+			var dataPromise = ModelService.filtered(resourceName, null,filter, 1000, null,null,null,null);
+			dataPromise.then(function(dataSet){
+				deferred.resolve(dataSet);
+			});
+			
+			return deferred.promise;
+		},
 
 		//filter permit in wo detail view
 		filterPermit: function(eventContext){
@@ -2406,25 +2413,20 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
-				self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
-//					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-//						eventContext.application.addResource(locset);
-//						var size = locset.data.length;
-//						console.log("permit size "+size);
-//						if(size > 0){
-//							console.log("permit fecth from LOCAL");
-//							currentRecord.set("permitlistsize", size);
-//						}else{
-//							currentRecord.set("permitlistsize", size);
-//							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
-//						}
-//						
-//					}).otherwise(function(error) {
-//						Logger.error(JSON.stringify(error));
-//					});
-//			} else {
-//				Logger.trace("permit is null");
-//				eventContext.application.addResource(null);
+					var dataPromise = this.getDataFromServer(eventContext, 'permit', [{tnbwonum: wonum}]);
+					dataPromise.then(function(dataSet){
+						eventContext.application.addResource(dataSet);
+						console.log(dataSet);
+						var size = dataSet.data.length;
+						if(size > 0){
+							currentRecord.set("permitlistsize", size);
+						}else{
+							currentRecord.set("permitlistsize", 0);
+						}
+					});
+			} else {
+				Logger.trace("permit is null");
+				eventContext.application.addResource(null);
 			}
 			
 		},
@@ -2435,22 +2437,17 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
-				self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
-//					ModelService._getLocalFilteredRecords('sqa', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-//						eventContext.application.addResource(locset);
-//						console.log(locset);
-//						var size = locset.data.length;
-//						console.log("sqa size "+size);
-//						if(size >0){
-//							console.log("sqa fecth from LOCAL");
-//							currentRecord.set("sqalistsize", size);
-//						}else{
-//							currentRecord.set("sqalistsize", 0);
-//							self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
-//						}
-//					}).otherwise(function(error) {
-//						Logger.error(JSON.stringify(error));
-//					});
+				var dataPromise = this.getDataFromServer(eventContext, 'sqa', [{tnbwonum: wonum}]);
+				dataPromise.then(function(dataSet){
+					eventContext.application.addResource(dataSet);
+					console.log(dataSet);
+					var size = dataSet.data.length;
+					if(size > 0){
+						currentRecord.set("sqalistsize", size);
+					}else{
+						currentRecord.set("permitlistsize", 0);
+					}
+				});
 			} else {
 				eventContext.application.addResource(null);
 			}

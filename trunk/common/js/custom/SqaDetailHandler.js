@@ -195,8 +195,6 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			var newValue = !eventContext.checkBoxWidget.get('value');
 			console.log(newValue);
 			var sqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
-			
-			
 			if(newValue){
 				sqa.set('linescore',1);
 				sqa.set('no',false);
@@ -278,7 +276,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				sqaSet= CommonHandler._getAdditionalResource(eventContext,"workOrder.sqalist");
 				var newSQA= sqaSet.createNewRecord();
 				SqaObject.setDefaultValues(newSQA, wonum);
-				this.saveCreateSqa(eventContext);
+				//this.saveCreateSqa(eventContext);
 			}
 			if(sqaSet){
 				eventContext.setMyResourceObject(sqaSet);		
@@ -306,10 +304,13 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
      			var sqa = workOrderSet.getCurrentRecord();
 				if (!sqa.isNew()) {
 					console.log("is new");
-					ModelService.save(workOrderSet);
+					var promise = ModelService.save(workOrderSet);
+					promise.then(function(s){
+						console.log(s);
+					});
 					eventContext.ui.showToastMessage(msg);
 				}			
-				//this.ui.hideCurrentView();
+				this.ui.hideCurrentView();
 			}catch(e){
 				throw e;
 			}
@@ -334,6 +335,10 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 			console.log("Init SQAline");
 			if (sqaline.data.length > 19)
 				sqaline.data.splice(0, 19);
+			
+			ModelService.save(sqaline.getParent().getOwner()).then(function(){
+				console.log("saved");
+				});	
 
 		},
 		discardSqa: function(eventContext){
