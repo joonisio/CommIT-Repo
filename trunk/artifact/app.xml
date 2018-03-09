@@ -4060,6 +4060,13 @@
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->													
 				</listItemTemplate>				
 			</list>
+			<footer id="WorkExecution.TnbWOMeterList_footer">
+				<button cssClass="mblPrimaryButton" id="WorkExecution.TnbWOMeterList_Save_button" label="Save" primary="true">
+					<eventHandlers id="WorkExecution.TnbWOMeterList_Save_button_eventHandlers">
+						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_Save_button_eventHandlers_click_saveRefresh" method="commitMeterValue"/>
+					</eventHandlers>
+				</button>
+			</footer>			
 		</view>
 		
 
@@ -7466,7 +7473,7 @@
 						<text editable="false" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_1_statusdesc_NewStatus" label="New Status" lookup="WorkExecution.statusLookup" placeHolder="Select from list" required="true" resourceAttribute="statusdesc"/>
 					</groupitem>
 					<groupitem id="WorkExecution.EditStatusView_statusChangeResource_groupitem_3">
-						<text editable="true" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_3_tnbreasonforhold_ReasonHold" label="Reason for hold" lookup="WorkExecution.TnbReasonForHoldLookup" placeHolder="Select from list" resourceAttribute="tnbreason"/>
+						<text editable="true" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_3_tnbreasonforhold_ReasonHold" label="Reason for hold" lookup="WorkExecution.TnbReasonForHoldLookup" placeHolder="Select from list" resourceAttribute="tnbreasonforhold"/>
 					</groupitem>					
 					<groupitem id="WorkExecution.EditStatusView_statusChangeResource_groupitem_2">
 						<text editable="true" id="WorkExecution.EditStatusView_statusChangeResource_groupitem_2_memo_Memo" label="Memo" placeHolder="Tap to enter" resourceAttribute="memo"/>
@@ -9160,7 +9167,8 @@
 				</listItemTemplate>
 			</list>
 			<returnAttributes id="WorkExecution.TnbReasonForHoldLookup_returnAttributes">
-				<returnAttribute id="WorkExecution.TnbReasonForHoldLookup_tnbreason" sourceAttribute="value" targetAttribute="tnbreason"/>
+			    <returnAttribute id="WorkExecution.TnbReasonForHoldLookup_tnbreasonvalue" sourceAttribute="value" targetAttribute="tnbreasonforhold"/>
+				<returnAttribute id="WorkExecution.TnbReasonForHoldLookup_tnbreason" sourceAttribute="description" targetAttribute="memo"/>
 			</returnAttributes>
 		</lookup>		
 		
@@ -13004,7 +13012,7 @@
 				<localAttribute dataType="string" id="statusChangeResource_statusdesc_string" name="statusdesc"/>
 				<localAttribute dataType="dateTime" id="statusChangeResource_changedate_dateTime" name="changedate"/>
 				<localAttribute dataType="string" id="statusChangeResource_memo_string" maxSize="50" name="memo"/>
-				<localAttribute dataType="string" id="statusChangeResource_holdreason_string" maxSize="50" name="tnbreason"/>
+				<localAttribute dataType="string" id="statusChangeResource_holdreason_string" maxSize="50" name="tnbreasonforhold"/>
 			</attributes>
 		</resource>
  
