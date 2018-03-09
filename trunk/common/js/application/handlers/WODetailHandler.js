@@ -2196,8 +2196,6 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					
 				});
 			});
-			//eventContext.ui.showToastMessage("download child wo");
-			
 		},
 		
 		downloadMeterForParentAndChild:function(eventContext){
@@ -2413,6 +2411,25 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
+				self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
+//					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
+//						eventContext.application.addResource(locset);
+//						var size = locset.data.length;
+//						console.log("permit size "+size);
+//						if(size > 0){
+//							console.log("permit fecth from LOCAL");
+//							currentRecord.set("permitlistsize", size);
+//						}else{
+//							currentRecord.set("permitlistsize", size);
+//							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
+//						}
+//						
+//					}).otherwise(function(error) {
+//						Logger.error(JSON.stringify(error));
+//					});
+//			} else {
+//				Logger.trace("permit is null");
+//				eventContext.application.addResource(null);
 					var dataPromise = this.getDataFromServer(eventContext, 'permit', [{tnbwonum: wonum}]);
 					dataPromise.then(function(dataSet){
 						eventContext.application.addResource(dataSet);
@@ -2437,6 +2454,22 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonum = currentRecord.get("wonum");
 			var self = this;
 			if (wonum != null) {
+				self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
+//					ModelService._getLocalFilteredRecords('sqa', 1000,[{tnbwonum: wonum}],null).then(function(locset){
+//						eventContext.application.addResource(locset);
+//						console.log(locset);
+//						var size = locset.data.length;
+//						console.log("sqa size "+size);
+//						if(size >0){
+//							console.log("sqa fecth from LOCAL");
+//							currentRecord.set("sqalistsize", size);
+//						}else{
+//							currentRecord.set("sqalistsize", 0);
+//							self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
+//						}
+//					}).otherwise(function(error) {
+//						Logger.error(JSON.stringify(error));
+//					});
 				var dataPromise = this.getDataFromServer(eventContext, 'sqa', [{tnbwonum: wonum}]);
 				dataPromise.then(function(dataSet){
 					eventContext.application.addResource(dataSet);

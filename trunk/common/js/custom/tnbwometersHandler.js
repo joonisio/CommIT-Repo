@@ -139,6 +139,19 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
 			return [workOrder.get('tempMeterName')];
 		},
+		
+		commitMeterValue:function(eventContext){
+			var wometerSet = eventContext.application.getResource('tnbwometers');
+			ModelService.save(wometerSet).then(function(modelDataSet) {
+				console.log("REFRESH VIEW");
+				modelDataSet.resourceID = 'tnbwometers';
+				eventContext.application.addResource(modelDataSet);
+				deferred.resolve(modelDataSet);
+				eventContext.ui.getCurrentViewControl().refresh();
+				console.log(wometerSet);
+				console.log(modelDataSet);
+			});			
+		},				
 
 	});
 });
