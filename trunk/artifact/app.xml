@@ -8712,7 +8712,7 @@
 		</lookup>
 		
 			<!-- custom sqa status lookup -->
-		<lookup  id="WorkExecution.plusgauditstatusLookup" label="Select Value" resource="plusgauditstatus" >
+		<lookup id="WorkExecution.plusgauditstatusLookup" filterClass="application.handlers.StatusChangeHandler" filterMethod="filterSQAStatus" label="Select Value" resource="plusgauditstatus" >
 			<requiredResources id="WorkExecution.plusgauditstatusLookup_requiredResources">
 				<requiredResource id="WorkExecution.plusgauditstatusLookup_domainwostatus" name="plusgauditstatus"/>		
 			</requiredResources>

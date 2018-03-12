@@ -43,8 +43,27 @@ function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, 
 			statusChange.setNullValue("status");
 			statusChange.setNullValue("statusdesc")
 			statusChange.setNullValue("memo");
+			statusChange.setNullValue("tnbreasonforhold");
 			eventContext.ui.application.toolWarningShown = false;
-				
+			
+			//Custom codes to set readonly field for reason for hold
+			statusChange.getRuntimeFieldMetadata('tnbreasonforhold').set('readonly', true); 
+			
+			// Hook a listener to watch the status attribute, 
+			// and make the tnbreasonforhold attribute editable and required when the status is 'Hold' 
+			eventContext.addResourceWatchHandle(statusChange.watch('status', lang.hitch(this, function(attrName, oldValue, newValue) {
+				if (statusChange.status === 'HOLD'){
+					statusChange.getRuntimeFieldMetadata('tnbreasonforhold').set('readonly', false); 
+					statusChange.getRuntimeFieldMetadata('tnbreasonforhold').set('required', true); 					
+				}
+				else{
+					statusChange.getRuntimeFieldMetadata('tnbreasonforhold').set('readonly', true); 
+					statusChange.getRuntimeFieldMetadata('tnbreasonforhold').set('required', false);
+					statusChange.setNullValue("tnbreasonforhold");
+					statusChange.setNullValue("memo");
+				}
+			})));			
+			//End Custom code	
 		},
 		
 		cleanupEditStatusView : function(eventContext) {
@@ -493,6 +512,45 @@ function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, 
 				woStatusDomain.filter("maxvalue!=$1", "CAN");
 			}
 		},
+		
+		// Custom Filter SQA statuses to those available for selection
+		filterSQAStatus: function(eventContext){
+
+			var plusgauditstatus = CommonHandler._getAdditionalResource(eventContext,"plusgauditstatus");
+			var curSQA = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
+			var curStatus = curSQA.get('status');
+
+			var filter=[];
+
+			if (curStatus === 'DRAFT'){
+				filter.push({value : 'INPRG'});
+				filter.push({value : 'ENTRY'});
+				filter.push({value : 'INACTIVE'});
+			}
+			else if (curStatus === 'INPRG'){
+				filter.push({value : 'COMP'});
+				filter.push({value : 'INACTIVE'});				
+			}
+			else if (curStatus === 'ENTRY'){
+				filter.push({value : 'SUBMITTED'});
+				filter.push({value : 'CAN'});				
+			}
+			else if (curStatus === 'SUBMITTED'){
+				filter.push({value : 'INPRG'});
+				filter.push({value : 'CAN'});					
+			}
+			else if (curStatus === 'COMP'){
+				filter.push({value : 'INACTIVE'});					
+			}
+			else if (curStatus === 'INACTIVE'){
+				filter.push({value : 'DRAFT'})
+			}
+			else if (curStatus === 'CAN'){
+				filter.push({value : 'INPRG'});
+				filter.push({value : 'SUBMITTED'});
+			}
+			plusgauditstatus.lookupFilter=filter;
+		},		
 		
 		filterTaskStatus: function(eventContext){
 			var currentTask = CommonHandler._getAdditionalResource(eventContext,"workOrder.tasklist").getCurrentRecord();
