@@ -298,6 +298,8 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		
 		saveTransaction:function(eventContext){	
 			console.log("___create sqa");
+			eventContext.application.showBusy();
+			var self =this;
 			var msg = MessageService.createStaticMessage("New SQA was created").getMessage();
 			try{
      			var workOrderSet = CommonHandler._getAdditionalResource(this,"workOrder");
@@ -307,10 +309,11 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 					var promise = ModelService.save(workOrderSet);
 					promise.then(function(s){
 						console.log(s);
+						self.ui.hideCurrentView();
 					});
 					eventContext.ui.showToastMessage(msg);
 				}			
-				this.ui.hideCurrentView();
+				
 			}catch(e){
 				throw e;
 			}
