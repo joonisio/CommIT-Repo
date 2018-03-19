@@ -2305,21 +2305,11 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log("downloadMeter");
 			console.log(tnbwometeridlist);
 			
-				var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
 				var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
 				tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid in ["+tnbwometeridlist+"]");
-				workofflinehandler.startDownload("tnbwometers", null);
-			
-					
-//					var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
-//					//%7C spi_wm:tnbparentwonum in ["+wonumlist2+"]"
-//					tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
-//					var tnbwomterPromise =  ModelService.all('tnbwomtergroup', 'searchtnbwomtergroup',null,true);
-//					tnbwomterPromise.then(function(dataSet){
-//						console.log(dataSet);							
-//					});
-					
 				
+				var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
+				workofflinehandler.startDownload("tnbwometers", null);				
 		},
 		
 		
