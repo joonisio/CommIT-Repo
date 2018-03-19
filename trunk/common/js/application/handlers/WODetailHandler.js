@@ -49,6 +49,8 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 	var wonumArray=[];
 	var wonumArray2=[];
 	var tnbwometeridlist=null;
+	var wonumlist =null;
+	var wonumlist2=null;
 	
 	return declare( [ApplicationHandlerBase, AsyncAwareMixin],  {
 		
@@ -2103,10 +2105,6 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 				console.log(wo);
 				
 				arrayUtil.forEach(wo.data, function(wo){
-
-//					ModelService.allWithComplexAttributes(wo,null,["tnbwometergrouplist"],null).then(function(dataSet){
-//						console.log(dataSet);
-//					});
 					console.log(wo.get("tnbwometergrouplist"));
 					wonum = wo.get("wonum");
 					tnbwometerslist = wo.get("tnbwometerslist");			
@@ -2114,7 +2112,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					isInArray = wonumArray.includes(wonum);
 					
 						for(var i =0;i<resource.length;i++){
-							console.log(resource[i]);
+							//console.log(resource[i]);
 							ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
 								//eventContext.application.addResource(locset);
 								//console.log(locset);
@@ -2148,7 +2146,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					arrayUtil.forEach(child1.data,function(wo1){
 						wonums=wo1.get("wonum");
 						tnbchildwometer = wo1.get("tnbchildwometer");
-						console.log(wo1);
+						//console.log(wo1);
 						isInArray = wonumArray.includes(wonums);
 						
 						if(!isInArray){
@@ -2190,17 +2188,15 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		
 		downloadMeterForParentAndChild:function(eventContext){
 			//relation between wo and tnbwometergroup = tnbwonum = :wonum or (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
-			var wonumlist =null;
-			var wonumlist2=null;
 			var firstTime = true;
 			var firstTime2 = true;
 			var firstTime3 = true;
 			var self =this;
+			eventContext.application.showBusy();
+			console.log("wonumArray "+wonumArray.length);
+			console.log("wonumArray2 "+wonumArray2.length);
 			
-			console.log("wonumlist "+wonumArray.length);
-			console.log("wonumlist2 "+wonumArray2.length);
-			
-			
+			//tnbwonum = :wonum 
 			arrayUtil.forEach(wonumArray,function(wonum){
 					if (firstTime){
 						wonumlist='%22'+wonum+'%22';	
@@ -2210,26 +2206,26 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					}
 			});
 			
+//			TNBPARENTWONUM=:wonum
+			if(wonumArray2.length !=null){
+				arrayUtil.forEach(wonumArray2,function(wonum){
+					if (firstTime3){
+						wonumlist2='%22'+wonum+'%22';	
+						firstTime3 = false;
+					} else {
+						wonumlist2+=',%22'+wonum+'%22';		
+					}
+				});
+			}
 			
-			arrayUtil.forEach(wonumArray2,function(wonum){
-				if (firstTime3){
-					wonumlist2='%22'+wonum+'%22';	
-					firstTime3 = false;
-				} else {
-					wonumlist2+=',%22'+wonum+'%22';		
-				}
-			});
-				
 			
-			
-			
+			console.log(wonumlist);
 			console.log(wonumlist2);
 			
 			var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
-			var originalLocWhereClause = tnbwomterMeta.whereClause;
-			console.log(originalLocWhereClause); //%7C spi_wm:tnbparentwonum in ["+wonumlist2+"]"
+			//%7C spi_wm:tnbparentwonum in ["+wonumlist2+"]"
 			tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
-			var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null);
+			var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null,true);
 			tnbwomterPromise.then(function(dataSet){
 				console.log(dataSet);
 				arrayUtil.forEach(dataSet.data,function(id){
@@ -2241,38 +2237,89 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					} else {
 						tnbwometeridlist+=','+ids;		
 					}
+					eventContext.ui.showToastMessage("Downloading....Please wait");
 					
 				});	
 							
 			}).otherwise(function(error){
 				console.log(error);
+				eventContext.application.hideBusy();
 			}).always(function(){
-				tnbwomterMeta.setWhereClause(null);
-				self.downloadMeter(eventContext);
+				eventContext.application.hideBusy();
+					if(wonumArray2 !=null){
+						self.downloadMeterForParentAndChild2(eventContext,wonumlist2,tnbwomterMeta);
+					}else{				
+					
+						self.downloadMeter(eventContext);
+					}
+				
 			});
 			
 			eventContext.ui.showToastMessage("Downloading....Please wait");
 		
 		},
 		
+		downloadMeterForParentAndChild2:function(eventContext,wonumlist2,tnbwomterMeta){
+			//for (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
+			eventContext.application.showBusy();
+			console.log(tnbwometeridlist);
+			var firstTime=true;
+			var self=this;
+			
+			if(tnbwometeridlist !=null){
+				tnbwometeridlist+=',';
+			}
+			
+			console.log(tnbwometeridlist);
+			tnbwomterMeta.setWhereClause("spi_wm:tnbparentwonum in ["+wonumlist2+"]");
+			
+			var tnbwomterPromise =  ModelService.all('tnbwomtergroup', null,null,true);
+			tnbwomterPromise.then(function(dataSet){
+				console.log(dataSet);
+				arrayUtil.forEach(dataSet.data,function(id){
+					var ids=id.tnbwometergroupid;
+					console.log(id.tnbwometergroupid);
+					
+					if (firstTime){
+						tnbwometeridlist+=ids;	
+						firstTime = false;
+					} else {
+						tnbwometeridlist+=','+ids;		
+					}
+					eventContext.ui.showToastMessage("Downloading....Please wait");
+					
+				});	
+							
+			}).otherwise(function(error){
+				eventContext.application.hideBusy();
+				console.log(error);
+			}).always(function(){
+				eventContext.application.hideBusy();
+				self.downloadMeter(eventContext);	
+			});
+			
+		},
+		
 		
 		downloadMeter:function(eventContext){
+			console.log("downloadMeter");
 			console.log(tnbwometeridlist);
-				
+			
+				var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
 				var tnbMeterMeta = ResourceMetaData.getResourceMetadata("tnbwometers");
 				tnbMeterMeta.setWhereClause("spi_wm:tnbwometergroupid in ["+tnbwometeridlist+"]");
-				//console.log(tnbMeterMeta.whereClause);
-//				var tnbMeterMetaPromise =  ModelService.all('tnbwometers', null,null);
-//				tnbMeterMetaPromise.then(function(data3){
-//					console.log(data3);
-//				}).otherwise(function(error){
-//					console.log(error);
-//				}).always(function(){
-//					eventContext.ui.showToastMessage("DOWNLOAD FINISHED");
-//				});
-//				
-				var workofflinehandler = eventContext.application['platform.handlers.WorkOfflineHandler'];
 				workofflinehandler.startDownload("tnbwometers", null);
+			
+					
+//					var tnbwomterMeta = ResourceMetaData.getResourceMetadata("tnbwomtergroup");
+//					//%7C spi_wm:tnbparentwonum in ["+wonumlist2+"]"
+//					tnbwomterMeta.setWhereClause("spi_wm:tnbwonum in ["+wonumlist+"]");
+//					var tnbwomterPromise =  ModelService.all('tnbwomtergroup', 'searchtnbwomtergroup',null,true);
+//					tnbwomterPromise.then(function(dataSet){
+//						console.log(dataSet);							
+//					});
+					
+				
 		},
 		
 		
@@ -2285,31 +2332,43 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var tnbchild= currentRecord.get("tnbchildwometer");
 			console.log(tnbchild);
 			var self=this;
-			if(tnbchild){
-				filter=[{tnbparentwonum: wonum}];
-
-			}else{
-				filter=[{tnbwonum: wonum}];
-			}
 			
-				ModelService._getLocalFilteredRecords('tnbwomtergroup', 1000,filter,null).then(function(dataset){
-					if(dataset.data.length>0){
-						console.log(" tnbwomtergroup from local");
-						eventContext.application.addResource(dataset);
-						//eventContext.ui.show("WorkExecution.TnbWOMeterList3");
-					}else{
-						self.filterFromServer(eventContext,'tnbwomtergroup',[{tnbwonum: wonum}],null,null);
-						
-					}
-					
-					
-				}).always(function(d){
+			if(tnbchild){
+				console.log("if");
+				var data2 = self.getDataFromServer(eventContext,'tnbwomtergroup',[{tnbwonum: wonum},{tnbparentwonum: wonum}]);
+				data2.then(function(dataSet2){
+					eventContext.application.addResource(dataSet2);
 					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
 				});
-			
-			
+
+			}else{
+				console.log("else");
+				var data3 = self.getDataFromServer(eventContext,'tnbwomtergroup',[{tnbwonum:wonum}]);
+				data3.then(function(dataSet3){
+					eventContext.application.addResource(dataSet3);
+					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
+				});
+			}
+
+//				ModelService._getLocalFilteredRecords('tnbwomtergroup', 1000,[{tnbwonum: wonum}],null).then(function(dataset){
+//					if(dataset.data.length>0){
+//						console.log(" tnbwomtergroup from local");
+//						eventContext.application.addResource(dataset);
+//						//eventContext.ui.show("WorkExecution.TnbWOMeterList3");
+//					}else{
+//						self.filterFromServer(eventContext,'tnbwomtergroup',[{tnbwonum: wonum}],null,null);
+//						
+//					}
+//					
+//					
+//				}).always(function(d){
+//					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
+//				});
+//			
+//			
 			
 		},
+		
 		
 		filterTnbMeterGroup: function(eventContext){
 			//console.log(wonum);
@@ -2397,6 +2456,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var deferred = new Deferred();
 			var dataPromise = ModelService.filtered(resourceName, null,filter, 1000, null,null,null,null);
 			dataPromise.then(function(dataSet){
+				console.log(dataSet);
 				deferred.resolve(dataSet);
 			});
 			
