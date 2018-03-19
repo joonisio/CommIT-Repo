@@ -62,12 +62,12 @@
 			</requiredResources>
 				
 			<actions id="WorkExecution.WorkItemsView_actions">		
-			 	<action id="WorkExecution.WorkItemsView_DownloadtestformList_action" label="Download Test Form" overflow="true">
+			 	<!--<action id="WorkExecution.WorkItemsView_DownloadtestformList_action" label="Download Test Form" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_click_workoffline" method="downloadMeterForParentAndChild"/>
 						<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="WorkExecution.WorkItemsView_DownloadtestformList_action_eventHandlers_render_enableDisableMenu" method="enableDisableMenu"/>
 					</eventHandlers>
-				</action>	    
+				</action>	  -->    
 				<action id="WorkExecution.WorkItemsView_DownloadWorkList_action" label="Download Work List" overflow="true">
 					<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers">
 						<eventHandler class="application.handlers.WOExtDownloadHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline" method="workoffline"/>
@@ -4026,6 +4026,7 @@
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnblocation2" layoutInsertAt="item8" resourceAttribute="tnblocation"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbassetnum2" layoutInsertAt="item11" resourceAttribute="tnbassetnum"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbper2" layoutInsertAt="item3" resourceAttribute="tnbper"/>  
+					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbcbenumber" layoutInsertAt="item14" resourceAttribute="tnbcbnumber"/>
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers2">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource2" method="filterTnbMeterGroup"/>
 					</eventHandlers>																		
