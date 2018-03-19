@@ -10070,8 +10070,8 @@
 				<attribute describedByProperty="spi_wm:tnbwonum" id="tnbwomtergroup_tnbwonum"  index="true" name="tnbwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbparentwonum" id="tnbwomtergroup_tnbparentwonum"  index="true" name="tnbparentwonum"/> 
 				<attribute describedByProperty="spi_wm:tnbsequence" id="tnbwomtergroup_tnbsequence"  index="true" name="tnbsequence"/> 
-				<attribute describedByProperty="spi_wm:tnbwomtergrouptometer{spi_wm:tnbwometergroupid}" id="tnbwomtergroup_tnbwometergroupid"  index="true" name="tnbwometergroupid"/> 
-				<attribute describedByProperty="spi_wm:tnbwomtergrouptometer{spi_wm:tnbcbnumber}" id="tnbwomtergroup_tnbcbnumber"  name="tnbcbnumber"/> 
+				<attribute describedByProperty="spi_wm:tnbwometergroupid" id="tnbwomtergroup_tnbwometergroupid"  index="true" name="tnbwometergroupid"/> 
+				<attribute describedByProperty="spi_wm:tnbcbnumber" id="tnbwomtergroup_tnbcbnumber"  name="tnbcbnumber"/> 
 				<attribute describedByProperty="spi_wm:tnbmetergroup" id="tnbwomtergroup_tnbmetergroup" name="tnbmetergroup"/> 
 				<attribute describedByProperty="spi_wm:description" id="tnbwometergroupResourcespi_description2" name="description"/> 
 				<attribute describedByProperty="spi_wm:tnbtasknum" id="tnbwometergroupResourcespi_tnbtasknum2" name="tnbtasknum"/>   
