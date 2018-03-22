@@ -287,7 +287,7 @@
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
-				<!-- <eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>  -->
+				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -563,12 +563,12 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
+					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
 						<eventHandlers id="workorder.hide_eventhanedlers3">
 							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
 						</eventHandlers>
-					</groupitem> 
+					</groupitem>   -->
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
@@ -5343,17 +5343,15 @@
 			</footer>													
 		</view>
 		
-		
 		<!-- custom Attachments permit List view -->
-		<!-- custom Attachments permit List view -->
-		<view id="WorkExecution.PermitAttachmentsView" label="Attachments" showOverflow="true" saveonshow="true">
+		<!-- <view id="WorkExecution.PermitAttachmentsView" label="Attachments" showOverflow="true" saveonshow="true">
 			<requiredResources id="WorkExecution.PermitAttachmentsView_requiredResources">
 				<requiredResource id="WorkExecution.PermitAttachmentsView_permit" name="permit">
 					<requiredAttribute id="WorkExecution.PermitAttachmentsView_permit_attachments" name="attachments" reload="true"/>
 				</requiredResource>
 			</requiredResources>
 			
-			<!-- <actions id="WorkExecution.PermitAttachmentsView_actions">
+			<actions id="WorkExecution.PermitAttachmentsView_actions">
 				<action id="WorkExecution.PermitAttachmentsView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
 					<eventHandlers id="WorkExecution.PermitAttachmentsView_TakePhoto_action_eventHandlers">
 								<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="launchCameraForPhoto"/>
@@ -5365,7 +5363,7 @@
 						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.PermitAttachmentsView_PickfromGallery_action_eventHandlers_click_launchGallery" method="launchGallery"/>
 					</eventHandlers>
 				</action>
-			</actions>  -->
+			</actions>  
 			
 			<list attribute="attachments" id="WorkExecution.PermitAttachmentsView_permit_attachments_list" resource="permit">
 
@@ -5401,7 +5399,7 @@
 				</listItemTemplate>
 			</list>
 
-		</view>
+		</view> -->
 		
 		
 		
@@ -10308,7 +10306,7 @@
 				<attribute describedByProperty="spi_wm:plusgpermitworkid" id="permit_plusgpermitworkid2" name="plusgpermitworkid"/>
 				<attribute describedByProperty="spi_wm:orgid" id="permit_orgid2" name="orgid"/>
 				<attribute describedByProperty="spi_wm:status" id="permit_status2" name="status"/>
-				<attribute describedByProperty="spi_wm:doclinks" describedByResource="permitAttachments" id="permit_attachments_spiattachments" name="attachments"/>
+				<!--<attribute describedByProperty="spi_wm:doclinks" describedByResource="permitAttachments" id="permit_attachments_spiattachments" name="attachments"/>  -->
 				<localAttribute dataType="string" id="permit_locationdesc_string" name="locationdesc"/>
 				<localAttribute dataType="string" id="workOrder_assetdesc_stridng" name="assetdesc"/>
 			</attributes>
@@ -10318,7 +10316,7 @@
 		</resource>
 		
 		<!-- custom permit Attachments resource-->
-		<resource id="permitAttachments" isAttachment="true" name="permitAttachments">
+		<!-- <resource id="permitAttachments" isAttachment="true" name="permitAttachments">
 			<attributes id="attachments_attributes2">		
 				<attribute describedByProperty="oslc_cm:attachmentSize" id="attachments_fileSize_oslc_cmattachmentSize2" name="fileSize"/> 
 				<attribute describedByProperty="dcterms:title" id="attachments_fileName_dctermstitle2" key="1" name="fileName"/>
@@ -10339,7 +10337,7 @@
 				<localAttribute dataType="string" formula="${displayCreationDate}" id="attachments_displayCreationDate_dateTime_ISO2" name="displayCreationDateISO" index="true"/>
 				<localAttribute dataType="string" id="attachments_displayFileType_string2" name="displayFileType"/>
 			</attributes>
-		</resource>
+		</resource>   -->
 		
 		<!--  Location Meters resource -->
 		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#LocationMeter" id="locationMeters" name="locationMeters" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
