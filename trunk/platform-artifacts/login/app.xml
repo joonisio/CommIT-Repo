@@ -53,7 +53,9 @@
 			    <requiredResource id="platform.LoginView_PlatformChangePasswordForm" name="PlatformChangePasswordForm"/>
 			</requiredResources>
 			<container cssClass="loginForm" id="platform.LoginView_container_0">
-				<image id="platform.LoginView_image_0" image="ibmLogoDark.png"/>
+				<!--<image id="platform.LoginView_image_0" image="ibmLogoDark.png"/>-->
+				<!-- custom TNB Logo -->
+				<image id="platform.LoginView_image_0" image="tnbLogo.png"/>
  				<text cssClass="productName" editable="false" id="platform.LoginView_container_0_appName" resourceAttribute="appName"/>  
 				<text cssClass="errorMsg" editable="false" id="platform.LoginView_container_0_errorMsg" resourceAttribute="errorMsg"/>
 				 <!-- If you want device-side SSO comment out this view -->	

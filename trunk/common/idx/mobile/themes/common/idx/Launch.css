@@ -29,7 +29,8 @@
 	margin-top: -30px;
 	margin-left: auto;
 	margin-right: auto;
-	background-image: url(images/ibmLogoLight.png);
+	/*background-image: url(images/ibmLogoLight.png);*/
+	background-image: url(images/tnbLogo.png);
 	background-repeat: no-repeat;
 }
 
