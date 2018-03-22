@@ -13,4 +13,10 @@
 		<column colspan="5" columnid="item5" id="item5_column"/>
 		<column colspan="2" columnid="item6" id="item6_column"/>
 	</row>
+	<!-- Additional row for assetnumdesc and location -->
+	<row id="row_3">
+		<column colspan="6" columnid="item7" id="item7_column"/>
+		<column colspan="6" columnid="item8" id="item8_column"/>
+	</row>	
+	<!-- End additional row -->
 </layout>

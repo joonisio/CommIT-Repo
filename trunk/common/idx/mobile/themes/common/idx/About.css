@@ -15,7 +15,8 @@
 	display: block;
 	width: 85px;
 	height: 30px;
-	background-image: url(images/ibmLogoDark.png);
+	/*background-image: url(images/ibmLogoDark.png);*/
+	background-image: url(images/tnbLogo.png);
 	background-repeat: no-repeat;
 	margin-bottom: 20px;
 }

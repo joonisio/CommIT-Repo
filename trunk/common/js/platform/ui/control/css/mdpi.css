@@ -1,5 +1,6 @@
 body {
-	background: url(../images/mdpi/ibmLogoLight.png) no-repeat center center;
+	/*background: url(../images/mdpi/ibmLogoLight.png) no-repeat center center;*/
+	background: url(../images/mdpi/tnbLogo.png) no-repeat center center;
 }
 
 .mobile body {

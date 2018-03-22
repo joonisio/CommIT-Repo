@@ -28,7 +28,9 @@
 		</dialog>
 		<view id="Platform.HelpAbout" label="About" resource="PlatformLoginResource">
 			<container cssClass="platformHelpAboutContainer" id="Platform.HelpAbout_container_0">
-				<image id="Platform.HelpAbout_image_0" image="ibmLogoDark.png"/>
+				<!-- <image id="Platform.HelpAbout_image_0" image="ibmLogoDark.png"/> -->
+				<!-- custom TNB Logo -->
+				<image id="Platform.HelpAbout_image_0" image="tnbLogo.png"/>
 				<!-- <text value="IBM Maximo Anywhere" editable="false" cssClass="ibmName 
 					bold textappearance-large" /> -->
 				<text cssClass="productName bold textappearance-large" editable="false" id="Platform.HelpAbout_container_0_appName" resourceAttribute="appName"/>

@@ -511,46 +511,7 @@ function(declare, ModelService, array, ApplicationHandlerBase, WorkOrderObject, 
 			if(actualLaborSet.data.length>0){
 				woStatusDomain.filter("maxvalue!=$1", "CAN");
 			}
-		},
-		
-		// Custom Filter SQA statuses to those available for selection
-		filterSQAStatus: function(eventContext){
-
-			var plusgauditstatus = CommonHandler._getAdditionalResource(eventContext,"plusgauditstatus");
-			var curSQA = CommonHandler._getAdditionalResource(eventContext,"sqa").getCurrentRecord();
-			var curStatus = curSQA.get('status');
-
-			var filter=[];
-
-			if (curStatus === 'DRAFT'){
-				filter.push({value : 'INPRG'});
-				filter.push({value : 'ENTRY'});
-				filter.push({value : 'INACTIVE'});
-			}
-			else if (curStatus === 'INPRG'){
-				filter.push({value : 'COMP'});
-				filter.push({value : 'INACTIVE'});				
-			}
-			else if (curStatus === 'ENTRY'){
-				filter.push({value : 'SUBMITTED'});
-				filter.push({value : 'CAN'});				
-			}
-			else if (curStatus === 'SUBMITTED'){
-				filter.push({value : 'INPRG'});
-				filter.push({value : 'CAN'});					
-			}
-			else if (curStatus === 'COMP'){
-				filter.push({value : 'INACTIVE'});					
-			}
-			else if (curStatus === 'INACTIVE'){
-				filter.push({value : 'DRAFT'})
-			}
-			else if (curStatus === 'CAN'){
-				filter.push({value : 'INPRG'});
-				filter.push({value : 'SUBMITTED'});
-			}
-			plusgauditstatus.lookupFilter=filter;
-		},		
+		},	
 		
 		filterTaskStatus: function(eventContext){
 			var currentTask = CommonHandler._getAdditionalResource(eventContext,"workOrder.tasklist").getCurrentRecord();
