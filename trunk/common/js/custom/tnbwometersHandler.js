@@ -54,8 +54,8 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		then(function(hasConnectivity){
 			console.log("function : filterMeter1");
 			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			//console.log(workOrder);	
-			//console.log(workOrder.tnbwometergrouplist.data.length);
+			console.log(workOrder);	
+			console.log(workOrder.tnbwometergrouplist.data.length);
 				
 				for(var i =0;i<workOrder.tnbwometergrouplist.data.length;i++){
 					console.log("loop");	

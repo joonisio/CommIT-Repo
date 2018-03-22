@@ -2105,7 +2105,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 				console.log(wo);
 				
 				arrayUtil.forEach(wo.data, function(wo){
-					console.log(wo.get("tnbwometergrouplist"));
+					//console.log(wo.get("tnbwometergrouplist"));
 					wonum = wo.get("wonum");
 					tnbwometerslist = wo.get("tnbwometerslist");			
 					//check weather wonum already in array
