@@ -3960,7 +3960,7 @@
 		</view>
 		
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList" label="Meters"  saveonshow="true" resource="workOrder">
+		<view id="WorkExecution.TnbWOMeterList" label="Work Order Meter Group"  saveonshow="true" resource="workOrder">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
@@ -4049,7 +4049,7 @@
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
-					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" lookup="WorkExecution.MeterReadingLookup">
+					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" lookup="WorkExecution.MeterReadingLookup">
 					 	<eventHandlers id="WorkExecution.kdkwe">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutieee" method="hideLookupTestForm2"/>
 						</eventHandlers>	
@@ -4381,7 +4381,7 @@
 		</view>
 		
 		<!--  custom wo Asset Meter Details view -->
-		<view id="WorkExecution.AssetWOMeterDetailView" label="Meter Details" resource="tnbwometers">
+		<view id="WorkExecution.AssetWOMeterDetailView" label="Meter Details" resource="tnbwometers" saveonshow="true">
 			<container id="WorkExecution.AssetWOMeterDetailView_container_0">
 			<errorIndicator id="WorkExecution.AssetWOMeterDetailView_container_errorIndicator" />
 				<group id="WorkExecution.AssetWOMeterDetailView_group_0">			    

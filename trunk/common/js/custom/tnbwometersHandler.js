@@ -159,8 +159,11 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		},
 		
 		commitMeterValue:function(eventContext){
-			eventContext.ui.hideCurrentView();
-		
+			var wometerSet = eventContext.application.getResource('tnbwometers');
+			ModelService.save(wometerSet).then(function(modelDataSet) {
+				console.log('saved');
+				eventContext.ui.hideCurrentView();
+			});			
 		},				
 
 	});
