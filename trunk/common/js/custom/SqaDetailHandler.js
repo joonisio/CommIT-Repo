@@ -71,12 +71,12 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				newSQA.set('question_longdescription',j.toString());
 				newSQA.set('linenum',j);
 				}
-				
+				var self =this;
 				var sqaSet =sqlineaSet.getParent().getOwner();
 				ModelService.save(sqaSet).then(function(){
 					console.log("saved");
-//					var currSqa = sqlineaSet.getCurrentRecord();
-//					currSqa.deleteLocal();
+
+					self.initSqaLine(eventContext);
 					});	
 				console.log(actualSqa);
 			}	else{	
@@ -105,9 +105,11 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 		},
 		
 		initSqaLine:function(eventContext){
-			console.log('initSqaLine');
-			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist").getCurrentRecord();
-			actualSqa.deleteLocal();
+			var actualSqa = CommonHandler._getAdditionalResource(eventContext,"sqa.plusgaudlinelist");
+			actualSqa.data.splice(0, 19);
+			console.log(actualSqa);
+			
+			ModelService.save(actualSqa.getParent().getOwner());
 		},
 		
 		filterSqaQuestion:function(eventContext){

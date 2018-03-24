@@ -208,7 +208,7 @@ define("application/business/WorkOrderObject",
 		changeStatus: function(workOrder, newStatus, statusDate, memo, taskSet, esig){
 			Logger.trace("[WorkOrderObject] changeStatus ");
 			var currentStatus = workOrder.get("status");
-			if(WorkOrderStatusHandler.getInstance().canPerformTransition(currentStatus, newStatus)){
+//			if(WorkOrderStatusHandler.getInstance().canPerformTransition(currentStatus, newStatus)){
 				workOrder.openPriorityChangeTransaction();
 				workOrder.set("status", newStatus);
 				workOrder.setDateValue("statusDate", statusDate);
@@ -217,11 +217,11 @@ define("application/business/WorkOrderObject",
 				if(taskSet && taskSet.data.length>0){
 					this.changeStatusOfTasks(workOrder, newStatus, statusDate, memo, taskSet);
 				}
-			}
-			else{			
-				Logger.trace("[WorkOrderObject] changeStatus status can not be changed");
-				 throw new PlatformRuntimeException('invalidstatustransition',[currentStatus, newStatus]);
-			}
+//			}
+//			else{			
+//				Logger.trace("[WorkOrderObject] changeStatus status can not be changed");
+//				 throw new PlatformRuntimeException('invalidstatustransition',[currentStatus, newStatus]);
+//			}
 			Logger.trace("[WorkOrderObject] changeStatus status changed");
 		},
 		changeStatusOfTasks: function(workOrder, newStatus, statusDate, memo, taskSet){

@@ -204,7 +204,7 @@
 		</view>
 		
 		<!--Work Order Details view-->
-		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true">
+		<view id="WorkExecution.WorkDetailView" label="Work Order Details" resource="workOrder" allowDrillDown="true" saveonshow="true">
 			<requiredResources id="WorkExecution.WorkDetailView_requiredResources">
 				<requiredResource id="WorkExecution.WorkDetailView_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwometergrouplist222" name="tnbwometergrouplist"/> 
@@ -10006,7 +10006,7 @@
 		</resource>
 		
 		<!-- custom sqa line resource -->
-		<resource  id="plusgaudlineResource" name="plusgaudlineResource">
+		<resource  id="plusgaudlineResource" name="plusgaudlineResource" defaultOrderBy="linenum asc" pageSize="19">
 			<attributes id="plusgaudlineResource_attributes">
 				<!-- linear atribute -->
 				<attribute describedByProperty="spi_wm:linenum" id="plusgaudlineResource_feature"  index="true" name="linenum"/>
@@ -10145,9 +10145,9 @@
 				<attribute describedByProperty="spi_wm:tnbremarks" id="tnbwometers_tnbremarks" name="tnbremarks"/>
 				<!-- <localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
-			<creationFactories id="locationMeters_creationFactorie3s">
+			<!--<creationFactories id="locationMeters_creationFactorie3s">
 		        <creationFactory creationUri="/oslc/os/oslctnbwometers" id="locationMeters_creationFactory_locationMeterResourceeCF" name="tnbwometerlist"/>
-	        </creationFactories>	
+	        </creationFactories>	  -->
 			<queryBases id="tnbwometers_queryBases">
 	 			<queryBase defaultForSearch="true" id="tnbwometerssearchAll" name="searchAllTnbWometer" queryUri="/oslc/os/oslctnbwometers" />
 			</queryBases> 
