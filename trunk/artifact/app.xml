@@ -4383,6 +4383,7 @@
 		<!--  custom wo Asset Meter Details view -->
 		<view id="WorkExecution.AssetWOMeterDetailView" label="Meter Details" resource="tnbwometers">
 			<container id="WorkExecution.AssetWOMeterDetailView_container_0">
+			<errorIndicator id="WorkExecution.AssetWOMeterDetailView_container_errorIndicator" />
 				<group id="WorkExecution.AssetWOMeterDetailView_group_0">			    
 					<groupitem id="WorkExecution.AssetWOMeterDetailView_groupitem_0">
 						<text editable="true" id="WorkExecution.AssetWOMeterDetailView_groupitem_0_assetnum_Asset" label="Meter Name" resourceAttribute="tnbmetername"/>
@@ -5622,7 +5623,7 @@
 				<eventHandler class="custom.SqaDetailHandler" event="initialize" id="WorkExecution.SqaLineView_initlist" method="initSQALine"/>
 			</eventHandlers>						
 
-			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa">
+			<list attribute="plusgaudlinelist" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_list" resource="sqa" displayPageSize="30">
 				<listItemTemplate id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_listItemTemplate_plusgaudlinelistItem" layout="QuestionListItem">
 					<listtext id="WorkExecution..SqaLineView_sqa_plusgaudlinelist_linenum" layoutInsertAt="item1" resourceAttribute="linenum"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.SqaLineView_sqa_plusgaudlinelist_description" layoutInsertAt="item2" resourceAttribute="description"/>
