@@ -89,28 +89,46 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var meter = currentRecord.get("tnbwometerslist");
 			workOrder.set('tempMeterName',currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
-			if (meter != null) {
-					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
-						
-						if (locset.fetchedFromServer){
-							console.log("fetched from server");
-						}else{
-							console.log("fetched from local");
-						}
-						
-						locset.resourceID = 'tnbwometers';
-						console.log(locset);
-						Logger.trace(locset);
+//			if (meter != null) {
+//					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
+//						
+//						if (locset.fetchedFromServer){
+//							console.log("fetched from server");
+//						}else{
+//							console.log("fetched from local");
+//						}
+//						
+//						console.log(locset);
+//						Logger.trace(locset);
+//						eventContext.application.addResource(locset);
+//						eventContext.ui.show(redirect);
+//						
+//					}).otherwise(function(error) {
+//						Logger.error(JSON.stringify(error));
+//					});
+//			} else {
+//				eventContext.application.addResource(null);
+//				eventContext.ui.show(redirect);
+//			}
+			
+			ModelService._getLocalFilteredRecords('tnbwometers',1000,[{tnbwometersid: meter}],null).then(function(locset){
+				if(locset.data.length>0){
+					console.log(locset);
+					console.log("tnbwometers from local");
+					eventContext.application.addResource(locset);	
+					eventContext.ui.show(redirect);
+				}else{
+						console.log("tnbwometers from server");
+						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
 						eventContext.application.addResource(locset);
 						eventContext.ui.show(redirect);
 						
 					}).otherwise(function(error) {
 						Logger.error(JSON.stringify(error));
 					});
-			} else {
-				eventContext.application.addResource(null);
-				eventContext.ui.show(redirect);
-			}
+				}
+				
+				});
 		
 		},
 		hideLookupTestForm:function(eventContext){
@@ -144,12 +162,12 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var wometerSet = eventContext.application.getResource('tnbwometers');
 			ModelService.save(wometerSet).then(function(modelDataSet) {
 				console.log("REFRESH VIEW");
-				modelDataSet.resourceID = 'tnbwometers';
-				eventContext.application.addResource(modelDataSet);
-				deferred.resolve(modelDataSet);
-				eventContext.ui.getCurrentViewControl().refresh();
-				console.log(wometerSet);
-				console.log(modelDataSet);
+//				modelDataSet.resourceID = 'tnbwometers';
+//				eventContext.application.addResource(modelDataSet);
+//				deferred.resolve(modelDataSet);  
+//				eventContext.ui.getCurrentViewControl().refresh();
+//				console.log(wometerSet);
+//				console.log(modelDataSet);
 			});			
 		},				
 
