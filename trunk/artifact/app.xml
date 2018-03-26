@@ -3960,7 +3960,7 @@
 		</view>
 		
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList" label="Work Order Meter Group"  saveonshow="true" resource="workOrder">
+		<view id="WorkExecution.TnbWOMeterList" label="Work Order Meter Group" resource="workOrder">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tasklist" name="tnbwometergrouplist"/>
@@ -4038,7 +4038,7 @@
 		
 			
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList2"  saveonshow="true" label="Meters">
+		<view id="WorkExecution.TnbWOMeterList2"  label="Meters">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
@@ -4049,7 +4049,7 @@
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
-					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" lookup="WorkExecution.MeterReadingLookup">
+					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" placeHolder="Tap to enter" lookup="WorkExecution.MeterReadingLookup">
 					 	<eventHandlers id="WorkExecution.kdkwe">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutieee" method="hideLookupTestForm2"/>
 						</eventHandlers>	

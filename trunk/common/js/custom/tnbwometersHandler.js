@@ -119,7 +119,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 					eventContext.ui.show(redirect);
 				}else{
 						console.log("tnbwometers from server");
-						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
+						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null,null).then(function(locset){
 						eventContext.application.addResource(locset);
 						eventContext.ui.show(redirect);
 						
