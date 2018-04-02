@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ListHeader">
+	<row id="row_0">
+		<column colspan="6" columnid="sortLabel" halign="left" id="sortLabel_column" valign="middle"/>
+		<column colspan="1" columnid="refreshIcon" halign="right" id="refreshIcon_column" valign="middle"/>
+		<column colspan="1" columnid="errorImage" halign="right" id="errorImage_column" valign="middle"/>
+		<column colspan="1" columnid="errorCount" halign="left" id="errorCount_column" valign="middle"/>
+		<column colspan="1" columnid="separator" halign="center" id="separator_column" valign="middle"/>
+		<column colspan="2" columnid="count" halign="center" id="count_column" valign="middle"/>
+	</row>	
+</layout>

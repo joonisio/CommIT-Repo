@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationPointsAnalog" version="201705101500">
+  <row id="row_0">
+    <column colspan="4" columnid="count" id="count_column"/>
+    <column colspan="4" columnid="point_val" id="point_column"/>
+    <column colspan="4" columnid="description" id="description_column"/>
+  </row>
+  <row id="row_1">
+    <column colspan="3" columnid="input" id="input_column"/>
+    <column colspan="3" columnid="inputunit" id="inputunit_column"/>
+    <column colspan="3" columnid="output" id="output_column"/>
+    <column colspan="3" columnid="outputunit" id="outputunit_column"/>
+  </row>
+  <row id="row_1_val">
+    <column colspan="3" columnid="input_val" id="input_column_val"/>
+    <column colspan="3" columnid="inputunit_val" id="inputunit_column_val"/>
+    <column colspan="3" columnid="output_val" id="output_column_val"/>
+    <column colspan="3" columnid="outputunit_val" id="outputunit_column_val"/>
+  </row>
+  <row id="row_2">
+    <column colspan="4" columnid="foundinput" id="foundinput_column"/>
+    <column offset="2" colspan="3" columnid="foundoutput" id="foundoutput_column"/>
+</row>
+</layout>

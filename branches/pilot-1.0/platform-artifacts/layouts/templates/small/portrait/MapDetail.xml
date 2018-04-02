@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="MapDetail">
+  <row id="row_0">
+    <column colspan="2" columnid="previous" halign="left" id="previous_column" valign="middle"/>
+    <column colspan="2" columnid="marker" halign="center" id="marker_column" valign="middle"/>
+    <column colspan="4" columnid="address" halign="left" id="address_column" valign="top"/>
+    <column colspan="2" columnid="startstop" halign="center" id="startstop_column" valign="middle"/>
+    <column colspan="2" columnid="next" halign="right" id="next_column" valign="middle"/>
+  </row>
+  <row id="row_1">
+      <column colspan="12" columnid="directions" halign="center" id="directions_column"/>
+  </row>
+</layout>

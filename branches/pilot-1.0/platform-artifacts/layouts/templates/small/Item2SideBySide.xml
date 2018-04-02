@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="Item2SideBySide">
+	<row id="row_0">
+		<column colspan="3" columnid="item1" halign="right" id="item1_column"/>
+		<column colspan="7" columnid="item2" halign="left" id="item2_column"/>
+	</row>
+</layout>

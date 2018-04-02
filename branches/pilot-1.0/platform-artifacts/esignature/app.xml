@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="Esignature" version="201705101500" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+    <ui id="ui">
+
+        <dialog id="Platform.EsigLoginView" label="Electronic Signature Authentication" resource="PlatformEsigResource">
+            <requiredResources id="Platform.EsigLoginView_requiredResources">
+				<requiredResource id="Platform.EsigLoginView_attemptResultDomain" name="attemptResultDomain" enableFeatureByProperty="esig.enabled"/>
+			</requiredResources>
+            <container id="Platform.EsigLoginView_container_0">
+                <group id="Platform.EsigLoginView_group_0">
+					<groupitem id="Platform.EsigLoginView_group_0_groupitem_1">
+				    	<text border="true" cssClass="loginUsername" editable="false" id="Platform.EsigLoginView_container_0_username" label="User Name" placeHolder="User name" resourceAttribute="userName"/>
+						<text border="true" cssClass="loginPassword" editable="true" id="Platform.EsigLoginView_container_0_password" label="Password" placeHolder="Password" required="true" resourceAttribute="password" type="password"/>
+						<text border="true" cssClass="loginUsername" editable="true" id="Platform.EsigLoginView_container_0_reason" label="Reason for Change" placeHolder="Reason for Change" required="true" resourceAttribute="reason"/>
+					</groupitem>
+				</group>	
+  		    </container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.EsigLoginView_footer">
+				<button id="Platform.EsigLoginView_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.EsigLoginView_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.EsigHandler" event="click" id="Platform.EsigLoginView_Cancel_button_eventHandlers_click_cancelEsig" method="cancelEsig"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.EsigLoginView_Save_button" label="OK" primary="true">
+					<eventHandlers id="Platform.EsigLoginView_Save_button_eventHandlers">
+						<eventHandler class="platform.handlers.EsigHandler" event="click" id="Platform.EsigLoginView_Save_button_eventHandlers_click_submitEsig" method="submitEsig"/>
+					</eventHandlers>
+				</button>
+			</container>
+            <eventHandlers id="Platform.EsigLoginView_eventHandlers">
+            	<eventHandler class="platform.handlers.EsigHandler" event="show" id="Platform.EsigLoginView_eventHandlers_show_initializeEsig" method="initializeEsig"/>
+        	</eventHandlers>
+        </dialog>
+        
+        <view id="Platform.Signature" label="Capture Real Signature">
+			<requiredResources id="Platform.Signature_requiredResources">
+				<requiredResource id="Platform.Signature_PlatformAttachmentInfoResource" name="PlatformAttachmentInfoResource"/>
+			</requiredResources>
+						
+			<footer id="Platform.Signature_footer">
+			    <button id="Platform.Signature_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.Signature_Cancel_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" id="Platform.Signature_Cancel_button_eventHandlers_click_handleBackButtonClickEditAssetView" 
+						    method="cancelSignature"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.Signature_Clear_button" label="Clear">
+					<eventHandlers id="Platform.Signature_Clear_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" id="Platform.Signature_Clear_button_eventHandlers_click_handleBackButtonClickEditAssetView" 
+						    method="clearSignature"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.Signature_Save_button" label="Save" primary="true">
+					<eventHandlers id="Platform.Signature_Save_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" id="Platform.Signature_Save_button_eventHandlers_click_saveSignature" method="saveSignature"/>
+					</eventHandlers>
+				</button>
+			</footer>
+			<eventHandlers id="Platform.Signature_eventHandlers">
+				<eventHandler class="platform.signature.handler.SignatureHandler" event="initialize" id="Platform.Signature_eventHandlers_show_initStopWorkView" method="initSignature"/>
+				<!-- <eventHandler class="application.handlers.StopTimerHandler" event="cleanup" id="WorkExecution.StopWorkView_eventHandlers_cleanup_returnToWoList" method="returnToWoList"/> -->
+			</eventHandlers>
+		</view>
+		
+		<dialog id="Platform.SignatureDialog" >
+		    
+						
+			<container cssClass="mblSimpleDialogFooter" id="Platform.SignatureDialog_container_buttons">
+				<button id="Platform.SignatureDialog_container_buttons_Cancel_button" label="Cancel" cssClass="dialogButton">
+					<eventHandlers id="Platform.SignatureDialog_container_buttons_Cancel_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" 
+						    id="Platform.SignatureDialog_container_buttons_Cancel_button_eventHandlers_click_handleBackButtonClickEditAssetView" method="cancelSignatureDialog"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.SignatureDialog_container_buttons_clear_button" label="Clear" cssClass="dialogButton">
+					<eventHandlers id="Platform.SignatureDialog_container_buttons_clear_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" 
+						    id="Platform.SignatureDialog_container_buttons_clear_button_eventHandlers_click_handleBackButtonClickEditAssetView" method="clearSignature"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.SignatureDialog_container_buttons_Save_button" label="Save" primary="true">
+					<eventHandlers id="Platform.SignatureDialog_container_buttons_Save_button_eventHandlers">
+						<eventHandler class="platform.signature.handler.SignatureHandler" event="click" 
+						    id="Platform.SignatureDialog_container_buttons_Save_button_eventHandlers_click_saveSignature" method="saveSignature"/>
+					</eventHandlers>
+				</button>
+			</container>
+			<eventHandlers id="Platform.SignatureDialog_eventHandlers">
+				<eventHandler class="platform.signature.handler.SignatureHandler" event="show" id="Platform.SignatureDialog_eventHandlers_show_initStopWorkView" method="initSignature"/>
+				<!-- <eventHandler class="application.handlers.StopTimerHandler" event="cleanup" id="WorkExecution.StopWorkView_eventHandlers_cleanup_returnToWoList" method="returnToWoList"/> -->
+			</eventHandlers>
+		</dialog>
+    </ui>
+    <data id="data">
+        
+		<resource id="PlatformEsigResource" inMemory="true" name="PlatformEsigResource" singleton="true">
+			<attributes id="PlatformEsigResource_attributes">
+				<localAttribute dataType="string" id="PlatformEsigResource_username_string" name="userName"/>
+				<localAttribute dataType="string" id="PlatformEsigResource_password_string" name="password"/>
+				<localAttribute dataType="string" id="PlatformEsigResource_reason_boolean" name="reason" maxSize="50"/>
+				<localAttribute dataType="boolean" id="PlatformEsigResource_success_boolean" name="success"/>
+			</attributes>
+		</resource>    
+<!-- 
+        <resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SigOption" id="PlatformEsigSigOptionResource" name="PlatformEsigSigOptionResource" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+            <attributes id="PlatformEsigSigOptionResource_attributes">
+                <attribute describedByProperty="spi:app" id="PlatformEsigSigOptionResource_app_string" name="app"/>
+                <attribute describedByProperty="spi:optionname" id="PlatformEsigSigOptionResource_optionname_string" name="optionname"/>
+                <attribute describedByProperty="spi:description" id="PlatformEsigSigOptionResource_description_string" name="description"/>
+                <attribute describedByProperty="spi:esigenabled" id="PlatformEsigSigOptionResource_esigenabled_string" name="esigenabled"/>
+				<attribute describedByProperty="spi:visible" id="PlatformEsigSigOptionResource_visible_string" name="visible"/>
+            </attributes>       
+            <queryBases id="PlatformEsigSigOptionResource_queryBases">
+ 	 			<queryBase id="PlatformEsigSigOptionResource_queryBase_getsigoptions" name="esigsigoption" queryUri="/oslc/os/oslcsigoption"/>
+	 		</queryBases>	       
+			<whereClause clause="spi:app='WOTRACK'" id="PlatformEsigSigOptionResource_whereClause"/>
+        </resource>
+ -->   
+        <resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#EsigAttribute" id="PlatformEsigAttributeResource" isSystem="true" name="PlatformEsigAttributeResource" enableFeatureByProperty="esig.enabled" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" >
+            <attributes id="PlatformEsigAttributeResource_attributes">
+                <attribute describedByProperty="spi:objectname" id="PlatformEsigAttributeResource_objectname_string" name="objectname"/>
+                <attribute describedByProperty="spi:attributename" id="PlatformEsigAttributeResource_attributename_string" name="attributename"/>
+            </attributes>       
+            <queryBases id="PlatformEsigAttributeResource_queryBases">
+ 	 			<queryBase id="PlatformEsigAttributeResource_queryBase_getattrs" name="PlatformEsigAttributeResource_query" queryUri="/oslc/os/oslcesigattribute"/>
+	 		</queryBases>	       
+			<whereClause clause="spi:esigenabled=1" id="PlatformEsigAttributeResource_whereClause"/>
+        </resource>
+        
+        <resource describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#LoginTracking" id="PlatformLoginTrackingResource" name="PlatformLoginTrackingResource" enableFeatureByProperty="esig.enabled" defaultOrderBy="attemptdate desc" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+            <attributes id="PlatformLoginTrackingResource_attributes">
+                <attribute describedByProperty="spi:attemptdate" id="PlatformLoginTrackingResource_attemptdate" name="attemptdate" index="true"/>
+                <attribute describedByProperty="spi:attemptresult" id="PlatformLoginTrackingResource_attemptresult" name="attemptresult"/>
+				<attribute describedByProperty="spi:reason" id="PlatformLoginTrackingResource_reason" name="reason"/>
+				<attribute describedByProperty="spi:app" id="PlatformLoginTrackingResource_app" name="app"/>
+                <attribute describedByProperty="spi:keyvalue1" id="PlatformLoginTrackingResource_keyvalue1_site" name="keyvalue1"/>
+                <attribute describedByProperty="spi:keyvalue2" id="PlatformLoginTrackingResource_keyvalue2_wonum" name="keyvalue2"/>                
+				<attribute describedByProperty="spi:userid" id="PlatformLoginTrackingResource_userid" name="userid"/>
+                <attribute describedByProperty="spi:loginid" id="PlatformLoginTrackingResource_loginid" name="loginid"/>
+				<attribute describedByProperty="spi:clienthost" id="PlatformLoginTrackingResource_clienthost" name="clienthost"/>
+				<attribute describedByProperty="spi:clientaddr" id="PlatformLoginTrackingResource_clientaddr" name="clientaddr"/>
+                <attribute describedByProperty="spi:ownertable" id="PlatformLoginTrackingResource_ownertable" name="ownertable"/>
+<!--                 <attribute describedByProperty="spi:name" id="PlatformLoginTrackingResource_name" name="name"/> -->
+			</attributes>       
+	        <creationFactories id="PlatformLoginTrackingResource_creationFactories">
+		        <creationFactory creationUri="/oslc/os/oslclogintracking" id="PlatformLoginTrackingResource_creationFactory_logEsig" name="logEsig"/>
+	        </creationFactories>
+            <queryBases id="PlatformLoginTrackingResource_queryBases">
+ 	 			<queryBase id="PlatformLoginTrackingResource_queryBase_data" name="PlatformLoginTrackingResource_query" queryUri="/oslc/os/oslclogintracking"/>
+	 		</queryBases>      	       
+	 			<whereClause clause="spi:attemptdate!='*'" id="PlatformLoginTrackingResource_whereClause"/> <!--  should return no records -->
+		</resource>
+		
+        <!-- MaxDomain for the login tracking result -->
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#SynonymDomain" id="attemptResultDomain" isSystem="true" name="attemptResultDomain" pageSize="100" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" enableFeatureByProperty="esig.enabled" >
+			<attributes id="attemptResultDomain_attributes">
+				<attribute describedByProperty="spi:orgid" id="attemptResultDomain_orgid_spiorgid" name="orgid"/>
+				<attribute describedByProperty="spi:siteid" id="attemptResultDomain_siteid_spisiteid" name="siteid"/>
+				<attribute describedByProperty="spi:maxvalue" id="attemptResultDomain_maxvalue_spimaxvalue" name="maxvalue"/>
+				<attribute describedByProperty="spi:value" id="attemptResultDomain_value_spivalue" name="value"/>
+				<attribute describedByProperty="dcterms:title" id="attemptResultDomain_description_dctermstitle" name="description"/>
+				<attribute describedByProperty="spi:defaults" id="attemptResultDomain_defaults_spidefaults" name="defaults"/>
+				<attribute describedByProperty="oslc:shortTitle" id="attemptResultDomain_domainid_oslcshortTitle" name="domainid"/>
+				<attribute describedByProperty="dcterms:identifier" id="attemptResultDomain_synonymdomainid_dctermsidentifier" name="synonymdomainid"/>
+			</attributes>
+			<queryBases id="attemptResultDomain_queryBases">
+ 	 			<queryBase id="attemptResultDomain_queryBase_getPlantype" name="getAttemptResultDomain" queryUri="/oslc/os/oslcsynonymdomain"/>
+	 		</queryBases>			
+ 			<whereClause clause="oslc:shortTitle='ATTEMPTRESULT'" id="attemptResultDomain_whereClause"/>
+		</resource>
+        
+    </data>
+    
+    <messages id="messages">
+		<message defaultMessage="Please enter the correct password." id="invalidPassword"/>
+		<message defaultMessage="Please enter a reason for change." id="emptyReasonForChange"/>
+		<message defaultMessage="Name of the person:" id="signaturePersonName"/>
+		<message defaultMessage="Signature captured From: " id="signatureDescription"/> 
+		<message defaultMessage="Error capturing signature. {0}" id="nestedErrorCapturingSignature"/>
+		<message defaultMessage="Error capturing signature. Contact your administrator." id="errorCapturingSignature"/>
+	</messages>
+</app>

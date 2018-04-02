@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ServiceAddressLookup">
+	<row id="row_0">
+		<column colspan="4" columnid="addrcode" halign="left" id="addrcode_column"/>
+		<column colspan="8" columnid="description" halign="right" id="description_column"/>
+	</row>
+	<row id="row_1">
+		<column colspan="12" columnid="formattedaddr" id="formattedaddr_column"/>
+	</row>
+</layout>

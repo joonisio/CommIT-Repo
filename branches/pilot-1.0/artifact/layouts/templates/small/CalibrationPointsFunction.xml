@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationPointsFunction" version="201705101500">
+  <row id="row_0">
+    <column colspan="4" columnid="point" id="point_column"/>
+    <column colspan="5" columnid="function" id="function_column"/>
+    <column colspan="1" columnid="point_info" id="point_info"/>
+  </row>
+  <row id="row_1">
+    <column colspan="5" columnid="pointdesc" id="pointdesc_column"/>
+    <column colspan="3" columnid="pass" id="pass_column" halign="right"/>
+  </row>
+  <row id="row_2">
+    <column colspan="5" columnid="blank" id="blank_column"/>
+    <column colspan="3" columnid="fail" id="fail_column" halign="right"/>
+  </row>
+</layout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="ScanHeader">
+	<row id="row_0">
+		<column colspan="10" columnid="label" halign="left" id="label_column" valign="middle"/>
+		<column colspan="2" columnid="cancel" halign="right" id="cancel_column" valign="middle"/>
+	</row>
+</layout>

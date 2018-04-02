@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="AssetFunctionToleranceLayout" version="201705101500">
+  <row id="row_0">
+    <column colspan="2" columnid="label1" id="label1_column"/>
+    <column colspan="1" columnid="value1" id="value1_column" />
+    <column colspan="1" columnid="label2" id="label2_column" halign="center"/>
+     <column colspan="1" columnid="value2" id="value2_column" halign="left"/>
+     <column colspan="1" columnid="label3" id="label3_column" halign="center"/>
+     <column colspan="6" columnid="value3" id="value3_column" halign="left"/>
+  </row>
+</layout>

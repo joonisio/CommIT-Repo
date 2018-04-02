@@ -1,0 +1,10 @@
+<layout id="NotificationList">
+	<row id="row_0">
+		<column columnid="date1" colspan="12" id="col0_0" />
+		
+	</row>
+	<row id="row_1">
+	    <column columnid="item1" colspan="4" id="col0_1" />
+	    <column columnid="item2" colspan="8" id="col1_1" />
+	</row>
+</layout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="Geolocation" version="201705101500" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+    <ui id="ui">
+
+    </ui>
+    <data id="data">
+		
+        <!-- MaxDomain for the login tracking result -->
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#LBSLOCATION" id="lbslocation" name="lbslocation" pageSize="100" providedBy="/oslc/sp/SmarterPhysicalInfrastructure"  >
+			<attributes id="lbslocation_attributes">
+				<attribute describedByProperty="spi:altitude" id="lbslocation_altitude" name="altitude"/>
+				<attribute describedByProperty="spi:altitudeaccuracy" id="lbslocation_altitudeaccuracy" name="altitudeaccuracy"/>
+				<attribute describedByProperty="spi:key1" id="lbslocation_key1" name="key1"/>
+				<attribute describedByProperty="spi:key2" id="lbslocation_key2" name="key2"/>
+				<attribute describedByProperty="spi:key3" id="lbslocation_key3" name="key3"/>
+				<attribute describedByProperty="spi:longitude" id="lbslocation_longitude" name="longitude"/>
+				<attribute describedByProperty="spi:refobject" id="lbslocation_refobject" name="refobject"/>
+				<attribute describedByProperty="spi:speed" id="lbslocation_speed" name="speed"/>
+				<attribute describedByProperty="spi:lastupdate" id="lbslocation_lastupdate" name="lastupdate"/>
+				<attribute describedByProperty="spi:latitude" id="lbslocation_latitude" name="latitude"/>
+				<attribute describedByProperty="spi:wonum" id="lbslocation_wonum" name="wonum"/>
+				<attribute describedByProperty="spi:siteid" id="lbslocation_siteid" name="siteid"/>
+				<attribute describedByProperty="spi:heading" id="lbslocation_heading" name="heading"/>
+				<attribute describedByProperty="spi:locationaccuracy" id="lbslocation_locationaccuracy" name="locationaccuracy"/>
+				
+			</attributes>
+			 <creationFactories id="lbslocation_creationFactories">
+		        <creationFactory creationUri="/oslc/os/oslclbslocation" id="lbslocation_creationFactory_createLbslocation" name="createLbslocation"/>
+	        </creationFactories>
+			<queryBases id="lbslocation_queryBases">
+ 	 			<queryBase id="lbslocation_queryBase_getLbslocation" name="getLbslocation" queryUri="/oslc/os/oslclbslocation"/>
+	 		</queryBases>			
+ 			<whereClause id="lbslocation_whereClause"/>
+		</resource>
+		
+		<resource id="PlatformGeolocationLocalStore" name="PlatformGeolocationLocalStore" singleton="true">
+			<attributes id="tempPlatformGeolocationLocalStore">
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_wonum_string" name="wonum"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_wositeid_string" name="wositeid"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_gpswatchid_string" name="gpswatchid"/>
+				<localAttribute dataType="integer" id="tempPlatformGeolocationLocalStore_offlinecount_integer" name="offlinecount"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_LatitudeY_string" name="latitudey"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_LongitudeX_string" name="longitudex"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_errorcode_string" name="errorcode"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_watchID_string" name="watchid"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_timerID_string" name="timerid"/>
+				<localAttribute dataType="string" id="tempPlatformGeolocationLocalStore_timerstamp_string" name="timestamp"/>
+			</attributes>
+		</resource>
+        
+    </data>
+    
+    <messages id="messages">
+		<message defaultMessage="Reporting location information for the user is deactivated. Please enable location services app feature, log out and log back again to activate the GPS tracking." id="GPSAppFeatureNotEnabled"/>
+		<message defaultMessage="Device location service is disabled. Please enable Device location services, log out and log back again to activate the GPS tracking." id="gpsPermission"/>
+		<message defaultMessage="Unable to capture GPS co-ordinates that this time." id="unableAcquireGPS"/>
+		<message defaultMessage="Timeout occured while GPS tracking." id="gpsTimeout"/> 
+	</messages>
+</app>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="AssetFunctions" version="201705101500">
+  <row id="row_0">
+    <column colspan="2" columnid="id" id="id_column"/>
+    <column colspan="7" columnid="desc" id="desc_column"/>
+    <column colspan="3" columnid="repeat" id="repeat_column"/> 
+  </row>
+  <row id="row_1">
+    <column colspan="6" columnid="checktype" id="checktype_column"/>
+    <column colspan="6" columnid="plantype" id="plantype_column"/>
+  </row>
+  <row id="row_2">
+    <column colspan="1" columnid="ficon" id="ficon_column" halign="center"/>
+    <column colspan="3" columnid="fstatus" id="fstatus_column"/>
+    <column colspan="8" columnid="fstatusdesc" id="fstatusdesc_column"/>
+  </row>
+  <row id="row_3">
+    <column colspan="1" columnid="licon" id="licon_column" halign="center"/>
+    <column colspan="3" columnid="lstatus" id="lstatus_column"/>
+    <column colspan="8" columnid="lstatusdesc" id="lstatusdesc_column"/>
+  </row>
+</layout>

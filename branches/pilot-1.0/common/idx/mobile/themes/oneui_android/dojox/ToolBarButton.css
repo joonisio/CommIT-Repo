@@ -1,0 +1,50 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import url("../../common/dojox/ToolBarButton.css");
+
+/* Adjustments for ToolBarButtons when used in a Heading. */
+.mblHeading .mblToolBarButton {
+	margin: 8px 0 8px 25px;
+	padding: 0 10px;
+	height: 32px;
+	line-height: 32px;
+	outline: none;
+	box-shadow: none;
+}
+
+.mblHeading .mblToolBarButton.mblToolBarButtonBody,
+.mblHeading .mblToolBarButton .mblToolBarButtonBody {
+	padding-bottom: 5px; 
+	border: none;
+	box-shadow: none;
+}
+
+.mblHeading .mblToolBarButtonArrow {
+	border: none;
+}
+
+.mblHeading .mblToolBarButton.mblToolBarButtonHasLeftArrow {
+	padding: 0 0 0 4px;
+	position: absolute;
+	left: 0px;
+	margin-left: 0px;
+}
+
+.mblHeading .mblToolBarButtonHasLeftArrow .mblToolBarButtonIcon {
+	background-image: url(../idx/images/headerIcons.png);
+	background-position:  -13px -2px; height: 32px; width: 7px;
+}
+.mblHeading .mblToolBarButtonSelected.mblToolBarButtonHasLeftArrow .mblToolBarButtonIcon {
+	background-image: url(../idx/images/headerIcons.png);
+	background-position:  -13px -34px; height: 32px; width: 7px;
+}
+
+.mblHeading .mblToolBarButtonHasLeftArrow .mblToolBarButtonLabel,
+.mblHeading .mblToolBarButtonHasLeftArrow .mblToolBarButtonLeftArrow {
+	display: none;
+}

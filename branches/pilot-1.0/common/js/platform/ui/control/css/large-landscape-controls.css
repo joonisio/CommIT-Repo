@@ -1,0 +1,21 @@
+.mblHeadingSpanTitle {
+	max-width: 400px; 	
+}
+
+.editableText {
+   width: 400px;
+}
+
+.lookupText {
+	width: 400px;
+}
+
+.specificationText {
+	width: 400px;
+}
+
+.mblFixedSplitter div[data-layoutSize='medium'] .editableText,
+.mblFixedSplitter div[data-layoutSize='medium'] .lookupText,
+.mblFixedSplitter div[data-layoutSize='medium'] .specificationText {
+	width: 320px;
+}

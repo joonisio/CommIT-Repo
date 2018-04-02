@@ -1,0 +1,51 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import url("transitions/coverv.css");
+@import url("transitions/revealv.css");
+
+/* dojox.mobile.Overlay */
+.mblOverlay {
+	position:fixed;
+	bottom:0;
+	left:0;
+	z-index:2000;
+	margin:0;
+	width:100%;
+	background-color:#c0c0c0;
+	background-image:none;
+	text-align:-webkit-center;
+	box-shadow: inset 0 -1px 8px rgba(0,0,0,.35);
+	border-top: 1px solid #bbb;
+}
+
+.mblOverlayHidden *,.mblOverlayHidden {
+	visibility:hidden!important;
+}
+
+.mblOverlay .mblHeading {
+	height:42px;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#c0c0c0));
+	box-shadow:0 1px 0px rgba(255,255,255,.65);
+	border-bottom: 1px solid #aaa;
+	color:#222;
+	text-shadow: 0 1px 0 white;
+}
+
+.mblOverlay .mblHeading:after {
+	display:none;
+}
+
+.mblOverlay .mblHeading .mblToolBarButton {
+	border:1px solid #c0c0c0;
+	border-bottom-color: #aaa;
+	background-image:-webkit-linear-gradient(top,#f4f4f4 0%,#dbdbdb 100%);
+	box-shadow:0 1px 0px rgba(255,255,255,.65);
+	color:#222;
+	text-shadow:0 1px 0 #fff;
+	font-weight:700;
+}

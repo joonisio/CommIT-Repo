@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="MapView">
+  <row id="row_0">
+    <column colspan="6" columnid="map" id="map_column"/>
+    <column colspan="6" columnid="mapdetail" halign="center" id="mapdetail_column" valign="middle"/>
+    </row>
+</layout>

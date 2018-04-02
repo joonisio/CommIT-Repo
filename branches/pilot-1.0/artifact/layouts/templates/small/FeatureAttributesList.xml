@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="FeatureAttributesList" width="100">
+	<row id="row_0">
+		<column colspan="6" columnid="item1" id="column_item1_featureAttributeLabel"/>
+		<column colspan="6" columnid="item2" id="column_item2_featureAttributeValue"/>
+	</row>
+	
+</layout>

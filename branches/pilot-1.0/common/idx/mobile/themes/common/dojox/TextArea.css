@@ -1,0 +1,22 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* dojox.mobile.TextArea */
+.mblTextArea {
+	padding:6px 4px;
+	border:1px solid #aaa;
+	border-width:1px;
+	border-style:inset;
+	border-radius:2px;
+	color:#222;
+	font-size:13px;
+}
+
+/* dojox.mobile.ExpandingTextArea */
+.mblExpandingTextArea {
+	margin:2px;
+}

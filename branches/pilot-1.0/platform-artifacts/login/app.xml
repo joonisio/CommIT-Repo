@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="login" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+	<ui id="ui">
+	    <!-- This SSO Error dialog must be above the LoginView definition -->
+	    <dialog id="Platform.SSOError" label="SSO Login Error">
+			<container cssClass="mblSimpleDialogText" id="Platform.SSOError_SSODialogResource_container_0" resource="SSODialogResource">
+				<text editable="false" id="Platform.SSOError_SSODialogResource_container_0_ErrorusingSSOLogi" value="Error using SSO Login"/>
+				<text editable="false" id="Platform.SSOError_SSODialogResource_container_0_errorMsg" resourceAttribute="errorMsg"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.SSOError_container_0">
+				<button cssClass="mblPrimaryButton" id="Platform.SSOError_Retry_button" label="Retry">
+					<eventHandlers id="Platform.SSOError_Retry_button_eventHandlers">
+						<eventHandler class="platform.handlers.SSOHandler" event="click" id="Platform.SSOError_Retry_button_eventHandlers_click_performSSOLogin" method="performSSOLogin"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog> 	
+		 <!-- This SSO Error dialog must be above the LoginView definition -->
+	    <dialog id="Platform.SSOUserNameError" label="SSO User Name Error">
+			<container cssClass="mblSimpleDialogText" id="Platform.SSOUserNameError_SSODialogResource_container_0" resource="SSODialogResource">
+				<text editable="false" id="Platform.SSOUserNameError_SSODialogResource_container_0_Errorretrievingthe" value="Error retrieving the user name from the device"/>
+				<text editable="false" id="Platform.SSOUserNameError_SSODialogResource_container_0_errorMsg" resourceAttribute="errorMsg"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.SSOUserNameError_container_0">
+				<button cssClass="mblPrimaryButton" id="Platform.SSOUserNameError_Retry_button" label="Retry">
+					<eventHandlers id="Platform.SSOUserNameError_Retry_button_eventHandlers">
+						<eventHandler class="platform.handlers.SSOHandler" event="click" id="Platform.SSOUserNameError_Retry_button_eventHandlers_click_performSSOLogin" method="performSSOLogin"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog> 	
+		  
+		<!-- System Data Download Error -->
+	    <dialog id="Platform.DownloadError" label="System Data Download Error">
+			<container id="Platform.DownloadError.container" cssClass="mblSimpleDialogText"  >
+				<text id="Platform.DownloadError.text" editable="false" value="Error downloading System Data"/>
+			</container>
+			<container id="Platform.DownloadError.container2" cssClass="mblSimpleDialogFooter">
+				<button id="Platform.DownloadError.button" cssClass="mblPrimaryButton" label="Retry">
+					<eventHandlers id="Platform.DownloadError.eventHandlers" >
+						<eventHandler id="Platform.DownloadError.eventHandler" class="platform.handlers.LoginHandler" event="click" method="retrySystemDownload"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+	       
+		<view id="platform.LoginView" resource="PlatformLoginResource" showHeader="false">
+		    <requiredResources id="platform.LoginView_requiredResources">
+			    <requiredResource id="platform.LoginView_PlatformLongPressResource" name="PlatformLongPressResource"/>
+			    <requiredResource enableFeatureByProperty="map.enabled" id="platform.LoginView_PlatformMapMarkerInfo" name="PlatformMapMarkerInfo"/>
+			    <requiredResource enableFeatureByProperty="map.enabled" id="platform.LoginView_PlatformDirectionSteps" name="PlatformDirectionSteps"/>
+			    <requiredResource id="platform.LoginView_PlatformProgressResource" name="PlatformProgressResource"/>			    
+			    <requiredResource id="platform.LoginView_PlatformChangePasswordForm" name="PlatformChangePasswordForm"/>
+			</requiredResources>
+			<container cssClass="loginForm" id="platform.LoginView_container_0">
+				<!--<image id="platform.LoginView_image_0" image="ibmLogoDark.png"/>-->
+				<!-- custom TNB Logo -->
+				<image id="platform.LoginView_image_0" image="tnbLogo.png"/>
+ 				<text cssClass="productName" editable="false" id="platform.LoginView_container_0_appName" resourceAttribute="appName"/>  
+				<text cssClass="errorMsg" editable="false" id="platform.LoginView_container_0_errorMsg" resourceAttribute="errorMsg"/>
+				 <!-- If you want device-side SSO comment out this view -->	
+				 <!-- Comment out the username and password to enable device-side SSO -->
+				 
+				<text border="true" cssClass="loginUsername" editable="true" id="platform.LoginView_container_0_username" placeHolder="User name" resourceAttribute="username"/>
+				<text border="true" cssClass="loginPassword" editable="true" id="platform.LoginView_container_0_password" placeHolder="Password" resourceAttribute="password" type="password"/>
+				<button cssClass="loginBtn" id="platform.LoginView_LogIn_button" label="Log In" primary="true">
+					<eventHandlers id="platform.LoginView_LogIn_button_eventHandlers">
+						<eventHandler class="platform.handlers.LoginHandler" event="click" id="platform.LoginView_LogIn_button_eventHandlers_click_loginClickHandler" method="loginClickHandler"/>
+					</eventHandlers>
+				</button>
+				
+				<!-- end of the comment block to enable device-side SSO -->
+				<link enableFeatureByProperty="connection.settings.enabled" id="ConnectionSettings_link" label="Connection Settings">
+					<eventHandlers id="ConnectionSettings_link_eventHandlers">
+						<eventHandler class="platform.handlers.LoginHandler" event="click" id="ConnectionSettings_link_eventHandlers_click_showWLSettingsPage" method="showWLSettingsPage"/>
+						<eventHandler class="platform.handlers.LoginHandler" event="render" id="ConnectionSettings_link_eventHandlers_render_showHideSettingsLink" method="showHideSettingsLink"/>
+					</eventHandlers>
+				</link>
+				<text cssClass="loginCopyright" id="platform.LoginView_container_0_2015IBMCorporati" value="&#169; 2017 IBM Corporation - Anywhere 7.6.2"/>				
+			</container>
+			<eventHandlers id="platform.LoginView_eventHandlers">
+				<eventHandler class="platform.handlers.LoginHandler" event="show" id="platform.LoginView_eventHandlers_show_initializeLogin" method="initializeLogin"/>
+				<eventHandler class="platform.handlers._ApplicationHandlerBase" event="initialize" id="platform.LoginView_eventHandlers_initialize_changeQueryBase" method="changeQueryBase"/>
+			</eventHandlers>
+		</view>
+	</ui>
+	<data id="data">
+		<resource id="PlatformLoginResource" inMemory="true" name="PlatformLoginResource" singleton="true">
+			<attributes id="PlatformLoginResource_attributes">
+			    <!-- Comment out the username and password to enable device-side SSO -->
+			    
+				<localAttribute dataType="string" id="PlatformLoginResource_username_string" name="username"/>
+				<localAttribute dataType="string" id="PlatformLoginResource_password_string" name="password"/>
+				
+				<!-- end of the comment block to enable device-side SSO -->
+				<localAttribute dataType="string" id="PlatformLoginResource_errorMsg_string" name="errorMsg"/>
+				<localAttribute dataType="string" id="PlatformLoginResource_appName_string" name="appName"/>
+				<localAttribute dataType="boolean" id="PlatformLoginResource_relogin_boolean" name="relogin"/>
+				<localAttribute dataType="string" id="PlatformLoginResource_localPassword_string" name="localPassword"/>
+			</attributes>
+		</resource>
+		<resource id="SSODialogResource" inMemory="true" name="SSODialogResource" platform="true" singleton="true">
+			<attributes id="SSODialogResource_attributes">
+				<localAttribute dataType="string" id="SSODialogResource_errorMsg_string" name="errorMsg"/>
+			</attributes>
+		</resource>
+		<resource id="DeviceSizeResource" inMemory="true" name="DeviceSizeResource" platform="true" singleton="true">
+			<attributes id="DeviceSizeResource_attributes">
+				<localAttribute dataType="int" id="DeviceSizeResource_ppi" name="ppi"/>
+				<localAttribute dataType="int" id="DeviceSizeResource_width" name="width"/>
+				<localAttribute dataType="int" id="DeviceSizeResource_height" name="height"/>
+				<localAttribute dataType="string" id="DeviceSizeResource_layout" name="layoutSize"/>
+				<localAttribute dataType="string" id="DeviceSizeResource_orientation" name="orientation"/>
+				<localAttribute dataType="string" id="DeviceSizeResource_density" name="density"/>
+				<localAttribute dataType="string" id="DeviceSizeResource_pane0_layout" name="pane0_layoutSize"/>
+				<localAttribute dataType="string" id="DeviceSizeResource_pane1_layout" name="pane1_layoutSize"/>
+			</attributes>
+		</resource>
+	</data>
+</app>

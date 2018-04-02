@@ -1,0 +1,217 @@
+/* Reset CSS */
+a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+	margin: 0;
+	padding: 0;
+}
+
+/* Worklight container div */
+body {
+	height: 460px;
+	margin: 0 auto;
+	width: 320px;
+}
+
+.meterIcon {
+	border: 0px;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+	background-color: transparent !important;
+}
+
+.meterIcon:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+	background: url(../images/mdpi/action_meterReading_on.png) no-repeat center center !important;
+}
+
+.disabled.meterIcon:active {
+	box-shadow: none !important;
+}
+.meterIconInList {
+	border: 0px;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+}
+.meterIconInList:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+	background: url(../images/mdpi/action_meterReading_on.png) no-repeat center center !important;
+}
+
+.disabled.meterIconInList:active {
+	box-shadow: none !important;
+}
+
+.specLayoutLeft {
+	position:absolute;
+	display:inline;
+	margin-right:10px;
+	width: 35%;
+}
+
+.specLayoutRight {
+	display:block;
+	float:right;
+	margin-right:4px;
+	width: 65%;
+	text-overflow:ellipsis !important;
+	min-height:10px;
+}
+
+.specLayoutLeftReset {
+	clear:both;
+	display:block;
+	position:static; 
+	padding-top: 4px;
+}
+
+.longText {
+	width: 85% !important;
+	height: 50px !important;
+	border: 0px !important;
+	overflow:hidden !important;
+	outline:none !important;
+	resize: none !important;
+}
+
+.shortText {
+	width: 50% !important;
+}
+
+.referencePoint {
+	width: 85% !important;
+}
+
+.list.failureClass .mblListItem {
+    background-color: #FDFEFF !important;
+}
+
+td.WorkListItem_item4_column > div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+div.locOfflineList, img.locOfflineList {
+    vertical-align: middle;
+}
+
+div.locOfflineList {
+    white-space: nowrap !important;
+    padding-right: 5px;
+}
+
+div.statusDesc, img.statusDesc {
+    vertical-align: middle;
+    display: inline;	
+}
+
+div.statusDesc {
+    white-space: nowrap !important;
+    padding-right: 5px;
+}
+
+img.statusDesc {
+	padding: 3px;
+	border-radius: 50%;
+	border: 1px solid #bbb;
+	background-color: #eee;
+	width: 20px;
+}
+
+img.statusDesc.WAPPR {
+	background-color: #FFA500;
+}
+
+img.statusDesc.WMATL {
+	background-color: #FFA500;
+}
+
+img.statusDesc.WPCOND {
+	background-color: #FFA500;
+}
+
+img.statusDesc.WSCH {
+	background-color: #FFA500;
+}
+
+img.statusDesc.INPRG {
+	background-color: #8FCBFF;
+}
+
+img.statusDesc.APPR {
+	background-color: #83DB2B;
+}
+
+img.statusDesc.CAN {
+	background-color: #D9D9D9;
+}
+
+img.statusDesc.CLOSE {
+	background-color: #D9D9D9;
+}
+
+img.statusDesc.COMP {
+	background-color: #D9D9D9;
+}
+
+img.statusDesc.HISTEDIT {
+	background-color: #E2D719;
+}
+
+.borderIt{
+	border-bottom: 2px solid #111313;
+}
+
+.headerStyle{
+	background-color: #ddd !important;
+}
+
+.babyCheckbox{
+	font-size: 100% !important;
+    vertical-align: middle;
+}
+
+.groupItemHeader{
+	color: #504B4B;
+    font-weight: 500;
+    font-size: 120%;
+}
+
+.woHistoryIcon {
+	border: 0px;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+}
+
+.woHistoryIcon:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+	background: url(../images/mdpi/action_wo_history.png) no-repeat center center !important;
+}
+
+.downTimeyIcon {
+	border: 0px;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+}
+
+.downTimeIcon:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+	background: url(../images/mdpi/action_downtime_updown.png) no-repeat center center !important;
+}
+
+.rightSide {
+	padding-left: 85%;
+}
+
+/* layout specific */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="codeScanner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+	<messages id="messages">
+	    <message defaultMessage="{0}" id="zxingError"/>
+	    <message defaultMessage="The bar code could not be scanned. Try again." id="noResults"/>
+	    <message defaultMessage="Bar code type cannot be scanned." id="invalidScannerType"/>
+	    <message defaultMessage="The device must be connected to the bar code scanner. Follow the instructions from IBM to connect the bar code scanner." id="bluetooth_invalidScannerConfig"/>
+	</messages>
+</app>

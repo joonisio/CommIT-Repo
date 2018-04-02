@@ -1,0 +1,1578 @@
+div,input,img,button {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+}
+
+div,img,button {
+	-webkit-user-select: none;
+}
+
+div { 
+	cursor: default;
+}
+
+.list li[role='button'], .list li[role='button'] div { 
+	cursor: pointer;
+}
+
+.list li[role='button']:hover { 
+	outline: 2px solid rgb(117, 192, 228);
+    outline-offset: -2px;
+}
+
+html {
+	height: 100%;
+	background: #FFFFFF;
+    -ms-content-zooming: none;
+}
+
+body, form {
+	height: 100%;
+}
+
+.mobile body {
+    overflow: hidden;
+}
+
+
+.mblTextArea {
+	width: 80%;
+	height: 50px;
+    font-family: "Helvetica Neue",Roboto,"Droid Sans",sans-serif !important;
+    background: transparent;
+}
+
+.formSubmit {
+	width: 0px;
+    height: 0px;
+    background: transparent;
+    border: 0px;
+    visibility: hidden;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+}
+
+.disabled {
+	opacity : 0.4;
+	background-color: rgb(0, 0, 0) !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.loginForm {
+	margin: 50px;
+	line-height: 30px;
+}
+
+.loginForm .productName {
+}
+
+.loginForm .errorMsg {
+	display: block !important;
+}
+
+.loginForm .loginCopyright {
+	display: table !important;
+	border-top: 1px solid #cccccc;
+	width: 100% !important;
+}
+
+.loginForm .loginUsername {
+	height: auto;
+}
+
+.loginForm .loginUsername:focus {
+	outline: none;
+}
+
+.loginForm .loginPassword {
+	height: auto;
+}
+
+.loginForm .loginPassword:focus {
+	outline: none;
+}
+
+.changePasswordForm {
+	margin: 30px;
+}
+
+.changePasswordForm .errorMsg {
+	display: block !important;
+}
+
+.changePasswordForm .infoMsg {
+	line-height: 1em;
+}
+
+.changePasswordForm .textWrapper {
+	margin-bottom: 30px;
+}
+
+.mblFooting {
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.mblHeading {
+    height: 52px;
+}
+
+.mblHeading .mblToolBarButton {
+	margin: 8px 8px !important;
+}
+
+.mblToolBarButtonSelected {
+}
+
+.mblFixedBottomBar {
+    border-bottom: 0px !important;
+    padding: 5px 10px;
+}
+
+.mblHeadingDivTitle {
+	margin: 0 5px !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.mblHeadingSpanTitle {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.img {
+	margin: 3px 3px;
+}
+
+.sortMenu {
+
+}
+
+.sortMenu .dijitMenuItemHover {
+
+}
+
+.sortMenu .dijitMenuItemLabel {
+
+}
+ 
+.finalQueryBaseMenuItem td {
+	border-bottom: 1px solid #363A3E;
+}
+
+.menuItemSelected {
+	margin-left: 10px;
+	width: 6px;
+	height: 6px;
+}
+
+.dijitBorderContainerPopup {
+	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4)
+}
+
+.overflowMenu {
+
+}
+
+.dijitMenuItemHover {
+
+}
+
+.dijitMenuItemSelected {
+
+}
+
+.dijitMenuSeparatorIconCell {
+
+}
+
+.dijitMenuSeparatorLabelCell {
+
+}
+
+.dijitMenuSeparator + .dijitMenuSeparator {
+	display: none;	
+}
+
+.dijitMenuItemLabel {
+	white-space: nowrap;
+	padding: 14px 10px;
+	display: inline-block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+}
+
+.dijitMenuItem {
+	cursor: pointer;
+}
+
+.dijitBackgroundIframe {
+	/* iframe used to prevent problems with PDF or other applets overlaying menus etc */
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.dijitPopup {
+	position: absolute;
+	background-color: transparent;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	-webkit-overflow-scrolling: touch;
+	height: auto !important;
+	overflow-y: visible !important;
+}
+
+.scroller {
+	text-align: center;
+	height: 47px;
+	vertical-align: bottom;
+	font-size: 15px;
+	display: none;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #363636 !important;
+	opacity: 1;
+	-webkit-user-select: none;
+}
+
+.scroller a {
+	display: block;
+	width: 100%;
+	height: 99%;
+}
+
+.scroller a:active {
+	background: #0a7199;
+}
+
+.downArrow{
+	background-image: url(../images/mdpi/down_arrow.png);
+	border-top: 1px solid #3e3e3e;
+}
+
+.upArrow{
+	background-image: url(../images/mdpi/up_arrow.png);
+	border-bottom: 1px solid #3e3e3e;
+}
+
+.downArrowDisabled{
+	background-image: url(../images/mdpi/down_arrow_disabled.png);
+	border-top: 1px solid #3e3e3e;
+}
+
+.upArrowDisabled{
+	background-image: url(../images/mdpi/up_arrow_disabled.png);
+	border-bottom: 1px solid #3e3e3e;
+}
+
+.downArrowDisabled a:active {
+	background: transparent;
+}
+
+.upArrowDisabled a:active {
+	background: transparent;
+}
+
+.heading {
+	display: table !important;
+	margin: 0 0 10px 0;
+}
+
+.lookupPickerLabel {
+	margin: 0 0 5px -3px !important;
+	text-align: left;
+	border-top: 1px solid #727272;
+	height: 25px;
+	padding-top: 10px;
+}
+
+.dialogLabel {
+	display: table;
+	margin: -10px;
+	padding: 15px 10px 20px;	
+}
+
+.dialogLabel td[rowspan] {
+	display: none;
+}
+
+.inlineLabel {
+	display:inline;
+}
+
+.nonEditableLabel {
+}
+
+.nonEditableText {
+	border: 0;
+	cursor: default;
+	margin: 5px 0 !important;
+}
+
+.hyperlink {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.richText ol, .richText ul{
+	list-style-position: inside;
+	display: list-item;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.richText ul > li {
+	list-style-type: disc;
+}
+
+.richText ol > li {
+	list-style-type: decimal;
+}
+
+.requiredLabel {
+	vertical-align: text-top;
+}
+
+.requiredText {
+	
+}
+
+.errorText {
+
+}
+
+.errorId {
+}
+
+.warningText {
+
+}
+
+.fieldMarker {
+	width: 20px !important;
+	display: inline;
+	text-align: center;
+	margin: 0px 5px 0px -23px !important;
+	vertical-align: text-top;
+	border-radius: 5px;
+	padding: 2px 3px !important;
+	visibility: hidden;
+	height: 20px !important;
+	background-image: none !important;
+	line-height: 1em;
+	text-align: center;
+	border: 1px solid #999;
+}
+
+.fieldMarkerError {
+	visibility: visible;
+}
+
+.fieldMarkerWarning {
+	visibility: visible;
+}
+
+ .fieldMarkerWarning:before, .fieldMarkerError:before{
+ 	content: "!";
+ }
+
+
+.fieldMarker .error {
+	width: 15px !important;
+	display: inline;
+	text-align: center;
+	margin: 0px 5px 0px -20px !important;
+	vertical-align: text-top;
+	border-radius: 5px;
+	padding: 2px 3px !important;
+	visibility: visible;
+	height: 20px !important;
+	background-image: none !important;
+	line-height: 1em;
+	text-align: center;
+}
+
+.fieldMarkerError {
+	visibility: visible;
+}
+
+ .fieldMarkerError:before{
+ 	content: "!";
+ }
+
+.fixErrorLink {
+	display: inline !important;
+	margin: 10px 20px;
+}
+
+.textlink {
+	cursor: pointer !important;
+	margin: 0 8px 4px 0 !important;
+	padding: 15px;
+}
+
+.textlink>IMG {
+	vertical-align: text-bottom;
+	margin: 0 3px;
+}
+
+.editableLabel {
+	color: #0C93C8;	
+	font-size: 14px;
+}
+
+.editableText {
+	padding-bottom: 0 !important;
+	width: 120px;
+	padding: 12px 9px 0 1px !important;
+	margin: 0 3px;
+	height: 18px;	
+	display: inline !important;
+	vertical-align: middle !important;
+}
+
+.specificationText {
+   width: 120px;
+}
+
+/* need to save space for the right most chevron */
+.editableTextNoButton {
+	width: 95%;
+}
+
+.placeholder {
+
+}
+
+.editableText:focus {
+	
+}
+
+.readonly.editableText:focus {
+
+}
+
+.hightlightControl {
+
+}
+
+.lookupText {
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.lookupText .placeHolder {
+    margin: 10px !important;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+
+.mblIdxHeadingSpinner .mblHeadingSelectTitle {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.mblIdxHeadingSpinner .mblHeadingSpanTitle {
+	background: url(../images/mdpi/lookupback.png) no-repeat bottom right;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 3px 10px 0px 0px;
+    height: 35px;
+	cursor: pointer;
+}
+
+.mblHeadingSelectTitleErrors {
+	background-image: url(../images/mdpi/lookupback_errors.png) !important;
+}
+
+.lookupText:focus {
+	outline: none;
+}
+
+.helpText {
+	padding: 5px 23px !important;
+	background: url(../images/mdpi/help.png) no-repeat 3px center;
+	margin: 0 0 !important;
+	display: block !important;
+	white-space: normal;
+}
+
+.leafControl {
+	margin: 2px 2px 2px 2px;
+	width: auto;
+}
+
+.controlLabel {
+	margin-right: 10px;
+	display: block;
+}
+
+.listHeader {
+  	padding: 0px 7px;
+  	height: 48px;
+}
+
+.nonSortLabel {
+	padding: 0 10px 0 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: auto;
+}
+
+.sortLabel {
+	background: url(../images/mdpi/lookupback.png) no-repeat bottom right;
+    padding: 0px 10px 2px 0px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: auto;
+}
+
+.sortLabel:active {
+	background: url(../images/mdpi/header_split_spinner_on.png) no-repeat bottom right;
+}
+
+.scanHeader {
+	padding-left: 5px;
+}
+
+.scanHeaderLabel {
+}
+
+
+.listHeader label {
+
+}
+
+.listHeader .img {
+	vertical-align: bottom !important;
+}
+
+.listHeader .count {
+
+}
+
+.listHeader .listCount {
+	padding: 4px ;
+	text-align: center;
+	display: inline-block;
+	height: 28px;
+	padding-top: 15px;
+}
+
+.listHeader .errorCount {
+	padding: 4px;
+	text-align: right;
+	display: inline-table;
+}
+
+.listHeader .errorSeparator {
+	padding: 4px;
+	text-align: center;
+	display: inline-block;
+}
+
+.listEmpty {
+	margin: 5px 10px;
+}
+
+.listText {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: left;	
+}
+
+.listTextGreyed {
+}
+
+.lastUpdateText {
+	display: inline;
+}
+
+.mblListItem {
+	border-bottom: 1px solid #ddd;	
+	padding: 15px 15px 15px;
+}
+
+.group .mblListItem {
+}
+
+
+.list .mblListItem {
+
+}
+
+.mblListItemSelected {
+	background-image: none;
+}
+
+.mblSimpleDialog .mblListItem {
+    margin: 2px 10px;
+}
+
+.mblListItem .mblDomButtonArrow {
+	
+}
+
+.hiddenChevron .mblDomButtonArrow {
+	display: none;
+}
+
+.hiddenChevron {
+	padding-right:0px !important;
+}
+
+.mblListItem .mblDomButtonArrow {
+	width: 8px;
+	height: 8px;
+	margin-top: -6px;
+	margin-left: 3px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-width: 3px 3px 0px 0px;
+	border-style: solid;
+	vertical-align: middle;
+	position: absolute;
+}
+
+.mblListItem .mblButton {
+	margin-right: 3px ;
+}
+
+.mblListItem.recordError {
+
+}
+
+.mblListItem.recordLocked {
+	
+}
+
+.mblListItem.mblVariableHeight {
+	padding-right: 19px;
+	padding-left: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.mblListItem .dijitContentPane {
+	padding-top: 16px;
+	padding-bottom: 0;
+	padding-left: 10px;
+}
+
+#dijitContentPane ~ .dijitContentPane { 
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.mblListItem .dijitContentPane:nth-last-child(2) {
+	padding-bottom: 15px;
+}
+
+.mblListItem .dijitContentPane:last-child {
+	padding-bottom: 16px;
+}
+
+.errorIndicator {
+	display: block;
+}
+
+.errorIndicator > div.lockedErrorLinks {
+	display: none !important;
+}
+
+.errorIndicator > div {
+	display: inline-block !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 99%;
+	white-space: normal;
+}
+
+.eiError {
+	background: url(../images/mdpi/status_error.png) no-repeat 5px 5px #efefef;
+}
+
+.eiLocked {
+	background: url(../images/mdpi/rec_locked_small.png) no-repeat 5px 5px #efefef;
+	border: 1px solid black;
+}
+
+.mblSimpleDialog {
+	padding: 5px 10px 10px 10px!important;	
+}
+
+.mblSimpleDialogCover{
+	
+}
+
+.mblSimpleDialogText {
+	text-align: left !important;	
+}
+
+.mblSimpleMessageText {
+	text-align: center !important;	
+}
+
+
+.mblSimpleDialogFooter {
+	border-top: 1px solid #727272;
+	padding-top: 5px !important;
+}
+
+.mblSimpleDialogDecoration {
+}
+
+.mbllistItemHighlight{
+
+}
+
+.mblListItem .dialogListItem .leafControl {
+	height: auto !important;
+	text-align: left;
+}
+
+.mblSimpleDialog .list {
+	padding: 0;
+	border-top: 2px solid;
+	margin: -10px;
+}
+
+.dialogListItem {
+	padding: 7px 5px !important;
+}
+
+
+.mblValuePicker {
+	height: 136px;
+	padding-bottom: 0;
+}
+
+.invalidBinding {
+	/*background: rgba(255, 0, 0, 0.51) !important;
+	color: #fff;
+	font-style: italic;*/
+}
+
+.lookupIcon {
+	border: 0;
+	vertical-align: middle;	
+	background-position: center !important;
+	box-shadow: none !important;
+}
+
+.lookupIcon:active {
+}
+
+.disabled.lookupIcon:active {
+	box-shadow: none !important;
+}
+
+.codeScanIcon {
+	border: 0px;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+}
+
+.codeScanIcon:active {
+}
+
+.disabled.codeScanIcon:active {
+	box-shadow: none !important;
+}
+
+.refreshIcon .reloadIcon{
+	border: 0;
+	vertical-align: middle;
+	box-shadow: none !important;
+	background-position: center !important;
+}
+
+.refreshIcon:active .reloadIcon:active{
+
+}
+
+.imageButton {
+	border-width: 0;
+	background-position: center center !important;
+	box-shadow: none !important;
+	border: none;
+	vertical-align: middle;
+}
+
+.imageButton:active {
+}
+
+.disabled.imageButton:active {
+	box-shadow: none !important;
+}
+
+.mblToolBarButton:active {
+}
+
+.disabled.mblToolBarButton:active {
+	box-shadow: none !important;
+}
+
+/* begin date-time picker */
+.dialogDateTimeLookupButtonBar {
+	display: block;
+	margin: 20px 0 0 0 !important;
+}
+/* end date-time picker */
+
+/* begin date picker */
+.datePicker {
+	display: block;
+	width: 275px;
+	margin-left: -20px;
+}
+/* end date picker */
+
+/* begin time picker */
+.timePicker {
+	display: block;
+	width: 240px;
+	margin-left: -20px;
+}
+/* end time picker */
+
+/* begin duration picker */
+.dialogDurationLookup {
+	display: block;
+	width: 240px;
+	margin-left: -20px;
+}
+
+.dialogDurationLookupButtonBar {
+	display: block;
+	margin-left: -20px;
+}
+/* end duration picker */
+
+.bold {
+
+}
+
+.textappearance-micro {
+
+}
+
+.textappearance-small {
+
+}
+
+.red-text {
+
+}
+
+.textappearance-medium {
+
+}
+
+.textappearance-large {
+
+}
+
+/* Begin Layout */
+#combinedViewSwitch {
+	min-size: 700px;
+}
+
+.splitterPane[pane='1'] .mblScrollableViewContainer {
+    margin-top: 48px !important;
+}
+
+.mblPane:nth-last-child(n+3) {
+    border-right: 1px solid #E6E6E6;
+}
+
+table.layout {
+	table-layout: fixed;
+	border-collapse: collapse;
+	padding: 0;
+}
+
+table.layout tr {
+	padding: 0;
+}
+
+table.layout td {
+	padding: 0;
+}
+
+table.layout td .hideextra * {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* End Layout */
+
+/* Begin Map */
+.mapview .mblScrollableViewContainer {
+	height: 100%;
+}
+
+.maperror {
+	white-space: normal !important; 
+	word-wrap: break-word !important;
+	position: relative;
+	top: 45%;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+}
+
+.mapDetailsNoMarkers {
+	white-space: normal !important; 
+	word-wrap: break-word !important;
+	position: relative;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+}
+
+.mapdirections {
+	padding-top: 15px;
+}
+
+.textlinkForMap {
+	cursor: pointer !important;
+	margin: 0 8px 4px 0 !important;	
+}
+
+/* End Map */
+
+/* begin progressindicator */
+.progressindicator {
+	display: block;
+	height: 44px;
+	margin: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom: 1px solid #999;
+}
+
+.progressindicator>div {
+	display: inline-block !important;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 60%;
+}
+
+.progressindicator .nonEditableText {
+	display:inline;
+	float:left;
+	margin-top: 13px !important;
+}
+
+.progressindicator>button {
+	float: right;
+	right: 0px;
+	position: relative;
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 40%; 
+}
+/* end progressindicator */
+
+.mblTextBox {
+  	-webkit-user-modify: read-write-plaintext-only;
+  	vertical-align: middle !important;
+}
+
+.mblTextBox:active {
+}
+
+.readonly.mblTextBox:active {
+}
+
+.mblEdgeToEdgeList {
+}
+
+.mblButton {
+}
+
+.mblButtonText { 
+   overflow: hidden;
+   white-space: nowrap;
+   display: inline;
+   text-overflow: ellipsis;
+}
+
+.mblButton:active {
+	background-image: -webkit-linear-gradient(top, #cacaca 0%, #f4f4f4 100%);
+}
+
+.disabled.mblButton {
+	pointer-events: none;
+}
+
+.disabled.mblButton:active {
+}
+
+.disabled.mblSpecialButton:active, .disabled.mblPrimaryButton:active {
+}
+
+.mblSpecialButton, .mblPrimaryButton {
+}
+
+.mblSpecialButton:active, .mblPrimaryButton:active {
+}
+
+.mblButtonSelected.mblSpecialButton {
+}
+
+.imgmirror {
+	-webkit-transform: scaleX(-1);
+}
+
+.imgflip {
+	-webkit-transform: scaleY(-1);
+}
+
+.compactButton {
+	padding: 2px !important;
+}
+
+.searchOptionsButton {
+	padding: 0 !important;
+	border-top-left-radius: 18px !important;
+	border-bottom-left-radius: 18px !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	width: 120px !important;
+	height: 32px !important;
+	margin: 0 0 10px 0 !important;
+}
+
+.listHeader .editableText {
+	padding-top: 5px !important;
+}
+
+.checkbox {
+	height: auto !important;
+	width: auto !important;
+	display: inline-block !important;
+}
+
+.rightCheckBox {
+	-webkit-transform: translateX(-.45em) translateY(0.45em) !important;
+}
+
+.radioButtonControl {
+	border-radius: 50% !important;
+}
+
+.radioButtonControl::after,{
+
+} 
+
+.radioButtonControl:checked::after {
+	border-radius: 50%;
+	position:absolute;
+	top: .16em !important;
+	left: .19em !important;
+	width: .58em !important;
+	height: .58em !important;
+	content: "";
+	background: #000;
+	border: 0px;
+	-webkit-transform:rotate(0deg) !important;
+	-webkit-transform-origin:0% 0% !important;
+	margin: 0px !important;
+	padding: 2px;
+	border-width: 0px !important;
+	box-shadow: inset 2px 2px 6px #eee
+}
+
+.pagingRow {
+	height: 48px;
+  	border: 0px !important;
+  	box-shadow: none !important;
+}
+
+.previousButton {
+	margin: 8px 2px 2px 0px;
+	height:50px;
+	width:100px;
+	background: url(../images/mdpi/action_previous_OFF.png) no-repeat center center !important;
+}
+.previousButton:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;	
+	background: rgba(26, 150, 198, 0.2) url(../images/mdpi/action_previous_ON.png) no-repeat center center !important;
+}
+.nextButton {
+	margin: 8px 0px 2px 2px;
+	height:50px;
+	width:100px;		
+	background: url(../images/mdpi/action_next_OFF.png) no-repeat center center !important;
+}
+.nextButton:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;	
+	background: rgba(26, 150, 198, 0.2) url(../images/mdpi/action_next_ON.png) no-repeat center center !important;
+}
+
+.headerBackButton {
+	height:32px;
+   width:43px;
+   padding-right: 10px !important;
+}
+
+.mblHeading .headerAppButton {
+   height:32px;
+   width:43px;
+   padding-right: 0px !important;
+   margin-left: 0px !important;
+   background-color: rgba(0, 0, 0, 0) !important;   
+}
+
+.mblHeading > span:first-of-type {
+	margin-left: -5px !important;
+}
+
+.mblHeading .headerAppButton:active {
+  box-shadow: none !important;
+}
+
+.mblHeading .headerAppButton .mblToolBarButtonSelected {
+	background-color: rgba(0, 0, 0, 0) !important;	
+}
+
+.screenInfo {
+	margin-top: 20px;
+    box-shadow: 2px 2px 5px #999;
+    border: 1px solid #999 !important;
+    padding: 0px !important;
+    margin-top: 20px !important;
+}
+
+td.ScreenInfo_title > div > div {
+    padding: 4px 2px !important;
+    background: #eee;
+    border-bottom: 1px solid #999;
+    margin: 0px;
+}
+
+body[data-combinedviews='false'] .ScreenInfo_row_2 {
+    display: none;
+}
+
+.platformHelpAboutContainer {
+   margin: 10%;
+}
+
+.platformHelpAboutContainer .ibmName {
+   margin-top: 20px;
+   display:block !important;
+}
+
+.platformHelpAboutContainer  .productName {
+
+}
+
+.platformHelpAboutContainer  .version {
+   display:block !important;
+   margin-top: 15px;
+}
+
+.platformHelpAboutContainer  .build {
+   display:block !important;
+   margin-bottom: 15px;
+}
+
+.pathContainer {
+}
+
+.mblComboBoxMenu > DIV {
+  width: 100%;
+}
+
+.textWrapper {
+	position:relative; 
+	padding: 1px !important; 
+	display: inline-block;
+	height: auto !important;
+	margin-right: 10px;
+}
+
+.layout .textWrapper {
+	width: auto !important;
+}
+
+/* COULD BE ADDED TO AN APP CSS */
+#item1_column div {
+	font-size: 90%;
+	color: #999;
+	display: none;
+}
+
+#wonum div {
+	font-size: 80%;
+	color: #999;
+}
+
+#title div {
+	font-size:120%;
+}
+
+
+
+#owner div img{
+	width: 30px !important;
+	margin: 0px;
+}
+
+#owner div div{
+	margin: 0px;
+	padding: 0px !important;
+}
+
+#button div {
+	text-align: right;
+	display: none;
+}
+
+.mblFixedSplitter {
+	background-color: #bbb;
+}
+
+.mblFixedSplitter div.mblContainer:first-of-type {
+    border-right: 1px solid rgb(183, 183, 183);
+    z-index: 2;
+}
+
+.mblFixedSplitter div.mblContainer:first-of-type .mblHeading {
+    display: none;
+}
+
+.mblFixedSplitter > .mblScrollableView, .mblFixedSplitter > .mblContainer {
+    top: 56px !important;
+    overflow: hidden;
+    background-color: #E8E8E8;
+}
+
+.mblFixedSplitter .listHeader {
+    font-size: 90%;
+}
+
+.mblFixedSplitter .mblHeading {
+    height: 46px;
+    border-width: 0px;
+    background-image: none;
+    font-size: 110%;
+}
+
+.mblFixedSplitter .mblIdxHeadingSpinner .mblHeadingSpanTitle {
+    background: none;
+    padding: 0px;
+    margin: 2px 0px 0px -20px;
+}
+
+.mblFixedSplitter .headerBackButton {
+    display: inline;
+}
+
+.mblFixedSplitter.openSplitter .mblView:first-child .headerBackButton {
+    display: none;
+}
+
+.mblFixedSplitter.closedSplitter .headerBackButton {
+    margin-right: 0px !important;
+    padding-right: 0px !important;
+}
+
+.splitterPane.closedSplitter .mblView .headerBackButton {
+    margin-right: 0px;
+}
+
+.mblFixedSplitter > .mblContainer {
+    overflow: hidden;
+    background: url(../../../../../js/platform/ui/control/images/mdpi/ibmLogoLight.png) no-repeat center center #eee;
+}
+
+.mblFixedSplitter div.loadingView {
+    overflow: hidden;
+    background: url(../../../../../images/mdpi/spinner.gif) no-repeat center center #fff;
+}
+
+.hideBackground {
+	background: none !important;
+}
+
+.mblFixedSplitter > .mblContainer > .mblView > .mblScrollableViewContainer {
+    background-color: #E8E8E8;
+}
+
+.mblFixedSplitter.openSplitter .mblView:first-of-type .headerBackButton {
+    
+}
+
+.mblFixedSplitter .headerBackButton {
+    -webkit-filter: invert(.8);
+}
+
+.mblFixedSplitter .group .mblListItem {
+	margin: 2px 0px;
+}
+
+.mblFixedSplitter .group .mblListItem {
+    margin: 0px;
+    border-bottom: 1px solid #ccc;
+    border-left-color: transparent;
+    border-top: 0px;
+}
+
+.mblFixedSplitter.openSplitter div:first-of-type .mblView .mblListItemRightIcon {
+    display: none;
+}
+
+.mblFixedSplitter .mblContainer .mblView:first-of-type .mblHeadingSpanTitle {
+    margin-left: 6px;
+}
+
+.mblFixedSplitter .mblHeadingSpanTitle {
+	margin-top: 2px;
+}
+
+.mblFixedSplitter .list .mblListItem.currentRecord {
+    outline: 3px solid #35A5D1;
+    outline-offset: -3px;
+}
+
+.mblFixedSplitter .list .mblListItem.evenListItem {
+    background-color: #FDFEFF;
+}
+
+.mblFixedSplitter  .list .mblListItem {
+    margin: 1px;
+}
+
+.mblFixedSplitter .pagingRow {
+    padding: 0px;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    cursor: wait;
+    background: #27303A;
+    z-index: 200;
+    position: absolute;
+    opacity: .25;
+    animation-name: overlay;
+    animation-duration: .5s;
+    top: 0px;
+    left: 0px;
+}
+
+@keyframes overlay {
+    0%   {opacity: 0;}
+    25%  {opacity: .05;}
+    50%  {opacity: .15;}
+    75%  {opacity: .20;}
+    100%  {opacity: .25;}
+}
+
+.song2 {
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+    animation-name: blur;
+    animation-duration: .5s;
+}
+
+@keyframes blur {
+    0%   {-webkit-filter: blur(0px);filter: blur(0px);}
+    25%  {-webkit-filter: blur(.5px);filter: blur(.5px);}
+    50%  {-webkit-filter: blur(1px);filter: blur(1px);}
+    75%  {-webkit-filter: blur(1.5px);filter: blur(1.5px);}
+    100%  {-webkit-filter: blur(2px);filter: blur(2px);}
+}
+
+/* layout size specific */
+
+/* override editable text sizes so they fit better in panes */ 
+.mblFixedSplitter div[data-layoutsize='xlarge'] .editableText {
+	width: 75% !important
+}
+
+.mblFixedSplitter div[data-layoutsize='large'] .editableText {
+	width: 60% !important
+}
+
+.mblFixedSplitter div[data-layoutsize='medium'] .editableText {
+	width: 40% !important
+}
+
+.hideCurrentLocMapOffline {
+	display: none;
+}
+
+.showCurrentLocMapOffline {
+	display: inline;
+}
+
+.offlineAreaSize {
+	float: right;
+}
+
+.MapOfflineAreaList_item3_column {
+	width: 60px;
+}
+
+
+/* Identify Feature Panels and Display */ 
+
+.showTotalFeaturesPanel {
+	display: inline !important;
+}
+
+.hideTotalFeaturesPanel {
+	display: none !important;
+}
+
+.showFeaturesPanel {
+	display: inline !important;
+}
+
+.hideFeaturesPanel {
+	display: none !important;
+}
+
+.feature-legend-container {
+    display: none;
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    padding: 4px;
+    position: absolute;
+    z-index: 100000;
+    background-color: white;
+}
+
+.feature-legend-container img {
+	width:100%;
+}
+
+.feature-legend-container div {
+	height:80%;
+	margin-top:10%;
+	margin-left:50%;
+	max-width:20px;
+	-webkit-transform: translate(-50%, 0) !important;
+}
+
+.highlight-container{
+    z-index: 10000000000;
+    background-color: #174456;
+    border-radius: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%) !important;
+    pointer-events:none;
+} 
+
+.hide-feature-display-button-container{
+	right:0;
+    margin-bottom: 0 !important;
+    z-index: 100000 !important;
+    padding-bottom: 0;
+    font-size: 11pt !important;
+    width: 45px !important;
+    line-height: 50px;
+}
+
+
+.total-feature-display-container {
+	margin-bottom: 35px !important;
+    width: 45px !important;
+    background-repeat: no-repeat;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: 14pt !important;
+    line-height: 35px !important;
+}
+
+.feature-display-container-text {
+	line-height: 54px !important;
+    font-size: 17px !important;
+}
+
+
+.feature-display-container {
+	  position: absolute;
+	    float: left;
+	    width: 100%;
+	    height: 50px;
+	    bottom: 0;
+	    background-color: #22627D;
+	    text-align: center;
+    	vertical-align: middle;
+	    color: white;
+	    z-index: 10000;
+	    overflow: hidden;
+	    display: none;
+}
+
+.container-blocked{
+	display:block !important;
+}
+
+
+/* Feature Attributes List and Identify Feature List */ 
+
+.featureAttributesListTemplate, .identifyFeatureListTemplate {
+	padding:0 !important;
+}	
+
+.featureAttributeLabel, .identifyFeatureListAttributeLabel{
+	float:left;
+	padding-top: 1.5%;
+    padding-left: 4%;
+}
+
+.featureAttributeValue, .identifyFeatureListAttributeValue{
+	float:right;
+	padding-top:1.5%;
+	padding-right:5%;
+}
+
+.identifyFeatureListLayerName {
+	float:left;
+	padding-top: 1.5%;
+    padding-left: 4%;
+    width:90%;	
+}
+
+.identifyFeatureListAttributeLabel, .identifyFeatureListAttributeValue{
+	padding-bottom:1%;
+}
+
+.identifyFeatureListLabel{
+	paddin-left:4%;	
+	
+}

@@ -1,0 +1,582 @@
+.mobile body {
+	font-size: 13px;
+}
+
+.mblView {
+	background-color: #fff;
+}
+
+
+/* Begin Header/Footer */
+
+.heading {
+	font-weight: bold;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, .2);
+}
+
+.mblFixedSplitter .mblHeading {
+	color: #222;
+    background-color: #DEE2E5;
+    border-bottom: 1px solid #898989;
+}
+
+.mblFooting {
+	background: #c2c2c2;
+	background-image: linear-gradient(to bottom, #4c4c4c 0%,#131313 100%);
+}
+
+.mblToolBarButtonSelected {
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+/* End Header/Footer */
+
+/* Begin menus */
+
+.sortMenu {
+	background: #282828;
+}
+
+.sortMenu .dijitMenuItemHover {
+	background: #66ADD8;
+}
+
+.sortMenu .dijitMenuItemLabel {
+  	color: #fff;
+}
+
+.menuItemSelected {
+	background: url(../images/mdpi/menu_currentSelection.png) no-repeat left center;
+}
+
+.overflowMenu {
+	background: #282828 !important;
+}
+
+.overflowMenu.sub {
+    background: #83B0DC !important;
+    border: 1px solid #000;
+}
+
+.dijitMenuItemHover {
+	background: #0a7199;
+}
+
+.dijitMenuItemSelected {
+	background: #0a7199;
+}
+
+.dijitMenuSeparatorIconCell {
+	background: #3e3e3e;
+}
+
+.dijitMenuSeparatorLabelCell {
+	background: #3e3e3e;
+}
+
+.dijitMenuItemLabel {
+	color: #fff;
+	font-size: 135%;
+}
+
+/* End menus */
+
+
+.lookupPickerLabel {
+	font-size: 110%;
+}
+
+.dialogLabel {
+	color: #EDEDED;
+	font-size: 130%;
+}
+
+.nonEditableLabel {
+	color: #999;	
+	font-size: 110%;
+}
+
+.nonEditableText {
+	font-weight: normal;
+	font-size: 120%;
+}
+
+.hyperlink {
+	color: #0181B4;
+}
+
+.requiredLabel {
+	font-size: 110%;
+}
+
+.errorText {
+	border-color: red !important;
+}
+
+.errorId {
+	color: #999;
+	font-size: 85%;
+}
+
+.warningText {
+	border-color: yellow !important;
+}
+
+.fieldMarker {
+	color: #fff !important;
+	border-color: #999;
+}
+
+.fieldMarkerError {
+	background: red;
+}
+
+.fieldMarkerWarning {
+	background: yellow;
+	color: #000 !important;
+}
+
+.fieldMarker .error {
+	color: #fff !important;
+	background: red;
+}
+
+.fieldMarkerError {
+	background: red;
+}
+
+.textlink {
+	color: #000000 !important;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+.editableLabel {
+	color: #0C93C8;	
+	font-size: 110%;
+}
+
+.editableLabelOverride {
+	color: #0C93C8;	
+	font-size: 110%;
+}
+
+.editableText {
+	border-width: 0 0 2px 0px;
+	border-color: transparent;
+	font-size: 120%;
+}
+
+.editableText:focus {
+	outline: none;
+}
+
+.placeholder {
+	color: #C0C0C0;
+}
+
+.readonly.editableText:focus {
+	outline: none;
+}
+
+.hightlightControl {
+	background: rgba(173, 216, 230, .8) !important;
+}
+
+.lookupText {
+	font-weight: normal;
+	font-size: 120%;
+}
+
+.lookupText:focus {
+	border-color: #0099cc;
+}
+
+.helpText {
+	color: #333;
+	font-weight: lighter;
+	font-family: verdana;
+}
+
+.controlLabel {
+	color: #C0C0C0;
+	font-size: 110%;
+}
+
+/* Begin Lists */
+
+.listHeader {
+  	background: #DEE2E5;
+    border-bottom: 3px solid #ddd;
+    border-bottom-style: ridge;
+}
+
+.nonSortLabel {
+	color: #222;
+}
+
+.sortLabel {
+	color: #222;
+}
+
+.scanHeader {
+	background-color: #E8FAF9;
+}
+
+.scanHeaderLabel {
+	font-size: 12px;
+	color:#000;
+	font-weight: bold;
+}
+
+.listHeader label {
+	color: #222;
+}
+
+.listHeader .listCount {
+	color: #444;		
+	font-size: 120%;
+}
+
+.listHeader .errorCount {
+	color: #008abf;		
+	font-size: 120%;
+}
+
+.listHeader .errorSeparator {
+	color: #444;		
+	font-size: 120%;
+}
+
+.listTextGreyed {
+	color: #999999;
+	font-size: 115%;
+}
+
+.mblListItem {
+	color: #333;
+	font-size: inherit;
+	font-weight: normal;
+	border-bottom: 1px solid #ddd;	
+	background-color: #fff;
+	border-right: 5px solid transparent;
+}
+
+.dijitContentPane.list {
+  border-color: #ddd;
+  background-color: #e6e6e6;
+}
+
+.group .mblListItem {
+
+}
+
+.list .mblListItem.oddItem {
+}
+
+.list .mblListItem {
+    background-color: #FDFEFF;
+}
+
+.mblListItemSelected {
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+.mblListItem .mblDomButtonArrow {
+	/* this will change the color of the transition arrows */
+	border-color: #808080;
+}
+
+.mblListItem.recordError {
+	border-right: 5px solid #d05151;
+}
+
+.mblListItem.recordLocked {
+	border-right: 5px dotted #999;
+}
+
+.errorIndicator {
+	border: 1px solid red;
+	box-shadow: 2px 2px 2px #999;
+	border-radius: 3px;
+}
+
+.mbllistItemHighlight{
+	border: 2px solid #000;
+}
+
+.mblSimpleDialog .list {
+	border-color: #888;	
+	background-color: #fdfdfd;
+}
+
+.mblEdgeToEdgeList {
+	background-color: #E8E8E8;
+}
+
+.pagingRow {
+  	background: #fff !important;
+}
+
+
+/* End Lists */
+
+/* Begin Dialogs */
+
+.mblSimpleDialogFooter {
+	border-top-color: #727272;
+}
+
+.mblSimpleDialogDecoration {
+	color: #EDEDED;
+	background-color: #555555;
+	background-image: none;
+	border: solid #222222;
+	border-radius: 3px;
+}
+
+/* End Dialogs */
+
+.lookupIcon:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+.codeScanIcon:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+.refreshIcon:active .reloadIcon:active{
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+.imageButton:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgb(26, 150, 198) !important;
+	background-color: rgba(26, 150, 198, 0.2) !important;
+}
+
+.mblToolBarButton:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;
+	background-color: rgba(222,245,250, 0.2) !important;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.relatedRecords {
+	font-size: 120%;
+}
+
+.red-text {
+	color: red;
+}
+
+.textappearance-micro {
+	font-size: 97%;
+}
+
+.textappearance-small {
+	font-size: 110%;
+}
+
+.textappearance-medium {
+	font-size: 120%;
+}
+
+.textappearance-large {
+	font-size: 130%;
+}
+
+/* Begin Map */
+
+.maperror {
+	color: red;
+}
+
+.mapDetailsNoMarkers {
+	color: red;
+}
+
+.textlinkForMap {
+	color: #000000 !important;
+	font-weight: bold;
+	font-size: 110%;	
+}
+
+/* End Map */
+
+/* begin progressindicator */
+
+.progressindicator {
+	background: #151515;
+	border-bottom-color: #999;
+}
+
+.progressindicator .nonEditableText {
+	font-size: 120% !important;
+	color: #fafafa;
+}
+
+/* end progressindicator */
+
+/* Begin textbox */
+
+.mblTextBox {
+	background-color: rgb(255, 255, 255);
+  	background-color: rgba(0, 0, 0, 0);
+}
+
+.mblTextBox:active {
+	background-color: rgb(26, 150, 198);
+	background-color: rgba(26, 150, 198, 0.2);
+}
+
+.readonly.mblTextBox:active {
+	background-color: rgb(0, 0, 0) !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+
+/* End textbox */
+
+/* Begin Buttons */
+
+.mblButton {
+	background-image: -webkit-linear-gradient(top, #f4f4f4 0%, #dbdbdb 100%);
+	background-image: -moz-linear-gradient(top, #f4f4f4 0%, #dbdbdb 100%);
+	background-image: linear-gradient(to bottom, #f4f4f4 0%, #dbdbdb 100%);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+	color: #222;
+	font-weight: normal;
+	font-size: 120%;
+}
+
+.mblButton:active {
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;	
+}
+
+.disabled.mblButton:active {
+	background-color: rgb(0, 0, 0) !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5) !important;
+	color: #aaa !important;
+}
+
+.disabled.mblSpecialButton:active, .disabled.mblPrimaryButton:active {
+	border-color: #014e74;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#008abf), to(#085884) );
+	background-image: -ms-linear-gradient(top, #008abf, #085884);		
+}
+
+.mblSpecialButton, .mblPrimaryButton {
+	border-color: #014e74;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#008abf), to(#085884) );
+	background-image: -ms-linear-gradient(top, #008abf, #085884);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+	font-weight: bold;
+}
+
+.mblSpecialButton:active, .mblPrimaryButton:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#085884), to(#008abf) ) !important;
+	background-image: -ms-linear-gradient(top, #085884, #008abf);
+	box-shadow: 0 0 5px 5px rgba(64,160,202, 0.75) !important;	
+	color: #fff;	
+}
+
+.mblButtonSelected.mblSpecialButton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#085884), to(#008abf) ) !important;
+	background-image: -ms-linear-gradient(top, #085884, #008abf);
+	box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.13) !important;
+	color: #fff;
+}
+
+.searchOptionsButton {
+	font-size: 12px !important;
+}
+
+/* End Buttons */
+
+
+/* Begin Help About */
+
+.platformHelpAboutContainer  .productName {
+   color: #222222 !important;
+}
+
+.platformHelpAboutContainer  .version {
+   color: #222222 !important;
+}
+
+.platformHelpAboutContainer  .build {
+   color: #222222 !important;
+}
+
+/* End Help About */
+
+/* begin login form */
+
+.loginForm .productName {
+	font-size: 120%;
+	color: #222222 !important;
+}
+
+.errorMsg {
+	color: #da655f;
+	font-size: 110% !important;
+}
+
+.loginForm .loginCopyright {
+	border-top-color: #cccccc;
+	color: #666666;
+	font-size: 94% !important;
+}
+
+.loginForm .loginUsername {
+	color: #222222;
+	font-family: verdana;
+	font-size: 120%;
+}
+
+.loginForm .loginUsername:focus {
+	border-color: #aaaaaa;
+}
+
+.loginForm .loginPassword {
+	color: #222222;
+	font-family: verdana;
+	font-size: 120%;
+}
+
+/* end login form */
+
+
+
+
+
+.lastUpdateText {
+	color: #C0C0C0;
+}
+
+.pathContainer {
+	background-color: rgb(223, 219, 219);
+}
+
+.mblComboBoxMenu > DIV {
+  width: 100%;
+}
+
+.editableLabelInline {
+	color: #000000;	
+	display:inline;
+}
