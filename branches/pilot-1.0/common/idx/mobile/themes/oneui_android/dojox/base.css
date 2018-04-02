@@ -1,0 +1,22 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* common styles */
+@import url("common.css");
+
+/* widget styles */
+@import url("EdgeToEdgeCategory.css");
+@import url("EdgeToEdgeList.css");
+@import url("Heading.css");
+@import url("ListItem.css");
+@import url("ProgressIndicator.css");
+@import url("RoundRect.css");
+@import url("RoundRectCategory.css");
+@import url("RoundRectList.css");
+@import url("Switch.css");
+@import url("ToolBarButton.css");
+@import url("View.css");

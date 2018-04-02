@@ -1,0 +1,61 @@
+<!DOCTYPE html>		
+<html>
+	<head>
+	   <meta name='viewport' content='width=device-width, maximum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi'>
+		<meta name="format-detection" content="telephone=no">
+		<link href="css/main.css" rel="stylesheet"/>
+		<link href="css/mdpi.css" rel="stylesheet"/>
+
+		<link href="idx/mobile/themes/oneui_android/oneui_android.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/compat.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/colors_fonts.css" rel="stylesheet"/>
+		<!-- New look and Feel -->
+		<!-- Comment the following line to disable -->
+		<link href="js/platform/ui/control/css/skin/skin2015.css" rel="stylesheet"/>
+		
+		<link href="js/platform/ui/control/css/mdpi.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/small-portrait-controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/small-landscape-controls.css" rel="stylesheet"/>
+		
+		<link href="js/platform/ui/control/css/medium-portrait-controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/medium-landscape-controls.css" rel="stylesheet"/>
+		
+		<link href="js/platform/ui/control/css/large-portrait-controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/large-landscape-controls.css" rel="stylesheet"/>
+		
+		<link href="js/platform/ui/control/css/xlarge-portrait-controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/xlarge-landscape-controls.css" rel="stylesheet"/>
+		<link href="js/platform/ui/control/css/Toaster.css" rel="stylesheet"/>
+		<!--  client.css should not exist within the apps or platform. It is intentionally left blank for changes by clients.  -->
+		<link href="css/client.css" rel="stylesheet"/>
+		
+		<!-- To debug openlayers, use: http://openlayers.org/en/v3.18.2/build/ol-debug.js -->
+		<script src="ol.js"></script>
+		<link rel="stylesheet" href="ol.css" type="text/css"/>
+		
+		<script type="text/javascript">
+			var dojoLocale = (WL.App.getDeviceLocale() || 'en_US').replace(/_/gi,"-").toLowerCase();
+			dojoConfig = {
+				isDebug: false, 
+				async: true, 
+				mblHideAddressBar: false,
+				locale: dojoLocale,
+				waitSeconds: 25,
+				paths: {
+					'platform': '../js/platform', 
+					'application': '../js/application', 
+					'generated': '../js/generated', 
+					'custom': '../js/custom'
+				}
+			};
+		</script>
+		<script type="text/javascript" src="dojo/dojo.js"></script>
+	</head>
+	<body id="content">
+		<script src="js/initOptions.js"></script>
+		<script src="js/platform/performance/PerformanceUtil.js"></script>
+		<script src="js/Startup.js"></script>	
+		<script src="winstore-jscompat.js"></script>	
+	</body>
+</html>

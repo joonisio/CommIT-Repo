@@ -1,0 +1,133 @@
+
+.mobile body {
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.mblHeading {
+    font-size: 120%;
+    background-image: linear-gradient(to bottom, #4c4c4c 0%,#131313 100%);
+    border-bottom: 3px ridge rgb(148,196,236);
+    height: 49px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.mblFixedSplitter .mblHeading {	
+    color: #222;
+    background-color: #83B0DC;
+	border-bottom: 1px solid #7EA7C7;
+	height: 44px;
+}
+
+.mblHeadingSpanTitle {
+	cursor: pointer;
+    vertical-align: text-bottom;
+    display: inline-block;
+    height: 50px;
+    margin-top: 0px;
+    margin-top: 6px;
+}
+
+.mblHeading > .mblHeadingSpanTitle {
+    margin-left: -5px;
+}
+
+.mblIdxHeadingSpinner .mblHeadingSelectTitle {
+	margin-left: 10px;	
+}
+
+.nonSortLabel {
+	color: #444;
+}
+
+.dijitMenuItemIconCell,  .dijitMenuItemArrowCell {
+    display: none;
+}
+
+.dijitMenuItemLabel {
+	font-size: 125%
+}
+
+.dijitMenuItemLabel:before, .dijitMenuItemLabel:after {
+	content: '';
+	padding: 0px 5px;
+} 
+
+.sortLabel {
+	color: #222;
+}
+
+.sortMenu {
+	background: #83B0DC;
+	border: 1px solid #ddd;
+}
+
+.overflowMenu {
+	border: 1px solid #999;
+}
+
+.sortMenu .dijitMenuItemLabel {
+  	color: #222;
+}
+
+.listHeader {
+    background: #83B0DC;
+    border-bottom: 1px solid #7EA7C7;
+}
+
+.listHeaderSearch {
+    background: #ddd;
+}
+
+.list .mblListItem.evenListItem {
+	background-color: #D7E8F7;
+	/* use the following to change every other list item to a gradient */ 
+    /* background-image: linear-gradient(to right, #D7E8F7 00%,#ffffff 100%); */
+}
+
+.list .mblListItem.oddListItem {
+
+}
+
+.list .mblListItem {
+    border: 1px solid #DCDCDC;
+    background-color: #FDFEFF;
+    margin: 2px 2px;
+}
+
+.list .mblListItem.recordError {
+	border-right: 3px solid #d05151 !important;
+}
+
+.list .mblListItem .controlLabel {
+    color: #555;
+}
+
+.group .mblListItem {
+    margin: 2px;
+    border: 1px solid #CACACA;
+    border-top-color: #DCDCDC;
+}
+
+.mblTextBox {
+	-webkit-appearance: none;
+    display: inline-block;
+    padding: 3px 3px 0px 3px;
+    margin: 0px 3px 0px 2px;
+    border-width: 0px 1px 3px 1px;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAB3RJTUUH3wkDERwCJYQ88wAAAAlwSFlzAAAewgAAHsIBbtB1PgAAAARnQU1BAACxjwv8YQUAAAAMSURBVHjaY1i/fj0ABB4CDjFh0IEAAAAASUVORK5CYII=);
+    box-shadow: 0px 1px 0px 0px #afafaf;
+    -webkit-box-shadow: 0px 1px 0px 0px #afafaf;
+    border-color: transparent;
+}
+
+.mblTextBox:focus {
+    outline: 0;
+    border-width: 0px 1px 3px 1px;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAB3RJTUUH3wkDER0LRUO1FgAAAAlwSFlzAAAewgAAHsIBbtB1PgAAAARnQU1BAACxjwv8YQUAAAAMSURBVHjaY5h06CcABDcCTsF/1qwAAAAASUVORK5CYII=);
+    box-shadow: 0px 1px 0px 0px rgb(146, 194, 249);
+    -webkit-box-shadow: 0px 1px 0px 0px rgb(146, 194, 249);
+    text-shadow: 2px 2px 5px #F9FD72, -1px -1px 5px #F9FD72;
+    border-color: transparent;
+}

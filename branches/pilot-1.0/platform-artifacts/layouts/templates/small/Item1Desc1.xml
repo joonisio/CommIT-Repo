@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="Item1Desc1">
+	<row id="row_0">
+		<column colspan="4" columnid="item1" id="item1_column"/>
+		<column colspan="8" columnid="desc1" id="desc1_column"/>
+	</row>
+</layout>

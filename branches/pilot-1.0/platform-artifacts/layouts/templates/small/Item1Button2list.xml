@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="Item1Button2list">
+  <row id="row_0">
+    <column colspan="8" columnid="item1" id="item1_column"/>
+    <column colspan="4" columnid="button1" halign="right" id="button1_column"/>
+  </row>
+  <row id="row_1">
+    <column colspan="12" columnid="button2" halign="left" id="button2_column"/>
+  </row>
+</layout>

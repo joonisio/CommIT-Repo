@@ -1,0 +1,25 @@
+<config>
+	<layout>
+		<name>small</name>
+		<minwidth>1</minwidth>
+		<maxwidth>3</maxwidth>
+	</layout>
+
+	<layout>
+		<name>medium</name>
+		<minwidth>3</minwidth>
+		<maxwidth>5.5</maxwidth>
+	</layout>
+
+	<layout>
+		<name>large</name>
+		<minwidth>5.5</minwidth>
+		<maxwidth>8</maxwidth>
+	</layout>
+
+	<layout>
+		<name>xlarge</name>
+		<minwidth>8</minwidth>
+		<maxwidth>15</maxwidth>
+	</layout>
+</config>

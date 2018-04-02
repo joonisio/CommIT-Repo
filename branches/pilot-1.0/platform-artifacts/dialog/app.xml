@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="dialog" version="201705101500" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+    <ui id="ui">
+		<dialog cssClass="dialogDateTimeLookup" id="Platform.DateTimeLookup" label="Change Time or Date" resource="PlatformDateLookupResource">
+			<eventHandlers id="Platform.DateTimeLookup_eventHandlers">
+				<eventHandler class="platform.handlers.LookupHandler" event="show" id="Platform.DateTimeLookup_eventHandlers_show_initLookup" method="initLookup"/>
+			</eventHandlers>
+			<container id="Platform.DateTimeLookup_container_0">
+				<datetimepicker id="Platform.DateTimeLookup_datetimepicker_0"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.DateTimeLookup_container_1">
+				<button id="Platform.DateTimeLookup_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.DateTimeLookup_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DateTimeLookup_Cancel_button_eventHandlers_click_Cancel" method="Cancel"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.DateTimeLookup_Clear_button" label="Clear">
+					<eventHandlers id="Platform.DateTimeLookup_Clear_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DateTimeLookup_Clear_button_eventHandlers_click_Clear" method="Clear"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.DateTimeLookup_OK_button" label="OK" primary="true">
+					<eventHandlers id="Platform.DateTimeLookup_OK_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DateTimeLookup_OK_button_eventHandlers_click_SetSelection" method="SetSelection"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		<view id="Platform.HelpAbout" label="About" resource="PlatformLoginResource">
+			<container cssClass="platformHelpAboutContainer" id="Platform.HelpAbout_container_0">
+				<!-- <image id="Platform.HelpAbout_image_0" image="ibmLogoDark.png"/> -->
+				<!-- custom TNB Logo -->
+				<image id="Platform.HelpAbout_image_0" image="tnbLogo.png"/>
+				<!-- <text value="IBM Maximo Anywhere" editable="false" cssClass="ibmName 
+					bold textappearance-large" /> -->
+				<text cssClass="productName bold textappearance-large" editable="false" id="Platform.HelpAbout_container_0_appName" resourceAttribute="appName"/>
+				<text cssClass="version" editable="false" id="Platform.HelpAbout_container_0_Version7.5.2.1" value="Version 7.6.2.0"/>
+				<text cssClass="build" editable="false" id="Platform.HelpAbout_container_0_Buildnumberbuild" value="Build number @build@"/>
+				<text editable="false" id="Platform.HelpAbout_container_0_LicensedMaterials-" value="Licensed Materials - Property of IBM. &#169;IBM Corp. 2017. IBM, the IBM logo, and ibm.com are trademarks of IBM Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the Web at www.ibm.com/legal/copytrade.shtml. This Program is licensed under the terms of the license agreement for the Program. Please read this agreement carefully before using the Program. By using the Program, you agree to these terms."/>
+				<text editable="false" enableFeatureByProperty="map.enabled" id="Platform.HelpAbout_container_0_MappingAPIprovided" value="Mapping API provided by Esri ArcGIS Runtime SDK for Android and iOS."/>
+				<group id="Platform.Settings_group_2" debugOnly="true" >
+					<groupitem id="Platform.Settings_screenInfo_item" layout="ScreenInfo" cssClass="screenInfo">
+					    <text cssClass="textappearance-large" id="Platform.Settings_screenInfo_title" value="Screen Information" layoutInsertAt="title"/>
+						<text id="Platform.Settings_screenInfo_ppi_text" editable="false" label="PPI" resource="DeviceSizeResource" resourceAttribute="ppi" layoutInsertAt="pixels"/>
+						<text id="Platform.Settings_screenInfo_width_text" editable="false" label="Width" resource="DeviceSizeResource" resourceAttribute="width" layoutInsertAt="width"/>
+						<text id="Platform.Settings_screenInfo_height_text" editable="false" label="Height" resource="DeviceSizeResource" resourceAttribute="height" layoutInsertAt="height"/>
+						<text id="Platform.Settings_screenInfo_layout_text" editable="false" label="Layout Size" resource="DeviceSizeResource" resourceAttribute="layoutSize" layoutInsertAt="size"/>
+						<text id="Platform.Settings_screenInfo_orientation_text" editable="false" label="Orientation" resource="DeviceSizeResource" resourceAttribute="orientation" layoutInsertAt="orientation"/>
+						<text id="Platform.Settings_screenInfo_density_text" editable="false" label="Density" resource="DeviceSizeResource" resourceAttribute="density" layoutInsertAt="density"/>
+						<text id="Platform.Settings_screenInfo_pane0" editable="false" label="Pane 1 Size" resource="DeviceSizeResource" resourceAttribute="pane0_layoutSize" layoutInsertAt="pane0"/>
+						<text id="Platform.Settings_screenInfo_pane1" editable="false" label="Pane 2 Size" resource="DeviceSizeResource" resourceAttribute="pane1_layoutSize" layoutInsertAt="pane1"/>
+					</groupitem>
+				</group>
+			</container>
+		</view>
+		<view id="Platform.Settings" label="Settings" fullScreen="true">
+		    <requiredResources id="Platform.Settings_requiredResources">
+				<requiredResource id="Platform.Settings_LastADDownload" name="LastADDownload"/>
+			</requiredResources>
+			
+		    
+		    <actions id="Platform.Settings_actions">
+				<!-- <action label="View Execution Time" transitionTo="Platform.TimeTrack" 
+					overflow="true" /> -->
+				<action id="Platform.Settings_RefreshSystemData_action" label="Refresh System Data" overflow="true">
+					<eventHandlers id="Platform.Settings_RefreshSystemData_action_eventHandlers">
+						<eventHandler class="platform.handlers.SettingsHandler" event="click" id="Platform.Settings_RefreshSystemData_action_eventHandlers_click_downloadSystemData" method="openDownloadSystemDataDialog"/>
+						<eventHandler class="platform.handlers.SettingsHandler" event="render" id="Platform.Settings_RefreshSystemData_action_eventHandlers_render_renderDownloadSytemDataActionButton" method="renderDownloadSytemDataActionButton"/>
+					</eventHandlers>
+				</action>
+			</actions>
+			
+			<container id="Platform.Settings_container_0" resource="LastADDownload">
+				<group id="Platform.Settings_group_0">
+					<groupitem id="Platform.Settings_LastADDownload_groupitem_Platform.ChangePassword_0" transitionTo="Platform.ChangePassword">
+						<text cssClass="relatedRecords" id="Platform.Settings_LastADDownload_groupitem_Platform.ChangePassword_0_ChangePassword" value="Change Password"/>
+						<eventHandlers id="Platform.Settings_LastADDownload_groupitem_Platform.ChangePassword_0_eventHandlers">
+							<eventHandler class="platform.handlers.ChangePasswordHandler" event="render" id="Platform.Settings_LastADDownload_groupitem_Platform.ChangePassword_0_eventHandlers_render_enableChangePasswordFunction" method="enableChangePasswordFunction"/>
+						</eventHandlers>
+					</groupitem>
+					<groupitem id="Platform.Settings_LastADDownload_groupitem_0">
+						<text cssClass="relatedRecords" id="Platform.Settings_LastADDownload_groupitem_0_RefreshLookupData" value="Refresh Lookup Data"/>
+						<text editable="false" id="Platform.Settings_LastADDownload_groupitem_0_downloadStatus" resourceAttribute="downloadStatus">
+							<eventHandlers id="Platform.Settings_LastADDownload_groupitem_0_downloadStatus_eventHandlers">
+								<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.Settings_LastADDownload_groupitem_0_downloadStatus_eventHandlers_render_renderLastDownload" method="renderLastDownload"/>
+							</eventHandlers>
+						</text>
+						<text cssClass="textappearance-small" editable="false" id="Platform.Settings_LastADDownload_groupitem_0_Updatesthelookupd" value="Updates the lookup data on your device. Lookup data includes objects, such as assets and locations, that can be added to records."/>
+						<!-- <button resourceAttribute="started" border="false" layoutInsertAt="button1"> 
+							<states> <state value="false" label="cancel" default="true" /> </states> 
+							<eventHandlers> <eventHandler event="click" method="cancelAdditionalDataDownload" 
+							class="platform.handlers.AdditionalDataDialogHandler" /> <eventHandler event="render" 
+							method="renderAdditionalDataDownloadingButton" class="platform.handlers.AdditionalDataDialogHandler" 
+							/> </eventHandlers> </button> -->
+						<eventHandlers id="Platform.Settings_LastADDownload_groupitem_0_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.Settings_LastADDownload_groupitem_0_eventHandlers_click_refreshAdditionalData" method="refreshAdditionalData"/>
+						</eventHandlers>
+					</groupitem>
+					<groupitem id="Platform.Settings_LastADDownload_groupitem_3_Number_of_day_to_sync">
+						<text editable="true" id="Platform.Settings_LastADDownload_text_Number_of_day_to_sync" label="How often changes need to be refresh in days:" resourceAttribute="numberOfDaysToSync">
+							<eventHandlers id="Platform.Settings_LastADDownload_text_Number_of_day_to_sync_eventHandlers">
+							    <eventHandler class="platform.handlers.SettingsHandler" event="render" id="Platform.Settings_LastADDownload_text_Number_of_day_to_sync_eventHandlers_renderDayToSYnc" method="renderDayToSYnc"/>
+								<eventHandler class="platform.handlers.SettingsHandler" event="validate" id="Platform.Settings_LastADDownload_text_Number_of_day_to_sync_eventHandlers_saveDayToSYnc" method="saveDayToSync"/>
+							</eventHandlers>
+						</text>						    
+					</groupitem>
+					<groupitem id="Platform.Settings_LastADDownload_groupitem_Platform.AdvancedSettings_0" transitionTo="Platform.AdvancedSettings">
+						<text cssClass="relatedRecords" id="Platform.Settings_LastADDownload_groupitem_Platform.AdvancedSettings_0_AdvancedSettings" value="Advanced Settings"/>
+					</groupitem>
+
+				</group>
+				<group enableFeatureByProperty="attachments.enabled" id="Platform.Settings_group_1">
+					<groupitem id="Platform.Settings_LastADDownload_groupitem_1" layout="Item1Button1">
+						<text id="Platform.Settings_LastADDownload_groupitem_1_Downloadattachments" layoutInsertAt="item1" value="Download attachments with work list."/>
+						<checkbox cssClass="rightCheckBox" editable="true" id="Platform.Settings_downloadAttachments_checkbox" layoutInsertAt="button1" resourceAttribute="downloadAttachments">
+							<eventHandlers id="Platform.Settings_downloadAttachments_checkbox_eventHandlers">
+								<eventHandler class="platform.handlers.SettingsHandler" event="render" id="Platform.Settings_downloadAttachments_checkbox_eventHandlers_render_updateFieldValue" method="updateFieldValue"/>
+								<eventHandler class="platform.handlers.SettingsHandler" event="validate" id="Platform.Settings_downloadAttachments_checkbox_eventHandlers_validate_updateSettingsValue" method="updateSettingsValue"/>
+							</eventHandlers>
+
+						</checkbox>
+					</groupitem>
+				</group>
+			</container>
+		</view>
+
+		<view id="Platform.AdvancedSettings" label="Settings">
+
+			<container id="Platform.AdvancedSettings_container_0">
+				<group id="Platform.AdvancedSettings_group_0">
+					<groupitem id="Platform.AdvancedSettings_groupitem_Platform.TimeTrackReport_0" transitionTo="Platform.TimeTrackReport">
+						<text cssClass="relatedRecords" id="Platform.AdvancedSettings_groupitem_Platform.TimeTrackReport_0_TrackPerformanceDa" value="Track Performance Data"/>
+						<text cssClass="red-text" editable="false" id="Platform.AdvancedSettings_groupitem_Platform.TimeTrackReport_0_Thisoptionusesmem" value="This option uses memory and might slow the performance of your device. Disable performance tracking when you are done."/>
+					</groupitem>
+					<groupitem id="Platform.AdvancedSettings_groupitem_Platform.LoggerReport_0" transitionTo="Platform.LoggerReport">
+						<text cssClass="relatedRecords" id="Platform.AdvancedSettings_groupitem_Platform.LoggerReport_0_Logging" value="Logging"/>
+						<text cssClass="red-text" editable="false" id="Platform.AdvancedSettings_groupitem_Platform.LoggerReport_0_Thisoptionusesmem" value="This option uses memory and might slow the performance of your device. Disable logging when you are done."/>
+					</groupitem>
+				</group>
+			</container>
+		</view>
+
+		<view id="Platform.LoggerReport" label="Logging Data" scrollDir="vh">
+
+			<actions id="Platform.LoggerReport_actions">
+				<!-- <action label="View Execution Time" transitionTo="Platform.TimeTrack" 
+					overflow="true" /> -->
+				<action id="Platform.LoggerReport_EnableErrorLogging_action" label="Enable Error Logging" overflow="true">
+					<eventHandlers id="Platform.LoggerReport_EnableErrorLogging_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.LoggerReport_EnableErrorLogging_action_eventHandlers_click_enableDisableLoggerErro" method="enableDisableLoggerErro"/>
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="render" id="Platform.LoggerReport_EnableErrorLogging_action_eventHandlers_render_setLabelError" method="setLabelError"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.LoggerReport_EnableInfoLogging_action" label="Enable Info Logging" overflow="true">
+					<eventHandlers id="Platform.LoggerReport_EnableInfoLogging_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.LoggerReport_EnableInfoLogging_action_eventHandlers_click_enableDisableLoggerInfo" method="enableDisableLoggerInfo"/>
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="render" id="Platform.LoggerReport_EnableInfoLogging_action_eventHandlers_render_setLabelInfo" method="setLabelInfo"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.LoggerReport_EnableDebugLogging_action" label="Enable Debug Logging" overflow="true">
+					<eventHandlers id="Platform.LoggerReport_EnableDebugLogging_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.LoggerReport_EnableDebugLogging_action_eventHandlers_click_enableDisableLoggerDebug" method="enableDisableLoggerDebug"/>
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="render" id="Platform.LoggerReport_EnableDebugLogging_action_eventHandlers_render_setLabelDebug" method="setLabelDebug"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.LoggerReport_ViewTransactionLog_action" label="View Transaction Log" overflow="true" transitionTo="Platform.TransLoggerReport"/>
+
+				<action id="Platform.LoggerReport_ClearLogData_action" label="Clear Log Data" overflow="true">
+					<eventHandlers id="Platform.LoggerReport_ClearLogData_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.LoggerReport_ClearLogData_action_eventHandlers_click_clear" method="clear"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.LoggerReport_EmailLog_action" label="Email Log" overflow="true">
+					<eventHandlers id="Platform.LoggerReport_EmailLog_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.LoggerReport_EmailLog_action_eventHandlers_click_emailCurrent" method="emailCurrent"/>
+					</eventHandlers>
+				</action>
+
+			</actions>
+
+			<!-- <container> </container> -->
+
+			<eventHandlers id="Platform.LoggerReport_eventHandlers">
+				<eventHandler class="platform.logging.handler.LoggerReportHandler" event="show" id="Platform.LoggerReport_eventHandlers_show_renderLoggerReport" method="renderLoggerReport"/>
+			</eventHandlers>
+
+		</view>
+		<view id="Platform.TransLoggerReport" label="Logging Data" scrollDir="vh">
+
+			<actions id="Platform.TransLoggerReport_actions">
+
+				<action id="Platform.TransLoggerReport_ClearLogData_action" label="Clear Log Data" overflow="true">
+					<eventHandlers id="Platform.TransLoggerReport_ClearLogData_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.TransLoggerReport_ClearLogData_action_eventHandlers_click_clear" method="clearTransLog"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.TransLoggerReport_EmailLog_action" label="Email Log" overflow="true">
+					<eventHandlers id="Platform.TransLoggerReport_EmailLog_action_eventHandlers">
+						<eventHandler class="platform.logging.handler.LoggerReportHandler" event="click" id="Platform.TransLoggerReport_EmailLog_action_eventHandlers_click_emailCurrent" method="emailCurrentTranslog"/>
+					</eventHandlers>
+				</action>
+
+			</actions>
+
+			<!-- <container> </container> -->
+
+			<eventHandlers id="Platform.TransLoggerReport_eventHandlers">
+				<eventHandler class="platform.logging.handler.LoggerReportHandler" event="show" id="Platform.TransLoggerReport_eventHandlers_show_renderTransLoggerReport" method="renderTransLoggerReport"/>
+			</eventHandlers>
+
+		</view>
+
+		<view id="Platform.ChangePassword" label="Change Password" resource="PlatformChangePasswordForm">
+			<container cssClass="changePasswordForm" id="Platform.ChangePassword_container_0">
+				<text cssClass="errorMsg" editable="false" id="Platform.ChangePassword_container_0_errorMsg" resourceAttribute="errorMsg"/>
+				<text border="true" editable="true" id="Platform.ChangePassword_container_0_currentpassword" placeHolder="Current password" resourceAttribute="currentpassword" type="password">
+					<eventHandlers id="Platform.ChangePassword_container_0_currentpassword_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="render" id="Platform.ChangePassword_container_0_currentpassword_eventHandlers_render_hidePasswordField" method="hidePasswordField"/>
+					</eventHandlers>
+				</text>
+				<text cssClass="infoMsg" editable="false" id="Platform.ChangePassword_container_0_infoMsg" resourceAttribute="infoMsg"/>
+				<text border="true" editable="true" id="Platform.ChangePassword_container_0_newpassword" placeHolder="New password" resourceAttribute="newpassword" type="password"/>
+				<text border="true" editable="true" id="Platform.ChangePassword_container_0_confirmnewpassword" placeHolder="Confirm password" resourceAttribute="confirmnewpassword" type="password"/>
+				<button id="Platform.ChangePassword_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.ChangePassword_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.ChangePassword_Cancel_button_eventHandlers_click_cancelPasswordClickHandler" method="cancelPasswordClickHandler"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.ChangePassword_Change_button" label="Change" primary="true">
+					<eventHandlers id="Platform.ChangePassword_Change_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.ChangePassword_Change_button_eventHandlers_click_changePasswordClickHandler" method="changePasswordClickHandler"/>
+					</eventHandlers>
+				</button>
+			</container>
+			<eventHandlers id="Platform.ChangePassword_eventHandlers">
+				<eventHandler class="platform.handlers.ChangePasswordHandler" event="show" id="Platform.ChangePassword_eventHandlers_show_initializeChangePasswordView" method="initializeChangePasswordView"/>
+				<eventHandler class="platform.handlers.ChangePasswordHandler" event="back" id="Platform.ChangePassword_eventHandlers_back_changePasswordBack" method="changePasswordBack"/>
+			</eventHandlers>
+		</view>
+
+		<view id="Platform.RetrieveOldPassword" label="Recover App Data" resource="PlatformChangePasswordForm" showHeader="false" showOverflow="false">
+			<container cssClass="changePasswordForm" id="Platform.RetrieveOldPassword_container_0">
+				<text id="Platform.RetrieveOldPassword_container_0_Enterthepasswordt" value="Enter the password that you last used to log in to the app. If you do not have this password, you must reset the app before you can log in."/>
+				<text cssClass="errorMsg" editable="false" id="Platform.RetrieveOldPassword_container_0_errorMsg" resourceAttribute="errorMsg"/>
+				<text border="true" editable="true" id="Platform.RetrieveOldPassword_container_0_currentpassword" placeHolder="Previous password" resourceAttribute="currentpassword" type="password"/>
+				<button id="Platform.RetrieveOldPassword_Recover_button" label="Recover" primary="true">
+					<eventHandlers id="Platform.RetrieveOldPassword_Recover_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.RetrieveOldPassword_Recover_button_eventHandlers_click_recoverOldPasswordClickHandler" method="recoverOldPasswordClickHandler"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.RetrieveOldPassword_Reset_button" label="Reset">
+					<eventHandlers id="Platform.RetrieveOldPassword_Reset_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.RetrieveOldPassword_Reset_button_eventHandlers_click_resetStorageClickHandler" method="resetStorageClickHandler"/>
+					</eventHandlers>
+				</button>
+			</container>
+			<eventHandlers id="Platform.RetrieveOldPassword_eventHandlers">
+				<eventHandler class="platform.handlers.ChangePasswordHandler" event="show" id="Platform.RetrieveOldPassword_eventHandlers_show_initializeRetrieveOldPasswordView" method="initializeRetrieveOldPasswordView"/>
+			</eventHandlers>
+		</view>
+
+		<dialog closeOnBackgroundClick="true" id="Platform.ConfirmResetDataStore">
+			<container cssClass="mblSimpleDialogText" id="Platform.ConfirmResetDataStore_container_0">
+				<text editable="false" id="Platform.ConfirmResetDataStore_container_0_WarningAllappdat" value="Warning! All app data on the device will be cleared. Any data that has not been sent to the server will be lost."/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.ConfirmResetDataStore_container_1">
+				<button cssClass="dialogButton" id="Platform.ConfirmResetDataStore_Continue_button" label="Continue">
+					<eventHandlers id="Platform.ConfirmResetDataStore_Continue_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.ConfirmResetDataStore_Continue_button_eventHandlers_click_resetDataStoreClickHandler" method="resetDataStoreClickHandler"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="dialogButton" id="Platform.ConfirmResetDataStore_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.ConfirmResetDataStore_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.ChangePasswordHandler" event="click" id="Platform.ConfirmResetDataStore_Cancel_button_eventHandlers_click_cancelResetDataStoreClickHandler" method="cancelResetDataStoreClickHandler"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+
+		<view id="Platform.TimeTrackReport" label="Performance Data" scrollDir="vh">
+			<requiredResources id="Platform.TimeTrackReport_requiredResources">
+				<requiredResource id="Platform.TimeTrackReport_timeTrack" name="timeTrack"/>
+			</requiredResources>
+
+			<actions id="Platform.TimeTrackReport_actions">
+				<!-- <action label="View Execution Time" transitionTo="Platform.TimeTrack" 
+					overflow="true" /> -->
+				<action id="Platform.TimeTrackReport_EnablePerformanceTracking_action" label="Enable Performance Tracking" overflow="true">
+					<eventHandlers id="Platform.TimeTrackReport_EnablePerformanceTracking_action_eventHandlers">
+						<eventHandler class="platform.performance.handler.TimeTrackHandler" event="click" id="Platform.TimeTrackReport_EnablePerformanceTracking_action_eventHandlers_click_enableDisableTT" method="enableDisableTT"/>
+						<eventHandler class="platform.performance.handler.TimeTrackHandler" event="render" id="Platform.TimeTrackReport_EnablePerformanceTracking_action_eventHandlers_render_setLabel" method="setLabel"/>
+					</eventHandlers>
+				</action>
+
+				<action id="Platform.TimeTrackReport_ClearPerformanceData_action" label="Clear Performance Data" overflow="true">
+					<eventHandlers id="Platform.TimeTrackReport_ClearPerformanceData_action_eventHandlers">
+						<eventHandler class="platform.performance.handler.TimeTrackHandler" event="click" id="Platform.TimeTrackReport_ClearPerformanceData_action_eventHandlers_click_clear" method="clear"/>
+					</eventHandlers>
+				</action>
+
+				<!-- <action label="Save as New" overflow="true"> <eventHandlers> <eventHandler 
+					event="click" class="platform.performance.handler.TimeTrackHandler" method="saveNew"/> 
+					</eventHandlers> </action> -->
+
+				<!-- <action label="Save as Old" overflow="true" > <eventHandlers> <eventHandler 
+					event="click" class="platform.performance.handler.TimeTrackHandler" method="saveOld"/> 
+					</eventHandlers> </action> <action label="View New" overflow="true" > <eventHandlers> 
+					<eventHandler event="click" class="platform.performance.handler.TimeTrackHandler" 
+					method="viewNew"/> </eventHandlers> </action> <action label="View Old" overflow="true" 
+					> <eventHandlers> <eventHandler event="click" class="platform.performance.handler.TimeTrackHandler" 
+					method="viewOld"/> </eventHandlers> </action> -->
+
+				<!-- <action label="Remove All" overflow="true" > <eventHandlers> <eventHandler 
+					event="click" class="platform.performance.handler.TimeTrackHandler" method="remove"/> 
+					</eventHandlers> </action> <action label="Clear" overflow="true" > <eventHandlers> 
+					<eventHandler event="click" class="platform.performance.handler.TimeTrackHandler" 
+					method="clear"/> </eventHandlers> </action> <action label="DbBenchMark" overflow="true" 
+					> <eventHandlers> <eventHandler event="click" class="platform.performance.handler.TimeTrackHandler" 
+					method="dbBenchMark"/> </eventHandlers> </action> -->
+
+				<!-- <action label="Refresh" overflow="true" > <eventHandlers> <eventHandler 
+					event="click" class="platform.performance.handler.TimeTrackHandler" method="saveNew"/> 
+					</eventHandlers> </action> -->
+				<action id="Platform.TimeTrackReport_EmailReport_action" label="Email Report" overflow="true">
+					<eventHandlers id="Platform.TimeTrackReport_EmailReport_action_eventHandlers">
+						<eventHandler class="platform.performance.handler.TimeTrackHandler" event="click" id="Platform.TimeTrackReport_EmailReport_action_eventHandlers_click_emailCurrent" method="emailCurrent"/>
+					</eventHandlers>
+				</action>
+
+			</actions>
+
+			<!-- <container> </container> -->
+
+			<eventHandlers id="Platform.TimeTrackReport_eventHandlers">
+				<eventHandler class="platform.performance.handler.TimeTrackHandler" event="show" id="Platform.TimeTrackReport_eventHandlers_show_renderTT" method="renderTT"/>
+			</eventHandlers>
+
+		</view>
+		<dialog closeOnBackgroundClick="true" id="Platform.ListLongPressDialog">
+			<list id="Platform.ListLongPressDialog_PlatformLongPressResource_list" queryBase="" resource="PlatformLongPressResource" showHeader="false">
+				<listItemTemplate cssClass="dialogListItem textappearance-medium" id="Platform.ListLongPressDialog_PlatformLongPressResource_listItemTemplate">
+					<listtext id="Platform.ListLongPressDialog_PlatformLongPressResource_label" resourceAttribute="label"/>
+				</listItemTemplate>
+			</list>
+		</dialog>
+
+		<dialog id="Platform.LoadingAdditionalData">
+			<container id="Platform.LoadingAdditionalData_container_0">
+				<text editable="false" id="Platform.LoadingAdditionalData_container_0_Downloadinglookupd" value="Downloading lookup data."/>
+				<button id="Platform.LoadingAdditionalData_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.LoadingAdditionalData_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadingAdditionalData_Cancel_button_eventHandlers_click_cancelADDownload" method="cancelADDownload"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+
+		<dialog id="Platform.AdditionalDataNoConn">
+			<container cssClass="mblSimpleDialogText" id="Platform.AdditionalDataNoConn_container_0">
+				<text editable="false" id="Platform.AdditionalDataNoConn_container_0_Lookupdatacouldno" value="Lookup data could not be downloaded. Go to Settings &gt; Refresh Lookup Data when you are online."/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.AdditionalDataNoConn_container_1">
+				<button id="Platform.AdditionalDataNoConn_OK_button" label="OK">
+					<eventHandlers id="Platform.AdditionalDataNoConn_OK_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.AdditionalDataNoConn_OK_button_eventHandlers_click_closeDialogAndShowDefaultViewIfNeeded" method="closeDialogAndShowDefaultViewIfNeeded"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+
+		<dialog id="Platform.ConfirmReloadWorkList">
+			<container cssClass="mblSimpleDialogText" id="Platform.ConfirmReloadWorkList_container_0">
+				<text editable="false" id="Platform.ConfirmReloadWorkList_container_0_Doyouwanttoclose" value="Reloading the work list takes time if you are downloading large amounts of data.  Are you sure that you want to continue?"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.ConfirmReloadWorkList_container_1">
+				<button cssClass="dialogButton" id="Platform.ConfirmReloadWorkList_Yes_button" label="Yes">
+					<eventHandlers id="Platform.ConfirmReloadWorkList_Yes_button_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="Platform.ConfirmReloadWorkList_Yes_button_eventHandlers_click_processDialog" method="reloadConfirmed"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.ConfirmReloadWorkList_No_button" label="No">
+					<eventHandlers id="Platform.ConfirmReloadWorkList_No_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.ConfirmReloadWorkList_No_button_eventHandlers_click_closeDialog" method="closeDialog"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		
+		<dialog id="Platform.ReloadingCurrentWorklist" resource="PlatformProgressResource">
+			<container cssClass="mblSimpleMessageText" id="Platform.ReloadCurrentWorklist_container_0">
+			    <text editable="false" id="Platform.ReloadCurrentWorklist_container_0_progressMsg" resourceAttribute="progressMsg"/>
+			</container>
+		</dialog>	
+				
+		<dialog id="Platform.AdditionalDataFailed">
+			<container id="Platform.AdditionalDataFailed.container" cssClass="mblSimpleDialogText">
+				<text id="Platform.AdditionalDataFailed.text" 
+					value="Lookup data could not be downloaded. If you are connected, go to Settings > Refresh Lookup Data."
+					editable="false" />
+			</container>
+			<container id="Platform.AdditionalDataFailed.container2" cssClass="mblSimpleDialogFooter">
+				<button id="Platform.AdditionalDataFailed.button" label="OK">
+					<eventHandlers id="Platform.AdditionalDataFailed.eventHandlers">
+						<eventHandler id="Platform.AdditionalDataFailed.eventHandler" event="click"
+							method="closeDialogAndShowDefaultViewIfNeeded" class="platform.handlers.AdditionalDataDialogHandler" />
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		
+		<dialog id="Platform.LoadingSystemData" resource="PlatformProgressResource">
+			<container cssClass="mblSimpleDialogText" id="Platform.LoadingSystemData_container_0">
+				<text editable="false" id="Platform.LoadingSystemData_container_0_Downloadingsystemd" value="Downloading system data."/>
+				<text editable="false" id="Platform.LoadingSystemData_container_0_progressMsg" resourceAttribute="progressMsg"/>
+			</container>
+		</dialog>
+
+		<dialog id="Platform.LoadAdditionalDataYesNo">
+			<container cssClass="mblSimpleDialogText" id="Platform.LoadAdditionalDataYesNo_container_0">
+				<text editable="false" id="Platform.LoadAdditionalDataYesNo_container_0_Thelookupdatafor" value="The lookup data for this app must be downloaded. Download it now or later?">
+				    	<eventHandlers id="Platform.LoadAdditionalDataYesNo_container_0_Thelookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_container_0_Thelookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="theLookupdataText"/>
+						</eventHandlers>
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataYesNo_container_0_Retrylookupdatafor" value="Lookup data was partially downloaded. Click Retry to download the remaining lookup data. Click Reset to refresh all of the lookup data. Click Close if you are through downloading lookup data.">
+				    	<eventHandlers id="Platform.LoadAdditionalDataYesNo_container_0_Retrylookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_container_0_Retrylookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="retrylookupdataText"/>
+						</eventHandlers>
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataYesNo_container_0_Whenrunninginabr" value="When running in a browser, a maximum of 200 records are downloaded per lookup.">
+						<eventHandlers id="Platform.LoadAdditionalDataYesNo_container_0_Whenrunninginabr_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_container_0_Whenrunninginabr_eventHandlers_render_showInPreview" method="showInPreview"/>
+						</eventHandlers>
+				</text>		
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.LoadAdditionalDataYesNo_container_1">
+				<button cssClass="dialogButton" id="Platform.LoadAdditionalDataYesNo_Later_button" label="Later">
+					<eventHandlers id="Platform.LoadAdditionalDataYesNo_Later_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataYesNo_Later_button_eventHandlers_click_closeDialogAndShowDefaultViewIfNeeded" method="closeDialogAndShowDefaultViewIfNeeded"/>
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_Retry_button_eventHandlers_render_setBtLabelLaterOrCancel" method="setBtLabelLaterOrCancel"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadAdditionalDataYesNo_Now_button" label="Now">
+					<eventHandlers id="Platform.LoadAdditionalDataYesNo_Now_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataYesNo_Now_button_eventHandlers_click_confirmADDownload" method="confirmADDownload"/>
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_Retry_button_eventHandlers_render_setBtLabelNowOrRefresh" method="setBtLabelNowOrRefresh"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadAdditionalDataYesNo_Retry_button" label="Retry">
+					<eventHandlers id="Platform.LoadAdditionalDataYesNo_Retry_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataYesNo_Retry_button_eventHandlers_click_retryADDownload" method="retryADDownload"/>
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataYesNo_Retry_button_eventHandlers_render_retryADDownload" method="renderRetryButton"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		
+		<dialog id="Platform.LoadAdditionalDataDeltaDownload">
+			<container cssClass="mblSimpleDialogText" id="Platform.LoadAdditionalDataDeltaDownload_container_0">
+				<text editable="false" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Thelookupdatafor" value="Click Changes to download only lookup data changes.">
+				    	<!-- <eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_container_0_Thelookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Thelookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="theLookupdataText"/>
+						</eventHandlers>  -->
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Retrylookupdatafor" value="Click All to download all the lookup data.">
+				    	<!-- <eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_container_0_Retrylookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Retrylookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="retrylookupdataText"/>
+						</eventHandlers> -->
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataDeltaDownload_container_0_cancel" value="Click Cancel to cancel the lookup download.">
+				    	
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataDeltaDownload_container_0_action" value="Which refresh do you want to perform?">
+				</text>
+				<text editable="false" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Whenrunninginabr" value="When running in a browser, a maximum of 200 records are downloaded per lookup.">
+						<eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_container_0_Whenrunninginabr_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_container_0_Whenrunninginabr_eventHandlers_render_showInPreview" method="showInPreview"/>
+						</eventHandlers>
+				</text>		
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.LoadAdditionalDataDeltaDownload_container_1">
+				<button cssClass="dialogButton" id="Platform.LoadAdditionalDataDeltaDownload_RefreshChanges_button" label="Changes">
+					 <eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_Later_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataDeltaDownload_Later_button_eventHandlers_click_confirmADDeltaDownload" method="confirmADDeltaDownload"/>
+						<!--<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_Retry_button_eventHandlers_render_setBtLabelLaterOrCancel" method="setBtLabelLaterOrCancel"/> -->
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadAdditionalDataDeltaDownload_RefreshAll_button" label="All">
+					 <eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_Now_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataDeltaDownload_Now_button_eventHandlers_click_confirmADDownload" method="confirmADDownload"/>
+						<!--<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_Retry_button_eventHandlers_render_setBtLabelNowOrRefresh" method="setBtLabelNowOrRefresh"/>-->
+					</eventHandlers> 
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadAdditionalDataDeltaDownload_Cancel_button" label="cancel">
+					<eventHandlers id="Platform.LoadAdditionalDataDeltaDownload_Retry_button_eventHandlers">
+						<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="click" id="Platform.LoadAdditionalDataDeltaDownload_Later_button_eventHandlers_click_closeDialogAndShowDefaultViewIfNeeded" method="closeDialogAndShowDefaultViewIfNeeded"/>
+						<!--<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadAdditionalDataDeltaDownload_Retry_button_eventHandlers_render_retryADDownload" method="renderRetryButton"/>-->
+					</eventHandlers>  
+				</button>
+			</container>
+		</dialog>
+		
+		<dialog id="Platform.LoadSystemDataDeltaDownload">
+			<container cssClass="mblSimpleDialogText" id="Platform.LoadSystemDataDeltaDownload_container_0">
+				<text editable="false" id="Platform.LoadSystemDataDeltaDownload_container_0_Thelookupdatafor" value="Click Changes to download only the system data changes.">
+				    	<!-- <eventHandlers id="Platform.LoadSystemDataDeltaDownload_container_0_Thelookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadSystemDataDeltaDownload_container_0_Thelookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="theLookupdataText"/>
+						</eventHandlers>  -->
+				</text>
+				<text editable="false" id="Platform.LoadSystemDataDeltaDownload_container_0_Retrylookupdatafor" value="Click All to download all the system data.">
+				    	<!-- <eventHandlers id="Platform.LoadSystemDataDeltaDownload_container_0_Retrylookupdatafor_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadSystemDataDeltaDownload_container_0_Retrylookupdatafor_eventHandlers_render_setAdditionalDownloadText" method="retrylookupdataText"/>
+						</eventHandlers> -->
+				</text>
+				<text editable="false" id="Platform.LoadSystemDataDeltaDownload_container_0_cancel" value="Click Cancel to cancel the system download.">
+				    	
+				</text>
+				<text editable="false" id="Platform.LoadSystemDataDeltaDownload_container_0_action" value="Which refresh do you want to perform?">
+				</text>
+				<text editable="false" id="Platform.LoadSystemDataDeltaDownload_container_0_Whenrunninginabr" value="When running in a browser, a maximum of 200 records are downloaded per System.">
+						<eventHandlers id="Platform.LoadSystemDataDeltaDownload_container_0_Whenrunninginabr_eventHandlers">
+							<eventHandler class="platform.handlers.AdditionalDataDialogHandler" event="render" id="Platform.LoadSystemDataDeltaDownload_container_0_Whenrunninginabr_eventHandlers_render_showInPreview" method="showInPreview"/>
+						</eventHandlers>
+				</text>		
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.LoadSystemDataDeltaDownload_container_1">
+				<button cssClass="dialogButton" id="Platform.LoadSystemDataDeltaDownload_RefreshChanges_button" label="Changes">
+					 <eventHandlers id="Platform.LoadSystemDataDeltaDownload_Later_button_eventHandlers">
+						<eventHandler class="platform.handlers.SettingsHandler" event="click" id="Platform.LoadSystemDataDeltaDownload_Later_button_eventHandlers_click_confirmSystemDataDeltaDownload" method="confirmSystemDataDeltaDownload"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadSystemDataDeltaDownload_RefreshAll_button" label="All">
+					 <eventHandlers id="Platform.LoadSystemDataDeltaDownload_Now_button_eventHandlers">
+					    <eventHandler class="platform.handlers.SettingsHandler" event="click" id="Platform.LoadSystemDataDeltaDownload_Now_button_eventHandlers_click_confirmdownloadSystemData" method="downloadSystemData"/>
+					</eventHandlers> 
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LoadSystemDataDeltaDownload_Cancel_button" label="cancel">
+					<eventHandlers id="Platform.LoadSystemDataDeltaDownload_Retry_button_eventHandlers">
+						<eventHandler class="platform.handlers.SettingsHandler" event="click" id="Platform.LoadSystemDataDeltaDownload_Later_button_eventHandlers_click_closeDialogAndShowDefaultViewIfNeeded" method="closeDialogAndShowDefaultViewIfNeeded"/>
+					</eventHandlers>  
+				</button>
+			</container>
+		</dialog>
+		
+		<dialog id="Platform.ExitApplicationPrompt">
+			<container cssClass="mblSimpleDialogText" id="Platform.ExitApplicationPrompt_container_0">
+				<text editable="false" id="Platform.ExitApplicationPrompt_container_0_Doyouwanttoclose" value="Do you want to close the app?"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.ExitApplicationPrompt_container_1">
+				<button cssClass="dialogButton" id="Platform.ExitApplicationPrompt_Yes_button" label="Yes">
+					<eventHandlers id="Platform.ExitApplicationPrompt_Yes_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.ExitApplicationPrompt_Yes_button_eventHandlers_click_processDialog" method="processDialog"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.ExitApplicationPrompt_No_button" label="No">
+					<eventHandlers id="Platform.ExitApplicationPrompt_No_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.ExitApplicationPrompt_No_button_eventHandlers_click_closeDialog" method="closeDialog"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		<dialog id="Platform.LogOutPrompt">
+			<container cssClass="mblSimpleDialogText" id="Platform.LogOutPrompt_container_0">
+				<text editable="false" id="Platform.LogOutPrompt_container_0_Doyouwanttologo" value="Do you want to log out of the app?"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.LogOutPrompt_container_1">
+				<button cssClass="dialogButton" id="Platform.LogOutPrompt_No_button" label="No">
+					<eventHandlers id="Platform.LogOutPrompt_No_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.LogOutPrompt_No_button_eventHandlers_click_closeDialog" method="closeDialog"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.LogOutPrompt_Yes_button" label="Yes">
+					<eventHandlers id="Platform.LogOutPrompt_Yes_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.LogOutPrompt_Yes_button_eventHandlers_click_logoutDialog" method="logoutDialog"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+
+		<dialog cssClass="dialogDurationLookup" id="Platform.DurationLookup" label="Change Duration" resource="PlatformDateLookupResource">
+			<eventHandlers id="Platform.DurationLookup_eventHandlers">
+				<eventHandler class="platform.handlers.LookupHandler" event="show" id="Platform.DurationLookup_eventHandlers_show_initLookup" method="initLookup"/>
+			</eventHandlers>
+			<container id="Platform.DurationLookup_container_0">
+				<durationpicker id="Platform.DurationLookup_durationpicker_0"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.DurationLookup_container_1">
+				<button id="Platform.DurationLookup_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.DurationLookup_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DurationLookup_Cancel_button_eventHandlers_click_Cancel" method="Cancel"/>
+					</eventHandlers>
+				</button>
+				<button id="Platform.DurationLookup_Clear_button" label="Clear">
+					<eventHandlers id="Platform.DurationLookup_Clear_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DurationLookup_Clear_button_eventHandlers_click_Clear" method="Clear"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.DurationLookup_OK_button" label="OK" primary="true">
+					<eventHandlers id="Platform.DurationLookup_OK_button_eventHandlers">
+						<eventHandler class="platform.handlers.LookupHandler" event="click" id="Platform.DurationLookup_OK_button_eventHandlers_click_SetSelection" method="SetSelection"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		<dialog id="Platform.CancelDownload">
+			<container cssClass="mblSimpleDialogText" id="Platform.CancelDownload_container_0">
+				<text editable="false" id="Platform.CancelDownload_container_0_Doyouwanttostop" value="Do you want to stop downloading work list records?"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.CancelDownload_container_1">
+				<button cssClass="mblPrimaryButton dialogButton" id="Platform.CancelDownload_Yes_button" label="Yes">
+					<eventHandlers id="Platform.CancelDownload_Yes_button_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="Platform.CancelDownload_Yes_button_eventHandlers_click_cancelDownload" method="cancelDownload"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="dialogButton" id="Platform.CancelDownload_No_button" label="No">
+					<eventHandlers id="Platform.CancelDownload_No_button_eventHandlers">
+						<eventHandler class="platform.handlers.DialogHandler" event="click" id="Platform.CancelDownload_No_button_eventHandlers_click_closeDialog" method="closeDialog"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		<dialog id="Platform.ConfirmClearChanges">
+			<container cssClass="mblSimpleDialogText" id="Platform.ConfirmClearChanges_container_0">
+				<text editable="false" id="Platform.ConfirmClearChanges_container_0_Changesthathaveno" value="Changes that have not been sent to the server will be discarded."/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.ConfirmClearChanges_container_1">
+				<button id="Platform.ConfirmClearChanges_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.ConfirmClearChanges_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="Platform.ConfirmClearChanges_Cancel_button_eventHandlers_click_cancelClearChanges" method="cancelClearChanges"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.ConfirmClearChanges_OK_button" label="OK">
+					<eventHandlers id="Platform.ConfirmClearChanges_OK_button_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="Platform.ConfirmClearChanges_OK_button_eventHandlers_click_doClearChanges" method="doClearChanges"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>
+		<dialog id="Platform.DownloadCurrentWorklist" resource="PlatformProgressResource">
+			<container cssClass="mblSimpleDialogText" id="Platform.DownloadCurrentWorklist_container_0">
+				<text editable="false" id="Platform.DownloadCurrentWorklist_container_0_progressMsg" resourceAttribute="progressMsg"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.DownloadCurrentWorklist_container_1">
+				<button id="Platform.DownloadCurrentWorklist_Cancel_button" label="Cancel">
+					<eventHandlers id="Platform.DownloadCurrentWorklist_Cancel_button_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="Platform.DownloadCurrentWorklist_Cancel_button_eventHandlers_click_cancelDownload" method="cancelDownload"/>
+					</eventHandlers>
+				</button>
+			</container>
+		</dialog>		
+		
+		<dialog id="Platform.PushNotificationDialog" resource="PlatformTempPushNotification">
+			<container cssClass="mblSimpleDialogText" id="Platform.PushNotificationDialog_container_0">
+				<text id="Platform.PushNotificationDialog_container_0_Stopthetimeronwo" resolverClass="platform.handlers.PushNotificationDialogHandler" resolverFunction="resolveMessageProps" value="{0} {1} {2}"/>
+			</container>
+			<container cssClass="mblSimpleDialogFooter" id="Platform.PushNotificationDialog_container_1">				
+				<button id="Platform.PushNotificationDialog_Open_button" label="Open">
+					<eventHandlers id="Platform.PushNotificationDialog_Open_button_eventHandlers">
+						<eventHandler class="platform.handlers.PushNotificationDialogHandler" event="click" id="Platform.PushNotificationDialog_Open_button_eventHandlers_click_WOStartedDialogNoClickHandler" method="openRecord"/>
+						<eventHandler class="platform.handlers.PushNotificationDialogHandler" event="render" id="Platform.PushNotificationDialog_Open_button_eventHandlers_render_RenderOpenButton" method="renderOpen"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="Platform.PushNotificationDialog_OK_button" label="OK">
+					<eventHandlers id="Platform.PushNotificationDialog_OK_button_eventHandlers">
+						<eventHandler class="platform.handlers.PushNotificationDialogHandler" event="click" id="Platform.PushNotificationDialog_OK_button_eventHandlers_click_WOStartedDialogYesClickHandler" method="close"/>
+					</eventHandlers>
+				</button>				
+			</container>
+		</dialog>
+	</ui>
+	<data id="data">
+		<resource id="PlatformLongPressResource" inMemory="true" name="PlatformLongPressResource" platform="true">
+			<attributes id="PlatformLongPressResource_attributes">
+				<localAttribute dataType="string" id="PlatformLongPressResource_label_string" name="label"/>
+				<localAttribute dataType="string" id="PlatformLongPressResource_transitionTo_string" name="transitionTo" key="1"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformViewQueryResource" name="PlatformViewQueryResource">
+			<attributes id="PlatformViewQueryResource_attributes">
+				<localAttribute dataType="string" id="PlatformViewQueryResource_viewid_string" name="viewid"/>
+				<localAttribute dataType="integer" id="PlatformViewQueryResource_index_integer" name="index"/>
+				<localAttribute dataType="string" id="PlatformViewQueryResource_queryid_string" name="queryid"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformListSortResource" name="PlatformListSortResource">
+			<attributes id="PlatformListSortResource_attributes">
+				<localAttribute dataType="string" id="PlatformListSortResource_listid_string" name="listid"/>
+				<localAttribute dataType="integer" id="PlatformListSortResource_index_integer" name="index"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformListSearchResource" name="PlatformListSearchResource">
+			<attributes id="PlatformListSearchResource_attributes">
+				<localAttribute dataType="string" id="PlatformListSearchResource_listid_string" name="listid"/>
+				<localAttribute dataType="string" id="PlatformListSearchResource_search_string" name="search"/>
+				<localAttribute dataType="string" id="PlatformListSearchResource_querybase_string" name="querybase"/>
+				<localAttribute dataType="boolean" id="PlatformListSearchResource_fromscan_boolean" name="fromscan"/>
+				<localAttribute dataType="boolean" id="PlatformListSearchResource_exact_boolean" name="exact"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformResourceMetricsResource" name="PlatformResourceMetricsResource">
+			<attributes id="PlatformResourceMetricsResource_attributes">
+				<localAttribute dataType="string" id="PlatformResourceMetricsResource_resourcename_string" name="resourceName"/>
+				<localAttribute dataType="string" id="PlatformResourceMetricsResource_querybase_string" name="queryBase"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_serverCount_integer" name="serverCount"/>
+				<localAttribute dataType="boolean" id="PlatformResourceMetricsResource_allDownloaded_boolean" name="allDownloaded"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_pageCount_integer" name="pageCount"/><!-- ResourceCurrentPageSize -->
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_pageSize_integer" name="pageSize"/>
+				<localAttribute dataType="boolean" id="PlatformResourceMetricsResource_worklistDownloaded_boolean" name="worklistDownloaded"/>
+				<localAttribute dataType="string" id="PlatformResourceMetricsResource_scanFilter_string" name="scanFilter"/>
+				<!-- new meter attributes  -->
+				<localAttribute dataType="string" id="PlatformResourceMetricsResource_type_string" name="type"/>
+				<localAttribute dataType="stringr" id="PlatformResourceMetricsResource_errorCode_integer" name="errorCode"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_resourcePreviousPageSize_integer" name="resourcePreviousPageSize"/><!--why we need to store ?  -->
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_totalNumberOfPagesToDownlaod_integer" name="totalNumberOfPagesToDownlaod"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_numberOfPagesDownloaded_integer" name="numberOfPagesDownloaded"/><!--it is the same info we do have at pageCount / ResourceCurrentPageSize right?  -->
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_detlaTotalNumberOfPagesToDownlaod_integer" name="detlaTotalNumberOfPagesToDownlaod"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_deltaNumberOfPagesDownloaded_integer" name="deltaNumberOfPagesDownloaded"/>
+				<localAttribute dataType="integer" id="PlatformResourceMetricsResource_attempt_integer" name="attempt"/>
+				<!-- new attributes  for delta-->
+				<localAttribute dataType="string" id="PlatformResourceMetricsResource_maxrowstamp_string" name="maxrowstamp"/>
+			</attributes>
+		</resource>
+		
+		<resource id="DataSyncTracking" name="DataSyncTracking">
+			<attributes id="DataSyncTracking_attributes">
+				<localAttribute dataType="string" id="DataSyncTracking_resourcename_string" name="resourceName"/>
+				<localAttribute dataType="string" id="DataSyncTracking_type_integer" name="type"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_resourceCurrentPageSize_boolean" name="resourceCurrentPageSize"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_resourcePreviousPageSize_integer" name="resourcePreviousPageSize"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_totalNumberOfPagesToDownlaod_integer" name="totalNumberOfPagesToDownlaod"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_numberOfPagesDownloaded_boolean" name="numberOfPagesDownloaded"/>
+				<localAttribute dataType="string" id="DataSyncTracking_dateAndTime_string" name="dateAndTime"/>
+				<localAttribute dataType="string" id="DataSyncTracking_querybase_string" name="queryBase"/>
+				<localAttribute dataType="string" id="DataSyncTracking_errrorCode_integer" name="errrorCode"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_detlaTotalNumberOfPagesToDownlaod_boolean" name="detlaTotalNumberOfPagesToDownlaod"/>
+				<localAttribute dataType="integer" id="DataSyncTracking_deltaNumberOfPagesDownloaded_string" name="deltaNumberOfPagesDownloaded"/>
+				<localAttribute dataType="string" id="DataSyncTracking_attempt_string" name="attempt"/>
+			</attributes>
+		</resource>
+		
+		
+				<resource id="PlatformDateLookupResource" inMemory="true" name="PlatformDateLookupResource" platform="true" singleton="true">
+			<attributes id="PlatformDateLookupResource_attributes">
+				<localAttribute dataType="date" id="PlatformDateLookupResource_date_date" name="date"/>
+				<localAttribute dataType="string" id="PlatformDateLookupResource_duration_string" name="duration"/>
+			</attributes>
+		</resource>
+		<resource id="LastADDownload" inMemory="true" name="LastADDownload" platform="true" singleton="true">
+			<attributes id="LastADDownload_attributes">
+				<localAttribute dataType="string" id="LastADDownload_downloadStatus_string" name="downloadStatus"/>
+				<localAttribute dataType="string" id="LastADDownload_lastDownloadDateMsg_string" name="lastDownloadDateMsg"/>
+				<localAttribute dataType="string" id="LastADDownload_totalDownloaded_string" name="totalDownloaded"/>
+				<localAttribute dataType="boolean" id="LastADDownload_downloadAttachments_boolean" name="downloadAttachments"/>
+				<localAttribute dataType="integer" id="LastADDownload_numberOfDaysToSync_string" name="numberOfDaysToSync"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformProgressResource" inMemory="true" name="PlatformProgressResource" singleton="true">
+			<attributes id="PlatformProgressResource_attributes">
+				<localAttribute dataType="string" id="PlatformProgressResource_progressMsg_string" name="progressMsg"/>
+				<localAttribute dataType="boolean" id="PlatformProgressResource_started_boolean" name="started"/>
+			</attributes>
+		</resource>
+
+		<resource id="timeTrack" name="timeTrack">
+			<attributes id="timeTrack_attributes">
+				<localAttribute dataType="string" id="timeTrack_ttid_string" index="true" name="ttid"/>
+				<localAttribute dataType="string" id="timeTrack_content_string" name="content"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformChangePasswordForm" inMemory="true" name="PlatformChangePasswordForm" singleton="true">
+			<attributes id="PlatformChangePasswordForm_attributes">
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_username_string" name="username"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_currentpassword_string" name="currentpassword"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_newpassword_string" name="newpassword"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_confirmnewpassword_string" name="confirmnewpassword"/>
+				<localAttribute dataType="boolean" id="PlatformChangePasswordForm_loginFailed_boolean" name="loginFailed"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_errorMsg_string" name="errorMsg"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_infoMsg_string" name="infoMsg"/>
+				<localAttribute dataType="string" id="PlatformChangePasswordForm_oslcMaxUserURL_string" name="oslcMaxUserURL"/>
+			</attributes>
+		</resource>
+		<resource id="PlatformTempPushNotification" name="PlatformTempPushNotification" singleton="true">
+			<attributes id="tempPushNotification_attributes">
+				<localAttribute dataType="string" id="tempPushNotification_resourceId_string" name="resourceId"/>
+				<localAttribute dataType="string" id="tempPushNotification_resource_string" name="resource"/>
+				<localAttribute dataType="string" id="tempPushNotification_msgType_string" name="msgType"/>
+				<localAttribute dataType="string" id="tempPushNotification_transitionTo_string" name="transitionTo"/>
+				<localAttribute dataType="boolean" id="tempPushNotification_afterLogin_boolean" name="afterLogin"/>
+				<localAttribute dataType="string" id="tempPushNotification_msgProp1_string" name="msgProp1"/>
+				<localAttribute dataType="string" id="tempPushNotification_msgProp2_string" name="msgProp2"/>
+				<localAttribute dataType="string" id="tempPushNotification_msgProp3_string" name="msgProp3"/>
+			</attributes>
+		</resource>
+	</data>
+	<messages id="messages">
+		<message defaultMessage="Partially updated at: {0}" id="Partially updated at {0}"/>
+		<message defaultMessage="Last updated: {0}" id="Last updated {0}"/>
+		<message defaultMessage="No lookup data is stored on the device." id="Lookup data not stored locally"/>
+		<message defaultMessage="Unexpected Javascript Error" id="JavascriptError"/>
+		<message defaultMessage="Check your app log for more information" id="checkAppLog"/>
+		<message defaultMessage="Select Action" id="Select Action"/>
+		<message defaultMessage="Save as New" id="Save as New"/>
+		<message defaultMessage="Save as Old" id="Save as Old"/>
+		<message defaultMessage="View New" id="View New"/>
+		<message defaultMessage="View Old" id="View Old"/>
+		<message defaultMessage="Remove All" id="Remove all"/>
+		<message defaultMessage="Email Report" id="Email Report"/>
+		<message defaultMessage="Clear Performance Data" id="Clear Performance Data"/>
+		<message defaultMessage="Operating System: " id="Operating System: "/>
+		<message defaultMessage="User name: " id="username"/>
+		<message defaultMessage="Operating System" id="Operating System"/>
+		<message defaultMessage="Locale/Language: " id="Locale/Language: "/>
+		<message defaultMessage="User Name: " id="username"/>
+		<message defaultMessage="Connected: " id="Connected: "/>
+		<message defaultMessage="Yes" id="Yes"/>
+		<message defaultMessage="No" id="No"/>
+		<message defaultMessage="Carrier Name: " id="carrier Name: "/>
+		<message defaultMessage="Network Connection Type: " id="Network Connection Type: "/>
+		<message defaultMessage="Telephony Network Type: " id="Telephony Network Type: "/>
+		<message defaultMessage="Process, " id="Process, "/>
+		<message defaultMessage="Processing Time, " id="Processing Time, "/>
+		<message defaultMessage="Start and Stop Times, " id="Start and Stop Times, "/>
+		<message defaultMessage="No data to display. " id="No data to display "/>
+		<message defaultMessage="End" id="End"/>
+		<message defaultMessage="Locale/Language" id="Locale/Language"/>
+		<message defaultMessage="Connected" id="Connected"/>
+		<message defaultMessage="Carrier Name" id="Carrier Name"/>
+		<message defaultMessage="Network Connection Type" id="Network Connection Type"/>
+		<message defaultMessage="Staged Transactions" id="Staged Transactions"/>
+		<message defaultMessage="Transactions" id="Transactions"/>
+		<message defaultMessage="Telephony Network Type" id="Telephony Network Type"/>
+		<message defaultMessage="Process" id="Process"/>
+		<message defaultMessage="Processing Time" id="Processing Time"/>
+		<message defaultMessage="Start and Stop Times" id="Start and Stop Times"/>
+		<message defaultMessage="Synchronous?" id="Synchronous?"/>
+		<message defaultMessage="The report cannot be sent because an email account was not found on the device." id="EMAIL_ERROR"/>
+		<message defaultMessage="The email was not sent because there is no email client on the device." id="SEND_EMAIL_ERROR"/>
+		<message defaultMessage="DbBenchMark" id="DbBenchMark"/>
+		<message defaultMessage="Refresh" id="Refresh"/>
+		<message defaultMessage="Disable Performance Tracking" id="Disable Performance Tracking"/>
+		<message defaultMessage="Enable Performance Tracking" id="Enable Performance Tracking"/>
+		<message defaultMessage="Email Sent" id="Log was sent."/>
+		<message defaultMessage="Track Performance Data Report" id="Track Performance Data Report"/>
+		<message defaultMessage="Logging" id="Logging"/>
+		<message defaultMessage="Enable Error Logging" id="Enable Error Logging"/>
+		<message defaultMessage="Enable Info Logging" id="Enable Info Logging"/>
+		<message defaultMessage="Enable Debug Logging" id="Enable Debug Logging"/>
+		<message defaultMessage="Disable Error Logging" id="Disable Error Logging"/>
+		<message defaultMessage="Disable Info Logging" id="Disable Info Logging"/>
+		<message defaultMessage="Disable Debug Logging" id="Disable Debug Logging"/>
+		<message defaultMessage="Clear Log Data" id="Clear Log Data"/>
+		<message defaultMessage="Email Log" id="Email Log"/>
+		<message defaultMessage="Message" id="Message"/>
+		<message defaultMessage="ERROR" id="ERROR"/>
+		<message defaultMessage="DEBUG" id="DEBUG"/>
+		<message defaultMessage="INFO" id="INFO"/>
+		<message defaultMessage="Device Info" id="Device Info"/>
+		<message defaultMessage="Logger Report" id="Logger Report"/>
+		<message defaultMessage="The new password values do not match. Specify the new password again." id="Passwords do not match"/>
+		<message defaultMessage="Your password has been changed." id="Your password has been changed."/>
+		<message defaultMessage="Your password cannot be changed unless you are connected to the server." id="Cannot change password offline."/>
+		<message defaultMessage="Specify your current password." id="Your current password is required."/>
+		<message defaultMessage="Specify your new password." id="Your new password is required."/>
+		<message defaultMessage="Confirm your new password." id="Your new password confirmation is required."/>
+		<message defaultMessage="Your new password cannot match your current password." id="Your new password cannot match your current password."/>
+		<message defaultMessage="Your new password must be at least 6 characters in length." id="Your new password must be at least 6 characters in length."/>
+		<message defaultMessage="Unable to change your password." id="Password change failed."/>
+		<message defaultMessage="Stored data is cleared." id="Stored data cleared."/>
+		<message defaultMessage="Stored data could not be recovered with the password you entered." id="Stored data could not be recovered."/>
+		<message defaultMessage="Stored data has been recovered." id="Stored data recovered."/>
+		<message defaultMessage="Your password has expired, and you are required to change it." id="Your password has expired, and you are required to change it."/>
+		<message defaultMessage="New password cannot match current password." id="New password cannot match current password."/>
+		<message defaultMessage="Change Time and Date" id="DateTimeLookup.datetimelabel"/>
+		<message defaultMessage="Change Date" id="DateTimeLookup.datelabel"/>
+		<message defaultMessage="Change Time" id="DateTimeLookup.timelabel"/>
+		<message defaultMessage="Downloading meter data." id="downloadMeterData"/>
+		<message defaultMessage="Scan failed. You must connect to the server." id="scanFailedConnection"/>
+		<message defaultMessage="Sort failed. You must connect to the server." id="sortFailedConnection"/>
+		<message defaultMessage="Search failed. You must connect to the server." id="searchFailedConnection"/>
+		<message defaultMessage="Download Current WorkList failed.  Resource is marked as serveOnlyMode." id="serverOnlyModeDownload"/>
+		<message defaultMessage="Reloading work list ({0}%)." id="reloadingWorkListProgress"/>
+		<message defaultMessage="Enter a numeric value in the previous field" id="numericFieldError"/>
+		<message defaultMessage="Error granting permissions to the application.  Please try again." id="errorGrantingPermissions"/>
+		<message defaultMessage="Later" id="Later"/>
+		<message defaultMessage="Now" id="Now"/>
+		<message defaultMessage="Close" id="Close"/>
+		<message defaultMessage="Reset" id="Reset"/>
+		<message defaultMessage="The lookup data for this app must be downloaded. Download it now or later?" id="firstLookUpDownload"/>
+		<message defaultMessage="Lookup data was partially downloaded. Click Retry to download the remaining lookup data. Click Reset to refresh all of the lookup data. Click Close if you are through downloading lookup data." id="refreshLookUpDownload"/>
+		<message defaultMessage="You cannot undo these changes. For more information, contact your system administrator." id="undoNotAuthorized"/>
+		<message defaultMessage="You are disconnected. Reconnect to perform this action." id="offilineActionNotAuthorized"/>
+	</messages>
+</app>

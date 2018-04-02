@@ -1,0 +1,18 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+@import url("../../common/dojox/Badge.css");
+
+/* iOS Badge */
+
+.mblBadge {
+	background: #008abf;
+	border-radius: 2px;
+	color: #fff;
+	padding: 1px 3px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.35);
+	}

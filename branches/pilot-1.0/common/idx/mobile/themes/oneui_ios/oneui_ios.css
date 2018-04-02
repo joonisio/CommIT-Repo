@@ -1,0 +1,16 @@
+/*
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corp. 2010, 2012 All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/*
+ * This is the main entry point for the complete oneui theme iOS variant.
+ * Loading this file loads the entire theme. Individual module CSS files
+ * are contained in the dojox folder (for dojox/mobile widgets) or the
+ * idx folder (for idx/mobile widgets).
+ */
+
+@import url("dojox/main.css");
+@import url("idx/main.css");

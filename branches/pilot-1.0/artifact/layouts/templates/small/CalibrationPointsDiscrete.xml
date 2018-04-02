@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="CalibrationPointsDiscrete" version="201705101500">
+  <row id="row_0">
+    <column colspan="2" columnid="point" id="point_column"/>
+    <column colspan="9" columnid="description" id="description_column"/>
+    <column colspan="1" columnid="point_info" id="point_info"/>
+  </row>
+  <row id="row_1">
+    <column colspan="3" columnid="nominal" id="nominal_column"/>
+    <column colspan="3" columnid="nomunit" id="nomunit_column"/>
+    <column colspan="3" columnid="setpoint" id="setpoint_column"/>
+    <column colspan="3" columnid="action" id="action_column"/>
+  </row>
+  <row id="row_3">
+   	<column colspan="1" columnid="statusBtn" id="statusBtn_column" halign="center"/>
+	<column colspan="1" columnid="status" id="status_column"/>
+    <column colspan="4" columnid="statusdesc" id="statusdesc_column"/>
+    <column colspan="2" columnid="error" id="error_column"/>
+    <column colspan="4" columnid="assetunit" id="asset_unit"/>
+  </row>
+</layout>

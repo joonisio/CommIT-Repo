@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="Item2Desc2">
+	<row id="row_0">
+		<column colspan="4" columnid="item1" id="item1_column"/>
+		<column colspan="8" columnid="desc1" id="desc1_column"/>
+	</row>
+	<row id="row_1">
+		<column colspan="4" columnid="item2" id="item2_column"/>
+		<column colspan="8" columnid="desc2" id="desc2_column"/>
+	</row>	
+</layout>

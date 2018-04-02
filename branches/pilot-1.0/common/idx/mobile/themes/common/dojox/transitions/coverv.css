@@ -1,0 +1,83 @@
+.mblCoverv {
+  -webkit-transition-property: none;
+  transition-property: none;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.mblCoverv.mblTransition {
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.mblCoverv.mblOut {
+  z-index: -100;
+  -webkit-transform: translate3d(0px, 0%, -1px) !important;
+  transform: translate3d(0px, 0%, -1px) !important;
+}
+.mblCoverv.mblIn {
+  -webkit-transform: translate3d(0px, 100%, 0px) !important;
+  transform: translate3d(0px, 100%, 0px) !important;
+}
+.mblCoverv.mblIn.mblReverse {
+  -webkit-transform: translate3d(0px, -100%, 0px) !important;
+  transform: translate3d(0px, -100%, 0px) !important;
+}
+.mblCoverv.mblOut.mblTransition,
+.mblCoverv.mblIn.mblTransition {
+  -webkit-transform: translate3d(0px, 0%, 0px) !important;
+  transform: translate3d(0px, 0%, 0px) !important;
+}
+
+.idxEdgeLeft.mblCoverv.mblOut.mblTransition,
+.idxEdgeLeft.mblCoverv.mblIn.mblTransition {
+	-webkit-transform: translate3d(0%,0px,0px) !important;
+	transform: translate3d(0%,0px,0px) !important;
+}
+.idxEdgeLeft.mblCoverv.mblOut {
+	z-index: -100;
+	-webkit-transform: translate3d(0%,0px,-1px) !important;
+	transform: translate3d(0%,0px,-1px) !important;
+}
+.idxEdgeLeft.mblCoverv.mblIn {
+	-webkit-transform: translate3d(-100%,0px,0px) !important;
+	transform: translate3d(-100%,0px,0px) !important;
+}
+.idxEdgeLeft.mblCoverv.mblIn.mblReverse {
+	-webkit-transform: translate3d(-100%,0px,0px) !important;
+	transform: translate3d(-100%,0px,0px) !important;
+}
+.idxEdgeLeft.mblCoverv.mblOut.mblTransition,
+.idxEdgeLeft.mblCoverv.mblIn.mblTransition {
+	-webkit-transform: translate3d(0%,0px,0px) !important;
+	transform: translate3d(0%,0px,0px) !important;
+}
+
+.idxEdgeRight.mblCoverv.mblOut.mblTransition,
+.idxEdgeRight.mblCoverv.mblIn.mblTransition {
+	-webkit-transform: translate3d(0%,0px,0px) !important;
+	transform: translate3d(0%,0px,0px) !important;
+}
+.idxEdgeRight.mblCoverv.mblOut {
+	z-index: -100;
+	-webkit-transform: translate3d(0%,0px,-1px) !important;
+	transform: translate3d(0%,0px,-1px) !important;
+}
+.idxEdgeRight.mblCoverv.mblIn {
+	-webkit-transform: translate3d(100%,0px,0px) !important;
+	transform: translate3d(100%,0px,0px) !important;
+}
+.idxEdgeRight.mblCoverv.mblIn.mblReverse {
+	-webkit-transform: translate3d(100%,0px,0px) !important;
+}
+.idxEdgeRight.mblCoverv.mblOut.mblTransition,
+.idxEdgeRight.mblCoverv.mblIn.mblTransition {
+	-webkit-transform: translate3d(0%,0px,0px) !important;
+	transform: translate3d(0%,0px,0px) !important;
+}
+.dj_android.dj_tablet .mblCoverv.mblTransition {
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+}

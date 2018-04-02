@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app id="configuration" version="201705101500" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Releng/codegen/src/main/java/resources/xsd/app.xsd">
+    <ui id="ui">
+        <actions id="actions">
+    		<action id="ResetWorkList_action" label="Reset Work List" overflow="true">
+   		    	<eventHandlers id="ResetWorkList__action_eventHandlers">
+						<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="ResetWorkList_action_eventHandlers_click_findByScan" method="resetWorkList"/>
+   		    	    	<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="ResetWorkList_action_eventHandlers_render_enableResetWorkList" method="enableResetWorkList"/>
+				</eventHandlers>	
+			</action>
+			<action id="Notifications_action" enableFeatureByProperty="pushnotification.enabled" label="Notifications" overflow="true" transitionTo="Platform.Notifications">
+   		    	<eventHandlers id="Notifications__action_eventHandlers">
+  		    	    	<eventHandler class="platform.handlers.WorkOfflineHandler" event="render" id="Notifications_action_eventHandlers_render_enableResetWorkList" method="enableNotification"/>
+				</eventHandlers>
+			</action>		
+            <action id="Settings_action" label="Settings" overflow="true" transitionTo="Platform.Settings"/>
+			<action id="About_action" label="About" overflow="true" transitionTo="Platform.HelpAbout"/>
+			<!-- <action label="IBM Support" link="http://www.ibm.com/support" overflow="true" /> -->
+			<action id="LogOut_action" label="Log Out" overflow="true" transitionTo="Platform.LogOutPrompt"/>
+
+         <!--
+            - Needed to Clear or Delete records that may or may not have been submitted to the WL adapter
+            - As this does not have a label attribute it needs to be here so that the generator will include it.
+         -->
+         <action id="action">
+            <eventHandlers id="action_eventHandlers">
+               <eventHandler class="platform.handlers.CreateQueryBaseHandler" event="click" id="action_eventHandlers_click"/>
+            </eventHandlers>
+         </action>
+		</actions>
+
+		<erroractions id="erroractions">
+			<action id="UndoChanges_action" label="Undo Changes">
+				<eventHandlers id="UndoChanges_action_eventHandlers">
+	            		<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="UndoChanges_action_eventHandlers_click_confirmClearChanges" method="confirmClearChanges"/>
+	            </eventHandlers>
+	        </action>
+			<action id="ResendChanges_action" label="Resend Changes">
+				<eventHandlers id="ResendChanges_action_eventHandlers">
+	            		<eventHandler class="platform.handlers.WorkOfflineHandler" event="click" id="ResendChanges_action_eventHandlers_click_retryRecordChanges" method="retryRecordChanges"/>
+	            </eventHandlers>
+	        </action>
+				
+		</erroractions>
+
+		<!-- Define any platform handlers here so they are included by code gen. 
+		Event and method don't matter -->
+  		<eventHandlers id="eventHandlers">
+  		    <eventHandler class="platform.handlers.LookupHandler" event="none" id="eventHandlers_none_none" method="none"/>
+  		</eventHandlers>
+  		
+  		<view id="Platform.emptyview" showFooter="false" showHeader="false"/>
+  		
+  		<view id="Platform.Notifications" label="My Notifications" >
+  		    <requiredResources id="Platform.Notifications_requiredResources">
+				<requiredResource id="Platform.Notifications_osusernotification" name="osusernotification" reload="true"/>
+				<requiredResource id="Platform.Notifications_PlatformTempPushNotification" name="PlatformTempPushNotification" reload="true"/>
+			</requiredResources>
+  		    <list  id="Platform.Notifications_list" label="List of notifications" resource="osusernotification">
+				<listItemTemplate id="Platform.Notifications_listItemTemplate" layout="NotificationList">
+				  	<listtext id="Platform.Notifications_uiDate" resourceAttribute="uiDate" layoutInsertAt="date1"/>
+					<!-- <listtext id="Platform.Notifications_description" resourceAttribute="intObjectName"/> -->
+					<listtext id="Platform.Notifications_itemnum" resourceAttribute="itemnum" layoutInsertAt="item1"/>
+					<listtext id="Platform.Notifications_itemDesc" resourceAttribute="itemDesc" layoutInsertAt="item2"/>
+					<eventHandlers id="Platform.Notifications_Open_button_eventHandlers">
+					    <eventHandler class="platform.handlers.PushNotificationDialogHandler" event="click" id="Platform.Notifications_Open_button_eventHandlers_click_FromList" method="openFromMsgHistory"/>
+					    <eventHandler class="platform.handlers.PushNotificationDialogHandler" event="render" id="Platform.Notifications_Open_button_eventHandlers_render_FromList" method="renderMsgHistoryItem"/>
+					</eventHandlers>
+				  	
+				</listItemTemplate>
+				
+				
+				
+			</list>
+			<!-- <container id="Platform.Notifications_container_0">
+				<text id="Platform.Notifications_container_0_Enterthepasswordt" value="list of notifications"/>
+			</container> -->
+			<eventHandlers id="Platform.Notifications_eventHandlers">
+			    <eventHandler class="platform.handlers.PushNotificationDialogHandler" event="render" id="Platform.Notifications_eventHandlers_render_FromList" method="renderMsgHistory"/>
+			</eventHandlers>
+		</view>	
+		
+		
+	</ui>
+	<data id="data">
+	    
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AnywherePropVal" id="anywherePropValRes" name="anywherePropVal" pageSize="200" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="anywherePropValAttributes">
+				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi:propid" id="anywherePropValPropId" name="propid"/>
+				<attribute describedByProperty="spi:propvalue" id="anywherePropValValues" name="value"/>
+				<attribute describedByProperty="spi:description" id="anywherePropValDescription" name="description"/>
+				<attribute describedByProperty="spi:changedate" id="anywherePropValChangedate" name="changedate"/>
+				<attribute describedByProperty="dcterms:identifier" id="anywherePropValIdentifier" index="true" name="identifier"/>
+				
+				<attribute describedByProperty="spi:appid" id="anywherePropValAppName" index="true" name="appName"/>
+				<attribute describedByProperty="spi:maxgroupid" id="anywherePropValGroupName" index="true" name="groupName"/>
+								
+			</attributes>
+	        <queryBases id="anywherePropValQueryBases">
+ 	 			<queryBase defaultForSearch="true" id="anywherePropValQueryBaseDefault" name="anywherepropvalQB" queryUri="/oslc/os/oslcanywherepropval"/>
+	 		</queryBases>			
+			<whereClause id="anywherePropValWhereClause"/>
+			
+		</resource>
+		
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AnywhereResourceSrc" id="anywhereResourceSrcRes" name="anywhereResourceSrc" pageSize="200" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="anywhereResourceAttributes">
+				<!-- limits the scope of attributes used from full Work Order RDF -->
+				
+				<attribute describedByProperty="dcterms:identifier" id="anywhereResourceIdentifier" index="true" name="identifier"/>
+				<attribute describedByProperty="spi:resourceid" id="anywhereResourceResourceId" name="resourceId"/>
+				<attribute describedByProperty="spi:type" id="anywhereResourceType" name="type"/>
+				<attribute describedByProperty="spi:pagesize" id="anywhereResourcePageSize" name="pageSize"/>
+				<attribute describedByProperty="spi:description" id="anywhereResourceDescription" name="description"/>
+				<attribute describedByProperty="spi:changedate" id="anywhereResourceChangedate" name="changedate"/>
+				<attribute describedByProperty="spi:appid" id="anywhereResourceAppName" index="true" name="appName"/>
+												
+			</attributes>
+	        <queryBases id="anywhereResourceQueryBases">
+ 	 			<queryBase defaultForSearch="true" id="anywhereResourceQueryBaseDefault" name="anywhereResourceQB" queryUri="/oslc/os/oslcanywhereresrc"/>
+	 		</queryBases>			
+			<whereClause id="anywhereResourceWhereClause"/>
+			
+		</resource>
+		
+		<resource describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AnywhereResVal" id="AnywhereResValRes" name="anywhereResVal" pageSize="200" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="AnywhereResValAttributes">
+				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi:sort" id="AnywhereResValSort" name="sort"/>
+				<attribute describedByProperty="spi:sequence" id="AnywhereResValSequence" name="sequence"/>
+				
+				<attribute describedByProperty="spi:changedate" id="AnywhereResValChangedate" name="changedate"/>
+				<attribute describedByProperty="dcterms:identifier" id="AnywhereResValIdentifier" index="true" name="identifier"/>
+				
+				<!-- <attribute describedByProperty="spi:anywhereapp{spi:appid}" id="AnywhereResValAppName" name="appName"/> -->
+				<attribute describedByProperty="spi:appid" id="AnywhereResValAppName" index="true" name="appName"/>
+				<!-- <attribute describedByProperty="spi:maxgroup{spi:groupname}" id="AnywhereResValGroupName" name="groupName"/> -->
+				<attribute describedByProperty="spi:maxgroupid" id="AnywhereResValGroupName" index="true" name="groupName"/>
+				<!-- <attribute describedByProperty="spi:query{spi:clausename}" id="AnywhereResValQuery" name="query"/> -->
+				<attribute describedByProperty="spi:queryid" id="AnywhereResValQuery" index="true" name="query"/>
+				<attribute describedByProperty="spi:description" id="AnywhereResValQueryDescription" name="queryDescription"/>
+				<!-- <attribute describedByProperty="spi:anywhereresource{spi:resourceid}" id="AnywhereResValResourceId" name="resourceId"/> -->
+				<attribute describedByProperty="spi:resourceid" id="AnywhereResValResourceId" index="true" name="resourceId"/>
+				<attribute describedByProperty="spi:blindcount" id="AnywhereResValBlindCount" name="blindCount"/>
+				<attribute describedByProperty="spi:resanywhereresource{spi:type}" id="AnywhereResValType" name="type"/>
+								
+			</attributes>
+	        <queryBases id="AnywhereResValQueryBases">
+ 	 			<queryBase defaultForSearch="true" id="AnywhereResValQueryBaseDefault" name="AnywhereResValQB" queryUri="/oslc/os/oslcanywhereresrval"/>
+	 		</queryBases>			
+			<whereClause id="AnywhereResValWhereClause"/>
+			
+		</resource>
+		
+		<resource  defaultOrderBy="notificationId desc" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AnywhereResourceSrc" id="osusernotification" name="osusernotification" pageSize="5" maxFetchDataLimit="10" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
+			<attributes id="oslcosusernotificatiAttributes">
+				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi:osusernotificationid" id="oslcosusernotificationid" name="notificationId" index="true"/>
+				<attribute describedByProperty="spi:eventname" id="oslcosusernotificatiEventName" name="eventName"/>
+				<attribute describedByProperty="spi:intobjectname" id="oslcosusernotificatiIntobjectName" name="intObjectName"/>
+				<attribute describedByProperty="spi:notfeventmessage" id="oslcosusernotificatiNotfeventmessage" name="notfeventmessage"/>
+				<attribute describedByProperty="spi:notificationtime" id="oslcosusernotificati_notifDate_dateTime" name="notifDate"/>
+				<attribute describedByProperty="spi:eventforuser" id="oslcosusernotificati_eventforuser_string" name="owner"/>
+				<attribute describedByProperty="spi:appid" id="oslcosusernotificati_appid_string" name="appid"/>
+				<localAttribute dataType="string" id="oslcosusernotificati_itemnum_string" name="itemnum"/>
+				<localAttribute dataType="string" id="oslcosusernotificati_itemDesc_string" name="itemDesc"/>
+				<localAttribute dataType="boolean" id="oslcosusernotificati_viewed_boolean" name="viewed"/>
+				<localAttribute dataType="dateTime" id="oslcosusernotificati_uiDate_dateTime"  name="uiDate"/>
+												
+			</attributes>
+	        <queryBases id="oslcosusernotificatiQueryBases">
+ 	 			<queryBase defaultForSearch="true" id="oslcosusernotificatieQueryBaseDefault" name="oslcosusernotificatiQB" queryUri="/oslc/os/oslcosusernotificati"/>
+	 		</queryBases>			
+			<whereClause clause="spi:eventforuser=${personid}" id="oslcosusernotificatiWhereClause"/>
+			
+		</resource>
+		
+		
+	</data>    
+	<messages id="messages">
+		<message defaultMessage="OK" id="okbutton"/> 
+		<message defaultMessage="Continue" id="continuebutton"/>
+		<message defaultMessage="Cancel" id="cancelbutton"/>
+		<message defaultMessage="Clear Value" id="clearbutton"/>		
+		<message defaultMessage="The specified time and date is not valid." id="invaliddatetime"/>
+		<message defaultMessage="The specified date is not valid." id="invaliddate"/>
+		<message defaultMessage="The specified time is not valid." id="invalidtime"/>
+		<message defaultMessage="The value {0} is not a valid integer." id="invalidinteger"/>		
+		<message defaultMessage="The value {0} is not a valid decimal." id="invaliddecimal"/>		
+		<message defaultMessage="The specified number of hours is not valid." id="invalidduration"/>
+		<message defaultMessage="The user name and password combination that you entered is not valid." id="Invalid user credentials."/>
+		<message defaultMessage="The MobileFirst server is unreachable.  Response Code: " id="serverunreachable"/>
+		<message defaultMessage="Your user name and password could not be validated. Connect to the server and try again." id="Unable to authenticate on server for first authentication"/>
+		<message defaultMessage="The user name and password combination that you entered is not valid for a local login. Try again." id="Unable to authenticate user on both server and locally"/>
+		<message defaultMessage="Login failed because your user information could not be downloaded. Try again or contact your administrator." id="Error loading user information."/>
+		<message defaultMessage="You password cannot be changed because the current password value is incorrect." id="Unable to change the password. The old password passed was wrong."/>
+		<message defaultMessage="The user list for this app is empty. The password cannot be changed." id="No user ever logged in, no need to change password"/>
+        <message defaultMessage="The user list for this app does not include an entry for the current user. The password cannot be changed." id="Current user have never logged in, no need to change password"/>
+        <message defaultMessage="System data could not be downloaded. Restart the app and try to log in again. If the problem persists, contact your administrator." id="failedDownloadSystemData"/>
+		<message defaultMessage="Hours and Minutes" id="hoursandminutes"/>
+		<message defaultMessage="Date" id="date"/>
+		<message id="storeNotFound" defaultMessage="Cannot find the store called {0}"/>		
+		<message defaultMessage="Incompatible value {0} for type {1}" id="incompatiblevalueandtype"/>
+		<message defaultMessage="Time" id="time"/>
+		<message defaultMessage="Sort by: {0}" id="sortby"/>
+		<message defaultMessage="No records to display." id="norecords"/>
+		<message defaultMessage="No lookup data is stored on the device. Download lookup data from the Settings screen." id="nolookupdata"/>
+		<message defaultMessage="Last updated:" id="lastupdatetext"/>
+		<message defaultMessage="Login failed because the server time could not be loaded. Try again or contact your administrator." id="Error loading clock server."/>
+        <message defaultMessage="Download starting" id="downloadStarting"/>
+	    <message defaultMessage="Progress information is not available." id="percentNotAvailable"/>
+	    <message defaultMessage="Downloading ({1}%)." id="downloadProgress"/>
+        <message defaultMessage="Downloading attachments from {0} {1} of {2}." id="downloadAttachmentProgress"/>
+        <message defaultMessage="{0} of {1} attachments were downloaded." id="downloadedAttachments"/>
+        <message defaultMessage="Canceling the download..." id="cancelingDownload"/>
+        <message defaultMessage="Download completed." id="downloadCompleted"/>
+        <message defaultMessage="Work list records could not be downloaded. If the problem persists, contact your administrator." id="downloadFailed"/>
+        <message defaultMessage="The work list could not be downloaded because your device is not connected to the network." id="downloadFailedNoConnectivity"/>
+        <message defaultMessage="The work list could not be downloaded because the server did not respond." id="downloadFailedNoServerConnectivity"/>
+        <message defaultMessage="{0} work list records were downloaded." id="downloadedRecords"/>
+        <message defaultMessage="Uploading changes to the server..." id="uploadingChanges"/>
+        <message defaultMessage="Some changes could not be uploaded. When the connection is restored, go to Synchronize Data." id="uploadFailed"/>
+        <message defaultMessage="Handler [{0}.{1}] was not found for control:[{2}] identified by [{3}]." id="noHandler"/>
+        <message defaultMessage="Record type {0}/{1} (progress {2}%)" id="systemDataDownloadProgressMsg"/>
+        <message defaultMessage="The value for attribute {1} in record {2} cannot be changed to {0} because the record is read only." id="recordisreadonly"/>        
+        <message defaultMessage="A {0} record cannot be created because the parent {1} is read only." id="cannotAddParentReadOnly"/>        
+        <message defaultMessage="Some required fields are empty. Specify the missing information." id="requiredField"/>
+        <message defaultMessage="Some fields have errors. You must correct these errors before you can proceed." id="invalidField"/>        
+        <message defaultMessage="Finished downloading lookup data." id="lookupDataComplete"/>
+        <message defaultMessage="Lookup data could not be downloaded. If you are connected, go to Settings &gt; Refresh Lookup Data." id="lookupDataFailed"/>
+        <message defaultMessage="Invalid binding." id="InvalidBindingNoRecord"/>
+        <message defaultMessage="Undo Changes" id="ClearChanges"/>
+        <message defaultMessage="Resend Changes" id="Resend"/>
+        <message defaultMessage="Search" id="Search"/>
+        <message defaultMessage="Matches" id="Matches"/>
+        <message defaultMessage="Contains" id="Contains"/>
+        <message defaultMessage="The selected record was removed from the current work list. Refresh the work list to obtain the latest data." id="listmismatch"/>
+        <message defaultMessage="The complex attribute {0} is not valid in object {1}." id="invalidComplexAttribute"/>
+        <message defaultMessage="Cannot connect to the server." id="nofetchnextpage"/>
+        <message defaultMessage="The value for {0} exceeds the maximum field size of {1}." id="maxSizeExceeded"/>
+        <message defaultMessage="Incompatible value {0} for type {1}." id="incompatiblevalueandtype"/>
+        <message defaultMessage="Remove from List" id="clearListRecord"/>
+        <message defaultMessage="Delete" id="deleteListRecord"/>
+        <message defaultMessage="The app update failed. Your app needs to be reinstalled. Contact your administrator." id="jsonstoreIndexMismatch"/>
+        <message defaultMessage="Materials" id="materialSummary"/>
+        <message defaultMessage="Tools" id="toolSummary"/>
+        <message defaultMessage="The user you specified during login is not authorized to use this application." id="The user you specified during login is not authorized to use this application."/>
+        <message defaultMessage="The query you selected does not exist on the server. Contact your administrator." id="invalidQueryBase"/>
+        <message defaultMessage="The query \u0027{0}\u0027 could not be validated. Contact your administrator." id="downloadFailedQueryBaseError"/>
+        <message defaultMessage="At last page." id="listAtLastWhenNextPage"/>
+        <message defaultMessage="The work list could not be reset because your device is not connected to the network." id="resetFailedNoConnectivity"/>
+        <message defaultMessage="The work list could not be reloaded because your device is not connected to the network." id="reloadFailedNoConnectivity"/>
+        <message defaultMessage="Unable to save changes because record has been removed from the device." id="saveFailedRecordRemoved"/>
+        <message defaultMessage="Saving changes failed due to unknown error.  Check application log for additional information." id="saveFailed"/>
+		<message defaultMessage="Details" id="details"/>
+		<message defaultMessage="Back" id="back"/>
+		<message defaultMessage="More..." id="more"/>
+		<message defaultMessage="Next" id="next"/>
+		<message defaultMessage="No Action" id="noaction"/>
+		<message defaultMessage="Cancel" id="Cancel"/>
+		<message defaultMessage="Disconnected" id="Disconnected"/>
+		<message defaultMessage="Refresh" id="Refresh"/>
+		<message defaultMessage="Reload" id="Reload"/>
+		
+    </messages>
+</app>
