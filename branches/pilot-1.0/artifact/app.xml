@@ -9615,6 +9615,7 @@
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
+				<attribute describedByProperty="spi_wm:tnbsmbreportno" id="workOrder_tnbvertical_spi_tnbsmbreportno" index="true" name="tnbsmbreportno"/>
 				<attribute describedByProperty="spi_wm:tnbspecialptw" id="workOrder_tnbvertical_spi_tnbspecialptw" index="true" name="tnbspecialptw"/>
 				<attribute describedByProperty="spi_wm:tnbvertical" id="workOrder_tnbvertical_spi_wmtnbvertical" index="true" name="tnbvertical"/>
 				<attribute describedByProperty="spi_wm:tnbreason" id="workOrder_tnbreason_spi_wmtnbreason" name="tnbreason"/>
