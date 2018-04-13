@@ -4685,7 +4685,11 @@
 						<eventHandlers id="WorkExecution.FailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers">
 							<eventHandler class="application.handlers.FailureCodeHandler" event="click" id="WorkExecution.FailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers_click_deleteFailureCode" method="deleteFailureCode"/>
 						</eventHandlers>
-					</button>									
+					</button>		
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno" />	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
 					<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
@@ -13657,6 +13661,10 @@
 				<attribute describedByProperty="spi:failureCode{dcterms:title}" id="failureReportResource_failureDesc_spifailureCodedctermstitle" name="failureDesc"/>
 				<attribute describedByProperty="spi:failureCode{oslc:shortTitle}" id="failureReportResource_failurecode_spifailureCodeoslcshortTitle" name="failurecode"/>
 				<attribute describedByProperty="spi_wm:anywhererefid" id="failureReportResource_anywhereRefId_spi_wmanywhererefid" name="anywhereRefId"/>
+				<attribute describedByProperty="spi_wm:tnbcmsticketno" id="failureReportResource_tnbcmsticketno" name="tnbcmsticketno"/>
+				<attribute describedByProperty="spi_wm:tnbdocketno" id="failureReportResource_tnbdocketno" name="tnbdocketno"/>
+				<attribute describedByProperty="spi_wm:tnbsmbreportno" id="failureReportResource_tnbsmbreportno" name="tnbsmbreportno"/>
+				<attribute describedByProperty="spi_wm:tnbcircuitno" id="failureReportResource_tnbcircuitno" name="tnbcircuitno"/>
 			</attributes>
 		</resource>
 		
