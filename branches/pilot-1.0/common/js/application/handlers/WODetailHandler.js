@@ -2095,6 +2095,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 	//----------------------------------------custom javascript code-----------------------------------------------------------------------------
 		offlineDownload:function(eventContext){
 			console.log('download for offline mode');
+			eventContext.application.showBusy();
 			
 				var wonum = null;
 				var isInArray ;
@@ -2788,6 +2789,65 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		showLinearSegmentDetailsMultiAsset: function(evenContext) {
 			evenContext.ui.show('WorkExecution.MultiAssetLinearSegmentDetailsView');
 		},
+		
+		initChildWo:function(eventContext){
+			console.log('initchildwo')
+			var wo = this.application.getResource("workOrder").getCurrentRecord(); 
+			var wonum = wo.get('wonum');
+			console.log(wonum);
+			wo.set('tempparentwo', wonum);
+			wo.set('templocation', '');
+			wo.set('tempasset', '');
+			wo.set('tempjpnum', '');
+			
+
+		},
+		
+		cleanupCreateWoView:function(eventContext){
+			var currWO = workOrderSet.getCurrentRecord();
+			if(currWO && currWO.isNew() && currWO.get('wonum') == null) {
+				currWO.deleteLocal();
+			}
+			eventContext.ui.hideCurrentView(PlatformConstants.CLEANUP);
+		},
+		
+		createNewWO:function(eventContext){
+			eventContext.application.showBusy();
+			console.log('create new child wo');
+			var oriwo = this.application.getResource("workOrder").getCurrentRecord(); 
+			var wonum2 =oriwo.get('wonum');
+			var tempparentwo =oriwo.get('tempparentwo');
+			var templocation =oriwo.get("templocation");
+			var tempasset =oriwo.get("tempasset");
+			var tempjpnum = oriwo.get('tempjpnum');
+		
+			var wo =CommonHandler._getAdditionalResource(eventContext,"workOrder").createNewRecord();
+			
+			wo.set("parentWonum",tempparentwo);
+			wo.set("location",templocation);
+			wo.set("asset",tempasset);
+			wo.set("jpnum",tempjpnum);
+			
+			var workOrderSet = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+			console.log(workOrderSet);
+			ModelService.save(workOrderSet).then(function() {
+			}).otherwise(function(error) {
+			 console.log(error);
+			}).always(function(){
+				eventContext.application.hideBusy();
+				ModelService.filtered('workOrder', null,[{wonum:wonum2}], 1000, null,null,null,null).then(function(locset){
+					console.log(locset);
+					eventContext.application.addResource(locset);
+					}).otherwise(function(error) {
+						Logger.error(JSON.stringify(error));
+					}).always(function(){
+						eventContext.ui.hideCurrentView();
+					});
+		});
+			
+			
+		},
+		
 		//--------------------------------------------------------------end custom javascript code----------------------------------------------------
 		
 		hideForNonCalibrationWO: function(eventContext) {

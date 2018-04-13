@@ -24,6 +24,7 @@ define("custom/SqaDetailHandler",
 	     "platform/map/MapProperties"],
 function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, CommunicationManager,sqa, SynonymDomain, ModelService, MessageService, CommonHandler, FieldUtil, PlatformRuntimeException, PlatformRuntimeWarning, UserManager, PlatformConstants, WpEditSettings, AsyncAwareMixin, Logger, FailureCodeHandler,PersistenceManager,GeoLocationTrackingService,MapProperties) 
 {
+	//lookup draft & submited
 	var listSizeArray = ['plusgaudlinelistsize'];
 	var questionArray =['Peralatan Perlindungan Diri (PPD) - Topi Keselamatan',
 	                    '\'Vest\' Keselamatan',
@@ -281,7 +282,7 @@ function(declare, arrayUtil, lang,SqaObject, ApplicationHandlerBase, Communicati
 				//this.saveCreateSqa(eventContext);
 			}
 			if(sqaSet){
-				eventContext.setMyResourceObject(sqaSet);		
+				eventContext.setMyResourceObject(sqaSet);
 			}
 		
 				

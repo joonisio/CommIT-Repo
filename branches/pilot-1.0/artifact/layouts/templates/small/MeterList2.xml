@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="MeterList" width="100">
+   <row id="row_0">
+      <column colspan="3" columnid="item1" id="item1_column"/>
+	  <column colspan="6" columnid="item2" id="item2_column"/>
+	  <column colspan="1" columnid="item3" id="item3_column"/>
+	  <column colspan="1" columnid="item4" id="item3_column"/>
+      <column colspan="1" columnid="item5" id="button1_column"/>
+   </row>
+	<row id="row_1">
+	    <column colspan="4" columnid="item6" id="item4_column"/>
+	    <column colspan="5" columnid="item7" id="item5_column"/>
+        <column colspan="1" columnid="item8" id="item6_column"/>
+        <column colspan="2" columnid="item9" id="item6_column"/>
+	</row>
+</layout>
