@@ -543,6 +543,8 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
+						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
+						</button>
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
@@ -561,6 +563,9 @@
 					</groupitem> 
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
+					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADS" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADS"/>
 					</groupitem>
 					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
@@ -736,6 +741,46 @@
 					</groupitem>									
 				</group>			
 			</container>														
+		</view>
+		
+		<!-- custom create child wo -->
+			<view id="WorkExecution.CreateChildWo" label="Create Child Work Order">
+			<requiredResources id="WorkExecution.CreateChildWo_requiredResources2">
+				<requiredResource id="WorkExecution.CreateChildWo_requiredresource2" name="workOrder">
+				</requiredResource>
+			</requiredResources>		
+			<container id="WorkExecution.CreateChildWo_container_0"  resource="workOrder" >
+				<group id="WorkExecution.CreateChildWo_group_0">	
+					<groupitem id="WorkExecution.CreateChildWo_groupitem_WorkExecution.MultipleAssetsLocationsView_403v" >
+						<text editable="false" id="WorkExecution.StopWorkView_groupitem_0_wonumd_WorkOrder" label="Parent Work Order" layoutInsertAt="item1" resourceAttribute="tempparentwo"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreateChildWo_groupitem_WorkExecution.MultipleAssetsLocationsView_4033" >
+						<text editable="false" placeHolder="Tap to Enter" id="WorkExecution.StopWorkView_groupitem_0_asset_WorkOrder" label="Asset" lookup="WorkExecution.AssetLookup2" layoutInsertAt="item3" resourceAttribute="tempasset"/>
+					</groupitem>
+					<groupitem id="WorkExecution.CreateChildWo_groupitem_WorkExecution.MultipleAssetsLocationsView_4032" >
+						<text editable="false" placeHolder="Tap to Enter"  id="WorkExecution.StopWorkView_groupitem_0_location_WorkOrder" label="Location" lookup="WorkExecution.LocationLookup2" layoutInsertAt="item2" resourceAttribute="templocation"/>
+					</groupitem>		
+					<groupitem id="WorkExecution.CreateChildWo_groupitem_WorkExecution.MultipleAssetsLocationsView_4034" >
+						<text editable="false"  placeHolder="Tap to Enter"  id="WorkExecution.StopWorkView_groupitem_0_Jobplan_WorkOrder" label="Job Plan" layoutInsertAt="item4" lookup="WorkExecution.jobPlan" resourceAttribute="tempjpnum"/>
+					</groupitem>										
+				</group>			
+			</container>	
+			<eventHandlers id="WorkExecution.cretateChildWo_eventHandlers2">
+						<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.cretateChildWoClick" method="initChildWo"/>
+						<!--<eventHandler class="application.handlers.WODetailHandler" event="cleanup" id="WorkExecution.EditAssetView_eventHandlers_cleanup_cleanupCreateWoView" method="cleanupCreateWoView"/>  -->
+			</eventHandlers>	
+			<footer id="WorkExecution.CreateChildWo__footer">
+				<button id="WorkExecution.CreateChildWo__Cancel_button" label="Cancel">
+					<eventHandlers id="WorkExecution.CreateChildWo__Cancel_button_eventHandlers">
+						<eventHandler class="application.handlers.CreateNewCalibrationHandler" event="click" id="WorkExecution.CreateChildWo_eventHandler_cancel" method="discardNewPointView"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.CreateChildWo_Create_button" label="Create">
+					<eventHandlers id="WorkExecution.CreateChildWo_button_eventHandlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.CreateChildWo_commitNewPointView" method="createNewWO"/>
+					</eventHandlers>
+				</button>
+			</footer>												
 		</view>
 		
 		<!--Custom children Work Order -->
@@ -3890,6 +3935,7 @@
 				<eventHandler class="application.handlers.MultiAssetLocationHandler" event="show" id="WorkExecution.MultipleAssetsLocationsEntryView_eventHandlers_show_initMultiAssetLocationEntryView" method="initMultiAssetLocationEntryView"/>
 			</eventHandlers>
 		</view>
+		
 
 		<!-- Define Task list view -->
 		<view id="WorkExecution.TasksView" label="Tasks">
@@ -3920,6 +3966,65 @@
 				</listItemTemplate>
 			</list>
 		</view>
+		
+		<!--custom hirads and hirads review view-->
+		<view id="WorkExecution.hirads" label="HIRADS">
+			<requiredResources id="WorkExecution.hirads_re">
+				<requiredResource id="WorkExecution.hirads_workOrder" name="workOrder">
+					<requiredAttribute id="WorkExecution.MultipleAssetsLocationsEntryView_workOrder_plusgriskassessclist" name="plusgriskassesslist"/>
+					<requiredAttribute id="WorkExecution.MultipleAssetsLocationsEntryView_workOrder_plusgworevactlist" name="plusgworevactlist"/>
+				</requiredResource>
+			</requiredResources>
+			
+			<container  id="WorkExecution.hirads_workOrder_container_0" resource="workOrder">
+				<group id="WorkExecution.hirads_group_0">
+					<groupitem id="WorkExecution.hiradsworkOrder_groupitem_0">
+						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_0_sequence_Sequence" label="Risk Assessment" resourceAttribute="plusgriskassessnum"/>
+					</groupitem>
+					<groupitem id="WorkExecution.hirads_workOrder_groupitem_1">
+						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_1_assetdesc" label="Risk Assessment Requirement" lookup="WorkExecution.RiskAssessmentLookup" resourceAttribute="plusgriskasscat"/>
+					</groupitem>
+				</group>
+			</container>
+			
+			<container  id="WorkExecution.hirads_workOrder_container_1" resource="workOrder" attribute="plusgriskassesslist">
+				<group id="WorkExecution.hirads_group_1">
+					<groupitem id="WorkExecution.hiradsworkOrder_groupitem_6">
+						<text editable="false" id="WorkExecution.hirads_description" label="Description" resourceAttribute="description"/>
+					</groupitem>
+					<groupitem id="WorkExecution.hiradsworkOrder_groupitem_2">
+						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_0_RiskRanking" label="Risk Ranking" resourceAttribute="mostsigrisk"/>
+					</groupitem>
+					<groupitem id="WorkExecution.hirads_workOrder_groupitem_3">
+						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_1_Risk_Based_Priority" label="Risk Based Priority" resourceAttribute="mostsigpriority"/>
+					</groupitem>
+				</group>
+			</container>
+			
+			<container  id="WorkExecution.hirads_workOrder_container_2" resource="workOrder">
+				<group id="WorkExecution.hirads_group_2">
+					<groupitem id="WorkExecution.hirads_workOrder_groupitem_5">
+						<textarea editable="true" id="WorkExecution.hirads_details_0" label="Comments" placeHolder="Tap to enter" resourceAttribute="plusgriskassesscom"/>
+					</groupitem>
+				</group>
+			</container>
+			
+			<list id="WorkExecution.WOMeterList_plusgworevact_list" label="Review Action" resource="workOrder" attribute="plusgworevactlist" showHeader="true">
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.plusgworevact_listItemTemplate_MeterList" layout="MeterList2">	
+					<listtext id="WorkExecution.plusgworevact_assetnum" layoutInsertAt="item1" resourceAttribute="stdactnum"/>
+					<listtext id="WorkExecution.plusgworevact_description" layoutInsertAt="item2" resourceAttribute="description"/>
+					<checkbox editable="true" id="WorkExecution.yes_checkbox" layoutInsertAt="item3" label="Yes?" resourceAttribute="yes"/>
+					<checkbox editable="true" id="WorkExecution.yes_no" layoutInsertAt="item4" label="No?" resourceAttribute="no"/>
+					<checkbox editable="true" id="WorkExecution.na_checkbox" layoutInsertAt="item5" label="NA?" resourceAttribute="notapplicable"/>
+					<text editable="true" label="numeric" id="WorkExecution.plusgworevact_assetnumdesc" layoutInsertAt="item6" resourceAttribute="numeric"/>
+					<text editable="true" label="score"  id="WorkExecution.plusgworevact_score" layoutInsertAt="item7" resourceAttribute="score"/>
+					<checkbox editable="true" id="WorkExecution.plusgworevact_metername" label="Completed?" layoutInsertAt="item8" resourceAttribute="completed"/> 	
+					<listtext id="WorkExecution.plusgworevact_meterdesc" layoutInsertAt="item9" resourceAttribute="completeddate"/> 														
+				</listItemTemplate>		
+			</list>
+			
+		</view>
+		
 
 		<!--Work Order Meter list view -->
 		<view id="WorkExecution.WOMeterList" label="Meters">
@@ -8675,7 +8780,27 @@
 				<returnAttribute id="WorkExecution.FeatureLookup_endmeasure" sourceAttribute="endmeasure" targetAttribute="endmeasure"/>
 				<returnAttribute id="WorkExecution.FeatureLookup_endassetfeatureid" sourceAttribute="assetfeatureid" targetAttribute="endassetfeatureid"/>
 			</returnAttributes>
-		</lookup>			
+		</lookup>		
+		
+		<!-- custom jobplan lookup-->
+		<lookup id="WorkExecution.jobPlan" label="Select Job Plan" resource="jobplan">
+			<requiredResources id="WorkExecution.jobplan_requiredResources">
+				<requiredResource id="WorkExecution.jobplan_requiredResource0" name="jobplan" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.jobplan_list" resource="jobplan">
+			    <searchAttributes id="WorkExecution.jobplan_assetfeature_searchAttributes">
+					<searchAttribute id="WorkExecution.jobplan_assetfeature_searchAttribute" name="jpnum"/>
+					<searchAttribute id="WorkExecution.jobplan_assetfeature_searchAttribute2" name="description"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.jobplan_listItemTemplate" layout="Item2Desc2">
+					<listtext id="WorkExecution.jobplan_list0" resourceAttribute="jpnum" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.jobplan_list1" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.jobplan1_returnAttributes">
+				<returnAttribute id="WorkExecution.jobplan_startfeaturelabel" sourceAttribute="jpnum" targetAttribute="tempjpnum"/>
+			</returnAttributes>
+		</lookup>		
 
 		<!-- Work Order Status lookup -->
 		<lookup id="WorkExecution.statusLookup" label="Work Order Status" resource="domainwostatus">
@@ -8799,10 +8924,41 @@
 			<returnAttributes id="WorkExecution.AssetLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.AssetLookup_assetnum_asset" sourceAttribute="assetnum" targetAttribute="asset"/>
 				<returnAttribute id="WorkExecution.AssetLookup_assetnum_asset_number" sourceAttribute="assetnum" targetAttribute="asset_number"/>
+				<returnAttribute id="WorkExecution.AssetLookup_assetnum_tempasset" sourceAttribute="assetnum" targetAttribute="tempasset"/>
 				<returnAttribute id="WorkExecution.AssetLookup_description_assetdesc" sourceAttribute="description" targetAttribute="assetdesc"/>
 			</returnAttributes>
 
 		</lookup>
+		
+		<!-- Asset lookup 2 -->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterAssetForLookup" id="WorkExecution.AssetLookup2" label="Select Asset" resource="additionalasset">
+			<requiredResources id="WorkExecution.AssetLookup_requiredResources2">
+				<requiredResource id="WorkExecution.AssetLookup_additionalasset2" name="additionalasset"/>
+				<requiredResource id="WorkExecution.AssetLookup_workOrder2" name="workOrder"/>
+			</requiredResources>
+
+			<list id="WorkExecution.AssetLookup_additionalasset_list2" resource="additionalasset">
+				<searchAttributes id="WorkExecution.AssetLookup_additionalasset_searchAttributes2">
+					<searchAttribute id="WorkExecution.AssetLookup_additionalasset_searchAttribute_assetnum2" name="assetnum"/>
+					<searchAttribute id="WorkExecution.AssetLookup_additionalasset_searchAttribute_description2" name="description"/>
+					<searchAttribute id="WorkExecution.AssetLookup_additionalasset_searchAttribute_location2" name="location"/>
+					<searchAttribute id="WorkExecution.AssetLookup_additionalasset_searchAttribute_locationdesc2" name="locationdesc"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.AssetLookup_additionalasset_listItemTemplate_Item2Desc22" layout="Item2Desc2">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetLookup_additionalasset_Item2Desc2_assetnum2" layoutInsertAt="item1" resourceAttribute="assetnum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.AssetLookup_additionalasset_Item2Desc2_description2" layoutInsertAt="desc1" resourceAttribute="description"/>
+					<listtext id="WorkExecution.AssetLookup_additionalasset_Item2Desc2_location2" layoutInsertAt="item2" resourceAttribute="location"/>
+					<listtext id="WorkExecution.AssetLookup_additionalasset_Item2Desc2_locationdesc2" layoutInsertAt="desc2" resourceAttribute="locationdesc"/>
+				</listItemTemplate>
+			</list>
+
+			<returnAttributes id="WorkExecution.AssetLookup_returnAttributes2">
+				<returnAttribute id="WorkExecution.AssetLookup_assetnum_tempasset2" sourceAttribute="assetnum" targetAttribute="tempasset"/>
+				<returnAttribute id="WorkExecution.AssetLookup_location2" sourceAttribute="location" targetAttribute="templocation"/>
+			</returnAttributes>
+
+		</lookup>
+		
 		
 		<!-- custom Asset lookup for permit -->
 		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterAssetForLookup" id="WorkExecution.AssetLookupForPermit" label="Select Asset" resource="additionalasset">
@@ -9036,7 +9192,28 @@
 			<returnAttributes id="WorkExecution.LocationLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.LocationLookup_location_location" sourceAttribute="location" targetAttribute="location"/>
 				<returnAttribute id="WorkExecution.LocationLookup_location_location_name" sourceAttribute="location" targetAttribute="location_name"/>
+				<returnAttribute id="WorkExecution.LocationLookup_location_location_templocation" sourceAttribute="location" targetAttribute="templocation"/>
 				<returnAttribute id="WorkExecution.LocationLookup_description_locationdesc" sourceAttribute="description" targetAttribute="locationdesc"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- Location lookup 2-->
+		<lookup id="WorkExecution.LocationLookup2" label="Select Location" resource="additionallocations">
+			<requiredResources id="WorkExecution.LocationLookup_requiredResources2">
+				<requiredResource id="WorkExecution.LocationLookup_additionallocations2" name="additionallocations"/>
+			</requiredResources>
+			<list id="WorkExecution.LocationLookup_additionallocations_list2" resource="additionallocations">
+				<searchAttributes id="WorkExecution.LocationLookup_additionallocations_searchAttributes2">
+					<searchAttribute id="WorkExecution.LocationLookup_additionallocations_searchAttribute_location2" name="location"/>
+					<searchAttribute id="WorkExecution.LocationLookup_additionallocations_searchAttribute_description2" name="description"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.LocationLookup_additionallocations_listItemTemplate_Item1Desc12" layout="Item1Desc1">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.LocationLookup_additionallocations_Item1Desc1_location2" layoutInsertAt="item1" resourceAttribute="location"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.LocationLookup_additionallocations_Item1Desc1_description2" layoutInsertAt="desc1" resourceAttribute="description"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.LocationLookup_returnAttributes2">
+				<returnAttribute id="WorkExecution.LocationLookup_location_location_templocation2" sourceAttribute="location" targetAttribute="templocation"/>
 			</returnAttributes>
 		</lookup>
 		
@@ -9123,6 +9300,22 @@
 				<returnAttribute id="WorkExecution.ServiceAddressLookup_addresscode_woserviceaddresscode" sourceAttribute="addresscode" targetAttribute="woserviceaddresscode"/>
 				<returnAttribute id="WorkExecution.ServiceAddressLookup_formattedaddress_woserviceaddress" sourceAttribute="formattedaddress" targetAttribute="woserviceaddress"/>
 				<returnAttribute id="WorkExecution.ServiceAddressLookup_description_woserviceaddressdesc" sourceAttribute="description" targetAttribute="woserviceaddressdesc"/>
+			</returnAttributes>
+		</lookup>
+		
+		<!-- custom Risk Assessment Requirement lookup -->
+		<lookup id="WorkExecution.RiskAssessmentLookup" label="Select Vertical" resource="riskdata">
+			<requiredResources id="WorkExecution.RiskAssessmentLookup_requiredResources">
+				<requiredResource id="WorkExecution.RiskAssessmentLookup_additionalserviceaddress" name="riskdata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.RiskAssessmentLookup_additionalserviceaddress_list" resource="riskdata">
+				<listItemTemplate id="WorkExecution.RiskAssessmentLookup_additionalserviceaddress_listItemTemplate_VerticalLookup" layout="Item1Desc1">
+					<listtext id="riskdatawut" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="riskdataolla" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.RiskAssessment_returnAttributes">
+				<returnAttribute id="WorkExecution.RiskAssessment_addresscode_woserdresscode" sourceAttribute="value" targetAttribute="plusgriskasscat"/>
 			</returnAttributes>
 		</lookup>
 		
@@ -9614,6 +9807,10 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement"  >
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				 <attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
+				 <attribute describedByProperty="spi_wm:plusgriskassesscom" id="plusgriskassess_plusgriskassesscom" name="plusgriskassesscom"/>
+				<attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/>
+				<attribute describedByProperty="spi_wm:plusgriskasscat" id="workOrder_tnbvertical_spi_plusgriskasscat" name="plusgriskasscat"/>
 				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
 				<attribute describedByProperty="spi_wm:tnbsmbreportno" id="workOrder_tnbvertical_spi_tnbsmbreportno" index="true" name="tnbsmbreportno"/>
 				<attribute describedByProperty="spi_wm:tnbspecialptw" id="workOrder_tnbvertical_spi_tnbspecialptw" index="true" name="tnbspecialptw"/>
@@ -9687,10 +9884,13 @@
 				<attribute describedByProperty="spi_wm:actualtool" describedByResource="actualToolResource" id="workOrder_actualtoollist_spi_wmactualtool" name="actualtoollist"/>
 				<attribute describedByProperty="spi_wm:worklog" describedByResource="workLogResource" id="workOrder_workloglist_spi_wmworklog" name="workloglist"/>
 				
-				<!-- custom tnb meter -->
+				<!-- custom  -->
 				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="workOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
 				<attribute describedByProperty="spi_wm:tnbwodirectmeters" describedByResource="tnbwodirectmetersResource" id="workOrder_tnbwometergrouplist_spi_tnbwodirectmeters" name="tnbwodirectmeterslist"/>
 				<attribute describedByProperty="spi_wm:plusgpermitwork" describedByResource="permitResource" id="workOrder_tnbwometergrouplist_spi_plusgpermitwork" name="permitlist"/>
+				<attribute describedByProperty="spi_wm:plusgriskassess" describedByResource="plusgriskassessResource" id="workOrder_tnbwometergrouplist_spi_plusgriskassessResource" name="plusgriskassesslist"/>
+				<attribute describedByProperty="spi_wm:plusgworevact" describedByResource="plusgworevactResource" id="workOrder_tnbwometergrouplist_spi_plusgworevactResource" name="plusgworevactlist"/>
+				
 
 				
 				
@@ -9771,6 +9971,11 @@
 				
 				<!-- custom local resource -->
 				<localAttribute dataType="string" id="workOrder_tempMeterName_string" name="tempMeterName"/>
+				
+				<localAttribute dataType="string" id="tempWOResource_ischangestatus_boolean" name="tempparentwo"/>
+			    <localAttribute dataType="string" id="tempWOResource_assetnum" name="tempasset"/>
+				<localAttribute dataType="string" id="tempWOResource_location" name="templocation"/>
+				<localAttribute dataType="string" id="tempWOResource_jpnum" name="tempjpnum"/>
 
 				
 				
@@ -9944,6 +10149,7 @@
 			</attributes>
 		</resource>
 		
+		
 		<!-- custom sqa resource (standalone)-->
 		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="sqa_attributes">
@@ -9969,11 +10175,22 @@
 				<localAttribute dataType="string" id="workOrder_plusgaudlinelist_string" name="plusgaudlinelistsize"/>
 				<localAttribute dataType="string" id="sqa_internalStatus_string" name="internalStatus"/>
 				<localAttribute dataType="string" id="assetfeature_percent" name="percentage"/>
-				<localAttribute dataType="string" id="assetfeature_score" name="score"/>
-				
+				<localAttribute dataType="string" id="assetfeature_score" name="score"/>	
 			</attributes>
 			<queryBases id="sqa_queryBases">
 	 			<queryBase defaultForSearch="true" id="sqasearchAll" name="searchAllsqa" queryUri="/oslc/os/oslcsqa" />
+			</queryBases> 
+		</resource>
+		
+		<!-- custom jobplan resource -->
+		<resource defaultOrderBy="jpnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#jobplan" id="jobplan" name="jobplan" pageSize="1000" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="jobplan_attributes">
+				<attribute describedByProperty="spi_wm:jpnum" id="jobplan_jpnum" index="true" name="jpnum"/>
+				<attribute describedByProperty="spi_wm:description" id="jobplan_description" index="true" name="description"/>
+				<attribute describedByProperty="spi_wm:templatetype" id="jobplan_templatetype" index="true"  name="templatetype"/>
+			</attributes>
+			<queryBases id="jobplan_queryBases">
+	 			<queryBase defaultForSearch="true" id="jobplansearchAll" name="jobplansearchAll" queryUri="/oslc/os/oslcjobplan" />
 			</queryBases> 
 		</resource>
 		
@@ -10090,6 +10307,30 @@
 			</queryBases> 
 			<whereClause id="itedmorgfinfo_whereClause"/>
 		</resource>-->
+		
+		<!-- custom hirads resource -->
+		<resource id="plusgriskassessResource" name="plusgriskassessResource">
+			<attributes id="plusgriskassessResource_attributes">
+   			    <attribute describedByProperty="spi_wm:description" id="plusgriskassessResource_description"  name="description"/>   
+   			    <attribute describedByProperty="spi_wm:mostsigrisk" id="plusgriskassess_mostsigrisk" name="mostsigrisk"/>
+   			    <attribute describedByProperty="spi_wm:mostsigpriority" id="plusgriskassess_mostsigpriority" name="mostsigpriority"/>
+			</attributes>		 
+		</resource>
+		
+		<!-- custom hirads review resource -->
+		<resource id="plusgworevactResource" name="plusgworevactResource">
+			<attributes id="plusgworevactResource_attributes">
+			<attribute describedByProperty="spi_wm:revacttostdact{spi_wm:description}" id="plusgworevactResource_description"  name="description"/>   
+   			    <attribute describedByProperty="spi_wm:stdactnum" id="plusgworevactResource_stdactnum"  name="stdactnum"/>   
+   			    <attribute describedByProperty="spi_wm:yes" id="plusgworevact_yes" name="yes"/>
+   			    <attribute describedByProperty="spi_wm:no" id="plusgworevact_no" name="no"/>
+   			    <attribute describedByProperty="spi_wm:notapplicable" id="plusgworevact_notapplicable" name="notapplicable"/>
+   			    <attribute describedByProperty="spi_wm:numeric" id="plusgworevact_numeric" name="numeric"/>
+   			    <attribute describedByProperty="spi_wm:score" id="plusgworevact_score" name="score"/>
+   			    <attribute describedByProperty="spi_wm:completed" id="plusgworevact_completed" name="completed"/>
+   			    <attribute describedByProperty="spi_wm:completeddate" id="plusgworevact_completeddate" name="completeddate"/>
+			</attributes>		 
+		</resource>
 			
 		<!-- custom Asset Tnb Wo Meters Complex resource -->
 		<resource class="custom.tnbWoMeterGroupObject" id="tnbwometergroupResource" name="tnbwometergroupResource" >
@@ -10129,6 +10370,7 @@
 		<!-- custom tnbwometers resource-->
 		<resource class="custom.TnbWoMeterObject" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#tnbwometers" defaultOrderBy="tnbsequence asc" id="tnbwometers" name="tnbwometers" pageSize="5000" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="tnbwometers_attributes">
+				<attribute describedByProperty="spi_wm:tnbwometertometer{spi:tnbautocalculate}" id="tnbwometers_tnbautocalculate" name="tnbautocalculate"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{oslc:shortTitle}" id="tnbwometers_tnbmetername" name="tnbmetername"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{dcterms:title}" id="tnbwometers_description" name="description"/>
 				<attribute describedByProperty="spi_wm:tnbwometertometer{spi:measureunitid}" id="tnbwometers_measureunitid" name="measureunitid"/>
@@ -12389,6 +12631,18 @@
 	 		</queryBases>									
 			<whereClause id="additionalserviceaddress_whereClause"/>
 		</resource>
+		
+		<!-- custom Risk Assessment Requirement -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="riskdata" name="riskdata" pageSize="10" additionalData="true">
+				<attributes id="riskdata_attributes">
+					<attribute name="value" id="riskdata_serviceaddressid_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="riskdata_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="riskdata_queryBases">
+					<queryBase id="riskdata_queryBase" name="getriskdata" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="riskdata_whereClause" clause="spi:domainid='PLUSGRISKASSESSCAT'" />
+		</resource>	
 		
 		<!-- Vertical resource -->
 		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="verticaldata" name="verticaldata" pageSize="10" additionalData="true">

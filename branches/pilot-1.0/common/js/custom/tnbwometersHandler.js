@@ -134,23 +134,36 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		hideLookupTestForm:function(eventContext){
 			var currentRecord = eventContext.getCurrentRecord();
 			var meterType = currentRecord.get("metertype");
-			console.log(meterType);
+			var tnbautocalculate = currentRecord.get("tnbautocalculate");
+			console.log(meterType +'/'+tnbautocalculate);
 			if(meterType==="CHARACTERISTIC"){
 				eventContext.setDisplay(false);
 			}else{
 				eventContext.setDisplay(true);
+			}
+			
+			if(tnbautocalculate==true){
+				console.log('read only for reading')
+				currentRecord.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
 			}
 		},
 		hideLookupTestForm2:function(eventContext){
 			var currentRecord = eventContext.getCurrentRecord();
 			var meterType = currentRecord.get("metertype");
-			console.log(meterType);
+			var tnbautocalculate = currentRecord.get("tnbautocalculate");
+			console.log(meterType +'/'+tnbautocalculate);
 			if(meterType==="CHARACTERISTIC"){
 				eventContext.setDisplay(true);
 			}else{
 				eventContext.setDisplay(false);
 			}
+			
+			if(tnbautocalculate==true){
+				console.log('read only for reading')
+				currentRecord.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
+			}
 		},
+		
 		
 		meterLabel:function(eventContext){
 			console.log('meterLabel');
@@ -164,11 +177,14 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			ModelService.save(wometerSet).then(function(modelDataSet) {
 				console.log('saved');
 				eventContext.ui.hideCurrentView();
+
+			}).
+			otherwise(function(err){
 				eventContext.application.hideBusy();
-			}).otherwise(function(error) {
-			  self.ui.showMessage(error.message);
-			  eventContext.application.hideBusy();
-			});;			
+				eventContext.ui.showMessage(err);						
+			});			
+
+				
 		},				
 
 	});
