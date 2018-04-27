@@ -9,7 +9,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		"platform/logging/Logger", "dojo/Deferred", "dojo/promise/all",
 		"platform/store/SystemProperties",
 		"platform/store/_ResourceMetadataContext" ], function(declare, lang,
-		ModelService, array,CommunicationManager, tnbwometer, ApplicationHandlerBase,
+		ModelService, arrayUtil,CommunicationManager, tnbwometer, ApplicationHandlerBase,
 		WorkOrderObject, PlatformRuntimeException, PlatformRuntimeWarning,
 		CommonHandler, PlatformConstants, FormatterService, Logger, Deferred,
 		all, SystemProperties, ResourceMetadataContext) {
@@ -114,12 +114,26 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			ModelService._getLocalFilteredRecords('tnbwometers',1000,[{tnbwometersid: meter}],null).then(function(locset){
 				if(locset.data.length>0){
 					console.log(locset);
+					arrayUtil.forEach(locset.data,function(tnbwometers){
+						var tnbautocalculate=(tnbwometers.tnbautocalculate);
+						if(tnbautocalculate==true){
+							console.log('read only for reading')
+							tnbwometers.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
+						}
+					});
 					console.log("tnbwometers from local");
 					eventContext.application.addResource(locset);	
 					eventContext.ui.show(redirect);
 				}else{
 						console.log("tnbwometers from server");
-						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null,null).then(function(locset){
+						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null,null).then(function(locset){	
+							arrayUtil.forEach(locset.data,function(tnbwometers){
+								var tnbautocalculate=(tnbwometers.tnbautocalculate);
+								if(tnbautocalculate==true){
+									console.log('read only for reading')
+									tnbwometers.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
+								}
+							});
 						eventContext.application.addResource(locset);
 						eventContext.ui.show(redirect);
 						
@@ -134,34 +148,25 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 		hideLookupTestForm:function(eventContext){
 			var currentRecord = eventContext.getCurrentRecord();
 			var meterType = currentRecord.get("metertype");
-			var tnbautocalculate = currentRecord.get("tnbautocalculate");
-			console.log(meterType +'/'+tnbautocalculate);
 			if(meterType==="CHARACTERISTIC"){
 				eventContext.setDisplay(false);
 			}else{
 				eventContext.setDisplay(true);
 			}
 			
-			if(tnbautocalculate==true){
-				console.log('read only for reading')
-				currentRecord.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
-			}
+			
 		},
 		hideLookupTestForm2:function(eventContext){
 			var currentRecord = eventContext.getCurrentRecord();
 			var meterType = currentRecord.get("metertype");
-			var tnbautocalculate = currentRecord.get("tnbautocalculate");
-			console.log(meterType +'/'+tnbautocalculate);
+			console.log(meterType);
 			if(meterType==="CHARACTERISTIC"){
 				eventContext.setDisplay(true);
 			}else{
 				eventContext.setDisplay(false);
 			}
 			
-			if(tnbautocalculate==true){
-				console.log('read only for reading')
-				currentRecord.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
-			}
+			
 		},
 		
 		
