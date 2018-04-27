@@ -2832,13 +2832,14 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log(workOrderSet);
 			ModelService.save(workOrderSet).then(function() {
 			}).otherwise(function(error) {
-			 console.log(error);
-			}).always(function(){
 				eventContext.application.hideBusy();
+				eventContext.ui.showMessage(error);	
+			}).always(function(){
+				eventContext.application.showBusy();
 				ModelService.filtered('workOrder', null,[{wonum:wonum2}], 1000, null,null,null,null).then(function(locset){
-					console.log(locset);
 					eventContext.application.addResource(locset);
 					}).otherwise(function(error) {
+						eventContext.application.hideBusy();
 						Logger.error(JSON.stringify(error));
 					}).always(function(){
 						eventContext.ui.hideCurrentView();

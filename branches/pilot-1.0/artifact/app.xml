@@ -362,6 +362,7 @@
 							</button>
 						</text>
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
+						<text editable="true" label="Serial No." id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_serialnum" resourceAttribute="serialnum"/>
 					</groupitem>
 		
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
@@ -543,8 +544,8 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
-						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
-						</button>
+						<!-- <button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
+						</button>  -->
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
@@ -564,9 +565,9 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADS" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
+					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADS" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADS"/>
-					</groupitem>
+					</groupitem>  -->
 					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
 						<eventHandlers id="workorder.hide_eventhanedlers3">
@@ -4686,10 +4687,10 @@
 							<eventHandler class="application.handlers.FailureCodeHandler" event="click" id="WorkExecution.FailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers_click_deleteFailureCode" method="deleteFailureCode"/>
 						</eventHandlers>
 					</button>		
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno" />	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
+					<text editable="false" id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno" />	
+					<text editable="false"  id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
+					<text editable="false"  id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
+					<text  editable="false" id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
 					<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
@@ -9813,7 +9814,7 @@
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
 				<attribute describedByProperty="spi_wm:plusgriskassesscom" id="plusgriskassess_plusgriskassesscom" name="plusgriskassesscom"/>
-				<attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/>
+				<!-- <attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/> -->
 				<attribute describedByProperty="spi_wm:plusgriskasscat" id="workOrder_tnbvertical_spi_plusgriskasscat" name="plusgriskasscat"/>
 				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
 				<attribute describedByProperty="spi_wm:tnbsmbreportno" id="workOrder_tnbvertical_spi_tnbsmbreportno" index="true" name="tnbsmbreportno"/>
@@ -9836,6 +9837,7 @@
 				<attribute describedByProperty="spi:asset{dcterms:title}" id="workOrder_maxassetdesc_spiassetdctermstitle" name="maxassetdesc" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{spi:description_longdescription}" id="workOrder_assetld_spiassetspidescription_longdescription" name="assetld" referenceResource="additionalasset"/>
 				<attribute describedByProperty="spi:asset{spi:islinear}" id="workOrder_islinear_spiassetspiislinear_spiislinear" name="islinear" referenceResource="additionalasset"/>
+				<attribute describedByProperty="spi:asset{spi:serialnum}" id="workOrder_islinear_spiassetspiislinear_spiserialnum" name="serialnum" referenceResource="additionalasset"/>
 				<!-- name and describeByProperty attributes will change to <attribute 
 					name="woAsset" describedByProperty="woAsset" displayValue="shortTitle"/> -->
 				<attribute describedByProperty="spi:asset{spi:updownstatus{spi:changedate}}" id="workOrder_assetstatusdate_spiassetspistatusdate" name="updownstatusdate" referenceResource="additionalasset"/>
@@ -12371,7 +12373,7 @@
 		</resource>
 
 		<!-- Person resource -->
-		<resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" name="additionalperson" id="additionalperson" additionalData="true"> 
+		<resource providedBy="/oslc/sp/FriendOfAFriend" describedBy="http://xmlns.com/foaf/0.1/Person" name="additionalperson" id="additionalperson" pageSize="10000"  additionalData="true"> 
 			<attributes id="person_attributes" > 
 				<attribute id="person_attributes1" name="personuid" describedByProperty="dcterms:identifier" /> 
 				<attribute id="person_attributes2" name="displayname" describedByProperty="foaf:name" /> 
