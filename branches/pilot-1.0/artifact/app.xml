@@ -4687,10 +4687,14 @@
 							<eventHandler class="application.handlers.FailureCodeHandler" event="click" id="WorkExecution.FailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers_click_deleteFailureCode" method="deleteFailureCode"/>
 						</eventHandlers>
 					</button>		
-					<text editable="false" id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno" />	
-					<text editable="false"  id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
-					<text editable="false"  id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
-					<text  editable="false" id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno"> 
+						<!-- <eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecutiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
+						</eventHandlers>  -->
+					</text>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
 					<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
@@ -13640,6 +13644,10 @@
 	    <resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#FailureList" id="failureListResource" name="failureListResource" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">	
 			
 			<attributes id="failureListResource_attributes">
+			 	<attribute describedByProperty="spi:tnbdocketnochkbox" id="failureListResource_failurelist_spitnbdocketnochkbox"  name="tnbdocketnochkbox"/>
+				<attribute describedByProperty="spi:tnbcmsticketnochkbox" id="failureListResource_failurelist_spitnbcmsticketnochkbox"  name="tnbcmsticketnochkbox"/>
+				<attribute describedByProperty="spi:tnbcircuitnochkbox" id="failureListResource_failurelist_spitnbcircuitnochkbox"  name="tnbcircuitnochkbox"/>
+				<attribute describedByProperty="spi:tnbsmbreportnorequired" id="failureListResource_failurelist_spitnbsmbreportnorequired"  name="tnbsmbreportnorequired"/>
 			    <attribute describedByProperty="spi:failurelist" id="failureListResource_failurelist_spifailurelist" key="1" name="failurelist"/>
 			    <attribute describedByProperty="spi:type" id="failureListResource_type_spitype" name="type"/>
 			    <attribute describedByProperty="spi:parent" id="failureListResource_parent_spiparent" index="true" name="parent"/>
@@ -13655,11 +13663,15 @@
 		</resource>
 	 		
 		<!-- Failure Report resource -->
-		<resource id="failureReportResource" name="failureReportResource">
+		<resource class="custom.failureListObject" id="failureReportResource" name="failureReportResource">
 			<attributes id="failureReportResource_attributes">
 			    <attribute describedByProperty="dcterms:identifier" id="failureReportResource_identifier_spi_identifier" name="identifier"/>
 				<attribute describedByProperty="spi_wm:type" id="failureReportResource_type_spi_wmtype" name="type"/>
-				<attribute describedByProperty="spi_wm:linenum" id="failureReportResource_linenum_spi_wmlinenum" name="linenum"/>
+				<attribute describedByProperty="spi_wm:linenum{spi:parent}" id="failureReportResource_linenum_spi_wmlinenum" name="linenum"/>
+				<attribute describedByProperty="spi_wm:linenum{spi:tnbdocketnochkbox}" id="failureReportResource_linenum_spi_tnbdocketnochkbox" name="tnbdocketnochkbox"/>
+				<attribute describedByProperty="spi_wm:linenum{spi:tnbcmsticketnochkbox}" id="failureReportResource_linenum_spi_tnbcmsticketnochkbox" name="tnbcmsticketnochkbox"/>
+				<attribute describedByProperty="spi_wm:linenum{spi:tnbcircuitnochkbox}" id="failureReportResource_linenum_spi_tnbcircuitnochkbox" name="tnbcircuitnochkbox"/>
+				<attribute describedByProperty="spi_wm:linenum{spi:tnbcmsticketnochkbox}" id="failureReportResource_linenum_spi_tnbsmbreportnorequired" name="tnbsmbreportnorequired"/>
 				<attribute describedByProperty="spi:failureCode{dcterms:title}" id="failureReportResource_failureDesc_spifailureCodedctermstitle" name="failureDesc"/>
 				<attribute describedByProperty="spi:failureCode{oslc:shortTitle}" id="failureReportResource_failurecode_spifailureCodeoslcshortTitle" name="failurecode"/>
 				<attribute describedByProperty="spi_wm:anywhererefid" id="failureReportResource_anywhereRefId_spi_wmanywhererefid" name="anywhereRefId"/>
