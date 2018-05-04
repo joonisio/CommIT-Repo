@@ -499,6 +499,41 @@ function(declare, arrayUtil, lang, domClass, ApplicationHandlerBase, Communicati
 			if(wo.wasCommittedToServer() ||!wo.reOpenTransactionWithAttribute((useFailureReport?'failureReportlist':'failurecode'), true)){
 			wo.openPriorityChangeTransaction();
 		}
+		},
+		
+		checkEditableField:function(eventContext){
+			console.log('checkEditableField');
+//			var failureReportList = eventContext.getCurrentRecord();
+//			console.log(failureReportList.type);
+//			
+//			if(failureReportList.type=="REMEDY"){
+//				failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', false);
+//				console.log(failureReportList);
+//			}else{
+//				failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', true);
+//				console.log(failureReportList);
+//			}
+//			
+//			var failureReportList = eventContext.application.getResource('workOrder.failureReportlist');
+//			console.log(failureReportList);
+////			
+////			failureReportList.data[2].getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', true);
+//			
+//			arrayUtil.forEach(failureReportList.data, function(data){
+//				if(data.type==="REMEDY"){
+//					console.log('true');
+//					data.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', false);
+//					console.log(failureReportList);
+//				}
+//				else{
+//					console.log('false');
+//					data.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', true);
+//				}
+////						
+//			});
+			
+			
+			
 		}
 		
 	});
