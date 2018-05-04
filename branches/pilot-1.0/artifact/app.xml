@@ -4688,13 +4688,25 @@
 						</eventHandlers>
 					</button>		
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno"> 
-						<!-- <eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
+						<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
 							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecutiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
-						</eventHandlers>  -->
+						</eventHandlers> 
 					</text>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno"/>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno"/>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno"/>							
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno">	
+						<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_evesntHawndlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExescutiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
+						</eventHandlers> 
+					</text>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno">	
+						<eventHandlers id="WorkExecsution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecustiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
+						</eventHandlers> 
+					</text>	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno">
+						<eventHandlers id="WorkExecsution.FailureView_weorkOrder_failureReportlist_list_eventHawndlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExeecustiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
+						</eventHandlers> 
+					</text>								
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
 					<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
