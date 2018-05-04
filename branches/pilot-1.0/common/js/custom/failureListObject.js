@@ -7,19 +7,19 @@ define("custom/failureListObject",
 			return {
 		onInitialize : function(failureReportResource) {
 			console.log('custom.failureListObject');
-			console.log(failureReportResource);
-			//console.log(failureReport.get('type'));
-			if(failureReportResource.get('type') === "REMEDY"){
-				failureReportResource.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', false);
-				console.log('yes');
-			}else{
-				console.log('no');
-				console.log(failureReportResource.get('tnbdocketnochkbox'));
-				failureReportResource.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', true);
-				failureReportResource.getRuntimeFieldMetadata('tnbdocketno').set('readonly', true);
-				failureReportResource.getRuntimeFieldMetadata('tnbsmbreportno').set('readonly', true);
-				failureReportResource.getRuntimeFieldMetadata('tnbcircuitno').set('readonly', true);
-			}
+//			console.log(failureReportResource);
+//			//console.log(failureReport.get('type'));
+//			if(failureReportResource.get('type') === "REMEDY"){
+//				failureReportResource.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', false);
+//				console.log('yes');
+//			}else{
+//				console.log('no');
+//				console.log(failureReportResource.get('tnbdocketnochkbox'));
+//				failureReportResource.getRuntimeFieldMetadata('tnbcmsticketno').set('readonly', true);
+//				failureReportResource.getRuntimeFieldMetadata('tnbdocketno').set('readonly', true);
+//				failureReportResource.getRuntimeFieldMetadata('tnbsmbreportno').set('readonly', true);
+//				failureReportResource.getRuntimeFieldMetadata('tnbcircuitno').set('readonly', true);
+//			}
 			
 			
 		}

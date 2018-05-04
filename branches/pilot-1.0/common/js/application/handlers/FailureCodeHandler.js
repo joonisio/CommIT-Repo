@@ -503,17 +503,38 @@ function(declare, arrayUtil, lang, domClass, ApplicationHandlerBase, Communicati
 		
 		checkEditableField:function(eventContext){
 			console.log('checkEditableField');
-//			var failureReportList = eventContext.getCurrentRecord();
-//			console.log(failureReportList.type);
+			
+			
+			var failureReportList = eventContext.getCurrentRecord();
+			if(failureReportList.type=="REMEDY"){
+				console.log('REMEDY');
+				failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', false);
+		
+			}else{
+			console.log('NOT REMEDY');
+			failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', true);
+			}
+			
+//			var tnbdocketnochkbox = failureReportList.get('tnbdocketnochkbox');
+//			var tnbcmsticketnochkbox= failureReportList.get('tnbcmsticketnochkbox');
+//			var tnbcircuitnochkbox= failureReportList.get('tnbcircuitnochkbox');
 //			
+//			console.log(tnbdocketnochkbox+"/"+tnbcmsticketnochkbox+"/"+tnbcircuitnochkbox);
+//			
+//		
 //			if(failureReportList.type=="REMEDY"){
-//				failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', false);
-//				console.log(failureReportList);
+//				console.log('REMEDY');
+//				if(tnbdocketnochkbox ||tnbcmsticketnochkbox || tnbcircuitnochkbox ){
+//					console.log(eventContext.resourceAttribute);
+//					failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', false);
+//				}else{
+//					failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', true);
+//				}
 //			}else{
+//				console.log('NOT REMEDY');
 //				failureReportList.getRuntimeFieldMetadata(eventContext.resourceAttribute).set('readonly', true);
-//				console.log(failureReportList);
 //			}
-//			
+////			
 //			var failureReportList = eventContext.application.getResource('workOrder.failureReportlist');
 //			console.log(failureReportList);
 ////			
