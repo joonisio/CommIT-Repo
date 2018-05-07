@@ -544,8 +544,8 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
-						<!-- <button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
-						</button>  -->
+						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
+						</button> 
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
@@ -565,9 +565,9 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
 					</groupitem>
-					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADS" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADS"/>
-					</groupitem>  -->
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADC" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADC"/>
+					</groupitem>
 					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
 						<eventHandlers id="workorder.hide_eventhanedlers3">
@@ -3969,7 +3969,7 @@
 		</view>
 		
 		<!--custom hirads and hirads review view-->
-		<view id="WorkExecution.hirads" label="HIRADS">
+		<view id="WorkExecution.hirads" label="HIRADC">
 			<requiredResources id="WorkExecution.hirads_re">
 				<requiredResource id="WorkExecution.hirads_workOrder" name="workOrder">
 					<requiredAttribute id="WorkExecution.MultipleAssetsLocationsEntryView_workOrder_plusgriskassessclist" name="plusgriskassesslist"/>
@@ -3980,7 +3980,7 @@
 			<container  id="WorkExecution.hirads_workOrder_container_0" resource="workOrder">
 				<group id="WorkExecution.hirads_group_0">
 					<groupitem id="WorkExecution.hiradsworkOrder_groupitem_0">
-						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_0_sequence_Sequence" label="Risk Assessment" resourceAttribute="plusgriskassessnum"/>
+						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_0_sequence_Sequence" lookup="WorkExecution.plusgriskassessLookup" label="Risk Assessment" resourceAttribute="plusgriskassessnum"/>
 					</groupitem>
 					<groupitem id="WorkExecution.hirads_workOrder_groupitem_1">
 						<text editable="false" id="WorkExecution.hirads_workOrder_groupitem_1_assetdesc" label="Risk Assessment Requirement" lookup="WorkExecution.RiskAssessmentLookup" resourceAttribute="plusgriskasscat"/>
@@ -8607,6 +8607,26 @@
 			</returnAttributes>
 		</lookup>
 		
+		<!-- custom plusgriskassess lookup -->
+		<lookup id="WorkExecution.plusgriskassessLookup" label="Select value" resource="plusgriskassess">
+			<requiredResources id="WorkExecution.plusgriskassessLookup_requiredResources">
+				<requiredResource id="WorkExecution.plusgriskassessLookup_domainwostatus" name="plusgriskassess"/>
+			</requiredResources>
+
+			<list id="WorkExecution.plusgriskassessLookup_list" resource="plusgriskassess">
+				<listItemTemplate id="WorkExecution.plusgriskassessLookup_listItemTemplate_Item1Desc1" layout="Item1Desc1">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgriskassessLookup_Item1Desc1_value" layoutInsertAt="item1" resourceAttribute="riskassessnum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.plusgriskassessLookup_Item1Desc1_description" layoutInsertAt="desc1" resourceAttribute="description"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.plusgriskassessLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.plusgriskassessLookup_value_dsplannum" sourceAttribute="riskassessnum" targetAttribute="plusgriskassessnum"/>
+				<returnAttribute id="WorkExecution.plusgriskassessLookup_description_desc" sourceAttribute="description" targetAttribute="description"/>
+				<returnAttribute id="WorkExecution.plusgriskassessLookup_description_revisionnum" sourceAttribute="mostsigrisk" targetAttribute="mostsigrisk"/>
+				<returnAttribute id="WorkExecution.plusgriskassessLookup_description_revisionnum2" sourceAttribute="mostsigpriority" targetAttribute="mostsigpriority"/>
+			</returnAttributes>
+		</lookup>
+		
 		
 <!-- custom Person lookup 1 -->
 		<lookup id="WorkExecution.PersonLookup" label="Select Person" resource="additionalperson">
@@ -9830,7 +9850,7 @@
 				<!-- limits the scope of attributes used from full Work Order RDF -->
 				<attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
 				<attribute describedByProperty="spi_wm:plusgriskassesscom" id="plusgriskassess_plusgriskassesscom" name="plusgriskassesscom"/>
-				<!-- <attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/> -->
+				<attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/>
 				<attribute describedByProperty="spi_wm:plusgriskasscat" id="workOrder_tnbvertical_spi_plusgriskasscat" name="plusgriskasscat"/>
 				<attribute describedByProperty="spi_wm:tnbchildwometer" id="workOrder_tnbvertical_spi_tnbchildwometer" index="true" name="tnbchildwometer"/>
 				<attribute describedByProperty="spi_wm:tnbsmbreportno" id="workOrder_tnbvertical_spi_tnbsmbreportno" index="true" name="tnbsmbreportno"/>
@@ -10330,16 +10350,31 @@
 			<whereClause id="itedmorgfinfo_whereClause"/>
 		</resource>-->
 		
-		<!-- custom hirads resource -->
+		
+		<!-- custom hiradc resource (standalone) -->
+		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#plusgriskassess" id="plusgriskassess" defaultOrderBy="riskassessnum asc" name="plusgriskassess"  pageSize="500" providedBy="/oslc/sp/WorkManagement">
+			<attributes id="plusgriskassessResource_attributes1">
+				<attribute describedByProperty="spi_wm:riskassessnum" id="plusgriskassessResource_riskassessnum2"  name="riskassessnum"/>
+   			    <attribute describedByProperty="spi_wm:description" id="plusgriskassessResource_description2"  name="description"/>   
+   			    <attribute describedByProperty="spi_wm:mostsigrisk" id="plusgriskassess_mostsigrisk2" name="mostsigrisk"/>
+   			    <attribute describedByProperty="spi_wm:mostsigpriority" id="plusgriskassess_mostsigpriority2" name="mostsigpriority"/>
+			</attributes>
+			<queryBases id="plusgriskassess_queryBases">
+	 			<queryBase defaultForSearch="true" id="plusgriskassessAll" name="plusgriskassessAll" queryUri="/oslc/os/oslcplusgriskassess" />
+			</queryBases> 		 
+		</resource>
+		
+		<!-- custom hiradc resource -->
 		<resource id="plusgriskassessResource" name="plusgriskassessResource">
 			<attributes id="plusgriskassessResource_attributes">
+				<attribute describedByProperty="spi_wm:riskassessnum" id="plusgriskassessResource_riskassessnum"  name="riskassessnum"/>
    			    <attribute describedByProperty="spi_wm:description" id="plusgriskassessResource_description"  name="description"/>   
    			    <attribute describedByProperty="spi_wm:mostsigrisk" id="plusgriskassess_mostsigrisk" name="mostsigrisk"/>
    			    <attribute describedByProperty="spi_wm:mostsigpriority" id="plusgriskassess_mostsigpriority" name="mostsigpriority"/>
 			</attributes>		 
 		</resource>
 		
-		<!-- custom hirads review resource -->
+		<!-- custom hiradc review resource -->
 		<resource id="plusgworevactResource" name="plusgworevactResource">
 			<attributes id="plusgworevactResource_attributes">
 			<attribute describedByProperty="spi_wm:revacttostdact{spi_wm:description}" id="plusgworevactResource_description"  name="description"/>   
