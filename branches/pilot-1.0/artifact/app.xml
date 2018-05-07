@@ -4094,9 +4094,13 @@
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbassetnum" layoutInsertAt="item11" resourceAttribute="tnbassetnum"/>
 					<listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbper" layoutInsertAt="item3" resourceAttribute="tnbper"/>
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbcbnumber" layoutInsertAt="item14" resourceAttribute="tnbcbnumber"/>-->
-					<text editable="true" cssClass="shortText" label="CB Number" id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbcbnumber" layoutInsertAt="item14" resourceAttribute="tnbcbnumber"/>
+					<text editable="true" cssClass="shortText" label="CB Number" id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbcbnumber" layoutInsertAt="item14" resourceAttribute="tnbcbnumber">
+					<eventHandlers id="WorkExecution.hidecbnumber">
+						<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="hideCbNumber"/>
+					</eventHandlers>	
+					</text>
 					<eventHandlers id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers">
-						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="filterMeter"/>
+						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbWOMeterList_listItemTemplate_hideCbNumber" method="filterMeter"/>
 					</eventHandlers>																		
 				</listItemTemplate>				
 			</list>	

@@ -2849,6 +2849,21 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			
 		},
 		
+		hideCbNumber: function(eventContext){
+			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var tnbsubvertical = workOrder.get('tnbsubvertical');
+			console.log(tnbsubvertical);
+			
+			if(tnbsubvertical === "PROTECTION RELAY"){
+				console.log('hide cb number')
+				eventContext.setDisplay(false);
+				
+			}else{
+				eventContext.setDisplay(true);	
+			}
+			
+		},
+		
 		//--------------------------------------------------------------end custom javascript code----------------------------------------------------
 		
 		hideForNonCalibrationWO: function(eventContext) {
