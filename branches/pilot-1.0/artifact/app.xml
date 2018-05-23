@@ -199,7 +199,7 @@
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
 				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
-				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>
+				<!-- <eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>  -->
 			</eventHandlers>
 		</view>
 		
@@ -362,7 +362,7 @@
 							</button>
 						</text>
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
-						<text editable="true" label="Serial No." id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_serialnum" resourceAttribute="serialnum"/>
+						<!-- <text editable="true" label="Serial No." id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_serialnum" resourceAttribute="serialnum"/> -->
 					</groupitem>
 		
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
@@ -540,56 +540,6 @@
 					<!--<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_40" layout="Item1Count1Button1" transitionTo="WorkExecution.ParentWO">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo2" layoutInsertAt="item1" value="Parent Work Order"/>
 					</groupitem>	  -->
-					
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
-						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
-						</button> 
-							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
-								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
-								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
-							</eventHandlers>
-					</groupitem>		
-							
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.MultipleAssetsLocationsView">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo" layoutInsertAt="item1" value="Multiple Assets &amp; Locations"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsize" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
-						</text>
-					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.TasksView">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_Tasks" layoutInsertAt="item1" value="Tasks"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_tasklistsize" layoutInsertAt="count1" resourceAttribute="tasklistsize"> 
-						</text>
-					</groupitem> 
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
-					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADC" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADC"/>
-					</groupitem>
-					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
-						<eventHandlers id="workorder.hide_eventhanedlers3">
-							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
-						</eventHandlers>
-					</groupitem> -->
-					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
-						</text>
-					</groupitem>
-				</group>								
-				<group id="WorkExecution.WorkDetailView_group_2">
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LaborAssignmentsView">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_LaborAssignments" layoutInsertAt="item1" value="Labor Assignments"/>
-						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_assignmentlistsize" layoutInsertAt="count1" resourceAttribute="assignmentlistsize">
-						</text>
-						<eventHandlers id="workorder.hide_eventhandlers5">
-							<eventHandler id="workorder.hide_eventhandler5" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
-					</groupitem>
-					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_sqalistsize" layoutInsertAt="count1" resourceAttribute="sqalistsize"/>
@@ -614,6 +564,56 @@
 						<eventHandlers id="workorder.hide_eventhandlers58">
 							<eventHandler id="workorder.hide_eventhandler58" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
 							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
+						</eventHandlers>
+					</groupitem>
+					
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
+						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
+						</button>
+							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
+								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
+								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
+							</eventHandlers>
+					</groupitem>		
+					
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbWOMeterList">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
+					</groupitem>
+							
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.MultipleAssetsLocationsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo" layoutInsertAt="item1" value="Multiple Assets &amp; Locations"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_multiassetloclistsize" layoutInsertAt="count1" resourceAttribute="multiassetloclistsize">
+						</text>
+					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.TasksView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_Tasks" layoutInsertAt="item1" value="Tasks"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TasksView_0_tasklistsize" layoutInsertAt="count1" resourceAttribute="tasklistsize"> 
+						</text>
+					</groupitem> 
+					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADC" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADC"/>
+					</groupitem>   -->
+					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
+						<eventHandlers id="workorder.hide_eventhanedlers3">
+							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
+						</eventHandlers>
+					</groupitem> -->
+					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
+						</text>
+					</groupitem>
+				</group>								
+				<group id="WorkExecution.WorkDetailView_group_2">
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.LaborAssignmentsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_LaborAssignments" layoutInsertAt="item1" value="Labor Assignments"/>
+						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_assignmentlistsize" layoutInsertAt="count1" resourceAttribute="assignmentlistsize">
+						</text>
+						<eventHandlers id="workorder.hide_eventhandlers5">
+							<eventHandler id="workorder.hide_eventhandler5" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
 						</eventHandlers>
 					</groupitem>
 					
