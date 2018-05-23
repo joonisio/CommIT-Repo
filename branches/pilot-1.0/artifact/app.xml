@@ -487,7 +487,7 @@
 					</groupitem>
 					<groupitem id="workorder.subvertical">
 						<text editable="true" id="subvertical" label="Subvertical" lookup="WorkExecution.SubVerticalLookup" placeHolder="Select from list" layoutInsertAt="item1" resourceAttribute="tnbsubvertical"/>
-					</groupitem>									
+					</groupitem>												
 				</group>
 			</container>
 			<!--custom label feature and featurelabel -->
@@ -4073,6 +4073,13 @@
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwodirectmeterslist" name="tnbwodirectmeterslist"/>
 				</requiredResource>
 			</requiredResources>
+			<container id="WorkExecution.TnbWOMeterList_workOrder_container_0" resource="workOrder">
+			    <group id="WorkExecution.TnbWOMeterList_group_0">
+					<groupitem id="workorder.tnbautocaltype">
+						<text editable="true" id="workorder_text_tnbautocaltype" cssClass="shortText" label="Auto / Manual Calculation" lookup="WorkExecution.tnbautocaltypeLookup" placeHolder="Select from list" layoutInsertAt="item1" resourceAttribute="tnbautocaltype"/>
+					</groupitem>			        
+			    </group>
+			</container>			
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
 				 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes2">
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbmetergroup" name="tnbmetergroup"/>
@@ -4122,7 +4129,7 @@
 		<view id="WorkExecution.TnbWOMeterList3" label="MetersBetul"  saveonshow="true" resource="tnbwomtergroup">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources3">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder3" name="tnbwomtergroup">
-				</requiredResource>
+				</requiredResource>   
 			</requiredResources>
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list3" label="Work Order Meter Group" resource="tnbwomtergroup" showHeader="true">
 				 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes22">
@@ -4159,16 +4166,26 @@
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
-					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" resourceAttribute="tnbnewreading" placeHolder="Tap to enter" lookup="WorkExecution.MeterReadingLookup">
+					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_tnbmanualreading" label="Manual Reading"  layoutInsertAt="item3" lookup="WorkExecution.ManualMeterReadingLookup" resourceAttribute="tnbmanualreading" >
+					 	 <eventHandlers id="WorkExecution.eventHandlers_tnbmanualreading">
+							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.eventHandlers_tnbmanualreading_render_manualreading" method="showLookupTestFormManualReading"/>
+						</eventHandlers>	
+					 </text>	
+					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_tnbmanualreading_nolookup" label="Manual Reading" layoutInsertAt="item3" resourceAttribute="tnbmanualreading" >
+					 	 <eventHandlers id="WorkExecution.eventHandlers_tnbmanualreading_nolookup">
+							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.eventHandlers_tnbmanualreading_render_manualreading_nolookup" method="showTestFormManualReading"/>
+						</eventHandlers>	
+					 </text>					 
+					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" label="New Reading"  resourceAttribute="tnbnewreading" placeHolder="Tap to enter" lookup="WorkExecution.MeterReadingLookup">
 					 	<eventHandlers id="WorkExecution.kdkwe">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutieee" method="hideLookupTestForm2"/>
 						</eventHandlers>	
 					 </text>
-					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList2" layoutInsertAt="item3" resourceAttribute="tnbnewreading" >
+					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList2" layoutInsertAt="item3" label="New Reading"  resourceAttribute="tnbnewreading" >
 					 	 <eventHandlers id="WorkExecution.kdekwe">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutietee" method="hideLookupTestForm"/>
 						</eventHandlers>	
-					 </text>
+					 </text>				 
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_measureunit" layoutInsertAt="item4" resourceAttribute="measureunitid"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbresult" layoutInsertAt="item5" resourceAttribute="tnbresult"/>
 					<!-- <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbwometersid" layoutInsertAt="item3" resourceAttribute="tnbwometersid"/>		 -->													
@@ -9413,6 +9430,22 @@
 			</returnAttributes>
 		</lookup>		
 		
+		<!-- custom tnbautocaltype lookup -->
+		<lookup id="WorkExecution.tnbautocaltypeLookup" label="Select Value" resource="tnbautocaltypedata">
+			<requiredResources id="WorkExecution.tnbautocaltypeLookup_requiredResources">
+				<requiredResource id="WorkExecution.tnbautocaltypeLookup_additionalserviceaddress" name="tnbautocaltypedata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.tnbautocaltypeLookup_list" resource="tnbautocaltypedata">
+				<listItemTemplate id="WorkExecution.tnbautocaltypeLookup_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.tnbautocaltypeLookup_value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.tnbautocaltypeLookup_desc" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.tnbautocaltypeLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.tnbautocaltypeLookup_workorder_tnbautocaltype" sourceAttribute="value" targetAttribute="tnbautocaltype"/>
+			</returnAttributes>
+		</lookup>		
+		
 		<!-- custom Permit Type lookup -->
 		<lookup id="WorkExecution.PermitTypeLookup" label="Select Permit Type" resource="permittypedata">
 			<requiredResources id="WorkExecution.PermitTypeLookup_requiredResources">
@@ -9729,6 +9762,22 @@
 			</returnAttributes>
 		</lookup>	
 		
+		<!-- Custom ALN Lookup for Manual Meter Reading-->
+		<lookup filterClass="application.handlers.WODetailHandler" filterMethod="filterDomain" id="WorkExecution.ManualMeterReadingLookup" label="Select Value" resource="alnmeters">
+			<requiredResources id="WorkExecution.ManualMeterReadingLookup_requiredResources">
+				<requiredResource id="WorkExecution.ManualMeterReadingLookup_alnmeters" name="alnmeters" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.ManualMeterReadingLookup_list" resource="alnmeters">
+				<listItemTemplate id="WorkExecution.ManualMeterReadingLookup_listItemTemplate_MeterReadingLookup" layout="Item1Desc1">
+					<listtext id="ManualMeterReadingLookup.value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="ManualMeterReadingLookup.description" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.ManualMeterReadingLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.ManualMeterReadingLookup_tnbmanualreading" sourceAttribute="value" targetAttribute="tnbmanualreading"/>
+			</returnAttributes>
+		</lookup>		
+		
 		<!-- NUMERIC Lookup for Maxdomain -->
 		<lookup filterClass="application.handlers.ClassificationFormHandler" filterMethod="filterMaxDomain" id="Inspection.NumericLookup" label="Select Value" resource="maxdomain">
 		    <list attribute="numericdomain" id="Inspection.NumericLookup_maxdomain_numericdomain_list" resource="maxdomain">
@@ -9852,6 +9901,7 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement"  >
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:tnbautocaltype" id="workOrder_tnbvertical_spi_tnbautocaltype" name="tnbautocaltype"/>
 				<attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
 				<attribute describedByProperty="spi_wm:plusgriskassesscom" id="plusgriskassess_plusgriskassesscom" name="plusgriskassesscom"/>
 				<attribute describedByProperty="spi_wm:plusgriskassessnum" id="workOrder_tnbvertical_spi_plusgriskassessnum" name="plusgriskassessnum"/>
@@ -10448,6 +10498,7 @@
 				<attribute describedByProperty="spi_wm:tnblastreadinginspector" id="tnbwometers_tnblastreadinginspector" name="tnblastreadinginspector"/>
 				<attribute describedByProperty="spi_wm:tnbresult" id="tnbwometers_tnbresult" name="tnbresult"/>
 				<attribute describedByProperty="spi_wm:tnbremarks" id="tnbwometers_tnbremarks" name="tnbremarks"/>
+				<attribute describedByProperty="spi_wm:tnbmanualreading" id="tnbwometers_tnbmanualreading" name="tnbmanualreading"/>
 				<!-- <localAttribute dataType="integer" formula="${tnbwometersid}" id="assetfeature_attributesd5" index="true" name="tnbwometersidSearch"/>   -->
 			</attributes>
 			<!--<creationFactories id="locationMeters_creationFactorie3s">
@@ -12768,7 +12819,19 @@
 					<queryBase id="reasonforholddata_queryBase" name="getReasonforHoldData" queryUri="/oslc/os/oslcalndomain" />
 				</queryBases >
 				<whereClause id="reasonforholddata_whereClause" clause="spi:domainid='TNBREASONFORHOLD'" />
-		</resource>			
+		</resource>		
+		
+		<!-- Custom tnbautocaltype aln domain resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="tnbautocaltypedata" name="tnbautocaltypedata" pageSize="10" additionalData="true">
+				<attributes id="tnbautocaltypedata_attributes">
+					<attribute name="value" id="tnbautocaltypedata_dctermsidentifier" describedByProperty="spi:value" />
+					<attribute name="description" id="tnbautocaltypedata_description_dctermstitle" describedByProperty="spi:description" />
+				</attributes>
+				<queryBases id="tnbautocaltypedata_queryBases">
+					<queryBase id="tnbautocaltypedata_queryBase" name="gettnbautocaltypeData" queryUri="/oslc/os/oslcalndomain" />
+				</queryBases >
+				<whereClause id="tnbautocaltypedata_whereClause" clause="spi:domainid='TNBAUTOCALTYPE'" />
+		</resource>				
 		
 		<!-- Permit Type resource -->
 		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="permittypedata" name="permittypedata" pageSize="10" additionalData="true">
