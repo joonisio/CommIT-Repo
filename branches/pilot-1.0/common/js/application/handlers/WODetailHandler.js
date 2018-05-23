@@ -2094,6 +2094,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		
 	//----------------------------------------custom javascript code-----------------------------------------------------------------------------
 		offlineDownload:function(eventContext){
+			this.originalQueryBaseIndex = eventContext.ui.getCurrentViewControl().queryBaseIndex;
 			console.log('download for offline mode');
 			eventContext.application.showBusy();
 			
@@ -2598,10 +2599,9 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			console.log('function: childBackButton 2');
 			console.log("previous wonum :"+previousWO);
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-			ModelService.clearSearchResult(eventContext.application.getResource('workOrder')).then(function(e){
-				
+			
+			eventContext.ui.getCurrentViewControl().changeQueryBase.call(eventContext.ui.getViewFromId("WorkExecution.WorkItemsView"),this.originalQueryBaseIndex).then(function() {
 				eventContext.ui.show('WorkExecution.WorkItemsView');
-
 			});
 			
 		
