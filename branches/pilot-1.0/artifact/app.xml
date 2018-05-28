@@ -199,7 +199,7 @@
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
 				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
-				<!-- <eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>  -->
+				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>
 			</eventHandlers>
 		</view>
 		
@@ -279,7 +279,10 @@
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_CaptureGPS_action_eventHandlers_click" method="updateCurrentGPSPosition"/>
 					</eventHandlers>
 				</action>	
-				<action id="WorkExecution.WorkDetailView_Cd_action" label="Search Work Order" transitionTo="WorkExecution.SearchWorkOrderView">
+				<action id="WorkExecution.WorkDetailView_Cd_action" label="My Assigned Work" >
+				<eventHandlers id="WorkExecution.WorkDetailView_CaptureGPS_action_action_eventHaendlers">
+						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkeDetailView_CaptureGPS_action_eventHandlers_click" method="backToList"/>
+					</eventHandlers>
 				</action>	
 						
 											
