@@ -2095,37 +2095,37 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 	//----------------------------------------custom javascript code-----------------------------------------------------------------------------
 		offlineDownload:function(eventContext){
 			this.originalQueryBaseIndex = eventContext.ui.getCurrentViewControl().queryBaseIndex;
-			console.log('download for offline mode');
-			eventContext.application.showBusy();
-			
-				var wonum = null;
-				var isInArray ;
-				var resource = ["permit","sqa"];
-				console.log(wonumArray.toString());
-				var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-				
-				console.log(wo);
-				
-				arrayUtil.forEach(wo.data, function(wo){
-					//console.log(wo.get("tnbwometergrouplist"));
-					wonum = wo.get("wonum");
-					tnbwometerslist = wo.get("tnbwometerslist");			
-					//check weather wonum already in array
-					isInArray = wonumArray.includes(wonum);
-					
-						for(var i =0;i<resource.length;i++){
-							//console.log(resource[i]);
-							ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
-								//eventContext.application.addResource(locset);
-								//console.log(locset);
-							});						
-					}
-					if(!isInArray){
-						wonumArray.push(wonum);
-					}
-					
-				});
-				this.downloadAllChild(eventContext);
+//			console.log('download for offline mode');
+//			eventContext.application.showBusy();
+//			
+//				var wonum = null;
+//				var isInArray ;
+//				var resource = ["permit","sqa"];
+//				console.log(wonumArray.toString());
+//				var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
+//				
+//				console.log(wo);
+//				
+//				arrayUtil.forEach(wo.data, function(wo){
+//					//console.log(wo.get("tnbwometergrouplist"));
+//					wonum = wo.get("wonum");
+//					tnbwometerslist = wo.get("tnbwometerslist");			
+//					//check weather wonum already in array
+//					isInArray = wonumArray.includes(wonum);
+//					
+//						for(var i =0;i<resource.length;i++){
+//							//console.log(resource[i]);
+//							ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
+//								//eventContext.application.addResource(locset);
+//								//console.log(locset);
+//							});						
+//					}
+//					if(!isInArray){
+//						wonumArray.push(wonum);
+//					}
+//					
+//				});
+//				this.downloadAllChild(eventContext);
 			
 			
 		},
