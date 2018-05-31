@@ -128,6 +128,7 @@
 			
 				<listItemTemplate id="WorkExecution.WorkItemsView_workOrder_listItemTemplate_WorkListItem" layout="WorkListItem">
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.WorkItemsView_workOrder_WorkListItem_wonum" layoutInsertAt="item1" resourceAttribute="wonum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.WorkItemsView_workOrder_WorkListItem_tnbsapwonum" layoutInsertAt="item1" resourceAttribute="tnbsapwonum"/>
 					<listtext id="WorkExecution.WorkItemsView_workOrder_WorkListItem_starttime" layoutInsertAt="item2" resourceAttribute="starttime"/>
 					<image id="WorkExecution.WorkItemsView_workOrder_WorkListItem_statusimg" layoutInsertAt="item4" cssClass="statusDesc" image="statusicons/{:internalStatus}.png" cssAttributes="internalStatus" platform="false"/>
 					<listtext id="WorkExecution.WorkItemsView_workOrder_WorkListItem_statusdesc" layoutInsertAt="item4" cssClass="statusDesc" resourceAttribute="statusdesc" cssAttributes="status"/>
@@ -326,6 +327,9 @@
 							</eventHandlers>
 						</textarea>
 					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbsapwonum_groupitem_0">
+						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_0_tnbsapwonum" label="SAP Work Order" resourceAttribute="tnbsapwonum"/>
+					</groupitem>					
 					<!-- <groupitem transitionTo="WorkExecution.EditAssetView"> <text resourceAttribute="assetnumanddescription" 
 						label="Asset" editable="false" /> -->
 					<!-- <text resourceAttribute="asset" label="Asset" editable="true" lookup="WorkExecution.AssetLookup" 
@@ -9904,6 +9908,7 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement"  >
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:tnbsapwonum" id="workOrder_spi_wm_tnbsapwonum" name="tnbsapwonum"/>
 				<attribute describedByProperty="spi_wm:tnbautocaltype" id="workOrder_tnbvertical_spi_tnbautocaltype" name="tnbautocaltype"/>
 				<attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
 				<attribute describedByProperty="spi_wm:plusgriskassesscom" id="plusgriskassess_plusgriskassesscom" name="plusgriskassesscom"/>
@@ -10290,7 +10295,8 @@
 			</attributes>
 			<queryBases id="jobplan_queryBases">
 	 			<queryBase defaultForSearch="true" id="jobplansearchAll" name="jobplansearchAll" queryUri="/oslc/os/oslcjobplan" />
-			</queryBases> 
+			</queryBases>
+			<whereClause clause="spi_wm:status='ACTIVE'" id="jobplanresource_whereClause"/> 
 		</resource>
 		
 		<!-- custom sqa resource status-->
