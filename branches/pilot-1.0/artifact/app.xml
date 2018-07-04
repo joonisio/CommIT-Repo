@@ -284,13 +284,12 @@
 				<eventHandlers id="WorkExecution.WorkDetailView_CaptureGPS_action_action_eventHaendlers">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkeDetailView_CaptureGPS_action_eventHandlers_click" method="backToList"/>
 					</eventHandlers>
-				</action>	
+				</action>
 						
 											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
-				<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterMeter1" method="filterMeter1"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -298,7 +297,6 @@
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
 				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>	
-				<!--  <eventHandler id="WorkExecution.FeatureLookup_eventHandler2" event="render" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>  -->
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -316,10 +314,17 @@
 								<eventHandler class="application.handlers.WOListHandler" event="render" id="WorkExecution.WorkDetailView_started_button_eventHandlers_render_enableTimerButton" method="enableTimerButton"/>
 							</eventHandlers>
 						</button>
-					</groupitem>
+					</groupitem>				
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_0">
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_0_wonum_WorkOrder" label="Work Order" resourceAttribute="wonum"/>
 					</groupitem>
+					<groupitem id="WorkExecution.WorkDetailView_workOrderParent_groupitem_0">
+						<text editable="false" id="WorkExecution.WorkDetailView_workOrderParent_groupitem_0_wonum_ParentWorkOrder" label="Parent Work Order" resourceAttribute="parentWonum"/>
+						<eventHandlers id="WorkExecution.WorkDetailView_WorkDetailView_ParentWorkOrder_eventHandlers">
+						    <eventHandler id="workorder.hideParentWorkOrder_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideParentWorkOrder"/>
+							<eventHandler id="WorkExecution.WorkDetailView_click_wodetail" event="click" class="application.handlers.WODetailHandler" method="parentWODetails"/>
+						</eventHandlers>						
+					</groupitem>						
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0" transitionTo="WorkExecution.DescriptionView">
 						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="Description" placeHolder="Tap to enter" resourceAttribute="description">
 							<eventHandlers id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_asset_Asset_eventHandlers.description">
@@ -577,8 +582,9 @@
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
-						<button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">	
-						</button>
+						<!-- Not yet required -->
+						<!-- <button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">
+						</button> -->
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
@@ -602,12 +608,6 @@
 					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.HIRADC" layout="Item1Count1Button1" transitionTo="WorkExecution.hirads" >
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_HIRADS" layoutInsertAt="item1" value="HIRADC"/>
 					</groupitem>   -->
-					<!-- <groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterListd_0" layout="Item1Count1Button1" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDsetailView_groupitem_WorkExecution.TNB_WOMeterList_0_dMeters" layoutInsertAt="item1" value="Test Form (BETA)"/>
-						<eventHandlers id="workorder.hide_eventhanedlers3">
-							<eventHandler id="workorder.hidee_eventhandler3" event="click" class="application.handlers.WODetailHandler" method="filterTnbWoMeterGroup"/>
-						</eventHandlers>
-					</groupitem> -->
 					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.AttachmentsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
@@ -4080,13 +4080,14 @@
 					<requiredAttribute id="WorkExecution.TnbWOMeterList_workOrder_tnbwodirectmeterslist" name="tnbwodirectmeterslist"/>
 				</requiredResource>
 			</requiredResources>
-			<container id="WorkExecution.TnbWOMeterList_workOrder_container_0" resource="workOrder">
+			<!-- Not yet required -->
+			<!-- <container id="WorkExecution.TnbWOMeterList_workOrder_container_0" resource="workOrder">
 			    <group id="WorkExecution.TnbWOMeterList_group_0">
 					<groupitem id="workorder.tnbautocaltype">
 						<text editable="true" id="workorder_text_tnbautocaltype" cssClass="shortText" label="Auto / Manual Calculation" lookup="WorkExecution.tnbautocaltypeLookup" placeHolder="Select from list" layoutInsertAt="item1" resourceAttribute="tnbautocaltype"/>
 					</groupitem>			        
 			    </group>
-			</container>			
+			</container> -->			
 			<list id="WorkExecution.WOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="workOrder" attribute="tnbwometergrouplist" showHeader="true" >
 				 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes2">
 					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_tnbmetergroup" name="tnbmetergroup"/>
@@ -4173,7 +4174,8 @@
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
 					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
-					 <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_tnbmanualreading" label="Manual Reading"  layoutInsertAt="item3" lookup="WorkExecution.ManualMeterReadingLookup" resourceAttribute="tnbmanualreading" >
+					 <!-- Not yet required -->
+					 <!-- <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_tnbmanualreading" label="Manual Reading"  layoutInsertAt="item3" lookup="WorkExecution.ManualMeterReadingLookup" resourceAttribute="tnbmanualreading" >
 					 	 <eventHandlers id="WorkExecution.eventHandlers_tnbmanualreading">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.eventHandlers_tnbmanualreading_render_manualreading" method="showLookupTestFormManualReading"/>
 						</eventHandlers>	
@@ -4182,7 +4184,7 @@
 					 	 <eventHandlers id="WorkExecution.eventHandlers_tnbmanualreading_nolookup">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecution.eventHandlers_tnbmanualreading_render_manualreading_nolookup" method="showTestFormManualReading"/>
 						</eventHandlers>	
-					 </text>					 
+					 </text> -->					 
 					 <text editable="false" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_MeterTypeList" layoutInsertAt="item3" label="New Reading"  resourceAttribute="tnbnewreading" placeHolder="Tap to enter" lookup="WorkExecution.MeterReadingLookup">
 					 	<eventHandlers id="WorkExecution.kdkwe">
 							<eventHandler class="custom.tnbwometersHandler" event="render" id="WorkExecutieee" method="hideLookupTestForm2"/>
@@ -4716,25 +4718,13 @@
 						</eventHandlers>
 					</button>		
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno"> 
-						<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
-							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecutiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
-						</eventHandlers> 
 					</text>	
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno">	
-						<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_evesntHawndlers">
-							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExescutiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
-						</eventHandlers> 
 					</text>	
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno">	
-						<eventHandlers id="WorkExecsution.FailureView_workOrder_failureReportlist_list_eventHawndlers">
-							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecustiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
-						</eventHandlers> 
-					</text>	
+					</text>
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno">
-						<eventHandlers id="WorkExecsution.FailureView_weorkOrder_failureReportlist_list_eventHawndlers">
-							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExeecustiwon.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureListw" method="checkEditableField"/>
-						</eventHandlers> 
-					</text>								
+					</text>	
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
 					<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
@@ -10415,7 +10405,7 @@
 		
 		
 		<!-- custom hiradc resource (standalone) -->
-		<resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#plusgriskassess" id="plusgriskassess" defaultOrderBy="riskassessnum asc" name="plusgriskassess"  pageSize="500" providedBy="/oslc/sp/WorkManagement">
+		<!-- <resource  describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#plusgriskassess" id="plusgriskassess" defaultOrderBy="riskassessnum asc" name="plusgriskassess"  pageSize="500" providedBy="/oslc/sp/WorkManagement">
 			<attributes id="plusgriskassessResource_attributes1">
 				<attribute describedByProperty="spi_wm:riskassessnum" id="plusgriskassessResource_riskassessnum2"  name="riskassessnum"/>
    			    <attribute describedByProperty="spi_wm:description" id="plusgriskassessResource_description2"  name="description"/>   
@@ -10425,7 +10415,7 @@
 			<queryBases id="plusgriskassess_queryBases">
 	 			<queryBase defaultForSearch="true" id="plusgriskassessAll" name="plusgriskassessAll" queryUri="/oslc/os/oslcplusgriskassess" />
 			</queryBases> 		 
-		</resource>
+		</resource> -->
 		
 		<!-- custom hiradc resource -->
 		<resource id="plusgriskassessResource" name="plusgriskassessResource">
@@ -12864,7 +12854,7 @@
 			<queryBases id="domainpermitstatus_queryBases">
  	 			<queryBase id="domainpermitstatus_queryBase_getPermitStatus" name="getPermitStatus" queryUri="/oslc/os/oslcsynonymdomain"/>
 	 		</queryBases>			
- 			<whereClause clause="oslc:shortTitle='PLUSGPERWORKSTATUS' and spi:value in ['ISSUE','ISSUED','DRAFT','CANCELLED']" id="domainpermitstatus_whereClause"/>
+ 			<whereClause clause="oslc:shortTitle='PLUSGPERWORKSTATUS' and spi:value in ['ISSUE','DELETED','DRAFT','CANCELLED']" id="domainpermitstatus_whereClause"/>
 		</resource>					
 
 		<!-- Bin resource -->
@@ -13767,10 +13757,6 @@
 	    <resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#FailureList" id="failureListResource" name="failureListResource" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">	
 			
 			<attributes id="failureListResource_attributes">
-			 	<attribute describedByProperty="spi:tnbdocketnochkbox" id="failureListResource_failurelist_spitnbdocketnochkbox"  name="tnbdocketnochkbox"/>
-				<attribute describedByProperty="spi:tnbcmsticketnochkbox" id="failureListResource_failurelist_spitnbcmsticketnochkbox"  name="tnbcmsticketnochkbox"/>
-				<attribute describedByProperty="spi:tnbcircuitnochkbox" id="failureListResource_failurelist_spitnbcircuitnochkbox"  name="tnbcircuitnochkbox"/>
-				<attribute describedByProperty="spi:tnbsmbreportnorequired" id="failureListResource_failurelist_spitnbsmbreportnorequired"  name="tnbsmbreportnorequired"/>
 			    <attribute describedByProperty="spi:failurelist" id="failureListResource_failurelist_spifailurelist" key="1" name="failurelist"/>
 			    <attribute describedByProperty="spi:type" id="failureListResource_type_spitype" name="type"/>
 			    <attribute describedByProperty="spi:parent" id="failureListResource_parent_spiparent" index="true" name="parent"/>
@@ -13786,15 +13772,11 @@
 		</resource>
 	 		
 		<!-- Failure Report resource -->
-		<resource class="custom.failureListObject" id="failureReportResource" name="failureReportResource">
+		<resource id="failureReportResource" name="failureReportResource">
 			<attributes id="failureReportResource_attributes">
-			    <attribute describedByProperty="dcterms:identifier" id="failureReportResource_identifier_spi_identifier" name="identifier"/>
+			    <!-- <attribute describedByProperty="dcterms:identifier" id="failureReportResource_identifier_spi_identifier" name="identifier"/> -->
 				<attribute describedByProperty="spi_wm:type" id="failureReportResource_type_spi_wmtype" name="type"/>
-				<attribute describedByProperty="spi_wm:linenum{spi:parent}" id="failureReportResource_linenum_spi_wmlinenum" name="linenum"/>
-				<attribute describedByProperty="spi_wm:linenum{spi:tnbdocketnochkbox}" id="failureReportResource_linenum_spi_tnbdocketnochkbox" name="tnbdocketnochkbox"/>
-				<attribute describedByProperty="spi_wm:linenum{spi:tnbcmsticketnochkbox}" id="failureReportResource_linenum_spi_tnbcmsticketnochkbox" name="tnbcmsticketnochkbox"/>
-				<attribute describedByProperty="spi_wm:linenum{spi:tnbcircuitnochkbox}" id="failureReportResource_linenum_spi_tnbcircuitnochkbox" name="tnbcircuitnochkbox"/>
-				<attribute describedByProperty="spi_wm:linenum{spi:tnbcmsticketnochkbox}" id="failureReportResource_linenum_spi_tnbsmbreportnorequired" name="tnbsmbreportnorequired"/>
+				<attribute describedByProperty="spi_wm:linenum" id="failureReportResource_linenum_spi_wmlinenum" name="linenum"/>
 				<attribute describedByProperty="spi:failureCode{dcterms:title}" id="failureReportResource_failureDesc_spifailureCodedctermstitle" name="failureDesc"/>
 				<attribute describedByProperty="spi:failureCode{oslc:shortTitle}" id="failureReportResource_failurecode_spifailureCodeoslcshortTitle" name="failurecode"/>
 				<attribute describedByProperty="spi_wm:anywhererefid" id="failureReportResource_anywhereRefId_spi_wmanywhererefid" name="anywhereRefId"/>

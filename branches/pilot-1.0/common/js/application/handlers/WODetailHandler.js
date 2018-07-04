@@ -2314,54 +2314,6 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 				workofflinehandler.startDownload("tnbwometers", null);				
 		},
 		
-		
-		filterTnbWoMeterGroup: function(eventContext){
-			//relation between wo and tnbwometergroup = tnbwonum = :wonum or (TNBPARENTWONUM=:wonum and 1=:TNBCHILDWOMETER)
-			console.log("filterTnbWoMeterGroup");
-			var filter = null;
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var wonum= currentRecord.get("wonum");
-			var tnbchild= currentRecord.get("tnbchildwometer");
-			console.log(tnbchild);
-			var self=this;
-			
-			if(tnbchild){
-				console.log("if");
-				var data2 = self.getDataFromServer(eventContext,'tnbwomtergroup',[{tnbwonum: wonum},{tnbparentwonum: wonum}]);
-				data2.then(function(dataSet2){
-					eventContext.application.addResource(dataSet2);
-					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
-				});
-
-			}else{
-				console.log("else");
-				var data3 = self.getDataFromServer(eventContext,'tnbwomtergroup',[{tnbwonum:wonum}]);
-				data3.then(function(dataSet3){
-					eventContext.application.addResource(dataSet3);
-					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
-				});
-			}
-
-//				ModelService._getLocalFilteredRecords('tnbwomtergroup', 1000,[{tnbwonum: wonum}],null).then(function(dataset){
-//					if(dataset.data.length>0){
-//						console.log(" tnbwomtergroup from local");
-//						eventContext.application.addResource(dataset);
-//						//eventContext.ui.show("WorkExecution.TnbWOMeterList3");
-//					}else{
-//						self.filterFromServer(eventContext,'tnbwomtergroup',[{tnbwonum: wonum}],null,null);
-//						
-//					}
-//					
-//					
-//				}).always(function(d){
-//					eventContext.ui.show("WorkExecution.TnbWOMeterList3");
-//				});
-//			
-//			
-			
-		},
-		
-		
 		filterTnbMeterGroup: function(eventContext){
 			//console.log(wonum);
 			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"tnbwomtergroup").getCurrentRecord();
@@ -2462,24 +2414,6 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var self = this;
 			if (wonum != null) {
 				self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
-//					ModelService._getLocalFilteredRecords('permit', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-//						eventContext.application.addResource(locset);
-//						var size = locset.data.length;
-//						console.log("permit size "+size);
-//						if(size > 0){
-//							console.log("permit fecth from LOCAL");
-//							currentRecord.set("permitlistsize", size);
-//						}else{
-//							currentRecord.set("permitlistsize", size);
-//							self.filterFromServer(eventContext,'permit',[{tnbwonum: wonum}],null,null);
-//						}
-//						
-//					}).otherwise(function(error) {
-//						Logger.error(JSON.stringify(error));
-//					});
-//			} else {
-//				Logger.trace("permit is null");
-//				eventContext.application.addResource(null);
 					var dataPromise = this.getDataFromServer(eventContext, 'permit', [{tnbwonum: wonum}]);
 					dataPromise.then(function(dataSet){
 						eventContext.application.addResource(dataSet);
@@ -2505,21 +2439,6 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var self = this;
 			if (wonum != null) {
 				self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
-//					ModelService._getLocalFilteredRecords('sqa', 1000,[{tnbwonum: wonum}],null).then(function(locset){
-//						eventContext.application.addResource(locset);
-//						console.log(locset);
-//						var size = locset.data.length;
-//						console.log("sqa size "+size);
-//						if(size >0){
-//							console.log("sqa fecth from LOCAL");
-//							currentRecord.set("sqalistsize", size);
-//						}else{
-//							currentRecord.set("sqalistsize", 0);
-//							self.filterFromServer(eventContext,'sqa',[{tnbwonum: wonum}],null,null);
-//						}
-//					}).otherwise(function(error) {
-//						Logger.error(JSON.stringify(error));
-//					});
 				var dataPromise = this.getDataFromServer(eventContext, 'sqa', [{tnbwonum: wonum}]);
 				dataPromise.then(function(dataSet){
 					eventContext.application.addResource(dataSet);
@@ -2574,6 +2493,30 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 					Logger.error(JSON.stringify(error));
 				});
 			}
+		},
+		
+		hideParentWorkOrder: function(eventContext){
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWonum = currentRecord.get("parentWonum");
+			
+			if (parentWonum)
+				eventContext.setDisplay(true);
+			else 
+				eventContext.setDisplay(false);
+		},
+		
+		parentWODetails: function(eventContext) {
+			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
+			var parentWonum = currentRecord.get("parentWonum");			
+
+			ModelService.filtered('workOrder', null,[{wonum:parentWonum}], 1000, null,null,null,null).then(function(locset){
+			eventContext.application.addResource(locset);
+			eventContext.application.showBusy();
+			eventContext.ui.show('WorkExecution.WorkDetailView');
+			eventContext.application.hideBusy();
+			}).otherwise(function(error) {
+				Logger.error(JSON.stringify(error));
+			});		
 		},
 		
 		returnToChildList:function(eventContext){
