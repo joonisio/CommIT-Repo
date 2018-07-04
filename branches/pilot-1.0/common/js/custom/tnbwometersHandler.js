@@ -20,68 +20,6 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			eventContext.application.addResource(locset);
 		});
 		},
-		
-		
-//		initializeMetertoLocal:function(eventContext){
-//			console.log("init meter to local")
-//			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-//			console.log(workOrder);
-//			for(var i =0;i<workOrder.data.length;i++){
-//				if(workOrder.data[i].tnbwometergrouplist !=null){
-//					console.log(workOrder.data[i].wonum);
-//					var tnbwometer = workOrder.data[i].tnbwometergrouplist;
-//					for(var j =0;j< tnbwometer.length;j++){
-//						console.log("loop 2");
-//						var meter = tnbwometer[j].tnbwometerslist;
-//						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){		
-//							if (locset.fetchedFromServer){
-//								console.log("fetched from server");
-//							}else{
-//								console.log("fetched from local");
-//							}
-//							
-//							eventContext.application.addResource(locset);
-//			
-//						});
-//					}
-////					
-//				}
-//			}
-//		},
-		
-		filterMeter1 : function(eventContext) {
-        CommunicationManager.checkConnectivityAvailable().
-		then(function(hasConnectivity){
-			console.log("function : filterMeter1");
-			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			console.log(workOrder);	
-			console.log(workOrder.tnbwometergrouplist.data.length);
-				
-				for(var i =0;i<workOrder.tnbwometergrouplist.data.length;i++){
-					console.log("loop");	
-					var meter = workOrder.tnbwometergrouplist.data[i].tnbwometerslist;
-					console.log(meter);
-					if (meter != null) {
-							ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null).then(function(locset){
-								//console.log(locset);
-								if (locset.fetchedFromServer){
-									console.log("fetched from server");
-								}else{
-									console.log("fetched from local");
-								}
-								
-								eventContext.application.addResource(locset);
-							
-								
-							}).otherwise(function(error) {
-								Logger.error(JSON.stringify(error));
-							});
-					} 
-				}
-	
-			
-		});
-		},
 
 		filterMeter : function(eventContext) {
 			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
@@ -89,31 +27,9 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var meter = currentRecord.get("tnbwometerslist");
 			workOrder.set('tempMeterName',currentRecord.get("description"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
-//			if (meter != null) {
-//					ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,true,null).then(function(locset){
-//						
-//						if (locset.fetchedFromServer){
-//							console.log("fetched from server");
-//						}else{
-//							console.log("fetched from local");
-//						}
-//						
-//						console.log(locset);
-//						Logger.trace(locset);
-//						eventContext.application.addResource(locset);
-//						eventContext.ui.show(redirect);
-//						
-//					}).otherwise(function(error) {
-//						Logger.error(JSON.stringify(error));
-//					});
-//			} else {
-//				eventContext.application.addResource(null);
-//				eventContext.ui.show(redirect);
-//			}
 			
-			ModelService._getLocalFilteredRecords('tnbwometers',1000,[{tnbwometersid: meter}],null).then(function(locset){
-				if(locset.data.length>0){
-					console.log(locset);
+				console.log("filter tnbwometers");
+				ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null,null).then(function(locset){	
 					arrayUtil.forEach(locset.data,function(tnbwometers){
 						var tnbautocalculate=(tnbwometers.tnbautocalculate);
 						if(tnbautocalculate==true){
@@ -121,29 +37,12 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 							tnbwometers.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
 						}
 					});
-					console.log("tnbwometers from local");
-					eventContext.application.addResource(locset);	
-					eventContext.ui.show(redirect);
-				}else{
-						console.log("tnbwometers from server");
-						ModelService.filtered('tnbwometers', null,[{tnbwometersid: meter}], 1000, null,null,null,null,null).then(function(locset){	
-							arrayUtil.forEach(locset.data,function(tnbwometers){
-								var tnbautocalculate=(tnbwometers.tnbautocalculate);
-								if(tnbautocalculate==true){
-									console.log('read only for reading')
-									tnbwometers.getRuntimeFieldMetadata('tnbnewreading').set('readonly', true);
-								}
-							});
-						eventContext.application.addResource(locset);
-						eventContext.ui.show(redirect);
-						
-					}).otherwise(function(error) {
-						Logger.error(JSON.stringify(error));
-					});
-				}
+				eventContext.application.addResource(locset);
+				eventContext.ui.show(redirect);
 				
-				});
-		
+			}).otherwise(function(error) {
+				Logger.error(JSON.stringify(error));
+			});
 		},
 		hideLookupTestForm:function(eventContext){
 			var currentRecord = eventContext.getCurrentRecord();
