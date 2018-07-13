@@ -376,6 +376,22 @@
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_assetdesc" resourceAttribute="assetdesc"/>
 						<!-- <text editable="true" label="Serial No." id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditAssetView_0_serialnum" resourceAttribute="serialnum"/> -->
 					</groupitem>
+					
+					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbserialnum_groupitem">
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbserialnum" label="Asset Serial Number" resourceAttribute="tnbserialnum"/>
+					</groupitem>
+					
+					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmodelnum_groupitem">
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmodelnum" label="Model Number" resourceAttribute="tnbmodelnum" lookup="WorkExecution.tnbassetmodelLookup"/>
+					</groupitem>
+					
+					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmanufacturer_groupitem">
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturer" label="Manufacturer Number" resourceAttribute="tnbmanufacturer"/>
+					</groupitem>	
+					
+					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmanufacturerpart_groupitem">
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturerpart" label="Manufacturer part #" resourceAttribute="tnbmanufacturerpart"/>
+					</groupitem>																			
 		
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
 						<text codeScannable="true" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0_location_Location" label="Location" lookup="WorkExecution.LocationLookup" lookupAttribute="location" placeHolder="Tap to enter" resourceAttribute="location">
@@ -4719,11 +4735,11 @@
 					</button>		
 					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np"  label="CMS Ticket" layoutInsertAt="item4" resourceAttribute="tnbcmsticketno"> 
 					</text>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbsmbreportno">	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np1" label="Docket No" layoutInsertAt="item5"  resourceAttribute="tnbdocketno">	
 					</text>	
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbdocketno">	
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np2" label="Circuit No" layoutInsertAt="item6"  resourceAttribute="tnbcircuitno">	
 					</text>
-					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbcircuitno">
+					<text id="WorkExecution.FailureView_workOrder_FailureReportList_np3" label="SMB Report No" layoutInsertAt="item7"  resourceAttribute="tnbsmbreportno">
 					</text>	
 				</listItemTemplate>
 				<eventHandlers id="WorkExecution.FailureView_workOrder_failureReportlist_list_eventHandlers">
@@ -9473,7 +9489,46 @@
 			<returnAttributes id="WorkExecution.PermitStatusLookup_list_returnAttributes">
 				<returnAttribute id="WorkExecution.PermitStatusLookup_returnattribute_tnbstatus" sourceAttribute="value" targetAttribute="tnbstatus"/>
 			</returnAttributes>
-		</lookup>		
+		</lookup>
+		
+		<!-- custom tnbassetmodelnum lookup -->
+		<lookup id="WorkExecution.tnbassetmodelLookup" label="Select Value" resource="tnbassetmodeldata">
+			<requiredResources id="WorkExecution.tnbassetmodelLookup_requiredResources">
+				<requiredResource id="WorkExecution.tnbassetmodelLookup_tnbassetmodelnum" name="tnbassetmodeldata" reload="true"/>
+			</requiredResources>
+			<list id="WorkExecution.tnbassetmodelLookup_list" resource="tnbassetmodeldata">
+				<listItemTemplate id="WorkExecution.tnbassetmodelLookup_listItemTemplate" layout="Item1Desc1">
+					<listtext id="WorkExecution.tnbassetmodelLookup_value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
+					<listtext id="WorkExecution.tnbassetmodelLookup_desc" resourceAttribute="description" layoutInsertAt="desc1"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.tnbassetmodelLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.tnbassetmodelLookup_workorder_tnbmodelnum" sourceAttribute="value" targetAttribute="tnbmodelnum"/>
+			</returnAttributes>
+		</lookup>	
+		
+		<!-- Custom tnbmanufacturer lookup -->
+		<!-- <lookup id="WorkExecution.tnbmanufacturerLookup" label="Select Value" resource="vendor">
+			<requiredResources id="WorkExecution.tnbmanufacturerLookup_requiredResources">
+				<requiredResource id="WorkExecution.tnbmanufacturerLookup_vendor" name="vendor" reload="true"/>
+			</requiredResources>
+
+			<list id="WorkExecution.tnbmanufacturerLookup_vendor_list" resource="vendor">
+				<searchAttributes id="WorkExecution.tnbmanufacturerLookup_vendor_searchAttributes">
+					<searchAttribute id="WorkExecution.tnbmanufacturer_vendor_searchAttribute_company" name="company"/>
+					<searchAttribute id="WorkExecution.tnbmanufacturer_vendor_searchAttribute_name" name="name"/>
+				</searchAttributes>
+				<listItemTemplate id="WorkExecution.tnbmanufacturerLookup_vendor_listItemTemplate_Item1Desc1" layout="TnbManufacturerListItem">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.tnbmanufacturer_vendor_Item1Desc1_company" layoutInsertAt="company" resourceAttribute="company"/>
+					<listtext id="WorkExecution.tnbmanufacturer_vendor_Item1Desc1_name" layoutInsertAt="name" resourceAttribute="name"/>
+					<listtext id="WorkExecution.tnbmanufacturer_vendor_Item1Desc1_type" layoutInsertAt="type" resourceAttribute="type"/>
+					<listtext id="WorkExecution.tnbmanufacturer_vendor_Item1Desc1_orgid" layoutInsertAt="orgid" resourceAttribute="orgid"/>
+				</listItemTemplate>
+			</list>
+			<returnAttributes id="WorkExecution.tnbmanufacturerLookup_returnAttributes">
+				<returnAttribute id="WorkExecution.tnbmanufacturerLookup_tnbmanufacturer" sourceAttribute="company" targetAttribute="tnbmanufacturer"/>
+			</returnAttributes>
+		</lookup> -->					
 
 		<!-- Storeroom lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="asyncFilterStoreroomForLookup" id="WorkExecution.StoreroomLookup" label="Select Storeroom" resource="additionalstoreroom">
@@ -9898,6 +9953,10 @@
 		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="workOrder" name="workOrder" pageSize="20" providedBy="/oslc/sp/WorkManagement"  >
 			<attributes id="workOrder_attributes">
 				<!-- limits the scope of attributes used from full Work Order RDF -->
+				<attribute describedByProperty="spi_wm:tnbserialnum" id="workOrder_spi_wm_tnbserialnum" name="tnbserialnum"/>
+				<attribute describedByProperty="spi_wm:tnbmodelnum" id="workOrder_spi_wm_tnbmodelnum" name="tnbmodelnum"/>
+				<attribute describedByProperty="spi_wm:tnbmanufacturer" id="workOrder_spi_wm_tnbmanufacturer" name="tnbmanufacturer"/>
+				<attribute describedByProperty="spi_wm:tnbmanufacturerpart" id="workOrder_spi_wm_tnbmanufacturerpart" name="tnbmanufacturerpart"/>
 				<attribute describedByProperty="spi_wm:tnbsapwonum" id="workOrder_spi_wm_tnbsapwonum" name="tnbsapwonum"/>
 				<attribute describedByProperty="spi_wm:tnbautocaltype" id="workOrder_tnbvertical_spi_tnbautocaltype" name="tnbautocaltype"/>
 				<attribute describedByProperty="spi_wm:jpnum" id="workOrder_tnbvertical_spi_jpnum" name="jpnum"/>
@@ -12598,7 +12657,7 @@
 		</resource>
 
 		<!-- Vendor resource -->
-		<!-- <resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="1000" additionalData="true"> 
+		<!-- <resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="200000" additionalData="true"> 
 		    <attributes id="vendor_attributes">
 		        <attribute name="orgid" describedByProperty="spi:orgid" id="vendor_orgid" />
 		        <attribute name="address" describedByProperty="spi:address1" id="vendor_address"/>
@@ -12615,7 +12674,7 @@
  	 			<queryBase id="vendor_queryBase_getvendors" name="getvendorcode" queryUri="/oslc/os/oslcvendor"/>
 	 		</queryBases>			
 			<whereClause clause="spi:orgid=${deforg}" id="vendor_whereClause"/>
-		</resource>  -->
+		</resource> -->
 
 		<!-- Contract resource -->
 		<!-- <resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Contract" 
@@ -12855,7 +12914,19 @@
  	 			<queryBase id="domainpermitstatus_queryBase_getPermitStatus" name="getPermitStatus" queryUri="/oslc/os/oslcsynonymdomain"/>
 	 		</queryBases>			
  			<whereClause clause="oslc:shortTitle='PLUSGPERWORKSTATUS' and spi:value in ['ISSUE','DELETED','DRAFT','CANCELLED']" id="domainpermitstatus_whereClause"/>
-		</resource>					
+		</resource>			
+		
+		<!-- Custom tnbassetmodelnum aln domain resource -->
+		<resource providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#AlphaNumericDomain" id="tnbassetmodeldata" name="tnbassetmodeldata" pageSize="1000" additionalData="true">
+			<attributes id="tnbassetmodeldata_attributes">
+				<attribute name="value" id="tnbassetmodeldata_dctermsidentifier" describedByProperty="spi:value" />
+				<attribute name="description" id="tnbassetmodeldata_description_dctermstitle" describedByProperty="spi:description" />
+			</attributes>
+			<queryBases id="tnbassetmodeldata_queryBases">
+				<queryBase id="tnbassetmodeldata_queryBase" name="gettnbassetmodeldata" queryUri="/oslc/os/oslcalndomain" />
+			</queryBases >
+			<whereClause id="tnbassetmodeldata_whereClause" clause="spi:domainid='TNBASSETMODEL'" />
+		</resource>						
 
 		<!-- Bin resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#INVBALANCES" id="additionalbin" name="additionalbin" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">

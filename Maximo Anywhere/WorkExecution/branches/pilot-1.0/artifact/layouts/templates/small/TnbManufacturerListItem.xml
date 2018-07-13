@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout id="TnbManufacturerListItem" width="100">
+	<row id="row_0">
+		<column colspan="3" columnid="company" id="item1_column"/>
+		<column colspan="6" columnid="name" id="item2_column"/>
+		<column colspan="1" columnid="type" id="item3_column"/>
+		<column colspan="2" columnid="orgid" id="item4_column"/>			
+	</row>
+</layout>	
