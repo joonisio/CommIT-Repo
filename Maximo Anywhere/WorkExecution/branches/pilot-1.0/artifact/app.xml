@@ -279,14 +279,7 @@
 					<eventHandlers id="WorkExecution.WorkDetailView_CaptureGPS_action_action_eventHandlers">
 						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_CaptureGPS_action_eventHandlers_click" method="updateCurrentGPSPosition"/>
 					</eventHandlers>
-				</action>	
-				<action id="WorkExecution.WorkDetailView_Cd_action" label="My Assigned Work" >
-				<eventHandlers id="WorkExecution.WorkDetailView_CaptureGPS_action_action_eventHaendlers">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkeDetailView_CaptureGPS_action_eventHandlers_click" method="backToList"/>
-					</eventHandlers>
-				</action>
-						
-											
+				</action>											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
@@ -386,7 +379,7 @@
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmanufacturer_groupitem">
-						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturer" label="Manufacturer Number" resourceAttribute="tnbmanufacturer"/>
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturer" label="Manufacturer Number" resourceAttribute="tnbmanufacturer" lookup= "WorkExecution.tnbmanufacturerLookup"/>
 					</groupitem>	
 					
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmanufacturerpart_groupitem">
@@ -595,7 +588,7 @@
 						</eventHandlers>
 					</groupitem>
 					
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1"  >
+					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView5_40" layout="Item1Count1Button1">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo20" layoutInsertAt="item1" value="Child Work Order"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_childsize" layoutInsertAt="count1" resourceAttribute="childsize"/>
 						<!-- Not yet required -->
@@ -603,6 +596,7 @@
 						</button> -->
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
 								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
+								<!-- <eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChildWO"/>-->
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
 							</eventHandlers>
 					</groupitem>		
@@ -842,6 +836,27 @@
 				</button>
 			</footer>
 		</view>
+		
+		<!-- Custom Child WO List -->
+		<!-- <view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="true">
+		    <requiredResources id="WorkExecution.ChildrenWO_requiredResources">
+				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="childWorkOrder">
+				</requiredResource>
+			</requiredResources>
+			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="childWorkOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
+			 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes">
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_wonum" name="wonum"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description " name="description"/>
+				</searchAttributes>
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="WorkListItem">	
+					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="wonum"/>
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_workOrder_descrip" layoutInsertAt="item3" resourceAttribute="description"/>		
+					<listtext id="WorkExecution.ChildrenWO_workOrder_WorkListItem_statusdesc" layoutInsertAt="item4" cssClass="statusDesc" resourceAttribute="status" cssAttributes="status"/>													
+					<listtext id="WorkExecution.ChildrenWO_workOrder_location" layoutInsertAt="item8" resourceAttribute="location"/>											
+				</listItemTemplate>				
+			</list>	
+		</view> -->		
 		
 		
 		<!-- Define Attachments List view -->
@@ -9508,7 +9523,7 @@
 		</lookup>	
 		
 		<!-- Custom tnbmanufacturer lookup -->
-		<!-- <lookup id="WorkExecution.tnbmanufacturerLookup" label="Select Value" resource="vendor">
+		<lookup id="WorkExecution.tnbmanufacturerLookup" label="Select Value" resource="vendor">
 			<requiredResources id="WorkExecution.tnbmanufacturerLookup_requiredResources">
 				<requiredResource id="WorkExecution.tnbmanufacturerLookup_vendor" name="vendor" reload="true"/>
 			</requiredResources>
@@ -9528,7 +9543,7 @@
 			<returnAttributes id="WorkExecution.tnbmanufacturerLookup_returnAttributes">
 				<returnAttribute id="WorkExecution.tnbmanufacturerLookup_tnbmanufacturer" sourceAttribute="company" targetAttribute="tnbmanufacturer"/>
 			</returnAttributes>
-		</lookup> -->					
+		</lookup>					
 
 		<!-- Storeroom lookup -->
 		<lookup filterClass="application.handlers.ActualMaterialHandler" filterMethod="asyncFilterStoreroomForLookup" id="WorkExecution.StoreroomLookup" label="Select Storeroom" resource="additionalstoreroom">
@@ -10302,6 +10317,18 @@
 			</attributes>
 		</resource>
 		
+		<!--Custom Child Work Order resource-->
+		<!-- <resource defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="childWorkOrder" name="childWorkOrder" pageSize="100" providedBy="/oslc/sp/WorkManagement"  >
+			<attributes id="childWorkOrder_attributes">
+			    <attribute describedByProperty="oslc:shortTitle" id="childworkOrder_wonum_oslcshortTitle" index="true" name="wonum"/>
+			    <attribute describedByProperty="dcterms:title" id="childworkOrder_description_dctermstitle" index="true" name="description"/>
+			    <attribute describedByProperty="spi:status" id="childworkOrder_status_spistatus" index="true" name="status"/>
+			    <attribute describedByProperty="spi:location{oslc:shortTitle}" id="childworkOrder_location_spilocationoslcshortTitle" index="true" name="location" referenceResource="additionallocations"/>
+			</attributes>
+			<queryBases id="childWorkOrder_queryBases">
+			    <queryBase id="childWorkOrder_queryBase" name="getAllChildWO" queryUri="/oslc/os/oslcwodetail?savedQuery=TNB_ALL_CHILDWO"/>
+			</queryBases>
+		</resource>	-->	
 		
 		<!-- custom sqa resource (standalone)-->
 		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
@@ -12657,7 +12684,7 @@
 		</resource>
 
 		<!-- Vendor resource -->
-		<!-- <resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="200000" additionalData="true"> 
+		<!-- <resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="1000" additionalData="true"> 
 		    <attributes id="vendor_attributes">
 		        <attribute name="orgid" describedByProperty="spi:orgid" id="vendor_orgid" />
 		        <attribute name="address" describedByProperty="spi:address1" id="vendor_address"/>
@@ -12926,7 +12953,27 @@
 				<queryBase id="tnbassetmodeldata_queryBase" name="gettnbassetmodeldata" queryUri="/oslc/os/oslcalndomain" />
 			</queryBases >
 			<whereClause id="tnbassetmodeldata_whereClause" clause="spi:domainid='TNBASSETMODEL'" />
-		</resource>						
+		</resource>	
+		
+		<!-- Custom tnbmanufacturer resource -->
+		<resource id="vendor" providedBy="/oslc/sp/SmarterPhysicalInfrastructure" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#Vendor" name="vendor" pageSize="1000" additionalData="true"> 
+		    <attributes id="vendor_attributes">
+		        <attribute name="orgid" describedByProperty="spi:orgid" id="vendor_orgid" />
+		        <attribute name="address" describedByProperty="spi:address1" id="vendor_address"/>
+		        <attribute name="city" describedByProperty="spi:address2" id="vendor_city"/>
+				<attribute name="state" describedByProperty="spi:address3" id="vendor_state"/>
+				<attribute name="postalcode" describedByProperty="spi:address4" id="vendor_postalcode"/>
+				<attribute name="contact" describedByProperty="spi:contact" id="vendor_contact" />
+		        <attribute name="type" describedByProperty="spi:type" id="vendor_type"/>
+		        <attribute name="company" describedByProperty="oslc:shortTitle" id="vendor_company"/>
+		        <attribute name="companiesid" describedByProperty="dcterms:identifier" id="vendor_companiesid"/>
+		        <attribute name="name" describedByProperty="dcterms:title" id="vendor_name"/>
+			</attributes>
+			<queryBases id="vendor_queryBases">
+ 	 			<queryBase id="vendor_queryBase_getvendors" name="getvendorcode" queryUri="/oslc/os/oslcvendor"/>
+	 		</queryBases>			
+			<whereClause clause="spi:type='M'" id="vendor_whereClause"/>
+		</resource>					
 
 		<!-- Bin resource -->
 		<resource additionalData="true" describedBy="http://jazz.net/ns/ism/asset/smarter_physical_infrastructure#INVBALANCES" id="additionalbin" name="additionalbin" pageSize="1000" providedBy="/oslc/sp/SmarterPhysicalInfrastructure">
