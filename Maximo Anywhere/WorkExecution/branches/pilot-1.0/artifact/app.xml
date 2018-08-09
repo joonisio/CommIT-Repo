@@ -200,7 +200,7 @@
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
 				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
-				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_initialize_offlineDownload" method="offlineDownload"/>
+				<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_handler_myassignedwork" method="myassignedwork"/>
 			</eventHandlers>
 		</view>
 		
@@ -282,7 +282,6 @@
 				</action>											
 			</actions> 
 			<eventHandlers id="WorkExecution.WorkDetailView_eventHandlers">
-				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_hideFooterforParent" method="hideFooterforParent"/>
 				<eventHandler class="application.handlers.DataSheetHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchDataSheetList" method="fetchDataSheetList" enableFeatureByProperty="calibration.enabled"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_fetchAllListSizes" method="fetchAllListSizes"/>
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_render_refreshAllListSizes" method="refreshAllListSizes"/>
@@ -310,13 +309,6 @@
 					</groupitem>				
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_0">
 						<text editable="false" id="WorkExecution.WorkDetailView_workOrder_groupitem_0_wonum_WorkOrder" label="Work Order" resourceAttribute="wonum"/>
-					</groupitem>
-					<groupitem id="WorkExecution.WorkDetailView_workOrderParent_groupitem_0">
-						<text editable="false" id="WorkExecution.WorkDetailView_workOrderParent_groupitem_0_wonum_ParentWorkOrder" label="Parent Work Order" resourceAttribute="parentWonum"/>
-						<eventHandlers id="WorkExecution.WorkDetailView_WorkDetailView_ParentWorkOrder_eventHandlers">
-						    <eventHandler id="workorder.hideParentWorkOrder_eventhandler0" event="render" class="application.handlers.WODetailHandler" method="hideParentWorkOrder"/>
-							<eventHandler id="WorkExecution.WorkDetailView_click_wodetail" event="click" class="application.handlers.WODetailHandler" method="parentWODetails"/>
-						</eventHandlers>						
 					</groupitem>						
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0" transitionTo="WorkExecution.DescriptionView">
 						<textarea cssClass="longText" editable="true" id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.DescriptionView_0_description_Description" label="Description" placeHolder="Tap to enter" resourceAttribute="description">
@@ -383,7 +375,7 @@
 					</groupitem>	
 					
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_tnbmanufacturerpart_groupitem">
-						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturerpart" label="Manufacturer part #" resourceAttribute="tnbmanufacturerpart"/>
+						<text id="WorkExecution.WorkDetailView_workOrder_groupitem_tnbmanufacturerpart" label="Manufacturer Part #" resourceAttribute="tnbmanufacturerpart"/>
 					</groupitem>																			
 		
 					<groupitem id="WorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.EditLocationView_0" transitionTo="WorkExecution.EditLocationView">
@@ -558,9 +550,6 @@
 					</groupitem>
 					<!-- End custom code -->	
 					
-					<!--<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_40" layout="Item1Count1Button1" transitionTo="WorkExecution.ParentWO">
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo2" layoutInsertAt="item1" value="Parent Work Order"/>
-					</groupitem>	  -->
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.sqaView" layout="Item1Count1Button1" transitionTo="WorkExecution.sqa">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_Sqa_Checklist" layoutInsertAt="item1" value="SQA/SQE Checklist"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_sqalistsize" layoutInsertAt="count1" resourceAttribute="sqalistsize"/>
@@ -570,7 +559,6 @@
 						</eventHandlers>  -->
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers00">
-							<eventHandler id="workorder.hide_eventhandler00" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
 							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterSqa" method="filterSqa"/>
 							<!--<eventHandler id="workorder.hide_eveenthandler00" event="click" class="application.handlers.WODetailHandler" method="filterSqa2"/>   -->
 						</eventHandlers>
@@ -583,7 +571,6 @@
 						<button id="WorkExecution.WorkDetailView_AddPermitaction_addNew_OFF.png_button3" image="action_addNew_OFF.png" label="Add Permit" layoutInsertAt="button1" transitionTo="WorkExecution.createPermitView" >
 						</button>
 						<eventHandlers id="workorder.hide_eventhandlers58">
-							<eventHandler id="workorder.hide_eventhandler58" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
 							<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkDetailView_eventHandlers_initialize_filterPermit" method="filterPermit"/>
 						</eventHandlers>
 					</groupitem>
@@ -595,8 +582,8 @@
 						<!-- <button id="WorkExecution.WorkDetailView_Addchildaction_addNew_OFF.png_button" image="action_addNew_OFF.png" label="Add Child WO" layoutInsertAt="button1" transitionTo="WorkExecution.CreateChildWo">
 						</button> -->
 							<eventHandlers id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers3">
-								<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/>
-								<!-- <eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChildWO"/>-->
+								<!-- <eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChild"/> -->
+								<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="click" id="WorkExecution.WorkDetailView_p" method="filterChildWO"/>
 								<eventHandler id="workorder.hide_eventhandler54" event="render" class="application.handlers.WODetailHandler" method="countChild"/>
 							</eventHandlers>
 					</groupitem>		
@@ -629,26 +616,16 @@
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_LaborAssignments" layoutInsertAt="item1" value="Labor Assignments"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.LaborAssignmentsView_0_assignmentlistsize" layoutInsertAt="count1" resourceAttribute="assignmentlistsize">
 						</text>
-						<eventHandlers id="workorder.hide_eventhandlers5">
-							<eventHandler id="workorder.hide_eventhandler5" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
-					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedMaterialView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0_PlannedMaterials" layoutInsertAt="item1" value="Planned Materials"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedMaterialView_0_materiallistsize" layoutInsertAt="count1" resourceAttribute="materiallistsize">
 						</text>
-						<eventHandlers id="workorder.hide_eventhandlers6">
-							<eventHandler id="workorder.hide_eventhandler6" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.PlannedToolsView">
 						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0_PlannedTools" layoutInsertAt="item1" value="Planned Tools"/>
 						<text editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.PlannedToolsView_0_toollistsize" layoutInsertAt="count1" resourceAttribute="toollistsize">
 						</text>
-						<eventHandlers id="workorder.hide_eventhandlers7">
-							<eventHandler id="workorder.hide_eventhandler7" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 				</group>
 				<group id="WorkExecution.WorkDetailView_group_3">
@@ -667,9 +644,6 @@
 								<eventHandler class="application.handlers.ActualLaborHandler" event="datachange" id="WorkExecution.WorkDetailView_ReportLabor_action_addNew_OFF.png_button_eventHandlers_datachange_enableReportLaborButton" method="enableReportLaborButton"/>
 							</eventHandlers>
 						</button>
-						<eventHandlers id="workorder.hide_eventhandlers9">
-							<eventHandler id="workorder.hide_eventhandler9" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualMaterialsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.ActualMaterialsView">
@@ -681,9 +655,6 @@
 								<eventHandler class="application.handlers.ActualMaterialHandler" event="datachange" id="WorkExecution.WorkDetailView_AddMaterial_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddMaterialButton" method="enableAddMaterialButton"/>
 							</eventHandlers>
 						</button>
-						<eventHandlers id="workorder.hide_eventhandlers10">
-							<eventHandler id="workorder.hide_eventhandler10" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 					
 					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.ActualToolsView_0" layout="Item1Count1Button1" transitionTo="WorkExecution.ActualToolsView">
@@ -695,9 +666,6 @@
 								<eventHandler class="application.handlers.ActualToolHandler" event="datachange" id="WorkExecution.WorkDetailView_AddTool_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddToolButton" method="enableAddToolButton"/>
 							</eventHandlers>
 						</button>
-						<eventHandlers id="workorder.hide_eventhandler11s">
-							<eventHandler id="workorder.hide_eventhandler11" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 				</group>
 				<!--
@@ -721,9 +689,6 @@
 								<eventHandler class="application.handlers.WorkLogHandler" event="datachange" id="WorkExecution.WorkDetailView_CreateWorkLogEntry_action_addNew_OFF.png_button_eventHandlers_datachange_enableAddWorkLogButton" method="enableAddWorkLogButton"/>
 							</eventHandlers>
 						</button> 
-						<eventHandlers id="workorder.hide_eventhandlers12">
-							<eventHandler id="workorder.hide_eventhandler12" event="render" class="application.handlers.WODetailHandler" method="hideSectionforChild"/>
-						</eventHandlers>
 					</groupitem>
 				</group>				
 				<group id="WorkExecution.WorkDetailView_group_5">
@@ -732,33 +697,127 @@
 					</groupitem>
 				</group>
 			</container>
-			<footer id="footerrr4">
-				<button id="back_button2" label="Return to Parent" transitionTo="WorkExecution.ParentWO">
-				</button>
-				<button id="backtolist_button4" label="Return to Children List">
-					<eventHandlers id="WorkExecution.backtolist_button_eventHandlers2">
-						<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.ChildrenWO_backtolist_button_cleanup_handleBackBhuttonClick" method="returnToChildList"/>
-					</eventHandlers>
-				</button>
-			</footer>
 		</view>
 		
-		<!-- custom parent wo -->
-			<view id="WorkExecution.ParentWO" label="Parent Work Order">
-			<requiredResources id="WorkExecution.CreatesqaDetails_requiredResources2">
-				<requiredResource id="WorkExecution.workOrderDetails_requiredresource2" name="workOrder">
-				</requiredResource>
-			</requiredResources>		
-			<container id="WorkExecution.Createsqa_container_0"  resource="workOrder" >
-				<group id="WorkExecution..CreatesqaView_group_0">	
-					<groupitem id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_403" layout="Item1Count1Button1" >
-						<text cssClass="relatedRecords" editable="false" id="WorkExecution.WorkDetailView_groupitem_WorkExecution.MultipleAssetsLocationsView_0_MultipleAssetsLo24" layoutInsertAt="item1" value="{0}" resolverClass="application.handlers.WODetailHandler" resolverFunction="parentLabel" />
- 							<eventHandlers id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers3">
-							<eventHandler class="application.handlers.WODetailHandler" event="click" id="WorkExecution.WorkItemsView_DownloadWorkList_action_eventHandlers_click_workoffline4" method="parentWO"/>
+		<!--Custom Child Work Order Details view-->
+		<view id="WorkExecution.ChildWorkDetailView" label="Child Work Order Details" resource="childWorkOrder" allowDrillDown="true" saveonshow="true">
+		    <requiredResources id="WorkExecution.ChildWorkDetailView_requiredResources">
+		        <requiredResource id="WorkExecution.ChildWorkDetailView_childworkOrder" name="childWorkOrder">
+		            <requiredAttribute id="WorkExecution.ChildWorkDetailView_workOrder_tnbwometergrouplist" name="tnbwometergrouplist"/>
+		            <requiredAttribute id="WorkExecution.ChildWorkDetailView_workOrder_failureReportlist" name="failureReportlist"/>
+		            <requiredAttribute id="WorkExecution.ChildWorkDetailView_workOrder_attachments" name="attachments"/>
+		            <requiredAttribute id="WorkExecution.ChildWorkDetailView_workOrder_workOrderSpec" name="workOrderSpec"/>
+		        </requiredResource>
+		        <requiredResource id="WorkExecution.ChildWorkDetailView_failureClassResource" name="failureClassResource"/>
+		        <requiredResource id="WorkExecution.ChildWorkDetailView_workOrder" name="workOrder">
+		            <requiredAttribute id="WorkExecution.ChildWorkDetailView_forworkOrder_failureReportlist" name="failureReportlist"/>
+		        </requiredResource>
+		    </requiredResources>
+		    <actions id="WorkExecution.ChildWorkDetailView_actions">
+				<action enableFeatureByProperty="attachments.enabled" id="WorkExecution.ChildWorkDetailView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
+					<eventHandlers id="WorkExecution.ChildWorkDetailView_TakePhoto_action_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.ChildWorkDetailView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="launchCameraForPhoto"/>
+						<eventHandler class="application.handlers.WOAttachmentHandler" event="render" id="WorkExecution.ChildWorkDetailView_TakePhoto_action_eventHandlers_render_initCategory" method="initCategory"/>
+					</eventHandlers>
+				</action>		        
+		    </actions>
+		    <eventHandlers id="WorkExecution.ChildWorkDetailView_eventHandlers">
+		        <eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_setWorkOrder" method="setWorkOrder"/>
+		    </eventHandlers>
+		    <container id="WorkExecution.ChildWorkDetailView_workOrder_container_0" resource="childWorkOrder">
+		        <errorIndicator id="WorkExecution.ChildWorkDetailView_errorIndicator" class="application.handlers.WOExtDownloadHandler" clearMethod="confirmClearChanges" />
+		        <group id="WorkExecution.ChildWorkDetailView_group_0">
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_0">
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_0_wonum_WorkOrder" label="Work Order" resourceAttribute="wonum"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrderParent_groupitem_0">
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrderParent_groupitem_0_wonum_ParentWorkOrder" label="Parent Work Order" resourceAttribute="parentWonum"/>					
+					</groupitem>					
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_1">
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_1_wonum_Description" label="Description" resourceAttribute="description"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_2">
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_Asset" label="Asset" resourceAttribute="asset"/>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_assetdesc" resourceAttribute="assetdesc"/>
+					</groupitem>	
+					<!-- Asset Details -->	
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_tnbserialnum_groupitem">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_tnbserialnum" label="Asset Serial Number" resourceAttribute="tnbserialnum"/>
+					</groupitem>					
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_tnbmodelnum_groupitem">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_tnbmodelnum" label="Model Number" resourceAttribute="tnbmodelnum" lookup="WorkExecution.tnbassetmodelLookup"/>
+					</groupitem>					
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_tnbmanufacturer_groupitem">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_tnbmanufacturer" label="Manufacturer Number" resourceAttribute="tnbmanufacturer" lookup= "WorkExecution.tnbmanufacturerLookup"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_tnbmanufacturerpart_groupitem">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_tnbmanufacturerpart" label="Manufacturer Part #" resourceAttribute="tnbmanufacturerpart"/>
+					</groupitem>
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_location_groupitem">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_location" label="Location" resourceAttribute="location"/>
+					</groupitem>	
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0" transitionTo="WorkExecution.ChildFailureView">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FailureReport" label="Failure Report" labelCss="editableLabel"/>	
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS" value="FAILURE CLASS">
+							<eventHandlers id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers">
+								<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers_render_hideShowFailureClassLabel" method="hideShowFailureClassLabel"/>
+							</eventHandlers>  
+						</text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType" resourceAttribute="currentFCType">
+						    <eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers">
+								<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers_render_hideShowFailureType" method="hideShowFailureType"/>
 							</eventHandlers>
-					</groupitem>									
-				</group>			
-			</container>														
+					   </text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCDesc" resourceAttribute="currentFCDesc"/>							
+						<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers">
+							<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
+							<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_showChildFailureView" method="showChildFailureView"/>
+						</eventHandlers>	
+					</groupitem>																																            
+		        </group>
+		    </container>
+		    <!-- <container id="testFailureCode" resource="workOrder">
+		        <group id="testgroup">
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0" transitionTo="WorkExecution.FailureView">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FailureReport" label="Failure Report" labelCss="editableLabel"/>	
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS" value="FAILURE CLASS">
+							<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers">
+								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers_render_hideShowFailureClassLabel" method="hideShowFailureClassLabel"/>
+							</eventHandlers>	    
+						</text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType" resourceAttribute="currentFCType">
+						    <eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers">
+								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers_render_hideShowFailureType" method="hideShowFailureType"/>
+							</eventHandlers>
+					   </text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCDesc" resourceAttribute="currentFCDesc"/>							
+						<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
+						</eventHandlers>	
+					</groupitem>		            
+		        </group>
+		    </container>-->
+			<!-- Specification Form BEGIN-->
+			<list attribute="workOrderSpec" collapsible="true" displayPageSize="25" hideEmpty="true" id="WorkExecution.ChildWorkDetailView_workOrder_workOrderSpec_list" label="Specifications" mixinclass="SpecificationStoreList" resource="childWorkOrder">
+				<listItemTemplate id="WorkExecution.ChildWorkDetailView_workOrder_workOrderSpec_listItemTemplate">
+				  	<listtext cssClass="specLayoutLeft editableLabel" id="WorkExecution.ChildWorkDetailView_workOrder_assetattrid" resourceAttribute="assetattrid" showreqattribute="mandatory"/>
+					<listtext cssClass="specLayoutRight editableLabel" id="WorkExecution.ChildWorkDetailView_workOrder_description" resourceAttribute="description"/>
+				  	<listtext cssClass="specLayoutLeftReset editableLabel" hideEmpty="true" id="WorkExecution.ChildWorkDetailView_workOrder_measureunitid" resourceAttribute="measureunitid"/>
+				</listItemTemplate>
+			</list>	
+			<!-- Specification Form END-->
+			<container id="WorkExecution.ChildWorkDetailView_container_0">	
+				<group id="WorkExecution.ChildWorkDetailView_group_1">	
+					<groupitem id="WorkExecution.ChildWorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0" layout="Item1Count1Button1"  transitionTo="WorkExecution.TnbChildWOMeterList">
+						<text cssClass="relatedRecords" editable="false" id="ChildWorkExecution.WorkDetailView_groupitem_WorkExecution.TNB_WOMeterList_0_Meters" layoutInsertAt="item1" value="Test Form"/>
+					</groupitem>	
+					<groupitem enableFeatureByProperty="attachments.enabled" id="WorkExecution.ChildWorkDetailView_groupitem_WorkExecution.AttachmentsView_0" layout="Item1Count1Button2" transitionTo="WorkExecution.ChildAttachmentsView">
+						<text cssClass="relatedRecords" editable="false" id="WorkExecution.ChildWorkDetailView_groupitem_WorkExecution.AttachmentsView_0_Attachments" layoutInsertAt="item1" value="Attachments"/>
+						<!-- <text editable="false" id="WorkExecution.ChildWorkDetailView_groupitem_WorkExecution.AttachmentsView_0_attachmentssize" layoutInsertAt="count1" resourceAttribute="attachmentssize">
+						</text> -->
+					</groupitem>									    
+				</group>	
+			</container>			    
 		</view>
 		
 		<!-- custom create child wo -->
@@ -802,7 +861,7 @@
 		</view>
 		
 		<!--Custom children Work Order -->
-		<view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="false"  >
+		<!-- <view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="false"  >
 		    <requiredResources id="WorkExecution.ChildrenWO_requiredResources">
 				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="workOrder">
 				</requiredResource>
@@ -835,29 +894,87 @@
 					</eventHandlers>
 				</button>
 			</footer>
-		</view>
+		</view> -->
 		
 		<!-- Custom Child WO List -->
-		<!-- <view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="true">
+		<view id="WorkExecution.ChildrenWO" label="Children of Work Order" showBackButton="true" >
 		    <requiredResources id="WorkExecution.ChildrenWO_requiredResources">
-				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="childWorkOrder">
-				</requiredResource>
+				<requiredResource id="WorkExecution.ChildrenWO_workOrder" name="childWorkOrder"></requiredResource>
+				<requiredResource id="WorkExecution.ChildrenWO_parentworkOrder" name="workOrder"></requiredResource>				
 			</requiredResources>
-			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="childWorkOrder"  showHeader="true" transitionTo="WorkExecution.WorkDetailView">
+		    <eventHandlers id="WorkExecution.ChildWOList_eventHandlers">
+		        <eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="WorkExecution.ChildWOList_eventHandlers_initialize_setParentWorkOrder" method="setParentWorkOrder"/>
+		    </eventHandlers>			
+			<list id="WorkExecution.WOMeterList_ChildrenWO_list"  resource="childWorkOrder"  showHeader="true" transitionTo="WorkExecution.ChildWorkDetailView">
 			 <searchAttributes id="WorkExecution.PersonLookup_additionalperson_chAttributes">
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_wonum" name="wonum"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_location" name="location"/>
-					<searchAttribute id="WorkExecution.PersonnLookup_additionalperson_searchAttribute_description " name="description"/>
+					<searchAttribute id="WorkExecution.ChildrenWO_workOrder__searchAttribute_wonum" name="wonum"/>
+					<searchAttribute id="WorkExecution.ChildrenWO_workOrder_searchAttribute_location" name="location"/>
+					<searchAttribute id="WorkExecution.ChildrenWO_workOrder_searchAttribute_description " name="description"/>
 				</searchAttributes>
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildrenWO_listItemTemplate_MeterList" layout="WorkListItem">	
 					<listtext  cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_MeterList_tnbmetergroup" layoutInsertAt="item1" resourceAttribute="wonum"/>
 					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ChildrenWO_workOrder_descrip" layoutInsertAt="item3" resourceAttribute="description"/>		
-					<listtext id="WorkExecution.ChildrenWO_workOrder_WorkListItem_statusdesc" layoutInsertAt="item4" cssClass="statusDesc" resourceAttribute="status" cssAttributes="status"/>													
+					<listtext id="WorkExecution.ChildrenWO_workOrder_WorkListItem_statusdesc" layoutInsertAt="item4" cssClass="statusDesc" resourceAttribute="status" cssAttributes="status"/>
+					<listtext id="WorkExecution.ChildrenWO_workOrder_assetnumanddescription" layoutInsertAt="item7" resourceAttribute="assetnumanddescription"/>													
 					<listtext id="WorkExecution.ChildrenWO_workOrder_location" layoutInsertAt="item8" resourceAttribute="location"/>											
 				</listItemTemplate>				
 			</list>	
-		</view> -->		
-		
+		</view>	
+
+		<!-- Define Custom Child Attachments List view -->
+		<view id="WorkExecution.ChildAttachmentsView" label="Attachments" showOverflow="true">
+			<requiredResources id="WorkExecution.ChildAttachmentsView_requiredResources">
+				<requiredResource id="WorkExecution.ChildAttachmentsView_workOrder" name="childWorkOrder">
+					<requiredAttribute id="WorkExecution.ChildAttachmentsView_workOrder_attachments" name="attachments" reload="true"/>
+				</requiredResource>
+			</requiredResources>
+			<actions id="ChildWorkExecution.AttachmentsView_actions">
+				<action id="WorkExecution.ChildAttachmentsView_TakePhoto_action" image="/images/header_camera_off.png" label="Take Photo">
+					<eventHandlers id="WorkExecution.ChildAttachmentsView_TakePhoto_action_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.ChildAttachmentsView_TakePhoto_action_eventHandlers_click_launchCameraForPhoto" method="launchCameraForPhoto"/>
+						<eventHandler class="application.handlers.WOAttachmentHandler" event="render" id="WorkExecution.ChildAttachmentsView_TakePhoto_action_eventHandlers_render_initCategory" method="initCategory"/>
+					</eventHandlers>
+				</action>
+				<action id="WorkExecution.ChildAttachmentsView_PickfromGallery_action" image="header_add_OFF.png" label="Pick from Gallery">
+					<eventHandlers id="WorkExecution.ChildAttachmentsView_PickfromGallery_action_eventHandlers">
+						<eventHandler class="platform.handlers.AttachmentHandler" event="click" id="WorkExecution.ChildAttachmentsView_PickfromGallery_action_eventHandlers_click_launchGallery" method="launchGallery"/>
+					</eventHandlers>
+				</action>
+			</actions>
+			<list attribute="attachments" id="WorkExecution.ChildAttachmentsView_workOrder_attachments_list" resource="childWorkOrder">
+
+				<sortOptions id="WorkExecution.ChildAttachmentsView_workOrder_attachments_list_sortOptions">
+					<sortOption id="WorkExecution.ChildAttachmentsView_sortOption_CreatedDate" label="Created Date">
+						<sortAttribute direction="asc" id="WorkExecution.ChildAttachmentsView_CreatedDate_sortAttribute_displayCreationDate" name="displayCreationDateISO"/>
+					</sortOption>
+					<sortOption id="WorkExecution.ChildAttachmentsView_sortOption_FileName" label="File Name">
+						<sortAttribute direction="asc" id="WorkExecution.ChildAttachmentsView_FileName_sortAttribute_displayFileName" name="displayFileName"/>
+					</sortOption>
+					<sortOption id="WorkExecution.ChildAttachmentsView_sortOption_Description" label="Description">
+						<sortAttribute direction="asc" id="WorkExecution.ChildAttachmentsView_Description_sortAttribute_displayDescription" name="displayDescription"/>
+					</sortOption>
+				</sortOptions>
+
+				<listItemTemplate id="WorkExecution.ChildAttachmentsView_workOrder_attachments_listItemTemplate_AttachmentsListItem" layout="AttachmentsListItem">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_displayFileName" layoutInsertAt="item1" resourceAttribute="displayFileName"/>
+					<listtext id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_displayDescription" layoutInsertAt="item2" resourceAttribute="displayDescription"/>
+					<listtext id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_displayFileType" layoutInsertAt="item3" resourceAttribute="displayFileType"/>
+					<button border="false" cssClass="attachmentIcon" id="WorkExecution.ChildAttachmentsView_workOrder_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button" image="/images/msg_downloadComplete_small.png" layoutInsertAt="icon" resourceAttribute="anywhereAttachDownloaded">					    					    
+						<eventHandlers id="WorkExecution.ChildAttachmentsView_workOrder_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers">
+							<eventHandler class="application.handlers.WOAttachmentHandler" event="datachange" id="WorkExecution.ChildAttachmentsView_workOrder_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers_datachange_displayLocal" method="displayLocal"/>
+							<eventHandler class="application.handlers.WOAttachmentHandler" event="click" id="WorkExecution.ChildAttachmentsView_workOrder_anywhereAttachDownloaded_imagesmsg_downloadComplete_small.png_button_eventHandlers_click_handleThumbnailClick" method="handleThumbnailClick"/>
+						</eventHandlers>
+					</button>					
+					<listtext id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_displaySize" layoutInsertAt="item4" resourceAttribute="displaySize"/>
+					
+					<listtext id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_createby" layoutInsertAt="item5" resourceAttribute="createby"/>			
+					<listtext id="WorkExecution.ChildAttachmentsView_workOrder_AttachmentsListItem_displayCreationDate" layoutInsertAt="item6" resourceAttribute="displayCreationDate"/>										 
+					<eventHandlers id="WorkExecution.ChildAttachmentsView_workOrder_attachments_listItemTemplate_AttachmentsListItem_eventHandlers">
+						<eventHandler class="application.handlers.WOAttachmentHandler" event="click" id="WorkExecution.ChildAttachmentsView_workOrder_attachments_listItemTemplate_AttachmentsListItem_eventHandlers_click_handleThumbnailClick" method="handleThumbnailClick"/>						
+					</eventHandlers>
+				</listItemTemplate>
+			</list>
+		</view>				
 		
 		<!-- Define Attachments List view -->
 		<view id="WorkExecution.AttachmentsView" label="Attachments" showOverflow="true">
@@ -4103,6 +4220,44 @@
 			</list>			
 		</view>
 		
+		<!--Custom Child Work Order Meter list view -->
+		<view id="WorkExecution.TnbChildWOMeterList" label="Work Order Meter Group" resource="childWorkOrder">
+		    <requiredResources id="WorkExecution.TnbChildWOMeterList_requiredResources">
+				<requiredResource id="WorkExecution.TnbChildWOMeterList_workOrder" name="childWorkOrder">
+					<requiredAttribute id="WorkExecution.TnbChildWOMeterList_workOrder_tnbwometergrouplist" name="tnbwometergrouplist"/>
+				</requiredResource>
+			</requiredResources>	
+			<list id="WorkExecution.ChildWOMeterList_totalTnbWOAssetMeters_list" label="Work Order Meter Group" resource="childWorkOrder" attribute="tnbwometergrouplist" showHeader="true" >
+				 <searchAttributes id="WorkExecution.ChildWOMeterList_chAttributes">
+					<searchAttribute id="WorkExecution.ChildWOMeterList_searchAttribute_tnbmetergroup" name="tnbmetergroup"/>
+					<searchAttribute id="WorkExecution.ChildWOMeterList_searchAttribute_description2" name="description"/>
+					<searchAttribute id="WorkExecution.ChildWOMeterList_searchAttribute_tnblocation" name="tnblocation"/>
+					<searchAttribute id="WorkExecution.ChildWOMeterList_searchAttribute_tnbassetnum" name="tnbassetnum"/>
+				</searchAttributes>
+				<sortOptions id="WorkExecution.ChildWOMeterList_sortOptions">
+					<sortOption id="WorkExecution.ChildWOMeterList_sortOption_Sequence" label="Sequence">
+						<sortAttribute direction="asc" id="WorkExecution.ChildWOMeterList_Sequence_sortAttribute_tnbsequence" name="tnbsequence"/>
+					</sortOption>
+				</sortOptions>				
+				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.ChildWOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList" layout="CustomMeterList">	
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterGroupList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_tnbmetergroup" layoutInsertAt="item2" resourceAttribute="tnbmetergroup"/>
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_description" layoutInsertAt="item5" resourceAttribute="description"/>	
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_tnblocation" layoutInsertAt="item8" resourceAttribute="tnblocation"/>
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_tnbassetnum" layoutInsertAt="item11" resourceAttribute="tnbassetnum"/>
+					<listtext id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_tnbper" layoutInsertAt="item3" resourceAttribute="tnbper"/>
+					<text editable="true" cssClass="shortText" label="CB Number" id="WorkExecution.TnbChildWOMeterList_totalWOAssetMeters_MeterList_tnbcbnumber" layoutInsertAt="item14" resourceAttribute="tnbcbnumber">
+					<eventHandlers id="WorkExecution.ChildWOhidecbnumber">
+						<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.TnbChildWOMeterList_listItemTemplate_MeterList_eventHandlers_click_setAssetResource" method="hideCbNumber"/>
+					</eventHandlers>	
+					</text>
+					<eventHandlers id="WorkExecution.TnbChildWOMeterList_listItemTemplate_MeterList_eventHandlers">
+						<eventHandler class="custom.tnbwometersHandler" event="click" id="WorkExecution.TnbChildWOMeterList_listItemTemplate_hideCbNumber" method="filterMeter"/>
+					</eventHandlers>																		
+				</listItemTemplate>				
+			</list>				    
+		</view>
+		
 		<!--Custom Work Order Meter list view -->
 		<view id="WorkExecution.TnbWOMeterList" label="Work Order Meter Group" resource="workOrder">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources">
@@ -4194,7 +4349,7 @@
 		
 			
 		<!--Custom Work Order Meter list view -->
-		<view id="WorkExecution.TnbWOMeterList2"  label="Meters">
+		<view id="WorkExecution.TnbWOMeterList2"  label="Meters {0}" resolverClass="custom.tnbwometersHandler" resolverFunction="meterHeader">
 		    <requiredResources id="WorkExecution.TnbWOMeterList_requiredResources2">
 				<requiredResource id="WorkExecution.TnbWOMeterList_workOrder2" name="tnbwometers">
 				</requiredResource>
@@ -4204,7 +4359,7 @@
 				<listItemTemplate cssClass=".mblListItem .mblDomButtonArrow" id="WorkExecution.WOMeterList_totaltnbWOAssetMeters_listItemTemplate_MeterList2" layout="TnbWoMetersList">																	
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbsequence" layoutInsertAt="item1" resourceAttribute="tnbsequence"/>
 					 <listtext id="WorkExecution.TnbWOMeterList_totalWOAssetMeters_MeterList_tnbmetername" layoutInsertAt="item2" resourceAttribute="tnbmetername"/>
-					 <!-- <listtext id="WorkExecution.TNBWODIRECTMETERS_totalWOAssetMeters_MeterList_desc" layoutInsertAt="item2" resourceAttribute="description"/>-->
+					 <listtext cssClass="bold textappearance-medium" id="WorkExecution.TnbWOMeterList_MeterList_description" layoutInsertAt="item2" resourceAttribute="description"/>
 					 <!-- Not yet required -->
 					 <!-- <text editable="true" cssClass="shortText" id="WorkExecution.AssetWOMeterDetailView_groupitem_2_metertype_tnbmanualreading" label="Manual Reading"  layoutInsertAt="item3" lookup="WorkExecution.ManualMeterReadingLookup" resourceAttribute="tnbmanualreading" >
 					 	 <eventHandlers id="WorkExecution.eventHandlers_tnbmanualreading">
@@ -4711,6 +4866,99 @@
 
 			</container>
 		</view>
+		
+		<!-- Custom Child Failure Report list view -->
+		<view id="WorkExecution.ChildFailureView" label="Failure Report">
+			<requiredResources id="WorkExecution.ChildFailureView_requiredResources">
+				<requiredResource id="WorkExecution.ChildFailureView_workOrder" name="childWorkOrder">
+					<requiredAttribute id="WorkExecution.ChildFailureView_workOrder_failureReportlist" name="failureReportlist" reload="false"/>
+				</requiredResource>
+				<requiredResource id="WorkExecution.ChildFailureView_failureClassResource" name="failureClassResource"/>	 
+			</requiredResources>
+		 
+			<list id="WorkExecution.ChildFailureView_failureClassResource_list" resource="failureClassResource" showHeader="false">
+				<listItemTemplate id="WorkExecution.ChildFailureView_failureClassResource_listItemTemplate_FailureReportList" layout="FailureReportList">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ChildFailureView_failureClassResource_FailureReportList" layoutInsertAt="item1" value="CLASS"/>
+					<listtext id="WorkExecution.ChildFailureView_failureClassResource_FailureReportList_failureClass" layoutInsertAt="item2" resourceAttribute="failureClass"/>
+					<listtext id="WorkExecution.ChildFailureView_failureClassResource_FailureReportList_failureCodeDesc" layoutInsertAt="item3" resourceAttribute="failureCodeDesc"/>	
+					<button id="WorkExecution.ChildFailureView_failureClassResource_Delete_action_delete_small.png_button" image="action_delete_small.png" label="Delete" layoutInsertAt="button1">
+						<eventHandlers id="WorkExecution.ChildFailureView_failureClassResource_Delete_action_delete_small.png_button_eventHandlers">
+							<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="click" id="WorkExecution.ChildFailureView_failureClassResource_Delete_action_delete_small.png_button_eventHandlers_click_deleteFailureCode" method="deleteFailureCode"/>
+						</eventHandlers>
+					</button>									
+				</listItemTemplate>
+				<eventHandlers id="WorkExecution.ChildFailureView_failureClassResource_list_eventHandlers">
+					<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="WorkExecution.ChildFailureView_failureClassResource_list_eventHandlers_render_populateFailureClass" method="populateFailureClass"/>
+					<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="WorkExecution.ChildFailureView_failureClassResource_list_eventHandlers_render_hideShowFailureClass" method="hideShowFailureClass"/>
+				</eventHandlers>				
+			</list>			 
+			 
+			<list attribute="failureReportlist" id="WorkExecution.ChildFailureView_workOrder_failureReportlist_list" resource="childWorkOrder" showHeader="true">
+				<listItemTemplate id="WorkExecution.ChildFailureView_workOrder_failureReportlist_listItemTemplate_FailureReportList" layout="FailureReportList">
+					<listtext cssClass="bold textappearance-medium" id="WorkExecution.ChildFailureView_workOrder_FailureReportList_type" layoutInsertAt="item1" resourceAttribute="type"/>
+					<listtext id="WorkExecution.ChildFailureView_workOrder_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
+					<listtext id="WorkExecution.ChildFailureView_workOrder_FailureReportList_failureDesc" layoutInsertAt="item3" resourceAttribute="failureDesc"/> 	
+					<button id="WorkExecution.ChildFailureView_workOrder_Delete_action_delete_small.png_button" image="action_delete_small.png" label="Delete" layoutInsertAt="button1">
+						<eventHandlers id="WorkExecution.ChildFailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers">
+							<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="click" id="WorkExecution.ChildFailureView_workOrder_Delete_action_delete_small.png_button_eventHandlers_click_deleteFailureCode" method="deleteFailureCode"/>
+						</eventHandlers>
+					</button>		
+				</listItemTemplate>
+				<eventHandlers id="WorkExecution.ChildFailureView_workOrder_failureReportlist_list_eventHandlers">
+					<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="WorkExecution.ChildFailureView_workOrder_failureReportlist_list_eventHandlers_render_hideShowFailureList" method="hideShowFailureList"/>
+				</eventHandlers>
+			</list>
+
+			<container id="WorkExecution.ChildFailureView_container_0">
+				<link id="Childlink" label="">
+					<eventHandlers id="Childlink_eventHandlers">
+						<eventHandler event="click" id="Childlink_eventHandlers_click" transitionTo="WorkExecution.ChildFailureListLookupView"/>
+						<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="child_link_eventHandlers_render_hideShowSelectLink" method="hideShowSelectLink"/>
+					</eventHandlers>
+				</link>
+			</container>
+			
+		</view>		
+		
+		<!-- Custom Child Failure List Dynamic lookup view -->
+		<view id="WorkExecution.ChildFailureListLookupView" label="Select {0}" resolverClass="application.customerExtensions.FailureCodeExtensionHandler" resolverFunction="resolveNextFailureType">
+		 
+		    <requiredResources id="WorkExecution.ChildFailureListLookupView_requiredResources">
+				<requiredResource id="WorkExecution.ChildFailureListLookupView_failureListResource" name="failureListResource"/>
+			</requiredResources>
+		    
+			<list id="WorkExecution.ChildFailureListLookupView_failureListResource_list" resource="failureListResource" showHeader="true">
+				<searchAttributes id="WorkExecution.ChildFailureListLookupView_failureClassResource" >
+					<searchAttribute id="WorkExecution.ChildFailureListLookupView_searchAttribute_failureClass" name="failurecode"/>
+					<searchAttribute id="WorkExecution.ChildFailureListLookupView_searchAttribute_failureCodeDesc" name="description"/>
+				</searchAttributes>			    
+
+				<listItemTemplate id="WorkExecution.ChildFailureListLookupView_failureListResource_listItemTemplate_FailureReportList" layout="FailureReportList">
+					<listtext id="WorkExecution.ChildFailureListLookupView_failureListResource_FailureReportList_failurecode" layoutInsertAt="item2" resourceAttribute="failurecode"/>
+					<listtext id="WorkExecution.ChildFailureListLookupView_failureListResource_FailureReportList_description" layoutInsertAt="item3" resourceAttribute="description"/>		
+				<eventHandlers id="WorkExecution.ChildFailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers">
+					<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="click" id="WorkExecution.ChildFailureListLookupView_failureListResource_listItemTemplate_FailureReportList_eventHandlers_click_failureLookup" method="failureLookup"/>
+				</eventHandlers>	
+				</listItemTemplate>					
+			</list>	
+			<footer id="WorkExecution.ChildFailureListLookupView_footer">
+				<button id="WorkExecution.ChildFailureListLookupView_Cancel_button" label="Cancel">
+					<eventHandlers id="WorkExecution.ChildFailureListLookupView_Cancel_button_eventHandlers">
+						<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="click" id="WorkExecution.ChildFailureListLookupView_Cancel_button_eventHandlers_click_cancelFailureCode" method="cancelFailureCode"/>
+					</eventHandlers>
+				</button>
+				<button cssClass="mblPrimaryButton" id="WorkExecution.ChildFailureListLookupView_Done_button" label="Done" primary="true">
+					<eventHandlers id="WorkExecution.ChildFailureListLookupView_Done_button_eventHandlers">
+						<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="click" id="WorkExecution.ChildFailureListLookupView_Done_button_eventHandlers_click_commitFailureCode" method="commitFailureCode"/>
+					</eventHandlers>
+				</button>
+			</footer>			
+			<eventHandlers id="WorkExecution.ChildFailureListLookupView_eventHandlers">
+				<!--  <eventHandler event="show" method="filterFailureListLookup"  class="application.handlers.FailureCodeHandler" -->
+				<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="initialize" id="WorkExecution.ChildFailureListLookupView_eventHandlers_back_handleFailureLookupInitializeRender" method="openTransaction"/>
+				<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="back" id="WorkExecution.ChildFailureListLookupView_eventHandlers_back_handleFailureLookupBackButtonClick" method="handleFailureLookupBackButtonClick"/>
+			</eventHandlers>	
+		</view>		
 
 		<!-- Failure Report list view -->
 		<view id="WorkExecution.FailureView" label="Failure Report">
@@ -9798,7 +10046,8 @@
 		</lookup>
 		
 		<!-- ALN Lookup for Maxdomain -->
-		<lookup filterClass="application.handlers.ClassificationFormHandler" filterMethod="filterMaxDomain" id="Inspection.alnDomainLookup" label="Select Value" resource="maxdomain">
+		<!-- <lookup filterClass="application.handlers.ClassificationFormHandler" filterMethod="filterMaxDomain" id="Inspection.alnDomainLookup" label="Select Value" resource="maxdomain"> -->
+		<lookup id="Inspection.alnDomainLookup" label="Select Value" resource="maxdomain">   
 		    <list attribute="alndomain" id="Inspection.alnDomainLookup_maxdomain_alndomain_list" resource="maxdomain">
 		        <searchAttributes id="Inspection.alnDomainLookup_maxdomain_searchAttributes">
 		            <searchAttribute id="Inspection.alnDomainLookup_maxdomain_searchAttribute_description" name="description"/>
@@ -9818,7 +10067,7 @@
 			<requiredResources id="WorkExecution.MeterReadingLookup_requiredResources">
 				<requiredResource id="WorkExecution.MeterReadingLookup_alnmeters" name="alnmeters" reload="true"/>
 			</requiredResources>
-			<list id="WorkExecution.MeterReadingLookup_list" resource="alnmeters">
+			<list id="WorkExecution.MeterReadingLookup_list" resource="alnmeters">		    
 				<listItemTemplate id="WorkExecution.MeterReadingLookup_listItemTemplate_MeterReadingLookup" layout="Item1Desc1">
 					<listtext id="MeterReadingLookup.value" resourceAttribute="value" layoutInsertAt="item1" cssClass="bold textappearance-medium"/>
 					<listtext id="MeterReadingLookup.description" resourceAttribute="description" layoutInsertAt="desc1"/>
@@ -10139,6 +10388,7 @@
 				
 				<!-- custom local resource -->
 				<localAttribute dataType="string" id="workOrder_tempMeterName_string" name="tempMeterName"/>
+				<localAttribute dataType="string" id="workOrder_tempMeterHeader_string" name="tempMeterHeader"/>
 				
 				<localAttribute dataType="string" id="tempWOResource_ischangestatus_boolean" name="tempparentwo"/>
 			    <localAttribute dataType="string" id="tempWOResource_assetnum" name="tempasset"/>
@@ -10318,17 +10568,44 @@
 		</resource>
 		
 		<!--Custom Child Work Order resource-->
-		<!-- <resource defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="childWorkOrder" name="childWorkOrder" pageSize="100" providedBy="/oslc/sp/WorkManagement"  >
+		<resource class="application.business.WorkOrderObject" defaultOrderBy="wonum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#WorkOrder" hasManagedQuery="true" id="childWorkOrder" name="childWorkOrder" pageSize="100" providedBy="/oslc/sp/WorkManagement"  >
 			<attributes id="childWorkOrder_attributes">
 			    <attribute describedByProperty="oslc:shortTitle" id="childworkOrder_wonum_oslcshortTitle" index="true" name="wonum"/>
 			    <attribute describedByProperty="dcterms:title" id="childworkOrder_description_dctermstitle" index="true" name="description"/>
 			    <attribute describedByProperty="spi:status" id="childworkOrder_status_spistatus" index="true" name="status"/>
 			    <attribute describedByProperty="spi:location{oslc:shortTitle}" id="childworkOrder_location_spilocationoslcshortTitle" index="true" name="location" referenceResource="additionallocations"/>
+			    <attribute describedByProperty="spi_wm:siteid" id="childworkOrder_siteid_spi_wmsiteid" index="true" name="siteid"/>
+			    <attribute describedByProperty="spi_wm:istask" id="childworkOrder_istask_spi_wmistask" index="true" name="istask"/>
+				<attribute describedByProperty="spi_wm:parentwonum{oslc:shortTitle}" id="childworkOrder_parent_parentwonum" index="true" name="parentWonum" />
+				<attribute describedByProperty="spi:asset{oslc:shortTitle}" id="childworkOrder_asset_spiassetoslcshortTitle" index="true" name="asset" referenceResource="additionalasset"/>
+				<attribute describedByProperty="spi:asset{dcterms:title}" id="workOrder_childmaxassetdesc_spiassetdctermstitle" name="maxassetdesc" referenceResource="additionalasset"/>
+				<attribute describedByProperty="spi_wm:tnbserialnum" id="childworkOrder_spi_wm_tnbserialnum" name="tnbserialnum"/>
+				<attribute describedByProperty="spi_wm:tnbmodelnum" id="childworkOrder_spi_wm_tnbmodelnum" name="tnbmodelnum"/>
+				<attribute describedByProperty="spi_wm:tnbmanufacturer" id="childworkOrder_spi_wm_tnbmanufacturer" name="tnbmanufacturer"/>
+				<attribute describedByProperty="spi_wm:tnbmanufacturerpart" id="childworkOrder_spi_wm_tnbmanufacturerpart" name="tnbmanufacturerpart"/>		
+				<attribute describedByProperty="spi_wm:failureCode{oslc:shortTitle}" id="childworkOrder_failurecode_spi_wmfailureCodeoslcshortTitle" name="failurecode"/>
+				<attribute describedByProperty="spi_wm:failureCode{dcterms:title}" id="childworkOrder_failureCodeDesc_spi_wmfailureCodedctermstitle" name="failureCodeDesc"/>
+				<attribute describedByProperty="spi_wm:tnbsubvertical" id="childworkOrder_tnbsubvertical_spi_wmtnbsubvertical" name="tnbsubvertical"/>						
+				
+				<!-- Complex attributes for supporting data -->
+				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="childworkOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
+				<attribute describedByProperty="spi:attachments" describedByResource="attachments" id="childWorkOrder_attachments_spiattachments" name="attachments"/>
+				<attribute describedByProperty="spi_wm:failurereport" describedByResource="failureReportResource" id="childworkOrder_failureReportlist_spi_wmfailurereport" name="failureReportlist"/>
+				<attribute describedByProperty="spi_wm:workorderspec" describedByResource="workOrderSpecResource" id="childworkOrder_workOrderSpec_spi_wmworkorderspec" name="workOrderSpec"/>
+				
+				<!-- Local Attributes -->
+				<localAttribute dataType="string" id="childworkOrder_currentFCType_string" name="currentFCType"/>
+				<localAttribute dataType="string" id="childworkOrder_currentFCDesc_string" name="currentFCDesc"/>	
+				<localAttribute dataType="string" id="childworkOrder_assetnumanddescription_string" name="assetnumanddescription"/>	
+				<localAttribute dataType="string" id="childworkOrder_assetdesc_string" name="assetdesc"/>	
+				
+				<!-- Complex Attribute sizes -->
+				<localAttribute dataType="string" id="childworkOrder_attachmentssize_string" name="attachmentssize" persistent="false"/>	
 			</attributes>
 			<queryBases id="childWorkOrder_queryBases">
-			    <queryBase id="childWorkOrder_queryBase" name="getAllChildWO" queryUri="/oslc/os/oslcwodetail?savedQuery=TNB_ALL_CHILDWO"/>
+			    <queryBase id="childWorkOrder_queryBase" name="getAllChildWO" queryUri="/oslc/os/oslcwodetail"/>
 			</queryBases>
-		</resource>	-->	
+		</resource>
 		
 		<!-- custom sqa resource (standalone)-->
 		<resource class="custom.SqaObject" defaultOrderBy="auditnum asc" describedBy="http://jazz.net/ns/ism/work/smarter_physical_infrastructure#SQAChecklist" id="sqa" name="sqa" pageSize="20" providedBy="/oslc/sp/WorkManagement">
@@ -12434,9 +12711,8 @@
 	 		</queryBases>			
  			<whereClause clause="oslc:shortTitle='PLUSGAUDITSTATUS'" id="plusgauditstatus_whereClause"/>
 		</resource>
-		
-		
 
+		
 		<!-- Asset resource -->
 
 		<resource additionalData="true" describedBy="http://open-services.net/ns/asset#Asset" id="additionalasset"  name="additionalasset" pageSize="100" providedBy="/oslc/sp/AssetManagement">
