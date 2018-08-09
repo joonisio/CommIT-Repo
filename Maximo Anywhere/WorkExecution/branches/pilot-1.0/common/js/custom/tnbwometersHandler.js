@@ -26,6 +26,7 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var currentRecord = eventContext.getCurrentRecord();
 			var meter = currentRecord.get("tnbwometerslist");
 			workOrder.set('tempMeterName',currentRecord.get("description"));
+			workOrder.set('tempMeterHeader', "- " + currentRecord.get("tnblocation"));
 			var redirect = "WorkExecution.TnbWOMeterList2";
 			
 				console.log("filter tnbwometers");
@@ -50,22 +51,13 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 
 			var tnbautocalculate = currentRecord.get("tnbautocalculate");
 			
-			//additional condition for manual or auto calculation
-			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			var autoCalType = workOrder.get('tnbautocaltype');
-			
 			console.log(meterType +'/'+tnbautocalculate);
 			
-			if (autoCalType==="MANUAL"){
+			if(meterType==="CHARACTERISTIC"){
 				eventContext.setDisplay(false);
-			}
-			else {
-				if(meterType==="CHARACTERISTIC"){
-					eventContext.setDisplay(false);
-				}else{
-					eventContext.setDisplay(true);
-				}				
-			}
+			}else{
+				eventContext.setDisplay(true);
+			}	
 			
 			if(tnbautocalculate==true){
 				console.log('read only for reading');
@@ -77,24 +69,16 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			var meterType = currentRecord.get("metertype");
 
 			var tnbautocalculate = currentRecord.get("tnbautocalculate");
-			//additional condition for manual or auto calculation
-			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			var autoCalType = workOrder.get('tnbautocaltype');
 			
 			console.log(meterType +'/'+tnbautocalculate);
 
 			console.log(meterType);
 			
-			if (autoCalType==="MANUAL"){
+			if(meterType==="CHARACTERISTIC"){
+				eventContext.setDisplay(true);
+			}else{
 				eventContext.setDisplay(false);
-			}
-			else {
-				if(meterType==="CHARACTERISTIC"){
-					eventContext.setDisplay(true);
-				}else{
-					eventContext.setDisplay(false);
-				}				
-			}
+			}				
 			
 			if(tnbautocalculate==true){
 				console.log('read only for reading')
@@ -102,50 +86,15 @@ define("custom/tnbwometersHandler", [ "dojo/_base/declare", "dojo/_base/lang",
 			}
 		},
 		
-		showLookupTestFormManualReading: function(eventContext) {
-			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			var autoCalType = workOrder.get('tnbautocaltype');
-			
-			var currentRecord = eventContext.getCurrentRecord();
-			var meterType = currentRecord.get("metertype");
-			
-			if (autoCalType!=="MANUAL"){
-				eventContext.setDisplay(false);
-			}
-			else {
-				if(meterType==="CHARACTERISTIC"){
-					eventContext.setDisplay(true);
-				}else{
-					eventContext.setDisplay(false);
-				}				
-			}			
-			
-		},
-		
-		showTestFormManualReading: function(eventContext) {
-			
-			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
-			var autoCalType = workOrder.get('tnbautocaltype');
-			
-			var currentRecord = eventContext.getCurrentRecord();
-			var meterType = currentRecord.get("metertype");	
-			
-			if (autoCalType!=="MANUAL"){
-				eventContext.setDisplay(false);
-			}
-			else {
-				if(meterType==="CHARACTERISTIC"){
-					eventContext.setDisplay(false);
-				}else{
-					eventContext.setDisplay(true);
-				}				
-			}			
-		},
-		
 		meterLabel:function(eventContext){
 			console.log('meterLabel');
 			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
 			return [workOrder.get('tempMeterName')];
+		},
+		
+		meterHeader: function(eventContext) {
+			var workOrder = eventContext.application.getResource('workOrder').getCurrentRecord();
+			return [workOrder.get('tempMeterHeader')];
 		},
 		
 		commitMeterValue:function(eventContext){

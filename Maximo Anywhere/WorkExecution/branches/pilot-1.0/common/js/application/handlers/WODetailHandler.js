@@ -2092,44 +2092,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		}, 
 		
 		
-	//----------------------------------------custom javascript code-----------------------------------------------------------------------------
-		offlineDownload:function(eventContext){
-			this.originalQueryBaseIndex = eventContext.ui.getCurrentViewControl().queryBaseIndex;
-//			console.log('download for offline mode');
-//			eventContext.application.showBusy();
-//			
-//				var wonum = null;
-//				var isInArray ;
-//				var resource = ["permit","sqa"];
-//				console.log(wonumArray.toString());
-//				var wo = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-//				
-//				console.log(wo);
-//				
-//				arrayUtil.forEach(wo.data, function(wo){
-//					//console.log(wo.get("tnbwometergrouplist"));
-//					wonum = wo.get("wonum");
-//					tnbwometerslist = wo.get("tnbwometerslist");			
-//					//check weather wonum already in array
-//					isInArray = wonumArray.includes(wonum);
-//					
-//						for(var i =0;i<resource.length;i++){
-//							//console.log(resource[i]);
-//							ModelService.filtered(resource[i], null,[{tnbwonum: wonum}], 1000, null,null,null,null).then(function(locset){
-//								//eventContext.application.addResource(locset);
-//								//console.log(locset);
-//							});						
-//					}
-//					if(!isInArray){
-//						wonumArray.push(wonum);
-//					}
-//					
-//				});
-//				this.downloadAllChild(eventContext);
-			
-			
-		},
-		
+	//----------------------------------------custom javascript code-----------------------------------------------------------------------------	
 		downloadAllChild:function(eventContext){
 			var isInArray =null;
 			console.log("download child");
@@ -2370,9 +2333,29 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 			var wonums = currentRecord.get("wonum");
 			var siteids = currentRecord.get("siteid");
 			
-			ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(locset){
-				currentRecord.set("childsize",locset.data.length);
-						
+			ModelService.filtered('workOrder', null,[{parentWonum:wonums,siteid:siteids,istask:false}], 1000, null,null,null,null).then(function(woset){
+				//currentRecord.set("childsize",locset.data.length);
+				
+            	var childWO = woset;
+            	for (var i=0; i<woset.data.length; i++){
+            		var concat;
+            		var wonum = woset.data[i].wonum;
+            		ModelService.filtered('workOrder',null,
+                            [{parentWonum:wonum, istask:false}],
+                            1000,
+                            false,
+                            true).then(function (childset) {
+                            	concat = childWO.data.concat(childset.data);
+                            	childWO.data = concat;
+                            	childWO.recordsCount = childWO.data.length;
+                            });
+            	}				
+			
+            	setTimeout(function afterTwoSeconds() {
+          		  console.log('show child count');
+          		  console.log(childWO.recordsCount);
+          		  currentRecord.set("childsize",childWO.recordsCount);
+          		}, 3000);            	
 			}).otherwise(function(error) {
 				Logger.error(JSON.stringify(error));
 			});
@@ -2480,120 +2463,7 @@ function(declare, arrayUtil, lang,Deferred,tnbwometersHandler,WorkOfflineHandler
 		}
 
 		},
-		
-		backToParent:function(eventContext){
-			console.log('function: childBackButton');
-			console.log("previous wonum :"+previousWO);
 			
-			if(previousWO != null){
-				ModelService.filtered('workOrder', null,[{wonum:previousWO}], 1000, null,null,null,null).then(function(locset){
-				eventContext.application.addResource(locset);
-				eventContext.ui.show('WorkExecution.WorkDetailView');
-				}).otherwise(function(error) {
-					Logger.error(JSON.stringify(error));
-				});
-			}
-		},
-		
-		hideParentWorkOrder: function(eventContext){
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var parentWonum = currentRecord.get("parentWonum");
-			
-			if (parentWonum)
-				eventContext.setDisplay(true);
-			else 
-				eventContext.setDisplay(false);
-		},
-		
-		parentWODetails: function(eventContext) {
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var parentWonum = currentRecord.get("parentWonum");			
-
-			ModelService.filtered('workOrder', null,[{wonum:parentWonum}], 1000, null,null,null,null).then(function(locset){
-			eventContext.application.addResource(locset);
-			eventContext.application.showBusy();
-			eventContext.ui.show('WorkExecution.WorkDetailView');
-			eventContext.application.hideBusy();
-			}).otherwise(function(error) {
-				Logger.error(JSON.stringify(error));
-			});		
-		},
-		
-		returnToChildList:function(eventContext){
-			console.log('function: returnToChildList');
-			console.log("previous wonum :"+previousWO);
-			
-				ModelService.filtered('workOrder', null,[{parentWonum:previousWO,siteid:previousSiteid,istask:false}], 1000, null,null,null,null).then(function(locset){
-					//console.log(locset);
-					if(locset.data.length > 0){
-						eventContext.application.addResource(locset);
-						eventContext.ui.show('WorkExecution.ChildrenWO');
-					}else{
-						eventContext.ui.showMessage(msg);		
-					}
-				
-				}).otherwise(function(error) {
-					Logger.error(JSON.stringify(error));
-				});
-		
-		},
-		
-		backToList:function(eventContext){
-			console.log('function: childBackButton 2');
-			console.log("previous wonum :"+previousWO);
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder");
-			
-			eventContext.ui.getCurrentViewControl().changeQueryBase.call(eventContext.ui.getViewFromId("WorkExecution.WorkItemsView"),this.originalQueryBaseIndex).then(function() {
-				eventContext.ui.show('WorkExecution.WorkItemsView');
-			});
-			
-		
-		},
-		
-		
-		parentLabel:function(eventContext){
-			console.log('function: parentLabel');
-			var currentRecord = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var parentWonum = currentRecord.get("parentWonum");
-			if(parentWonum != null){
-				return ['Parent Work Order - '+parentWonum];
-			}else{
-				return ['No Parent'];
-			}	
-		},
-		
-		hideSectionforChild:function(eventContext){
-			console.log('function: hideSectionforChild');
-			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var parentWo = workOrder.get('parentWonum');
-			if (parentWo){
-				eventContext.setDisplay(false);
-			}
-				
-			else{
-				
-				eventContext.setDisplay(true);
-				}
-				
-		},
-		
-		hideFooterforParent:function(eventContext){
-			console.log("function: hideFooterforParent");
-			var workOrder = CommonHandler._getAdditionalResource(eventContext,"workOrder").getCurrentRecord();
-			var parentWo = workOrder.get('parentWonum');
-			if (parentWo == null){
-				console.log('hide footer for parent');
-				this.displayFooter(eventContext, false);
-			}
-				
-			else{
-				console.log('show footer for parent');
-				this.displayFooter(eventContext, true);
-			}
-		},
-		
-		
-	
 		updateAtrributeInTask : function(eventContext){
 			console.log('function: updateAtrributeInTask called from WODetailHandler');
 			var msg = MessageService.createStaticMessage("save succesful").getMessage();
