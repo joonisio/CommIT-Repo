@@ -200,7 +200,6 @@
 				<!-- eventHandler class="application.handlers.WODetailHandler" event="show" id="WorkExecution.WorkItemsView_eventHandlers_show_populateSearch" method="populateSearch"/-->
 				<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_render_showBusyList" method="showBusyList"/>
 				<eventHandler class="application.handlers.WOGeolocationHandler" event="initialize" id="WorkExecution.WorkItemsView_eventHandlers_initialize_geolocation" method="initialize"/>
-				<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="WorkExecution.WorkItemsView_eventHandlers_handler_myassignedwork" method="myassignedwork"/>
 			</eventHandlers>
 		</view>
 		
@@ -288,7 +287,8 @@
 				<eventHandler class="application.handlers.MetersListHandler" event="initialize" id="WorkExecution.WorkDetailView_eventHandlers_initialize_initializeMeters" method="initializeMeters"/>
 				<eventHandler class="application.handlers.ClassificationFormHandler" event="show" id="WorkExecution.WorkDetailView_eventHandlers_show_showWOSpecSorted" method="showWOSpecSorted"/>
 				<!-- eventHandler class="application.handlers.WOHistoryHandler" event="render" id="WorkExecution.WorkDetailViewAsset_eventHandlers_render_WOHistoryHandler" method="renderWOHistoryList"/ -->
-				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>	
+				<eventHandler id="workorder.featuretext_eventhandler0" event="initialize" class="application.handlers.WODetailHandler" method="readOnlyForNonLinearWO"/>
+				<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="back" id="WorkExecution.WorkDetailView_eventHandlers_back_handleBackButtonWorkDetail" method="myAssignedWork"/>	
 			</eventHandlers>
 
 			<container id="WorkExecution.WorkDetailView_workOrder_container_0" resource="workOrder">
@@ -773,30 +773,51 @@
 							<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
 							<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_showChildFailureView" method="showChildFailureView"/>
 						</eventHandlers>	
-					</groupitem>																																            
-		        </group>
-		    </container>
-		    <!-- <container id="testFailureCode" resource="workOrder">
-		        <group id="testgroup">
-					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0" transitionTo="WorkExecution.FailureView">
-						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FailureReport" label="Failure Report" labelCss="editableLabel"/>	
-						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS" value="FAILURE CLASS">
-							<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers">
-								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_FAILURECLASS_eventHandlers_render_hideShowFailureClassLabel" method="hideShowFailureClassLabel"/>
+					</groupitem>
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA" transitionTo="WorkExecution.FailureView">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FailureReport" label="Failure Report" labelCss="editableLabel"/>	
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS" value="FAILURE CLASS">
+							<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS_eventHandlers">
+								<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS_eventHandlers_render_hideShowFailureClassLabel" method="hideShowFailureClassLabel"/>
 							</eventHandlers>	    
 						</text>
-						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType" resourceAttribute="currentFCType">
-						    <eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers">
-								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCType_eventHandlers_render_hideShowFailureType" method="hideShowFailureType"/>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType" resourceAttribute="currentFCType">
+						    <eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType_eventHandlers">
+								<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType_eventHandlers_render_hideShowFailureType" method="hideShowFailureType"/>
 							</eventHandlers>
 					   </text>
-						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_currentFCDesc" resourceAttribute="currentFCDesc"/>							
-						<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers">
-							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_0_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCDesc" resourceAttribute="currentFCDesc"/>							
+						<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers">
+							<eventHandler class="application.customerExtensions.FailureCodeExtensionHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
+							<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers_render_showChildScadaFailureView" method="showChildScadaFailureView"/>
+						</eventHandlers>	
+					</groupitem>																																					            
+		        </group>
+		    </container>
+	<!-- 	    <container id="WorkExecution.ChildWorkDetailView_workOrder_container_SCADA_failure" resource="workOrder">
+		        <group id="WorkExecution.ChildWorkDetailView_group_SCADA">
+					<groupitem id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA" transitionTo="WorkExecution.FailureView">
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FailureReport" label="Failure Report" labelCss="editableLabel"/>	
+						<text id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS" value="FAILURE CLASS">
+							<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS_eventHandlers">
+								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_FAILURECLASS_eventHandlers_render_hideShowFailureClassLabel" method="hideShowFailureClassLabel"/>
+							</eventHandlers>	    
+						</text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType" resourceAttribute="currentFCType">
+						    <eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType_eventHandlers">
+								<eventHandler class="application.handlers.WODetailHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCType_eventHandlers_render_hideShowFailureType" method="hideShowFailureType"/>
+							</eventHandlers>
+					   </text>
+						<text editable="false" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_currentFCDesc" resourceAttribute="currentFCDesc"/>							
+						<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers">
+							<eventHandler class="application.handlers.FailureCodeHandler" event="render" id="WorkExecution.ChildWorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers_render_populateCurrentFCLevel" method="populateCurrentFCLevel"/>
 						</eventHandlers>	
 					</groupitem>		            
 		        </group>
-		    </container>-->
+					<eventHandlers id="WorkExecution.ChildWorkDetailView_workOrder_container_WorkExecution.FailureView_SCADA_eventHandlers">
+						<eventHandler class="application.customerExtensions.WODetailExtensionHandler" event="render" id="ChildWorkExecution.WorkDetailView_workOrder_groupitem_WorkExecution.FailureView_SCADA_eventHandlers_render_showChildScadaFailureView" method="showChildScadaFailureView"/>
+					</eventHandlers>		        
+		    </container> -->
 			<!-- Specification Form BEGIN-->
 			<list attribute="workOrderSpec" collapsible="true" displayPageSize="25" hideEmpty="true" id="WorkExecution.ChildWorkDetailView_workOrder_workOrderSpec_list" label="Specifications" mixinclass="SpecificationStoreList" resource="childWorkOrder">
 				<listItemTemplate id="WorkExecution.ChildWorkDetailView_workOrder_workOrderSpec_listItemTemplate">
@@ -10585,7 +10606,8 @@
 				<attribute describedByProperty="spi_wm:tnbmanufacturerpart" id="childworkOrder_spi_wm_tnbmanufacturerpart" name="tnbmanufacturerpart"/>		
 				<attribute describedByProperty="spi_wm:failureCode{oslc:shortTitle}" id="childworkOrder_failurecode_spi_wmfailureCodeoslcshortTitle" name="failurecode"/>
 				<attribute describedByProperty="spi_wm:failureCode{dcterms:title}" id="childworkOrder_failureCodeDesc_spi_wmfailureCodedctermstitle" name="failureCodeDesc"/>
-				<attribute describedByProperty="spi_wm:tnbsubvertical" id="childworkOrder_tnbsubvertical_spi_wmtnbsubvertical" name="tnbsubvertical"/>						
+				<attribute describedByProperty="spi_wm:tnbsubvertical" id="childworkOrder_tnbsubvertical_spi_wmtnbsubvertical" name="tnbsubvertical"/>		
+				<attribute describedByProperty="spi_wm:wosequence" id="childworkOrder_wosequence_spi_wmwosequence" name="wosequence"/>				
 				
 				<!-- Complex attributes for supporting data -->
 				<attribute describedByProperty="spi_wm:tnbwometergroup" describedByResource="tnbwometergroupResource" id="childworkOrder_tnbwometergrouplist_spi_wmtnbwometergroup" name="tnbwometergrouplist"/>
