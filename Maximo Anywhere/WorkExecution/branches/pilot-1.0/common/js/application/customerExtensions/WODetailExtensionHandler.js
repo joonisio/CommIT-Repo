@@ -33,12 +33,13 @@ function(declare, lang, ApplicationHandlerBase, ModelService, CommonHandler) {
                                 	concat = childWO.data.concat(childset.data);
                                 	childWO.data = concat;
                                 	childWO.recordsCount = childWO.data.length;
+                                	childWO.data.sort(function(a, b){return a.wosequence - b.wosequence});
                                 });
                 	}
                 	eventContext.application.addResource(childWO);
                 	eventContext.application.showBusy();
                 	setTimeout(function afterTwoSeconds() {
-                		  console.log('show view');
+                		  console.log('show child list view');
                 		  eventContext.ui.show('WorkExecution.ChildrenWO');
                 		  console.log(childWO.recordsCount);
                 		}, 3000);
@@ -80,13 +81,24 @@ function(declare, lang, ApplicationHandlerBase, ModelService, CommonHandler) {
 			}
 		},
 		
-		myassignedwork: function(eventContext){
-			ModelService.all('workOrder', "getMyAssignedWork").then(function(modelDataSet){
-				modelDataSet.resourceID = 'workOrder';
-				//eventContext.application.showBusy();
-				//eventContext.application.addResource(modelDataSet);
-				//eventContext.application.ui.getViewFromId('WorkExecution.WorkItemsView').lists[0].refresh();
-			});			
+		myAssignedWork: function(eventContext){
+			eventContext.application.showBusy();
+			var workOrderSet = eventContext.application.getResource("workOrder");
+			var currWO = workOrderSet.getCurrentRecord();
+			var subvertical = currWO.get('tnbsubvertical');
+			
+			if (subvertical === "SCADA") {
+				console.log(subvertical);
+				ModelService.all('workOrder', "getMyAssignedWork").then(function(modelDataSet){
+					eventContext.application.addResource(modelDataSet);
+					eventContext.ui.hideCurrentView();
+					//eventContext.application.ui.getViewFromId('WorkExecution.WorkItemsView').lists[0].refresh();
+				});				
+			}
+			else
+				eventContext.ui.hideCurrentView();
+			
+			ModelService.save(workOrderSet);
 		},
 		
 		showChildFailureView: function(eventContext) {
@@ -97,6 +109,16 @@ function(declare, lang, ApplicationHandlerBase, ModelService, CommonHandler) {
 				eventContext.setDisplay(false);
 			else
 				eventContext.setDisplay(true);
+		},
+		
+		showChildScadaFailureView: function(eventContext) {
+			var currWO = eventContext.application.getResource("childWorkOrder").getCurrentRecord();
+			var subvertical = currWO.get('tnbsubvertical');
+			
+			if (subvertical === "SCADA")
+				eventContext.setDisplay(true);
+			else
+				eventContext.setDisplay(false);			
 		},
 	
 		hideShowFailureClassLabel : function(eventContext){
